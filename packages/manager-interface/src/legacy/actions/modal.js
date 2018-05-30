@@ -92,7 +92,7 @@ export const actions = {
     primaryInteraction: interactions.OK,
     secondaryInteraction: '',
   }),
-  loading: (body = 'Sending transaction ...') => ({
+  loading: (body = 'Processing ...') => ({
     type: types.LOADING,
     fees: null,
     isOpen: true,
