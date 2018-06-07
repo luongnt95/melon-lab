@@ -17,19 +17,18 @@ const getOrder = async (environment: Environment, { id }): Promise<Order> => {
 
   const isActive: boolean = await exchangeAdapterContract.instance.isActive.call(
     {},
-    [config.exchangeAddress, id],
+    [config.matchingMarketAddress, id],
   );
   const owner: string = await exchangeAdapterContract.instance.getOwner.call(
     {},
-    [config.exchangeAddress, id],
+    [config.matchingMarketAddress, id],
   );
   const order: RawOrder = await exchangeAdapterContract.instance.getOrder.call(
     {},
-    [config.exchangeAddress, id],
+    [config.matchingMarketAddress, id],
   );
 
   const [sellWhichToken, buyWhichToken, sellHowMuch, buyHowMuch] = order;
-
   const enhancedOrder = {
     id,
     owner,
@@ -43,7 +42,6 @@ const getOrder = async (environment: Environment, { id }): Promise<Order> => {
   if (isActive) {
     const sellSymbol = getSymbol(config, sellWhichToken);
     const buySymbol = getSymbol(config, buyWhichToken);
-
     enhancedOrder.sell = {
       symbol: sellSymbol,
       howMuch: toReadable(config, sellHowMuch, sellSymbol),
