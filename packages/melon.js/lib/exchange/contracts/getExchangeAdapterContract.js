@@ -10,7 +10,7 @@ const getExchangeAdapterContract = async environment => {
 
   return environment.api.newContract(
     SimpleAdapterAbi,
-    config.exchangeAdapterAddress,
+    config.matchingMarketAdapter,
   );
 };
 

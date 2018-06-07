@@ -21,7 +21,7 @@ const getActiveOrders = async (
 
   const lastId: BigNumber = await exchangeAdapterContract.instance.getLastOrderId.call(
     {},
-    [config.exchangeAddress],
+    [config.matchingMarketAddress],
   );
   const endIndex: number =
     lastId.minus(numberOfOrders).toNumber() < 0
