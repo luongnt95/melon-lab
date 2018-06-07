@@ -8,37 +8,37 @@ import {
 } from '@melonproject/melon.js';
 import { actions as modalActions, types as modalTypes } from '../actions/modal';
 
+/*
+  The confirmer attaches itself to the environment. Then, on every
+  sendTransaction, the confirmer as awaited if present. One transaction
+  can have multiple sendTransactions (i.e. approve, send, ...). Multiple
+  sendTransactions leads to multiple confirm popups.
+*/
 function* confirmer(environment, modalSentence) {
   const confirmChannel = eventChannel(emitter => {
     environment.confirmer = matter =>
       new Promise(resolve => {
         emitter({ matter, resolve });
-        emitter(END);
       });
 
     return () => emitter(END);
   });
 
-  const { matter, resolve } = yield take(confirmChannel);
+  while (true) {
+    const { matter, resolve } = yield take(confirmChannel);
 
-  /*
-  yield put(
-    modalActions.confirm(
-      `${modalSentence} \n\n ${JSON.stringify(matter, null, 4)}`,
-    ),
-  );
+    yield put(
+      modalActions.confirm(
+        `${modalSentence} \n\n ${JSON.stringify(matter, null, 4)}`,
+      ),
+    );
 
-  // This leads to a Maximum Call Stack error :(
-  const action = yield take([modalTypes.CONFIRMED, modalTypes.CANCEL]);
+    const action = yield take([modalTypes.CONFIRMED, modalTypes.CANCEL]);
 
-  if (action.type === modalTypes.CANCEL) return resolve(false);
+    if (action.type === modalTypes.CANCEL) return resolve(false);
 
-  return resolve(true);
-  */
-
-  return resolve(
-    confirm(`${modalSentence} \n\n ${JSON.stringify(matter, null, 4)}`),
-  );
+    return resolve(true);
+  }
 }
 
 function* signer(modalSentence, transaction, failureAction) {
