@@ -28,8 +28,14 @@ const setupFund = async (
   { name, signature, exchangeNames = ['MatchingMarket', 'ZeroExExchange'] },
 ): Promise<Fund> => {
   const config = await getConfig(environment);
-  const { quoteAssetSymbol, OnlyManagerAddress, NoComplianceCompetitionAddress, CompetitionComplianceAddress, riskManagementAddress } = config;
-  const complianceAddress = NoComplianceCompetitionAddress
+  const {
+    quoteAssetSymbol,
+    OnlyManagerAddress,
+    NoComplianceCompetitionAddress,
+    CompetitionComplianceAddress,
+    riskManagementAddress,
+  } = config;
+  const complianceAddress = NoComplianceCompetitionAddress;
   const quoteAsset = getAddress(config, quoteAssetSymbol);
 
   const managementReward = 0;
@@ -84,6 +90,8 @@ const setupFund = async (
     params,
     environment,
   );
+
+  if (environment.dry) return receipt;
 
   const fundAddedMessage = findEventInLog(
     'FundUpdated',
