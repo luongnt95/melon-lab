@@ -31,7 +31,7 @@ const getWhiteListedAssets = async (environment, network) => {
 
   const allAssetsInfos = await Promise.all(promiseForInfo);
 
-  return allAssetsInfos.filter(asset => asset.isWhiteListed);
+  return allAssetsInfos.filter(asset => asset.isWhiteListed && asset.symbol !== "CHF" && asset.symbol !== "CHF-T");
 };
 
 export default getWhiteListedAssets;
