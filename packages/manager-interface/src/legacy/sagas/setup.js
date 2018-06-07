@@ -97,18 +97,11 @@ function* createFund({ name, OasisDex, ZeroEx }) {
 
   function* transaction(environment) {
     const signature = yield select(state => state.fund.signature);
-    const params = {
+    const fund = yield call(setupFund, environment, {
       name,
       signature,
       exchangeNames,
-    };
-
-    if (environment.dry) {
-      const rawTransaction = yield call(setupFund, environment, params);
-      return rawTransaction;
-    }
-
-    const fund = yield call(setupFund, environment, params);
+    });
     yield put(
       actions.setupSucceeded({ ...fund, owner: environment.account.address }),
     );
