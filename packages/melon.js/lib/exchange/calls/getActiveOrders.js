@@ -3,7 +3,7 @@ import BigNumber from 'bignumber.js';
 import { range } from 'ramda';
 import getOrder from './getOrder';
 import getPrices from '../utils/getPrices';
-import getExchangeAdapterContract from '../contracts/getExchangeAdapterContract';
+import getMatchingMarketAdapterContract from '../contracts/getMatchingMarketAdapterContract';
 import getConfig from '../../version/calls/getConfig';
 
 import type { Order } from '../schemas/Order';
@@ -16,10 +16,10 @@ const getActiveOrders = async (
   environment,
   { baseTokenSymbol, quoteTokenSymbol, numberOfOrders = 105 },
 ): Promise<[Order]> => {
-  const exchangeAdapterContract = await getExchangeAdapterContract(environment);
+  const matchingMarketAdapterContract = await getMatchingMarketAdapterContract(environment);
   const config = await getConfig(environment);
 
-  const lastId: BigNumber = await exchangeAdapterContract.instance.getLastOrderId.call(
+  const lastId: BigNumber = await matchingMarketAdapterContract.instance.getLastOrderId.call(
     {},
     [config.matchingMarketAddress],
   );
@@ -33,6 +33,7 @@ const getActiveOrders = async (
     lastId.toNumber() + 1,
   ).map(async id => {
     const order = await getOrder(environment, { id });
+
     const assetPairArray = [baseTokenSymbol, quoteTokenSymbol];
     if (
       order.isActive &&

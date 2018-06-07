@@ -27,15 +27,24 @@ const getObservableOasisDex = (baseTokenAddress, quoteTokenAddress) => {
   const orderbook$ = environment$
     .do(value => debug('Fetching.', value))
     .switchMap(
-      fetchOrderbook({
-        baseTokenAddress,
-        quoteTokenAddress,
-      }),
-    )
+    fetchOrderbook({
+      baseTokenAddress,
+      quoteTokenAddress,
+    }),
+  )
     .do(value => debug('Receiving values.', value))
     .distinctUntilChanged()
     .map(labelOrders)
-    .do(value => debug('Emitting order book.', value));
+    .do(value => debug('Emitting order book.', value))
+    .catch(error => {
+      debug('Failed to fetch orderbook.', {
+        baseTokenAddress,
+        quoteTokenAddress,
+        error,
+      });
+
+      return Rx.Observable.of([]);
+    })
 
   return orderbook$.repeatWhen(Rx.operators.delay(10000));
 };

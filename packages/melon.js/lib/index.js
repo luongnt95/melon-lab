@@ -36,7 +36,7 @@ import getOrderbook from './exchange/calls/getOrderbook';
 import getRecentTrades from './exchange/calls/getRecentTrades';
 
 // ./lib/exchange/contracts
-import getExchangeAdapterContract from './exchange/contracts/getExchangeAdapterContract';
+import getMatchingMarketAdapterContract from './exchange/contracts/getMatchingMarketAdapterContract';
 import getMatchingMarketContract from './exchange/contracts/getMatchingMarketContract';
 
 // ./lib/exchange/events
@@ -257,7 +257,7 @@ export {
   getOrder,
   getOrderbook,
   getRecentTrades,
-  getExchangeAdapterContract,
+  getMatchingMarketAdapterContract,
   getMatchingMarketContract,
   onOrderUpdate,
   BuyOrSell,

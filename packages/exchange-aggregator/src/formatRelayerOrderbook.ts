@@ -2,24 +2,26 @@ import * as tokenInfo from '@melonproject/smart-contracts/utils/info/tokenInfo';
 import BigNumber from 'bignumber.js';
 import { getSymbol, toReadable, getPrices } from '@melonproject/melon.js';
 
-const formatRelayerOrderbook = exchange => (bids, asks) => {
+const formatRelayerOrderbook = exchange => (config, bids, asks) => {
   const formattedBids = bids.map(order => ({
     salt: order.salt,
     maker: order.maker,
     taker: order.taker,
     isActive: true,
     sell: {
-      symbol: getSymbol(order.makerTokenAddress),
+      symbol: getSymbol(config, order.makerTokenAddress),
       howMuch: toReadable(
+        config,
         order.makerTokenAmount,
-        getSymbol(order.makerTokenAddress),
+        getSymbol(config, order.makerTokenAddress),
       ),
     },
     buy: {
-      symbol: getSymbol(order.takerTokenAddress),
+      symbol: getSymbol(config, order.takerTokenAddress),
       howMuch: toReadable(
+        config,
         order.takerTokenAmount,
-        getSymbol(order.takerTokenAddress),
+        getSymbol(config, order.takerTokenAddress),
       ),
     },
     type: 'buy',
@@ -37,17 +39,18 @@ const formatRelayerOrderbook = exchange => (bids, asks) => {
     taker: order.taker,
     isActive: true,
     sell: {
-      symbol: getSymbol(order.makerTokenAddress),
-      howMuch: toReadable(
+      symbol: getSymbol(config, order.makerTokenAddress),
+      howMuch: toReadable(config,
         order.makerTokenAmount,
-        getSymbol(order.makerTokenAddress),
+        getSymbol(config, order.makerTokenAddress),
       ),
     },
     buy: {
-      symbol: getSymbol(order.takerTokenAddress),
+      symbol: getSymbol(config, order.takerTokenAddress),
       howMuch: toReadable(
+        config,
         order.takerTokenAmount,
-        getSymbol(order.takerTokenAddress),
+        getSymbol(config, order.takerTokenAddress),
       ),
     },
     type: 'sell',

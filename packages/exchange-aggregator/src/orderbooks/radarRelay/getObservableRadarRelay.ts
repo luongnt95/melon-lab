@@ -1,5 +1,6 @@
 import * as R from 'ramda';
 import * as Rx from 'rxjs';
+import { getParityProvider, getConfig } from '@melonproject/melon.js'
 import formatRelayerOrderbook from '../../formatRelayerOrderbook';
 import getTokenAddress from '../../getTokenAddress';
 import { Order } from '../../index';
@@ -119,7 +120,13 @@ const getObservableRadarRelay = (
     })
     .distinctUntilChanged()
     .do(value => debug('Extracting bids and asks.', value))
-    .map<AsksAndBids, Order[]>(value => format(value.bids, value.asks))
+    .switchMap(value => {
+      const environment$ = Rx.Observable.fromPromise(getParityProvider())
+      const config$ = environment$.switchMap(environment => {
+        return Rx.Observable.fromPromise(getConfig(environment))
+      })
+      return config$.switchMap(config => Rx.Observable.of(format(config, value.bids, value.asks)))
+    })
     .do(value => debug('Emitting order book.', value))
     .catch(error => {
       debug('Failed to fetch orderbook.', {

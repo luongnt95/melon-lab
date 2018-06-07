@@ -1,7 +1,9 @@
 // @flow
 import toReadable from '../../assets/utils/toReadable';
 import getSymbol from '../../assets/utils/getSymbol';
-import getExchangeAdapterContract from '../contracts/getExchangeAdapterContract';
+import getMatchingMarketAdapterContract from '../contracts/getMatchingMarketAdapterContract';
+import getMatchingMarketContract from '../contracts/getMatchingMarketContract';
+
 import getConfig from '../../version/calls/getConfig';
 
 import type { Environment } from '../../utils/environment/Environment';
@@ -13,17 +15,18 @@ import type { Order, RawOrder } from '../schemas/Order';
  */
 const getOrder = async (environment: Environment, { id }): Promise<Order> => {
   const config = await getConfig(environment);
-  const exchangeAdapterContract = await getExchangeAdapterContract(environment);
+  const matchingMarketAdapterContract = await getMatchingMarketAdapterContract(environment);
+  const matchingMarketContract = await getMatchingMarketContract(environment)
+  const isActive: boolean = await matchingMarketContract.instance.isActive.call(
+    {},
+    [id],
+  );
 
-  const isActive: boolean = await exchangeAdapterContract.instance.isActive.call(
+  const owner: string = await matchingMarketContract.instance.getOwner.call(
     {},
-    [config.matchingMarketAddress, id],
+    [id],
   );
-  const owner: string = await exchangeAdapterContract.instance.getOwner.call(
-    {},
-    [config.matchingMarketAddress, id],
-  );
-  const order: RawOrder = await exchangeAdapterContract.instance.getOrder.call(
+  const order: RawOrder = await matchingMarketAdapterContract.instance.getOrder.call(
     {},
     [config.matchingMarketAddress, id],
   );
@@ -33,11 +36,10 @@ const getOrder = async (environment: Environment, { id }): Promise<Order> => {
     id,
     owner,
     isActive:
-      isActive &&
-      sellWhichToken !== '0x0000000000000000000000000000000000000000' &&
-      buyWhichToken !== '0x0000000000000000000000000000000000000000',
+    isActive &&
+    sellWhichToken !== '0x0000000000000000000000000000000000000000' &&
+    buyWhichToken !== '0x0000000000000000000000000000000000000000',
   };
-
   // inactive orders have token set to 0x0000... so only enhance active orders
   if (isActive) {
     const sellSymbol = getSymbol(config, sellWhichToken);
