@@ -41,10 +41,11 @@ const getObservableOasisDex = (baseTokenAddress, quoteTokenAddress) => {
         baseTokenAddress,
         quoteTokenAddress,
         error,
-      });
+      })
 
       return Rx.Observable.of([]);
     })
+    .do(value => debug('after catch ', value))
 
   return orderbook$.repeatWhen(Rx.operators.delay(10000));
 };
