@@ -14,19 +14,20 @@ import { types as browserTypes } from '../actions/browser';
 import { actions as appActions } from '../actions/app';
 import { actions as ethereumActions } from '../actions/ethereum';
 import { actions as fundActions } from '../actions/fund';
+import { actions as walletActions } from '../actions/wallet';
 import { equals } from '../utils/functionalBigNumber';
 
 const BLOCK_POLLING_INTERVAL = 4 * 1000;
 const MAX_INTERVAL_BETWEEN_BLOCKS = 5;
 
 function* init() {
-  const { providerType, api } = yield call(getParityProvider);
+  const environment = yield call(getParityProvider);
 
   // TODO: add tracer
-  setEnvironment({ api, providerType });
-  yield put(ethereumActions.setProvider(providerType));
+  setEnvironment(environment);
+  yield put(ethereumActions.setProvider(environment.providerType));
 
-  const config = yield call(getConfig, { api, providerType });
+  const config = yield call(getConfig, environment);
   global.MELON_PROTOCOL_CONFIG = config;
   yield put(fundActions.setConfig(config));
   yield put(
@@ -38,28 +39,24 @@ function* init() {
 
   // Reading the fund address from the URL
   const fund = yield select(state => state.fund);
-  const networkId = yield apply(api, api.net.version);
+  const networkId = yield apply(environment.api, environment.api.net.version);
 
   yield put(ethereumActions.hasConnected(networkId));
-  if (providerType !== providers.INJECTED) {
-    const wallet = localStorage.getItem('wallet:melon.fund');
-
-    if (wallet) {
-      const account = JSON.parse(wallet);
-      const address = utils.getAddress(account.address);
-      setEnvironment({ account: { address } });
-      yield put(ethereumActions.accountChanged(address));
-    } else {
-      yield put(ethereumActions.accountChanged(''));
-    }
-  } else {
-    const address = yield apply(api, api.parity.defaultAccount);
-    setEnvironment({ account: { address } });
-    yield put(ethereumActions.accountChanged(address));
-  }
 
   if (fund.address !== '' && fund.name === '-') {
     yield put(fundActions.infoRequested(fund.address));
+  }
+
+  const walletString = localStorage.getItem('wallet:melon.fund');
+  if (process.env.NODE_ENV === 'development' && walletString) {
+    console.warn(
+      'Loading unencrypted wallet from localStorage. This should only happen in development and with playmoney (i.e. kovan)',
+    );
+    const wallet = JSON.parse(walletString);
+    environment.account = wallet;
+    setEnvironment(environment);
+    yield put(walletActions.importWalletSucceeded(wallet));
+    yield put(ethereumActions.accountChanged(`${wallet.address}`));
   }
 
   const blockChannel = eventChannel(emitter => {
@@ -68,7 +65,7 @@ function* init() {
 
     const pollBlock = async () => {
       try {
-        const blockNumber = await api.eth.blockNumber();
+        const blockNumber = await environment.api.eth.blockNumber();
 
         if (!equals(blockNumber, lastBlockNumber)) {
           const environment = getEnvironment();

@@ -58,6 +58,15 @@ const createDownload = (data, filename, mime) => {
   }
 };
 
+const storeWalletDev = wallet => {
+  if (process.env.NODE_ENV === 'development') {
+    console.warn(
+      'Development environment detected. Storing unencrypted wallet on localStorage!',
+    );
+    localStorage.setItem('wallet:melon.fund', JSON.stringify(wallet));
+  }
+};
+
 function* generateMnemonic() {
   try {
     yield put(actions.generateWalletSucceeded(createWallet().mnemonic));
@@ -72,6 +81,7 @@ function* restoreWalletSaga({ mnemonic }) {
     const wallet = yield importWalletFromMnemonic(mnemonic);
     setEnvironment({ account: wallet });
     yield put(actions.restoreFromMnemonicSucceeded(wallet));
+    yield call(storeWalletDev, wallet);
     yield put(routeActions.wallet());
     yield put(ethereumActions.accountChanged(`${wallet.address}`));
   } catch (err) {
@@ -89,6 +99,9 @@ function* deleteWallet() {
   yield take(modalTypes.CONFIRMED);
   yield put(actions.doDeleteWallet());
   yield put(ethereumActions.accountChanged());
+  // Delete local storage wallet anyways. If in production, they key should
+  // not exist. If it exists, then deletion is ok anyways
+  localStorage.removeItem('wallet:melon.fund');
   yield put(routeActions.root());
 }
 
@@ -149,6 +162,7 @@ function* importWallet({ encryptedWalletString }) {
     );
     setEnvironment({ account: decryptedWallet });
     yield put(actions.importWalletSucceeded(decryptedWallet));
+    yield call(storeWalletDev, decryptedWallet);
     yield put(ethereumActions.accountChanged(`${decryptedWallet.address}`));
     yield put(routeActions.wallet());
     yield put(modalActions.close());

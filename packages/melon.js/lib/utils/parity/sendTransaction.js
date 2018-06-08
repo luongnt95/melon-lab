@@ -52,6 +52,16 @@ const sendTransaction = async (
   if (options.value) {
     options.value = `0x${options.value.toString(16)}`
   }
+  
+  // Exit function prematurely if a confirmer is registered and it returns false
+  if (environment.confirmer) {
+    const confirmed = await environment.confirmer({
+      gasLimit: options[gasKeyName],
+    });
+
+    if (!confirmed) return { error: 'Transaction cancelled' };
+  }
+
   // Construct raw transaction object
   const rawTransaction = constructTransactionObject(
     contract,
