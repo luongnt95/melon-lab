@@ -48,7 +48,6 @@ const preflightTakeOrder = async (
   const canonicalPriceFeedContract = await getCanonicalPriceFeedContract(
     environment,
   );
-
   const isExchangeMethodAllowed = await canonicalPriceFeedContract.instance.exchangeMethodIsAllowed.call(
     {},
     [exchangeAddress, method],
@@ -57,7 +56,7 @@ const preflightTakeOrder = async (
 
   ensure(
     getAddress(config, makerAssetSymbol) !== fundContract.address &&
-      getAddress(config, takerAssetSymbol) !== fundContract.address,
+    getAddress(config, takerAssetSymbol) !== fundContract.address,
     'Fund buying/selling its own fund token is forbidden.',
   );
 

@@ -10,7 +10,7 @@ import ensure from '../../utils/generic/ensure';
 import rush from '../../utils/generic/rush';
 import toProcessable from '../../assets/utils/toProcessable';
 import BigNumber from 'bignumber.js';
-
+import addressBook from '@melonproject/smart-contracts/addressBook.json'
 import TokenAbi from '@melonproject/smart-contracts/out/assets/PreminedAsset.abi.json';
 
 /*
