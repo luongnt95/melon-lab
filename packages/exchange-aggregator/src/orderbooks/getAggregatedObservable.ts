@@ -50,7 +50,7 @@ const getAggregatedObservable = (
     .map(name => exchangeToCreatorFunction[name])
     .map(create => create(baseTokenAddress, quoteTokenAddress, network))
     .combineAll<Rx.Observable<Order[]>, Order[][]>()
-    // .do(value => debug('Emitting combined order book.', value))
+    .do(value => debug('Emitting combined order book.', value))
     .distinctUntilChanged();
 
   // Concat and sort orders across all order books.

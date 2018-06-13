@@ -33,7 +33,7 @@ const getActiveOrders = async (
     lastId.toNumber() + 1,
   ).map(async id => {
     const order = await getOrder(environment, { id });
-
+    order.exchangeContractAddress = config.matchingMarketAddress;
     const assetPairArray = [baseTokenSymbol, quoteTokenSymbol];
     if (
       order.isActive &&

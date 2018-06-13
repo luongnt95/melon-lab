@@ -12,99 +12,101 @@ import type { Environment } from '../../utils/environment/Environment';
 import type { Order } from '../../exchange/schemas/Order';
 
 const takeOrder = async (
-  environment: Environment,
-  {
-    fundAddress,
-    exchangeAddress,
-    maker,
-    taker,
-    makerAssetSymbol,
-    takerAssetSymbol,
-    feeRecipient,
-    makerQuantity,
-    takerQuantity,
-    makerFee,
-    takerFee,
-    timestamp,
-    salt,
-    fillTakerTokenAmount,
-    dexySignatureMode = 0,
-    identifier = '0x0',
-    signature = {},
+    environment: Environment,
+    {
+        fundAddress,
+        exchangeAddress,
+        maker,
+        taker,
+        makerAssetSymbol,
+        takerAssetSymbol,
+        feeRecipient,
+        makerQuantity,
+        takerQuantity,
+        makerFee,
+        takerFee,
+        timestamp,
+        salt,
+        fillTakerTokenAmount,
+        dexySignatureMode = 0,
+        identifier = '0x0',
+        signature = {},
   },
 ): Promise<Order> => {
-  console.log(makerQuantity.toNumber(), takerQuantity.toNumber(), fillTakerTokenAmount.toNumber())
-  const fillTakerQuantity =
-    !fillTakerTokenAmount ||
-      new BigNumber(fillTakerTokenAmount).gte(takerQuantity)
-      ? new BigNumber(takerQuantity)
-      : new BigNumber(fillTakerTokenAmount);
+    const fillTakerQuantity =
+        !fillTakerTokenAmount ||
+            new BigNumber(fillTakerTokenAmount).gte(takerQuantity)
+            ? new BigNumber(takerQuantity)
+            : new BigNumber(fillTakerTokenAmount);
 
-  const fillMakerQuantity = fillTakerQuantity
-    .times(new BigNumber(makerQuantity))
-    .div(new BigNumber(takerQuantity));
-  console.log({ takerQuantity, fillTakerQuantity })
-  console.log({ makerQuantity, fillTakerQuantity })
-  ensure(
-    fillMakerQuantity.lte(makerQuantity),
-    'Quantity asked too high compared to quantity for sale on the order.',
-  );
+    const fillMakerQuantity = fillTakerQuantity
+        .times(new BigNumber(makerQuantity))
+        .div(new BigNumber(takerQuantity));
 
-  //TODO: add ensure ZeroEx.isOrderValid
+    ensure(
+        fillMakerQuantity.lte(makerQuantity),
+        'Quantity asked too high compared to quantity for sale on the order.',
+    );
 
-  const fundContract = await getFundContract(environment, fundAddress);
+    //TODO: add ensure ZeroEx.isOrderValid
 
-  const preflightCheck = await preflightTakeOrder(environment, {
-    fundContract,
-    exchangeAddress,
-    makerAssetSymbol,
-    takerAssetSymbol,
-    fillMakerQuantity,
-    fillTakerQuantity,
-    makerQuantity,
-    takerQuantity,
-  });
+    const fundContract = await getFundContract(environment, fundAddress);
+    console.log({
+        exchangeAddress,
+        makerAssetSymbol,
+        takerAssetSymbol,
+        fillMakerQuantity,
+        fillTakerQuantity,
+    })
+    const preflightCheck = await preflightTakeOrder(environment, {
+        fundContract,
+        exchangeAddress,
+        makerAssetSymbol,
+        takerAssetSymbol,
+        fillMakerQuantity,
+        fillTakerQuantity,
+    });
 
-  ensure(
-    preflightCheck,
-    'One of the pre-conditions of the function takeOrder failed on pre-flight.',
-  );
+    ensure(
+        preflightCheck,
+        'One of the pre-conditions of the function takeOrder failed on pre-flight.',
+    );
 
-  const method = await getMethodNameSignature(environment, 'takeOrder');
+    const method = await getMethodNameSignature(environment, 'takeOrder');
 
-  const updateLog = await callOnExchange(environment, {
-    fundContract,
-    exchangeAddress,
-    method,
-    orderAddresses: [
-      maker,
-      taker,
-      makerAssetSymbol,
-      takerAssetSymbol,
-      feeRecipient,
-    ],
-    orderValues: [
-      makerQuantity,
-      takerQuantity,
-      makerFee,
-      takerFee,
-      timestamp,
-      salt,
-      fillTakerQuantity,
-      dexySignatureMode,
-    ],
-    identifier,
-    signature,
-  });
+    const updateLog = await callOnExchange(environment, {
+        fundContract,
+        exchangeAddress,
+        method,
+        orderAddresses: [
+            maker,
+            taker,
+            makerAssetSymbol,
+            takerAssetSymbol,
+            feeRecipient,
+        ],
+        orderValues: [
+            makerQuantity,
+            takerQuantity,
+            makerFee,
+            takerFee,
+            timestamp,
+            salt,
+            fillTakerQuantity,
+            dexySignatureMode,
+        ],
+        identifier,
+        signature,
+    });
 
-  return {
-    id: Utils.toUtf8String(
-      Utils.stripZeros(updateLog.params.orderId.value.reverse()).reverse(),
-    ),
-    exchange: getExchangeName(environment, updateLog.params.exchange.value),
-    updateType: updateLog.params.updateType.value === 0 ? 'make' : 'take',
-    executedQuantity: fillTakerQuantity,
-  };
+    return {
+        id: Utils.toUtf8String(
+            Utils.stripZeros(updateLog.params.orderId.value.reverse()).reverse(),
+        ),
+        exchange: getExchangeName(environment, updateLog.params.exchange.value),
+        updateType: updateLog.params.updateType.value === 0 ? 'make' : 'take',
+        executedQuantity: fillTakerQuantity,
+    };
 };
 
 export default takeOrder;

@@ -123,7 +123,7 @@ const getObservableRadarRelay = (
       asks: [],
     })
     .distinctUntilChanged()
-    // .do(value => debug('Extracting bids and asks.', value))
+    .do(value => debug('Extracting bids and asks.', value))
     .switchMap(value => {
       const environment$ = Rx.Observable.fromPromise(getParityProvider())
       const config$ = environment$.switchMap(environment => {
@@ -131,7 +131,7 @@ const getObservableRadarRelay = (
       })
       return config$.switchMap(config => Rx.Observable.of(format(config, value.bids, value.asks)))
     })
-    // .do(value => debug('Emitting order book.', value))
+    .do(value => debug('Emitting order book.', value))
     .catch(error => {
       debug('Failed to fetch orderbook.', {
         baseTokenAddress,
