@@ -111,12 +111,12 @@ const getObservableRadarRelay = (
     // send a ping signal if there is no activity to prevent closing the websocket
     // connection in the first place.
     .retry()
-    .do(value => debug('Received message.', value))
+    .do(value => debug('Received message.'))
     .filter(R.propEq('channel', 'orderbook'))
     .filter(R.anyPass([isSnapshotMessage, isUpdateMessage]) as (
       value,
     ) => value is SnapshotMessage | UpdateMessage)
-    .do(value => debug('Processing snapshot or update message.', value))
+    .do(value => debug('Processing snapshot or update message.'))
     .do(value => { if (isUpdateMessage(value)) debug('Got an update message.'); socket$.next(message) })
     .scan<SnapshotMessage | UpdateMessage, AsksAndBids>(scanMessages, {
       bids: [],
