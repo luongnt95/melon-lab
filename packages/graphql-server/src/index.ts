@@ -1,4 +1,4 @@
-import { makeContext, makeSchema } from '@melonproject/graphql-schema';
+import schema, { makeContext } from '@melonproject/graphql-schema';
 import * as fs from 'fs';
 import { PubSub } from 'graphql-subscriptions';
 import { GraphQLServer } from 'graphql-yoga';
@@ -6,7 +6,7 @@ import { GraphQLServer } from 'graphql-yoga';
 async function start(port: number) {
   const pubsub = new PubSub();
   const server = new GraphQLServer({
-    schema: makeSchema(),
+    schema,
     context: () => makeContext(pubsub),
   });
 

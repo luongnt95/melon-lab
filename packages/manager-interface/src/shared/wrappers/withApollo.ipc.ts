@@ -1,4 +1,4 @@
-import { InMemoryCache } from 'apollo-cache-inmemory';
+import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import { ApolloLink } from 'apollo-link';
 import withApollo from 'next-with-apollo';
 import { SubscriptionClient } from 'subscriptions-transport-electron';
@@ -14,13 +14,17 @@ const client =
     channel: 'graphql',
   });
 
-export default withApollo({
+export default (introspection) => withApollo({
   link: {
     http: options => new ApolloLink(operation => client.request(operation)),
     ws: () => new ApolloLink(operation => client.request(operation)),
   },
   client: options => ({
     link: options.link,
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+      fragmentMatcher: new IntrospectionFragmentMatcher({
+        introspectionQueryResultData: introspection,
+      }),
+    }),
   }),
 });

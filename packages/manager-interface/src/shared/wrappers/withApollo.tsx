@@ -2,4 +2,8 @@
 // or the HTTP/WS transport.
 import withApolloFinal from '~/apollo';
 
-export default withApolloFinal;
+// Import the introspection results (handled with a custom webpack loader)
+// for the schema.
+import introspection from '@melonproject/graphql-schema/schema.gql';
+
+export default withApolloFinal(introspection);
