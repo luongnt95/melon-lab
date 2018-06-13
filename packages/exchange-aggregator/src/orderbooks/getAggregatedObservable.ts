@@ -14,7 +14,7 @@ export type ExchangeCreator = (
   network: NetworkEnum,
 ) => Rx.Observable<Order[]>;
 
-const exchangeToCreatorFunction: { [P in ExchangeEnum]: ExchangeCreator } = {
+const exchangeToCreatorFunction: {[P in ExchangeEnum]: ExchangeCreator } = {
   RADAR_RELAY: (baseTokenSymbol, quoteTokenSymbol, network) =>
     getObservableRadarRelay(baseTokenSymbol, quoteTokenSymbol, network),
   OASIS_DEX: (baseTokenSymbol, quoteTokenSymbol) =>
@@ -50,7 +50,7 @@ const getAggregatedObservable = (
     .map(name => exchangeToCreatorFunction[name])
     .map(create => create(baseTokenAddress, quoteTokenAddress, network))
     .combineAll<Rx.Observable<Order[]>, Order[][]>()
-    .do(value => debug('Emitting combined order book.', value))
+    // .do(value => debug('Emitting combined order book.', value))
     .distinctUntilChanged();
 
   // Concat and sort orders across all order books.

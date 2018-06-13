@@ -36,9 +36,9 @@ const make0xOffChainOrder = async (
   buySymbol,
   sellHowMuch,
   buyHowMuch,
-  makerFee,
-  takerFee,
-  feeRecipient,
+  makerFee = "0",
+  takerFee = "0",
+  feeRecipient = "0x0000000000000000000000000000000000000000",
 ) => {
   const sellTokenBalance = await getBalance(environment, {
     tokenSymbol: sellSymbol,
@@ -54,7 +54,7 @@ const make0xOffChainOrder = async (
   takerFee = toProcessable(config, takerFee, 'ZRX-T');
 
   // Approve the ZRX for the fees if applicable. Only working on kovan.
-  if (makerFee.toNumber() != 0) {
+  if (makerFee != "0") {
     // The new maker fee with the new format
     makerFee = toProcessable(config, makerFee, 'ZRX-T');
     let approveMakerFee = toProcessable(config, new BigNumber(10), 'ZRX-T');

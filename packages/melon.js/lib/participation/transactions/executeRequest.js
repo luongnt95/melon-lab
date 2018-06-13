@@ -24,8 +24,8 @@ const executeRequest = async (
   const fundContract = await getFundContract(environment, fundAddress);
   const [
     participant,
+    status,
     ,
-    requestType,
     ,
     shareQuantity,
   ] = await fundContract.instance.requests.call({}, [id]);
@@ -35,42 +35,23 @@ const executeRequest = async (
   /* Pre conditions
       1/ isShutDown
       2/ pre_cond(requests[id].status == RequestStatus.active)
-      3/ pre_cond(requests[id].requestType != RequestType.redeem || requests[id].shareQuantity <= balances[requests[id].participant])
-      4/ pre_cond(totalSupply == 0 || now >= add(requests[id].timestamp, mul(uint(2), module.pricefeed.getInterval())))
+      3/ pre_cond(requests[id].shareQuantity <= balances[requests[id].participant])
+      4/ pre_cond(totalSupply == 0 || now >= add(requests[id].timestamp, modules.pricefeed.getInterval()) &&  modules.pricefeed.getLastUpdateId() >= add(requests[id].atUpdateId, 2))
   */
 
   const isShutDown = await fundContract.instance.isShutDown.call();
   ensure(isShutDown === false, 'Fund is shut down');
 
-  if (requestType.eq(new BigNumber(0))) {
-    receipt = await sendTransaction(
-      fundContract,
-      'executeRequest',
-      [id],
-      environment,
-    );
-    executeRequestLogEntry = findEventInLog('Created', receipt);
-  } else if (requestType.eq(new BigNumber(1))) {
-    const participation = await getParticipation(environment, {
-      fundAddress,
-      investorAddress: participant,
-    });
-    const participantStake = participation.personalStake;
-    ensure(
-      shareQuantity.lte(
-        toProcessable(config, participantStake, config.quoteAssetSymbol),
-      ),
-      'Number of shares requested exceed actual balance',
-    );
-    receipt = await sendTransaction(
-      fundContract,
-      'executeRequest',
-      [id],
-      environment,
-      {},
-    );
-    executeRequestLogEntry = findEventInLog('Annihilated', receipt);
-  }
+  ensure(status.toNumber() === 0, "Request is not active anymore.")
+
+  receipt = await sendTransaction(
+    fundContract,
+    'executeRequest',
+    [id],
+    environment,
+  );
+  executeRequestLogEntry = findEventInLog('Created', receipt);
+
 
   return toReadable(
     config,

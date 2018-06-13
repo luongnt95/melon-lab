@@ -70,9 +70,9 @@ import getHoldingsAndPrices from './fund/calls/getHoldingsAndPrices';
 import getModules from './fund/calls/getModules';
 import getOpenOrders from './fund/calls/getOpenOrders';
 import getOrdersHistory from './fund/calls/getOrdersHistory';
-import getParticipationAuthorizations from './fund/calls/getParticipationAuthorizations';
 import getRequestsHistory from './fund/calls/getRequestsHistory';
 import getStake from './fund/calls/getStake';
+import isInvestAllowed from './fund/calls/isInvestAllowed';
 import isShutDown from './fund/calls/isShutDown';
 import performCalculations from './fund/calls/performCalculations';
 
@@ -281,9 +281,9 @@ export {
   getModules,
   getOpenOrders,
   getOrdersHistory,
-  getParticipationAuthorizations,
   getRequestsHistory,
   getStake,
+  isInvestAllowed,
   isShutDown,
   performCalculations,
   getFundContract,

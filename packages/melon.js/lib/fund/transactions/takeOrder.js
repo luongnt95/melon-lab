@@ -33,16 +33,18 @@ const takeOrder = async (
     signature = {},
   },
 ): Promise<Order> => {
+  console.log(makerQuantity.toNumber(), takerQuantity.toNumber(), fillTakerTokenAmount.toNumber())
   const fillTakerQuantity =
     !fillTakerTokenAmount ||
-    new BigNumber(fillTakerTokenAmount).gte(takerQuantity)
+      new BigNumber(fillTakerTokenAmount).gte(takerQuantity)
       ? new BigNumber(takerQuantity)
       : new BigNumber(fillTakerTokenAmount);
 
   const fillMakerQuantity = fillTakerQuantity
     .times(new BigNumber(makerQuantity))
     .div(new BigNumber(takerQuantity));
-
+  console.log({ takerQuantity, fillTakerQuantity })
+  console.log({ makerQuantity, fillTakerQuantity })
   ensure(
     fillMakerQuantity.lte(makerQuantity),
     'Quantity asked too high compared to quantity for sale on the order.',
@@ -51,6 +53,7 @@ const takeOrder = async (
   //TODO: add ensure ZeroEx.isOrderValid
 
   const fundContract = await getFundContract(environment, fundAddress);
+
   const preflightCheck = await preflightTakeOrder(environment, {
     fundContract,
     exchangeAddress,
@@ -58,6 +61,8 @@ const takeOrder = async (
     takerAssetSymbol,
     fillMakerQuantity,
     fillTakerQuantity,
+    makerQuantity,
+    takerQuantity,
   });
 
   ensure(

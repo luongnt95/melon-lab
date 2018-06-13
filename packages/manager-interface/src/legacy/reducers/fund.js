@@ -14,7 +14,6 @@ const loadingFund = {
   performanceFee: "...",
   performanceReward: "...",
   personalStake: "...",
-  redemptionAllowed: false,
   sharePrice: "...",
   subscriptionAllowed: false,
   totalSupply: "...",
@@ -78,7 +77,6 @@ const mapActionToReducer = {
   [types.PROGRESSIVE_UPDATE]: reducers.merge,
   [participationTypes.EXECUTE_SUCCEEDED]: reducers.resetPendingRequest,
   [adminTypes.TOGGLE_SUBSCRIPTION_SUCCEEDED]: reducers.merge,
-  [adminTypes.TOGGLE_REDEMPTION_SUCCEEDED]: reducers.merge,
   [types.SET_CONFIG]: reducers.merge,
 };
 

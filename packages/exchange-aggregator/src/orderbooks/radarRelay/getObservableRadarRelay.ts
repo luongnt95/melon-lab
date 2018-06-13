@@ -27,6 +27,7 @@ const subscribeMessage = (baseTokenAddress, quoteTokenAddress) =>
 // @TODO: Finish this type.
 interface RelayOrder {
   salt: string;
+  expirationUnixTimestampSec: string;
 }
 
 interface AsksAndBids {
@@ -61,6 +62,8 @@ const scanMessages: (
       return isSnapshotMessage(current);
     },
     (carry: AsksAndBids, current: SnapshotMessage) => {
+      current.payload.bids = current.payload.bids.filter(order => order.expirationUnixTimestampSec > parseInt(new Date().getTime() / 1000))
+      current.payload.asks = current.payload.asks.filter(order => order.expirationUnixTimestampSec > parseInt(new Date().getTime() / 1000))
       return current.payload;
     },
   ],
@@ -96,8 +99,8 @@ const getObservableRadarRelay = (
     openObserver: open$,
   });
 
+  const message = subscribeMessage(baseTokenAddress, quoteTokenAddress);
   open$.subscribe(event => {
-    const message = subscribeMessage(baseTokenAddress, quoteTokenAddress);
     socket$.next(message);
   });
 
@@ -114,12 +117,13 @@ const getObservableRadarRelay = (
       value,
     ) => value is SnapshotMessage | UpdateMessage)
     .do(value => debug('Processing snapshot or update message.', value))
+    .do(value => { if (isUpdateMessage(value)) debug('Got an update message.'); socket$.next(message) })
     .scan<SnapshotMessage | UpdateMessage, AsksAndBids>(scanMessages, {
       bids: [],
       asks: [],
     })
     .distinctUntilChanged()
-    .do(value => debug('Extracting bids and asks.', value))
+    // .do(value => debug('Extracting bids and asks.', value))
     .switchMap(value => {
       const environment$ = Rx.Observable.fromPromise(getParityProvider())
       const config$ = environment$.switchMap(environment => {
@@ -127,7 +131,7 @@ const getObservableRadarRelay = (
       })
       return config$.switchMap(config => Rx.Observable.of(format(config, value.bids, value.asks)))
     })
-    .do(value => debug('Emitting order book.', value))
+    // .do(value => debug('Emitting order book.', value))
     .catch(error => {
       debug('Failed to fetch orderbook.', {
         baseTokenAddress,

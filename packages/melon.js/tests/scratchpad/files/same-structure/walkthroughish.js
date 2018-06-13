@@ -11,7 +11,7 @@ import getOpenOrders from '../../../../lib/fund/calls/getOpenOrders';
 import getParityProvider from '../../../../lib/utils/parity/getParityProvider';
 import getParticipation from '../../../../lib/participation/calls/getParticipation';
 import getLastRequest from '../../../../lib/participation/calls/getLastRequest';
-import getParticipationAuthorizations from '../../../../lib/fund/calls/getParticipationAuthorizations';
+import isInvestAllowed from '../../../../lib/fund/calls/isInvestAllowed';
 import getQuoteAssetSymbol from '../../../../lib/pricefeeds/calls/getQuoteAssetSymbol';
 import getRanking from '../../../../lib/version/calls/getRanking';
 import getRecentTrades from '../../../../lib/exchange/calls/getRecentTrades';

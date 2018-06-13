@@ -17,7 +17,7 @@ const takeMultipleOrders = async (
       const result = await takeOrder(environment, {
         fundAddress,
         exchangeAddress: currentOrder.exchangeContractAddress,
-        maker: currentOrder.owner,
+        maker: currentOrder.maker,
         taker: currentOrder.taker,
         makerAssetSymbol: currentOrder.sell.symbol,
         takerAssetSymbol: currentOrder.buy.symbol,
