@@ -1,0 +1,27 @@
+.order-info {
+  width: 100%;
+  border: 1px solid var(--color-primary-dark);
+}
+
+.order-info__prices {
+  border-bottom: 1px solid var(--color-primary-dark);
+}
+
+.order-info__prices,
+.order-info__balances {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-s);
+  align-items: center;
+
+}
+
+.order-info__price-desc {
+  display: block;
+}
+
+.order-info__price-desc,
+.order-info__balance-desc {
+  font-size: var(--font-size-s);
+  color: var(--color-grey);
+}

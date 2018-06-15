@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RadioButton should render correctly 1`] = `
+<label
+  className="jsx-__scopedHash radio-button"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <input
+    className="jsx-__scopedHash radio-button__input"
+    name="Default name"
+    type="radio"
+    value="Default value"
+  />
+  <span
+    className="jsx-__scopedHash radio-button__checkmark"
+  />
+  <span
+    className="jsx-__scopedHash radio-button__text"
+  >
+    Default text
+  </span>
+</label>
+`;

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash switch"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <label
+    className="jsx-__scopedHash switch__wrapper"
+  >
+    <input
+      className="jsx-__scopedHash switch__input"
+      type="checkbox"
+    />
+    <span
+      className="jsx-__scopedHash switch__label"
+      data-label-left="Buy"
+      data-label-right="Sell"
+    >
+      ETH-T-M
+    </span>
+    <span
+      className="jsx-__scopedHash switch__label"
+      data-label-left="Buy"
+      data-label-right="Sell"
+    >
+      MLN-T-M
+    </span>
+    <div
+      className="jsx-__scopedHash switch__icon"
+    />
+  </label>
+</div>
+`;

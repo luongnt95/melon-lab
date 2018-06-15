@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dropdown should pass a selected value to the onChange handler 1`] = `
+<div
+  className="jsx-__scopedHash dropdown"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <div
+    className="jsx-__scopedHash dropdown__wrapper"
+  >
+    <select
+      className="jsx-__scopedHash dropdown__select"
+      defaultValue="0"
+      onChange={[MockFunction]}
+    >
+      <option
+        key="0"
+        value="one"
+      >
+        One
+      </option>
+      <option
+        key="1"
+        value="two"
+      >
+        Two
+      </option>
+    </select>
+  </div>
+</div>
+`;
+
+exports[`Dropdown should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash dropdown"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <div
+    className="jsx-__scopedHash dropdown__wrapper"
+  >
+    <select
+      className="jsx-__scopedHash dropdown__select"
+      defaultValue="one"
+    >
+      <option
+        key="0"
+        value="one"
+      >
+        One
+      </option>
+      <option
+        key="1"
+        value="two"
+      >
+        Two
+      </option>
+    </select>
+  </div>
+</div>
+`;

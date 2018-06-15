@@ -1,0 +1,42 @@
+.input {
+  position: relative;
+}
+
+.input__field {
+  min-width: 100%;
+  border: 1px solid var(--color-primary-dark);
+  padding: var(--space-xs);
+  line-height: 1;
+  min-height: 38px;
+
+  &::placeholder {
+    color: var(--color-grey);
+  }
+
+  &:disabled {
+    background-color: var(--color-secondary);
+  }
+}
+
+.input__label {
+  display: block;
+  margin: 0 0 var(--space-xxs) var(--space-xs);
+  font-size: var(--font-size-s);
+}
+
+.input--inside-label .input__field {
+  text-align: right;
+}
+
+.input--inside-label .input__label {
+  position: absolute;
+  top: var(--space-s);
+  margin-bottom: 0;
+  color: var(--color-primary-darkest);
+}
+
+.input__field[type=number]::-webkit-outer-spin-button,
+.input__field[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}

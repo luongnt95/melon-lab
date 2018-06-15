@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should render correctly 1`] = `
+<button
+  className="jsx-__scopedHash button"
+  type="button"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  Default button
+</button>
+`;

@@ -1,0 +1,9 @@
+.fonts__row {
+  display: flex;
+  margin-bottom: var(--spacingSmall);
+}
+
+.fonts__col {
+  flex: 1 0 50%;
+  padding: var(--spacingSmall);
+}

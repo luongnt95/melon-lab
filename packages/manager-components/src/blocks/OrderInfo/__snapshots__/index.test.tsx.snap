@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderInfo should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash order-info"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <div
+    className="jsx-__scopedHash order-info__prices"
+  >
+    <div
+      className="jsx-__scopedHash order-info__last-price"
+    >
+      8.125
+       
+      <span
+        className="jsx-__scopedHash order-info__price-desc"
+      >
+        Last Price
+      </span>
+    </div>
+    <div
+      className="jsx-__scopedHash order-info__bid"
+    >
+      8.125
+       
+      <span
+        className="jsx-__scopedHash order-info__price-desc"
+      >
+        Bid
+      </span>
+    </div>
+    <div
+      className="jsx-__scopedHash order-info__ask"
+    >
+      8.125
+       
+      <span
+        className="jsx-__scopedHash order-info__price-desc"
+      >
+        Ask
+      </span>
+    </div>
+  </div>
+  <div
+    className="jsx-__scopedHash order-info__balances"
+  >
+    <Balanaces
+      items={
+        Array [
+          Object {
+            "name": "ETH-T",
+            "value": 8.125,
+          },
+          Object {
+            "name": "MLN-T",
+            "value": 8.125,
+          },
+        ]
+      }
+    />
+  </div>
+</div>
+`;

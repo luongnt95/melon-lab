@@ -1,0 +1,27 @@
+.tabs__nav {
+  width: 100%;
+  display: flex;
+}
+
+.tabs__tab {
+  flex: 1 0 auto;
+  text-align: center;
+  padding: var(--space-s);
+  border-bottom: 2px solid var(--color-secondary);
+  color: var(--color-grey);
+  cursor: pointer;
+}
+
+.tabs__tab--active {
+  border-bottom: 4px solid var(--color-primary-darkest);
+  color: var(--color-black);
+}
+
+.tabs__content {
+  padding-top: var(--space-s);
+  display: none;
+}
+
+.tabs__content--active {
+  display: block;
+}
