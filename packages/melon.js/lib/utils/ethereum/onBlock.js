@@ -19,17 +19,18 @@ const onBlock = async environment => {
 
   const accountInfo = accountAddress
     ? await resolvePromiseObject({
-        etherBalance: environment.api.eth
-          .getBalance(accountAddress)
-          .then(balance =>
-            toReadable(config, balance, config.nativeAssetSymbol),
-          ),
-        melonBalance: getBalance(environment, {
-          tokenSymbol: config.melonAssetSymbol,
-          ofAddress: accountAddress,
-        }),
-      })
+      etherBalance: environment.api.eth
+        .getBalance(accountAddress)
+        .then(balance =>
+          toReadable(config, balance, config.nativeAssetSymbol),
+      ),
+      melonBalance: getBalance(environment, {
+        tokenSymbol: config.melonAssetSymbol,
+        ofAddress: accountAddress,
+      }),
+    })
     : {};
+
   return {
     ...info,
     ...accountInfo,

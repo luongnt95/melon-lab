@@ -14,7 +14,7 @@ export type ExchangeCreator = (
   network: NetworkEnum,
 ) => Rx.Observable<Order[]>;
 
-const exchangeToCreatorFunction: { [P in ExchangeEnum]: ExchangeCreator } = {
+const exchangeToCreatorFunction: {[P in ExchangeEnum]: ExchangeCreator } = {
   RADAR_RELAY: (baseTokenSymbol, quoteTokenSymbol, network) =>
     getObservableRadarRelay(baseTokenSymbol, quoteTokenSymbol, network),
   OASIS_DEX: (baseTokenSymbol, quoteTokenSymbol) =>

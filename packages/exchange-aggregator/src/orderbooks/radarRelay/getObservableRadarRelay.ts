@@ -1,5 +1,6 @@
 import * as R from 'ramda';
 import * as Rx from 'rxjs';
+import { getParityProvider, getConfig } from '@melonproject/melon.js'
 import formatRelayerOrderbook from '../../formatRelayerOrderbook';
 import getTokenAddress from '../../getTokenAddress';
 import { Order } from '../../index';
@@ -26,6 +27,7 @@ const subscribeMessage = (baseTokenAddress, quoteTokenAddress) =>
 // @TODO: Finish this type.
 interface RelayOrder {
   salt: string;
+  expirationUnixTimestampSec: string;
 }
 
 interface AsksAndBids {
@@ -60,6 +62,8 @@ const scanMessages: (
       return isSnapshotMessage(current);
     },
     (carry: AsksAndBids, current: SnapshotMessage) => {
+      current.payload.bids = current.payload.bids.filter(order => order.expirationUnixTimestampSec > parseInt(new Date().getTime() / 1000))
+      current.payload.asks = current.payload.asks.filter(order => order.expirationUnixTimestampSec > parseInt(new Date().getTime() / 1000))
       return current.payload;
     },
   ],
@@ -95,8 +99,8 @@ const getObservableRadarRelay = (
     openObserver: open$,
   });
 
+  const message = subscribeMessage(baseTokenAddress, quoteTokenAddress);
   open$.subscribe(event => {
-    const message = subscribeMessage(baseTokenAddress, quoteTokenAddress);
     socket$.next(message);
   });
 
@@ -107,19 +111,26 @@ const getObservableRadarRelay = (
     // send a ping signal if there is no activity to prevent closing the websocket
     // connection in the first place.
     .retry()
-    .do(value => debug('Received message.', value))
+    .do(value => debug('Received message.'))
     .filter(R.propEq('channel', 'orderbook'))
     .filter(R.anyPass([isSnapshotMessage, isUpdateMessage]) as (
       value,
     ) => value is SnapshotMessage | UpdateMessage)
-    .do(value => debug('Processing snapshot or update message.', value))
+    .do(value => debug('Processing snapshot or update message.'))
+    .do(value => { if (isUpdateMessage(value)) debug('Got an update message.'); socket$.next(message) })
     .scan<SnapshotMessage | UpdateMessage, AsksAndBids>(scanMessages, {
       bids: [],
       asks: [],
     })
     .distinctUntilChanged()
     .do(value => debug('Extracting bids and asks.', value))
-    .map<AsksAndBids, Order[]>(value => format(value.bids, value.asks))
+    .switchMap(value => {
+      const environment$ = Rx.Observable.fromPromise(getParityProvider())
+      const config$ = environment$.switchMap(environment => {
+        return Rx.Observable.fromPromise(getConfig(environment))
+      })
+      return config$.switchMap(config => Rx.Observable.of(format(config, value.bids, value.asks)))
+    })
     .do(value => debug('Emitting order book.', value))
     .catch(error => {
       debug('Failed to fetch orderbook.', {

@@ -40,8 +40,7 @@ const getLastRequest = async (
   const [
     participant,
     status,
-    type,
-    ,
+    requestAsset,
     ,
     ,
     ,
@@ -61,17 +60,14 @@ const getLastRequest = async (
     maxRemainingWaitSeconds * 1000 - (new Date() - toDate(timestamp)),
     0,
   );
-
   const request = {
     id: lastRequestId.toNumber(),
     participant,
     status: status.toNumber(),
-    type: type.toNumber(),
     timestamp: toDate(timestamp),
     atUpdateId: atUpdateId.toNumber(),
     canBeExecutedInMs,
   };
-
   return request;
 };
 

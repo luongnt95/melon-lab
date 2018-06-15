@@ -5,7 +5,7 @@ export default {
       case 'ERC_DEX':
         return 'ZeroExOrder';
       case 'OASIS_DEX':
-        return 'OasisDex';
+        return 'OasisDexOrder';
       default:
         return null;
     }

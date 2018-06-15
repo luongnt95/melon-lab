@@ -13,12 +13,11 @@ const takeMultipleOrders = async (
 ): Promise<BigNumber> =>
   orders.reduce(async (accumulatorPromise: Promise<*>, currentOrder: any) => {
     let remainingQuantity = await accumulatorPromise;
-
     if (remainingQuantity.gt(0)) {
       const result = await takeOrder(environment, {
         fundAddress,
         exchangeAddress: currentOrder.exchangeContractAddress,
-        maker: currentOrder.owner,
+        maker: currentOrder.maker,
         taker: currentOrder.taker,
         makerAssetSymbol: currentOrder.sell.symbol,
         takerAssetSymbol: currentOrder.buy.symbol,

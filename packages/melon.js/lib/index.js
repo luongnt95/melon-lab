@@ -36,7 +36,7 @@ import getOrderbook from './exchange/calls/getOrderbook';
 import getRecentTrades from './exchange/calls/getRecentTrades';
 
 // ./lib/exchange/contracts
-import getExchangeAdapterContract from './exchange/contracts/getExchangeAdapterContract';
+import getMatchingMarketAdapterContract from './exchange/contracts/getMatchingMarketAdapterContract';
 import getMatchingMarketContract from './exchange/contracts/getMatchingMarketContract';
 
 // ./lib/exchange/events
@@ -70,9 +70,9 @@ import getHoldingsAndPrices from './fund/calls/getHoldingsAndPrices';
 import getModules from './fund/calls/getModules';
 import getOpenOrders from './fund/calls/getOpenOrders';
 import getOrdersHistory from './fund/calls/getOrdersHistory';
-import getParticipationAuthorizations from './fund/calls/getParticipationAuthorizations';
 import getRequestsHistory from './fund/calls/getRequestsHistory';
 import getStake from './fund/calls/getStake';
+import isInvestAllowed from './fund/calls/isInvestAllowed';
 import isShutDown from './fund/calls/isShutDown';
 import performCalculations from './fund/calls/performCalculations';
 
@@ -254,7 +254,7 @@ export {
   getOrder,
   getOrderbook,
   getRecentTrades,
-  getExchangeAdapterContract,
+  getMatchingMarketAdapterContract,
   getMatchingMarketContract,
   onOrderUpdate,
   BuyOrSell,
@@ -278,9 +278,9 @@ export {
   getModules,
   getOpenOrders,
   getOrdersHistory,
-  getParticipationAuthorizations,
   getRequestsHistory,
   getStake,
+  isInvestAllowed,
   isShutDown,
   performCalculations,
   getFundContract,

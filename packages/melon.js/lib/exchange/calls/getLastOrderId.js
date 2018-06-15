@@ -1,6 +1,6 @@
 // @flow
 import BigNumber from 'bignumber.js';
-import getExchangeAdapterContract from '../contracts/getExchangeAdapterContract';
+import getMatchingMarketAdapterContract from '../contracts/getMatchingMarketAdapterContract';
 import getConfig from '../../version/calls/getConfig';
 
 /**
@@ -8,7 +8,7 @@ import getConfig from '../../version/calls/getConfig';
  */
 const getLastOrderId = async (environment): number => {
   const config = await getConfig(environment);
-  const exchangeAdapterContract = await getExchangeAdapterContract(environment);
+  const exchangeAdapterContract = await getMatchingMarketAdapterContract(environment);
   const lastOrderIdBigNumber: BigNumber = await exchangeAdapterContract.instance.getLastOrderId.call(
     {},
     [config.exchangeAddress],
