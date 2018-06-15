@@ -1,4 +1,4 @@
-import { withHandlers, defaultProps, withState } from 'recompose';
+import { defaultProps, withHandlers, withState } from 'recompose';
 import { cleanNumber } from '~/utils/Validation';
 
 const withInputValueState = withState('value', 'updateValue', '');

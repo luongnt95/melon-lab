@@ -18,8 +18,8 @@ exports[`OrderForm should render correctly 1`] = `
           },
         ],
       },
-      "inputs": Array [
-        Object {
+      "inputs": Object {
+        "price": Object {
           "cleanNumber": true,
           "decimals": 4,
           "insideLabel": true,
@@ -27,15 +27,15 @@ exports[`OrderForm should render correctly 1`] = `
           "name": "price",
           "placeholder": "0.0000",
         },
-        Object {
+        "quantity": Object {
           "cleanNumber": true,
           "decimals": 4,
           "insideLabel": true,
-          "label": "Quanity",
-          "name": "quanity",
+          "label": "Quantity",
+          "name": "quantity",
           "placeholder": "0.0000",
         },
-        Object {
+        "total": Object {
           "cleanNumber": true,
           "decimals": 4,
           "insideLabel": true,
@@ -43,7 +43,7 @@ exports[`OrderForm should render correctly 1`] = `
           "name": "total",
           "placeholder": "0.0000",
         },
-      ],
+      },
       "switch": Object {
         "labels": Array [
           "Buy",

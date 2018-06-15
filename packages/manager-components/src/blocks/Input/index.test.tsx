@@ -28,7 +28,7 @@ describe('Input', () => {
   it('should pass a typed value to the onChange handler', () => {
     const value = 'Hello World';
     const onChange = jest.fn();
-    const wrapper = shallow(<Input onInputChange={onChange} />);
+    const wrapper = shallow(<Input onChange={onChange} />);
 
     expect(wrapper).toMatchSnapshot();
     wrapper.find('input').simulate('change', value);
