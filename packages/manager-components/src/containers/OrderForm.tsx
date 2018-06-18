@@ -62,9 +62,7 @@ const mapFormProps = compose(
           },
         };
       }),
-    form: {
-      ...state.form,
-    },
+    form: state.form,
     ...rest,
   })),
 );
