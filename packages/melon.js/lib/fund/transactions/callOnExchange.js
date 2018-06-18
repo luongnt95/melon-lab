@@ -69,7 +69,7 @@ const callOnExchange = async (
         r,
         s,
     ];
-    console.log(args)
+  
     const receipt = await sendTransaction(
         fundContract,
         'callOnExchange',
@@ -77,7 +77,7 @@ const callOnExchange = async (
         environment,
         {},
     );
-    console.log(receipt.logs)
+
     const updateLog = findEventInLog('OrderUpdated', receipt);
     return updateLog;
 };

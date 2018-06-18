@@ -808,7 +808,7 @@
 "@csstools/convert-colors@^1.4.0":
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
-
+  
 "@melonproject/smart-contracts@0.8.0-alpha.24":
   version "0.8.0-alpha.24"
   resolved "https://registry.yarnpkg.com/@melonproject/smart-contracts/-/smart-contracts-0.8.0-alpha.24.tgz#45b814da61334bb68aa8ba8647b5bd959724f306"
