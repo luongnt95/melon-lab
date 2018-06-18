@@ -7,21 +7,18 @@ import Form from '~/blocks/Form';
 import Input from '~/blocks/Input';
 import OrderInfo from '~/blocks/OrderInfo';
 import Switch from '~/blocks/Switch';
-import {
-  mapFormProps,
-  withDefaultProps,
-} from '~/containers/OrderForm';
+import { mapFormProps, withDefaultProps } from '~/containers/OrderForm';
 
 import styles from './styles.css';
 
 const getValue = R.path(['target', 'value']);
-const getChecked = fw => e => fw(e.target.checked);
 
 export interface OrderFormProps {
   form: {
-    price: Input;
-    quantity: Input;
-    total: Input;
+    price: object;
+    quantity: object;
+    total: object;
+    exchange: object;
   };
   handleSubmit?: any;
   onChange?: any;
@@ -29,6 +26,7 @@ export interface OrderFormProps {
   baseTokenSymbol?: string;
   quoteTokenSymbol?: string;
   strategy?: string;
+  exchanges: Array<object>;
 }
 
 export const OrderForm: StatelessComponent<OrderFormProps> = ({
@@ -39,6 +37,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
   baseTokenSymbol,
   quoteTokenSymbol,
   strategy,
+  exchanges,
 }) => {
   return (
     <Form className="order-form" onSubmit={handleSubmit}>
@@ -53,10 +52,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
       <div className="order-form__dropdown">
         <Dropdown
           name="exchange"
-          options={[
-            { value: 'RadarRelay', name: 'Radar Relay' },
-            { value: 'OasisDEX', name: 'OasisDEX' },
-          ]}
+          options={exchanges}
           label="Exchange Server"
           onChange={R.compose(onChange('exchange'), getValue)}
         />

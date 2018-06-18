@@ -1,18 +1,5 @@
 import * as R from 'ramda';
-import {
-  compose,
-  defaultProps,
-  mapProps,
-  withProps,
-  withState,
-} from 'recompose';
-
-const withFormProps = withProps(props => {
-  const isMarket = props.strategy === 'Market' ? true : false;
-  const valueLens = R.lensPath(['form', 'price', 'disabled']);
-  const newValue = isMarket;
-  return R.set(valueLens, newValue, props);
-});
+import { compose, defaultProps, mapProps, withState } from 'recompose';
 
 const initialProps = {
   baseTokenSymbol: 'ETH-T-M',
@@ -33,7 +20,17 @@ const initialProps = {
       },
     ],
   },
+  exchanges: [
+    { value: 'RadarRelay', name: 'Radar Relay' },
+    { value: 'OasisDEX', name: 'OasisDEX' },
+  ],
+  form: {
+    price: {
+      value: 0,
+    },
+  },
 };
+
 const initialState = {
   form: {
     type: {
@@ -41,6 +38,9 @@ const initialState = {
     },
     price: {},
     quantity: {},
+    exchange: {
+      value: initialProps.exchanges[0].value,
+    },
   },
 };
 
@@ -67,4 +67,4 @@ const mapFormProps = compose(
   })),
 );
 
-export { withDefaultProps, withFormProps, mapFormProps };
+export { withDefaultProps, mapFormProps };
