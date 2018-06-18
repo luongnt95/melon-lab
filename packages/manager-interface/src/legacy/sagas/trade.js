@@ -89,7 +89,6 @@ function* takeOrderSaga(action) {
 
   const fillTakerTokenAmount = sellHowMuch;
   function* transaction(environment) {
-    console.log("---- selected orders in saga ", selectedOrders)
     yield call(takeMultipleOrders, environment, {
       orders: selectedOrders,
       fundAddress,

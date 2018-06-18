@@ -7,7 +7,8 @@ import getFundContract from '../contracts/getFundContract';
 import getMethodNameSignature from '../../exchange/utils/getMethodNameSignature';
 import preflightTakeOrder from '../preflights/preflightTakeOrder';
 import getExchangeName from '../../exchange/utils/getExchangeName';
-
+import getNetwork from '../../utils/environment/getNetwork'
+import getBalance from '../../assets/calls/getBalance'
 import type { Environment } from '../../utils/environment/Environment';
 import type { Order } from '../../exchange/schemas/Order';
 
@@ -49,15 +50,15 @@ const takeOrder = async (
     );
 
     //TODO: add ensure ZeroEx.isOrderValid
+    if (takerFee && new BigNumber(takerFee).gt(0)) {
+        const network = await getNetwork(environment);
+        const zeroExTokenSymbol = network === "live" ? "ZRX" : "ZRX-T"
+        const zeroExBalance = await getBalance(environment, { tokenSymbol: zeroExTokenSymbol, ofAddress: fundAddress })
+        ensure(zeroExBalance.gte(new BigNumber(takerFee)), 'You do not own enough ${zeroExTokenSymbol} token to cover for the relayer fee. Please buy ${zeroExTokenSymbol} tokens if you wish to take that order.')
+    }
 
     const fundContract = await getFundContract(environment, fundAddress);
-    console.log({
-        exchangeAddress,
-        makerAssetSymbol,
-        takerAssetSymbol,
-        fillMakerQuantity,
-        fillTakerQuantity,
-    })
+
     const preflightCheck = await preflightTakeOrder(environment, {
         fundContract,
         exchangeAddress,

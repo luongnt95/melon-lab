@@ -4,11 +4,11 @@ import getNetwork from '../../utils/environment/getNetwork';
 const getExchangeName = async (environment, exchangeAddress) => {
   const network = await getNetwork(environment);
 
-  switch (exchangeAddress) {
-    case addressBook[network].MatchingMarket:
+  switch (exchangeAddress.toLowerCase()) {
+    case addressBook[network].MatchingMarket.toLowerCase():
       return 'MatchingMarket';
 
-    case addressBook[network].ZeroExExchange:
+    case addressBook[network].ZeroExExchange.toLowerCase():
       return 'ZeroEx';
 
     default:

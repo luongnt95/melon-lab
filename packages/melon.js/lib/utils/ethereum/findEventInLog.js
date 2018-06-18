@@ -19,7 +19,7 @@ const findEventInLog = (
 
   ensure(
     !!(receipt && receipt.logs && receipt.logs.length),
-    'Transaction has no logs at all.',
+    'Oops, something went wrong. No logs were found on the transaction receipt. Please try again.',
     {
       nameOrIndex,
       receipt,
