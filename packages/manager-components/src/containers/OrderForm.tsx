@@ -24,11 +24,6 @@ const initialProps = {
     { value: 'RadarRelay', name: 'Radar Relay' },
     { value: 'OasisDEX', name: 'OasisDEX' },
   ],
-  form: {
-    price: {
-      value: 0,
-    },
-  },
 };
 
 const initialState = {
