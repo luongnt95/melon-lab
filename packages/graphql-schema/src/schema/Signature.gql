@@ -1,5 +1,0 @@
-type Signature {
-  r: String!
-  s: String!
-  v: Int!
-}

@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Trade should render correctly 1`] = `
+<Component
+  activeTabIndex={0}
+  setTabIndex={[Function]}
+/>
+`;

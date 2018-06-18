@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon should render correctly 1`] = `
+<svg
+  className="jsx-__scopedHash icon"
+  height="100%"
+  width="100%"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <use
+    className="jsx-__scopedHash"
+    xlinkHref="#logos_default"
+  />
+</svg>
+`;

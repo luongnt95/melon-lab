@@ -1,6 +1,0 @@
-type Holding {
-  symbol: String!
-  balance: String!
-  price: String!
-  fraction: String!
-}

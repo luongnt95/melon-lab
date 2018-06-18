@@ -1,22 +1,141 @@
-#import "./schema/Symbol.gql"
-#import "./schema/Order.gql"
-#import "./schema/ExchangeEnum.gql"
-#import "./schema/Fund.gql"
-#import "./schema/Holding.gql"
-#import "./schema/HowMuchOfAsset.gql"
-#import "./schema/Quantity.gql"
-#import "./schema/Orderbook.gql"
-#import "./schema/OrderbookEntry.gql"
-#import "./schema/Price.gql"
-#import "./schema/RankingEntry.gql"
-#import "./schema/DateTime.gql"
-#import "./schema/Query.gql"
-#import "./schema/Subscription.gql"
-#import "./schema/Signature.gql"
-#import "./schema/ZeroExOrder.gql"
-#import "./schema/OasisDexOrder.gql"
-#import "./schema/NetworkEnum.gql"
+scalar DateTime
+scalar Quantity
+scalar Symbol
 
+enum ExchangeEnum {
+  RADAR_RELAY
+  OASIS_DEX
+  ERC_DEX
+}
+
+enum NetworkEnum {
+  KOVAN
+  LIVE
+}
+
+type Fund {
+  rank: Int
+  address: String!
+  name: String!
+  sharePrice: Float!
+  inception: String!
+  gav: Float!
+  nav: Float!
+  owner: String
+  totalSupply: Float
+  modules: [String]
+  managementReward: Float
+  performanceReward: Float
+  unclaimedRewards: Float
+  rewardsShareQuantity: Float
+  subscriptionAllowed: Boolean
+  redemptionAllowed: Boolean
+  holdings: [Holding]
+}
+
+type Holding {
+  symbol: String!
+  balance: String!
+  price: String!
+  fraction: String!
+}
+
+type HowMuchOfAsset {
+  symbol: Symbol!
+  howMuch: String!
+}
+
+interface Order {
+  maker: String!
+  taker: String
+  isActive: Boolean!
+  type: String!
+  buy: HowMuchOfAsset!
+  sell: HowMuchOfAsset!
+  price: String!
+  exchangeContractAddress: String
+  exchange: String
+}
+
+type ZeroExOrder implements Order {
+  maker: String!
+  taker: String
+  isActive: Boolean!
+  type: String!
+  buy: HowMuchOfAsset!
+  sell: HowMuchOfAsset!
+  price: String!
+  exchangeContractAddress: String
+  exchange: String
+  expiration: String
+  salt: String!
+  makerFee: String!
+  takerFee: String!
+  signature: Signature
+  feeRecipient: String
+}
+
+type OasisDexOrder implements Order {
+  maker: String!
+  taker: String
+  isActive: Boolean!
+  type: String!
+  buy: HowMuchOfAsset!
+  sell: HowMuchOfAsset!
+  price: String!
+  exchangeContractAddress: String
+  exchange: String
+  id: String!
+}
+
+type Orderbook {
+  allOrders: [Order]
+  sellEntries: [OrderbookEntry]
+  buyEntries: [OrderbookEntry]
+  totalBuyVolume: Quantity
+  totalSellVolume: Quantity
+}
+
+type OrderbookEntry {
+  volume: Quantity
+  order: Order
+}
+
+type Price {
+  symbol: String!
+  price: Quantity
+}
+
+type Signature {
+  r: String!
+  s: String!
+  v: Int!
+}
+
+type RankingEntry {
+  rank: Int!
+  address: String!
+  name: String!
+  sharePrice: Float!
+  inception: String!
+}
+
+type Query {
+  price(symbol: Symbol!): String!
+  ranking: [RankingEntry]
+  fund(address: String!): Fund!
+  funds(addresses: [String]): [Fund!]!
+}
+
+type Subscription {
+  price(symbols: [Symbol]): [Price]
+  orderbook(
+    baseTokenSymbol: Symbol!
+    quoteTokenSymbol: Symbol!
+    exchanges: [ExchangeEnum] = ["RADAR_RELAY", "OASIS_DEX", "ERC_DEX"]
+    network: NetworkEnum = "KOVAN"
+  ): Orderbook
+}
 
 schema {
   query: Query

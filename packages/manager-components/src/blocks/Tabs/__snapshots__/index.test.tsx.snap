@@ -1,0 +1,51 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tabs should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash tabs"
+  role="tablist"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <div
+    className="jsx-__scopedHash tabs__nav"
+  >
+    <div
+      aria-selected={false}
+      className="tabs__tab"
+      key="0"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      tabIndex={1}
+    />
+    <div
+      aria-selected={false}
+      className="tabs__tab"
+      key="1"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      tabIndex={1}
+    />
+  </div>
+  <div
+    className="tabs__content"
+    key="0"
+  >
+    <TabContent>
+      Tab 0
+    </TabContent>
+  </div>
+  <div
+    className="tabs__content"
+    key="1"
+  >
+    <TabContent>
+      Tab 1
+    </TabContent>
+  </div>
+</div>
+`;

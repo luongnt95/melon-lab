@@ -182,7 +182,6 @@ import findEventInLog from './utils/ethereum/findEventInLog';
 import gasBoost from './utils/ethereum/gasBoost';
 import getNetworkName from './utils/ethereum/getNetworkName';
 import onBlock from './utils/ethereum/onBlock';
-import parseEvent from './utils/ethereum/parseEvent';
 import sendEther from './utils/ethereum/sendEther';
 
 // ./lib/utils/generic
@@ -210,6 +209,7 @@ import encryptWallet from './utils/wallet/encryptWallet';
 import getWallet from './utils/wallet/getWallet';
 import importWalletFromMnemonic from './utils/wallet/importWalletFromMnemonic';
 
+
 // ./lib/version/calls
 import getConfig from './version/calls/getConfig';
 import getFundForManager from './version/calls/getFundForManager';
@@ -223,9 +223,6 @@ import getSubscriptionHistory from './version/calls/getSubscriptionHistory';
 // ./lib/version/contracts
 import getRankingContract from './version/contracts/getRankingContract';
 import getVersionContract from './version/contracts/getVersionContract';
-
-// ./lib/version/events
-import melonTracker from './version/events/melonTracker';
 
 // ./lib/version/transactions
 import setupFund from './version/transactions/setupFund';
@@ -353,7 +350,6 @@ export {
   gasBoost,
   getNetworkName,
   onBlock,
-  parseEvent,
   sendEther,
   ensure,
   getKeyByValue,
@@ -382,7 +378,6 @@ export {
   getSubscriptionHistory,
   getRankingContract,
   getVersionContract,
-  melonTracker,
   setupFund,
   signCompetitionTermsAndConditions,
   signTermsAndConditions,

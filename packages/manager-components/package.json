@@ -17,18 +17,32 @@
   ],
   "dependencies": {
     "debug": "2.6.9",
+    "ramda": "^0.25.0",
     "react": "^16.3.1",
-    "react-dom": "^16.3.1"
+    "react-dom": "^16.3.1",
+    "recompose": "^0.27.1"
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^3.4.6",
+    "@storybook/addon-options": "^3.4.6",
     "@storybook/react": "^3.4.5",
+    "@types/enzyme": "^3.1.10",
+    "@types/jest": "^23.0.0",
+    "@types/styled-jsx": "^2.2.3",
+    "classnames": "^2.2.5",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.1",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^22.4.2",
     "jest-environment-jsdom": "^22.4.3",
+    "postcss-preset-env": "^5.1.0",
     "prettier": "^1.10.2",
     "rimraf": "^2.6.2",
+    "styled-jsx": "^2.2.6",
+    "styled-jsx-css-loader": "^0.3.0",
+    "styled-jsx-plugin-postcss": "^0.1.3",
+    "svg-sprite-loader": "^3.8.0",
     "ts-jest": "^22.4.2",
     "ts-loader": "^3.3.1",
     "tslint": "^5.9.1",
@@ -37,8 +51,17 @@
     "typescript": "^2.7.2"
   },
   "jest": {
+    "moduleNameMapper": {
+      "^.+\\.s?css$": "identity-obj-proxy",
+      "^~/design/(.*)$": "@melonproject/manager-components/src/design/$1",
+      "^~/blocks/(.*)$": "@melonproject/manager-components/src/blocks/$1",
+      "^~/components/(.*)$": "@melonproject/manager-components/src/components/$1",
+      "^~/containers/(.*)$": "@melonproject/manager-components/src/containers/$1",
+      "^~/utils/(.*)$": "@melonproject/manager-components/src/utils/$1"
+    },
+    "snapshotSerializers": ["enzyme-to-json/serializer"],
     "setupFiles": [
-      "<rootDir>/tests/config/jest.setup"
+      "<rootDir>/config/jest.setup"
     ],
     "transform": {
       "^.+\\.(jsx?|tsx?)$": "ts-jest"
@@ -60,7 +83,16 @@
     ],
     "globals": {
       "ts-jest": {
-        "tsConfigFile": "tsconfig.json"
+        "tsConfigFile": "tsconfig.json",
+        "babelConfig": {
+          "presets": [
+            "react"
+          ],
+          "plugins": [
+            "transform-es2015-modules-commonjs",
+            "styled-jsx/babel"
+          ]
+        }
       }
     }
   }

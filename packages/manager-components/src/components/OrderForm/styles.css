@@ -1,0 +1,12 @@
+.order-form__input {
+  margin: 0 0 var(--space-m) 0;
+}
+
+.order-form__dropdown {
+  margin: var(--space-m) 0;
+}
+
+.order-form__switch,
+.order-form__order-info {
+  margin: var(--space-m) 0;
+}

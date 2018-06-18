@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox should render correctly 1`] = `
+<label
+  className="jsx-__scopedHash checkbox"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <input
+    className="jsx-__scopedHash checkbox__input"
+    name="Default name"
+    type="checkbox"
+    value="Default value"
+  />
+  <span
+    className="jsx-__scopedHash checkbox__checkmark"
+  />
+  <span
+    className="jsx-__scopedHash checkbox__text"
+  >
+    Default text
+  </span>
+</label>
+`;

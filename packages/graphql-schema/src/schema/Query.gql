@@ -1,6 +1,0 @@
-type Query {
-  price(symbol: Symbol!): String!
-  ranking: [RankingEntry]
-  fund(address: String!): Fund!
-  funds(addresses: [String]): [Fund!]!
-}

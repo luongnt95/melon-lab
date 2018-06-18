@@ -2,6 +2,7 @@
 node_modules/
 
 # Generated files
+package-lock.json
 dist/
 coverage/
 
@@ -13,3 +14,4 @@ coverage/
 
 # Log files
 *.log*
+.vscode

@@ -1,9 +1,9 @@
-import { InMemoryCache } from 'apollo-cache-inmemory';
+import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { WebSocketLink } from 'apollo-link-ws';
 import withApollo from 'next-with-apollo';
 
-export default withApollo({
+export default (introspection) => withApollo({
   link: {
     http: options =>
       new HttpLink({
@@ -18,6 +18,10 @@ export default withApollo({
   },
   client: options => ({
     link: options.link,
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+      fragmentMatcher: new IntrospectionFragmentMatcher({
+        introspectionQueryResultData: introspection,
+      }),
+    }),
   }),
 });

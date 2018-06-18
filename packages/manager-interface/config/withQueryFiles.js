@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = (nextConfig = {}) =>
   Object.assign({}, nextConfig, {
     webpack: (config, options) => {
@@ -8,8 +10,16 @@ module.exports = (nextConfig = {}) =>
 
       config.module.rules.push({
         test: /\.(graphql|gql)$/,
-        exclude: /node_modules/,
+        exclude: [/node_modules/, /\/schema\.(graphql|gql)$/],
         loader: 'graphql-tag/loader',
+      });
+
+      // Treat schema.gql files differently by directly loading their introspection
+      // results instead of importing their AST.
+      config.module.rules.unshift({
+        test: /\/schema\.gql$/,
+        exclude: /node_modules/,
+        loader: require.resolve(path.resolve(process.cwd(), 'introspect.js')),
       });
 
       return config;
