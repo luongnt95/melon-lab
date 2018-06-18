@@ -25,16 +25,16 @@ const initialProps = {
     { value: 'RadarRelay', name: 'Radar Relay' },
     { value: 'OasisDEX', name: 'OasisDEX' },
   ],
-  exchange: 'RadarRelay',
-  orderType: 'Buy',
+  selectedExchange: 'RadarRelay',
+  selectedOrderType: 'Buy',
   decimals: 4,
 };
 
 const initialState = props => {
   return {
     form: {
-      type: props.orderType,
-      exchange: props.exchange,
+      type: props.selectedOrderType,
+      exchange: props.selectedExchange,
       price: '',
       quantity: '',
       total: '',
