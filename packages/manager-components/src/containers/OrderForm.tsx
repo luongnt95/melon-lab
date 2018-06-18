@@ -1,23 +1,11 @@
 import * as R from 'ramda';
-import {
-  compose,
-  defaultProps,
-  mapProps,
-  withProps,
-  withState,
-} from 'recompose';
-
-const withStrategyProp = withProps(props => {
-  const isMarket = props.strategy === 'Market' ? true : false;
-  const valueLens = R.lensPath(['form', 'price', 'disabled']);
-  const newValue = isMarket;
-  return R.set(valueLens, newValue, props);
-});
+import { compose, defaultProps, mapProps, withState } from 'recompose';
 
 const initialProps = {
   baseTokenSymbol: 'ETH-T-M',
   quoteTokenSymbol: 'MLN-T-M',
   strategy: 'Market',
+  selectedOrder: false,
   info: {
     lastPrice: 0,
     bid: 0,
@@ -37,70 +25,55 @@ const initialProps = {
     { value: 'RadarRelay', name: 'Radar Relay' },
     { value: 'OasisDEX', name: 'OasisDEX' },
   ],
-  form: {
-    type: {
-      value: 'Buy',
-    },
-    exchange: {
-      value: '',
-    },
-    price: {
-      value: '',
-      decimals: 4,
-    },
-    quantity: {
-      value: '',
-      decimals: 4,
-    },
-    total: {
-      value: '',
-      decimals: 4,
-    },
-  },
+  exchange: 'RadarRelay',
+  orderType: 'Buy',
+  decimals: 4,
 };
 
-const initialState = {
-  form: { ...initialProps.form },
+const initialState = props => {
+  return {
+    form: {
+      type: props.orderType,
+      exchange: props.exchange,
+      price: '',
+      quantity: '',
+      total: '',
+    },
+  };
 };
 
 const withDefaultProps = defaultProps({ ...initialProps });
 
 const calculation = (state, name, value) => {
-  if (name === 'price' && state.form.quantity.value && value) {
-    return state.form.total.value = state.form.quantity.value * value;
+  if (name === 'price' && state.form.quantity && value) {
+    return (state.form.total = state.form.quantity * value);
   }
 
-  if (name === 'quantity' && state.form.price.value && value) {
-    return state.form.total.value = state.form.price.value * value;
+  if (name === 'quantity' && state.form.price && value) {
+    return (state.form.total = state.form.price * value);
   }
 
-  if((name === 'quantity' || name === 'price') && value < 1) {
-    return state.form.total.value = ''
+  if ((name === 'quantity' || name === 'price') && value < 1) {
+    return (state.form.total = '');
   }
-}
+
+  return;
+};
 
 const mapFormProps = compose(
-  withState('state', 'updateState', { ...initialState }),
+  withState('state', 'updateState', initialState),
   mapProps(({ updateState, state, ...rest }) => ({
     onChange: name => value =>
-      updateState(state => {
-        calculation(state, name, value);
-
+      updateState(currentState => {
+        calculation(currentState, name, value);
         return {
-          ...state,
-          form: {
-            ...state.form,
-            [name]: {
-              ...state.form[name],
-              value,
-            },
-          },
+          ...currentState,
+          form: { ...currentState.form, [name]: value },
         };
       }),
-    ...R.omit(['form'], rest),
     form: R.prop('form', state),
+    ...rest,
   })),
-  withStrategyProp
 );
 
 export { withDefaultProps, mapFormProps };

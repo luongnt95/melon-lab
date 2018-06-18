@@ -13,39 +13,54 @@ import styles from './styles.css';
 
 export interface OrderFormProps {
   form: {
-    price: object;
-    quantity: object;
-    total: object;
-    exchange: object;
-    type: object;
+    price: string;
+    quantity: string;
+    total: string;
+    exchange: string;
+    type: string;
   };
-  handleSubmit?: any;
+  onSubmit?: any;
   onChange?: any;
   info?: any;
   baseTokenSymbol?: string;
   quoteTokenSymbol?: string;
   strategy?: string;
-  exchanges: Array<object>;
+  exchanges: Array<{
+    name: string;
+    label: string;
+  }>;
+  selectedOrder?: string;
+  selectedExchange?: string;
 }
 
 const getValue = R.path(['target', 'value']);
 
 export const OrderForm: StatelessComponent<OrderFormProps> = ({
   form,
-  handleSubmit,
+  onSubmit,
   onChange,
   info,
   baseTokenSymbol,
   quoteTokenSymbol,
   strategy,
   exchanges,
+  selectedOrder,
+  selectedExchange,
 }) => {
+  const handleSubmit = (e, formData) => {
+    e.preventDefault();
+    console.log(formData);
+  };
+
+  const isMarket = strategy === 'Market' ? true : false;
+
   return (
-    <Form className="order-form" onSubmit={handleSubmit}>
+    <Form className="order-form" onSubmit={onSubmit}>
       <style jsx>{styles}</style>
       <div className="order-form__switch">
         <Switch
           options={[baseTokenSymbol, quoteTokenSymbol]}
+          // value={form.type ? form.type : 'Buy'}
           labels={['Buy', 'Sell']}
           onChange={R.compose(onChange('type'))}
         />
@@ -53,6 +68,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
       <div className="order-form__dropdown">
         <Dropdown
           name="exchange"
+          value={form.exchange ? form.exchange : selectedExchange}
           options={exchanges}
           label="Exchange Server"
           onChange={R.compose(onChange('exchange'), getValue)}
@@ -63,7 +79,8 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
       </div>
       <div className="order-form__input">
         <Input
-          {...form.price}
+          value={form.price}
+          disabled={isMarket && !selectedOrder}
           type="number"
           label="Price"
           name="price"
@@ -74,7 +91,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
       </div>
       <div className="order-form__input">
         <Input
-          {...form.quantity}
+          value={form.quantity}
           type="number"
           label="Quantity"
           name="quantity"
@@ -85,7 +102,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
       </div>
       <div className="order-form__input">
         <Input
-          {...form.total}
+          value={form.total}
           type="number"
           label="Total"
           name="total"
@@ -94,7 +111,9 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
           onChange={R.compose(onChange('total'), getValue)}
         />
       </div>
-      <Button type="submit">Transfer</Button>
+      <Button onClick={e => handleSubmit(e, form)} type="submit">
+        Transfer
+      </Button>
     </Form>
   );
 };
