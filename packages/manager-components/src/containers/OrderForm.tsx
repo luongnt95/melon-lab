@@ -5,7 +5,6 @@ import {
   mapProps,
   withProps,
   withState,
-  withPropsOnChange,
 } from 'recompose';
 
 const withStrategyProp = withProps(props => {
@@ -75,7 +74,9 @@ const calculation = (state, name, value) => {
     return state.form.total.value = state.form.price.value * value;
   }
 
-  return state.form.total.value = ''
+  if((name === 'quantity' || name === 'price') && value < 1) {
+    return state.form.total.value = ''
+  }
 }
 
 const mapFormProps = compose(
@@ -97,7 +98,7 @@ const mapFormProps = compose(
         };
       }),
     ...R.omit(['form'], rest),
-    form: state.form,
+    form: R.prop('form', state),
   })),
   withStrategyProp
 );
