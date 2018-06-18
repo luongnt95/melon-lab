@@ -7,7 +7,7 @@ export interface DropdownProps {
     value: string;
     name: string;
   }>;
-  onInputChange?: ChangeEventHandler<Element>;
+  onChange?: ChangeEventHandler<Element>;
   selectedItem?: string;
   label?: string;
 }
@@ -23,7 +23,7 @@ const renderOption = (option, index) => {
 const Dropdown: StatelessComponent<DropdownProps> = ({
   options,
   selectedItem,
-  onInputChange,
+  onChange,
   label,
 }) => {
   const ops =
@@ -39,7 +39,7 @@ const Dropdown: StatelessComponent<DropdownProps> = ({
         <select
           defaultValue={selectedItem ? selectedItem : '0'}
           className="dropdown__select"
-          onChange={onInputChange}
+          onChange={onChange}
         >
           {selectedItem === '0' && (
             <option value="0" disabled hidden>
