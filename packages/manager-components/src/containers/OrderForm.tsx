@@ -36,7 +36,7 @@ const initialProps = {
 };
 const initialState = {
   form: {
-    buy: {
+    type: {
       value: 'Buy',
     },
     price: {},

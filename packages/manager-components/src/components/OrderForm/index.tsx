@@ -47,7 +47,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
         <Switch
           options={[baseTokenSymbol, quoteTokenSymbol]}
           labels={['Buy', 'Sell']}
-          onChange={R.compose(onChange('buy'))}
+          onChange={R.compose(onChange('type'))}
         />
       </div>
       <div className="order-form__dropdown">
