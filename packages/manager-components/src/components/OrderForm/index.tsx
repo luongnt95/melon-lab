@@ -11,14 +11,13 @@ import { mapFormProps, withDefaultProps } from '~/containers/OrderForm';
 
 import styles from './styles.css';
 
-const getValue = R.path(['target', 'value']);
-
 export interface OrderFormProps {
   form: {
     price: object;
     quantity: object;
     total: object;
     exchange: object;
+    type: object;
   };
   handleSubmit?: any;
   onChange?: any;
@@ -28,6 +27,8 @@ export interface OrderFormProps {
   strategy?: string;
   exchanges: Array<object>;
 }
+
+const getValue = R.path(['target', 'value']);
 
 export const OrderForm: StatelessComponent<OrderFormProps> = ({
   form,
@@ -62,34 +63,33 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
       </div>
       <div className="order-form__input">
         <Input
+          {...form.price}
           type="number"
           label="Price"
           name="price"
           insideLabel="true"
-          decimals={4}
           placeholder="0.0000"
-          disabled={strategy === 'Market' ? true : false}
           onChange={R.compose(onChange('price'), getValue)}
         />
       </div>
       <div className="order-form__input">
         <Input
+          {...form.quantity}
           type="number"
           label="Quantity"
           name="quantity"
           insideLabel="true"
-          decimals={4}
           placeholder="0.0000"
           onChange={R.compose(onChange('quantity'), getValue)}
         />
       </div>
       <div className="order-form__input">
         <Input
+          {...form.total}
           type="number"
           label="Total"
           name="total"
           insideLabel="true"
-          decimals={4}
           placeholder="0.0000"
           onChange={R.compose(onChange('total'), getValue)}
         />
