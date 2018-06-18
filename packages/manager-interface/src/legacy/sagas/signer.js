@@ -37,6 +37,8 @@ function* confirmer(environment, modalSentence) {
 
     if (action.type === modalTypes.CANCEL) return resolve(false);
 
+    yield put(modalActions.loading());
+
     return resolve(true);
   }
 }
