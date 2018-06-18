@@ -1,3 +1,4 @@
+import * as R from 'ramda';
 import React, { StatelessComponent } from 'react';
 import { compose } from 'recompose';
 import Button from '~/blocks/Button';
@@ -7,54 +8,99 @@ import Input from '~/blocks/Input';
 import OrderInfo from '~/blocks/OrderInfo';
 import Switch from '~/blocks/Switch';
 import {
+  mapFormProps,
   withDefaultProps,
-  withInputValueHandlers,
-  withInputValueState,
 } from '~/containers/OrderForm';
 
 import styles from './styles.css';
 
+const getValue = R.path(['target', 'value']);
+const getChecked = fw => e => fw(e.target.checked);
+
 export interface OrderFormProps {
-  fields: {
-    switch: Switch;
-    dropdown: Dropdown;
-    inputs: Array<[Input]>;
+  form: {
+    price: Input;
+    quantity: Input;
+    total: Input;
   };
   handleSubmit?: any;
+  onChange?: any;
   info?: any;
+  baseTokenSymbol?: string;
+  quoteTokenSymbol?: string;
+  strategy?: string;
 }
 
-const InputWithValidation = compose(
-  withInputValueState,
-  withInputValueHandlers,
-)(Input);
-
-export const OrderForm: StatelessComponent<OrderFormProps> = ({ fields, handleSubmit, info }) => {
+export const OrderForm: StatelessComponent<OrderFormProps> = ({
+  form,
+  handleSubmit,
+  onChange,
+  info,
+  baseTokenSymbol,
+  quoteTokenSymbol,
+  strategy,
+}) => {
   return (
     <Form className="order-form" onSubmit={handleSubmit}>
       <style jsx>{styles}</style>
       <div className="order-form__switch">
-        <Switch {...fields.switch} />
+        <Switch
+          options={[baseTokenSymbol, quoteTokenSymbol]}
+          labels={['Buy', 'Sell']}
+          onChange={R.compose(onChange('buy'))}
+        />
       </div>
       <div className="order-form__dropdown">
-        <Dropdown {...fields.dropdown} />
+        <Dropdown
+          name="exchange"
+          options={[
+            { value: 'RadarRelay', name: 'Radar Relay' },
+            { value: 'OasisDEX', name: 'OasisDEX' },
+          ]}
+          label="Exchange Server"
+          onChange={R.compose(onChange('exchange'), getValue)}
+        />
       </div>
       <div className="order-form__order-info">
         <OrderInfo {...info} />
       </div>
-      {/* <Inputs {...fields} /> */}
       <div className="order-form__input">
-        <InputWithValidation {...fields.inputs.price} />
+        <Input
+          type="number"
+          label="Price"
+          name="price"
+          insideLabel="true"
+          decimals={4}
+          placeholder="0.0000"
+          disabled={strategy === 'Market' ? true : false}
+          onChange={R.compose(onChange('price'), getValue)}
+        />
       </div>
       <div className="order-form__input">
-        <InputWithValidation {...fields.inputs.quantity} />
+        <Input
+          type="number"
+          label="Quantity"
+          name="quantity"
+          insideLabel="true"
+          decimals={4}
+          placeholder="0.0000"
+          onChange={R.compose(onChange('quantity'), getValue)}
+        />
       </div>
       <div className="order-form__input">
-        <InputWithValidation {...fields.inputs.total} />
+        <Input
+          type="number"
+          label="Total"
+          name="total"
+          insideLabel="true"
+          decimals={4}
+          placeholder="0.0000"
+          onChange={R.compose(onChange('total'), getValue)}
+        />
       </div>
       <Button type="submit">Transfer</Button>
     </Form>
   );
 };
 
-export default (withDefaultProps)(OrderForm);
+export default compose(withDefaultProps, mapFormProps)(OrderForm);

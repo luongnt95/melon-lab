@@ -1,77 +1,69 @@
-import { defaultProps, withHandlers, withState } from 'recompose';
-import { cleanNumber } from '~/utils/Validation';
+import * as R from 'ramda';
+import {
+  compose,
+  defaultProps,
+  mapProps,
+  withProps,
+  withState,
+} from 'recompose';
 
-const withInputValueState = withState('value', 'updateValue', '');
-const withInputValueHandlers = withHandlers({
-  onChange: props => event => {
-    props.cleanNumber
-      ? props.updateValue(cleanNumber(event, props.decimals))
-      : props.updateValue(event.target.value);
-  },
+const withFormProps = withProps(props => {
+  const isMarket = props.strategy === 'Market' ? true : false;
+  const valueLens = R.lensPath(['form', 'price', 'disabled']);
+  const newValue = isMarket;
+  return R.set(valueLens, newValue, props);
 });
 
-const withDefaultProps = defaultProps({
+const initialProps = {
+  baseTokenSymbol: 'ETH-T-M',
+  quoteTokenSymbol: 'MLN-T-M',
+  strategy: 'Limit',
   info: {
-    lastPrice: 8.125,
-    bid: 8.125,
-    ask: 8.125,
+    lastPrice: 0,
+    bid: 0,
+    ask: 0,
     balances: [
       {
         name: 'ETH-T',
-        value: 8.125,
+        value: 0,
       },
       {
         name: 'MLN-T',
-        value: 8.125,
+        value: 0,
       },
     ],
   },
-  fields: {
-    dropdown: {
-      name: 'exchange',
-      options: [
-        { value: 'RadarRelay', name: 'Radar Relay' },
-        { value: 'OasisDEX', name: 'OasisDEX' },
-      ],
-      label: 'Exchange Server',
+};
+const initialState = {
+  form: {
+    buy: {
+      value: 'Buy',
     },
-    switch: {
-      options: [
-        'ETH-T-M',
-        'MLN-T-M',
-      ],
-      labels: [
-        'Buy',
-        'Sell',
-      ],
-    },
-    inputs: {
-      price: {
-        label: 'Price',
-        name: 'price',
-        insideLabel: true,
-        cleanNumber: true,
-        decimals: 4,
-        placeholder: '0.0000',
-      },
-      quantity: {
-        label: 'Quantity',
-        name: 'quantity',
-        insideLabel: true,
-        cleanNumber: true,
-        decimals: 4,
-        placeholder: '0.0000',
-      },
-      total: {
-        label: 'Total',
-        name: 'total',
-        insideLabel: true,
-        cleanNumber: true,
-        decimals: 4,
-        placeholder: '0.0000',
-      },
-    },
+    price: {},
+    quantity: {},
   },
-});
+};
 
-export { withDefaultProps, withInputValueState, withInputValueHandlers };
+const withDefaultProps = defaultProps({ ...initialProps });
+
+const mapFormProps = compose(
+  withState('state', 'updateState', { ...initialState }),
+  mapProps(({ updateState, state, ...rest }) => ({
+    onChange: name => value =>
+      updateState(state => {
+        return {
+          ...state,
+          form: {
+            ...state.form,
+            [name]: {
+              ...state.form[name],
+              value,
+            },
+          },
+        };
+      }),
+    ...rest,
+  })),
+);
+
+export { withDefaultProps, withFormProps, mapFormProps };

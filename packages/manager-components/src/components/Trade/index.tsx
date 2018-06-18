@@ -21,10 +21,10 @@ export const Trade: StatelessComponent<OrderFormProps> = ({
     >
       <style jsx>{styles}</style>
       <TabContent title="Take">
-        <OrderForm />
+        <OrderForm strategy="Market" />
       </TabContent>
       <TabContent title="Place">
-        <OrderForm />
+        <OrderForm strategy="Limit" />
       </TabContent>
     </Tabs>
   );

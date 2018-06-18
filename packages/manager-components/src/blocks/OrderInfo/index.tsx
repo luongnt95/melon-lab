@@ -12,7 +12,7 @@ export interface OrderInfoProps {
 const Balanaces = balances =>
   balances.items.map(balance => (
     <div key={balance.name} className="order-info__balance">
-      <span className="order-info__balance-desc">ETH-T {balance.name}:</span>{' '}
+      <span className="order-info__balance-desc">{balance.name}:</span>{' '}
       {balance.value}
     </div>
   ));
