@@ -7,7 +7,7 @@ const initialProps = {
     baseTokenSymbol: 'ETH-T-M',
     quoteTokenSymbol: 'MLN-T-M',
     strategy: 'Limit',
-    selectedOrder: false,
+    selectedOrder: 20,
     info: {
       lastPrice: 0.5,
       bid: 0,

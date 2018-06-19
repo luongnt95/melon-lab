@@ -7,8 +7,8 @@ import styles from './styles.css';
 
 export interface OrderFormProps {
   activeTabIndex: string;
-  setTabIndex(index: number);
   form: OrderForm;
+  setTabIndex(index: number);
 }
 
 export const Trade: StatelessComponent<OrderFormProps> = ({
@@ -32,4 +32,4 @@ export const Trade: StatelessComponent<OrderFormProps> = ({
   );
 };
 
-export default (withActiveState)(Trade);
+export default withActiveState(Trade);

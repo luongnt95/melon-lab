@@ -3,19 +3,19 @@ import OrderInfo from './index';
 
 describe('OrderInfo', () => {
   const data = {
-    lastPrice: 8.125,
-    bid: 8.125,
-    ask: 8.125,
-    balances: [
-      {
+    lastPrice: 0.5,
+    bid: 0,
+    ask: 0,
+    tokens: {
+      baseToken: {
         name: 'ETH-T',
-        value: 8.125,
+        balance: 30,
       },
-      {
+      quoteToken: {
         name: 'MLN-T',
-        value: 8.125,
+        balance: 20,
       },
-    ],
+    },
   };
   const defaultElement = <OrderInfo {...data} />;
 

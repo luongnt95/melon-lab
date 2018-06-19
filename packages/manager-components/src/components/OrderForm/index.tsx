@@ -83,7 +83,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
       <div className="order-form__input">
         <Input
           value={values.price}
-          disabled={isMarket && !selectedOrder}
+          disabled={isMarket}
           type="number"
           label="Price"
           name="price"
