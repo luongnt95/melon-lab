@@ -1,11 +1,12 @@
 // @flow
+import addressBook from '@melonproject/smart-contracts/addressBook'
 import ensure from '../../utils/generic/ensure';
 import callOnExchange from './callOnExchange';
 import getFundContract from '../contracts/getFundContract';
 import getMethodNameSignature from '../../exchange/utils/getMethodNameSignature';
 import preflightMakeOrder from '../preflights/preflightMakeOrder';
 import getExchangeName from '../../exchange/utils/getExchangeName';
-
+import getNetwork from '../../utils/environment/getNetwork'
 import type { Environment } from '../../utils/environment/Environment';
 import type { Order } from '../../exchange/schemas/Order';
 
@@ -31,6 +32,8 @@ const makeOrder = async (
     signature = {},
   },
 ): Promise<Order> => {
+  const network = await getNetwork(environment);
+  if (!exchangeAddress) exchangeAddress = addressBook[network].MatchingMarket
   const fundContract = await getFundContract(environment, fundAddress);
   const preflightCheck = await preflightMakeOrder(environment, {
     fundContract,
