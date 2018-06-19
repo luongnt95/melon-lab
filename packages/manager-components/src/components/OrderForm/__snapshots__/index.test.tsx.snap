@@ -3,7 +3,7 @@
 exports[`OrderForm should render correctly 1`] = `
 <C
   baseTokenSymbol="ETH-T-M"
-  decimals={4}
+  decimals={6}
   exchanges={
     Array [
       Object {

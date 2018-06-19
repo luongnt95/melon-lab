@@ -16,6 +16,9 @@ exports[`Input should pass a typed value to the onChange handler 1`] = `
     onChange={[MockFunction]}
     type="text"
   />
+  <div
+    className="jsx-__scopedHash input__error"
+  />
 </div>
 `;
 
@@ -33,6 +36,9 @@ exports[`Input should render correctly 1`] = `
   <input
     className="jsx-__scopedHash input__field"
     type="text"
+  />
+  <div
+    className="jsx-__scopedHash input__error"
   />
 </div>
 `;

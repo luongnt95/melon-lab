@@ -43,7 +43,7 @@ const Input: StatelessComponent<InputProps> = ({
 
   const placeholderValue =
     decimals && placeholder
-      ? parseInt(placeholder).toFixed(decimals)
+      ? parseInt(placeholder, 10).toFixed(decimals)
       : placeholder;
 
   return (
