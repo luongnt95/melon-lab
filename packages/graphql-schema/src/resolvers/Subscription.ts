@@ -32,7 +32,9 @@ export const price = {
     const fetchPrices = environment =>
       Rx.Observable.forkJoin(...getPricePromises(environment, symbols));
 
-    const environment$ = Rx.Observable.fromPromise(getParityProvider());
+    const environment$ = Rx.Observable.fromPromise(
+      getParityProvider(process.env.JSON_RPC_ENDPOINT),
+    );
     const price$ = environment$
       .switchMap(fetchPrices)
       .repeatWhen(Rx.operators.delay(10000));
@@ -80,7 +82,7 @@ export const orderbook = {
   subscribe: async (parent, args, context: Context) => {
     const { pubsub } = context;
     const { baseTokenSymbol, quoteTokenSymbol, exchanges, network } = args;
-    const environment = await getParityProvider();
+    const environment = await getParityProvider(process.env.JSON_RPC_ENDPOINT);
     const config = await getConfig(environment, network);
     const baseTokenAddress = getAddress(config, baseTokenSymbol);
     const quoteTokenAddress = getAddress(config, quoteTokenSymbol);

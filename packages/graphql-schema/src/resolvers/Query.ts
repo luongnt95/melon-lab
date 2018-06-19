@@ -35,12 +35,12 @@ const containsField = (fields, query) =>
   fields.find(field => query.includes(field));
 
 const price = async (parent, args, context: Context) => {
-  const environment = await getParityProvider();
+  const environment = await getParityProvider(process.env.JSON_RPC_ENDPOINT);
   return getPrice(environment, args.symbol);
 };
 
 const funds = async (parent, args, context: Context, info) => {
-  const environment = await getParityProvider();
+  const environment = await getParityProvider(process.env.JSON_RPC_ENDPOINT);
 
   const ranking = await getRanking(environment);
   const fields = Object.keys(graphqlFields(info));

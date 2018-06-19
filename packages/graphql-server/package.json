@@ -4,7 +4,7 @@
   "private": true,
   "license": "AGPL-3.0",
   "scripts": {
-    "clean": "rimraf coverage dist",
+    "clean": "rimraf coverage dist node_modules/.cache",
     "dev": "cross-env NODE_ENV=development backpack dev",
     "build": "cross-env NODE_ENV=production backpack build",
     "start": "cross-env NODE_ENV=production node --require dotenv-extended/config dist",
