@@ -2,35 +2,6 @@ import { withFormik } from 'formik';
 import { compose, defaultProps, withHandlers } from 'recompose';
 import * as Yup from 'yup';
 
-const initialProps = {
-  baseTokenSymbol: 'ETH-T-M',
-  quoteTokenSymbol: 'MLN-T-M',
-  strategy: 'Market',
-  selectedOrder: false,
-  info: {
-    lastPrice: 0,
-    bid: 0,
-    ask: 0,
-    balances: [
-      {
-        name: 'ETH-T',
-        value: 0,
-      },
-      {
-        name: 'MLN-T',
-        value: 0,
-      },
-    ],
-  },
-  exchanges: [
-    { value: 'RadarRelay', name: 'Radar Relay' },
-    { value: 'OasisDEX', name: 'OasisDEX' },
-  ],
-  selectedExchange: 'RadarRelay',
-  selectedOrderType: 'Buy',
-  decimals: 6,
-};
-
 const initialState = props => {
   return {
     type: props.selectedOrderType,
@@ -40,8 +11,6 @@ const initialState = props => {
     total: '',
   };
 };
-
-const withDefaultProps = defaultProps({ ...initialProps });
 
 const calculateTotal = (props, name, value) => {
   if (name === 'price' && props.values.quantity && value) {
@@ -76,4 +45,4 @@ const withFormHandler = compose(
   }),
 );
 
-export { withDefaultProps, withFormHandler, withFormValidation };
+export { withFormHandler, withFormValidation };

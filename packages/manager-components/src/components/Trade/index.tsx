@@ -8,11 +8,13 @@ import styles from './styles.css';
 export interface OrderFormProps {
   activeTabIndex: string;
   setTabIndex(index: number);
+  form: OrderForm;
 }
 
 export const Trade: StatelessComponent<OrderFormProps> = ({
   activeTabIndex,
   setTabIndex,
+  form,
 }) => {
   return (
     <Tabs
@@ -21,10 +23,10 @@ export const Trade: StatelessComponent<OrderFormProps> = ({
     >
       <style jsx>{styles}</style>
       <TabContent title="Take">
-        <OrderForm strategy="Market" />
+        <OrderForm {...form} strategy="Market" />
       </TabContent>
       <TabContent title="Place">
-        <OrderForm strategy="Limit" />
+        <OrderForm {...form} strategy="Limit" />
       </TabContent>
     </Tabs>
   );

@@ -7,7 +7,6 @@ import Input from '~/blocks/Input';
 import OrderInfo from '~/blocks/OrderInfo';
 import Switch from '~/blocks/Switch';
 import {
-  withDefaultProps,
   withFormHandler,
   withFormValidation,
 } from '~/containers/OrderForm';
@@ -134,6 +133,6 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
   );
 };
 
-export default compose(withDefaultProps, withFormValidation, withFormHandler)(
+export default compose(withFormValidation, withFormHandler)(
   OrderForm,
 );
