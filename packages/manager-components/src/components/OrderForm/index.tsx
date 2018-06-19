@@ -12,15 +12,15 @@ import { mapFormProps, withDefaultProps } from '~/containers/OrderForm';
 import styles from './styles.css';
 
 export interface OrderFormProps {
-  form: {
+  values: {
     price: string;
     quantity: string;
     total: string;
     exchange: string;
     type: string;
   };
-  onSubmit?: any;
-  onChange?: any;
+  handleSubmit?: any;
+  onChange?: React.ChangeEvent<any>;
   info?: any;
   baseTokenSymbol?: string;
   quoteTokenSymbol?: string;
@@ -31,13 +31,11 @@ export interface OrderFormProps {
   }>;
   selectedOrder?: string;
   selectedExchange?: string;
+  errors: object;
 }
 
-const getValue = R.path(['target', 'value']);
-
 export const OrderForm: StatelessComponent<OrderFormProps> = ({
-  form,
-  onSubmit,
+  handleSubmit,
   onChange,
   info,
   baseTokenSymbol,
@@ -46,32 +44,28 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
   exchanges,
   selectedOrder,
   selectedExchange,
+  errors,
+  values,
 }) => {
-  const handleSubmit = (e, formData) => {
-    e.preventDefault();
-    console.log(formData);
-  };
-
   const isMarket = strategy === 'Market' ? true : false;
 
   return (
-    <Form className="order-form" onSubmit={onSubmit}>
+    <Form className="order-form">
       <style jsx>{styles}</style>
       <div className="order-form__switch">
         <Switch
           options={[baseTokenSymbol, quoteTokenSymbol]}
-          // value={form.type ? form.type : 'Buy'}
           labels={['Buy', 'Sell']}
-          onChange={R.compose(onChange('type'))}
+          onChange={onChange}
         />
       </div>
       <div className="order-form__dropdown">
         <Dropdown
           name="exchange"
-          value={form.exchange ? form.exchange : selectedExchange}
+          value={values.exchange ? values.exchange : selectedExchange}
           options={exchanges}
           label="Exchange Server"
-          onChange={R.compose(onChange('exchange'), getValue)}
+          onChange={onChange}
         />
       </div>
       <div className="order-form__order-info">
@@ -79,39 +73,43 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
       </div>
       <div className="order-form__input">
         <Input
-          value={form.price}
+          value={values.price}
           disabled={isMarket && !selectedOrder}
           type="number"
           label="Price"
           name="price"
           insideLabel="true"
           placeholder="0.0000"
-          onChange={R.compose(onChange('price'), getValue)}
+          onChange={onChange}
         />
+        {errors.price}
       </div>
       <div className="order-form__input">
         <Input
-          value={form.quantity}
+          value={values.quantity}
           type="number"
           label="Quantity"
           name="quantity"
           insideLabel="true"
           placeholder="0.0000"
-          onChange={R.compose(onChange('quantity'), getValue)}
+          onChange={onChange}
         />
+        {errors.quantity}
       </div>
       <div className="order-form__input">
         <Input
-          value={form.total}
+          value={values.total}
           type="number"
           label="Total"
           name="total"
           insideLabel="true"
           placeholder="0.0000"
-          onChange={R.compose(onChange('total'), getValue)}
+          onChange={onChange}
         />
+        {errors.total}
       </div>
-      <Button onClick={e => handleSubmit(e, form)} type="submit">
+
+      <Button onClick={handleSubmit} type="submit">
         Transfer
       </Button>
     </Form>

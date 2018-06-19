@@ -10,6 +10,7 @@ export interface DropdownProps {
   onChange?: ChangeEventHandler<Element>;
   label?: string;
   value?: string;
+  name: string;
 }
 
 const renderOption = (option, index) => {
@@ -25,6 +26,7 @@ const Dropdown: StatelessComponent<DropdownProps> = ({
   onChange,
   label,
   value,
+  name,
 }) => {
   const ops =
     options && options.map((item, index) => renderOption(item, index));
@@ -34,7 +36,7 @@ const Dropdown: StatelessComponent<DropdownProps> = ({
       <style jsx>{styles}</style>
       {label && <span className="dropdown__label">{label}</span>}
       <div className="dropdown__wrapper">
-        <select className="dropdown__select" onChange={onChange} value={value}>
+        <select name={name} className="dropdown__select" onChange={onChange} value={value}>
           {ops}
         </select>
       </div>

@@ -1,5 +1,6 @@
-import * as R from 'ramda';
-import { compose, defaultProps, mapProps, withState } from 'recompose';
+import { withFormik } from 'formik';
+import { compose, defaultProps, withHandlers } from 'recompose';
+import * as Yup from 'yup';
 
 const initialProps = {
   baseTokenSymbol: 'ETH-T-M',
@@ -32,48 +33,49 @@ const initialProps = {
 
 const initialState = props => {
   return {
-    form: {
-      type: props.selectedOrderType,
-      exchange: props.selectedExchange,
-      price: '',
-      quantity: '',
-      total: '',
-    },
+    type: props.selectedOrderType,
+    exchange: props.selectedExchange,
+    price: '',
+    quantity: '',
+    total: '',
   };
 };
 
 const withDefaultProps = defaultProps({ ...initialProps });
 
-const calculation = (state, name, value) => {
-  if (name === 'price' && state.form.quantity && value) {
-    return (state.form.total = state.form.quantity * value);
+const calculateTotal = (props, name, value) => {
+  if (name === 'price' && props.values.quantity && value) {
+    props.setFieldValue('total', props.values.quantity * value);
   }
-
-  if (name === 'quantity' && state.form.price && value) {
-    return (state.form.total = state.form.price * value);
+  if (name === 'quantity' && props.values.price && value) {
+    props.setFieldValue('total', props.values.price * value);
   }
-
   if ((name === 'quantity' || name === 'price') && value < 1) {
-    return (state.form.total = '');
+    props.setFieldValue('total', '');
   }
-
-  return;
 };
 
+const withFormValidation = withFormik({
+  mapPropsToValues: props => ({ ...initialState(props) }),
+  validationSchema: Yup.object().shape({
+    price: Yup.string().required('Price is required.'),
+    quantity: Yup.string().required('Quantity is required.'),
+    total: Yup.string().required('Total is required.'),
+  }),
+  handleSubmit: values => {
+    // TODO: define handleSubmit
+  },
+  validateOnChange: false,
+});
+
 const mapFormProps = compose(
-  withState('state', 'updateState', initialState),
-  mapProps(({ updateState, state, ...rest }) => ({
-    onChange: name => value =>
-      updateState(currentState => {
-        calculation(currentState, name, value);
-        return {
-          ...currentState,
-          form: { ...currentState.form, [name]: value },
-        };
-      }),
-    form: R.prop('form', state),
-    ...rest,
-  })),
+  withFormValidation,
+  withHandlers({
+    onChange: props => event => {
+      props.setFieldValue(event.target.name, event.target.value);
+      calculateTotal(props, event.target.name, event.target.value);
+    },
+  }),
 );
 
 export { withDefaultProps, mapFormProps };
