@@ -16,21 +16,22 @@ import { actions as modalActions, types as modalTypes } from '../actions/modal';
 */
 function* confirmer(environment, modalSentence) {
   const confirmChannel = eventChannel(emitter => {
-    environment.confirmer = matter =>
+    environment.confirmer = fees =>
       new Promise(resolve => {
-        emitter({ matter, resolve });
+        emitter({ fees, resolve });
       });
 
     return () => emitter(END);
   });
 
   while (true) {
-    const { matter, resolve } = yield take(confirmChannel);
+    const { fees, resolve } = yield take(confirmChannel);
 
     yield put(
-      modalActions.confirm(
-        `${modalSentence} \n\n ${JSON.stringify(matter, null, 4)}`,
-      ),
+      modalActions.confirm({
+        body: modalSentence,
+        fees,
+      }),
     );
 
     const action = yield take([modalTypes.CONFIRMED, modalTypes.CANCEL]);

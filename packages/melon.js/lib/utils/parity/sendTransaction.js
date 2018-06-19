@@ -1,4 +1,5 @@
 // @flow
+import BigNumber from 'bignumber.js';
 import gasBoost from '../ethereum/gasBoost';
 import constructTransactionObject from './constructTransactionObject';
 
@@ -11,8 +12,8 @@ const sendTransaction = async (
 ) => {
   const nonce = environment.account.sign
     ? (await environment.api.eth.getTransactionCount(
-      environment.account.address,
-    )).toNumber()
+        environment.account.address,
+      )).toNumber()
     : undefined;
 
   // Prepare raw transaction
@@ -50,14 +51,18 @@ const sendTransaction = async (
   }
 
   if (options.value) {
-    options.value = `0x${options.value.toString(16)}`
+    options.value = `0x${options.value.toString(16)}`;
   }
-  
+
   // Exit function prematurely if a confirmer is registered and it returns false
   if (environment.confirmer) {
-    const confirmed = await environment.confirmer({
-      gasLimit: options[gasKeyName],
-    });
+    const confirmed = await environment.confirmer([
+      {
+        description: 'Gas cost',
+        detail: `${options[gasKeyName]} Gwei × 2 (Gas Price)`,
+        inEth: new BigNumber(options[gasKeyName]).times(2).div(1000000000),
+      },
+    ]);
 
     if (!confirmed) return { error: 'Transaction cancelled' };
   }

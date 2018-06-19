@@ -22,12 +22,13 @@ export const interactions = {
 };
 
 export const actions = {
-  open: ({ title, body, primaryInteraction, secondaryInteraction }) => ({
+  open: ({ title, body, primaryInteraction, secondaryInteraction, fees }) => ({
     type: types.OPEN,
     isOpen: true,
     modalType: modalTypes.INFO,
     title,
     body,
+    fees,
     primaryInteraction,
     secondaryInteraction,
   }),
@@ -40,12 +41,13 @@ export const actions = {
     type: types.CANCEL,
     isOpen: false,
   }),
-  confirm: body => ({
+  confirm: ({ body, fees }) => ({
     type: types.CONFIRM,
     isOpen: true,
     modalType: modalTypes.CONFIRM,
     title: 'Confirm',
     body,
+    fees,
     primaryInteraction: interactions.CONFIRM,
     secondaryInteraction: interactions.CANCEL,
   }),

@@ -26,9 +26,9 @@ function* sign() {
   try {
     yield put(modalActions.loading());
     yield put(
-      modalActions.confirm(
-        `Please confirm that you read and understood the terms and conditions.`,
-      ),
+      modalActions.confirm({
+        body: `Please confirm that you read and understood the terms and conditions.`,
+      }),
     );
     const action = yield take([modalTypes.CONFIRMED, modalTypes.CANCEL]);
     if (action.type === modalTypes.CANCEL) return false;
@@ -51,9 +51,9 @@ function* signCompetition() {
   try {
     yield put(modalActions.loading());
     yield put(
-      modalActions.confirm(
-        `Please confirm that you read and understood the terms and conditions.`,
-      ),
+      modalActions.confirm({
+        body: `Please confirm that you read and understood the terms and conditions.`,
+      }),
     );
     const action = yield take([modalTypes.CONFIRMED, modalTypes.CANCEL]);
     if (action.type === modalTypes.CANCEL) return false;

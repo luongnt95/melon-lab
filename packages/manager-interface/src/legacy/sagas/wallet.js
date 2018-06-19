@@ -92,9 +92,9 @@ function* restoreWalletSaga({ mnemonic }) {
 
 function* deleteWallet() {
   yield put(
-    modalActions.confirm(
-      `Do you really want to erase your current wallet? If yes, please type your password below:`,
-    ),
+    modalActions.confirm({
+      body: `Do you really want to erase your current wallet? If yes, please type your password below:`,
+    }),
   );
   yield take(modalTypes.CONFIRMED);
   yield put(actions.doDeleteWallet());
