@@ -64,7 +64,7 @@ const sendTransaction = async (
       },
     ]);
 
-    if (!confirmed) return { error: 'Transaction cancelled' };
+    if (!confirmed) throw new Error('Transaction cancelled');
   }
 
   // Construct raw transaction object

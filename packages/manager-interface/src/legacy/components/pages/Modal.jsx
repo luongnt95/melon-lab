@@ -121,7 +121,7 @@ const Modal = ({
 
             <p>{body}</p>
 
-            {method ? <h4>{method}:</h4> : null}
+            {method ? <h4>{method}</h4> : null}
 
             {fees ? (
               <Table compact="very">

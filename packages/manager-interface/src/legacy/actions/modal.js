@@ -85,5 +85,6 @@ export const actions = {
     modalType: modalTypes.LOADING,
     title: 'Please wait',
     body,
+    fees: null,
   }),
 };

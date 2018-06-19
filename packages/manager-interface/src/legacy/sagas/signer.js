@@ -39,7 +39,6 @@ function* confirmer(environment, modalSentence) {
 
     if (action.type === modalTypes.CANCEL) {
       resolve(false);
-      throw new Error('Transaction cancelled');
     }
 
     yield put(modalActions.loading());
