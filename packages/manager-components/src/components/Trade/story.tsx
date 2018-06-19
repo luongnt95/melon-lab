@@ -6,7 +6,6 @@ const initialProps = {
   form: {
     baseTokenSymbol: 'ETH-T-M',
     quoteTokenSymbol: 'MLN-T-M',
-    strategy: 'Limit',
     selectedOrder: 20,
     info: {
       lastPrice: 0.5,

@@ -1,5 +1,5 @@
 import { withFormik } from 'formik';
-import { compose, defaultProps, withHandlers } from 'recompose';
+import { compose, withHandlers } from 'recompose';
 import * as Yup from 'yup';
 import {
   divide,
@@ -10,10 +10,12 @@ import {
 } from '~/utils/functionalBigNumber';
 
 const initialState = props => {
+  const isMarket = props.strategy === 'Market' ? true : false;
+
   return {
-    type: props.selectedOrderType,
-    exchange: props.selectedExchange,
-    price: '20',
+    type: props.selectedOrderType ? props.selectedOrderType : '',
+    exchange: props.selectedExchange ? props.selectedExchange : '',
+    price: props.selectedOrder && isMarket ? props.selectedOrder : '',
     quantity: '',
     total: '',
   };
@@ -90,7 +92,6 @@ const withFormHandler = compose(
   withHandlers({
     onChange: props => event => {
       props.setFieldValue(event.target.name, event.target.value);
-      // console.log(props);
       validateInputs(props, event.target.name, event.target.value);
     },
   }),
