@@ -36,7 +36,10 @@ function* confirmer(environment, modalSentence) {
 
     const action = yield take([modalTypes.CONFIRMED, modalTypes.CANCEL]);
 
-    if (action.type === modalTypes.CANCEL) return resolve(false);
+    if (action.type === modalTypes.CANCEL) {
+      resolve(false);
+      throw new Error('Transaction cancelled');
+    }
 
     yield put(modalActions.loading());
 
@@ -64,6 +67,7 @@ function* signer(modalSentence, transaction, failureAction) {
     if (err.name === 'EnsureError') {
       yield put(modalActions.error(err.message));
     } else {
+      console.log('catched');
       yield put(modalActions.error(err.message));
       console.error(err);
       console.log(JSON.stringify(err, null, 4));

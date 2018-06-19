@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     // Hint: Submit is handled by the form, not as action. But we need to
     // prevent form submitting for the other actions.
     const action = interactionDispatchMap[interaction];
+
     if (action) {
       event.preventDefault();
       dispatch(action());
