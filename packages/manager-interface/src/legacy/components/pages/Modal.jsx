@@ -6,10 +6,13 @@ import {
   Header,
   Loader,
   Button,
+  Table,
 } from 'semantic-ui-react';
 import { Field } from 'redux-form';
 import ReactModal from 'react-modal';
 import renderInput from '../utils/renderInput';
+import { add } from '../../utils/functionalBigNumber';
+import displayNumber from '../../utils/displayNumber';
 
 export const types = {
   ERROR: 'ERROR',
@@ -91,6 +94,7 @@ const Modal = ({
   type,
   title,
   body,
+  fees,
   primaryInteraction,
   secondaryInteraction,
   interactionHandler,
@@ -103,14 +107,52 @@ const Modal = ({
     style={type === types.ERROR ? errorStyle : style}
   >
     <Container>
-      <Card centered style={{ backgroundColor: '#fffdf3', padding: 10 }}>
+      <Card
+        centered
+        style={{ backgroundColor: '#fffdf3', padding: 10, width: 400 }}
+      >
         <Card.Content>
           {' '}
           <form onSubmit={handleSubmit} data-hook="modal">
             <Header as="h2" style={type === types.ERROR ? markError : {}}>
               {title}
             </Header>
+
             <p>{body}</p>
+
+            {fees ? (
+              <Table compact="very">
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>Description</Table.HeaderCell>
+                    <Table.HeaderCell>Detail</Table.HeaderCell>
+                    <Table.HeaderCell style={{ textAlign: 'right' }}>
+                      Total
+                    </Table.HeaderCell>
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  {fees.map((entry, i) => (
+                    <Table.Row key={`fee-{i}`}>
+                      <Table.Cell>{entry.description}</Table.Cell>
+                      <Table.Cell>{entry.detail}</Table.Cell>
+                      <Table.Cell style={{ textAlign: 'right' }}>
+                        Ξ {displayNumber(entry.inEth)}
+                      </Table.Cell>
+                    </Table.Row>
+                  ))}
+                </Table.Body>
+                <Table.Footer>
+                  <Table.Row>
+                    <Table.HeaderCell />
+                    <Table.HeaderCell />
+                    <Table.HeaderCell style={{ textAlign: 'right' }}>
+                      Ξ {displayNumber(add(...fees.map(e => e.inEth)))}
+                    </Table.HeaderCell>
+                  </Table.Row>
+                </Table.Footer>
+              </Table>
+            ) : null}
 
             {type === types.PASSWORD ? (
               <div style={{ marginBottom: 10 }}>

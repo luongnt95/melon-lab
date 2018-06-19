@@ -1,13 +1,14 @@
-import { types as actionTypes } from "../actions/modal";
-import { types as modalTypes } from "../components/pages/Modal";
+import { types as actionTypes } from '../actions/modal';
+import { types as modalTypes } from '../components/pages/Modal';
 
 export const initialState = {
   isOpen: false,
   modalType: modalTypes.INFO,
-  title: "",
-  body: "",
-  primaryAction: "Ok",
-  secondaryAction: "",
+  title: '',
+  body: '',
+  fees: null,
+  primaryAction: 'Ok',
+  secondaryAction: '',
 };
 
 export const reducer = (state = initialState, action = {}) => {
