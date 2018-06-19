@@ -7,6 +7,7 @@ export interface InputProps {
   disabled?: boolean;
   placeholder?: string;
   onChange?: ChangeEventHandler<Element>;
+  onBlur?: ChangeEventHandler<Element>;
   label: string;
   type: string;
   insideLabel?: boolean;
@@ -16,14 +17,14 @@ export interface InputProps {
   decimals?: number;
   value?: string;
   name: string;
-  hasError: boolean;
-  errors: boolean;
+  error: string;
 }
 
 const Input: StatelessComponent<InputProps> = ({
   disabled,
   placeholder,
   onChange,
+  onBlur,
   label,
   type = 'text',
   insideLabel,
@@ -33,11 +34,11 @@ const Input: StatelessComponent<InputProps> = ({
   value,
   cleanNumber,
   name,
-  errors,
+  error,
 }) => {
   const classname = classNames('input', {
     'input--inside-label': insideLabel,
-    'input--has-error': errors,
+    'input--has-error': error,
   });
 
   return (
@@ -54,7 +55,9 @@ const Input: StatelessComponent<InputProps> = ({
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        onBlur={onBlur}
       />
+      <div className="input__error">{error}</div>
     </div>
   );
 };

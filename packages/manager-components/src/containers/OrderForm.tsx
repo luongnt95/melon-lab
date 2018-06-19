@@ -65,7 +65,6 @@ const withFormValidation = withFormik({
   handleSubmit: values => {
     // TODO: define handleSubmit
   },
-  validateOnChange: false,
 });
 
 const withFormHandler = compose(

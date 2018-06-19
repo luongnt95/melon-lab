@@ -3,7 +3,6 @@ import { compose } from 'recompose';
 import Button from '~/blocks/Button';
 import Dropdown from '~/blocks/Dropdown';
 import Form from '~/blocks/Form';
-import FormError from '~/blocks/FormError';
 import Input from '~/blocks/Input';
 import OrderInfo from '~/blocks/OrderInfo';
 import Switch from '~/blocks/Switch';
@@ -24,6 +23,7 @@ export interface OrderFormProps {
     type: string;
   };
   handleSubmit?: any;
+  handleBlur?: any;
   onChange?: React.ChangeEvent<any>;
   info?: any;
   baseTokenSymbol?: string;
@@ -36,10 +36,12 @@ export interface OrderFormProps {
   selectedOrder?: string;
   selectedExchange?: string;
   errors: any;
+  touched: any;
 }
 
 export const OrderForm: StatelessComponent<OrderFormProps> = ({
   handleSubmit,
+  handleBlur,
   onChange,
   info,
   baseTokenSymbol,
@@ -50,6 +52,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
   selectedExchange,
   errors,
   values,
+  touched,
 }) => {
   const isMarket = strategy === 'Market' ? true : false;
 
@@ -86,12 +89,10 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
           insideLabel="true"
           placeholder="0.0000"
           onChange={onChange}
+          onBlur={handleBlur}
           required={true}
-          errors={errors.price && true}
+          error={touched.price && errors.price}
         />
-        <div className="order-form__error">
-          <FormError>{errors.price}</FormError>
-        </div>
       </div>
       <div className="order-form__input">
         <Input
@@ -102,12 +103,10 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
           insideLabel="true"
           placeholder="0.0000"
           onChange={onChange}
+          onBlur={handleBlur}
           required={true}
-          errors={errors.quantity && true}
+          error={touched.quantity && errors.quantity}
         />
-        <div className="order-form__error">
-          <FormError>{errors.quantity}</FormError>
-        </div>
       </div>
       <div className="order-form__input">
         <Input
@@ -118,14 +117,11 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
           insideLabel="true"
           placeholder="0.0000"
           onChange={onChange}
+          onBlur={handleBlur}
           required={true}
-          errors={errors.total && true}
+          error={touched.total && errors.total}
         />
-        <div className="order-form__error">
-          <FormError>{errors.total}</FormError>
-        </div>
       </div>
-
       <Button onClick={handleSubmit} type="submit">
         Transfer
       </Button>

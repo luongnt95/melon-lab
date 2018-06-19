@@ -44,3 +44,9 @@
 .input--has-error .input__field {
   border-color: var(--color-loss);
 }
+
+.input__error {
+  font-size: var(--font-size-s);
+  color: var(--color-loss);
+  margin: var(--space-xxs) 0 0 var(--space-xs);
+}
