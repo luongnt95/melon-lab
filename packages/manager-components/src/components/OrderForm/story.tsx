@@ -8,19 +8,19 @@ const initialProps = {
   strategy: 'Limit',
   selectedOrder: false,
   info: {
-    lastPrice: 0,
+    lastPrice: 0.5,
     bid: 0,
     ask: 0,
-    balances: [
-      {
+    tokens: {
+      baseToken: {
         name: 'ETH-T',
-        value: 0,
+        balance: 30,
       },
-      {
+      quoteToken: {
         name: 'MLN-T',
-        value: 0,
+        balance: 20,
       },
-    ],
+    },
   },
   exchanges: [
     { value: 'RadarRelay', name: 'Radar Relay' },

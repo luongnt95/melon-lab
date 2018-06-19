@@ -3,25 +3,22 @@ import React, { StatelessComponent } from 'react';
 import styles from './styles.css';
 
 export interface OrderInfoProps {
-  lastPrice?: number;
-  bid?: number;
-  ask?: number;
-  balances?: Array<[object]>;
+  lastPrice: number;
+  bid: number;
+  ask: number;
+  tokens: {
+    [key: string]: {
+      name: string;
+      balance: number;
+    };
+  };
 }
-
-const Balanaces = balances =>
-  balances.items.map(balance => (
-    <div key={balance.name} className="order-info__balance">
-      <span className="order-info__balance-desc">{balance.name}:</span>{' '}
-      {balance.value}
-    </div>
-  ));
 
 const OrderInfo: StatelessComponent<OrderInfoProps> = ({
   lastPrice,
   bid,
   ask,
-  balances,
+  tokens,
 }) => {
   return (
     <div className="order-info">
@@ -38,7 +35,18 @@ const OrderInfo: StatelessComponent<OrderInfoProps> = ({
         </div>
       </div>
       <div className="order-info__balances">
-        {balances && balances.length > 0 && <Balanaces items={balances} />}
+        <div className="order-info__balance">
+          <span className="order-info__balance-desc">
+            {tokens.baseToken.name}:
+          </span>{' '}
+          {tokens.baseToken.balance}
+        </div>
+        <div className="order-info__balance">
+          <span className="order-info__balance-desc">
+            {tokens.quoteToken.name}:
+          </span>{' '}
+          {tokens.quoteToken.balance}
+        </div>
       </div>
     </div>
   );
