@@ -95,6 +95,7 @@ const Modal = ({
   title,
   body,
   fees,
+  method,
   primaryInteraction,
   secondaryInteraction,
   interactionHandler,
@@ -119,6 +120,8 @@ const Modal = ({
             </Header>
 
             <p>{body}</p>
+
+            {method ? <h4>{method}:</h4> : null}
 
             {fees ? (
               <Table compact="very">

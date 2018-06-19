@@ -56,7 +56,7 @@ const sendTransaction = async (
 
   // Exit function prematurely if a confirmer is registered and it returns false
   if (environment.confirmer) {
-    const confirmed = await environment.confirmer([
+    const confirmed = await environment.confirmer(method, [
       {
         description: 'Gas cost',
         detail: `${options[gasKeyName]} Gwei × 2 (Gas Price)`,
@@ -87,6 +87,8 @@ const sendTransaction = async (
     // Send raw transaction object and wait for receipt
     transactionHash = await environment.api.eth.sendTransaction(rawTransaction);
   }
+
+  console.log(method, 'transactionHash', transactionHash);
 
   // eslint-disable-next-line no-underscore-dangle
   await contract._pollTransactionReceipt(transactionHash);

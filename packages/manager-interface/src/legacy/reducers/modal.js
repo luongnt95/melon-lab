@@ -7,6 +7,7 @@ export const initialState = {
   title: '',
   body: '',
   fees: null,
+  method: '',
   primaryAction: 'Ok',
   secondaryAction: '',
 };

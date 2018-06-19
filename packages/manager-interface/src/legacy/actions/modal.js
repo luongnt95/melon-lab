@@ -32,7 +32,6 @@ export const actions = {
     primaryInteraction,
     secondaryInteraction,
   }),
-
   close: () => ({
     type: types.CLOSE,
     isOpen: false,
@@ -41,13 +40,14 @@ export const actions = {
     type: types.CANCEL,
     isOpen: false,
   }),
-  confirm: ({ body, fees }) => ({
+  confirm: ({ body, fees, method }) => ({
     type: types.CONFIRM,
     isOpen: true,
     modalType: modalTypes.CONFIRM,
     title: 'Confirm',
     body,
     fees,
+    method,
     primaryInteraction: interactions.CONFIRM,
     secondaryInteraction: interactions.CANCEL,
   }),
@@ -80,6 +80,7 @@ export const actions = {
   }),
   loading: (body = 'Sending transaction ...') => ({
     type: types.LOADING,
+    fees: null,
     isOpen: true,
     modalType: modalTypes.LOADING,
     title: 'Please wait',

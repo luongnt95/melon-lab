@@ -16,20 +16,21 @@ import { actions as modalActions, types as modalTypes } from '../actions/modal';
 */
 function* confirmer(environment, modalSentence) {
   const confirmChannel = eventChannel(emitter => {
-    environment.confirmer = fees =>
+    environment.confirmer = (method, fees) =>
       new Promise(resolve => {
-        emitter({ fees, resolve });
+        emitter({ fees, resolve, method });
       });
 
     return () => emitter(END);
   });
 
   while (true) {
-    const { fees, resolve } = yield take(confirmChannel);
+    const { fees, resolve, method } = yield take(confirmChannel);
 
     yield put(
       modalActions.confirm({
         body: modalSentence,
+        method,
         fees,
       }),
     );
@@ -43,7 +44,7 @@ function* confirmer(environment, modalSentence) {
 
     yield put(modalActions.loading());
 
-    return resolve(true);
+    resolve(true);
   }
 }
 
@@ -67,7 +68,6 @@ function* signer(modalSentence, transaction, failureAction) {
     if (err.name === 'EnsureError') {
       yield put(modalActions.error(err.message));
     } else {
-      console.log('catched');
       yield put(modalActions.error(err.message));
       console.error(err);
       console.log(JSON.stringify(err, null, 4));
