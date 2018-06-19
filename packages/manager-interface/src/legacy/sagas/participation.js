@@ -131,6 +131,7 @@ function* contributeSaga(action) {
 
         yield put(actions.contributeSucceeded());
         yield put(modalActions.close());
+        yield put(routesActions.fund(fundAddress))
     }
 
     yield call(
