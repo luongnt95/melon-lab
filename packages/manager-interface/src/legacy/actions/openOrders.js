@@ -20,9 +20,11 @@ export const actions = {
     type: types.GET_OPEN_ORDERS_SUCCEEDED,
     ...openOrders,
   }),
-  cancelOrder: orderId => ({
+  cancelOrder: (orderId, makerAssetSymbol, takerAssetSymbol) => ({
     type: types.CANCEL_ORDER_REQUESTED,
     orderId,
+    makerAssetSymbol,
+    takerAssetSymbol
   }),
   cancelOrderFailed: reason => ({
     type: types.CANCEL_ORDER_FAILED,

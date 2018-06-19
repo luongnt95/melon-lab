@@ -26,22 +26,22 @@ const OpenOrders = ({ orders, onClick, isReadyToTrade }) => (
             <Table.Cell>{order.timestamp}</Table.Cell>
             <Table.Cell>{order.id}</Table.Cell>
             <Table.Cell>{order.type}</Table.Cell>
-            <Table.Cell>{order.buySymbol}</Table.Cell>
             <Table.Cell>{order.sellSymbol}</Table.Cell>
+            <Table.Cell>{order.buySymbol}</Table.Cell>
             <Table.Cell textAlign="right">{order.price}</Table.Cell>
-            <Table.Cell textAlign="right">{order.buyHowMuch}</Table.Cell>
             <Table.Cell textAlign="right">{order.sellHowMuch}</Table.Cell>
+            <Table.Cell textAlign="right">{order.buyHowMuch}</Table.Cell>
             {{ isReadyToTrade } ? (
               <Table.Cell
                 textAlign="right"
                 style={{ cursor: "pointer" }}
-                onClick={() => onClick(order.id)}
+                onClick={() => onClick(order.id, order.buySymbol, order.sellSymbol)}
               >
                 [x]
               </Table.Cell>
             ) : (
-              <div />
-            )}
+                <div />
+              )}
           </Table.Row>
         ))}
       </Table.Body>
