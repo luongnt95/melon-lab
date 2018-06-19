@@ -12,7 +12,9 @@ const ParosContributionForm = ({
 }) => (
         <Card id="parosContribution" centered>
             <Card.Content>
-                <Card.Header>ParosContribution</Card.Header>
+                <Card.Header>Contribution to Paros</Card.Header>
+                <p style={{ fontSize: '1.2em', color: 'red', fontFamily: 'monospace', fontWeight: 'bold', }}>ATTENTION REQUIRED </p>
+                <p style={{ fontSize: '1.2em' }}> You are about to send ether to the Paros contract. Please type in the amount of ETH you wish to contribute in the Paros Olympiad. </p>
                 <form onSubmit={handleSubmit} name="parosContribution">
 
                     <List>
@@ -52,6 +54,7 @@ const ParosContributionForm = ({
                             Contribution not authorized when price feed down
           </p>
                     ) : null}
+                    <p style={{ fontSize: '1.2em', color: 'orange', fontFamily: 'monospace', fontWeight: 'bold', }}>This step will transfer the desired amount of ETH from your wallet to the Paros Contribution contract. The Paros Contribution contract will then invest the corresponding amount of MLN into your Melon fund (as per terms and conditions). By proceeding you acknowledge your understanding of the terms and conditions (<a href="https://github.com/melonproject/contribution/blob/master/Second%20Contribution%20and%20Capsule%201%20Terms.pdf" target="_blank">available here</a>) and agree to cryptographically sign them. </p>
 
                     <Button
                         basic
