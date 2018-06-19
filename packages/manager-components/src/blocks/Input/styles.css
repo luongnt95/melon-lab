@@ -40,3 +40,7 @@
     -webkit-appearance: none;
     margin: 0;
 }
+
+.input--has-error .input__field {
+  border-color: var(--color-loss);
+}

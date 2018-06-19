@@ -1,79 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OrderForm should render correctly 1`] = `
-<Component
-  fields={
-    Object {
-      "dropdown": Object {
-        "label": "Exchange Server",
-        "name": "exchange",
-        "options": Array [
-          Object {
-            "name": "Radar Relay",
-            "value": "RadarRelay",
-          },
-          Object {
-            "name": "OasisDEX",
-            "value": "OasisDEX",
-          },
-        ],
+<C
+  baseTokenSymbol="ETH-T-M"
+  decimals={4}
+  exchanges={
+    Array [
+      Object {
+        "name": "Radar Relay",
+        "value": "RadarRelay",
       },
-      "inputs": Object {
-        "price": Object {
-          "cleanNumber": true,
-          "decimals": 4,
-          "insideLabel": true,
-          "label": "Price",
-          "name": "price",
-          "placeholder": "0.0000",
-        },
-        "quantity": Object {
-          "cleanNumber": true,
-          "decimals": 4,
-          "insideLabel": true,
-          "label": "Quantity",
-          "name": "quantity",
-          "placeholder": "0.0000",
-        },
-        "total": Object {
-          "cleanNumber": true,
-          "decimals": 4,
-          "insideLabel": true,
-          "label": "Total",
-          "name": "total",
-          "placeholder": "0.0000",
-        },
+      Object {
+        "name": "OasisDEX",
+        "value": "OasisDEX",
       },
-      "switch": Object {
-        "labels": Array [
-          "Buy",
-          "Sell",
-        ],
-        "options": Array [
-          "ETH-T-M",
-          "MLN-T-M",
-        ],
-      },
-    }
+    ]
   }
   info={
     Object {
-      "ask": 8.125,
+      "ask": 0,
       "balances": Array [
         Object {
           "name": "ETH-T",
-          "value": 8.125,
+          "value": 0,
         },
         Object {
           "name": "MLN-T",
-          "value": 8.125,
+          "value": 0,
         },
       ],
-      "bid": 8.125,
-      "lastPrice": 8.125,
+      "bid": 0,
+      "lastPrice": 0,
     }
   }
+  quoteTokenSymbol="MLN-T-M"
+  selectedExchange="RadarRelay"
+  selectedOrder={false}
+  selectedOrderType="Buy"
+  strategy="Market"
 >
   Default text
-</Component>
+</C>
 `;

@@ -68,8 +68,7 @@ const withFormValidation = withFormik({
   validateOnChange: false,
 });
 
-const mapFormProps = compose(
-  withFormValidation,
+const withFormHandler = compose(
   withHandlers({
     onChange: props => event => {
       props.setFieldValue(event.target.name, event.target.value);
@@ -78,4 +77,4 @@ const mapFormProps = compose(
   }),
 );
 
-export { withDefaultProps, mapFormProps };
+export { withDefaultProps, withFormHandler, withFormValidation };

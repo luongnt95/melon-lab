@@ -34,7 +34,7 @@ describe('Dropdown', () => {
     const value = options[0];
     const onChange = jest.fn();
     const wrapper = shallow(
-      <Dropdown onInputChange={onChange} options={options} />,
+      <Dropdown onChange={onChange} options={options} />,
     );
 
     expect(wrapper).toMatchSnapshot();

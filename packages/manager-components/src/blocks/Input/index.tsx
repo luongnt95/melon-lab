@@ -16,6 +16,8 @@ export interface InputProps {
   decimals?: number;
   value?: string;
   name: string;
+  hasError: boolean;
+  errors: boolean;
 }
 
 const Input: StatelessComponent<InputProps> = ({
@@ -31,9 +33,11 @@ const Input: StatelessComponent<InputProps> = ({
   value,
   cleanNumber,
   name,
+  errors,
 }) => {
   const classname = classNames('input', {
     'input--inside-label': insideLabel,
+    'input--has-error': errors,
   });
 
   return (

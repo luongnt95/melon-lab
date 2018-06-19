@@ -10,3 +10,7 @@
 .order-form__order-info {
   margin: var(--space-m) 0;
 }
+
+.order-form__error {
+  margin: var(--space-xxs) 0 0 var(--space-xs);
+}
