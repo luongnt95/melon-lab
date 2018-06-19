@@ -31,14 +31,13 @@ function* getOpenOrdersSaga() {
   }
 }
 
-function* cancelOrderSaga({ orderId }) {
+function* cancelOrderSaga({ orderId, makerAssetSymbol, takerAssetSymbol }) {
   const isConnected = yield select(state => state.ethereum.isConnected);
   if (!isConnected) yield take(ethereumTypes.HAS_CONNECTED);
 
   const fundAddress = yield select(state => state.fund.address);
-
   function* transaction(environment) {
-    yield call(cancelOrder, environment, { orderIndex: orderId, fundAddress });
+    yield call(cancelOrder, environment, { identifier: orderId, fundAddress, makerAssetSymbol, takerAssetSymbol });
     yield put(actions.cancelOrderSucceeded());
     yield put(modalActions.close());
   }

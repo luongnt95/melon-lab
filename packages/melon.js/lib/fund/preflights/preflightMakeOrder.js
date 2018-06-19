@@ -56,7 +56,7 @@ const preflightMakeOrder = async (
 
   ensure(
     getAddress(config, makerAssetSymbol) !== fundContract.address &&
-      getAddress(config, takerAssetSymbol) !== fundContract.address,
+    getAddress(config, takerAssetSymbol) !== fundContract.address,
     'Fund buying/selling its own fund token is forbidden.',
   );
   const ExistsPriceOnAssetPair = await canonicalPriceFeedContract.instance.existsPriceOnAssetPair.call(
