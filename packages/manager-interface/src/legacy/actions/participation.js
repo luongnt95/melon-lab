@@ -6,14 +6,17 @@ export const types = {
   REDEEM_SUCCEEDED: "REDEEM_SUCCEEDED:participation:melon.fund",
   REDEEM_FAILED: "REDEEM_FAILED:participation:melon.fund",
   REDEEM_ALL_OWNED_ASSETS_REQUESTED:
-    "REDEEM_ALL_OWNED_ASSETS_REQUESTED:participation:melon.fund",
+  "REDEEM_ALL_OWNED_ASSETS_REQUESTED:participation:melon.fund",
   REDEEM_ALL_OWNED_ASSETS_SUCCEEDED:
-    "REDEEM_ALL_OWNED_ASSETS_SUCCEEDED:participation:melon.fund",
+  "REDEEM_ALL_OWNED_ASSETS_SUCCEEDED:participation:melon.fund",
   REDEEM_ALL_OWNED_ASSETS_FAILED:
-    "REDEEM_ALL_OWNED_ASSETS_FAILED:participation:melon.fund",
+  "REDEEM_ALL_OWNED_ASSETS_FAILED:participation:melon.fund",
   EXECUTE_REQUESTED: "EXECUTE_REQUESTED:participation:melon.fund",
   EXECUTE_SUCCEEDED: "EXECUTE_SUCCEEDED:participation:melon.fund",
   EXECUTE_FAILED: "EXECUTE_FAILED:participation:melon.fund",
+  CONTRIBUTE_REQUESTED: "CONTRIBUTE_REQUESTED:participation:melon.fund",
+  CONTRIBUTE_SUCCEEDED: "CONTRIBUTE_SUCCEEDED:participation:melon.fund",
+  CONTRIBUTE_FAILED: "CONTRIBUTE_FAILED:participation:melon.fund",
 };
 
 export const actions = {
@@ -63,5 +66,18 @@ export const actions = {
   }),
   executeSucceeded: () => ({
     type: types.EXECUTE_SUCCEEDED,
+  }),
+  contribute: ({ amount, total, directlyExecute }) => ({
+    type: types.CONTRIBUTE_REQUESTED,
+    amount,
+    total,
+    directlyExecute,
+  }),
+  contributeFailed: reason => ({
+    type: types.CONTRIBUTE_FAILED,
+    reason,
+  }),
+  contributeSucceeded: () => ({
+    type: types.CONTRIBUTE_SUCCEEDED,
   }),
 };

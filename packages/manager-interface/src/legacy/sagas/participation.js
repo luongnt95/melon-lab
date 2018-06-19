@@ -41,7 +41,7 @@ function* investSaga(action) {
   yield call(
     signer,
     `Do you really want to buy ${action.amount} shares for ${
-      action.total
+    action.total
     } MLN?`,
     transaction,
     actions.investFailed,
@@ -67,7 +67,7 @@ function* redeemSaga(action) {
   yield call(
     signer,
     `Do you really want to sell ${action.amount} shares for ${
-      action.total
+    action.total
     } MLN?`,
     transaction,
     actions.redeemFailed,
@@ -88,7 +88,7 @@ function* redeemAllOwnedAssetsSaga(action) {
   yield call(
     signer,
     `Do you really want to immediately redeem ${
-      action.amount
+    action.amount
     } shares? You will receive a subset of the current fund holdings, proportionally to your requested number of shares.`,
     transaction,
     actions.redeemAllOwnedAssetsFailed,
@@ -117,6 +117,42 @@ function* waitForExecute({ pendingRequest: { canBeExecutedInMs } }) {
   yield put(fundActions.setReadyToExecute());
 }
 
+function* contributeSaga(action) {
+  console.log("I am here ", action)
+  function* transaction(environment) {
+    const fundAddress = yield select(state => state.fund.address);
+    const subscription = yield call(invest, environment, {
+      fundAddress,
+      numShares: action.amount,
+      offeredValue: action.total,
+      isNativeAsset: true,
+    });
+    if (action.directlyExecute) {
+      yield call(executeRequest, environment, {
+        id: subscription.id,
+        fundAddress,
+      });
+      yield put(routesActions.fund(fundAddress));
+    } else {
+      const pendingRequest = yield call(getLastRequest, environment, {
+        fundAddress,
+      });
+      yield put(fundActions.setPendingRequest(pendingRequest));
+    }
+    yield put(actions.investSucceeded());
+    yield put(modalActions.close());
+  }
+
+  // yield call(
+  //   signer,
+  //   `Do you really want to buy ${action.amount} shares for ${
+  //   action.total
+  //   } MLN?`,
+  //   transaction,
+  //   actions.investFailed,
+  // );
+}
+
 function* participation() {
   yield takeLatest(types.INVEST_REQUESTED, investSaga);
   yield takeLatest(types.REDEEM_REQUESTED, redeemSaga);
@@ -126,6 +162,7 @@ function* participation() {
   );
   yield takeLatest(types.EXECUTE_REQUESTED, executeSaga);
   yield takeLatest(fundTypes.SET_PENDING_REQUEST, waitForExecute);
+  yield takeLatest(types.CONTRIBUTE_REQUESTED, contributeSaga);
 }
 
 export default participation;

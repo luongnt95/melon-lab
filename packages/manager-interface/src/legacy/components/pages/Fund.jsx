@@ -15,41 +15,43 @@ import Trade from "../../containers/Trade";
 import OpenOrders from "../../containers/OpenOrders";
 
 const Fund = ({ isManager, fundAddress, canInvest, pendingRequest }) => (
-  <div className="App">
-    <br />
-    <div>
-      <Card.Group>
-        <Factsheet />
-        {isManager ? <Administration /> : <GetStarted />}
-        {canInvest && !pendingRequest ? <Participation /> : <div />}
-        {canInvest && pendingRequest ? <ExecuteRequest /> : <div />}
-        {!canInvest ? <Card /> : <div />}
-      </Card.Group>
-      <br />
-      <Holdings address={fundAddress} />
-      <br />
-      {isManager ? (
+    <div className="App">
+        <br />
         <div>
-          {" "}
-          <Card.Group>
-            <Trade />
-            <TradeHelper />
-          </Card.Group>
+            <Card.Group>
+                <Factsheet />
+
+                {/*TODO: comment out for Paros*/}
+                {isManager ? <Administration /> : <GetStarted />}
+                {canInvest && !pendingRequest ? <Participation /> : <div />}
+                {canInvest && pendingRequest ? <ExecuteRequest /> : <div />}
+                {!canInvest ? <Card /> : <div />}
+            </Card.Group>
+            <br />
+            <Holdings address={fundAddress} />
+            <br />
+            {isManager ? (
+                <div>
+                    {" "}
+                    <Card.Group>
+                        <Trade />
+                        <TradeHelper />
+                    </Card.Group>
+                </div>
+            ) : (
+                    <div />
+                )}
+            <br />
+            <Orderbook />
+            <br />
+            <OpenOrders address={fundAddress} />
+            <br />
+            <RecentTrades />
+            <br />
+            <TradeHistory address={fundAddress} />
         </div>
-      ) : (
-        <div />
-      )}
-      <br />
-      <Orderbook />
-      <br />
-      <OpenOrders address={fundAddress} />
-      <br />
-      <RecentTrades />
-      <br />
-      <TradeHistory address={fundAddress} />
+        <br />
     </div>
-    <br />
-  </div>
 );
 
 export default Fund;

@@ -7,7 +7,7 @@ import LockedWallet from '../organisms/LockedWallet';
 import InsufficientFunds from '../organisms/InsufficientFunds';
 import TermsAndConditionsContainer from '../../containers/TermsAndConditions';
 import SetupContainer from '../../containers/Setup';
-import ParticipationContainer from '../../containers/Participation';
+import ParosContributionContainer from '../../containers/ParosContribution';
 import { onboardingPath } from '../../reducers/app';
 import FundContainer from '../../containers/Fund';
 import RankingContainer from '../../containers/Ranking';
@@ -29,7 +29,7 @@ const mapOnboardingStateToMainContainer = {
   [onboardingPath.INSUFFICIENT_FUNDS]: InsufficientFunds,
   [onboardingPath.NOT_SIGNED]: TermsAndConditionsContainer,
   [onboardingPath.NO_FUND_CREATED]: SetupContainer,
-  [onboardingPath.NOT_INVESTED_IN_OWN_FUND]: ParticipationContainer,
+  [onboardingPath.NOT_INVESTED_IN_OWN_FUND]: ParosContributionContainer,
 };
 
 const routeContainerMap = {
@@ -69,8 +69,8 @@ const getMainComponent = ({
       network={network}
     />
   ) : (
-    <div />
-  );
+      <div />
+    );
 };
 
 const App = props => (
