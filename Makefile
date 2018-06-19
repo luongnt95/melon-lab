@@ -31,6 +31,7 @@ lint:
 	@docker-compose run --rm graphql-schema yarn lint
 	@docker-compose run --rm manager-interface yarn lint
 	@docker-compose run --rm manager-components yarn lint
+	@docker-compose run --rm faucet yarn lint
 	# TODO: Fix tests and linting in imported projects.
 	# @docker-compose run --rm melon-js yarn lint
 
@@ -41,6 +42,7 @@ test:
 	@docker-compose run --rm graphql-schema yarn test
 	@docker-compose run --rm manager-interface yarn test
 	@docker-compose run --rm manager-components yarn test
+	@docker-compose run --rm faucet yarn test
 	# TODO: Fix tests and linting in imported projects.
 	# @docker-compose run --rm melon-js yarn test
 

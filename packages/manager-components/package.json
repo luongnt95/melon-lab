@@ -61,7 +61,7 @@
     },
     "snapshotSerializers": ["enzyme-to-json/serializer"],
     "setupFiles": [
-      "<rootDir>/config/jest.setup"
+      "<rootDir>/config/test/jest.setup"
     ],
     "transform": {
       "^.+\\.(jsx?|tsx?)$": "ts-jest"
