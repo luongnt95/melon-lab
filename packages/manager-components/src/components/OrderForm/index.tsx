@@ -37,6 +37,7 @@ export interface OrderFormProps {
   selectedExchange?: string;
   errors: any;
   touched: any;
+  decimals?: number;
 }
 
 export const OrderForm: StatelessComponent<OrderFormProps> = ({
@@ -53,6 +54,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
   errors,
   values,
   touched,
+  decimals,
 }) => {
   const isMarket = strategy === 'Market' ? true : false;
 
@@ -88,6 +90,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
           name="price"
           insideLabel="true"
           placeholder="0.0000"
+          decimals={decimals}
           onChange={onChange}
           onBlur={handleBlur}
           required={true}
@@ -102,6 +105,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
           name="quantity"
           insideLabel="true"
           placeholder="0.0000"
+          decimals={decimals}
           onChange={onChange}
           onBlur={handleBlur}
           required={true}
@@ -116,6 +120,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
           name="total"
           insideLabel="true"
           placeholder="0.0000"
+          decimals={decimals}
           onChange={onChange}
           onBlur={handleBlur}
           required={true}

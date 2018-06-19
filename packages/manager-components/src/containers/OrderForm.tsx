@@ -28,7 +28,7 @@ const initialProps = {
   ],
   selectedExchange: 'RadarRelay',
   selectedOrderType: 'Buy',
-  decimals: 4,
+  decimals: 6,
 };
 
 const initialState = props => {
