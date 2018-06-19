@@ -88,8 +88,6 @@ const sendTransaction = async (
     transactionHash = await environment.api.eth.sendTransaction(rawTransaction);
   }
 
-  console.log(method, 'transactionHash', transactionHash);
-
   // eslint-disable-next-line no-underscore-dangle
   await contract._pollTransactionReceipt(transactionHash);
 

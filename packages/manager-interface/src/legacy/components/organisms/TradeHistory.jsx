@@ -1,6 +1,6 @@
-import React from "react";
-import BigNumber from "bignumber.js";
-import { Table } from "semantic-ui-react";
+import React from 'react';
+import BigNumber from 'bignumber.js';
+import { Table } from 'semantic-ui-react';
 
 const TradeHistory = ({ trades }) => (
   <div>
@@ -18,8 +18,8 @@ const TradeHistory = ({ trades }) => (
         </Table.Row>
       </Table.Header>
       <Table.Body>
-        {trades.map(trade => (
-          <Table.Row key={trade.id}>
+        {trades.map((trade, i) => (
+          <Table.Row key={`trade-${i}`}>
             <Table.Cell>{trade.timestamp}</Table.Cell>
             <Table.Cell>{trade.type}</Table.Cell>
             <Table.Cell textAlign="right">
