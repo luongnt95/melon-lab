@@ -11,6 +11,6 @@ script:
 
 deploy:
   provider: script
-  script: bash scripts/install && bash scripts/deploy.sh
+  script: bash scripts/install.sh && bash scripts/deploy.sh
   on:
     branch: infra-testing

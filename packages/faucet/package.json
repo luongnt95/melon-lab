@@ -57,11 +57,10 @@
   },
   "jest": {
     "setupFiles": [
-      "<rootDir>/tests/config/jest.setup"
+      "<rootDir>/config/test/jest.setup"
     ],
     "transform": {
-      "^.+\\.(jsx?|tsx?)$": "ts-jest",
-      "^.+\\.(gql|graphql)$": "<rootDir>/tests/config/gql.transform"
+      "^.+\\.(jsx?|tsx?)$": "ts-jest"
     },
     "transformIgnorePatterns": [
       "node_modules/(?!@melonproject/)"
