@@ -1,4 +1,5 @@
 import React, { StatelessComponent } from 'react';
+import * as NumberFormat from 'react-number-format';
 
 import styles from './styles.css';
 
@@ -25,13 +26,34 @@ const OrderInfo: StatelessComponent<OrderInfoProps> = ({
       <style jsx>{styles}</style>
       <div className="order-info__prices">
         <div className="order-info__last-price">
-          {lastPrice} <span className="order-info__price-desc">Last Price</span>
+          <NumberFormat
+            value={lastPrice}
+            decimalScale={4}
+            fixedDecimalScale={true}
+            displayType={'text'}
+            thousandSeparator={true}
+          />
+          <span className="order-info__price-desc">Last Price</span>
         </div>
         <div className="order-info__bid">
-          {bid} <span className="order-info__price-desc">Bid</span>
+          <NumberFormat
+            value={bid}
+            decimalScale={4}
+            fixedDecimalScale={true}
+            displayType={'text'}
+            thousandSeparator={true}
+          />
+          <span className="order-info__price-desc">Bid</span>
         </div>
         <div className="order-info__ask">
-          {ask} <span className="order-info__price-desc">Ask</span>
+          <NumberFormat
+            value={ask}
+            decimalScale={4}
+            fixedDecimalScale={true}
+            displayType={'text'}
+            thousandSeparator={true}
+          />
+          <span className="order-info__price-desc">Ask</span>
         </div>
       </div>
       <div className="order-info__balances">
@@ -39,13 +61,25 @@ const OrderInfo: StatelessComponent<OrderInfoProps> = ({
           <span className="order-info__balance-desc">
             {tokens.baseToken.name}:
           </span>{' '}
-          {tokens.baseToken.balance}
+          <NumberFormat
+            value={tokens.baseToken.balance}
+            decimalScale={4}
+            fixedDecimalScale={true}
+            displayType={'text'}
+            thousandSeparator={true}
+          />
         </div>
         <div className="order-info__balance">
           <span className="order-info__balance-desc">
             {tokens.quoteToken.name}:
           </span>{' '}
-          {tokens.quoteToken.balance}
+          <NumberFormat
+            value={tokens.quoteToken.balance}
+            decimalScale={4}
+            fixedDecimalScale={true}
+            displayType={'text'}
+            thousandSeparator={true}
+          />
         </div>
       </div>
     </div>
