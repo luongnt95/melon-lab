@@ -59,10 +59,6 @@ package:
 publish:
 	@docker push melonproject/graphql-server:${VERSION}
 
-.PHONY: teardown
-teardown:
-	@docker-compose down --remove-orphans --timeout 0
-
 # -----------------------------------------------------------------------------
 # DEVELOPMENT
 # -----------------------------------------------------------------------------

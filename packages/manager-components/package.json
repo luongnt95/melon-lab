@@ -51,6 +51,7 @@
     "typescript": "^2.7.2"
   },
   "jest": {
+    "roots": ["<rootDir>/src", "<rootDir>/tests"],
     "moduleNameMapper": {
       "^.+\\.s?css$": "identity-obj-proxy",
       "^~/design/(.*)$": "@melonproject/manager-components/src/design/$1",

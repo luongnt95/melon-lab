@@ -17,7 +17,6 @@
   "dependencies": {
     "@melonproject/exchange-aggregator": "*",
     "@melonproject/melon.js": "*",
-
     "debug": "2.6.9",
     "graphql": "^0.13.2",
     "graphql-iso-date": "^3.5.0",
@@ -40,6 +39,7 @@
     "typescript": "^2.8.1"
   },
   "jest": {
+    "roots": ["<rootDir>/src", "<rootDir>/tests"],
     "testEnvironment": "node",
     "setupFiles": [
       "<rootDir>/config/test/jest.setup"

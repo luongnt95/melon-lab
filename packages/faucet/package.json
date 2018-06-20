@@ -56,6 +56,7 @@
     "typescript": "^2.8.1"
   },
   "jest": {
+    "roots": ["<rootDir>/src", "<rootDir>/tests"],
     "setupFiles": [
       "<rootDir>/config/test/jest.setup"
     ],

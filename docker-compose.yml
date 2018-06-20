@@ -59,6 +59,8 @@ services:
       # - *workspace-node-modules
       # - *workspace-node-modules-cache
       - ./packages/exchange-aggregator/src:/app/packages/exchange-aggregator/src
+      - ./packages/exchange-aggregator/tests:/app/packages/exchange-aggregator/tests
+      - ./packages/exchange-aggregator/config:/app/packages/exchange-aggregator/config
       - ./packages/exchange-aggregator/package.json:/app/packages/exchange-aggregator/package.json
       - ./packages/exchange-aggregator/tsconfig.json:/app/packages/exchange-aggregator/tsconfig.json
       - ./packages/exchange-aggregator/.babelrc:/app/packages/exchange-aggregator/.babelrc
@@ -83,6 +85,7 @@ services:
       - *package-exchange-aggregator
       - ./packages/graphql-schema/src:/app/packages/graphql-schema/src
       - ./packages/graphql-schema/tests:/app/packages/graphql-schema/tests
+      - ./packages/graphql-schema/config:/app/packages/graphql-schema/config
       - ./packages/graphql-schema/package.json:/app/packages/graphql-schema/package.json
       - ./packages/graphql-schema/tsconfig.json:/app/packages/graphql-schema/tsconfig.json
       - ./packages/graphql-schema/tslint.json:/app/packages/graphql-schema/tslint.json
@@ -109,6 +112,7 @@ services:
       - *package-exchange-aggregator
       - ./packages/graphql-server/src:/app/packages/graphql-server/src
       - ./packages/graphql-server/tests:/app/packages/graphql-server/tests
+      - ./packages/graphql-server/config:/app/packages/graphql-server/config
       - ./packages/graphql-server/package.json:/app/packages/graphql-server/package.json
       - ./packages/graphql-server/tsconfig.json:/app/packages/graphql-server/tsconfig.json
       - ./packages/graphql-server/tslint.json:/app/packages/graphql-server/tslint.json
