@@ -17,7 +17,7 @@ deploy:
   provider: script
   script: bash scripts/install.sh && bash scripts/deploy.sh
   on:
-    branch: infra-testing
+    branch: master
 
 before_cache:
   # Save tagged docker images
