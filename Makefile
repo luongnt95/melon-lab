@@ -1,3 +1,5 @@
+VERSION := $(or ${TRAVIS_BUILD_ID}, LOCAL)
+
 # -----------------------------------------------------------------------------
 # SETUP
 # -----------------------------------------------------------------------------
@@ -7,13 +9,15 @@ network:
 
 .PHONY: install
 install:
-	@docker build -f Dockerfile.installer -t melonproject/installer:latest .
+	@docker build --file Dockerfile.installer --target npm-dependencies --tag melonproject/npm-dependencies:latest .
+	@docker build --file Dockerfile.installer --target node-development --tag melonproject/node-development:latest .
+	@docker build --file Dockerfile.installer --target node-production --tag melonproject/node-production:latest .
 
 .PHONY: bootstrap
 bootstrap: network install
 
 # -----------------------------------------------------------------------------
-# BUILD
+# BUILD - COMMON
 # -----------------------------------------------------------------------------
 .PHONY: all
 all: install build lint test
@@ -29,6 +33,7 @@ lint:
 	@docker-compose run --rm graphql-schema yarn lint
 	@docker-compose run --rm manager-interface yarn lint
 	@docker-compose run --rm manager-components yarn lint
+	@docker-compose run --rm faucet yarn lint
 	# TODO: Fix tests and linting in imported projects.
 	# @docker-compose run --rm melon-js yarn lint
 
@@ -39,8 +44,20 @@ test:
 	@docker-compose run --rm graphql-schema yarn test
 	@docker-compose run --rm manager-interface yarn test
 	@docker-compose run --rm manager-components yarn test
+	@docker-compose run --rm faucet yarn test
 	# TODO: Fix tests and linting in imported projects.
 	# @docker-compose run --rm melon-js yarn test
+
+# -----------------------------------------------------------------------------
+# BUILD - CI
+# -----------------------------------------------------------------------------
+.PHONY: package
+package:
+	@docker tag melonproject/graphql-server:latest melonproject/graphql-server:${VERSION}
+
+.PHONY: publish
+publish:
+	@docker push melonproject/graphql-server:${VERSION}
 
 # -----------------------------------------------------------------------------
 # DEVELOPMENT
@@ -55,20 +72,3 @@ stop:
 
 .PHONY: restart
 restart: stop start
-
-# -----------------------------------------------------------------------------
-# GRAPHQL SERVER DEPLOYMENT
-# -----------------------------------------------------------------------------
-.PHONY: gql-build
-gql-build:
-	@docker-compose build graphql-server-prod
-
-.PHONY: gql-publish
-gql-publish:
-	@docker push melonproject/graphql-server:latest
-
-.PHONY: gql-deploy
-gql-deploy:
-	@ssh ubuntu@51.144.232.216 "docker ps -q --filter ancestor=melonproject/graphql-server:latest | docker stop 2>/dev/null || true"
-	@ssh ubuntu@51.144.232.216 "docker pull melonproject/graphql-server:latest"
-	@ssh ubuntu@51.144.232.216 "docker run -d -v /etc/letsencrypt:/etc/letsencrypt -p 443:3030 melonproject/graphql-server:latest"

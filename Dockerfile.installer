@@ -1,16 +1,16 @@
 # -----------------------------------------------------------------------------
-# base
+# apk dependencies
 # -----------------------------------------------------------------------------
-FROM node:9.7.0-alpine as base
+FROM node:9.7.0-alpine as apk-dependencies
 WORKDIR /app
 
 # Install system dependencies.
 RUN apk add --update --no-cache --virtual .apk git python make g++
 
 # -----------------------------------------------------------------------------
-# installer
+# npm dependencies
 # -----------------------------------------------------------------------------
-FROM base as installer
+FROM apk-dependencies as npm-dependencies
 
 # Copy whole workspace into the container. This seems crazy but
 # is actually more efficient than copying each package.json
@@ -23,3 +23,15 @@ RUN yarn install --ignore-engines --frozen-lockfile --pure-lockfile --production
   yarn install --ignore-engines --frozen-lockfile --pure-lockfile && \
   yarn cache clean && \
   apk del .apk
+
+# -----------------------------------------------------------------------------
+# base development image
+# -----------------------------------------------------------------------------
+FROM node:9.7.0-alpine as node-development
+COPY --from=npm-dependencies /app/node_modules /app/node_modules
+
+# -----------------------------------------------------------------------------
+# base production image
+# -----------------------------------------------------------------------------
+FROM node:9.7.0-alpine as node-production
+COPY --from=npm-dependencies /app/node_modules_production /app/node_modules

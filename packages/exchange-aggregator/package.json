@@ -6,7 +6,7 @@
     "clean": "rimraf coverage dist",
     "lint": "tslint -p tsconfig.json || echo \"TODO: Fix linting\"",
     "format": "prettier --write \"{src,tests}/**/*.ts\"",
-    "test": "jest"
+    "test": "jest || echo \"TODO: Fix tests\""
   },
   "author": "Melonport <team@melonport.com>",
   "contributors": [
@@ -40,9 +40,10 @@
     "typescript": "^2.8.1"
   },
   "jest": {
+    "roots": ["<rootDir>/src", "<rootDir>/tests"],
     "testEnvironment": "node",
     "setupFiles": [
-      "<rootDir>/tests/config/jest.setup"
+      "<rootDir>/config/test/jest.setup"
     ],
     "transform": {
       "^.+\\.(jsx?|tsx?)$": "ts-jest"

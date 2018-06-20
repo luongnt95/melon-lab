@@ -9,9 +9,3 @@ Enzyme.configure({ adapter: new Adapter() });
 global.shallow = Enzyme.shallow;
 global.render = Enzyme.render;
 global.mount = Enzyme.mount;
-
-// Make custom globals available.
-// global.__INTROSPECTION__ = require(path.resolve(
-//   process.cwd(),
-//   'introspection.json'
-// ));

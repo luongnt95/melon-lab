@@ -1,5 +1,5 @@
 import { SubscriptionServer } from 'subscriptions-transport-electron';
-import { makeContext, schema } from '@melonproject/graphql-schema';
+import schema, { makeContext } from '@melonproject/graphql-schema';
 import { PubSub } from 'graphql-subscriptions';
 import { ipcMain } from 'electron';
 

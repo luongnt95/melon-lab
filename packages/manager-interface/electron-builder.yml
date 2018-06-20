@@ -1,7 +1,8 @@
 
 copyright: Melonport
 appId: com.melonproject.app
-productName: Melon interface
+productName: Melonproject
+artifactName: melonproject-manager-interface-${version}-${os}.${ext}
 asar: true
 extends: null
 

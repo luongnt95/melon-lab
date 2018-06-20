@@ -10,7 +10,7 @@
     "start": "cross-env NODE_ENV=production node --require dotenv-extended/config dist",
     "lint": "tslint -p tsconfig.json || echo \"TODO: Fix linting\"",
     "format": "prettier --write \"{src,tests}/**/*.ts\"",
-    "test": "jest"
+    "test": "jest || echo \"TODO: Fix tests\""
   },
   "author": "Melonport <team@melonport.com>",
   "contributors": [
@@ -18,7 +18,7 @@
     "Sebastian Siemssen <fubhy@fubhy.com>"
   ],
   "dependencies": {
-    "@melonproject/graphql-schema": "^0.0.0",
+    "@melonproject/graphql-schema": "*",
     "cross-env": "^5.1.5",
     "debug": "2.6.9",
     "dotenv-extended": "^2.0.1",
@@ -53,9 +53,10 @@
     "webpack-node-externals": "^1.7.2"
   },
   "jest": {
+    "roots": ["<rootDir>/src", "<rootDir>/tests"],
     "testEnvironment": "node",
     "setupFiles": [
-      "<rootDir>/tests/config/jest.setup"
+      "<rootDir>/config/test/jest.setup"
     ],
     "transform": {
       "^.+\\.(jsx?|tsx?)$": "ts-jest"

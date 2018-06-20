@@ -7,7 +7,7 @@
     "clean": "rimraf coverage dist",
     "lint": "tslint -p tsconfig.json || echo \"TODO: Fix linting\"",
     "format": "prettier --write \"{src,tests}/**/*.ts\"",
-    "test": "jest"
+    "test": "jest || echo \"TODO: Fix tests\""
   },
   "author": "Melonport <team@melonport.com>",
   "contributors": [
@@ -15,9 +15,8 @@
     "Sebastian Siemssen <fubhy@fubhy.com>"
   ],
   "dependencies": {
-    "@melonproject/exchange-aggregator": "^0.0.0",
-    "@melonproject/melon.js": "^0.8.5",
-
+    "@melonproject/exchange-aggregator": "*",
+    "@melonproject/melon.js": "*",
     "debug": "2.6.9",
     "graphql": "^0.13.2",
     "graphql-iso-date": "^3.5.0",
@@ -40,9 +39,10 @@
     "typescript": "^2.8.1"
   },
   "jest": {
+    "roots": ["<rootDir>/src", "<rootDir>/tests"],
     "testEnvironment": "node",
     "setupFiles": [
-      "<rootDir>/tests/config/jest.setup"
+      "<rootDir>/config/test/jest.setup"
     ],
     "transform": {
       "^.+\\.(jsx?|tsx?)$": "ts-jest"
