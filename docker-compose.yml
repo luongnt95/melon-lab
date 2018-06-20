@@ -20,7 +20,6 @@ volumes:
 
 services:
   melon-js:
-    image: "melonproject/melon-js-development:latest"
     build:
       context: .
       dockerfile: ./packages/melon.js/Dockerfile
@@ -47,7 +46,6 @@ services:
       # - node_modules_cache:/app/packages/melon.js/node_modules/.cache
 
   exchange-aggregator:
-    image: "melonproject/exchange-aggregator-development:latest"
     build:
       context: .
       dockerfile: ./packages/exchange-aggregator/Dockerfile
@@ -70,7 +68,6 @@ services:
       # - node_modules_cache:/app/packages/exchange-aggregator/node_modules/.cache
 
   graphql-schema:
-    image: "melonproject/graphql-schema-development:latest"
     build:
       context: .
       dockerfile: ./packages/graphql-schema/Dockerfile
@@ -96,7 +93,6 @@ services:
       # - node_modules_cache:/app/packages/graphql-schema/node_modules/.cache
 
   graphql-server:
-    image: "melonproject/graphql-server-development:latest"
     build:
       context: .
       dockerfile: ./packages/graphql-server/Dockerfile
@@ -130,7 +126,6 @@ services:
       - melonproject
 
   manager-interface:
-    image: "melonproject/manager-interface-development:latest"
     build:
       context: .
       dockerfile: ./packages/manager-interface/Dockerfile
@@ -166,7 +161,6 @@ services:
       - melonproject
 
   faucet:
-    image: "melonproject/faucet-development:latest"
     build:
       context: .
       dockerfile: ./packages/faucet/Dockerfile
@@ -199,7 +193,6 @@ services:
       - melonproject
 
   manager-components:
-    image: "melonproject/manager-components-development:latest"
     build:
       context: .
       dockerfile: ./packages/manager-components/Dockerfile
