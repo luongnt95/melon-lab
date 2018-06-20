@@ -1,13 +1,12 @@
-FROM melonproject/installer:latest AS installer
+FROM melonproject/npm-dependencies:latest as dependencies
 
 # -----------------------------------------------------------------------------
 # development
 # -----------------------------------------------------------------------------
-FROM node:9.7.0-alpine
+FROM melonproject/node-development:latest as development
 WORKDIR /app/packages/melon.js
 
-COPY --from=installer /app/node_modules /app/node_modules
-COPY --from=installer /app/packages/melon.js/node_modules /app/packages/melon.js/node_modules
+COPY --from=dependencies /app/packages/melon.js/node_modules /app/packages/melon.js/node_modules
 
 # Put the container into a 1-year long slumber.
 CMD exec /bin/sh -c "trap : TERM INT; sleep 365d & wait"

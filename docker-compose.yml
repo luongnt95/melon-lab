@@ -20,6 +20,7 @@ volumes:
 
 services:
   melon-js:
+    image: "melonproject/melon-js-development:latest"
     build:
       context: .
       dockerfile: ./packages/melon.js/Dockerfile
@@ -46,6 +47,7 @@ services:
       # - node_modules_cache:/app/packages/melon.js/node_modules/.cache
 
   exchange-aggregator:
+    image: "melonproject/exchange-aggregator-development:latest"
     build:
       context: .
       dockerfile: ./packages/exchange-aggregator/Dockerfile
@@ -66,6 +68,7 @@ services:
       # - node_modules_cache:/app/packages/exchange-aggregator/node_modules/.cache
 
   graphql-schema:
+    image: "melonproject/graphql-schema-development:latest"
     build:
       context: .
       dockerfile: ./packages/graphql-schema/Dockerfile
@@ -90,6 +93,7 @@ services:
       # - node_modules_cache:/app/packages/graphql-schema/node_modules/.cache
 
   graphql-server:
+    image: "melonproject/graphql-server-development:latest"
     build:
       context: .
       dockerfile: ./packages/graphql-server/Dockerfile
@@ -122,6 +126,7 @@ services:
       - melonproject
 
   manager-interface:
+    image: "melonproject/manager-interface-development:latest"
     build:
       context: .
       dockerfile: ./packages/manager-interface/Dockerfile
@@ -142,6 +147,7 @@ services:
       - ./packages/manager-interface/package.json:/app/packages/manager-interface/package.json
       - ./packages/manager-interface/tsconfig.json:/app/packages/manager-interface/tsconfig.json
       - ./packages/manager-interface/tslint.json:/app/packages/manager-interface/tslint.json
+      - ./packages/manager-interface/introspect.js:/app/packages/manager-interface/introspect.js
       - ./packages/manager-interface/next.config.js:/app/packages/manager-interface/next.config.js
       - ./packages/manager-interface/.babelrc:/app/packages/manager-interface/.babelrc
       - ./packages/manager-interface/.env.defaults:/app/packages/manager-interface/.env.defaults
@@ -156,6 +162,7 @@ services:
       - melonproject
 
   faucet:
+    image: "melonproject/faucet-development:latest"
     build:
       context: .
       dockerfile: ./packages/faucet/Dockerfile
@@ -188,6 +195,7 @@ services:
       - melonproject
 
   manager-components:
+    image: "melonproject/manager-components-development:latest"
     build:
       context: .
       dockerfile: ./packages/manager-components/Dockerfile
@@ -203,6 +211,7 @@ services:
       - ./packages/manager-components/src:/app/packages/manager-components/src
       - ./packages/manager-components/config:/app/packages/manager-components/config
       - ./packages/manager-components/tests:/app/packages/manager-components/tests
+      - ./packages/manager-components/postcss.config.js:/app/packages/manager-components/postcss.config.js
       - ./packages/manager-components/package.json:/app/packages/manager-components/package.json
       - ./packages/manager-components/tsconfig.json:/app/packages/manager-components/tsconfig.json
       - ./packages/manager-components/tslint.json:/app/packages/manager-components/tslint.json
@@ -224,8 +233,13 @@ services:
     build:
       context: .
       dockerfile: ./packages/graphql-server/Dockerfile
-    depends_on:
-      - graphql-server
+
+  faucet-prod:
+    command: "/bin/sh -c 'trap : TERM INT; sleep 365d & wait'"
+    image: "melonproject/faucet:latest"
+    build:
+      context: .
+      dockerfile: ./packages/faucet/Dockerfile
 
 networks:
   melonproject:

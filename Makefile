@@ -9,7 +9,9 @@ network:
 
 .PHONY: install
 install:
-	@docker build -f Dockerfile.installer -t melonproject/installer:latest .
+	@docker build --file Dockerfile.installer --target npm-dependencies --tag melonproject/npm-dependencies:latest .
+	@docker build --file Dockerfile.installer --target node-development --tag melonproject/node-development:latest .
+	@docker build --file Dockerfile.installer --target node-production --tag melonproject/node-production:latest .
 
 .PHONY: bootstrap
 bootstrap: network install

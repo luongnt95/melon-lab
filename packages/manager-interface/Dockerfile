@@ -1,13 +1,12 @@
-FROM melonproject/installer:latest AS installer
+FROM melonproject/npm-dependencies:latest as dependencies
 
 # -----------------------------------------------------------------------------
 # development
 # -----------------------------------------------------------------------------
-FROM node:9.7.0-alpine as development
+FROM melonproject/node-development:latest as development
 WORKDIR /app/packages/manager-interface
 
-COPY --from=installer /app/node_modules /app/node_modules
-COPY --from=installer /app/packages/manager-interface/node_modules /app/packages/manager-interface/node_modules
+COPY --from=dependencies /app/packages/manager-interface/node_modules /app/packages/manager-interface/node_modules
 
 CMD ["yarn", "dev"]
 
