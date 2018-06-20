@@ -2,9 +2,11 @@ import { withFormik } from 'formik';
 import { compose, withHandlers } from 'recompose';
 import * as Yup from 'yup';
 import {
+  divide,
   greaterThan,
   max,
   min,
+  multiply,
 } from '~/utils/functionalBigNumber';
 
 const initialState = props => {
@@ -45,11 +47,12 @@ const claculateInputs = (props, field, value) => {
 
   if (field === 'total') {
     if (greaterThan(value, maxTotal)) {
-      const quantity = (maxTotal / values.price);
+      const quantity = divide(maxTotal, values.price);
+      console.log(quantity);
       props.setFieldValue('total', maxTotal);
       props.setFieldValue('quantity', quantity);
     } else if (values.price) {
-      const quantity = (value / values.price);
+      const quantity = divide(value, values.price);
       if (values.quantity !== value) {
         props.setFieldValue('quantity', quantity);
       }
@@ -58,11 +61,11 @@ const claculateInputs = (props, field, value) => {
 
   if (field === 'quantity') {
     if (greaterThan(value, maxQuantity)) {
-      const total = (maxQuantity * values.price);
+      const total = multiply(maxQuantity, values.price);
       props.setFieldValue('quantity', maxQuantity);
       props.setFieldValue('total', total);
     } else if (values.price) {
-      const total = (value * values.price);
+      const total = multiply(value, values.price);
       if (values.total !== value) {
         props.setFieldValue('total', total);
       }
@@ -70,7 +73,7 @@ const claculateInputs = (props, field, value) => {
   }
 
   if (field === 'price' && values.quantity) {
-    props.setFieldValue('total', (values.quantity * value));
+    props.setFieldValue('total', multiply(values.quantity, value));
   }
 };
 
@@ -89,8 +92,8 @@ const withFormValidation = withFormik({
 const withFormHandler = compose(
   withHandlers({
     onChange: props => (values, event) => {
-      props.setFieldValue(event.target.name, event.target.value);
-      claculateInputs(props, event.target.name, values.floatValue);
+      props.setFieldValue(event.target.name, values.value);
+      claculateInputs(props, event.target.name, values.value);
     },
   }),
 );

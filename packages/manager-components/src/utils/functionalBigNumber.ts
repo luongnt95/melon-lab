@@ -7,19 +7,19 @@ export const multiply = (base, ...args) =>
   args.reduce(
     (acc, current) => acc.times(toBigNumber(current)),
     toBigNumber(base),
-  );
+  ).toString(10);
 
 export const add = (base, ...args) =>
   args.reduce(
     (acc, current) => acc.add(toBigNumber(current)),
     toBigNumber(base),
-  );
+  ).toString(10);
 
 export const divide = (base, ...args) =>
   args.reduce(
     (acc, current) => acc.div(toBigNumber(current)),
     toBigNumber(base),
-  );
+  ).toString(10);
 
 export const isZero = number => toBigNumber(number).eq(0);
 

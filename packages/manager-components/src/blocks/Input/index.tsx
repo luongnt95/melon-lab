@@ -64,6 +64,7 @@ const Input: StatelessComponent<InputProps> = ({
           onBlur={onBlur}
           decimalScale={decimals}
           fixedDecimalScale={true}
+          isNumericString={true}
         />
       ) : (
         <input
