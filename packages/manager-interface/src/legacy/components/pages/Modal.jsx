@@ -14,6 +14,8 @@ import renderInput from '../utils/renderInput';
 import { add } from '../../utils/functionalBigNumber';
 import displayNumber from '../../utils/displayNumber';
 
+console.log(process.env.TRACK);
+
 export const types = {
   ERROR: 'ERROR',
   LOADING: 'LOADING',
@@ -121,7 +123,15 @@ const Modal = ({
 
             <p>{body}</p>
 
-            {method ? <h4>{method}</h4> : null}
+            {method ? (
+              <div>
+                <p>
+                  The following method on the Melon Smart Contracts will be
+                  executed:
+                </p>
+                <h4>{method}</h4>
+              </div>
+            ) : null}
 
             {fees ? (
               <Table compact="very">

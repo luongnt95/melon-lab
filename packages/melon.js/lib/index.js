@@ -166,6 +166,7 @@ import getRiskManagementContract from './riskManagement/contracts/getRiskManagem
 // ./lib/utils/constants
 import networks from './utils/constants/networks';
 import providers from './utils/constants/providers';
+import tracks from './utils/constants/tracks';
 
 // ./lib/utils/environment
 import Environment from './utils/environment/Environment';
@@ -208,7 +209,6 @@ import decryptWallet from './utils/wallet/decryptWallet';
 import encryptWallet from './utils/wallet/encryptWallet';
 import getWallet from './utils/wallet/getWallet';
 import importWalletFromMnemonic from './utils/wallet/importWalletFromMnemonic';
-
 
 // ./lib/version/calls
 import getConfig from './version/calls/getConfig';
@@ -338,6 +338,7 @@ export {
   getRiskManagementContract,
   networks,
   providers,
+  tracks,
   Environment,
   getAccountAddress,
   getEnvironment,

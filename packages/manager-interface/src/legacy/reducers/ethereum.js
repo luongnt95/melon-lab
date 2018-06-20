@@ -1,12 +1,13 @@
-import { providers } from "@melonproject/melon.js";
-import { types } from "../actions/ethereum";
-import mergeReducer from "../utils/mergeReducer";
+import { providers } from '@melonproject/melon.js';
+import { types } from '../actions/ethereum';
+import mergeReducer from '../utils/mergeReducer';
 
 const initialState = {
   // observed state
   account: null,
-  ethBalance: "0",
-  mlnBalance: "0",
+  ethBalance: '0',
+  mlnBalance: '0',
+  wethBalance: '0',
   blockNumber: 0,
   lastUpdate: null,
   network: 0,

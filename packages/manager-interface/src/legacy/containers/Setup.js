@@ -10,7 +10,7 @@ const mapStateToProps = state => ({
 });
 
 const onSubmit = (values, dispatch) => {
-  dispatch(actions.setupRequested(values.name, values.OasisDex, values.ZeroEx));
+  dispatch(actions.setupRequested(values.name, true, true));
 };
 
 const SetupRedux = connect(mapStateToProps)(Setup);

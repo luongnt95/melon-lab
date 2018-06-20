@@ -45,7 +45,7 @@ export const ConnectionInfoComponent = ({
   >
     <Link to={accountAction}>
       {shortenAddress(account || '')} | Ξ {displayNumber(ethBalance)}
-    </Link>
+    </Link>{' '}
     |{' '}
     <span style={{ color: networkColorTypeMap[networkName] }}>
       {networkName}{' '}
