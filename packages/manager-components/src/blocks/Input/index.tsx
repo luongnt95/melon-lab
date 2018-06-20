@@ -18,7 +18,7 @@ export interface InputProps {
   decimals?: number;
   value?: string;
   name: string;
-  error: string;
+  error?: string;
 }
 
 const Input: StatelessComponent<InputProps> = ({
