@@ -93,6 +93,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
           onChange={onChange}
           onBlur={handleBlur}
           required={true}
+          formatNumber={true}
           error={touched.price && errors.price}
         />
       </div>
@@ -108,6 +109,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
           onChange={onChange}
           onBlur={handleBlur}
           required={true}
+          formatNumber={true}
           error={touched.quantity && errors.quantity}
         />
       </div>
@@ -123,6 +125,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
           onChange={onChange}
           onBlur={handleBlur}
           required={true}
+          formatNumber={true}
           error={touched.total && errors.total}
         />
       </div>

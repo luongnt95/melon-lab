@@ -129,7 +129,7 @@ const zeroCursorPosition = ({ value, cursorPosition }, decimals) => {
   };
 };
 
-const cleanNumber = (event, decimals) => {
+const cleanNumber = (event, decimals, onChange) => {
   const init = {
     value: event.target.value,
     cursorPosition: event.target.selectionStart,
@@ -145,13 +145,15 @@ const cleanNumber = (event, decimals) => {
 
   const piped = pipe(...cleanPipe)(init);
 
+  event.target.value = piped.value;
+
+  onChange(event);
+
   event.persist();
 
   setTimeout(() => {
     event.target.setSelectionRange(piped.cursorPosition, piped.cursorPosition);
   }, 0);
-
-  return piped.value;
 };
 
 export { cleanNumber };

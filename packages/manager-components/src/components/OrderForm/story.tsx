@@ -14,11 +14,11 @@ const initialProps = {
     tokens: {
       baseToken: {
         name: 'ETH-T',
-        balance: 30,
+        balance: 30.0,
       },
       quoteToken: {
         name: 'MLN-T',
-        balance: 20,
+        balance: 20.0,
       },
     },
   },
@@ -28,10 +28,9 @@ const initialProps = {
   ],
   selectedExchange: 'RadarRelay',
   selectedOrderType: 'Buy',
-  decimals: 6,
+  decimals: 4,
 };
 
-storiesOf('Components|Order Form', module)
-  .add('Default', () => {
-    return <OrderForm {...initialProps}>Order Form</OrderForm>;
-  });
+storiesOf('Components|Order Form', module).add('Default', () => {
+  return <OrderForm {...initialProps}>Order Form</OrderForm>;
+});

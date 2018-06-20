@@ -6,19 +6,19 @@ const initialProps = {
   form: {
     baseTokenSymbol: 'ETH-T-M',
     quoteTokenSymbol: 'MLN-T-M',
-    selectedOrder: 20,
+    selectedOrder: 20.0000,
     info: {
-      lastPrice: 0.5,
+      lastPrice: 0.5000,
       bid: 0,
       ask: 0,
       tokens: {
         baseToken: {
           name: 'ETH-T',
-          balance: 30,
+          balance: 30.0000,
         },
         quoteToken: {
           name: 'MLN-T',
-          balance: 20,
+          balance: 20.0000,
         },
       },
     },
@@ -28,7 +28,7 @@ const initialProps = {
     ],
     selectedExchange: 'RadarRelay',
     selectedOrderType: 'Buy',
-    decimals: 6,
+    decimals: 4,
   },
 };
 

@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import React, { ChangeEventHandler, StatelessComponent } from 'react';
+import * as NumberFormat from 'react-number-format';
 
 import styles from './styles.css';
 
@@ -13,7 +14,7 @@ export interface InputProps {
   insideLabel?: boolean;
   pattern?: string;
   step?: string;
-  cleanNumber?: boolean;
+  formatNumber?: boolean;
   decimals?: number;
   value?: string;
   name: string;
@@ -32,7 +33,7 @@ const Input: StatelessComponent<InputProps> = ({
   pattern,
   decimals = 4,
   value,
-  cleanNumber,
+  formatNumber,
   name,
   error,
 }) => {
@@ -50,18 +51,34 @@ const Input: StatelessComponent<InputProps> = ({
     <div className={classname}>
       <style jsx>{styles}</style>
       <span className="input__label">{label}</span>
-      <input
-        name={name}
-        pattern={pattern}
-        step={step}
-        className="input__field"
-        type={type}
-        disabled={disabled}
-        placeholder={placeholderValue}
-        value={value}
-        onChange={onChange}
-        onBlur={onBlur}
-      />
+      {formatNumber ? (
+        <NumberFormat
+          name={name}
+          pattern={pattern}
+          step={step}
+          className="input__field"
+          disabled={disabled}
+          placeholder={placeholderValue}
+          value={value}
+          onValueChange={onChange}
+          onBlur={onBlur}
+          decimalScale={decimals}
+          fixedDecimalScale={true}
+        />
+      ) : (
+        <input
+          name={name}
+          pattern={pattern}
+          step={step}
+          className="input__field"
+          type={type}
+          disabled={disabled}
+          placeholder={placeholderValue}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+        />
+      )}
       <div className="input__error">{error}</div>
     </div>
   );
