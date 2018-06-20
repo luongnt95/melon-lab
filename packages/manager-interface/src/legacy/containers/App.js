@@ -1,6 +1,6 @@
 import BigNumber from 'bignumber.js';
 import { connect } from 'react-redux';
-import { providers, getNetworkName } from '@melonproject/melon.js';
+import { providers, getNetworkName, networks } from '@melonproject/melon.js';
 import App from '../components/pages/App';
 import { statusTypes } from '../components/organisms/ConnectionInfo';
 import { actions as routeActions } from '../actions/routes';
@@ -8,6 +8,8 @@ import { actions as routeActions } from '../actions/routes';
 const getStatus = ({
   syncing,
   blockNumber,
+  canonicalPriceFeedAddress,
+  network,
   isConnected,
   isUpToDate,
   isReadyToVisit,
@@ -26,7 +28,13 @@ const getStatus = ({
   if (!isReadyToVisit)
     return { message: 'Not ready', type: statusTypes.WARNING };
   if (!isDataValid)
-    return { message: 'Price feed down', type: statusTypes.ERROR };
+    return {
+      message: 'Price feed down',
+      type: statusTypes.ERROR,
+      link: `https://${
+        network === networks.KOVAN ? 'kovan.' : ''
+      }etherscan.io/address/${canonicalPriceFeedAddress}`,
+    };
   if (!isReadyToInteract)
     return { message: 'Insufficent ETH', type: statusTypes.WARNING };
   if (!isReadyToInvest)
@@ -38,9 +46,10 @@ const getStatus = ({
 };
 
 const mapStateToProps = state => {
-  const { message, type } = getStatus({
+  const { message, type, link } = getStatus({
     ...state.app,
     ...state.ethereum,
+    ...state.fund.config,
   });
   return {
     route: state.location.type,
@@ -51,6 +60,7 @@ const mapStateToProps = state => {
     walletAddress: state.ethereum.account,
     statusMessage: message,
     statusType: type,
+    statusLink: link,
     mlnBalance: new BigNumber(state.ethereum.mlnBalance || 0).toFixed(4),
     ethBalance: new BigNumber(state.ethereum.ethBalance || 0).toFixed(4),
     rootAction: routeActions.root(),

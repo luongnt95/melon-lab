@@ -56,7 +56,7 @@ const sendTransaction = async (
 
   // Exit function prematurely if a confirmer is registered and it returns false
   if (environment.confirmer) {
-    const confirmed = await environment.confirmer([
+    const confirmed = await environment.confirmer(method, [
       {
         description: 'Gas cost',
         detail: `${options[gasKeyName]} Gwei × 2 (Gas Price)`,
@@ -64,7 +64,7 @@ const sendTransaction = async (
       },
     ]);
 
-    if (!confirmed) return { error: 'Transaction cancelled' };
+    if (!confirmed) throw new Error('Transaction cancelled');
   }
 
   // Construct raw transaction object
