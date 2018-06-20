@@ -7,7 +7,7 @@ export interface DropdownProps {
     value: string;
     name: string;
   }>;
-  label?: string;
+  label: string;
   value?: string;
   name: string;
   onChange(value, event);
@@ -32,8 +32,7 @@ const Dropdown: StatelessComponent<DropdownProps> = ({
     options && options.map((item, index) => renderOption(item, index));
 
   const handleChange = e => {
-    const value = e.target.value;
-    onChange({ value }, e);
+    onChange({ ...e.target.value }, e);
   };
 
   return (
