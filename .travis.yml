@@ -3,6 +3,10 @@ language: c
 services:
   - docker
 
+cache:
+  directories:
+    - $HOME/docker
+
 script:
   - make bootstrap
   - make lint
