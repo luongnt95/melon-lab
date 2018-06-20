@@ -56,7 +56,7 @@ const registerForCompetition = async (
 
     ensure(
         CHFValue.lte(whitelistantToMaxBuyin),
-        'The buy in amount exceed your max buy in amount (determined by Bitcoin Suisse).',
+        'The buy in amount exceeds your individual max cap (determined by Bitcoin Suisse).',
     );
 
     const versionContract = await getVersionContract(environment);
