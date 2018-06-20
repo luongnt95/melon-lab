@@ -47,9 +47,7 @@ const claculateInputs = (props, field, value) => {
 
   if (field === 'total') {
     if (greaterThan(value, maxTotal)) {
-      const quantity = divide(maxTotal, values.price);
       props.setFieldValue('total', maxTotal);
-      props.setFieldValue('quantity', quantity);
     } else if (values.price) {
       const quantity = divide(value, values.price);
       if (values.quantity !== value) {
@@ -60,9 +58,7 @@ const claculateInputs = (props, field, value) => {
 
   if (field === 'quantity') {
     if (greaterThan(value, maxQuantity)) {
-      const total = multiply(maxQuantity, values.price);
       props.setFieldValue('quantity', maxQuantity);
-      props.setFieldValue('total', total);
     } else if (values.price) {
       const total = multiply(value, values.price);
       if (values.total !== value) {
