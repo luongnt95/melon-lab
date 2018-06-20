@@ -50,9 +50,9 @@ const Setup = ({ loading, handleSubmit, networkId, config }) => (
             <List.Content>
               <strong>Exchange:</strong>
               <br />
-              <Checkbox value={true} disabled checked /> OasisDex
+              <Checkbox disabled checked /> OasisDex
               <br />
-              <Checkbox value={true} disabled checked /> 0x relayers
+              <Checkbox disabled checked /> 0x relayers
               <br />
               <br />
             </List.Content>
