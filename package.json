@@ -22,5 +22,8 @@
   "contributors": [
     "Simon Emanuel Schmid <simon@schmid.io>",
     "Sebastian Siemssen <fubhy@fubhy.com>"
-  ]
+  ],
+  "resolutions": {
+    "bignumber.js": "4.1.0"
+  }
 }

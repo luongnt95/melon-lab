@@ -1,5 +1,5 @@
 {
-  "name": "melonproject-manager-interface",
+  "name": "@melonproject/manager-interface",
   "description": "Melon interface",
   "homepage": "http://melonport.com",
   "version": "0.0.0",
@@ -33,8 +33,8 @@
     "Jenna Zenk <jenna@melonport.com>"
   ],
   "dependencies": {
-    "@melonproject/graphql-schema": "^0.0.0",
-    "@melonproject/melon.js": "^0.8.5",
+    "@melonproject/graphql-schema": "*",
+    "@melonproject/melon.js": "*",
     "apollo-cache-inmemory": "^1.1.12",
     "apollo-client": "^2.3.1",
     "apollo-link": "^1.2.1",
