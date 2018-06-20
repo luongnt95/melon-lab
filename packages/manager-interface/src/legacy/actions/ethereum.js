@@ -1,10 +1,10 @@
 export const types = {
-  ACCOUNT_CHANGED: "ACCOUNT_CHANGED:ethereum:melon.js",
-  BLOCK_OVERDUE: "BLOCK_OVERDUE:ethereum:melon.js",
-  BLOCK_ERROR: "BLOCK_ERROR:ethereum:melon.js",
-  HAS_CONNECTED: "HAS_CONNECTED:ethereum:melon.js",
-  NEW_BLOCK: "NEW_BLOCK:ethereum:melon.js",
-  SET_PROVIDER: "SET_PROVIDER:ethereum:melon.js",
+  ACCOUNT_CHANGED: 'ACCOUNT_CHANGED:ethereum:melon.js',
+  BLOCK_OVERDUE: 'BLOCK_OVERDUE:ethereum:melon.js',
+  BLOCK_ERROR: 'BLOCK_ERROR:ethereum:melon.js',
+  HAS_CONNECTED: 'HAS_CONNECTED:ethereum:melon.js',
+  NEW_BLOCK: 'NEW_BLOCK:ethereum:melon.js',
+  SET_PROVIDER: 'SET_PROVIDER:ethereum:melon.js',
 };
 
 // Explicitely declare all parameters (no ...args)
@@ -35,6 +35,7 @@ export const actions = {
     syncing,
     ethBalance,
     mlnBalance,
+    wethBalance,
     isDataValid,
   }) => ({
     type: types.NEW_BLOCK,
@@ -42,6 +43,7 @@ export const actions = {
     syncing,
     ethBalance,
     mlnBalance,
+    wethBalance,
     lastUpdate: new Date(),
     isUpToDate: true,
     isDataValid,

@@ -1,20 +1,22 @@
 import React from 'react';
 import { Card, Button } from 'semantic-ui-react';
-import { networks } from '@melonproject/melon.js';
+import { tracks } from '@melonproject/melon.js';
+
+const showFaucet = process.env.TRACK === tracks.KOVAN_DEMO;
 
 const InsufficientFunds = ({
-  mlnBalance,
   ethBalance,
+  wethBalance,
   walletAddress,
   network,
 }) => (
   <div>
     <Card centered>
       <Card.Content>
-        <Card.Header>Welcome to the future of investment funds</Card.Header>
+        <Card.Header>Insufficient ETH Balance</Card.Header>
         <br />
         <br />
-        {network === networks.KOVAN ? (
+        {showFaucet ? (
           <div>
             <p>
               {' '}
@@ -53,15 +55,14 @@ const InsufficientFunds = ({
           </div>
         ) : (
           <div>
-            {' '}
+            <p>Your account balance is empty.</p>
             <p>
-              You don&#39;t have enough melon tokens (MLN) or ether tokens
-              (ETH). Current balances: {mlnBalance} MLN, {ethBalance} ETH
-            </p>{' '}
+              In order to proceed, please deposit the amount of ETH that you
+              want to contribute plus at least 0.1 ETH to cover for gas costs to
+              your wallet address:
+            </p>
             <p>
-              Fund your wallet with the amount of Melons you wish to invest in
-              your fund and some ether to pay for transaction gas on the
-              Ethereum network.
+              <strong>{walletAddress}</strong>
             </p>
           </div>
         )}

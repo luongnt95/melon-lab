@@ -1,9 +1,13 @@
 import React from 'react';
 import { Field } from 'redux-form';
-import { List, Button, Card } from 'semantic-ui-react';
+import { List, Button, Card, Checkbox } from 'semantic-ui-react';
+import { tracks } from '@melonproject/melon.js';
 
 import renderInput from '../utils/renderInput';
-import renderCheckbox from '../utils/renderCheckbox';
+
+const isCompetition =
+  process.env.TRACK === tracks.KOVAN_COMPETITION ||
+  process.env.TRACK === tracks.LIVE;
 
 // Explicitely decompose props here.
 const Setup = ({ loading, handleSubmit, networkId, config }) => (
@@ -42,19 +46,17 @@ const Setup = ({ loading, handleSubmit, networkId, config }) => (
           <List.Item>
             <List.Content>Management fee: 0%</List.Content>
           </List.Item>
-
           <List.Item>
             <List.Content>
               <strong>Exchange:</strong>
               <br />
-              <Field name="OasisDex" component={renderCheckbox} /> OasisDex
+              <Checkbox value={true} disabled checked /> OasisDex
               <br />
-              <Field name="ZeroEx" component={renderCheckbox} /> 0x relayers
+              <Checkbox value={true} disabled checked /> 0x relayers
               <br />
               <br />
             </List.Content>
           </List.Item>
-
           <List.Item
             as="a"
             href={`https://${
@@ -66,33 +68,39 @@ const Setup = ({ loading, handleSubmit, networkId, config }) => (
               Pricefeed: <strong>Canonical PriceFeed</strong>
             </List.Content>
           </List.Item>
-
           <List.Item>
             <List.Content>
               Asset Registrar: <strong>Melon Paros Asset Universe</strong>
             </List.Content>
           </List.Item>
+          {isCompetition ? (
+            <List.Item>
+              <List.Content
+                href={`https://${
+                  networkId === '42' ? 'kovan.' : ''
+                }etherscan.io/address/${config.competitionComplianceAddress}`}
+                target="_blank"
+              >
+                Compliance (invest/redeem):{' '}
+                <strong>Only Paros contribution contract can invest</strong>
+              </List.Content>
+            </List.Item>
+          ) : (
+            <List.Item>
+              <List.Content
+                href={`https://${
+                  networkId === '42' ? 'kovan.' : ''
+                }etherscan.io/address/${config.noCompetitionComplianceAddress}`}
+                target="_blank"
+              >
+                Compliance (invest/redeem):{' '}
+                <strong>Only manager can invest (in WETH)</strong>
+              </List.Content>
+            </List.Item>
+          )}
           <List.Item>
-            <List.Content
-              href={`https://${
-                networkId === '42' ? 'kovan.' : ''
-              }etherscan.io/address/${config.complianceAddress}`}
-              target="_blank"
-            >
-              Compliance (invest/redeem):{' '}
-              <strong>Only manager can invest (in ETH or MLN)</strong>
-            </List.Content>
-          </List.Item>
-          <List.Item>
-            <List.Content
-              href={`https://${
-                networkId === '42' ? 'kovan.' : ''
-              }etherscan.io/address/${config.riskManagementAddress}`}
-              target="_blank"
-            >
-              Risk Management:{' '}
-              <strong>Make/Take order permitted with 10% deviation </strong>{' '}
-              from the reference price provided by above pricefeed.
+            <List.Content>
+              Risk Management: <strong>Disabled (all trades allowed)</strong>{' '}
             </List.Content>
           </List.Item>
         </List>

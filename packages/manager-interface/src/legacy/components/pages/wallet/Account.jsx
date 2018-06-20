@@ -1,6 +1,11 @@
 import React from 'react';
 import { Button, Card, Header } from 'semantic-ui-react';
 import Link from 'redux-first-router-link';
+import { tracks } from '@melonproject/melon.js';
+
+const isCompetition =
+  process.env.TRACK === tracks.KOVAN_COMPETITION ||
+  process.env.TRACK === tracks.LIVE;
 
 const MyAccount = ({
   currentAddress,
@@ -84,24 +89,30 @@ const MyAccount = ({
               </p>
             ) : null}
             <br />
-            <p>
-              <strong> [IMPORTANT] - Please read carefully</strong>{' '}
-            </p>
-            <p>
-              Careful, below actions have <strong> irreversible</strong>{' '}
-              effects. If you do not have a backup of the mnemonic phrase that
-              generated your current address,
-              <strong>
-                {' '}
-                you will never be able to access your current wallet again{' '}
-              </strong>{' '}
-              after performing one of the below actions.
-            </p>
-            <p>
-              If you do not wish to continue,{' '}
-              <Link to="/">click here to go back to your fund&#39;s page</Link>.
-            </p>
-            <br />
+            {!isCompetition ? (
+              <div>
+                <p>
+                  <strong> [IMPORTANT] - Please read carefully</strong>{' '}
+                </p>
+                <p>
+                  Careful, below actions have <strong> irreversible</strong>{' '}
+                  effects. If you do not have a backup of the mnemonic phrase
+                  that generated your current address,
+                  <strong>
+                    {' '}
+                    you will never be able to access your current wallet again{' '}
+                  </strong>{' '}
+                  after performing one of the below actions.
+                </p>
+                <p>
+                  If you do not wish to continue,{' '}
+                  <Link to="/">
+                    click here to go back to your fund&#39;s page
+                  </Link>.
+                </p>
+                <br />
+              </div>
+            ) : null}
           </div>
         ) : (
           <div>
@@ -114,16 +125,18 @@ const MyAccount = ({
         )}
 
         <div>
-          <p>
-            <Button
-              basic
-              color={currentAddress ? 'red' : 'black'}
-              style={{ width: '100%' }}
-              onClick={gotoAccountGenerate}
-            >
-              Create a new wallet
-            </Button>
-          </p>
+          {!isCompetition ? (
+            <p>
+              <Button
+                basic
+                color={currentAddress ? 'red' : 'black'}
+                style={{ width: '100%' }}
+                onClick={gotoAccountGenerate}
+              >
+                Create a new wallet
+              </Button>
+            </p>
+          ) : null}
           <p>
             <Button
               basic
@@ -144,7 +157,7 @@ const MyAccount = ({
               Import wallet JSON
             </Button>
           </p>
-          {currentAddress ? (
+          {currentAddress && !isCompetition ? (
             <p>
               <Button
                 basic

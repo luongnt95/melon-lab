@@ -1,5 +1,5 @@
 import { takeLatest, select, put, take, call } from 'redux-saga/effects';
-import { networks } from '@melonproject/melon.js';
+import { networks, tracks } from '@melonproject/melon.js';
 import { onboardingPath } from '../reducers/app';
 import { actions, types } from '../actions/app';
 import {
@@ -12,6 +12,10 @@ import { isZero } from '../utils/functionalBigNumber';
 
 import { types as browserTypes } from '../actions/browser';
 
+const isCompetition =
+  process.env.TRACK === tracks.KOVAN_COMPETITION ||
+  process.env.TRACK === tracks.LIVE;
+
 const getOnboardingState = ({ ethereum, app, fund }) => {
   if (!ethereum.isConnected) return onboardingPath.NO_CONNECTION;
   if (ethereum.network !== networks.KOVAN && ethereum.network !== networks.LIVE)
@@ -19,7 +23,7 @@ const getOnboardingState = ({ ethereum, app, fund }) => {
   if (!ethereum.account) return onboardingPath.NO_ACCOUNT;
   if (
     isZero(ethereum.ethBalance) ||
-    (isZero(ethereum.mlnBalance) && !app.usersFund)
+    (!isCompetition && (isZero(ethereum.wethBalance) && !app.usersFund))
   )
     return onboardingPath.INSUFFICIENT_FUNDS;
   if (fund.signature === undefined && !app.usersFund)
@@ -47,7 +51,8 @@ function* deriveReadyState() {
     !!ethereum.account &&
     !isZero(ethereum.ethBalance);
 
-  const isReadyToInvest = isReadyToInteract && !isZero(ethereum.mlnBalance);
+  const isReadyToInvest =
+    isReadyToInteract && isCompetition ? true : !isZero(ethereum.wethBalance);
 
   const isReadyToTrade =
     isReadyToInteract &&
