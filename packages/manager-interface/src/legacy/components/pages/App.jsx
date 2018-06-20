@@ -20,6 +20,7 @@ import OlympiadPlaceholderContainer from '../../containers/OlympiadPlaceholder';
 import Modal from '../../containers/Modal';
 import { types } from '../../actions/routes';
 import ConnectionInfo from '../organisms/ConnectionInfo';
+import { greaterThan } from '../../utils/functionalBigNumber';
 
 const mapOnboardingStateToMainContainer = {
   [onboardingPath.NO_PROVIDER]: NoConnection,
@@ -69,12 +70,36 @@ const getMainComponent = ({
       network={network}
     />
   ) : (
-      <div />
-    );
+    <div />
+  );
 };
 
 const App = props => (
   <div className="App">
+    {(greaterThan(props.ethBalance, 1) || greaterThan(props.fundNav, 1)) && (
+      <a
+        href="https://github.com/melonproject/melon-lab/releases"
+        target="_blank"
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          width: '100%',
+          backgroundColor: 'rgb(209, 102, 102)',
+          color: 'white',
+          fontWeight: 'bold',
+          padding: 10,
+          zIndex: 10,
+        }}
+      >
+        {' '}
+        Warning: You are using the Melon Interface in an insecure environment
+        (your browser) and putting your funds at risk! Please be a good citizen
+        and download our Electron app and run your own node for a fast and
+        secure experience.
+      </a>
+    )}
+
     <ConnectionInfo
       account={props.walletAddress}
       mlnBalance={props.mlnBalance}
