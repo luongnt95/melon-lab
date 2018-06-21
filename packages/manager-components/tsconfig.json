@@ -4,6 +4,14 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "~/design/*": "./src/design/$1",
+      "~/components/*": "./src/components/$1",
+      "~/blocks/*": "./src/blocks/$1",
+      "~/containers/*": "./src/containers/$1",
+      "~/utils/*": "./src/utils/$1"
+    }
   }
 }
