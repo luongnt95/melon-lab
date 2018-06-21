@@ -33,7 +33,7 @@ const Dropdown: StatelessComponent<DropdownProps> = ({
 
   const handleChange = e => {
     const targetValue = e.target.value;
-    onChange({ targetValue }, e);
+    onChange({ value: targetValue }, e);
   };
 
   return (
