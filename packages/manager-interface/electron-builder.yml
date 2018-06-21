@@ -1,13 +1,14 @@
 
-copyright: Melonport
+copyright: Melonport AG
 appId: com.melonproject.app
-productName: Melonproject
-artifactName: melonproject-manager-interface-${version}-${os}.${ext}
+productName: Melon Manager Interface
+artifactName: melon-manager-interface-${version}-${os}.${ext}
 asar: true
 extends: null
 
 directories:
   output: build/app/package/
+  buildResources: src/static/
 
 files:
   - package.json
