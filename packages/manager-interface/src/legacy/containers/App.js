@@ -68,6 +68,7 @@ const mapStateToProps = state => {
     statusLink: link,
     mlnBalance: new BigNumber(state.ethereum.mlnBalance || 0).toFixed(4),
     ethBalance: new BigNumber(state.ethereum.ethBalance || 0).toFixed(4),
+    wethBalance: new BigNumber(state.ethereum.wethBalance || 0).toFixed(4),
     fundAum: state.fund.nav,
     rootAction: routeActions.root(),
     accountAction: routeActions.wallet(),

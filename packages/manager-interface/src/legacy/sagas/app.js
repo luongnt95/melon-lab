@@ -17,6 +17,14 @@ function* init() {
   const isCompetition =
     track === tracks.KOVAN_COMPETITION || track === tracks.LIVE;
 
+  if (!Object.values(tracks).includes(track)) {
+    console.warn(
+      'process.env.TRACK is set to "',
+      track,
+      '"which is not a supported tracks:',
+      Object.values(tracks),
+    );
+  }
   yield put(actions.setTrack({ track, isCompetition }));
 }
 
