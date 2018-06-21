@@ -26,5 +26,6 @@ WORKDIR /app/packages/faucet
 
 COPY --from=dependencies /app/packages/faucet/node_modules /app/packages/faucet/node_modules
 COPY --from=build /app/packages/faucet/dist /app/packages/faucet/dist
+COPY packages/faucet/package.json packages/faucet/.env.defaults /app/packages/faucet/
 
 CMD ["yarn", "start"]

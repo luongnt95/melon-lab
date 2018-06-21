@@ -11,6 +11,7 @@ async function start(port: number) {
 
   await server.start({
     port,
+    https: false,
   });
 
   // tslint:disable-next-line:no-console
