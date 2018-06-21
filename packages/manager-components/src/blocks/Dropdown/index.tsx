@@ -32,7 +32,8 @@ const Dropdown: StatelessComponent<DropdownProps> = ({
     options && options.map((item, index) => renderOption(item, index));
 
   const handleChange = e => {
-    onChange({ ...e.target.value }, e);
+    const targetValue = e.target.value;
+    onChange({ targetValue }, e);
   };
 
   return (
