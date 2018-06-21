@@ -32,5 +32,5 @@ const initialProps = {
 };
 
 storiesOf('Components|Order Form', module).add('Default', () => {
-  return <OrderForm {...initialProps}>Order Form</OrderForm>;
+  return <OrderForm {...initialProps} />;
 });
