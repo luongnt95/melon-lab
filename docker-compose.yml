@@ -41,8 +41,6 @@ services:
       - ./packages/melon.js/scripts:/app/packages/melon.js/scripts
       - ./packages/melon.js/tests:/app/packages/melon.js/tests
       - ./packages/melon.js/.babelrc:/app/packages/melon.js/.babelrc
-      - ./packages/melon.js/.eslintrc:/app/packages/melon.js/.eslintrc
-      - ./packages/melon.js/.eslintignore:/app/packages/melon.js/.eslintignore
       - ./packages/melon.js/.npmignore:/app/packages/melon.js/.npmignore
       - ./packages/melon.js/.flowconfig:/app/packages/melon.js/.flowconfig
       - ./packages/melon.js/.snyk:/app/packages/melon.js/.snyk
