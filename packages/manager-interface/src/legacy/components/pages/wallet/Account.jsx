@@ -3,10 +3,6 @@ import { Button, Card, Header } from 'semantic-ui-react';
 import Link from 'redux-first-router-link';
 import { tracks } from '@melonproject/melon.js';
 
-const isCompetition =
-  process.env.TRACK === tracks.KOVAN_COMPETITION ||
-  process.env.TRACK === tracks.LIVE;
-
 const MyAccount = ({
   currentAddress,
   associatedFund,
@@ -17,6 +13,7 @@ const MyAccount = ({
   gotoSetup,
   downloadJSON,
   networkId,
+  isCompetition,
 }) => (
   <div>
     <Card centered>

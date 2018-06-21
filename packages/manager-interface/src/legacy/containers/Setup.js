@@ -7,6 +7,7 @@ const mapStateToProps = state => ({
   loading: state.app.transactionInProgress,
   networkId: state.ethereum.network,
   config: state.fund.config,
+  isCompetition: state.app.isCompetition,
 });
 
 const onSubmit = (values, dispatch) => {

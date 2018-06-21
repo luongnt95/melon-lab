@@ -8,6 +8,7 @@ const mapStateToProps = state => ({
   currentAddress: state.ethereum.account,
   associatedFund: state.app.usersFund,
   networkId: state.ethereum.network,
+  isCompetition: state.app.isCompetition,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -19,6 +20,9 @@ const mapDispatchToProps = dispatch => ({
   gotoAccountRestore: () => dispatch(routeActions.walletRestore()),
 });
 
-const AccountRedux = connect(mapStateToProps, mapDispatchToProps)(Account);
+const AccountRedux = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Account);
 
 export default AccountRedux;

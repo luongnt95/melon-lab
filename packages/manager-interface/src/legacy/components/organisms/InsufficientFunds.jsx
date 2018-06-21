@@ -2,13 +2,12 @@ import React from 'react';
 import { Card, Button } from 'semantic-ui-react';
 import { tracks } from '@melonproject/melon.js';
 
-const showFaucet = process.env.TRACK === tracks.KOVAN_DEMO;
-
 const InsufficientFunds = ({
   ethBalance,
   wethBalance,
   walletAddress,
   network,
+  showFaucet,
 }) => (
   <div>
     <Card centered>

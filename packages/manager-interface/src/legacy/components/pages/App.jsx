@@ -50,6 +50,7 @@ const getMainComponent = ({
   mlnBalance,
   ethBalance,
   usersFund,
+  showFaucet,
   walletAddress,
   route,
   network,
@@ -68,6 +69,7 @@ const getMainComponent = ({
       usersFund={usersFund}
       walletAddress={walletAddress}
       network={network}
+      showFaucet={showFaucet}
     />
   ) : (
     <div />

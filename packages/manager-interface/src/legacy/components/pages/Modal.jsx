@@ -14,8 +14,6 @@ import renderInput from '../utils/renderInput';
 import { add } from '../../utils/functionalBigNumber';
 import displayNumber from '../../utils/displayNumber';
 
-console.log(process.env.TRACK);
-
 export const types = {
   ERROR: 'ERROR',
   LOADING: 'LOADING',

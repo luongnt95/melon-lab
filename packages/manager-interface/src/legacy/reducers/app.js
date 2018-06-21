@@ -1,18 +1,18 @@
-import { types } from "../actions/app";
+import { types } from '../actions/app';
 
 // Note: These items are sorted: NO_PROVIDER is the state before NO_CONNECTION
 // and so on. (Thats why it is named ...Path and not ...States)
 export const onboardingPath = {
-  NO_CONNECTION: "No connection",
-  WRONG_NETWORK: "Wrong network",
-  NO_ACCOUNT: "No account",
-  INSUFFICIENT_FUNDS: "Insufficent Funds",
-  NOT_SIGNED: "T&Cs not signed ",
-  NO_FUND_CREATED: "No fund created ",
-  REGISTRATION: "Competition registration",
-  SIGN_COMPETITION_TERMS: "Sign competition terms",
-  NOT_INVESTED_IN_OWN_FUND: "Not invested in own fund",
-  ONBOARDED: "Onboarded",
+  NO_CONNECTION: 'No connection',
+  WRONG_NETWORK: 'Wrong network',
+  NO_ACCOUNT: 'No account',
+  INSUFFICIENT_FUNDS: 'Insufficent Funds',
+  NOT_SIGNED: 'T&Cs not signed ',
+  NO_FUND_CREATED: 'No fund created ',
+  REGISTRATION: 'Competition registration',
+  SIGN_COMPETITION_TERMS: 'Sign competition terms',
+  NOT_INVESTED_IN_OWN_FUND: 'Not invested in own fund',
+  ONBOARDED: 'Onboarded',
 };
 
 const initialState = {
@@ -23,8 +23,10 @@ const initialState = {
   isReadyToInvest: false,
   transactionInProgress: false,
   usersFundChecked: false,
-  usersFund: "",
-  assetPair: { base: "...", quote: "..." },
+  usersFund: '',
+  assetPair: { base: '...', quote: '...' },
+  track: '',
+  isCompetition: false,
 };
 
 const reducers = {
@@ -57,6 +59,7 @@ const mapActionToReducer = {
   [types.TRANSACTION_STARTED]: reducers.transactionStarted,
   [types.TRANSACTION_FINISHED]: reducers.transactionFinished,
   [types.SET_READY_STATE]: reducers.merge,
+  [types.SET_TRACK]: reducers.merge,
   [types.SET_USERS_FUND]: reducers.setUsersFund,
   [types.UPDATE_ASSET_PAIR]: reducers.updateAssetPair,
 };

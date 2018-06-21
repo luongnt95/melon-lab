@@ -12,9 +12,13 @@ import { isZero } from '../utils/functionalBigNumber';
 
 import { types as browserTypes } from '../actions/browser';
 
-const isCompetition =
-  process.env.TRACK === tracks.KOVAN_COMPETITION ||
-  process.env.TRACK === tracks.LIVE;
+function* init() {
+  const track = process.env.TRACK;
+  const isCompetition =
+    track === tracks.KOVAN_COMPETITION || track === tracks.LIVE;
+
+  yield put(actions.setTrack({ track, isCompetition }));
+}
 
 const getOnboardingState = ({ ethereum, app, fund }) => {
   if (!ethereum.isConnected) return onboardingPath.NO_CONNECTION;
@@ -23,7 +27,7 @@ const getOnboardingState = ({ ethereum, app, fund }) => {
   if (!ethereum.account) return onboardingPath.NO_ACCOUNT;
   if (
     isZero(ethereum.ethBalance) ||
-    (!isCompetition && (isZero(ethereum.wethBalance) && !app.usersFund))
+    (!app.isCompetition && (isZero(ethereum.wethBalance) && !app.usersFund))
   )
     return onboardingPath.INSUFFICIENT_FUNDS;
   if (fund.signature === undefined && !app.usersFund)
@@ -52,7 +56,9 @@ function* deriveReadyState() {
     !isZero(ethereum.ethBalance);
 
   const isReadyToInvest =
-    isReadyToInteract && isCompetition ? true : !isZero(ethereum.wethBalance);
+    isReadyToInteract && app.isCompetition
+      ? true
+      : !isZero(ethereum.wethBalance);
 
   const isReadyToTrade =
     isReadyToInteract &&
@@ -116,6 +122,7 @@ const onlyMelonActions = action =>
   action.type !== types.SET_READY_STATE && action.type.includes('melon');
 
 function* appSaga() {
+  yield takeLatest(browserTypes.LOADED, init);
   yield takeLatest(routeTypes.ROOT, redirectSaga);
   yield takeLatest(onlyMelonActions, deriveReadyState);
   yield takeLatest(types.SCROLL_TO, scrollTo);
