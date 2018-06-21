@@ -1,5 +1,5 @@
 import React, { StatelessComponent } from 'react';
-import * as NumberFormat from 'react-number-format';
+import NumberFormat from 'react-number-format';
 
 import styles from './styles.css';
 

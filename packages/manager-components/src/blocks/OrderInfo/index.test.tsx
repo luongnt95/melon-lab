@@ -9,11 +9,11 @@ describe('OrderInfo', () => {
     tokens: {
       baseToken: {
         name: 'ETH-T',
-        balance: 30,
+        balance: 30.0,
       },
       quoteToken: {
         name: 'MLN-T',
-        balance: 20,
+        balance: 20.0,
       },
     },
   };

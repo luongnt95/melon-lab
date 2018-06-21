@@ -8,12 +8,18 @@ exports[`Dropdown should pass a selected value to the onChange handler 1`] = `
     css="__scoped"
     styleId="__scopedHash"
   />
+  <span
+    className="jsx-__scopedHash dropdown__label"
+  >
+    dropdown
+  </span>
   <div
     className="jsx-__scopedHash dropdown__wrapper"
   >
     <select
       className="jsx-__scopedHash dropdown__select"
-      onChange={[MockFunction]}
+      name="dropdown"
+      onChange={[Function]}
     >
       <option
         key="0"
@@ -40,11 +46,18 @@ exports[`Dropdown should render correctly 1`] = `
     css="__scoped"
     styleId="__scopedHash"
   />
+  <span
+    className="jsx-__scopedHash dropdown__label"
+  >
+    dropdown
+  </span>
   <div
     className="jsx-__scopedHash dropdown__wrapper"
   >
     <select
       className="jsx-__scopedHash dropdown__select"
+      name="dropdown"
+      onChange={[Function]}
     >
       <option
         key="0"

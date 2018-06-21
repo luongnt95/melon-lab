@@ -14,8 +14,28 @@ exports[`OrderInfo should render correctly 1`] = `
     <div
       className="jsx-__scopedHash order-info__last-price"
     >
-      0.5
-       
+      <NumberFormat
+        allowEmptyFormatting={false}
+        allowNegative={true}
+        decimalScale={4}
+        decimalSeparator="."
+        displayType="text"
+        fixedDecimalScale={true}
+        getInputRef={[Function]}
+        isAllowed={[Function]}
+        isNumericString={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        onValueChange={[Function]}
+        prefix=""
+        suffix=""
+        thousandSeparator={true}
+        type="text"
+        value={0.5}
+      />
       <span
         className="jsx-__scopedHash order-info__price-desc"
       >
@@ -25,8 +45,28 @@ exports[`OrderInfo should render correctly 1`] = `
     <div
       className="jsx-__scopedHash order-info__bid"
     >
-      0
-       
+      <NumberFormat
+        allowEmptyFormatting={false}
+        allowNegative={true}
+        decimalScale={4}
+        decimalSeparator="."
+        displayType="text"
+        fixedDecimalScale={true}
+        getInputRef={[Function]}
+        isAllowed={[Function]}
+        isNumericString={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        onValueChange={[Function]}
+        prefix=""
+        suffix=""
+        thousandSeparator={true}
+        type="text"
+        value={0}
+      />
       <span
         className="jsx-__scopedHash order-info__price-desc"
       >
@@ -36,8 +76,28 @@ exports[`OrderInfo should render correctly 1`] = `
     <div
       className="jsx-__scopedHash order-info__ask"
     >
-      0
-       
+      <NumberFormat
+        allowEmptyFormatting={false}
+        allowNegative={true}
+        decimalScale={4}
+        decimalSeparator="."
+        displayType="text"
+        fixedDecimalScale={true}
+        getInputRef={[Function]}
+        isAllowed={[Function]}
+        isNumericString={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        onValueChange={[Function]}
+        prefix=""
+        suffix=""
+        thousandSeparator={true}
+        type="text"
+        value={0}
+      />
       <span
         className="jsx-__scopedHash order-info__price-desc"
       >
@@ -58,7 +118,28 @@ exports[`OrderInfo should render correctly 1`] = `
         :
       </span>
        
-      30
+      <NumberFormat
+        allowEmptyFormatting={false}
+        allowNegative={true}
+        decimalScale={4}
+        decimalSeparator="."
+        displayType="text"
+        fixedDecimalScale={true}
+        getInputRef={[Function]}
+        isAllowed={[Function]}
+        isNumericString={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        onValueChange={[Function]}
+        prefix=""
+        suffix=""
+        thousandSeparator={true}
+        type="text"
+        value={30}
+      />
     </div>
     <div
       className="jsx-__scopedHash order-info__balance"
@@ -70,7 +151,28 @@ exports[`OrderInfo should render correctly 1`] = `
         :
       </span>
        
-      20
+      <NumberFormat
+        allowEmptyFormatting={false}
+        allowNegative={true}
+        decimalScale={4}
+        decimalSeparator="."
+        displayType="text"
+        fixedDecimalScale={true}
+        getInputRef={[Function]}
+        isAllowed={[Function]}
+        isNumericString={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        onValueChange={[Function]}
+        prefix=""
+        suffix=""
+        thousandSeparator={true}
+        type="text"
+        value={20}
+      />
     </div>
   </div>
 </div>

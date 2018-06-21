@@ -3,19 +3,19 @@ import React from 'react';
 import OrderInfo from './index';
 
 const data = {
-  lastPrice: 8.125,
-  bid: 8.125,
-  ask: 8.125,
-  balances: [
-    {
+  lastPrice: 0.5,
+  bid: 0,
+  ask: 0,
+  tokens: {
+    baseToken: {
       name: 'ETH-T',
-      value: 8.125,
+      balance: 30.0,
     },
-    {
+    quoteToken: {
       name: 'MLN-T',
-      value: 8.125,
+      balance: 20.0,
     },
-  ],
+  },
 };
 
 storiesOf('Blocks|OrderInfo', module).add('Default', () => {

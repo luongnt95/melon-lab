@@ -38,7 +38,7 @@ exports[`OrderForm should render correctly 1`] = `
   initialValues={
     Object {
       "exchange": "RadarRelay",
-      "price": "20",
+      "price": "",
       "quantity": "",
       "total": "",
       "type": "Buy",
@@ -55,7 +55,5 @@ exports[`OrderForm should render correctly 1`] = `
   validateOnBlur={true}
   validateOnChange={true}
   validationSchema={[Function]}
->
-  Default text
-</Formik>
+/>
 `;

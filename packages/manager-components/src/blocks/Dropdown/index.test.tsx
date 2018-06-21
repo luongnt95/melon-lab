@@ -2,11 +2,12 @@ import React from 'react';
 import Dropdown from './index';
 
 describe('Dropdown', () => {
-  const options = [
-    { value: 'one', name: 'One' },
-    { value: 'two', name: 'Two' },
-  ];
-  const defaultElement = <Dropdown options={options} selectedItem={'one'} />;
+  const data = {
+    name: 'dropdown',
+    label: 'dropdown',
+    options: [{ value: 'one', name: 'One' }, { value: 'two', name: 'Two' }],
+  };
+  const defaultElement = <Dropdown {...data} />;
 
   it('should render correctly', () => {
     const wrapper = shallow(defaultElement);
@@ -31,14 +32,12 @@ describe('Dropdown', () => {
   });
 
   it('should pass a selected value to the onChange handler', () => {
-    const value = options[0];
+    const value = data.options[0];
     const onChange = jest.fn();
-    const wrapper = shallow(
-      <Dropdown onChange={onChange} options={options} />,
-    );
+    const wrapper = shallow(<Dropdown {...data} onChange={onChange} />);
 
     expect(wrapper).toMatchSnapshot();
-    wrapper.find('select').simulate('change', options[0]);
-    expect(onChange).toBeCalledWith(value);
+    wrapper.find('select').simulate('change', { target: { value: "value" } });
+    expect(onChange).toBeCalledWith({ value: "value" }, { target: { value: "value" } });
   });
 });
