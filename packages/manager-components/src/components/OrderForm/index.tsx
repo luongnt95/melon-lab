@@ -6,21 +6,20 @@ import Form from '~/blocks/Form';
 import Input from '~/blocks/Input';
 import OrderInfo from '~/blocks/OrderInfo';
 import Switch from '~/blocks/Switch';
-import {
-  withFormHandler,
-  withFormValidation,
-} from '~/containers/OrderForm';
+import { withFormHandler, withFormValidation } from '~/containers/OrderForm';
 
 import styles from './styles.css';
 
+interface FormValues {
+  price: string;
+  quantity: string;
+  total: string;
+  exchange: string;
+  type: string;
+}
+
 export interface OrderFormProps {
-  values: {
-    price: string;
-    quantity: string;
-    total: string;
-    exchange: string;
-    type: string;
-  };
+  values: FormValues;
   handleSubmit?: any;
   handleBlur?: any;
   onChange?: React.ChangeEvent<any>;
@@ -136,6 +135,4 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
   );
 };
 
-export default compose(withFormValidation, withFormHandler)(
-  OrderForm,
-);
+export default compose(withFormValidation, withFormHandler)(OrderForm);
