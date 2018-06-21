@@ -23,8 +23,6 @@
     "@melonproject/melon.js": "*",
     "@parity/api": "^2.1.22",
     "axios": "^0.18.0",
-    "babel-plugin-inline-dotenv": "^1.1.1",
-    "babel-plugin-transform-inline-environment-variables": "^0.1.1",
     "bignumber.js": "4.1.0",
     "body-parser": "^1.18.3",
     "compression": "^1.7.2",
@@ -43,45 +41,18 @@
     "@zeit/next-typescript": "^0.1.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-loader": "8.0.0-beta.2",
+    "babel-plugin-inline-dotenv": "^1.1.1",
+    "babel-plugin-transform-inline-environment-variables": "^0.1.1",
     "backpack-core": "^0.7.0",
-    "jest": "^22.4.3",
-    "jest-cli": "^22.4.3",
-    "jest-environment-jsdom": "^22.4.3",
+    "jest": "^23.1.0",
+    "jest-cli": "^23.1.0",
+    "jest-environment-jsdom": "^23.1.0",
     "prettier": "^1.11.1",
     "rimraf": "^2.6.2",
-    "ts-jest": "^22.4.2",
+    "ts-jest": "^22.4.6",
     "tslint": "^5.9.1",
     "tslint-config-prettier": "^1.10.0",
     "tslint-react": "^3.5.1",
     "typescript": "^2.8.1"
-  },
-  "jest": {
-    "roots": ["<rootDir>/src", "<rootDir>/tests"],
-    "setupFiles": [
-      "<rootDir>/config/test/jest.setup"
-    ],
-    "transform": {
-      "^.+\\.(jsx?|tsx?)$": "ts-jest"
-    },
-    "transformIgnorePatterns": [
-      "node_modules/(?!@melonproject/)"
-    ],
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "moduleDirectories": [
-      "node_modules/"
-    ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
-    "globals": {
-      "ts-jest": {
-        "tsConfigFile": "tsconfig.json"
-      }
-    }
   }
 }

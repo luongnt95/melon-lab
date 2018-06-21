@@ -1,9 +1,13 @@
 version: "3.4"
 
 # Volume definitions for common workspace root dependencies.
+x-workspace-yarn-lock: &workspace-yarn-lock ./yarn.lock:/app/yarn.lock:delegated
+x-workspace-package: &workspace-package ./package.json:/app/package.json:delegated
 x-workspace-prettier: &workspace-prettier ./.prettierrc:/app/.prettierrc:delegated
 x-workspace-tsconfig: &workspace-tsconfig ./tsconfig.json:/app/tsconfig.json:delegated
 x-workspace-tslint: &workspace-tslint ./tslint.json:/app/tslint.json:delegated
+x-workspace-jest-config: &workspace-jest-config ./jest.config.js:/app/jest.config.js:delegated
+x-workspace-jest-setup: &workspace-jest-setup ./jest.setup.js:/app/jest.setup.js:delegated
 x-workspace-node-modules: &workspace-node-modules ./node_modules:/app/node_modules:delegated
 x-workspace-node-modules-cache: &workspace-node-modules-cache node_modules_cache:/app/node_modules/.cache
 
@@ -25,6 +29,9 @@ services:
       dockerfile: ./packages/melon.js/Dockerfile
     command: "/bin/sh -c 'trap : TERM INT; sleep 365d & wait'"
     volumes:
+      - *workspace-package
+      - *workspace-yarn-lock
+      - *workspace-package
       - *workspace-prettier
       - *workspace-tsconfig
       - *workspace-tslint
@@ -51,14 +58,18 @@ services:
       dockerfile: ./packages/exchange-aggregator/Dockerfile
     command: "/bin/sh -c 'trap : TERM INT; sleep 365d & wait'"
     volumes:
+      - *workspace-package
+      - *workspace-yarn-lock
       - *workspace-prettier
       - *workspace-tsconfig
       - *workspace-tslint
+      - *workspace-jest-config
+      - *workspace-jest-setup
       # - *workspace-node-modules
       # - *workspace-node-modules-cache
       - ./packages/exchange-aggregator/src:/app/packages/exchange-aggregator/src
       - ./packages/exchange-aggregator/tests:/app/packages/exchange-aggregator/tests
-      - ./packages/exchange-aggregator/config:/app/packages/exchange-aggregator/config
+      - ./packages/exchange-aggregator/jest.config.js:/app/packages/exchange-aggregator/jest.config.js
       - ./packages/exchange-aggregator/package.json:/app/packages/exchange-aggregator/package.json
       - ./packages/exchange-aggregator/tsconfig.json:/app/packages/exchange-aggregator/tsconfig.json
       - ./packages/exchange-aggregator/.babelrc:/app/packages/exchange-aggregator/.babelrc
@@ -73,16 +84,20 @@ services:
       dockerfile: ./packages/graphql-schema/Dockerfile
     command: "/bin/sh -c 'trap : TERM INT; sleep 365d & wait'"
     volumes:
+      - *workspace-package
+      - *workspace-yarn-lock
       - *workspace-prettier
       - *workspace-tsconfig
       - *workspace-tslint
+      - *workspace-jest-config
+      - *workspace-jest-setup
       # - *workspace-node-modules
       # - *workspace-node-modules-cache
       - *package-melon-js
       - *package-exchange-aggregator
       - ./packages/graphql-schema/src:/app/packages/graphql-schema/src
       - ./packages/graphql-schema/tests:/app/packages/graphql-schema/tests
-      - ./packages/graphql-schema/config:/app/packages/graphql-schema/config
+      - ./packages/graphql-schema/jest.config.js:/app/packages/graphql-schema/jest.config.js
       - ./packages/graphql-schema/package.json:/app/packages/graphql-schema/package.json
       - ./packages/graphql-schema/tsconfig.json:/app/packages/graphql-schema/tsconfig.json
       - ./packages/graphql-schema/tslint.json:/app/packages/graphql-schema/tslint.json
@@ -98,9 +113,13 @@ services:
       dockerfile: ./packages/graphql-server/Dockerfile
       target: development
     volumes:
+      - *workspace-package
+      - *workspace-yarn-lock
       - *workspace-prettier
       - *workspace-tsconfig
       - *workspace-tslint
+      - *workspace-jest-config
+      - *workspace-jest-setup
       # - *workspace-node-modules
       # - *workspace-node-modules-cache
       - *package-melon-js
@@ -108,10 +127,10 @@ services:
       - *package-exchange-aggregator
       - ./packages/graphql-server/src:/app/packages/graphql-server/src
       - ./packages/graphql-server/tests:/app/packages/graphql-server/tests
-      - ./packages/graphql-server/config:/app/packages/graphql-server/config
       - ./packages/graphql-server/package.json:/app/packages/graphql-server/package.json
       - ./packages/graphql-server/tsconfig.json:/app/packages/graphql-server/tsconfig.json
       - ./packages/graphql-server/tslint.json:/app/packages/graphql-server/tslint.json
+      - ./packages/graphql-server/jest.config.js:/app/packages/graphql-server/jest.config.js
       - ./packages/graphql-server/backpack.config.js:/app/packages/graphql-server/backpack.config.js
       - ./packages/graphql-server/.babelrc:/app/packages/graphql-server/.babelrc
       - ./packages/graphql-server/.env.defaults:/app/packages/graphql-server/.env.defaults
@@ -131,9 +150,13 @@ services:
       dockerfile: ./packages/manager-interface/Dockerfile
       target: development
     volumes:
+      - *workspace-package
+      - *workspace-yarn-lock
       - *workspace-prettier
       - *workspace-tsconfig
       - *workspace-tslint
+      - *workspace-jest-config
+      - *workspace-jest-setup
       # - *workspace-node-modules
       # - *workspace-node-modules-cache
       - *package-melon-js
@@ -147,6 +170,7 @@ services:
       - ./packages/manager-interface/tsconfig.json:/app/packages/manager-interface/tsconfig.json
       - ./packages/manager-interface/tslint.json:/app/packages/manager-interface/tslint.json
       - ./packages/manager-interface/introspect.js:/app/packages/manager-interface/introspect.js
+      - ./packages/manager-interface/jest.config.js:/app/packages/manager-interface/jest.config.js
       - ./packages/manager-interface/next.config.js:/app/packages/manager-interface/next.config.js
       - ./packages/manager-interface/.babelrc:/app/packages/manager-interface/.babelrc
       - ./packages/manager-interface/.env.defaults:/app/packages/manager-interface/.env.defaults
@@ -166,9 +190,13 @@ services:
       dockerfile: ./packages/faucet/Dockerfile
       target: development
     volumes:
+      - *workspace-package
+      - *workspace-yarn-lock
       - *workspace-prettier
       - *workspace-tsconfig
       - *workspace-tslint
+      - *workspace-jest-config
+      - *workspace-jest-setup
       # - *workspace-node-modules
       # - *workspace-node-modules-cache
       - *package-melon-js
@@ -178,6 +206,7 @@ services:
       - ./packages/faucet/package.json:/app/packages/faucet/package.json
       - ./packages/faucet/tsconfig.json:/app/packages/faucet/tsconfig.json
       - ./packages/faucet/tslint.json:/app/packages/faucet/tslint.json
+      - ./packages/faucet/jest.config.js:/app/packages/faucet/jest.config.js
       - ./packages/faucet/next.config.js:/app/packages/faucet/next.config.js
       - ./packages/faucet/backpack.config.js:/app/packages/faucet/backpack.config.js
       - ./packages/faucet/.babelrc:/app/packages/faucet/.babelrc
@@ -197,21 +226,23 @@ services:
       context: .
       dockerfile: ./packages/manager-components/Dockerfile
     volumes:
+      - *workspace-package
+      - *workspace-yarn-lock
       - *workspace-prettier
       - *workspace-tsconfig
       - *workspace-tslint
+      - *workspace-jest-config
+      - *workspace-jest-setup
       # - *workspace-node-modules
       # - *workspace-node-modules-cache
-      - *package-melon-js
-      - *package-graphql-schema
-      - *package-exchange-aggregator
       - ./packages/manager-components/src:/app/packages/manager-components/src
       - ./packages/manager-components/config:/app/packages/manager-components/config
-      - ./packages/manager-components/tests:/app/packages/manager-components/tests
       - ./packages/manager-components/postcss.config.js:/app/packages/manager-components/postcss.config.js
+      - ./packages/manager-components/jest.config.js:/app/packages/manager-components/jest.config.js
       - ./packages/manager-components/package.json:/app/packages/manager-components/package.json
       - ./packages/manager-components/tsconfig.json:/app/packages/manager-components/tsconfig.json
       - ./packages/manager-components/tslint.json:/app/packages/manager-components/tslint.json
+      - ./packages/manager-components/.babelrc:/app/packages/manager-components/.babelrc
 
       # Mount the node modules of this package with the .cache directory mounted into a volume.
       # - ./packages/manager-components/node_modules:/app/packages/manager-components/node_modules:delegated

@@ -24,6 +24,7 @@
     "Sebastian Siemssen <fubhy@fubhy.com>"
   ],
   "resolutions": {
-    "bignumber.js": "4.1.0"
+    "bignumber.js": "4.1.0",
+    "babel-core": "7.0.0-bridge.0"
   }
 }
