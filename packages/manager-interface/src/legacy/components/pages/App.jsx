@@ -49,7 +49,9 @@ const getMainComponent = ({
   onboardingState,
   mlnBalance,
   ethBalance,
+  wethBalance,
   usersFund,
+  showFaucet,
   walletAddress,
   route,
   network,
@@ -64,10 +66,12 @@ const getMainComponent = ({
     <Main
       mlnBalance={mlnBalance}
       ethBalance={ethBalance}
+      wethBalance={wethBalance}
       setup
       usersFund={usersFund}
       walletAddress={walletAddress}
       network={network}
+      showFaucet={showFaucet}
     />
   ) : (
     <div />

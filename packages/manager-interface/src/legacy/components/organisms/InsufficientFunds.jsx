@@ -2,13 +2,12 @@ import React from 'react';
 import { Card, Button } from 'semantic-ui-react';
 import { tracks } from '@melonproject/melon.js';
 
-const showFaucet = process.env.TRACK === tracks.KOVAN_DEMO;
-
 const InsufficientFunds = ({
   ethBalance,
   wethBalance,
   walletAddress,
   network,
+  showFaucet,
 }) => (
   <div>
     <Card centered>
@@ -20,10 +19,8 @@ const InsufficientFunds = ({
           <div>
             <p>
               {' '}
-              You don&#39;t have enough Kovan test melon tokens (MLN-T) or Kovan
-              test ether tokens (ETH-T). Current balances: {
-                mlnBalance
-              } MLN-T, {ethBalance} ETH-T
+              You don&#39;t have enough Kovan Ether or Kovan W-ETH. Current
+              balances: {wethBalance} WETH-T, {ethBalance} ETH
             </p>
             <p className="App-intro">
               To get started, head to our{' '}

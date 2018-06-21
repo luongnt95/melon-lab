@@ -5,12 +5,8 @@ import { tracks } from '@melonproject/melon.js';
 
 import renderInput from '../utils/renderInput';
 
-const isCompetition =
-  process.env.TRACK === tracks.KOVAN_COMPETITION ||
-  process.env.TRACK === tracks.LIVE;
-
 // Explicitely decompose props here.
-const Setup = ({ loading, handleSubmit, networkId, config }) => (
+const Setup = ({ loading, handleSubmit, networkId, config, isCompetition }) => (
   <form onSubmit={handleSubmit}>
     <Card centered>
       <Card.Content>

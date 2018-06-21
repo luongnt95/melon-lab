@@ -16,11 +16,13 @@ import TradeHelper from '../../containers/TradeHelper';
 import Trade from '../../containers/Trade';
 import OpenOrders from '../../containers/OpenOrders';
 
-const isCompetition =
-  process.env.TRACK === tracks.KOVAN_COMPETITION ||
-  process.env.TRACK === tracks.LIVE;
-
-const Fund = ({ isManager, fundAddress, canInvest, pendingRequest }) => (
+const Fund = ({
+  isManager,
+  fundAddress,
+  canInvest,
+  pendingRequest,
+  isCompetition,
+}) => (
   <div className="App">
     <br />
     <div>

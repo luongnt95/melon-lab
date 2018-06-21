@@ -1,6 +1,11 @@
 import BigNumber from 'bignumber.js';
 import { connect } from 'react-redux';
-import { providers, getNetworkName, networks } from '@melonproject/melon.js';
+import {
+  providers,
+  getNetworkName,
+  networks,
+  tracks,
+} from '@melonproject/melon.js';
 import App from '../components/pages/App';
 import { statusTypes } from '../components/organisms/ConnectionInfo';
 import { actions as routeActions } from '../actions/routes';
@@ -63,11 +68,13 @@ const mapStateToProps = state => {
     statusLink: link,
     mlnBalance: new BigNumber(state.ethereum.mlnBalance || 0).toFixed(4),
     ethBalance: new BigNumber(state.ethereum.ethBalance || 0).toFixed(4),
+    wethBalance: new BigNumber(state.ethereum.wethBalance || 0).toFixed(4),
     fundAum: state.fund.nav,
     rootAction: routeActions.root(),
     accountAction: routeActions.wallet(),
     network: state.ethereum.network,
     networkName: getNetworkName(state.ethereum.network),
+    showFaucet: state.app.track === tracks.KOVAN_DEMO,
   };
 };
 

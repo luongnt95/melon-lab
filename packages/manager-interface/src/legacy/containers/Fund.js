@@ -1,7 +1,7 @@
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import isSameAddress from "../utils/isSameAddress";
-import Fund from "../components/pages/Fund";
+import isSameAddress from '../utils/isSameAddress';
+import Fund from '../components/pages/Fund';
 
 const mapStateToProps = state => ({
   loading: state.fund.loading,
@@ -15,6 +15,7 @@ const mapStateToProps = state => ({
   canInvest: state.app.isReadyToInteract,
   pendingRequest: state.fund.pendingRequest,
   // fundAddress: ownProps.match.params.fundAddress,
+  isCompetition: state.app.isCompetition,
 });
 
 const FundContainer = connect(mapStateToProps)(Fund);

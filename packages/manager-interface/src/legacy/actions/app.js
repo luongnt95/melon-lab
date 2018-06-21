@@ -1,12 +1,18 @@
 // Finished is agnostic of success or failure -> Both are finished
 export const types = {
-  SET_USERS_FUND: "SET_USERS_FUND:app:melon.fund",
-  SET_READY_STATE: "SET_READY_STATE:app:melon.fund",
-  UPDATE_ASSET_PAIR: "UPDATE_ASSET_PAIR:app:melon.fund",
-  SCROLL_TO: "SCROLL_TO:app:melon.fund",
+  SET_TRACK: 'SET_TRACK:app:melon.fund',
+  SET_USERS_FUND: 'SET_USERS_FUND:app:melon.fund',
+  SET_READY_STATE: 'SET_READY_STATE:app:melon.fund',
+  UPDATE_ASSET_PAIR: 'UPDATE_ASSET_PAIR:app:melon.fund',
+  SCROLL_TO: 'SCROLL_TO:app:melon.fund',
 };
 
 export const actions = {
+  setTrack: ({ track, isCompetition }) => ({
+    type: types.SET_TRACK,
+    track,
+    isCompetition,
+  }),
   setUsersFund: usersFund => ({
     type: types.SET_USERS_FUND,
     usersFund,
