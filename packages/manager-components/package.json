@@ -18,10 +18,13 @@
   "dependencies": {
     "bignumber.js": "^7.2.1",
     "debug": "2.6.9",
+    "formik": "^0.11.11",
     "ramda": "^0.25.0",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
-    "recompose": "^0.27.1"
+    "react-number-format": "^3.4.0",
+    "recompose": "^0.27.1",
+    "yup": "^0.25.1"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.6",
