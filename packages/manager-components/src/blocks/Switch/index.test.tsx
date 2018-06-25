@@ -1,7 +1,7 @@
 import React from 'react';
 import Switch from './index';
 
-describe('Button', () => {
+describe('Switch', () => {
   const options = [
     'ETH-T-M',
     'MLN-T-M',

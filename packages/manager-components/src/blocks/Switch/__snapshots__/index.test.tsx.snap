@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button should render correctly 1`] = `
+exports[`Switch should render correctly 1`] = `
 <div
   className="jsx-__scopedHash switch"
 >
