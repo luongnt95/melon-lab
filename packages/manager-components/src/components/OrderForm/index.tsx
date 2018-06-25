@@ -1,12 +1,10 @@
 import React, { StatelessComponent } from 'react';
-import { compose } from 'recompose';
 import Button from '~/blocks/Button';
 import Dropdown from '~/blocks/Dropdown';
 import Form from '~/blocks/Form';
 import Input from '~/blocks/Input';
 import OrderInfo from '~/blocks/OrderInfo';
 import Switch from '~/blocks/Switch';
-import { withFormHandler, withFormValidation } from '~/containers/OrderForm';
 
 import styles from './styles.css';
 
@@ -135,4 +133,4 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
   );
 };
 
-export default compose(withFormValidation, withFormHandler)(OrderForm);
+export default OrderForm;
