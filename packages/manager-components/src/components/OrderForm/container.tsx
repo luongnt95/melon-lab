@@ -7,7 +7,8 @@ import {
   max,
   min,
   multiply,
-} from '~/utils/functionalBigNumber';
+} from '../../utils/functionalBigNumber';
+import OrderForm from './index';
 
 const initialState = props => {
   const isMarket = props.strategy === 'Market' ? true : false;
@@ -93,4 +94,4 @@ const withFormHandler = compose(
   }),
 );
 
-export { withFormHandler, withFormValidation };
+export default compose(withFormHandler, withFormValidation)(OrderForm);

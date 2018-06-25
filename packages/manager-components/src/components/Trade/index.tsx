@@ -1,7 +1,6 @@
 import React, { StatelessComponent } from 'react';
 import { TabContent, Tabs } from '~/blocks/Tabs';
-import OrderForm from '~/components/OrderForm';
-import withActiveState from '~/containers/Trade';
+import OrderForm from '~/components/OrderForm/container';
 
 import styles from './styles.css';
 
@@ -32,4 +31,4 @@ export const Trade: StatelessComponent<OrderFormProps> = ({
   );
 };
 
-export default withActiveState(Trade);
+export default Trade;

@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import OrderForm from './index';
+import OrderForm from './container';
 
 const initialProps = {
   baseTokenSymbol: 'ETH-T-M',

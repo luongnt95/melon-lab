@@ -1,6 +1,6 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Trade from './index';
+import Trade from './container';
 
 const initialProps = {
   form: {
