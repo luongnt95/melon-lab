@@ -12,15 +12,15 @@ const sendTransaction = async (
 ) => {
   const nonce = environment.account.sign
     ? (await environment.api.eth.getTransactionCount(
-        environment.account.address,
-      )).toNumber()
+      environment.account.address,
+    )).toNumber()
     : undefined;
 
   // Prepare raw transaction
   const options = {
     from: environment.account.address,
     to: contract.address,
-    gasPrice: 60000000000,
+    gasPrice: 30000000000,
     ...opt,
   };
 
