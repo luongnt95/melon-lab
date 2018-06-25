@@ -1,12 +1,21 @@
-import schema, { makeContext } from '@melonproject/graphql-schema';
+import schema, { makeContext, Network } from '@melonproject/graphql-schema';
 import { PubSub } from 'graphql-subscriptions';
 import { GraphQLServer } from 'graphql-yoga';
 
+function retrieveNetwork(network: string): Network {
+  switch (network.toUpperCase()) {
+    case 'LIVE': return 'LIVE';
+    case 'KOVAN': return 'KOVAN';
+    default: return 'KOVAN';
+  }
+}
+
 async function start(port: number) {
   const pubsub = new PubSub();
+  const network = retrieveNetwork(process.env.NETWORK as string || 'KOVAN');
   const server = new GraphQLServer({
     schema,
-    context: () => makeContext(pubsub),
+    context: () => makeContext(pubsub, network),
   });
 
   await server.start({

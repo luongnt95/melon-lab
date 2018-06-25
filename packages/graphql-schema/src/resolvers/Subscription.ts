@@ -80,8 +80,8 @@ export const orderbook = {
     };
   },
   subscribe: async (parent, args, context: Context) => {
-    const { pubsub } = context;
-    const { baseTokenSymbol, quoteTokenSymbol, exchanges, network } = args;
+    const { pubsub, network } = context;
+    const { baseTokenSymbol, quoteTokenSymbol, exchanges } = args;
     const environment = await getParityProvider(process.env.JSON_RPC_ENDPOINT);
     const config = await getConfig(environment, network);
     const baseTokenAddress = getAddress(config, baseTokenSymbol);

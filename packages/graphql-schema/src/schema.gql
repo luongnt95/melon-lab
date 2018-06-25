@@ -8,11 +8,6 @@ enum ExchangeEnum {
   ERC_DEX
 }
 
-enum NetworkEnum {
-  KOVAN
-  LIVE
-}
-
 type Fund {
   rank: Int
   address: String!
@@ -133,7 +128,6 @@ type Subscription {
     baseTokenSymbol: Symbol!
     quoteTokenSymbol: Symbol!
     exchanges: [ExchangeEnum] = ["RADAR_RELAY", "OASIS_DEX", "ERC_DEX"]
-    network: NetworkEnum = "KOVAN"
   ): Orderbook
 }
 
