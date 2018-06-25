@@ -1,79 +1,59 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OrderForm should render correctly 1`] = `
-<Component
-  fields={
-    Object {
-      "dropdown": Object {
-        "label": "Exchange Server",
-        "name": "exchange",
-        "options": Array [
-          Object {
-            "name": "Radar Relay",
-            "value": "RadarRelay",
-          },
-          Object {
-            "name": "OasisDEX",
-            "value": "OasisDEX",
-          },
-        ],
+<Formik
+  baseTokenSymbol="ETH-T-M"
+  decimals={6}
+  enableReinitialize={false}
+  exchanges={
+    Array [
+      Object {
+        "name": "Radar Relay",
+        "value": "RadarRelay",
       },
-      "inputs": Object {
-        "price": Object {
-          "cleanNumber": true,
-          "decimals": 4,
-          "insideLabel": true,
-          "label": "Price",
-          "name": "price",
-          "placeholder": "0.0000",
-        },
-        "quantity": Object {
-          "cleanNumber": true,
-          "decimals": 4,
-          "insideLabel": true,
-          "label": "Quantity",
-          "name": "quantity",
-          "placeholder": "0.0000",
-        },
-        "total": Object {
-          "cleanNumber": true,
-          "decimals": 4,
-          "insideLabel": true,
-          "label": "Total",
-          "name": "total",
-          "placeholder": "0.0000",
-        },
+      Object {
+        "name": "OasisDEX",
+        "value": "OasisDEX",
       },
-      "switch": Object {
-        "labels": Array [
-          "Buy",
-          "Sell",
-        ],
-        "options": Array [
-          "ETH-T-M",
-          "MLN-T-M",
-        ],
-      },
-    }
+    ]
   }
+  handleSubmit={[Function]}
   info={
     Object {
-      "ask": 8.125,
-      "balances": Array [
-        Object {
+      "ask": 0,
+      "bid": 0,
+      "lastPrice": 0.5,
+      "tokens": Object {
+        "baseToken": Object {
+          "balance": 30,
           "name": "ETH-T",
-          "value": 8.125,
         },
-        Object {
+        "quoteToken": Object {
+          "balance": 20,
           "name": "MLN-T",
-          "value": 8.125,
         },
-      ],
-      "bid": 8.125,
-      "lastPrice": 8.125,
+      },
     }
   }
->
-  Default text
-</Component>
+  initialValues={
+    Object {
+      "exchange": "RadarRelay",
+      "price": "",
+      "quantity": "",
+      "total": "",
+      "type": "Buy",
+    }
+  }
+  isInitialValid={false}
+  onSubmit={[Function]}
+  quoteTokenSymbol="MLN-T-M"
+  render={[Function]}
+  selectedExchange="RadarRelay"
+  selectedOrder={false}
+  selectedOrderType="Buy"
+  strategy="Limit"
+  validateOnBlur={true}
+  validateOnChange={true}
+  validationSchema={[Function]}
+/>
 `;

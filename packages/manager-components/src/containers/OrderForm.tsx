@@ -1,77 +1,96 @@
-import { defaultProps, withHandlers, withState } from 'recompose';
-import { cleanNumber } from '~/utils/Validation';
+import { withFormik } from 'formik';
+import { compose, withHandlers } from 'recompose';
+import * as Yup from 'yup';
+import {
+  divide,
+  greaterThan,
+  max,
+  min,
+  multiply,
+} from '~/utils/functionalBigNumber';
 
-const withInputValueState = withState('value', 'updateValue', '');
-const withInputValueHandlers = withHandlers({
-  onChange: props => event => {
-    props.cleanNumber
-      ? props.updateValue(cleanNumber(event, props.decimals))
-      : props.updateValue(event.target.value);
+const initialState = props => {
+  const isMarket = props.strategy === 'Market' ? true : false;
+
+  return {
+    type: props.selectedOrderType ? props.selectedOrderType : '',
+    exchange: props.selectedExchange ? props.selectedExchange : '',
+    price: props.selectedOrder && isMarket ? props.selectedOrder : '',
+    quantity: '',
+    total: '',
+  };
+};
+
+const claculateInputs = (props, field, value) => {
+  const { values, info, strategy } = props;
+  let maxTotal;
+  let maxQuantity;
+
+  const typeValue = field === 'type' ? value : values.type;
+  const totalValue = field === 'total' ? value : values.total;
+  const quantityValue = field === 'quantity' ? value : values.quantity;
+
+  if (strategy === 'Market') {
+    maxTotal =
+      typeValue === 'Buy'
+        ? min(info.tokens.quoteToken.balance, totalValue)
+        : totalValue;
+    maxQuantity =
+      typeValue === 'Sell'
+        ? max(info.tokens.baseToken.balance, quantityValue)
+        : quantityValue;
+  } else if (strategy === 'Limit') {
+    maxTotal = typeValue === 'Buy' ? info.tokens.quoteToken.balance : Infinity;
+    maxQuantity =
+      typeValue === 'Sell' ? info.tokens.baseToken.balance : Infinity;
+  }
+
+  if (field === 'total') {
+    if (greaterThan(value, maxTotal)) {
+      props.setFieldValue('total', maxTotal);
+    } else if (values.price) {
+      const quantity = divide(value, values.price);
+      if (values.quantity !== value) {
+        props.setFieldValue('quantity', quantity);
+      }
+    }
+  }
+
+  if (field === 'quantity') {
+    if (greaterThan(value, maxQuantity)) {
+      props.setFieldValue('quantity', maxQuantity);
+    } else if (values.price) {
+      const total = multiply(value, values.price);
+      if (values.total !== value) {
+        props.setFieldValue('total', total);
+      }
+    }
+  }
+
+  if (field === 'price' && values.quantity) {
+    props.setFieldValue('total', multiply(values.quantity, value));
+  }
+};
+
+const withFormValidation = withFormik({
+  mapPropsToValues: props => ({ ...initialState(props) }),
+  validationSchema: Yup.object().shape({
+    price: Yup.string().required('Price is required.'),
+    quantity: Yup.string().required('Quantity is required.'),
+    total: Yup.string().required('Total is required.'),
+  }),
+  handleSubmit: values => {
+    // TODO: define handleSubmit
   },
 });
 
-const withDefaultProps = defaultProps({
-  info: {
-    lastPrice: 8.125,
-    bid: 8.125,
-    ask: 8.125,
-    balances: [
-      {
-        name: 'ETH-T',
-        value: 8.125,
-      },
-      {
-        name: 'MLN-T',
-        value: 8.125,
-      },
-    ],
-  },
-  fields: {
-    dropdown: {
-      name: 'exchange',
-      options: [
-        { value: 'RadarRelay', name: 'Radar Relay' },
-        { value: 'OasisDEX', name: 'OasisDEX' },
-      ],
-      label: 'Exchange Server',
+const withFormHandler = compose(
+  withHandlers({
+    onChange: props => (values, event) => {
+      props.setFieldValue(event.target.name, values.value);
+      claculateInputs(props, event.target.name, values.value);
     },
-    switch: {
-      options: [
-        'ETH-T-M',
-        'MLN-T-M',
-      ],
-      labels: [
-        'Buy',
-        'Sell',
-      ],
-    },
-    inputs: {
-      price: {
-        label: 'Price',
-        name: 'price',
-        insideLabel: true,
-        cleanNumber: true,
-        decimals: 4,
-        placeholder: '0.0000',
-      },
-      quantity: {
-        label: 'Quantity',
-        name: 'quantity',
-        insideLabel: true,
-        cleanNumber: true,
-        decimals: 4,
-        placeholder: '0.0000',
-      },
-      total: {
-        label: 'Total',
-        name: 'total',
-        insideLabel: true,
-        cleanNumber: true,
-        decimals: 4,
-        placeholder: '0.0000',
-      },
-    },
-  },
-});
+  }),
+);
 
-export { withDefaultProps, withInputValueState, withInputValueHandlers };
+export { withFormHandler, withFormValidation };

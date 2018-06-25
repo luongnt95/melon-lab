@@ -14,8 +14,28 @@ exports[`OrderInfo should render correctly 1`] = `
     <div
       className="jsx-__scopedHash order-info__last-price"
     >
-      8.125
-       
+      <NumberFormat
+        allowEmptyFormatting={false}
+        allowNegative={true}
+        decimalScale={4}
+        decimalSeparator="."
+        displayType="text"
+        fixedDecimalScale={true}
+        getInputRef={[Function]}
+        isAllowed={[Function]}
+        isNumericString={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        onValueChange={[Function]}
+        prefix=""
+        suffix=""
+        thousandSeparator={true}
+        type="text"
+        value={0.5}
+      />
       <span
         className="jsx-__scopedHash order-info__price-desc"
       >
@@ -25,8 +45,28 @@ exports[`OrderInfo should render correctly 1`] = `
     <div
       className="jsx-__scopedHash order-info__bid"
     >
-      8.125
-       
+      <NumberFormat
+        allowEmptyFormatting={false}
+        allowNegative={true}
+        decimalScale={4}
+        decimalSeparator="."
+        displayType="text"
+        fixedDecimalScale={true}
+        getInputRef={[Function]}
+        isAllowed={[Function]}
+        isNumericString={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        onValueChange={[Function]}
+        prefix=""
+        suffix=""
+        thousandSeparator={true}
+        type="text"
+        value={0}
+      />
       <span
         className="jsx-__scopedHash order-info__price-desc"
       >
@@ -36,8 +76,28 @@ exports[`OrderInfo should render correctly 1`] = `
     <div
       className="jsx-__scopedHash order-info__ask"
     >
-      8.125
-       
+      <NumberFormat
+        allowEmptyFormatting={false}
+        allowNegative={true}
+        decimalScale={4}
+        decimalSeparator="."
+        displayType="text"
+        fixedDecimalScale={true}
+        getInputRef={[Function]}
+        isAllowed={[Function]}
+        isNumericString={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        onValueChange={[Function]}
+        prefix=""
+        suffix=""
+        thousandSeparator={true}
+        type="text"
+        value={0}
+      />
       <span
         className="jsx-__scopedHash order-info__price-desc"
       >
@@ -48,20 +108,72 @@ exports[`OrderInfo should render correctly 1`] = `
   <div
     className="jsx-__scopedHash order-info__balances"
   >
-    <Balanaces
-      items={
-        Array [
-          Object {
-            "name": "ETH-T",
-            "value": 8.125,
-          },
-          Object {
-            "name": "MLN-T",
-            "value": 8.125,
-          },
-        ]
-      }
-    />
+    <div
+      className="jsx-__scopedHash order-info__balance"
+    >
+      <span
+        className="jsx-__scopedHash order-info__balance-desc"
+      >
+        ETH-T
+        :
+      </span>
+       
+      <NumberFormat
+        allowEmptyFormatting={false}
+        allowNegative={true}
+        decimalScale={4}
+        decimalSeparator="."
+        displayType="text"
+        fixedDecimalScale={true}
+        getInputRef={[Function]}
+        isAllowed={[Function]}
+        isNumericString={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        onValueChange={[Function]}
+        prefix=""
+        suffix=""
+        thousandSeparator={true}
+        type="text"
+        value={30}
+      />
+    </div>
+    <div
+      className="jsx-__scopedHash order-info__balance"
+    >
+      <span
+        className="jsx-__scopedHash order-info__balance-desc"
+      >
+        MLN-T
+        :
+      </span>
+       
+      <NumberFormat
+        allowEmptyFormatting={false}
+        allowNegative={true}
+        decimalScale={4}
+        decimalSeparator="."
+        displayType="text"
+        fixedDecimalScale={true}
+        getInputRef={[Function]}
+        isAllowed={[Function]}
+        isNumericString={false}
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onMouseUp={[Function]}
+        onValueChange={[Function]}
+        prefix=""
+        suffix=""
+        thousandSeparator={true}
+        type="text"
+        value={20}
+      />
+    </div>
   </div>
 </div>
 `;

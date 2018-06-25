@@ -7,12 +7,14 @@ import styles from './styles.css';
 
 export interface OrderFormProps {
   activeTabIndex: string;
+  form: OrderForm;
   setTabIndex(index: number);
 }
 
 export const Trade: StatelessComponent<OrderFormProps> = ({
   activeTabIndex,
   setTabIndex,
+  form,
 }) => {
   return (
     <Tabs
@@ -21,13 +23,13 @@ export const Trade: StatelessComponent<OrderFormProps> = ({
     >
       <style jsx>{styles}</style>
       <TabContent title="Take">
-        <OrderForm />
+        <OrderForm {...form} strategy="Market" />
       </TabContent>
       <TabContent title="Place">
-        <OrderForm />
+        <OrderForm {...form} strategy="Limit" />
       </TabContent>
     </Tabs>
   );
 };
 
-export default (withActiveState)(Trade);
+export default withActiveState(Trade);

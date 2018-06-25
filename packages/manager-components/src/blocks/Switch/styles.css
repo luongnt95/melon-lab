@@ -52,6 +52,7 @@
 .switch__icon {
   order: 3;
   flex: 0 1 24px;
+  cursor: pointer;
   transition-duration: var(--transition-duration-default);
 }
 
@@ -93,10 +94,6 @@
   &::before {
     content: attr(data-label-left) ' ';
   }
-}
-
-.switch__input:focus ~ .switch__icon {
-  outline: auto;
 }
 
 .switch__input:checked ~ .switch__icon {
