@@ -18,6 +18,7 @@
   width: 24px;
   background-color: var(--color-primary-darkest);
   border-radius: 50%;
+  line-height: 0;
 
   &::before,
   &::after {
@@ -28,12 +29,12 @@
   }
 
   &::before {
-    top: 1px;
+    top: 8px;
     content: '←';
   }
 
   &::after {
-    bottom: 1px;
+    bottom: 10px;
     content: '→';
   }
 }

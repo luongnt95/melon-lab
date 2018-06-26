@@ -12,8 +12,8 @@ import TradeHistory from '../../containers/TradeHistory';
 import GetStarted from '../../containers/GetStarted';
 import Participation from '../../containers/Participation';
 import ExecuteRequest from '../../containers/ExecuteRequest';
-import TradeHelper from '../../containers/TradeHelper';
-import Trade from '../../containers/Trade';
+import OrderForm from '@melonproject/manager-components/components/OrderForm/container';
+import Trade from '@melonproject/manager-components/components/Trade/container';
 import OpenOrders from '../../containers/OpenOrders';
 
 const Fund = ({
@@ -22,6 +22,7 @@ const Fund = ({
   canInvest,
   pendingRequest,
   isCompetition,
+  orderForm,
 }) => (
   <div className="App">
     <br />
@@ -45,8 +46,7 @@ const Fund = ({
         <div>
           {' '}
           <Card.Group>
-            <Trade />
-            <TradeHelper />
+            <Trade form={orderForm} />
           </Card.Group>
         </div>
       ) : (
