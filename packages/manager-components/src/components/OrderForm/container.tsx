@@ -94,4 +94,4 @@ const withFormHandler = compose(
   }),
 );
 
-export default compose(withFormHandler, withFormValidation)(OrderForm);
+export default compose(withFormValidation, withFormHandler)(OrderForm);

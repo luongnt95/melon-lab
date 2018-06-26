@@ -20,7 +20,7 @@ const TabContent: StatelessComponent<TabContentProps> = ({ children }) => {
 
 const getTabs: any = R.compose(
   R.values,
-  R.filter(({ type }) => type === TabContent),
+  R.filter(({ type }) => (type === TabContent || type.displayName === 'TabContent')),
 );
 
 const Tabs: StatelessComponent<TabsProps> = ({
