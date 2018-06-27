@@ -75,6 +75,7 @@ const mapStateToProps = state => {
     network: state.ethereum.network,
     networkName: getNetworkName(state.ethereum.network),
     showFaucet: state.app.track === tracks.KOVAN_DEMO,
+    track: state.app.track
   };
 };
 

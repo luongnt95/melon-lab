@@ -11,6 +11,7 @@ import ParosContributionContainer from '../../containers/ParosContribution';
 import { onboardingPath } from '../../reducers/app';
 import FundContainer from '../../containers/Fund';
 import RankingContainer from '../../containers/Ranking';
+import ParticipationContainer from '../../containers/Participation';
 import WalletContainer from '../../containers/wallet/Account';
 import WalletGenerate from '../../containers/wallet/Generate';
 import RestoreContainer from '../../containers/wallet/Restore';
@@ -22,16 +23,20 @@ import { types } from '../../actions/routes';
 import ConnectionInfo from '../organisms/ConnectionInfo';
 import { greaterThan } from '../../utils/functionalBigNumber';
 
-const mapOnboardingStateToMainContainer = {
-  [onboardingPath.NO_PROVIDER]: NoConnection,
-  [onboardingPath.NO_CONNECTION]: NoConnection,
-  [onboardingPath.WRONG_NETWORK]: WrongNetwork,
-  [onboardingPath.LOCKED_ACCOUNT]: LockedWallet,
-  [onboardingPath.INSUFFICIENT_FUNDS]: InsufficientFunds,
-  [onboardingPath.NOT_SIGNED]: TermsAndConditionsContainer,
-  [onboardingPath.NO_FUND_CREATED]: SetupContainer,
-  [onboardingPath.NOT_INVESTED_IN_OWN_FUND]: ParosContributionContainer,
-};
+const mapOnboardingStateToMainContainer = (onboardingState, track) =>{
+  const map = {
+    [onboardingPath.NO_PROVIDER]: NoConnection,
+    [onboardingPath.NO_CONNECTION]: NoConnection,
+    [onboardingPath.WRONG_NETWORK]: WrongNetwork,
+    [onboardingPath.LOCKED_ACCOUNT]: LockedWallet,
+    [onboardingPath.INSUFFICIENT_FUNDS]: InsufficientFunds,
+    [onboardingPath.NOT_SIGNED]: TermsAndConditionsContainer,
+    [onboardingPath.NO_FUND_CREATED]: SetupContainer,
+    [onboardingPath.NOT_INVESTED_IN_OWN_FUND]: track !== 'kovan-demo' ? ParosContributionContainer : ParticipationContainer,
+  };
+
+  return map[onboardingState]
+}
 
 const routeContainerMap = {
   [types.ROOT]: RankingContainer,
@@ -56,10 +61,11 @@ const getMainComponent = ({
   route,
   network,
   networkName,
+  track,
 }) => {
   const Main =
     route === types.SETUP
-      ? mapOnboardingStateToMainContainer[onboardingState]
+      ? mapOnboardingStateToMainContainer(onboardingState, track)
       : routeContainerMap[route];
 
   return Main ? (
