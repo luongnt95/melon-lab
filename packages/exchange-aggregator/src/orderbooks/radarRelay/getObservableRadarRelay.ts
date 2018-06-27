@@ -96,30 +96,34 @@ const getObservableRadarRelay = (
   quoteTokenAddress,
   network,
 ) => {
-  const open$ = new Rx.Subject();
   const url =
     network === 'KOVAN'
       ? 'wss://ws.kovan.radarrelay.com/0x/v0/ws'
       : 'wss://api.radarrelay.com/0x/v0/ws';
+
+  const open$ = new Rx.Subject();
+  const close$ = new Rx.Subject();
   const socket$ = Rx.Observable.webSocket({
     url,
     WebSocketCtor: WebSocket,
     openObserver: open$,
+    closeObserver: close$,
   });
 
   const message = subscribeMessage(baseTokenAddress, quoteTokenAddress);
+
   open$.subscribe(event => {
     socket$.next(message);
+
+    Rx.Observable.interval(5000)
+      .takeUntil(close$)
+      .subscribe(() => socket$.next('tick'));
   });
 
   const format = formatRelayerOrderbook('RADAR_RELAY');
 
   const messages$ = socket$
-    // @TODO: In addition to restarting the connection when it's closed, also
-    // send a ping signal if there is no activity to prevent closing the websocket
-    // connection in the first place.
     .retry()
-    .do(value => debug('Received message.'))
     .filter(R.propEq('channel', 'orderbook'))
     .filter(R.anyPass([isSnapshotMessage, isUpdateMessage]) as (
       value,

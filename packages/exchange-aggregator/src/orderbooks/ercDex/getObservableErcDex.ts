@@ -40,22 +40,24 @@ const getObservableErcDexNotifications = (
   debug('Connecting to websocket.', channel);
 
   const open$ = new Rx.Subject();
+  const close$ = new Rx.Subject();
   const socket$ = Rx.Observable.webSocket({
     url: 'wss://api.ercdex.com',
     WebSocketCtor: WebSocket,
     openObserver: open$,
+    closeObserver: close$,
   });
 
   open$.subscribe(event => {
     socket$.next(`sub:${channel}`);
+
+    Rx.Observable.interval(5000)
+      .takeUntil(close$)
+      .subscribe(() => socket$.next('tick'));
   });
 
   const messages$ = socket$
-    // @TODO: In addition to restarting the connection when it's closed, also
-    // send a ping signal if there is no activity to prevent closing the websocket
-    // connection in the first place.
     .retry()
-    .do(value => debug('Received message.', value))
     .filter(R.propEq('channel', channel))
     .do(value => debug(`Received update notification.`, value));
 
