@@ -24,8 +24,7 @@ const mapStateToProps = state => {
     orderForm: {
       baseTokenSymbol: state.app.assetPair.base,
       quoteTokenSymbol: state.app.assetPair.quote,
-      strategy: 'Limit',
-      selectedOrder: false,
+      selectedOrder: state.orderbook.selectedOrder,
       info: {
         lastPrice: state.recentTrades.trades.length
           ? displayNumber(
@@ -59,11 +58,9 @@ const mapStateToProps = state => {
         },
       },
       exchanges: [
-        { value: 'RadarRelay', name: 'Radar Relay' },
-        { value: 'OasisDEX', name: 'OasisDEX' },
+        { value: 'RADAR_RELAY', name: 'Radar Relay' },
+        { value: 'OASIS_DEX', name: 'OasisDEX' },
       ],
-      selectedExchange: 'RadarRelay',
-      selectedOrderType: 'Buy',
       decimals: 4,
       dataValid: state.ethereum.isDataValid,
     },

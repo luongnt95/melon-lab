@@ -28,12 +28,7 @@ const mapStateToProps = state => ({
     ? state.holdings.holdings.find(a => a.name === state.app.assetPair.base)
         .balance
     : undefined,
-  initialValues: {
-    strategy: 'Market',
-    type: 'Buy',
-  },
   dataValid: state.ethereum.isDataValid,
-  strategy: selector(state, 'strategy'),
 });
 
 const onSubmit = (values, dispatch) => {

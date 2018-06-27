@@ -5,7 +5,6 @@ import OrderForm from './container';
 const initialProps = {
   baseTokenSymbol: 'ETH-T-M',
   quoteTokenSymbol: 'MLN-T-M',
-  strategy: 'Limit',
   selectedOrder: false,
   info: {
     lastPrice: 0.5,
@@ -23,12 +22,13 @@ const initialProps = {
     },
   },
   exchanges: [
-    { value: 'RadarRelay', name: 'Radar Relay' },
-    { value: 'OasisDEX', name: 'OasisDEX' },
+    { value: 'RADAR_RELAY', name: 'Radar Relay' },
+    { value: 'OASIS_DEX', name: 'OasisDEX' },
   ],
   selectedExchange: 'RadarRelay',
   selectedOrderType: 'Buy',
   decimals: 4,
+  dataValid: true,
 };
 
 storiesOf('Components|Order Form', module).add('Default', () => {

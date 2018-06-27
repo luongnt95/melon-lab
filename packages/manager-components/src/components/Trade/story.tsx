@@ -29,6 +29,7 @@ const initialProps = {
     selectedExchange: 'RadarRelay',
     selectedOrderType: 'Buy',
     decimals: 4,
+    dataValid: true,
   },
 };
 

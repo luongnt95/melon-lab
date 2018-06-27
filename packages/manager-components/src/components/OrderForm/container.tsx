@@ -11,12 +11,10 @@ import {
 import OrderForm from './index';
 
 const initialState = props => {
-  const isMarket = props.strategy === 'Market' ? true : false;
-
   return {
-    type: props.selectedOrderType ? props.selectedOrderType : '',
-    exchange: props.selectedExchange ? props.selectedExchange : '',
-    price: props.selectedOrder && isMarket ? props.selectedOrder : '',
+    type: props.selectedOrder ? props.selectedOrder.type : 'buy',
+    exchange: props.selectedOrder ? props.selectedOrder.exchange : 'RADAR_RELAY',
+    price: props.selectedOrder ? props.selectedOrder.price : '',
     quantity: '',
     total: '',
   };
@@ -80,6 +78,7 @@ const withFormValidation = withFormik({
     quantity: Yup.string().required('Quantity is required.'),
     total: Yup.string().required('Total is required.'),
   }),
+  enableReinitialize: true,
   handleSubmit: values => {
     // TODO: define handleSubmit
   },

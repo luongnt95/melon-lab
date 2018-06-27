@@ -29,11 +29,12 @@ export interface OrderFormProps {
     name: string;
     label: string;
   }>;
-  selectedOrder?: string;
-  selectedExchange?: string;
+  selectedOrder?: any;
   errors: any;
   touched: any;
   decimals?: number;
+  type?: string;
+  dataValid?: boolean;
 }
 
 export const OrderForm: StatelessComponent<OrderFormProps> = ({
@@ -46,11 +47,11 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
   strategy,
   exchanges,
   selectedOrder,
-  selectedExchange,
   errors,
   values,
   touched,
   decimals,
+  dataValid,
 }) => {
   const isMarket = strategy === 'Market' ? true : false;
 
@@ -63,15 +64,24 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
           labels={['Buy', 'Sell']}
           onChange={onChange}
           name="type"
+          isChecked={
+            values && isMarket
+              ? values.type === 'sell'
+                ? true
+                : false
+              : undefined
+          }
+          disabled={isMarket || !dataValid}
         />
       </div>
       <div className="order-form__dropdown">
         <Dropdown
           name="exchange"
-          value={values.exchange ? values.exchange : selectedExchange}
+          value={values.exchange ? values.exchange : selectedOrder.exchange}
           options={exchanges}
           label="Exchange Server"
           onChange={onChange}
+          disabled={isMarket || !dataValid}
         />
       </div>
       <div className="order-form__order-info">
@@ -80,7 +90,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
       <div className="order-form__input">
         <Input
           value={values.price}
-          disabled={isMarket && selectedOrder}
+          disabled={isMarket || !dataValid}
           type="number"
           label="Price"
           name="price"
@@ -108,6 +118,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
           required={true}
           formatNumber={true}
           error={touched.quantity && errors.quantity}
+          disabled={(isMarket && !selectedOrder) || !dataValid}
         />
       </div>
       <div className="order-form__input">
@@ -124,9 +135,14 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
           required={true}
           formatNumber={true}
           error={touched.total && errors.total}
+          disabled={(isMarket && !selectedOrder) || !dataValid}
         />
       </div>
-      <Button onClick={handleSubmit} type="submit">
+      <Button
+        disabled={(isMarket && !selectedOrder) || !dataValid}
+        onClick={handleSubmit}
+        type="submit"
+      >
         Transfer
       </Button>
     </Form>
