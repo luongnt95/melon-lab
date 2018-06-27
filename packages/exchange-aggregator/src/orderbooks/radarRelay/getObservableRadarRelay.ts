@@ -1,6 +1,6 @@
 import * as R from 'ramda';
 import * as Rx from 'rxjs';
-import { getParityProvider, getConfig } from '@melonproject/melon.js'
+import { getParityProvider, getConfig } from '@melonproject/melon.js';
 import formatRelayerOrderbook from '../../formatRelayerOrderbook';
 import getTokenAddress from '../../getTokenAddress';
 import { Order } from '../../index';
@@ -62,8 +62,16 @@ const scanMessages: (
       return isSnapshotMessage(current);
     },
     (carry: AsksAndBids, current: SnapshotMessage) => {
-      current.payload.bids = current.payload.bids.filter(order => order.expirationUnixTimestampSec > parseInt(new Date().getTime() / 1000))
-      current.payload.asks = current.payload.asks.filter(order => order.expirationUnixTimestampSec > parseInt(new Date().getTime() / 1000))
+      current.payload.bids = current.payload.bids.filter(
+        order =>
+          order.expirationUnixTimestampSec >
+          parseInt(new Date().getTime() / 1000),
+      );
+      current.payload.asks = current.payload.asks.filter(
+        order =>
+          order.expirationUnixTimestampSec >
+          parseInt(new Date().getTime() / 1000),
+      );
       return current.payload;
     },
   ],
@@ -116,8 +124,8 @@ const getObservableRadarRelay = (
     .filter(R.anyPass([isSnapshotMessage, isUpdateMessage]) as (
       value,
     ) => value is SnapshotMessage | UpdateMessage)
-    .do(value => debug('Processing snapshot or update message.'))
-    .do(value => { if (isUpdateMessage(value)) debug('Got an update message.'); socket$.next(message) })
+    .do(value => debug('Processing snapshot or update message.', value))
+    .do(value => socket$.next(message))
     .scan<SnapshotMessage | UpdateMessage, AsksAndBids>(scanMessages, {
       bids: [],
       asks: [],
@@ -125,22 +133,15 @@ const getObservableRadarRelay = (
     .distinctUntilChanged()
     .do(value => debug('Extracting bids and asks.', value))
     .switchMap(value => {
-      const environment$ = Rx.Observable.fromPromise(getParityProvider())
+      const environment$ = Rx.Observable.fromPromise(getParityProvider());
       const config$ = environment$.switchMap(environment => {
-        return Rx.Observable.fromPromise(getConfig(environment))
-      })
-      return config$.switchMap(config => Rx.Observable.of(format(config, value.bids, value.asks)))
-    })
-    .do(value => debug('Emitting order book.', value))
-    .catch(error => {
-      debug('Failed to fetch orderbook.', {
-        baseTokenAddress,
-        quoteTokenAddress,
-        error,
+        return Rx.Observable.fromPromise(getConfig(environment));
       });
-
-      return Rx.Observable.of([]);
-    });
+      return config$.switchMap(config =>
+        Rx.Observable.of(format(config, value.bids, value.asks)),
+      );
+    })
+    .do(value => debug('Emitting order book.', value));
 
   return messages$;
 };

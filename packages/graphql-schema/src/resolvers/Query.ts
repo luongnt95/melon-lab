@@ -41,10 +41,8 @@ const price = async (parent, args, context: Context) => {
 
 const funds = async (parent, args, context: Context, info) => {
   const environment = await getParityProvider(process.env.JSON_RPC_ENDPOINT);
-
   const ranking = await getRanking(environment);
   const fields = Object.keys(graphqlFields(info));
-
   const addresses = args.addresses || ranking.map(fund => fund.address);
 
   const promises = addresses.map(async fundAddress => {

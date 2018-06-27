@@ -35,9 +35,11 @@ export const price = {
     const environment$ = Rx.Observable.fromPromise(
       getParityProvider(process.env.JSON_RPC_ENDPOINT),
     );
+
     const price$ = environment$
       .switchMap(fetchPrices)
-      .repeatWhen(Rx.operators.delay(10000));
+      .repeatWhen(Rx.operators.delay(10000))
+      .catch(error => Rx.Observable.from([error]));
 
     const channel = `price:${symbols}`;
     const iterator = pubsub.asyncIterator(channel);
@@ -86,10 +88,12 @@ export const orderbook = {
     const config = await getConfig(environment, network);
     const baseTokenAddress = getAddress(config, baseTokenSymbol);
     const quoteTokenAddress = getAddress(config, quoteTokenSymbol);
+
     debug('Processed symbols.', {
       baseTokenSymbol,
       quoteTokenSymbol,
     });
+
     const orderbook$ = getAggregatedObservable(
       baseTokenAddress,
       quoteTokenAddress,

@@ -71,16 +71,7 @@ const getObservableErcDex = (baseTokenAddress, quoteTokenAddress, network) => {
   const orderbook$ = fetch$
     .distinctUntilChanged()
     .do(value => debug('Extracting bids and asks.', value))
-    .map(value => format(value.bids, value.asks))
-    .catch(error => {
-      debug('Failed to fetch orderbook.', {
-        baseTokenAddress,
-        quoteTokenAddress,
-        error,
-      });
-
-      return Rx.Observable.of([]);
-    });
+    .map(value => format(value.bids, value.asks));
 
   return orderbook$.repeatWhen(() =>
     getObservableErcDexNotifications(baseTokenAddress, quoteTokenAddress),
