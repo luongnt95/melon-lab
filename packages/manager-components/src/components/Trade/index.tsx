@@ -5,7 +5,7 @@ import OrderForm from '~/components/OrderForm/container';
 import styles from './styles.css';
 
 export interface OrderFormProps {
-  activeTabIndex: string;
+  activeTabIndex: number;
   form: OrderForm;
   setTabIndex(index: number);
 }

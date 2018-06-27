@@ -6,6 +6,8 @@ export interface SwitchProps {
   options: Array<[string]>;
   labels: Array<[string]>;
   name: string;
+  isChecked?: boolean;
+  disabled?: boolean;
   onChange(value, event);
 }
 
@@ -14,6 +16,8 @@ const Switch: StatelessComponent<SwitchProps> = ({
   labels,
   onChange,
   name,
+  isChecked,
+  disabled
 }) => {
   const handleChange = e => {
     const checked = e.target.checked;
@@ -31,6 +35,8 @@ const Switch: StatelessComponent<SwitchProps> = ({
           onChange={e => handleChange(e)}
           className="switch__input"
           type="checkbox"
+          checked={isChecked}
+          disabled={disabled}
         />
         <span
           data-label-left={labels[0]}
