@@ -23,7 +23,10 @@ const fetchOrderbook = options => environment => {
 };
 
 const getObservableOasisDex = (baseTokenAddress, quoteTokenAddress) => {
-  const environment$ = Rx.Observable.fromPromise(getParityProvider());
+  const environment$ = Rx.Observable.fromPromise(
+    getParityProvider(process.env.JSON_RPC_ENDPOINT),
+  );
+
   const orderbook$ = environment$
     .do(value => debug('Fetching.', value))
     .switchMap(

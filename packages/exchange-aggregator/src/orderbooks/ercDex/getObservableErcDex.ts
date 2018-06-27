@@ -1,6 +1,7 @@
 import axios from 'axios';
 import * as R from 'ramda';
 import * as Rx from 'rxjs';
+import { getParityProvider, getConfig } from '@melonproject/melon.js';
 import formatRelayerOrderbook from '../../formatRelayerOrderbook';
 
 // Isomorphic websocket implementation. Falls back to the standard browser
@@ -71,7 +72,19 @@ const getObservableErcDex = (baseTokenAddress, quoteTokenAddress, network) => {
   const orderbook$ = fetch$
     .distinctUntilChanged()
     .do(value => debug('Extracting bids and asks.', value))
-    .map(value => format(value.bids, value.asks));
+    .switchMap(value => {
+      const environment$ = Rx.Observable.fromPromise(
+        getParityProvider(process.env.JSON_RPC_ENDPOINT),
+      );
+
+      const config$ = environment$.switchMap(environment => {
+        return Rx.Observable.fromPromise(getConfig(environment));
+      });
+
+      return config$.switchMap(config =>
+        Rx.Observable.of(format(config, value.bids, value.asks)),
+      );
+    });
 
   return orderbook$.repeatWhen(() =>
     getObservableErcDexNotifications(baseTokenAddress, quoteTokenAddress),

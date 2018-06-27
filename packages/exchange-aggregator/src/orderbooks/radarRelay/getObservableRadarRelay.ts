@@ -133,10 +133,14 @@ const getObservableRadarRelay = (
     .distinctUntilChanged()
     .do(value => debug('Extracting bids and asks.', value))
     .switchMap(value => {
-      const environment$ = Rx.Observable.fromPromise(getParityProvider());
+      const environment$ = Rx.Observable.fromPromise(
+        getParityProvider(process.env.JSON_RPC_ENDPOINT),
+      );
+
       const config$ = environment$.switchMap(environment => {
         return Rx.Observable.fromPromise(getConfig(environment));
       });
+
       return config$.switchMap(config =>
         Rx.Observable.of(format(config, value.bids, value.asks)),
       );
