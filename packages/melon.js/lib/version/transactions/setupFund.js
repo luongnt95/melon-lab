@@ -25,11 +25,15 @@ type Fund = {
  * Setup a new fund with `name` and an array of `exchangeNames`  */
 const setupFund = async (
   environment: Environment,
-  { name, signature, exchangeNames = ['MatchingMarket', 'ZeroExExchange'] },
+  { name, signature, exchangeNames = ['MatchingMarket', 'ZeroExExchange'], track = "kovan-demo" },
 ): Promise<Fund> => {
   const config = await getConfig(environment);
   const { quoteAssetSymbol, onlyManagerAddress, noComplianceCompetitionAddress, competitionComplianceAddress, riskManagementAddress } = config;
-  const complianceAddress = noComplianceCompetitionAddress
+  let complianceAddress;
+  if (track === "kovan-demo") complianceAddress = onlyManagerAddress
+  else if (track === "kovan-competition") commplianceAddress = competitionComplianceAddress
+  else if (track === "live") complianceAddress = competitionComplianceAddress
+
   const quoteAsset = getAddress(config, quoteAssetSymbol);
 
   const managementReward = 0;
