@@ -21,14 +21,17 @@
 
   &::before,
   &::after {
+    font-family: Arial;
     font-size: var(--font-size-s);
     position: absolute;
     color: var(--color-white);
     left: 6px;
+    line-height: 1;
+    height: 9px;
   }
 
   &::before {
-    top: 7px;
+    top: 2px;
     content: '←';
   }
 

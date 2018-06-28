@@ -1,6 +1,7 @@
 import React, { StatelessComponent } from 'react';
 import { TabContent, Tabs } from '~/blocks/Tabs';
 import OrderForm from '~/components/OrderForm/container';
+import Layout from '../../design/Layout';
 
 import styles from './styles.css';
 
@@ -16,18 +17,22 @@ export const Trade: StatelessComponent<OrderFormProps> = ({
   form,
 }) => {
   return (
-    <Tabs
-      handleTabClick={index => setTabIndex(index)}
-      activeTabIndex={activeTabIndex}
-    >
-      <style jsx>{styles}</style>
-      <TabContent title="Take">
-        <OrderForm {...form} strategy="Market" />
-      </TabContent>
-      <TabContent title="Place">
-        <OrderForm {...form} strategy="Limit" />
-      </TabContent>
-    </Tabs>
+    <Layout>
+      <div className="trade">
+        <style jsx>{styles}</style>
+        <Tabs
+          handleTabClick={index => setTabIndex(index)}
+          activeTabIndex={activeTabIndex}
+        >
+          <TabContent title="Take">
+            <OrderForm {...form} strategy="Market" />
+          </TabContent>
+          <TabContent title="Place">
+            <OrderForm {...form} strategy="Limit" />
+          </TabContent>
+        </Tabs>
+      </div>
+    </Layout>
   );
 };
 

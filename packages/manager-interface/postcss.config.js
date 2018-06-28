@@ -10,11 +10,11 @@ module.exports = {
         'nesting-rules': true,
         'custom-properties': {
           preserve: false,
-          variables: variables
+          variables: variables,
         },
         'custom-media-queries': {
-          extensions: medias
-        }
+          extensions: medias,
+        },
       },
     }),
   ],
