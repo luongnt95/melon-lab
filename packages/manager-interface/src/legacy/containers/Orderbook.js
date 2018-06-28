@@ -10,12 +10,10 @@ const subscription = gql`
   subscription OrderbookQuery(
     $baseToken: Symbol!
     $quoteToken: Symbol!
-    $network: NetworkEnum
   ) {
     orderbook(
       baseTokenSymbol: $baseToken
       quoteTokenSymbol: $quoteToken
-      network: $network
       exchanges: [OASIS_DEX, RADAR_RELAY]
     ) {
       totalBuyVolume
@@ -102,39 +100,39 @@ const subscription = gql`
 `;
 
 const mapDispatchToProps = dispatch => ({
-    onClick: orders => {
-        dispatch(actions.selectOrder(orders));
-    },
+  onClick: orders => {
+    dispatch(actions.selectOrder(orders));
+  },
 });
 
 const mapStateToProps = state => ({
-    baseToken: state.app.assetPair.base,
-    quoteToken: state.app.assetPair.quote,
-    isReadyToTrade: state.app.isReadyToTrade,
-    network: state.ethereum.network,
-    config: state.fund.config,
+  baseToken: state.app.assetPair.base,
+  quoteToken: state.app.assetPair.quote,
+  isReadyToTrade: state.app.isReadyToTrade,
+  network: state.ethereum.network,
+  config: state.fund.config,
 });
 
 const withState = connect(mapStateToProps, mapDispatchToProps);
 
 const withSubscription = BaseComponent => baseProps => (
-    <Subscription
-        subscription={subscription}
-        variables={{
-            // @TODO: Move "..." to the rendering part
-            baseToken: baseProps.baseToken !== '...' && baseProps.baseToken,
-            quoteToken: baseProps.quoteToken !== '...' && baseProps.quoteToken,
-            network: baseProps.network === '42' ? 'KOVAN' : 'LIVE',
-        }}
-    >
-        {props => (
-            <BaseComponent
-                {...baseProps}
-                orderbook={props.data && props.data.orderbook}
-                loading={props.loading}
-            />
-        )}
-    </Subscription>
+  <Subscription
+    subscription={subscription}
+    variables={{
+      // @TODO: Move "..." to the rendering part
+      baseToken: baseProps.baseToken !== '...' && baseProps.baseToken,
+      quoteToken: baseProps.quoteToken !== '...' && baseProps.quoteToken,
+      network: baseProps.network === '42' ? 'KOVAN' : 'LIVE',
+    }}
+  >
+    {props => (
+      <BaseComponent
+        {...baseProps}
+        orderbook={props.data && props.data.orderbook}
+        loading={props.loading}
+      />
+    )}
+  </Subscription>
 );
 
 export default compose(withState, withSubscription)(Orderbook);

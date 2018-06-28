@@ -57,7 +57,7 @@ const Setup = ({ loading, handleSubmit, networkId, config, isCompetition }) => (
             as="a"
             href={`https://${
               networkId === '42' ? 'kovan.' : ''
-            }etherscan.io/address/${config.canonicalPriceFeedAddress}`}
+              }etherscan.io/address/${config.canonicalPriceFeedAddress}`}
             target="_blank"
           >
             <List.Content>
@@ -74,7 +74,7 @@ const Setup = ({ loading, handleSubmit, networkId, config, isCompetition }) => (
               <List.Content
                 href={`https://${
                   networkId === '42' ? 'kovan.' : ''
-                }etherscan.io/address/${config.competitionComplianceAddress}`}
+                  }etherscan.io/address/${config.competitionComplianceAddress}`}
                 target="_blank"
               >
                 Compliance (invest/redeem):{' '}
@@ -82,18 +82,18 @@ const Setup = ({ loading, handleSubmit, networkId, config, isCompetition }) => (
               </List.Content>
             </List.Item>
           ) : (
-            <List.Item>
-              <List.Content
-                href={`https://${
-                  networkId === '42' ? 'kovan.' : ''
-                }etherscan.io/address/${config.noCompetitionComplianceAddress}`}
-                target="_blank"
-              >
-                Compliance (invest/redeem):{' '}
-                <strong>Only manager can invest (in WETH)</strong>
-              </List.Content>
-            </List.Item>
-          )}
+              <List.Item>
+                <List.Content
+                  href={`https://${
+                    networkId === '42' ? 'kovan.' : ''
+                    }etherscan.io/address/${config.onlyManagerAddress}`}
+                  target="_blank"
+                >
+                  Compliance (invest/redeem):{' '}
+                  <strong>Only manager can invest (in WETH)</strong>
+                </List.Content>
+              </List.Item>
+            )}
           <List.Item>
             <List.Content>
               Risk Management: <strong>Disabled (all trades allowed)</strong>{' '}

@@ -86,6 +86,7 @@ function* createFund({ name, OasisDex, ZeroEx }) {
   }
 
   const ranking = yield select(state => state.ranking.rankingList);
+  const track = yield select(state => state.app.track);
 
   if (ranking.find(fund => slugify(fund.name) === slugify(name))) {
     yield put(modalActions.error('Fund with similar name already registered'));
@@ -101,6 +102,7 @@ function* createFund({ name, OasisDex, ZeroEx }) {
       name,
       signature,
       exchangeNames,
+      track
     });
     yield put(
       actions.setupSucceeded({ ...fund, owner: environment.account.address }),
