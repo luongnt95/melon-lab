@@ -139,6 +139,7 @@ import getTotalStaked from './pricefeeds/calls/getTotalStaked';
 import getTotalStakedByAddr from './pricefeeds/calls/getTotalStakedByAddr';
 import getUpdateInterval from './pricefeeds/calls/getUpdateInterval';
 import hasRecentPrice from './pricefeeds/calls/hasRecentPrice';
+import pricesToCommit from './pricefeeds/calls/pricesToCommit';
 
 // ./lib/pricefeeds/contracts
 import getCanonicalPriceFeedContract from './pricefeeds/contracts/getCanonicalPriceFeedContract';
@@ -325,6 +326,7 @@ export {
   getTotalStakedByAddr,
   getUpdateInterval,
   hasRecentPrice,
+  pricesToCommit,
   getCanonicalPriceFeedContract,
   getStakingPriceFeedContract,
   awaitDataFeedUpdates,
