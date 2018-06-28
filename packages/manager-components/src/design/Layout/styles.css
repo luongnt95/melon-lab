@@ -1,0 +1,12 @@
+.layout {
+  width: 100%;
+}
+
+.layout :global(*),
+.layout :global(:before),
+.layout :global(:after) {
+  box-sizing: border-box;
+  font-family: 'Source Serif Pro', serif;
+  font-size: 16px;
+  line-height: 1.4;
+}

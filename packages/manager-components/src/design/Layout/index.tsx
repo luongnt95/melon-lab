@@ -2,8 +2,13 @@ import React from 'react';
 
 import styles from './styles.css';
 
-const Layouts = () => (
-  <div />
-);
+const Layout = ({ children }) => {
+  return (
+    <div className="layout">
+      <style jsx>{styles}</style>
+      {children}
+    </div>
+  );
+};
 
-export default Layouts;
+export default Layout;
