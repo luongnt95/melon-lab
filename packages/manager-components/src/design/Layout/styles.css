@@ -3,8 +3,10 @@
   font-style: normal;
   font-weight: 400;
   src: local('Source Serif Pro'), local('SourceSerifPro-Regular'),
-       url('../../assets/fonts/source-serif-pro-v5-latin-regular.woff2') format('woff2'),
-       url('../../assets/fonts/source-serif-pro-v5-latin-regular.woff') format('woff');
+    url('../../assets/fonts/source-serif-pro-v5-latin-regular.woff2')
+      format('woff2'),
+    url('../../assets/fonts/source-serif-pro-v5-latin-regular.woff')
+      format('woff');
 }
 
 @font-face {
@@ -12,8 +14,9 @@
   font-style: normal;
   font-weight: 600;
   src: local('Source Serif Pro Semibold'), local('SourceSerifPro-Semibold'),
-       url('../../assets/fonts/source-serif-pro-v5-latin-600.woff2') format('woff2'),
-       url('../../assets/fonts/source-serif-pro-v5-latin-600.woff') format('woff');
+    url('../../assets/fonts/source-serif-pro-v5-latin-600.woff2')
+      format('woff2'),
+    url('../../assets/fonts/source-serif-pro-v5-latin-600.woff') format('woff');
 }
 
 @font-face {
@@ -21,8 +24,9 @@
   font-style: normal;
   font-weight: 700;
   src: local('Source Serif Pro Bold'), local('SourceSerifPro-Bold'),
-       url('../../assets/fonts/source-serif-pro-v5-latin-700.woff2') format('woff2'),
-       url('../../assets/fonts/source-serif-pro-v5-latin-700.woff') format('woff');
+    url('../../assets/fonts/source-serif-pro-v5-latin-700.woff2')
+      format('woff2'),
+    url('../../assets/fonts/source-serif-pro-v5-latin-700.woff') format('woff');
 }
 
 .layout {
@@ -36,4 +40,19 @@
   font-family: 'Source Serif Pro', serif;
   font-size: 16px;
   line-height: 1.4;
+}
+
+.layout :global(h3) {
+  font-size: 1.2em;
+  margin: 0;
+
+  &:after {
+    content: ' ';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 33%;
+    border-top: 1px solid rgba(34, 36, 38, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
 }

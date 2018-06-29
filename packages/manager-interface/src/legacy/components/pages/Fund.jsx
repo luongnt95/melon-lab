@@ -45,11 +45,10 @@ const Fund = ({
       {isManager ? (
         <div>
           {' '}
-          <Card.Group>
-            <Layout>
-              <Trade form={orderForm} />
-            </Layout>
-          </Card.Group>
+          <Layout>
+            <h3>Trade</h3>
+            <Trade form={orderForm} />
+          </Layout>
         </div>
       ) : (
         <div />
