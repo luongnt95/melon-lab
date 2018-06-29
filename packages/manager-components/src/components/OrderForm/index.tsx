@@ -58,6 +58,11 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
   return (
     <Form className="order-form">
       <style jsx>{styles}</style>
+      {!dataValid ? (
+        <p>
+          Trading not possible when price feed down
+        </p>
+      ) : null}
       <div className="order-form__switch">
         <Switch
           options={[baseTokenSymbol, quoteTokenSymbol]}
