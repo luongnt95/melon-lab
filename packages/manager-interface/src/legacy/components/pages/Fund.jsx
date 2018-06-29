@@ -13,6 +13,7 @@ import GetStarted from '../../containers/GetStarted';
 import Participation from '../../containers/Participation';
 import ExecuteRequest from '../../containers/ExecuteRequest';
 import OrderForm from '@melonproject/manager-components/components/OrderForm/container';
+import Layout from '@melonproject/manager-components/design/Layout';
 import Trade from '@melonproject/manager-components/components/Trade/container';
 import OpenOrders from '../../containers/OpenOrders';
 
@@ -46,7 +47,9 @@ const Fund = ({
         <div>
           {' '}
           <Card.Group>
-            <Trade form={orderForm} />
+            <Layout>
+              <Trade form={orderForm} />
+            </Layout>
           </Card.Group>
         </div>
       ) : (

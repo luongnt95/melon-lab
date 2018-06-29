@@ -17,22 +17,20 @@ export const Trade: StatelessComponent<OrderFormProps> = ({
   form,
 }) => {
   return (
-    <Layout>
-      <div className="trade">
-        <style jsx>{styles}</style>
-        <Tabs
-          handleTabClick={index => setTabIndex(index)}
-          activeTabIndex={activeTabIndex}
-        >
-          <TabContent title="Take">
-            <OrderForm {...form} strategy="Market" />
-          </TabContent>
-          <TabContent title="Place">
-            <OrderForm {...form} strategy="Limit" />
-          </TabContent>
-        </Tabs>
-      </div>
-    </Layout>
+    <div className="trade">
+      <style jsx>{styles}</style>
+      <Tabs
+        handleTabClick={index => setTabIndex(index)}
+        activeTabIndex={activeTabIndex}
+      >
+        <TabContent title="Take">
+          <OrderForm {...form} strategy="Market" />
+        </TabContent>
+        <TabContent title="Place">
+          <OrderForm {...form} strategy="Limit" />
+        </TabContent>
+      </Tabs>
+    </div>
   );
 };
 
