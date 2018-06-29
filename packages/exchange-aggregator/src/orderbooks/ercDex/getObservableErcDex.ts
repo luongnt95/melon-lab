@@ -76,7 +76,7 @@ const getObservableErcDex = (
   );
 
   const orderbook$ = fetch$
-    .distinctUntilChanged()
+    .distinctUntilChanged(R.equals)
     .do(value => debug('Extracting bids and asks.', value))
     .map(value => format(config, value.bids, value.asks));
 
