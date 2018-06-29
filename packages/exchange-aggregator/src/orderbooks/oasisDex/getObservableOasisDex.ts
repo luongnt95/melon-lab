@@ -1,4 +1,5 @@
 import { getOrderbook, getSymbol } from '@melonproject/melon.js';
+import * as R from 'ramda';
 import * as Rx from 'rxjs';
 
 const debug = require('debug')('exchange-aggregator:oasis-dex');
@@ -19,7 +20,7 @@ const getObservableOasisDex = (
     getOrderbook(environment, { baseTokenSymbol, quoteTokenSymbol }),
   )
     .do(value => debug('Receiving values.', value))
-    .distinctUntilChanged()
+    .distinctUntilChanged(R.equals)
     .map(labelOrders)
     .do(value => debug('Emitting order book.', value));
 

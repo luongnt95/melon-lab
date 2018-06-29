@@ -74,7 +74,7 @@ const getAggregatedObservable = (
     )
     .combineAll<Rx.Observable<Order[]>, Order[][]>()
     .do(value => debug('Emitting combined order book.', value))
-    .distinctUntilChanged();
+    .distinctUntilChanged(R.equals);
 
   // Concat and sort orders across all order books.
   return orderbooks$.map(

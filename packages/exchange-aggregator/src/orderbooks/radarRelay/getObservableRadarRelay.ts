@@ -132,7 +132,7 @@ const getObservableRadarRelay = (
       bids: [],
       asks: [],
     })
-    .distinctUntilChanged()
+    .distinctUntilChanged(R.equals)
     .do(value => debug('Extracting bids and asks.', value))
     .map(value => format(config, value.bids, value.asks))
     .do(value => debug('Emitting order book.', value));
