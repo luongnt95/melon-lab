@@ -8,7 +8,6 @@ import displayNumber from '../utils/displayNumber';
 const selector = formValueSelector('trade');
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     loading: state.fund.loading,
     isVisitor: state.app.isReadyToVisit && !state.app.usersFund,
