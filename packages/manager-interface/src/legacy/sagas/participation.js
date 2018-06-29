@@ -19,6 +19,7 @@ function* investSaga(action) {
     const quoteAsset = yield select(state => state.fund.config.quoteAssetSymbol)
     function* transaction(environment) {
         const fundAddress = yield select(state => state.fund.address);
+        const quoteAsset = yield select(state => state.fund.config.quoteAssetSymbol)
         const subscription = yield call(invest, environment, {
             fundAddress,
             numShares: action.amount,
