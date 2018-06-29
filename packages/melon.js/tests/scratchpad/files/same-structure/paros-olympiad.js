@@ -13,7 +13,6 @@ import getNativeAssetSymbol from '../../../../lib/version/calls/getNativeAssetSy
 import getOpenOrders from '../../../../lib/fund/calls/getOpenOrders';
 import getParityProvider from '../../../../lib/utils/parity/getParityProvider';
 import getParticipation from '../../../../lib/participation/calls/getParticipation';
-import getParticipationAuthorizations from '../../../../lib/fund/calls/getParticipationAuthorizations';
 import getQuoteAssetSymbol from '../../../../lib/pricefeeds/calls/getQuoteAssetSymbol';
 import getRanking from '../../../../lib/version/calls/getRanking';
 import getVersionContract from '../../../../lib/version/contracts/getVersionContract';
