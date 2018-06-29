@@ -18,6 +18,7 @@ import signer from './signer';
 function* investSaga(action) {
     function* transaction(environment) {
         const fundAddress = yield select(state => state.fund.address);
+        const quoteAsset = yield select(state => state.fund.config.quoteAssetSymbol)
         const subscription = yield call(invest, environment, {
             fundAddress,
             numShares: action.amount,
@@ -44,7 +45,7 @@ function* investSaga(action) {
         signer,
         `Do you really want to buy ${action.amount} shares for ${
         action.total
-        } MLN?`,
+        } ${quoteAsset}`,
         transaction,
         actions.investFailed,
     );

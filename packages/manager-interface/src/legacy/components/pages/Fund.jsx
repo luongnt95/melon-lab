@@ -23,46 +23,42 @@ const Fund = ({
   pendingRequest,
   isCompetition,
 }) => (
-  <div className="App">
-    <br />
-    <div>
-      <Card.Group>
-        <Factsheet />
-
-        {!isCompetition && (
+    <div className="App">
+      <br />
+      <div>
+        <Card.Group>
+          <Factsheet />
+              {!isCompetition && isManager ? <Administration /> : <GetStarted />}
+              {!isCompetition && canInvest && !pendingRequest ? <Participation /> : <div />}
+              {!isCompetition && canInvest && pendingRequest ? <ExecuteRequest /> : <div />}
+              {!isCompetition && !canInvest ? <Card /> : <div />}
+      
+        </Card.Group>
+        <br />
+        <Holdings address={fundAddress} />
+        <br />
+        {isManager ? (
           <div>
-            {isManager ? <Administration /> : <GetStarted />}
-            {canInvest && !pendingRequest ? <Participation /> : <div />}
-            {canInvest && pendingRequest ? <ExecuteRequest /> : <div />}
-            {!canInvest ? <Card /> : <div />}
+            {' '}
+            <Card.Group>
+              <Trade />
+              <TradeHelper />
+            </Card.Group>
           </div>
-        )}
-      </Card.Group>
+        ) : (
+            <div />
+          )}
+        <br />
+        <Orderbook />
+        <br />
+        <OpenOrders address={fundAddress} />
+        <br />
+        <RecentTrades />
+        <br />
+        <TradeHistory address={fundAddress} />
+      </div>
       <br />
-      <Holdings address={fundAddress} />
-      <br />
-      {isManager ? (
-        <div>
-          {' '}
-          <Card.Group>
-            <Trade />
-            <TradeHelper />
-          </Card.Group>
-        </div>
-      ) : (
-        <div />
-      )}
-      <br />
-      <Orderbook />
-      <br />
-      <OpenOrders address={fundAddress} />
-      <br />
-      <RecentTrades />
-      <br />
-      <TradeHistory address={fundAddress} />
     </div>
-    <br />
-  </div>
-);
+  );
 
 export default Fund;
