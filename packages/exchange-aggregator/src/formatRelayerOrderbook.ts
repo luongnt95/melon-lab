@@ -1,6 +1,4 @@
-import * as tokenInfo from '@melonproject/smart-contracts/utils/info/tokenInfo';
-import BigNumber from 'bignumber.js';
-import { getSymbol, toReadable, getPrices } from '@melonproject/melon.js';
+import { getPrices, getSymbol, toReadable } from '@melonproject/melon.js';
 
 const formatRelayerOrderbook = exchange => (config, bids, asks) => {
   const formattedBids = bids.map(order => ({
@@ -40,7 +38,8 @@ const formatRelayerOrderbook = exchange => (config, bids, asks) => {
     isActive: true,
     sell: {
       symbol: getSymbol(config, order.makerTokenAddress),
-      howMuch: toReadable(config,
+      howMuch: toReadable(
+        config,
         order.makerTokenAmount,
         getSymbol(config, order.makerTokenAddress),
       ),

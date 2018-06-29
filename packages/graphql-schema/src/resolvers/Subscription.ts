@@ -2,51 +2,11 @@ import {
   getAggregatedObservable,
   Order,
 } from '@melonproject/exchange-aggregator';
-import {
-  getParityProvider,
-  getPrice,
-  getAddress,
-  getConfig,
-} from '@melonproject/melon.js';
+import { getAddress } from '@melonproject/melon.js';
 import BigNumber from 'bignumber.js';
 import * as R from 'ramda';
-import * as Rx from 'rxjs';
-import { Context } from '../index';
 import withUnsubscribe from '../utils/withUnsubscribe';
 const debug = require('debug')('graphql-schema:subscription');
-
-const getPricePromises = (environment, symbols) =>
-  symbols.map(symbol =>
-    getPrice(environment, symbol).then(price => ({
-      symbol,
-      price,
-    })),
-  );
-
-export const price = {
-  resolve: (value: number): number => value,
-  subscribe: (parent, args, context: Context) => {
-    const { pubsub } = context;
-    const { symbols } = args;
-
-    const fetchPrices = environment =>
-      Rx.Observable.forkJoin(...getPricePromises(environment, symbols));
-
-    const environment$ = Rx.Observable.fromPromise(
-      getParityProvider(process.env.JSON_RPC_ENDPOINT),
-    );
-
-    const price$ = environment$
-      .switchMap(fetchPrices)
-      .repeatWhen(Rx.operators.delay(10000))
-      .catch(error => Rx.Observable.from([error]));
-
-    const channel = `price:${symbols}`;
-    const iterator = pubsub.asyncIterator(channel);
-    const publish = value => pubsub.publish(channel, value);
-    return withUnsubscribe(price$, iterator, publish);
-  },
-};
 
 const filterBuyOrders = R.filter<Order>(R.propEq('type', 'buy'));
 const filterSellOrders = R.filter<Order>(R.propEq('type', 'sell'));
@@ -81,13 +41,11 @@ export const orderbook = {
       totalBuyVolume,
     };
   },
-  subscribe: async (parent, args, context: Context) => {
-    const { pubsub, network } = context;
+  subscribe: async (parent, args, context) => {
+    const { pubsub, network, config, environment } = context;
     const { baseTokenSymbol, quoteTokenSymbol, exchanges } = args;
-    const environment = await getParityProvider(process.env.JSON_RPC_ENDPOINT);
-    const config = await getConfig(environment, network);
-    const baseTokenAddress = getAddress(config, baseTokenSymbol);
-    const quoteTokenAddress = getAddress(config, quoteTokenSymbol);
+    const baseTokenAddress = getAddress(context.config, baseTokenSymbol);
+    const quoteTokenAddress = getAddress(context.config, quoteTokenSymbol);
 
     debug('Processed symbols.', {
       baseTokenSymbol,
@@ -99,6 +57,8 @@ export const orderbook = {
       quoteTokenAddress,
       exchanges,
       network,
+      environment,
+      config,
     );
 
     const channel = `orderbook:${baseTokenSymbol}/${quoteTokenSymbol}`;
@@ -111,6 +71,5 @@ export const orderbook = {
 export { Order };
 
 export default {
-  price,
   orderbook,
 };

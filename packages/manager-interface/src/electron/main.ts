@@ -42,7 +42,7 @@ const appUrl = async () => {
 
 let mainWindow;
 const restoreMainWindow = async () => {
-  startServer();
+  await startServer();
 
   mainWindow = new electron.BrowserWindow({
     width: 1024,
