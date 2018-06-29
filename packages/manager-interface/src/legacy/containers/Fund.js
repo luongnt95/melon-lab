@@ -3,6 +3,7 @@ import { reduxForm, change, formValueSelector } from 'redux-form';
 
 import isSameAddress from '../utils/isSameAddress';
 import Fund from '../components/pages/Fund';
+import displayNumber from '../utils/displayNumber';
 
 const selector = formValueSelector('trade');
 
@@ -27,14 +28,16 @@ const mapStateToProps = state => {
       selectedOrder: state.orderbook.selectedOrder,
       info: {
         lastPrice: state.recentTrades.trades.length
-          ? state.recentTrades.trades[state.recentTrades.trades.length - 1]
-              .price
+          ? displayNumber(
+              state.recentTrades.trades[state.recentTrades.trades.length - 1]
+                .price,
+            )
           : 'N/A',
         bid: state.orderbook.buyOrders.length
-          ? disstate.orderbook.buyOrders[0].price
+          ? displayNumber(state.orderbook.buyOrders[0].price)
           : 'N/A',
         ask: state.orderbook.sellOrders.length
-          ? state.orderbook.sellOrders[0].price
+          ? displayNumber(state.orderbook.sellOrders[0].price)
           : 'N/A',
         tokens: {
           baseToken: {
