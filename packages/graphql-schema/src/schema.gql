@@ -123,7 +123,6 @@ type Query {
 }
 
 type Subscription {
-  price(symbols: [Symbol]): [Price]
   orderbook(
     baseTokenSymbol: Symbol!
     quoteTokenSymbol: Symbol!

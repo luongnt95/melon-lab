@@ -1,14 +1,12 @@
 import {
   getFundInformations,
   getHoldingsAndPrices,
-  getParityProvider,
   getPrice,
   getRanking,
   performCalculations,
 } from '@melonproject/melon.js';
 
 import * as graphqlFields from 'graphql-fields';
-import { Context } from '../index';
 
 const fundInfomationFields = [
   'fundAddress',
@@ -34,14 +32,12 @@ const calculationFields = [
 const containsField = (fields, query) =>
   fields.find(field => query.includes(field));
 
-const price = async (parent, args, context: Context) => {
-  const environment = await getParityProvider(process.env.JSON_RPC_ENDPOINT);
-  return getPrice(environment, args.symbol);
+const price = async (parent, args, context) => {
+  return getPrice(context.environment, args.symbol);
 };
 
-const funds = async (parent, args, context: Context, info) => {
-  const environment = await getParityProvider(process.env.JSON_RPC_ENDPOINT);
-  const ranking = await getRanking(environment);
+const funds = async (parent, args, context, info) => {
+  const ranking = await getRanking(context.environment);
   const fields = Object.keys(graphqlFields(info));
   const addresses = args.addresses || ranking.map(fund => fund.address);
 
@@ -50,19 +46,19 @@ const funds = async (parent, args, context: Context, info) => {
       ranking.find(rank => rank.address === fundAddress) || {};
 
     const calculations = containsField(fields, calculationFields)
-      ? await performCalculations(environment, {
+      ? await performCalculations(context.environment, {
           fundAddress,
         })
       : {};
 
     const informations = containsField(fields, fundInfomationFields)
-      ? await getFundInformations(environment, {
+      ? await getFundInformations(context.environment, {
           fundAddress,
         })
       : {};
 
     const holdings = fields.includes('holdings')
-      ? await getHoldingsAndPrices(environment, {
+      ? await getHoldingsAndPrices(context.environment, {
           fundAddress,
         }).then(h =>
           h.map(holding => ({

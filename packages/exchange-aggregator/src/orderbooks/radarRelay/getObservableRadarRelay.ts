@@ -1,9 +1,6 @@
 import * as R from 'ramda';
 import * as Rx from 'rxjs';
-import { getParityProvider, getConfig } from '@melonproject/melon.js';
 import formatRelayerOrderbook from '../../formatRelayerOrderbook';
-import getTokenAddress from '../../getTokenAddress';
-import { Order } from '../../index';
 
 // Isomorphic websocket implementation. Falls back to the standard browser
 // protocol on the client.
@@ -95,6 +92,7 @@ const getObservableRadarRelay = (
   baseTokenAddress,
   quoteTokenAddress,
   network,
+  config,
 ) => {
   const url =
     network === 'KOVAN'
@@ -136,19 +134,7 @@ const getObservableRadarRelay = (
     })
     .distinctUntilChanged()
     .do(value => debug('Extracting bids and asks.', value))
-    .switchMap(value => {
-      const environment$ = Rx.Observable.fromPromise(
-        getParityProvider(process.env.JSON_RPC_ENDPOINT),
-      );
-
-      const config$ = environment$.switchMap(environment => {
-        return Rx.Observable.fromPromise(getConfig(environment));
-      });
-
-      return config$.switchMap(config =>
-        Rx.Observable.of(format(config, value.bids, value.asks)),
-      );
-    })
+    .map(value => format(config, value.bids, value.asks))
     .do(value => debug('Emitting order book.', value));
 
   return messages$;
