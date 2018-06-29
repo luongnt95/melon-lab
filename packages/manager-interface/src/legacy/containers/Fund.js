@@ -27,16 +27,14 @@ const mapStateToProps = state => {
       selectedOrder: state.orderbook.selectedOrder,
       info: {
         lastPrice: state.recentTrades.trades.length
-          ? displayNumber(
-              state.recentTrades.trades[state.recentTrades.trades.length - 1]
-                .price,
-            )
+          ? state.recentTrades.trades[state.recentTrades.trades.length - 1]
+              .price
           : 'N/A',
         bid: state.orderbook.buyOrders.length
-          ? displayNumber(state.orderbook.buyOrders[0].price)
+          ? disstate.orderbook.buyOrders[0].price
           : 'N/A',
         ask: state.orderbook.sellOrders.length
-          ? displayNumber(state.orderbook.sellOrders[0].price)
+          ? state.orderbook.sellOrders[0].price
           : 'N/A',
         tokens: {
           baseToken: {
