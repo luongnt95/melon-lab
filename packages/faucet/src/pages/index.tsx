@@ -4,7 +4,6 @@ import axios from 'axios';
 const SUCCESS   = "green";
 const ERROR     = "red";
 const INFO      = "blue";
-const WARNING   = "orange";
 
 export default class extends React.Component {
   constructor(props, context) {
@@ -106,7 +105,7 @@ export default class extends React.Component {
               <form className="form-register" onSubmit={this.handleSubmit}>
                 <input type="text" name="address" value={address} onChange={this.onAddressChange} />
                 {message &&
-                  <div style={{"backgroundColor": message.status}}>
+                  <div>
                     {message.data}
                   </div>
                 }

@@ -20,6 +20,7 @@ const balancePrecision = 3;
 
 export const ETH = 'ETH';
 export const MLN = 'MLN-T';
+export const WETH = 'WETH-T';
 
 // setup
 

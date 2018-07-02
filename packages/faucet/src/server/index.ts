@@ -1,4 +1,3 @@
-import { WSAEDESTADDRREQ } from "constants";
 
 require('dotenv-extended').config();
 
@@ -13,7 +12,7 @@ const path = require('path');
 
 const BigNumber = require('bignumber.js');
 
-const {setup, getBalances, send, MLN} = require('./melon');
+const {setup, getBalances, send, MLN, WETH} = require('./melon');
 
 const {Storage} = require('./storage.ts');
 
@@ -112,6 +111,8 @@ app.prepare().then(() => {
         try {
           // send 'mln' melon to the token symbol 'MLN'
           await send(address, mln, MLN);
+          // send weth
+          await send(address, eth, WETH);
           // send ether
           await send(address, eth);
 
