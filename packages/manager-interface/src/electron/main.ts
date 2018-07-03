@@ -49,6 +49,7 @@ const restoreMainWindow = async () => {
     height: 800,
     webPreferences: {
       // TODO: Figure out a way to disable this.
+      contextIsolation: false,
       nodeIntegration: true,
       preload: path.resolve(__dirname, 'preload.js'),
     },
@@ -83,6 +84,12 @@ electron.app.on('ready', () => {
 
       callback(path.normalize(path.join(__dirname, reqUrlFinal)));
     });
+
+    electron.session.defaultSession.webRequest.onHeadersReceived(
+      (details, callback) => {
+        callback({ responseHeaders: `default-src 'none'` });
+      },
+    );
   }
 
   restoreMainWindow();
