@@ -7,3 +7,5 @@ make publish
 # TODO: Use rolling updates for this.
 kubectl set image deployment/graphql-live graphql-live=melonproject/graphql-server:${TRAVIS_BUILD_ID}
 kubectl set image deployment/graphql-kovan graphql-kovan=melonproject/graphql-server:${TRAVIS_BUILD_ID}
+
+kubectl set image deployment/faucet faucet=melonproject/faucet:${TRAVIS_BUILD_ID}
