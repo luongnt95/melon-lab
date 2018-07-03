@@ -54,10 +54,12 @@ test:
 .PHONY: package
 package:
 	@docker tag melonproject/graphql-server:latest melonproject/graphql-server:${VERSION}
+	@docker tag melonproject/faucet:latest melonproject/faucet:${VERSION}
 
 .PHONY: publish
 publish:
 	@docker push melonproject/graphql-server:${VERSION}
+	@docker push melonproject/faucet:${VERSION}
 
 # -----------------------------------------------------------------------------
 # DEVELOPMENT

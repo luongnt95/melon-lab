@@ -210,7 +210,7 @@ services:
       - ./packages/faucet/.babelrc:/app/packages/faucet/.babelrc
       - ./packages/faucet/.env.defaults:/app/packages/faucet/.env.defaults
       - ./packages/faucet/.env:/app/packages/faucet/.env
-
+    
       # Mount the node modules of this package with the .cache directory mounted into a volume.
       # - ./packages/faucet/node_modules:/app/packages/faucet/node_modules:delegated
       # - node_modules_cache:/app/packages/faucet/node_modules/.cache
