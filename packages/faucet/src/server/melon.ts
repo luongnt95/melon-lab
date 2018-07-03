@@ -45,7 +45,15 @@ async function _sendToken(to, amount, token) {
 }
 
 export async function send(to, amount, token = ETH) {
-    return token == ETH ? _sendEther(to, amount) : _sendToken(to, amount, token);
+    try {
+        if (token == ETH) {
+            await _sendEther(to, amount);
+        } else { 
+            await _sendToken(to, amount, token);
+        }
+    } catch(err) {
+        console.log(`Error sending: ${token}: ${err}`)
+    }
 }
 
 // balance

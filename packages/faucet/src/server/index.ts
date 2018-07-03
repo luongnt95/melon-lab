@@ -112,7 +112,7 @@ app.prepare().then(() => {
           // send 'mln' melon to the token symbol 'MLN'
           await send(address, mln, MLN);
           // send weth
-          await send(address, eth, WETH);
+          await send(address, mln, WETH);
           // send ether
           await send(address, eth);
 
