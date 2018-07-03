@@ -26,7 +26,7 @@ export type AssetConfig = {
  */
 export type Config = {
   assets: Array<AssetConfig>,
-  OnlyManagerAddress: Address,
+  onlyManagerCompetitionAddress: Address,
   noComplianceCompetitionAddress: Address,
   competitionComplianceAddress: Address,
   matchingMarketAddress: Address,
@@ -55,8 +55,7 @@ const getConfig = async (environment, optionalNetwork): Promise<Config> => {
     ? optionalNetwork.toLowerCase()
     : await getNetwork(environment);
   config = {
-    onlyManagerAddress: addressBook[network].OnlyManager,
-    noComplianceCompetitionAddress: addressBook[network].NoComplianceCompetition,
+    onlyManagerCompetitionAddress: addressBook[network].OnlyManagerCompetition,
     competitionComplianceAddress: addressBook[network].CompetitionCompliance,
     matchingMarketAddress: addressBook[network].MatchingMarket,
     matchingMarketAdapter: addressBook[network].MatchingMarketAdapter,

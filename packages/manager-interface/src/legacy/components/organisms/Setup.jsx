@@ -86,7 +86,7 @@ const Setup = ({ loading, handleSubmit, networkId, config, isCompetition }) => (
                 <List.Content
                   href={`https://${
                     networkId === '42' ? 'kovan.' : ''
-                    }etherscan.io/address/${config.onlyManagerAddress}`}
+                    }etherscan.io/address/${config.onlyManagerCompetitionAddress}`}
                   target="_blank"
                 >
                   Compliance (invest/redeem):{' '}
