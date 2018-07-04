@@ -82,9 +82,9 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
       <div className="order-form__dropdown">
         <Dropdown
           name="exchange"
-          value={values.exchange ? values.exchange : selectedOrder.exchange}
+          value={values.exchange}
           options={exchanges}
-          label="Exchange Server"
+          label="Exchange"
           onChange={onChange}
           disabled={isMarket || !dataValid}
         />
