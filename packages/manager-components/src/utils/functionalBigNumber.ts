@@ -21,7 +21,7 @@ export const divide = (base, ...args) =>
     toBigNumber(base),
   ).toString(10);
 
-export const isZero = number => toBigNumber(number).eq(0);
+export const isZero = numberToCheck => toBigNumber(numberToCheck).eq(0);
 
 export const greaterThan = (a, b) => toBigNumber(a).gt(b || 0);
 
