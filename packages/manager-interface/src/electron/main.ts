@@ -12,7 +12,9 @@ import startServer from './server';
 const isWindows = process.platform === 'win32';
 const isMac = process.platform === 'darwin';
 
-debug({ enabled: true, showDevTools: true });
+if (isDev) {
+  debug({ enabled: true, showDevTools: true });
+}
 
 const appUrl = async () => {
   if (!isDev) {
@@ -48,9 +50,8 @@ const restoreMainWindow = async () => {
     width: 1024,
     height: 800,
     webPreferences: {
-      // TODO: Figure out a way to disable this.
-      contextIsolation: false,
-      nodeIntegration: true,
+      contextIsolation: true,
+      nodeIntegration: false,
       preload: path.resolve(__dirname, 'preload.js'),
     },
   });
