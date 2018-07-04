@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, StatelessComponent } from 'react';
+import React, { StatelessComponent } from 'react';
 
 import styles from './styles.css';
 
@@ -17,13 +17,15 @@ const Switch: StatelessComponent<SwitchProps> = ({
   onChange,
   name,
   isChecked,
-  disabled
+  disabled,
 }) => {
   const handleChange = e => {
     const checked = e.target.checked;
     const value = !checked ? labels[0] : labels[1];
     e.target.value = value;
-    onChange({ value }, e);
+    if (onChange) {
+      onChange({ value }, e);
+    }
   };
 
   return (
@@ -32,7 +34,7 @@ const Switch: StatelessComponent<SwitchProps> = ({
       <label className="switch__wrapper">
         <input
           name={name}
-          onChange={e => handleChange(e)}
+          onChange={handleChange}
           className="switch__input"
           type="checkbox"
           checked={isChecked}

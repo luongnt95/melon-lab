@@ -16,13 +16,12 @@ export const Trade: StatelessComponent<OrderFormProps> = ({
   setTabIndex,
   form,
 }) => {
+  const setActiveTab = index => setTabIndex(index);
+
   return (
     <div className="trade">
       <style jsx>{styles}</style>
-      <Tabs
-        handleTabClick={index => setTabIndex(index)}
-        activeTabIndex={activeTabIndex}
-      >
+      <Tabs handleTabClick={setActiveTab} activeTabIndex={activeTabIndex}>
         <TabContent title="Take">
           <OrderForm {...form} strategy="Market" />
         </TabContent>
