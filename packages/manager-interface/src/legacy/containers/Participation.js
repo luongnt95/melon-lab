@@ -36,7 +36,7 @@ const mapStateToProps = state => ({
   },
   displayNumber,
   quoteAsset: state.app.assetPair.quote,
-  participationType: state.form.participation
+  participationType: state.form.participation && state.form.participation.values
     ? state.form.participation.values.type
     : "Invest",
 });
