@@ -1,11 +1,23 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { reduxForm, change, formValueSelector } from 'redux-form';
+import { actions } from '../actions/trade';
 
 import isSameAddress from '../utils/isSameAddress';
 import Fund from '../components/pages/Fund';
 import displayNumber from '../utils/displayNumber';
 
 const selector = formValueSelector('trade');
+
+const mapDispatchToProps = dispatch => ({
+  onSubmit: values => {
+    if (values.strategy === 'Market') {
+      dispatch(actions.takeOrder(values));
+    } else {
+      dispatch(actions.placeOrder(values));
+    }
+  },
+});
 
 const mapStateToProps = state => {
   return {
@@ -67,6 +79,9 @@ const mapStateToProps = state => {
   };
 };
 
-const FundContainer = connect(mapStateToProps)(Fund);
+const FundContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Fund);
 
 export default FundContainer;
