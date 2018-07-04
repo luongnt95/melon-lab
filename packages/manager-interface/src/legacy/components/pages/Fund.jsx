@@ -63,7 +63,8 @@ const Fund = ({
         <RecentTrades />
         <br />
       </div>
-      );
-};
+    </div>
+  );
+;
 
 export default Fund;
