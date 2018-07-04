@@ -3,8 +3,9 @@
 exports[`OrderForm should render correctly 1`] = `
 <Formik
   baseTokenSymbol="ETH-T-M"
+  dataValid={true}
   decimals={6}
-  enableReinitialize={false}
+  enableReinitialize={true}
   exchanges={
     Array [
       Object {
@@ -37,11 +38,11 @@ exports[`OrderForm should render correctly 1`] = `
   }
   initialValues={
     Object {
-      "exchange": "RadarRelay",
+      "exchange": "RADAR_RELAY",
       "price": "",
       "quantity": "",
       "total": "",
-      "type": "Buy",
+      "type": "buy",
     }
   }
   isInitialValid={false}
@@ -49,9 +50,9 @@ exports[`OrderForm should render correctly 1`] = `
   quoteTokenSymbol="MLN-T-M"
   render={[Function]}
   selectedExchange="RadarRelay"
-  selectedOrder={false}
   selectedOrderType="Buy"
   strategy="Limit"
+  total=""
   validateOnBlur={true}
   validateOnChange={true}
   validationSchema={[Function]}
