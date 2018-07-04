@@ -14,14 +14,14 @@
 .layout :global(h3) {
   font-size: 1.2em;
   margin: 0;
+}
 
-  &:after {
-    content: ' ';
-    position: absolute;
-    bottom: -5px;
-    left: 0;
-    width: 33%;
-    border-top: 1px solid rgba(34, 36, 38, 0.15);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
+.layout :global(h3):after {
+  content: ' ';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 33%;
+  border-top: 1px solid rgba(34, 36, 38, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }

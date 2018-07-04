@@ -10,14 +10,16 @@
   padding: var(--space-xs);
   line-height: 1;
   min-height: 38px;
+}
 
-  &::placeholder {
-    color: var(--color-grey);
-  }
+.input__field,
+:global(.input__field)::placeholder {
+  color: var(--color-grey);
+}
 
-  &:disabled {
-    background-color: var(--color-secondary);
-  }
+.input__field,
+:global(.input__field):disabled {
+  background-color: var(--color-secondary);
 }
 
 .input__label {
