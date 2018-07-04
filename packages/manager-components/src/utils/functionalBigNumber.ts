@@ -1,25 +1,25 @@
-import BigNumber from "bignumber.js";
+import BigNumber from 'bignumber.js';
 
 export const toBigNumber = value =>
-  new BigNumber(value === "..." ? 0 : value || 0);
+  new BigNumber(value === '...' ? 0 : value || 0);
 
 export const multiply = (base, ...args) =>
-  args.reduce(
-    (acc, current) => acc.times(toBigNumber(current)),
-    toBigNumber(base),
-  ).toString(10);
+  args
+    .reduce(
+      (acc, current) => acc.times(toBigNumber(current)),
+      toBigNumber(base),
+    )
+    .toString(10);
 
 export const add = (base, ...args) =>
-  args.reduce(
-    (acc, current) => acc.add(toBigNumber(current)),
-    toBigNumber(base),
-  ).toString(10);
+  args
+    .reduce((acc, current) => acc.add(toBigNumber(current)), toBigNumber(base))
+    .toString(10);
 
 export const divide = (base, ...args) =>
-  args.reduce(
-    (acc, current) => acc.div(toBigNumber(current)),
-    toBigNumber(base),
-  ).toString(10);
+  args
+    .reduce((acc, current) => acc.div(toBigNumber(current)), toBigNumber(base))
+    .toString(10);
 
 export const isZero = numberToCheck => toBigNumber(numberToCheck).eq(0);
 
