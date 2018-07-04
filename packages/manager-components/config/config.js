@@ -6,7 +6,6 @@ import { setOptions } from '@storybook/addon-options';
 const stories = require.context('../src', true, /\/story\.(tsx?)$/);
 
 const CenterDecorator = storyFn => {
-  console.log(storyFn());
   const a = storyFn()
   return <Layout>{a}</Layout>;
 };
