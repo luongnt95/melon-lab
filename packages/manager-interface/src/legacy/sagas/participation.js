@@ -16,6 +16,7 @@ import { actions as routesActions } from '../actions/routes';
 import signer from './signer';
 
 function* investSaga(action) {
+    const quoteAsset = yield select(state => state.fund.config.quoteAssetSymbol)
     function* transaction(environment) {
         const fundAddress = yield select(state => state.fund.address);
         const subscription = yield call(invest, environment, {
@@ -44,7 +45,7 @@ function* investSaga(action) {
         signer,
         `Do you really want to buy ${action.amount} shares for ${
         action.total
-        } MLN?`,
+        } ${quoteAsset}`,
         transaction,
         actions.investFailed,
     );
