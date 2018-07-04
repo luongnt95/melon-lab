@@ -55,7 +55,7 @@ const getConfig = async (environment, optionalNetwork): Promise<Config> => {
     ? optionalNetwork.toLowerCase()
     : await getNetwork(environment);
   config = {
-    onlyManagerAddress: addressBook[network].OnlyManager,
+    onlyManagerAddress: addressBook[network].OnlyManagerCompetition,
     competitionComplianceAddress: addressBook[network].CompetitionCompliance,
     matchingMarketAddress: addressBook[network].MatchingMarket,
     matchingMarketAdapter: addressBook[network].MatchingMarketAdapter,
@@ -63,7 +63,7 @@ const getConfig = async (environment, optionalNetwork): Promise<Config> => {
     zeroExV1AdapterAddress: addressBook[network].ZeroExV1Adapter,
     canonicalPriceFeedAddress: addressBook[network].CanonicalPriceFeed,
     rankingAddress: addressBook[network].FundRanking,
-    riskManagementAddress: addressBook[network].RMMakeOrders,
+    riskManagementAddress: addressBook[network].NoRiskMgmt,
     versionAddress: addressBook[network].Version,
     governanceAddress: addressBook[network].Governance,
     olympiadAddress: addressBook[network].Competition,
