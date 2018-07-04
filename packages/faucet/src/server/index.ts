@@ -36,6 +36,10 @@ const ok = (res, msg) => {
 
 const storage = new Storage();
 
+function parseList(str: string | undefined): string[] {
+  return str == undefined || str == "" ? [] : str.split(',')
+}
+
 app.prepare().then(() => {
   const server = express();
   const handle = app.getRequestHandler();
@@ -48,12 +52,21 @@ app.prepare().then(() => {
   // Amounts to send from env variables
   const eth = web3.utils.toWei(process.env.ETH, "ether");
   const mln = new BigNumber(process.env.MLN);
-
+  
   // static content
   server.use('/static', express.static(path.join(__dirname, 'public')))
 
   server.use(bodyParser.json());
   server.use(bodyParser.urlencoded());
+
+  let whitelist: string[] = parseList(process.env.WHITELIST);
+  let blacklist: string[] = parseList(process.env.BLACKLIST);
+
+  console.log("-- whitelist --")
+  console.log(whitelist)
+
+  console.log("-- blacklist --")
+  console.log(blacklist)
 
   server.get('/balance', async (req, res) => {
     const address = req.query.address;
@@ -91,17 +104,28 @@ app.prepare().then(() => {
   server.post('/', async (req, res) => {
     const address = req.body.address || '';
 
-    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-
-    const valid = await storage.isValid(ip);
-    if (!valid) {
-      err(res, `You have already requested more than 3 times in the last 24 hours.`)
-      return
-    }
-
     if (!web3.utils.isAddress(address)) {
       err(res, `${address} is not a valid address`)
       return
+    }
+
+    const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+    console.log(`IP: ${ip}`)
+    console.log(req.headers)
+    
+    if (blacklist.indexOf(ip) != -1) {
+      err(res, 'Your address has been blacklisted')
+      return
+    }
+
+    if (whitelist.indexOf(ip) == -1) {
+      const valid = await storage.isValid(ip);
+      if (!valid) {
+        err(res, `You have already requested more than 3 times in the last 24 hours.`)
+        return
+      }  
+    } else {
+      console.log(`Whitelisted`)
     }
 
     recaptcha.verify(req, async (error, data) => {

@@ -12,6 +12,7 @@ import TradeHistory from '../../containers/TradeHistory';
 import GetStarted from '../../containers/GetStarted';
 import Participation from '../../containers/Participation';
 import ExecuteRequest from '../../containers/ExecuteRequest';
+import TradeHelper from '../../containers/TradeHelper';
 import OpenOrders from '../../containers/OpenOrders';
 import Layout from '@melonproject/manager-components/design/Layout';
 import Trade from '@melonproject/manager-components/components/Trade/container';
@@ -24,36 +25,36 @@ const Fund = ({
   isCompetition,
   orderForm,
   onSubmit,
-}) => {
-  return (
+}) => (
     <div className="App">
       <br />
       <div>
         <Card.Group>
           <Factsheet />
-
-          {!isCompetition && (
-            <div>
-              {isManager ? <Administration /> : <GetStarted />}
-              {canInvest && !pendingRequest ? <Participation /> : <div />}
-              {canInvest && pendingRequest ? <ExecuteRequest /> : <div />}
-              {!canInvest ? <Card /> : <div />}
-            </div>
-          )}
+          {!isCompetition && isManager ? <Administration /> : <GetStarted />}
+          {!isCompetition && canInvest && !pendingRequest ? (
+            <Participation />
+          ) : (
+              <div />
+            )}
+          {!isCompetition && canInvest && pendingRequest ? (
+            <ExecuteRequest />
+          ) : (
+              <div />
+            )}
+          {!isCompetition && !canInvest ? <Card /> : <div />}
         </Card.Group>
         <br />
         <Holdings address={fundAddress} />
         <br />
         {isManager ? (
           <div>
-            <Layout>
-              <h3>Trade</h3>
-              <Trade form={{ ...orderForm, onSubmit: onSubmit }} />
-            </Layout>
+            <h3>Trade</h3>
+            <Trade form={{ ...orderForm, onSubmit: onSubmit }} />
           </div>
         ) : (
-          <div />
-        )}
+            <div />
+          )}
         <br />
         <Orderbook />
         <br />
@@ -61,11 +62,8 @@ const Fund = ({
         <br />
         <RecentTrades />
         <br />
-        <TradeHistory address={fundAddress} />
       </div>
-      <br />
-    </div>
-  );
+      );
 };
 
 export default Fund;

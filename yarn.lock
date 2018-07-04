@@ -832,9 +832,9 @@
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
 
-"@melonproject/smart-contracts@0.8.0-alpha.29":
-  version "0.8.0-alpha.29"
-  resolved "https://registry.yarnpkg.com/@melonproject/smart-contracts/-/smart-contracts-0.8.0-alpha.29.tgz#952121bb3d068cd686923a74a9b6f0eb7c715dc9"
+"@melonproject/smart-contracts@0.8.0-alpha.31":
+  version "0.8.0-alpha.31"
+  resolved "https://registry.yarnpkg.com/@melonproject/smart-contracts/-/smart-contracts-0.8.0-alpha.31.tgz#c80798cda8e12bc0e1c04486d48a860d592230ee"
   dependencies:
     "0x.js" "^0.35.0"
     "@parity/api" "^2.1.20"

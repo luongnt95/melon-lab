@@ -26,17 +26,17 @@ const mapStateToProps = state => ({
     type: "Invest",
     amount: 1,
     price:
-      state.fund.sharePrice === "..."
-        ? "..."
-        : calculateParticipationPrice(state.fund.sharePrice, "Invest"),
+    state.fund.sharePrice === "..."
+      ? "..."
+      : calculateParticipationPrice(state.fund.sharePrice, "Invest"),
     total:
-      state.fund.sharePrice === "..."
-        ? "..."
-        : calculateParticipationPrice(state.fund.sharePrice, "Invest"),
+    state.fund.sharePrice === "..."
+      ? "..."
+      : calculateParticipationPrice(state.fund.sharePrice, "Invest"),
   },
   displayNumber,
   quoteAsset: state.app.assetPair.quote,
-  participationType: state.form.participation
+  participationType: state.form.participation && state.form.participation.values
     ? state.form.participation.values.type
     : "Invest",
 });
