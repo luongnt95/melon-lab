@@ -23,7 +23,7 @@ import { types } from '../../actions/routes';
 import ConnectionInfo from '../organisms/ConnectionInfo';
 import { greaterThan } from '../../utils/functionalBigNumber';
 
-const mapOnboardingStateToMainContainer = (onboardingState, track) =>{
+const mapOnboardingStateToMainContainer = (onboardingState, track) => {
   const map = {
     [onboardingPath.NO_PROVIDER]: NoConnection,
     [onboardingPath.NO_CONNECTION]: NoConnection,
@@ -80,13 +80,13 @@ const getMainComponent = ({
       showFaucet={showFaucet}
     />
   ) : (
-    <div />
-  );
+      <div />
+    );
 };
 
 const App = props => (
   <div className="App">
-    {(greaterThan(props.ethBalance, 1) || greaterThan(props.fundNav, 1)) && (
+    {(props.network !== "42" && (greaterThan(props.ethBalance, 1) || greaterThan(props.fundNav, 1))) && (
       <a
         href="https://github.com/melonproject/melon-lab/releases"
         target="_blank"

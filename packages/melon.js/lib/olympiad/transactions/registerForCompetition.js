@@ -45,9 +45,7 @@ const registerForCompetition = async (
         'Max total buy in has been reached.',
     );
 
-    const CHFValue = await olympiadContract.instance.getCHFValue.call({}, [
-        toProcessable(config, buyInValue, 'WETH-T'),
-    ]);
+
 
     const whitelistantToMaxBuyin = await olympiadContract.instance.whitelistantToMaxBuyin.call(
         {},
@@ -55,7 +53,7 @@ const registerForCompetition = async (
     );
 
     ensure(
-        CHFValue.lte(whitelistantToMaxBuyin),
+        new BigNumber(buyInValue).lte(whitelistantToMaxBuyin),
         'The buy in amount exceeds your individual max cap (determined by Bitcoin Suisse).',
     );
 
