@@ -79,8 +79,8 @@ const withFormValidation = withFormik({
     total: Yup.string().required('Total is required.'),
   }),
   enableReinitialize: true,
-  handleSubmit: values => {
-    // TODO: define handleSubmit
+  handleSubmit: (values, form) => {
+    form.props.onSubmit(values);
   },
 });
 

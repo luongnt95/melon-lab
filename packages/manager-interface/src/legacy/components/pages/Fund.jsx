@@ -23,47 +23,49 @@ const Fund = ({
   pendingRequest,
   isCompetition,
   orderForm,
-}) => (
-  <div className="App">
-    <br />
-    <div>
-      <Card.Group>
-        <Factsheet />
+  onSubmit,
+}) => {
+  return (
+    <div className="App">
+      <br />
+      <div>
+        <Card.Group>
+          <Factsheet />
 
-        {!isCompetition && (
+          {!isCompetition && (
+            <div>
+              {isManager ? <Administration /> : <GetStarted />}
+              {canInvest && !pendingRequest ? <Participation /> : <div />}
+              {canInvest && pendingRequest ? <ExecuteRequest /> : <div />}
+              {!canInvest ? <Card /> : <div />}
+            </div>
+          )}
+        </Card.Group>
+        <br />
+        <Holdings address={fundAddress} />
+        <br />
+        {isManager ? (
           <div>
-            {isManager ? <Administration /> : <GetStarted />}
-            {canInvest && !pendingRequest ? <Participation /> : <div />}
-            {canInvest && pendingRequest ? <ExecuteRequest /> : <div />}
-            {!canInvest ? <Card /> : <div />}
+            <Layout>
+              <h3>Trade</h3>
+              <Trade form={{ ...orderForm, onSubmit: onSubmit }} />
+            </Layout>
           </div>
+        ) : (
+          <div />
         )}
-      </Card.Group>
+        <br />
+        <Orderbook />
+        <br />
+        <OpenOrders address={fundAddress} />
+        <br />
+        <RecentTrades />
+        <br />
+        <TradeHistory address={fundAddress} />
+      </div>
       <br />
-      <Holdings address={fundAddress} />
-      <br />
-      {isManager ? (
-        <div>
-          {' '}
-          <Layout>
-            <h3>Trade</h3>
-            <Trade form={orderForm} />
-          </Layout>
-        </div>
-      ) : (
-        <div />
-      )}
-      <br />
-      <Orderbook />
-      <br />
-      <OpenOrders address={fundAddress} />
-      <br />
-      <RecentTrades />
-      <br />
-      <TradeHistory address={fundAddress} />
     </div>
-    <br />
-  </div>
-);
+  );
+};
 
 export default Fund;
