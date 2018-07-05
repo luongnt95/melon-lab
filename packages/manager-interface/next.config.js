@@ -63,17 +63,12 @@ module.exports = withComposedConfig({
     );
 
     if (isElectron) {
-      config.target = 'electron-renderer';
-
       // Code splitting doesn't make much sense in an electron app.
       config.plugins.push(
         new webpack.optimize.LimitChunkCountPlugin({
           maxChunks: 1,
         }),
       );
-
-      // Use the 'browser' field in the renderer.
-      config.resolve.mainFields = ['browser', 'module', 'main'];
     }
 
     return config;

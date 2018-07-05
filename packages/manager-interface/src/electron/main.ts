@@ -48,8 +48,7 @@ const restoreMainWindow = async () => {
     width: 1024,
     height: 800,
     webPreferences: {
-      // TODO: Figure out a way to disable this.
-      nodeIntegration: true,
+      nodeIntegration: false,
       preload: path.resolve(__dirname, 'preload.js'),
     },
   });
