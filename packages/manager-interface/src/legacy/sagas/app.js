@@ -25,7 +25,9 @@ function* init() {
       Object.values(tracks),
     );
   }
-  yield put(actions.setTrack({ track, isCompetition }));
+  yield put(
+    actions.setTrack({ track, isCompetition, isElectron: global.isElectron }),
+  );
 }
 
 const getOnboardingState = ({ ethereum, app, fund }) => {

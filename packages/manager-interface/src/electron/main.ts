@@ -61,9 +61,7 @@ const restoreMainWindow = async () => {
 };
 
 electron.app.on('window-all-closed', () => {
-  if (!isMac) {
-    electron.app.quit();
-  }
+  electron.app.quit();
 });
 
 electron.app.on('activate', () => {

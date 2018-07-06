@@ -1,4 +1,5 @@
-import { takeLatest, call, put, take, select } from 'redux-saga/effects';
+import { takeLatest, call, put, take, select, fork } from 'redux-saga/effects';
+import { eventChannel, END } from 'redux-saga';
 import {
   getWallet,
   createWallet,
@@ -58,14 +59,20 @@ const createDownload = (data, filename, mime) => {
   }
 };
 
-const storeWalletDev = wallet => {
-  if (process.env.NODE_ENV === 'development') {
+function* storeWallet(wallet) {
+  const isElectron = yield select(state => state.app.isElectron);
+
+  console.log(wallet);
+
+  if (!isElectron && process.env.NODE_ENV === 'development') {
     console.warn(
       'Development environment detected. Storing unencrypted wallet on localStorage!',
     );
     localStorage.setItem('wallet:melon.fund', JSON.stringify(wallet));
+  } else if (isElectron) {
+    global.ipcRenderer.send('store-wallet', wallet.address, wallet.privateKey);
   }
-};
+}
 
 function* generateMnemonic() {
   try {
@@ -81,7 +88,7 @@ function* restoreWalletSaga({ mnemonic }) {
     const wallet = yield importWalletFromMnemonic(mnemonic);
     setEnvironment({ account: wallet });
     yield put(actions.restoreFromMnemonicSucceeded(wallet));
-    yield call(storeWalletDev, wallet);
+    yield call(storeWallet, wallet);
     yield put(routeActions.wallet());
     yield put(ethereumActions.accountChanged(`${wallet.address}`));
   } catch (err) {
@@ -162,7 +169,7 @@ function* importWallet({ encryptedWalletString }) {
     );
     setEnvironment({ account: decryptedWallet });
     yield put(actions.importWalletSucceeded(decryptedWallet));
-    yield call(storeWalletDev, decryptedWallet);
+    yield call(storeWallet, decryptedWallet);
     yield put(ethereumActions.accountChanged(`${decryptedWallet.address}`));
     yield put(routeActions.wallet());
     yield put(modalActions.close());
@@ -173,12 +180,19 @@ function* importWallet({ encryptedWalletString }) {
   }
 }
 
+function* keytarDialogs() {
+  global.ipcRenderer.on('store-wallet-success', () => {
+    console.log('store-wallet-success');
+  });
+}
+
 function* wallet() {
   yield takeLatest(types.RESTORE_FROM_MNEMONIC_REQUESTED, restoreWalletSaga);
   yield takeLatest(types.DELETE_WALLET_REQUESTED, deleteWallet);
   yield takeLatest(types.IMPORT_WALLET_REQUESTED, importWallet);
   yield takeLatest(types.DOWNLOAD_JSON, downloadJSON);
   yield takeLatest(routeTypes.WALLET_GENERATE, generateMnemonic);
+  if (global.isElectron) yield fork(keytarDialogs);
 }
 
 export default wallet;
