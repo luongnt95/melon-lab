@@ -179,7 +179,6 @@ import isValidEnvironment from './utils/environment/isValidEnvironment';
 import setEnvironment from './utils/environment/setEnvironment';
 
 // ./lib/utils/ethereum
-import extractEventDefinitions from './utils/ethereum/extractEventDefinitions';
 import findEventInLog from './utils/ethereum/findEventInLog';
 import gasBoost from './utils/ethereum/gasBoost';
 import getNetworkName from './utils/ethereum/getNetworkName';
@@ -348,7 +347,6 @@ export {
   isExternalSigner,
   isValidEnvironment,
   setEnvironment,
-  extractEventDefinitions,
   findEventInLog,
   gasBoost,
   getNetworkName,
