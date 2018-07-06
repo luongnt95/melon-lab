@@ -59,11 +59,8 @@ app.prepare().then(() => {
   let whitelist: string[] = parseList(process.env.WHITELIST);
   let blacklist: string[] = parseList(process.env.BLACKLIST);
 
-  console.log("-- whitelist --")
-  console.log(whitelist)
-
-  console.log("-- blacklist --")
-  console.log(blacklist)
+  console.log(`Whitelist: ${whitelist}`)
+  console.log(`Blacklist: ${blacklist}`)
 
   server.get('/balance', async (req, res) => {
     const address = req.query.address;
@@ -79,7 +76,7 @@ app.prepare().then(() => {
       }
     }
   });
-
+  
   server.get('/', async (req, res) => {
     res.recaptcha = recaptcha.render();
 
@@ -106,6 +103,9 @@ app.prepare().then(() => {
       return
     }
 
+    /*
+    Disable ip manager
+
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     console.log(`IP: ${ip}`)
     console.log(req.headers)
@@ -124,7 +124,8 @@ app.prepare().then(() => {
     } else {
       console.log(`Whitelisted`)
     }
-
+    */
+    
     recaptcha.verify(req, async (error, data) => {
       if (error) {
         err(res, 'Captcha not valid')
