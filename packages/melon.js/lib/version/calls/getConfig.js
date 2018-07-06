@@ -14,33 +14,33 @@ import type { TokenSymbol } from '../../assets/schemas/TokenSymbol';
  * Asset config
  */
 export type AssetConfig = {
-  address: Address,
-  decimal: number,
-  name: string,
-  symbol: TokenSymbol,
-  url: string,
+    address: Address,
+    decimal: number,
+    name: string,
+    symbol: TokenSymbol,
+    url: string,
 };
 
 /**
  * Config retrieved from the version
  */
 export type Config = {
-  assets: Array<AssetConfig>,
-  onlyManagerCompetitionAddress: Address,
-  noComplianceCompetitionAddress: Address,
-  competitionComplianceAddress: Address,
-  matchingMarketAddress: Address,
-  matchingMarketAdapter: Address,
-  zeroExV1Address: Address,
-  zeroExV1AdapterAddress: Address,
-  nativeAssetSymbol: TokenSymbol,
-  canonicalPriceFeedAddress: Address,
-  stakingPriceFeedAddress: Address,
-  quoteAssetSymbol: TokenSymbol,
-  rankingAddress: Address,
-  riskManagementAddress: Address,
-  versionAddress: Address,
-  governanceAddress: Address,
+    assets: Array<AssetConfig>,
+    onlyManagerCompetitionAddress: Address,
+    noComplianceCompetitionAddress: Address,
+    competitionComplianceAddress: Address,
+    matchingMarketAddress: Address,
+    matchingMarketAdapter: Address,
+    zeroExV1Address: Address,
+    zeroExV1AdapterAddress: Address,
+    nativeAssetSymbol: TokenSymbol,
+    canonicalPriceFeedAddress: Address,
+    stakingPriceFeedAddress: Address,
+    quoteAssetSymbol: TokenSymbol,
+    rankingAddress: Address,
+    riskManagementAddress: Address,
+    versionAddress: Address,
+    governanceAddress: Address,
 };
 
 let config: Config;
@@ -48,35 +48,39 @@ let config: Config;
 /**
  * Get config from deployed version contract
  */
-const getConfig = async (environment, optionalNetwork): Promise<Config> => {
-  if (config) return config;
+const getConfig = async (environment, track = "kovan-demo"): Promise<Config> => {
+    if (config) return config;
 
-  const network = optionalNetwork
-    ? optionalNetwork.toLowerCase()
-    : await getNetwork(environment);
-  config = {
-    onlyManagerCompetitionAddress: addressBook[network].OnlyManagerCompetition,
-    competitionComplianceAddress: addressBook[network].CompetitionCompliance,
-    matchingMarketAddress: addressBook[network].MatchingMarket,
-    matchingMarketAdapter: addressBook[network].MatchingMarketAdapter,
-    zeroExV1Address: addressBook[network].ZeroExExchange,
-    zeroExV1AdapterAddress: addressBook[network].ZeroExV1Adapter,
-    canonicalPriceFeedAddress: addressBook[network].CanonicalPriceFeed,
-    rankingAddress: addressBook[network].FundRanking,
-    riskManagementAddress: addressBook[network].NoRiskMgmt,
-    versionAddress: addressBook[network].Version,
-    governanceAddress: addressBook[network].Governance,
-    olympiadAddress: addressBook[network].Competition,
-  };
+    const network = await getNetwork(environment);
 
-  // HACK: Define config first so that inside these next async functions,
-  // getConfig() already returns the addresses to avoid an infinite loop
-  config.assets = await getWhiteListedAssets(environment, network);
-  config.nativeAssetSymbol = await getNativeAssetSymbol(environment);
-  config.quoteAssetSymbol = await getQuoteAssetSymbol(environment);
-  config.melonAssetSymbol = network === 'kovan' ? 'MLN-T' : 'MLN';
+    let mode;
+    if (track === "kovan-demo") mode = "kovan"
+    else if (track === "kovan-competition") mode = "kovanCompetition"
+    else if (track === "live") mode = "live"
 
-  return config;
+    config = {
+        onlyManagerCompetitionAddress: addressBook[mode].OnlyManagerCompetition,
+        competitionComplianceAddress: addressBook[mode].CompetitionCompliance,
+        matchingMarketAddress: addressBook[mode].MatchingMarket,
+        matchingMarketAdapter: addressBook[mode].MatchingMarketAdapter,
+        zeroExV1Address: addressBook[mode].ZeroExExchange,
+        zeroExV1AdapterAddress: addressBook[mode].ZeroExV1Adapter,
+        canonicalPriceFeedAddress: addressBook[mode].CanonicalPriceFeed,
+        rankingAddress: addressBook[mode].FundRanking,
+        riskManagementAddress: addressBook[mode].NoRiskMgmt,
+        versionAddress: addressBook[mode].Version,
+        governanceAddress: addressBook[mode].Governance,
+        olympiadAddress: addressBook[mode].Competition
+    }
+
+    // HACK: Define config first so that inside these next async functions,
+    // getConfig() already returns the addresses to avoid an infinite loop
+    config.assets = await getWhiteListedAssets(environment, network);
+    config.nativeAssetSymbol = await getNativeAssetSymbol(environment);
+    config.quoteAssetSymbol = await getQuoteAssetSymbol(environment);
+    config.melonAssetSymbol = network === 'kovan' ? 'MLN-T' : 'MLN';
+
+    return config;
 };
 
 export default getConfig;
