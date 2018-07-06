@@ -49,7 +49,11 @@ function* init() {
   }
 
   const walletString = localStorage.getItem('wallet:melon.fund');
-  if (process.env.NODE_ENV === 'development' && walletString) {
+  if (
+    !global.isElectron &&
+    process.env.NODE_ENV === 'development' &&
+    walletString
+  ) {
     console.warn(
       'Loading unencrypted wallet from localStorage. This should only happen in development and with playmoney (i.e. kovan)',
     );
@@ -58,6 +62,9 @@ function* init() {
     setEnvironment(environment);
     yield put(walletActions.importWalletSucceeded(wallet));
     yield put(ethereumActions.accountChanged(`${wallet.address}`));
+  } else if (global.isElectron) {
+    console.log('Trying to get wallets from keytar');
+    global.ipcRenderer.send('get-wallets');
   }
 
   const blockChannel = eventChannel(emitter => {

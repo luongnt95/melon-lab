@@ -21,14 +21,16 @@ const linkKeytar = () => {
   ipcMain.on('store-wallet', (event, address, privateKey) =>
     keytar
       .setPassword(KEYCHAIN_SERVICE_NAME, address, privateKey)
-      .then(() => event.sender.send('store-wallet-success'))
+      .then(() => event.sender.send('store-wallet-success', address))
       .catch(err => event.sender.send('store-wallet-error', err)),
   );
 
-  ipcMain.on('delete-wallet', (event, address, privateKey) =>
+  ipcMain.on('delete-wallet', (event, address) =>
     keytar
-      .setPassword(KEYCHAIN_SERVICE_NAME, address, privateKey)
-      .then(deleted => event.sender.send('delete-wallet-success', deleted))
+      .deletePassword(KEYCHAIN_SERVICE_NAME, address)
+      .then(deleted =>
+        event.sender.send('delete-wallet-success', address, deleted),
+      )
       .catch(err => event.sender.send('delete-wallet-error', err)),
   );
 };
