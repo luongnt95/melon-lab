@@ -54,6 +54,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
   dataValid,
 }) => {
   const isMarket = values.strategy === 'Market' ? true : false;
+
   return (
     <div className="order-form">
       <style jsx>{styles}</style>
@@ -85,7 +86,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
             options={[baseTokenSymbol, quoteTokenSymbol]}
             labels={['Buy', 'Sell']}
             onChange={onChange}
-            name="type"
+            name="orderType"
             value={values.orderType}
             disabled={isMarket || !dataValid}
           />
