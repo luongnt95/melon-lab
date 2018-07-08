@@ -36,6 +36,7 @@ const mapStateToProps = state => {
     orderForm: {
       baseTokenSymbol: state.app.assetPair.base,
       quoteTokenSymbol: state.app.assetPair.quote,
+      values: state.trade,
       selectedOrder: state.orderbook.selectedOrder,
       info: {
         lastPrice: state.recentTrades.trades.length

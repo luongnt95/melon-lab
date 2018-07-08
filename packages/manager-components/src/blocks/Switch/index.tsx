@@ -8,6 +8,7 @@ export interface SwitchProps {
   name: string;
   isChecked?: boolean;
   disabled?: boolean;
+  value: string;
   onChange(value, event);
 }
 
@@ -18,13 +19,13 @@ const Switch: StatelessComponent<SwitchProps> = ({
   name,
   isChecked,
   disabled,
+  value,
 }) => {
   const handleChange = e => {
     const checked = e.target.checked;
-    const value = !checked ? labels[0] : labels[1];
-    e.target.value = value;
+    const checkedValue = !checked ? labels[0] : labels[1];
     if (onChange) {
-      onChange({ value }, e);
+      onChange({ value: checkedValue }, e);
     }
   };
 
@@ -34,10 +35,11 @@ const Switch: StatelessComponent<SwitchProps> = ({
       <label className="switch__wrapper">
         <input
           name={name}
+          value={value}
           onChange={handleChange}
           className="switch__input"
           type="checkbox"
-          checked={isChecked}
+          defaultChecked={true}
           disabled={disabled}
         />
         <span

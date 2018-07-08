@@ -13,6 +13,7 @@ exports[`Switch should render correctly 1`] = `
   >
     <input
       className="jsx-__scopedHash switch__input"
+      defaultChecked={true}
       onChange={[Function]}
       type="checkbox"
     />

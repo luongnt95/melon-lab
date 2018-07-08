@@ -25,6 +25,13 @@ const initialProps = {
     { value: 'RADAR_RELAY', name: 'Radar Relay' },
     { value: 'OASIS_DEX', name: 'OasisDEX' },
   ],
+  values: {
+    price: '1.0000',
+    orderType: 'Buy',
+    strategy: 'Market',
+    quantity: '1.0000',
+    total: '1.0000',
+  },
   selectedExchange: 'RadarRelay',
   selectedOrderType: 'Buy',
   decimals: 4,

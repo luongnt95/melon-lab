@@ -65,7 +65,7 @@ function* takeOrderSaga(action) {
     ),
   );
   const selectedOrder = yield select(state => state.orderbook.selectedOrder);
-  const ourOrderType = action.values.type;
+  const ourOrderType = action.values.orderType;
   const theirOrderType = ourOrderType.toLowerCase() === 'buy' ? 'sell' : 'buy';
 
   let buyHowMuch;

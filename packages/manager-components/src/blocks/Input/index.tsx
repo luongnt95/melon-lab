@@ -19,6 +19,7 @@ export interface InputProps {
   value?: string;
   name: string;
   error?: string;
+  hidden?: boolean;
 }
 
 const Input: StatelessComponent<InputProps> = ({
@@ -36,6 +37,7 @@ const Input: StatelessComponent<InputProps> = ({
   formatNumber,
   name,
   error,
+  hidden,
 }) => {
   const classname = classNames('input', {
     'input--inside-label': insideLabel,
@@ -53,6 +55,7 @@ const Input: StatelessComponent<InputProps> = ({
       <span className="input__label">{label}</span>
       {formatNumber ? (
         <NumberFormat
+          hidden={hidden}
           name={name}
           pattern={pattern}
           step={step}
@@ -68,6 +71,7 @@ const Input: StatelessComponent<InputProps> = ({
         />
       ) : (
         <input
+          hidden={hidden}
           name={name}
           pattern={pattern}
           step={step}

@@ -10,26 +10,16 @@ import {
 } from '../../utils/functionalBigNumber';
 import OrderForm from './index';
 
-const initialState = props => {
-  return {
-    type: props.selectedOrder ? props.selectedOrder.type : 'buy',
-    exchange: props.selectedOrder ? props.selectedOrder.exchange : 'RADAR_RELAY',
-    price: props.selectedOrder ? props.selectedOrder.price : '',
-    quantity: '',
-    total: '',
-  };
-};
-
 const claculateInputs = (props, field, value) => {
-  const { values, info, strategy } = props;
+  const { values, info } = props;
   let maxTotal;
   let maxQuantity;
 
-  const typeValue = field === 'type' ? value : values.type;
+  const typeValue = field === 'type' ? value : values.orderType;
   const totalValue = field === 'total' ? value : values.total;
   const quantityValue = field === 'quantity' ? value : values.quantity;
 
-  if (strategy === 'Market') {
+  if (values.strategy === 'Market') {
     maxTotal =
       typeValue === 'Buy'
         ? min(info.tokens.quoteToken.balance, totalValue)
@@ -38,7 +28,7 @@ const claculateInputs = (props, field, value) => {
       typeValue === 'Sell'
         ? max(info.tokens.baseToken.balance, quantityValue)
         : quantityValue;
-  } else if (strategy === 'Limit') {
+  } else if (values.strategy === 'Limit') {
     maxTotal = typeValue === 'Buy' ? info.tokens.quoteToken.balance : Infinity;
     maxQuantity =
       typeValue === 'Sell' ? info.tokens.baseToken.balance : Infinity;
@@ -72,7 +62,7 @@ const claculateInputs = (props, field, value) => {
 };
 
 const withFormValidation = withFormik({
-  mapPropsToValues: props => ({ ...initialState(props) }),
+  mapPropsToValues: props => ({ ...props.values }),
   validationSchema: Yup.object().shape({
     price: Yup.string().required('Price is required.'),
     quantity: Yup.string().required('Quantity is required.'),
@@ -93,4 +83,7 @@ const withFormHandler = compose(
   }),
 );
 
-export default compose(withFormValidation, withFormHandler)(OrderForm);
+export default compose(
+  withFormValidation,
+  withFormHandler,
+)(OrderForm);

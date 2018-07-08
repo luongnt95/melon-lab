@@ -36,15 +36,7 @@ exports[`OrderForm should render correctly 1`] = `
       },
     }
   }
-  initialValues={
-    Object {
-      "exchange": "RADAR_RELAY",
-      "price": "",
-      "quantity": "",
-      "total": "",
-      "type": "buy",
-    }
-  }
+  initialValues={Object {}}
   isInitialValid={false}
   onSubmit={[Function]}
   quoteTokenSymbol="MLN-T-M"
