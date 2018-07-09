@@ -99,9 +99,11 @@ function* restoreWalletSaga({ mnemonic }) {
 
 function* deleteWallet() {
   const isElectron = yield select(state => state.app.isElectron);
+  const address = yield select(state => state.ethereum.account);
+
   yield put(
     modalActions.confirm({
-      body: `Do you really want to erase your current wallet? If yes, please type your password below:`,
+      body: `Do you really want to delete your current wallet? This cannot be undone and can lead to loss of funds if you do not have a backup!`,
     }),
   );
   yield take(modalTypes.CONFIRMED);
@@ -111,7 +113,6 @@ function* deleteWallet() {
   // not exist. If it exists, then deletion is ok anyways
   localStorage.removeItem('wallet:melon.fund');
   if (isElectron) {
-    const address = yield select(state => state.ethereum.account);
     global.ipcRenderer.send('delete-wallet', address);
   }
   yield put(routeActions.root());
@@ -251,7 +252,7 @@ function* keytarChannel() {
           ? emitter(
               modalActions.info({
                 title: 'Wallet deleted',
-                body: `Your wallet (${address}) is securely stored in your operating systems keystore`,
+                body: `Your wallet (${address}) was securely removed from your operating systems keystore`,
               }),
             )
           : emitter(
