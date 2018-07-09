@@ -19,6 +19,7 @@ export interface InputProps {
   value?: string;
   name: string;
   error?: string;
+  hidden?: boolean;
 }
 
 const Input: StatelessComponent<InputProps> = ({
@@ -36,16 +37,12 @@ const Input: StatelessComponent<InputProps> = ({
   formatNumber,
   name,
   error,
+  hidden,
 }) => {
   const classname = classNames('input', {
     'input--inside-label': insideLabel,
     'input--has-error': error,
   });
-
-  const placeholderValue =
-    decimals && placeholder
-      ? parseInt(placeholder, 10).toFixed(decimals)
-      : placeholder;
 
   return (
     <div className={classname}>
@@ -53,12 +50,13 @@ const Input: StatelessComponent<InputProps> = ({
       <span className="input__label">{label}</span>
       {formatNumber ? (
         <NumberFormat
+          hidden={hidden}
           name={name}
           pattern={pattern}
           step={step}
           className="input__field"
           disabled={disabled}
-          placeholder={placeholderValue}
+          placeholder={placeholder}
           value={value}
           onValueChange={onChange}
           onBlur={onBlur}
@@ -68,13 +66,14 @@ const Input: StatelessComponent<InputProps> = ({
         />
       ) : (
         <input
+          hidden={hidden}
           name={name}
           pattern={pattern}
           step={step}
           className="input__field"
           type={type}
           disabled={disabled}
-          placeholder={placeholderValue}
+          placeholder={placeholder}
           value={value}
           onChange={onChange}
           onBlur={onBlur}

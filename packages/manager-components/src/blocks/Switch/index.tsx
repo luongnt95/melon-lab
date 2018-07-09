@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, StatelessComponent } from 'react';
+import React, { StatelessComponent } from 'react';
 
 import styles from './styles.css';
 
@@ -6,6 +6,9 @@ export interface SwitchProps {
   options: Array<[string]>;
   labels: Array<[string]>;
   name: string;
+  isChecked?: boolean;
+  disabled?: boolean;
+  value: string;
   onChange(value, event);
 }
 
@@ -14,12 +17,16 @@ const Switch: StatelessComponent<SwitchProps> = ({
   labels,
   onChange,
   name,
+  isChecked,
+  disabled,
+  value,
 }) => {
   const handleChange = e => {
     const checked = e.target.checked;
-    const value = !checked ? labels[0] : labels[1];
-    e.target.value = value;
-    onChange({ value }, e);
+    const checkedValue = !checked ? labels[0] : labels[1];
+    if (onChange) {
+      onChange({ value: checkedValue }, e);
+    }
   };
 
   return (
@@ -28,9 +35,12 @@ const Switch: StatelessComponent<SwitchProps> = ({
       <label className="switch__wrapper">
         <input
           name={name}
-          onChange={e => handleChange(e)}
+          value={value}
+          onChange={handleChange}
           className="switch__input"
           type="checkbox"
+          checked={isChecked}
+          disabled={disabled}
         />
         <span
           data-label-left={labels[0]}

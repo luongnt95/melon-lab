@@ -9,6 +9,7 @@ import openOrders from './openOrders';
 import orderbook from './orderbook';
 import ranking from './ranking';
 import recentTrades from './recentTrades';
+import trade from './trade';
 import tradeHistory from './tradeHistory';
 import wallet from './wallet';
 
@@ -23,6 +24,7 @@ const reducerMap = {
   orderbook,
   ranking,
   recentTrades,
+  trade,
   tradeHistory,
   wallet,
 };

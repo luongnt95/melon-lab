@@ -2,30 +2,34 @@
   position: relative;
 }
 
-.input__field {
+.input__field,
+:global(.input__field) {
   font-family: var(--font-family-primary);
   min-width: 100%;
   border: 1px solid var(--color-primary-dark);
   padding: var(--space-xs);
   line-height: 1;
   min-height: 38px;
+}
 
-  &::placeholder {
-    color: var(--color-grey);
-  }
+.input__field,
+:global(.input__field)::placeholder {
+  color: var(--color-grey);
+}
 
-  &:disabled {
-    background-color: var(--color-secondary);
-  }
+.input__field,
+:global(.input__field):disabled {
+  background-color: var(--color-secondary);
 }
 
 .input__label {
   display: block;
   margin: 0 0 var(--space-xxs) var(--space-xs);
   font-size: var(--font-size-s);
+  line-height: 16px;
 }
 
-.input--inside-label .input__field {
+.input--inside-label :global(.input__field) {
   text-align: right;
 }
 
@@ -36,10 +40,10 @@
   color: var(--color-primary-darkest);
 }
 
-.input__field[type=number]::-webkit-outer-spin-button,
-.input__field[type=number]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.input__field[type='number']::-webkit-outer-spin-button,
+.input__field[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .input--has-error .input__field {

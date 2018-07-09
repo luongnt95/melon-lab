@@ -8,6 +8,7 @@ import {
 import { change } from 'redux-form';
 import { types, actions } from '../actions/orderbook';
 import { types as ethereumTypes } from '../actions/ethereum';
+import { actions as tradeActions } from '../actions/trade';
 import { min } from '../utils/functionalBigNumber';
 
 function* getOrderbookSaga() {
@@ -88,6 +89,7 @@ function* selectOrderSaga(action) {
     let amount;
     let price;
     let total;
+    let exchange;
 
     if (selectedOrder.type === 'buy') {
       orderType = 'Sell';
@@ -110,11 +112,18 @@ function* selectOrderSaga(action) {
       amount = total.div(price);
     }
 
-    yield put(change('trade', 'strategy', 'Market'));
-    yield put(change('trade', 'quantity', amount));
-    yield put(change('trade', 'total', total));
-    yield put(change('trade', 'price', price));
-    yield put(change('trade', 'type', orderType));
+    exchange = selectedOrder.exchange;
+
+    yield put(
+      tradeActions.fill({
+        strategy: 'Market',
+        quantity: amount.toString(),
+        total: total.toString(),
+        price: price.toString(),
+        orderType,
+        exchange,
+      }),
+    );
   } catch (err) {
     console.error(err);
   }
