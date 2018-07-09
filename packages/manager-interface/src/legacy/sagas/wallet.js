@@ -190,7 +190,7 @@ function* loadFromKeytar({ password }) {
     const wallet = getWallet(password);
     yield put(actions.importWalletSucceeded(wallet));
     setEnvironment({ account: wallet });
-    yield put(ethereumActions.accountChanged(`${decryptedWallet.address}`));
+    yield put(ethereumActions.accountChanged(`${wallet.address}`));
   } catch (e) {
     console.error(e);
     yield put(actions.importWalletFailed(e));
@@ -200,7 +200,7 @@ function* loadFromKeytar({ password }) {
 
 function* keytarChannel() {
   const ipcChannel = eventChannel(emitter => {
-    global.ipcRenderer.on('get-wallets-success', wallets => {
+    global.ipcRenderer.on('get-wallets-success', (event, wallets) => {
       if (wallets.length > 1) {
         emitter(
           modalActions.info({
@@ -214,21 +214,21 @@ function* keytarChannel() {
         );
       }
 
-      if (wallets > 0) {
+      if (wallets.length > 0) {
         emitter({ loadFromKeytar: wallets[0] });
       } else {
-        console.log('No wallets found in OS keystore');
+        console.log('No wallets found in OS keystore', wallets);
       }
     });
 
-    global.ipcRenderer.on('get-wallets-error', error => {
+    global.ipcRenderer.on('get-wallets-error', (event, error) => {
       console.error(error);
       emitter(
         modalActions.error(`There was an error loading your wallet. ${error}`),
       );
     });
 
-    global.ipcRenderer.on('store-wallet-success', address => {
+    global.ipcRenderer.on('store-wallet-success', (event, address) => {
       emitter(
         modalActions.info({
           title: 'Wallet securely stored',
@@ -237,29 +237,32 @@ function* keytarChannel() {
       );
     });
 
-    global.ipcRenderer.on('store-wallet-error', error => {
+    global.ipcRenderer.on('store-wallet-error', (event, error) => {
       console.error(error);
       emitter(
         modalActions.error(`There was an error storing your wallet. ${error}`),
       );
     });
 
-    global.ipcRenderer.on('delete-wallet-success', (address, deleted) => {
-      deleted
-        ? emitter(
-            modalActions.info({
-              title: 'Wallet deleted',
-              body: `Your wallet (${address}) is securely stored in your operating systems keystore`,
-            }),
-          )
-        : emitter(
-            modalActions.error(
-              `No wallet found in OS keystore with address. ${address}`,
-            ),
-          );
-    });
+    global.ipcRenderer.on(
+      'delete-wallet-success',
+      (event, address, deleted) => {
+        deleted
+          ? emitter(
+              modalActions.info({
+                title: 'Wallet deleted',
+                body: `Your wallet (${address}) is securely stored in your operating systems keystore`,
+              }),
+            )
+          : emitter(
+              modalActions.error(
+                `No wallet found in OS keystore with address. ${address}`,
+              ),
+            );
+      },
+    );
 
-    global.ipcRenderer.on('delete-wallet-error', error => {
+    global.ipcRenderer.on('delete-wallet-error', (event, error) => {
       console.error(error);
       emitter(
         modalActions.error(`There was an error deleting your wallet. ${error}`),
