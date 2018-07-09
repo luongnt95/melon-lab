@@ -61,26 +61,31 @@ const claculateInputs = (props, field, value) => {
   }
 };
 
+const validation = props => {
+  var numberFormat = (0).toFixed(props.decimals);
+  var minNumber = numberFormat.slice(0, -1) + '1';
+
+  return Yup.object().shape({
+    price: Yup.number()
+      .min(minNumber, 'Price must be higher')
+      .required('Price is required.'),
+    quantity: Yup.number()
+      .min(minNumber, 'Quantity must be higher')
+      .required('Quantity is required.'),
+    total: Yup.number()
+      .min(minNumber, 'Total must be higher')
+      .required('Total is required.'),
+  });
+};
+
 const withFormValidation = withFormik({
   mapPropsToValues: props => ({ ...props.values }),
-  validationSchema: props => {
-    var numberFormat = (0).toFixed(props.decimals);
-    var minNumber = numberFormat.slice(0, -1) + '1';
-    return Yup.object().shape({
-      price: Yup.number()
-        .min(minNumber, 'Price must be higher')
-        .required('Price is required.'),
-      quantity: Yup.number()
-        .min(minNumber, 'Quantity must be higher')
-        .required('Quantity is required.'),
-      total: Yup.number()
-        .min(minNumber, 'Total must be higher')
-        .required('Total is required.'),
-    });
-  },
+  validationSchema: props => validation(props),
   enableReinitialize: true,
   handleSubmit: (values, form) => {
-    form.props.onSubmit(values);
+    if (form.props.onSubmit) {
+      form.props.onSubmit(values);
+    }
   },
 });
 
