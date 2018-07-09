@@ -63,7 +63,6 @@ function* init() {
     yield put(walletActions.importWalletSucceeded(wallet));
     yield put(ethereumActions.accountChanged(`${wallet.address}`));
   } else if (global.isElectron) {
-    console.log('Trying to get wallets from keytar');
     global.ipcRenderer.send('get-wallets');
   }
 

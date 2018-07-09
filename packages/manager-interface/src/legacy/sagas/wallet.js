@@ -59,18 +59,20 @@ const createDownload = (data, filename, mime) => {
   }
 };
 
-function* storeWallet(wallet) {
+function* storeWallet(decryptedWallet, encryptedWalletString) {
   const isElectron = yield select(state => state.app.isElectron);
-
-  console.log(wallet);
 
   if (!isElectron && process.env.NODE_ENV === 'development') {
     console.warn(
       'Development environment detected. Storing unencrypted wallet on localStorage!',
     );
-    localStorage.setItem('wallet:melon.fund', JSON.stringify(wallet));
+    localStorage.setItem('wallet:melon.fund', JSON.stringify(decryptedWallet));
   } else if (isElectron) {
-    global.ipcRenderer.send('store-wallet', wallet.address, wallet.privateKey);
+    global.ipcRenderer.send(
+      'store-wallet',
+      decryptedWallet.address,
+      encryptedWalletString,
+    );
   }
 }
 
@@ -85,10 +87,44 @@ function* generateMnemonic() {
 
 function* restoreWalletSaga({ mnemonic }) {
   try {
+    const isElectron = yield select(state => state.app.isElectron);
     const wallet = yield importWalletFromMnemonic(mnemonic);
     setEnvironment({ account: wallet });
     yield put(actions.restoreFromMnemonicSucceeded(wallet));
-    yield call(storeWallet, wallet);
+
+    if (isElectron) {
+      yield put(
+        modalActions.password(
+          `Please type a strong password to protect your wallet:`,
+        ),
+      );
+      const { password } = yield take(modalTypes.PASSWORD_ENTERED);
+
+      if (password.length < 8) {
+        yield put(
+          modalActions.error(
+            'Password needs to be at least 8 chars long. For your security!',
+          ),
+        );
+        return;
+      }
+
+      yield put(modalActions.password(`Confirm password:`));
+      const { password: confirm } = yield take(modalTypes.PASSWORD_ENTERED);
+
+      if (password !== confirm) {
+        yield put(modalActions.error("The entered passwords didn't match"));
+        return;
+      }
+
+      yield put(modalActions.loading());
+      const wallet = getWallet(privateKey);
+      const encryptedWallet = yield call(encryptWallet, wallet, password);
+      yield call(storeWallet, wallet, encryptedWallet);
+      yield put(modalActions.close());
+    } else {
+      yield call(storeWallet, wallet);
+    }
     yield put(routeActions.wallet());
     yield put(ethereumActions.accountChanged(`${wallet.address}`));
   } catch (err) {
@@ -175,7 +211,7 @@ function* importWallet({ encryptedWalletString }) {
     );
     setEnvironment({ account: decryptedWallet });
     yield put(actions.importWalletSucceeded(decryptedWallet));
-    yield call(storeWallet, decryptedWallet);
+    yield call(storeWallet, decryptedWallet, encryptedWalletString);
     yield put(ethereumActions.accountChanged(`${decryptedWallet.address}`));
     yield put(routeActions.wallet());
     yield put(modalActions.close());
@@ -186,12 +222,35 @@ function* importWallet({ encryptedWalletString }) {
   }
 }
 
-function* loadFromKeytar({ password }) {
+function* loadFromKeytar(wallets) {
   try {
-    const wallet = getWallet(password);
-    yield put(actions.importWalletSucceeded(wallet));
-    setEnvironment({ account: wallet });
-    yield put(ethereumActions.accountChanged(`${wallet.address}`));
+    const encryptedWalletString = wallets[0].password;
+
+    yield put(
+      wallets.length > 1
+        ? modalActions.password(
+            `We found ${
+              wallets.length
+            } wallets in your operating system keystore but we only support one. We just took the first (${
+              wallets[0].account
+            }). If that is the wrong one, backup & remove the wrong ones. You can find them in your operating systems keystore (Keychain Access on Mac) and search for "melon.fund". Enter the password this wallet is encrypted with:`,
+          )
+        : modalActions.password(
+            `Wallet found in OS Keystore. Enter the password this wallet is encrypted with:`,
+          ),
+    );
+
+    const { password } = yield take(modalTypes.PASSWORD_ENTERED);
+    yield put(modalActions.loading('Decrypting ...'));
+    const decryptedWallet = yield call(
+      decryptWallet,
+      encryptedWalletString,
+      password,
+    );
+    setEnvironment({ account: decryptedWallet });
+    yield put(actions.importWalletSucceeded(decryptedWallet));
+    yield put(ethereumActions.accountChanged(`${decryptedWallet.address}`));
+    yield put(modalActions.close());
   } catch (e) {
     console.error(e);
     yield put(actions.importWalletFailed(e));
@@ -202,21 +261,8 @@ function* loadFromKeytar({ password }) {
 function* keytarChannel() {
   const ipcChannel = eventChannel(emitter => {
     global.ipcRenderer.on('get-wallets-success', (event, wallets) => {
-      if (wallets.length > 1) {
-        emitter(
-          modalActions.info({
-            title: 'Loaded wallet',
-            body: `We found ${
-              wallets.length
-            } wallets in your operating system keystore but we only support one. We just took the first (${
-              wallets[0].account
-            }). If that is the wrong one, backup & remove the wrong ones. You can find them in your operating systems keystore (Keychain Access on Mac) and search for "melon.fund"`,
-          }),
-        );
-      }
-
       if (wallets.length > 0) {
-        emitter({ loadFromKeytar: wallets[0] });
+        emitter({ loadFromKeytar: wallets });
       } else {
         console.log('No wallets found in OS keystore', wallets);
       }
