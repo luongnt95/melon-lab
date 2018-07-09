@@ -63,11 +63,21 @@ const claculateInputs = (props, field, value) => {
 
 const withFormValidation = withFormik({
   mapPropsToValues: props => ({ ...props.values }),
-  validationSchema: Yup.object().shape({
-    price: Yup.string().required('Price is required.'),
-    quantity: Yup.string().required('Quantity is required.'),
-    total: Yup.string().required('Total is required.'),
-  }),
+  validationSchema: props => {
+    var numberFormat = (0).toFixed(props.decimals);
+    var minNumber = numberFormat.slice(0, -1) + '1';
+    return Yup.object().shape({
+      price: Yup.number()
+        .min(minNumber, 'Price must be higher')
+        .required('Price is required.'),
+      quantity: Yup.number()
+        .min(minNumber, 'Quantity must be higher')
+        .required('Quantity is required.'),
+      total: Yup.number()
+        .min(minNumber, 'Total must be higher')
+        .required('Total is required.'),
+    });
+  },
   enableReinitialize: true,
   handleSubmit: (values, form) => {
     form.props.onSubmit(values);

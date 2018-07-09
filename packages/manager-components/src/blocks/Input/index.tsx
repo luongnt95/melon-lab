@@ -44,11 +44,6 @@ const Input: StatelessComponent<InputProps> = ({
     'input--has-error': error,
   });
 
-  const placeholderValue =
-    decimals && placeholder
-      ? parseInt(placeholder, 10).toFixed(decimals)
-      : placeholder;
-
   return (
     <div className={classname}>
       <style jsx>{styles}</style>
@@ -61,7 +56,7 @@ const Input: StatelessComponent<InputProps> = ({
           step={step}
           className="input__field"
           disabled={disabled}
-          placeholder={placeholderValue}
+          placeholder={placeholder}
           value={value}
           onValueChange={onChange}
           onBlur={onBlur}
@@ -78,7 +73,7 @@ const Input: StatelessComponent<InputProps> = ({
           className="input__field"
           type={type}
           disabled={disabled}
-          placeholder={placeholderValue}
+          placeholder={placeholder}
           value={value}
           onChange={onChange}
           onBlur={onBlur}
