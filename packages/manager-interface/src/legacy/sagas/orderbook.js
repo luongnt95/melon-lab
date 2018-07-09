@@ -89,6 +89,7 @@ function* selectOrderSaga(action) {
     let amount;
     let price;
     let total;
+    let exchange;
 
     if (selectedOrder.type === 'buy') {
       orderType = 'Sell';
@@ -111,6 +112,8 @@ function* selectOrderSaga(action) {
       amount = total.div(price);
     }
 
+    exchange = selectedOrder.exchange;
+
     yield put(
       tradeActions.fill({
         strategy: 'Market',
@@ -118,6 +121,7 @@ function* selectOrderSaga(action) {
         total: total.toString(),
         price: price.toString(),
         orderType,
+        exchange,
       }),
     );
   } catch (err) {

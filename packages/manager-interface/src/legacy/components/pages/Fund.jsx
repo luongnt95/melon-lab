@@ -65,4 +65,5 @@ const Fund = ({
     </div>
   </div>
 );
+
 export default Fund;
