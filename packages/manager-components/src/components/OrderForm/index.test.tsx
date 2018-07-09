@@ -1,11 +1,10 @@
 import React from 'react';
-import OrderForm from './index';
+import OrderForm from './container';
 
 const initialProps = {
   baseTokenSymbol: 'ETH-T-M',
   quoteTokenSymbol: 'MLN-T-M',
   strategy: 'Limit',
-  selectedOrder: false,
   info: {
     lastPrice: 0.5,
     bid: 0,
@@ -28,6 +27,8 @@ const initialProps = {
   selectedExchange: 'RadarRelay',
   selectedOrderType: 'Buy',
   decimals: 6,
+  dataValid: true,
+  total: '',
 };
 
 describe('OrderForm', () => {

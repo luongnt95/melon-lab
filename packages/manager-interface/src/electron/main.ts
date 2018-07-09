@@ -48,7 +48,6 @@ const restoreMainWindow = async () => {
     width: 1024,
     height: 800,
     webPreferences: {
-      contextIsolation: true,
       nodeIntegration: false,
       preload: path.resolve(__dirname, 'preload.js'),
     },

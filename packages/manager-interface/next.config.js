@@ -17,6 +17,10 @@ const ownPkg = require('./package.json');
 const melonJsPkg = require('@melonproject/melon.js/package.json');
 const smartContractsPkg = require('@melonproject/smart-contracts/package.json');
 
+const managerComponents = path.resolve(
+  path.dirname(require.resolve('../manager-components/package.json')),
+);
+
 const isElectron = JSON.parse(process.env.ELECTRON || 'false');
 
 module.exports = withComposedConfig({
@@ -47,6 +51,9 @@ module.exports = withComposedConfig({
       '~/shared': path.join(src, 'shared'),
       '~/legacy': path.join(src, 'legacy'),
       '~/apollo': path.join(src, 'shared', 'wrappers', transport),
+      '~/components': path.join(managerComponents, 'src', 'components'),
+      '~/blocks': path.join(managerComponents, 'src', 'blocks'),
+      '~/design': path.join(managerComponents, 'src', 'design'),
     });
 
     // Make process.env.DEBUG accessible so we can use the debug package
@@ -62,18 +69,36 @@ module.exports = withComposedConfig({
       }),
     );
 
-    if (isElectron) {
-      config.target = 'electron-renderer';
+    config.module.rules.push({
+      test: /\.css$/,
+      use: [
+        {
+          loader: "emit-file-loader",
+          options: {
+            name: "dist/[path][name].[ext].js"
+          }
+        },
+        {
+          loader: 'babel-loader',
+          options: {
+            babelrc: false,
+            plugins: [
+              ['styled-jsx/babel', { plugins: ['styled-jsx-plugin-postcss'] }],
+            ],
+          },
+        },
+        'styled-jsx-css-loader',
+      ],
+      include: path.resolve(__dirname, '../manager-components/src'),
+    });
 
+    if (isElectron) {
       // Code splitting doesn't make much sense in an electron app.
       config.plugins.push(
         new webpack.optimize.LimitChunkCountPlugin({
           maxChunks: 1,
         }),
       );
-
-      // Use the 'browser' field in the renderer.
-      config.resolve.mainFields = ['browser', 'module', 'main'];
     }
 
     return config;

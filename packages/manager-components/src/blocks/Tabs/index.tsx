@@ -20,7 +20,9 @@ const TabContent: StatelessComponent<TabContentProps> = ({ children }) => {
 
 const getTabs: any = R.compose(
   R.values,
-  R.filter(({ type }) => type === TabContent),
+  R.filter(
+    ({ type }) => type === TabContent || type.displayName === 'TabContent',
+  ),
 );
 
 const Tabs: StatelessComponent<TabsProps> = ({
@@ -40,16 +42,16 @@ const Tabs: StatelessComponent<TabsProps> = ({
     );
   });
 
-  const handleKeyPress = (index) => (e) => {
-    const keycode = (e.keyCode ? e.keyCode : e.which);
+  const handleKeyPress = index => e => {
+    const keycode = e.keyCode ? e.keyCode : e.which;
     if (keycode === 39 && e.target.nextElementSibling) {
       e.target.nextElementSibling.focus();
     } else if (keycode === 37 && e.target.previousElementSibling) {
       e.target.previousElementSibling.focus();
-    } else if (keycode === 13){
+    } else if (keycode === 13) {
       handleTabClick(index);
     }
-  }
+  };
 
   const tabs = getTabs(children).map((child, index) => {
     const classname = classNames('tabs__tab', {
@@ -57,12 +59,16 @@ const Tabs: StatelessComponent<TabsProps> = ({
     });
     const title = child.props.title;
 
+    const handleClick = tabIndex => e => {
+      handleTabClick(tabIndex);
+    };
+
     return (
       <div
         aria-label={title}
         aria-selected={activeTabIndex === index ? true : false}
         className={classname}
-        onClick={() => handleTabClick(index)}
+        onClick={handleClick(index)}
         onKeyPress={handleKeyPress(index)}
         onKeyDown={handleKeyPress(index)}
         key={index}

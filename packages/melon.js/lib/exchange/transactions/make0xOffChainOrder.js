@@ -52,44 +52,8 @@ const make0xOffChainOrder = async (
 
   // taker fee
   takerFee = toProcessable(config, takerFee, 'ZRX-T');
-
-  // Approve the ZRX for the fees if applicable. Only working on kovan.
-  if (makerFee != "0") {
-    // The new maker fee with the new format
-    makerFee = toProcessable(config, makerFee, 'ZRX-T');
-    let approveMakerFee = toProcessable(config, new BigNumber(10), 'ZRX-T');
-
-    // Approve the ZRX token
-    const tokenContract = environment.api.newContract(
-      TokenAbi,
-      '0x6Ff6C0Ff1d68b964901F986d4C9FA3ac68346570',
-    );
-
-    const args = [feeRecipient, approveMakerFee];
-    const receipt = await sendTransaction(
-      tokenContract,
-      'approve',
-      args,
-      environment,
-    );
-
-    const approvalLogEntry = findEventInLog('Approval', receipt);
-    if (!approvalLogEntry) {
-      throw Error('Failed to approved ZRX');
-    }
-  }
-
-  // Approve the sell token
-  const approved = await approve(environment, {
-    symbol: sellSymbol,
-    spender: networkToTokenTransferProxy[network],
-    quantity: sellHowMuch,
-  });
-
-  if (!approved) {
-    throw Error(`Failed to approve ${sellSymbol}`);
-  }
-
+  makerFee = toProcessable(config, makerFee, 'ZRX-T');
+  
   const duration = 60 * 60 * 24;
 
   const salt = ZeroEx.generatePseudoRandomSalt();

@@ -1,11 +1,10 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import OrderForm from './index';
+import OrderForm from './container';
 
 const initialProps = {
   baseTokenSymbol: 'ETH-T-M',
   quoteTokenSymbol: 'MLN-T-M',
-  strategy: 'Limit',
   selectedOrder: false,
   info: {
     lastPrice: 0.5,
@@ -23,12 +22,21 @@ const initialProps = {
     },
   },
   exchanges: [
-    { value: 'RadarRelay', name: 'Radar Relay' },
-    { value: 'OasisDEX', name: 'OasisDEX' },
+    { value: 'RADAR_RELAY', name: 'Radar Relay' },
+    { value: 'OASIS_DEX', name: 'OasisDEX' },
   ],
+  values: {
+    price: '1.0000',
+    orderType: 'Sell',
+    strategy: 'Market',
+    quantity: '1.0000',
+    total: '1.0000',
+    exchange: 'OASIS_DEX',
+  },
   selectedExchange: 'RadarRelay',
   selectedOrderType: 'Buy',
   decimals: 4,
+  dataValid: true,
 };
 
 storiesOf('Components|Order Form', module).add('Default', () => {

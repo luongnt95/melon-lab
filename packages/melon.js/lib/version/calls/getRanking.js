@@ -4,7 +4,7 @@ import getFundContract from '../../fund/contracts/getFundContract';
 import getRankingContract from '../contracts/getRankingContract';
 import toReadable from '../../assets/utils/toReadable';
 import toDate from '../../utils/generic/toDate';
-import { getVersionContract } from '@melonproject/melon.js';
+import getVersionContract from '../contracts/getVersionContract';
 import Utils from 'ethers-utils';
 
 /**

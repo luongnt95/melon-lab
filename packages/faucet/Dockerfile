@@ -28,6 +28,6 @@ COPY --from=dependencies /app/packages/faucet/node_modules /app/packages/faucet/
 COPY --from=build /app/packages/faucet/dist /app/packages/faucet/dist
 COPY packages/faucet/package.json packages/faucet/.env.defaults packages/faucet/next.config.js /app/packages/faucet/
 COPY packages/faucet/config /app/packages/faucet/config
-COPY packages/faucet/src/static packages/faucet/src/static
+COPY packages/faucet/src/static /app/packages/faucet/src/static
 
 CMD ["yarn", "start"]

@@ -28,7 +28,7 @@ const setupFund = async (
   { name, signature, exchangeNames = ['MatchingMarket', 'ZeroExExchange'], track = "kovan-demo" },
 ): Promise<Fund> => {
   const config = await getConfig(environment);
-  const { quoteAssetSymbol, onlyManagerAddress, noComplianceCompetitionAddress, competitionComplianceAddress, riskManagementAddress } = config;
+  const { quoteAssetSymbol, onlyManagerAddress, competitionComplianceAddress, riskManagementAddress } = config;
   let complianceAddress;
   if (track === "kovan-demo") complianceAddress = onlyManagerAddress
   else if (track === "kovan-competition") commplianceAddress = competitionComplianceAddress
@@ -67,7 +67,6 @@ const setupFund = async (
   const exchanges = exchangeNames.map(
     exchange => addressBook[network][exchange],
   );
-
   const params = [
     name,
     quoteAsset,
