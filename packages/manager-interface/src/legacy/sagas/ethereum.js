@@ -21,13 +21,14 @@ const BLOCK_POLLING_INTERVAL = 4 * 1000;
 const MAX_INTERVAL_BETWEEN_BLOCKS = 5;
 
 function* init() {
-  const environment = yield call(getParityProvider);
+  const environment = yield call(getParityProvider, process.env.JSON_RPC_ENDPOINT);
 
   // TODO: add tracer
   setEnvironment(environment);
   yield put(ethereumActions.setProvider(environment.providerType));
+  const track = yield select(state => state.app.track);
+  const config = yield call(getConfig, environment, track);
 
-  const config = yield call(getConfig, environment);
   global.MELON_PROTOCOL_CONFIG = config;
   yield put(fundActions.setConfig(config));
   yield put(

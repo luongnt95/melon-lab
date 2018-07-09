@@ -26,7 +26,7 @@ export type AssetConfig = {
  */
 export type Config = {
   assets: Array<AssetConfig>,
-  onlyManagerAddress: Address,
+  onlyManagerCompetitionAddress: Address,
   noComplianceCompetitionAddress: Address,
   competitionComplianceAddress: Address,
   matchingMarketAddress: Address,
@@ -48,26 +48,30 @@ let config: Config;
 /**
  * Get config from deployed version contract
  */
-const getConfig = async (environment, optionalNetwork): Promise<Config> => {
+const getConfig = async (environment, track = "kovan-demo"): Promise<Config> => {
   if (config) return config;
 
-  const network = optionalNetwork
-    ? optionalNetwork.toLowerCase()
-    : await getNetwork(environment);
+  const network = await getNetwork(environment);
+
+  let mode;
+  if (track === "kovan-demo") mode = "kovan"
+  else if (track === "kovan-competition") mode = "kovanCompetition"
+  else if (track === "live") mode = "live"
+
   config = {
-    onlyManagerAddress: addressBook[network].OnlyManagerCompetition,
-    competitionComplianceAddress: addressBook[network].CompetitionCompliance,
-    matchingMarketAddress: addressBook[network].MatchingMarket,
-    matchingMarketAdapter: addressBook[network].MatchingMarketAdapter,
-    zeroExV1Address: addressBook[network].ZeroExExchange,
-    zeroExV1AdapterAddress: addressBook[network].ZeroExV1Adapter,
-    canonicalPriceFeedAddress: addressBook[network].CanonicalPriceFeed,
-    rankingAddress: addressBook[network].FundRanking,
-    riskManagementAddress: addressBook[network].NoRiskMgmt,
-    versionAddress: addressBook[network].Version,
-    governanceAddress: addressBook[network].Governance,
-    olympiadAddress: addressBook[network].Competition,
-  };
+    onlyManagerCompetitionAddress: addressBook[mode].OnlyManagerCompetition,
+    competitionComplianceAddress: addressBook[mode].CompetitionCompliance,
+    matchingMarketAddress: addressBook[mode].MatchingMarket,
+    matchingMarketAdapter: addressBook[mode].MatchingMarketAdapter,
+    zeroExV1Address: addressBook[mode].ZeroExExchange,
+    zeroExV1AdapterAddress: addressBook[mode].ZeroExV1Adapter,
+    canonicalPriceFeedAddress: addressBook[mode].CanonicalPriceFeed,
+    rankingAddress: addressBook[mode].FundRanking,
+    riskManagementAddress: addressBook[mode].NoRiskMgmt,
+    versionAddress: addressBook[mode].Version,
+    governanceAddress: addressBook[mode].Governance,
+    olympiadAddress: addressBook[mode].Competition
+  }
 
   // HACK: Define config first so that inside these next async functions,
   // getConfig() already returns the addresses to avoid an infinite loop
