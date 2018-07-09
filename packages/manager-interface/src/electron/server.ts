@@ -2,6 +2,7 @@ import { ipcMain } from 'electron';
 import { PubSub } from 'graphql-subscriptions';
 import * as keytar from 'keytar';
 import { SubscriptionServer } from 'subscriptions-transport-electron';
+import ipcMessages from '~/shared/constants/ipcMessages';
 
 import schema from '@melonproject/graphql-schema';
 import { getConfig, getParityProvider } from '@melonproject/melon.js';
@@ -9,29 +10,55 @@ import { getConfig, getParityProvider } from '@melonproject/melon.js';
 const KEYCHAIN_SERVICE_NAME = 'melon.fund';
 
 const linkKeytar = () => {
-  ipcMain.on('get-wallets', event =>
+  ipcMain.on(ipcMessages.GET_WALLETS, (event, requestId) =>
     keytar
       .findCredentials(KEYCHAIN_SERVICE_NAME)
       .then(credentials =>
-        event.sender.send('get-wallets-success', credentials),
+        event.sender.send(
+          `${ipcMessages.GET_WALLETS}-success`,
+          requestId,
+          credentials,
+        ),
       )
-      .catch(err => event.sender.send('get-wallets-error', err)),
+      .catch(err =>
+        event.sender.send(`${ipcMessages.GET_WALLETS}-error`, requestId, err),
+      ),
   );
 
-  ipcMain.on('store-wallet', (event, address, privateKey) =>
-    keytar
-      .setPassword(KEYCHAIN_SERVICE_NAME, address, privateKey)
-      .then(() => event.sender.send('store-wallet-success', address))
-      .catch(err => event.sender.send('store-wallet-error', err)),
+  ipcMain.on(
+    ipcMessages.STORE_WALLET,
+    (event, requestId, address, encryptedWallet) =>
+      keytar
+        .setPassword(KEYCHAIN_SERVICE_NAME, address, encryptedWallet)
+        .then(() =>
+          event.sender.send(
+            `${ipcMessages.STORE_WALLET}-success`,
+            requestId,
+            address,
+          ),
+        )
+        .catch(err =>
+          event.sender.send(
+            `${ipcMessages.STORE_WALLET}-error`,
+            requestId,
+            err,
+          ),
+        ),
   );
 
-  ipcMain.on('delete-wallet', (event, address) =>
+  ipcMain.on(ipcMessages.DELETE_WALLET, (event, requestId, address) =>
     keytar
       .deletePassword(KEYCHAIN_SERVICE_NAME, address)
       .then(deleted =>
-        event.sender.send('delete-wallet-success', address, deleted),
+        event.sender.send(
+          `${ipcMessages.DELETE_WALLET}-success`,
+          requestId,
+          deleted,
+        ),
       )
-      .catch(err => event.sender.send('delete-wallet-error', err)),
+      .catch(err =>
+        event.sender.send(`${ipcMessages.DELETE_WALLET}-error`, requestId, err),
+      ),
   );
 };
 

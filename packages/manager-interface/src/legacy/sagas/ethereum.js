@@ -14,14 +14,16 @@ import { types as browserTypes } from '../actions/browser';
 import { actions as appActions } from '../actions/app';
 import { actions as ethereumActions } from '../actions/ethereum';
 import { actions as fundActions } from '../actions/fund';
-import { actions as walletActions } from '../actions/wallet';
 import { equals } from '../utils/functionalBigNumber';
 
 const BLOCK_POLLING_INTERVAL = 4 * 1000;
 const MAX_INTERVAL_BETWEEN_BLOCKS = 5;
 
 function* init() {
-  const environment = yield call(getParityProvider, process.env.JSON_RPC_ENDPOINT);
+  const environment = yield call(
+    getParityProvider,
+    process.env.JSON_RPC_ENDPOINT,
+  );
 
   // TODO: add tracer
   setEnvironment(environment);
@@ -46,24 +48,6 @@ function* init() {
 
   if (fund.address !== '' && fund.name === '-') {
     yield put(fundActions.infoRequested(fund.address));
-  }
-
-  const walletString = localStorage.getItem('wallet:melon.fund');
-  if (
-    !global.isElectron &&
-    process.env.NODE_ENV === 'development' &&
-    walletString
-  ) {
-    console.warn(
-      'Loading unencrypted wallet from localStorage. This should only happen in development and with playmoney (i.e. kovan)',
-    );
-    const wallet = JSON.parse(walletString);
-    environment.account = wallet;
-    setEnvironment(environment);
-    yield put(walletActions.importWalletSucceeded(wallet));
-    yield put(ethereumActions.accountChanged(`${wallet.address}`));
-  } else if (global.isElectron) {
-    global.ipcRenderer.send('get-wallets');
   }
 
   const blockChannel = eventChannel(emitter => {

@@ -6,8 +6,10 @@ import {
   encryptWallet,
   importWalletFromMnemonic,
   decryptWallet,
+  getEnvironment,
   setEnvironment,
 } from '@melonproject/melon.js';
+import ipcMessages from '~/shared/constants/ipcMessages';
 import { actions as modalActions, types as modalTypes } from '../actions/modal';
 import { types, actions } from '../actions/wallet';
 import {
@@ -18,14 +20,70 @@ import {
   actions as routeActions,
   types as routeTypes,
 } from '../actions/routes';
+import { types as browserTypes } from '../actions/browser';
 
-// function* encryptWalletSaga(wallet, password) {
-//   const encryptedWallet = yield call(encryptWallet, wallet, password);
-//   localStorage.setItem('wallet:melon.fund', encryptedWallet);
-//   yield put(actions.encryptWalletSucceeded());
-//   yield put(ethereumActions.accountChanged(`${wallet.address}`));
-//   setEnvironment({ account: JSON.parse(encryptedWallet) });
-// }
+const randomString = (length = 10) =>
+  Math.random()
+    .toString(36)
+    .substr(2, length);
+
+const ipcMessage = async (name, ...args) =>
+  new Promise((resolve, reject) => {
+    const requestId = randomString();
+
+    const onSuccess = (event, responseId, ...result) => {
+      if (requestId === responseId) {
+        removeListeners();
+        resolve(...result);
+      }
+    };
+
+    const onError = (event, responseId, error) => {
+      if (requestId === responseId) {
+        removeListeners();
+        reject(error);
+      }
+    };
+
+    const removeListeners = () => {
+      global.ipcRenderer.removeListener(`${name}-success`, onSuccess);
+      global.ipcRenderer.removeListener(`${name}-error`, onSuccess);
+    };
+
+    global.ipcRenderer.on(`${name}-success`, onSuccess);
+    global.ipcRenderer.on(`${name}-error`, onError);
+    global.ipcRenderer.send(name, requestId);
+  });
+
+function* loadWallet() {
+  const environment = getEnvironment();
+  const walletString = localStorage.getItem('wallet:melon.fund');
+
+  if (
+    !global.isElectron &&
+    process.env.NODE_ENV === 'development' &&
+    walletString
+  ) {
+    console.warn(
+      'Loading unencrypted wallet from localStorage. This should only happen in development and with playmoney (i.e. kovan)',
+    );
+    const wallet = JSON.parse(walletString);
+    environment.account = wallet;
+    setEnvironment(environment);
+    yield put(actions.importWalletSucceeded(wallet));
+    yield put(ethereumActions.accountChanged(`${wallet.address}`));
+  } else if (global.isElectron) {
+    try {
+      const wallets = yield ipcMessage(ipcMessages.GET_WALLETS);
+      yield call(loadFromKeytar, wallets);
+    } catch (e) {
+      console.error(e);
+      yield put(
+        modalActions.error(`There was an error loading your wallet. ${error}`),
+      );
+    }
+  }
+}
 
 // from https://github.com/kennethjiang/js-file-download/blob/master/file-download.js
 const createDownload = (data, filename, mime) => {
@@ -68,11 +126,24 @@ function* storeWallet(decryptedWallet, encryptedWalletString) {
     );
     localStorage.setItem('wallet:melon.fund', JSON.stringify(decryptedWallet));
   } else if (isElectron) {
-    global.ipcRenderer.send(
-      'store-wallet',
-      decryptedWallet.address,
-      encryptedWalletString,
-    );
+    try {
+      yield ipcMessage(
+        ipcMessages.STORE_WALLET,
+        decryptedWallet.address,
+        encryptedWalletString,
+      );
+      yield put(
+        modalActions.info({
+          title: 'Wallet securely stored',
+          body: `Your wallet (${address}) is securely stored in your operating systems keystore`,
+        }),
+      );
+    } catch (e) {
+      console.error(error);
+      yield put(
+        modalActions.error(`There was an error storing your wallet. ${error}`),
+      );
+    }
   }
 }
 
@@ -118,7 +189,6 @@ function* restoreWalletSaga({ mnemonic }) {
       }
 
       yield put(modalActions.loading());
-      const wallet = getWallet(privateKey);
       const encryptedWallet = yield call(encryptWallet, wallet, password);
       yield call(storeWallet, wallet, encryptedWallet);
       yield put(modalActions.close());
@@ -149,7 +219,24 @@ function* deleteWallet() {
   // not exist. If it exists, then deletion is ok anyways
   localStorage.removeItem('wallet:melon.fund');
   if (isElectron) {
-    global.ipcRenderer.send('delete-wallet', address);
+    try {
+      const deleted = yield ipcMessage(ipcMessages.DELETE_WALLET, address);
+      yield put(
+        deleted
+          ? modalActions.info({
+              title: 'Wallet deleted',
+              body: `Your wallet (${address}) was securely removed from your operating systems keystore`,
+            })
+          : modalActions.error(
+              `No wallet found in OS keystore with address. ${address}`,
+            ),
+      );
+    } catch (e) {
+      console.error(e);
+      yield put(
+        modalActions.error(`There was an error deleting your wallet. ${error}`),
+      );
+    }
   }
   yield put(routeActions.root());
 }
@@ -224,33 +311,37 @@ function* importWallet({ encryptedWalletString }) {
 
 function* loadFromKeytar(wallets) {
   try {
-    const encryptedWalletString = wallets[0].password;
+    if (wallets.length > 0) {
+      const encryptedWalletString = wallets[0].password;
 
-    yield put(
-      wallets.length > 1
-        ? modalActions.password(
-            `We found ${
-              wallets.length
-            } wallets in your operating system keystore but we only support one. We just took the first (${
-              wallets[0].account
-            }). If that is the wrong one, backup & remove the wrong ones. You can find them in your operating systems keystore (Keychain Access on Mac) and search for "melon.fund". Enter the password this wallet is encrypted with:`,
-          )
-        : modalActions.password(
-            `Wallet found in OS Keystore. Enter the password this wallet is encrypted with:`,
-          ),
-    );
+      yield put(
+        wallets.length > 1
+          ? modalActions.password(
+              `We found ${
+                wallets.length
+              } wallets in your operating system keystore but we only support one. We just took the first (${
+                wallets[0].account
+              }). If that is the wrong one, backup & remove the wrong ones. You can find them in your operating systems keystore (Keychain Access on Mac) and search for "melon.fund". Enter the password this wallet is encrypted with:`,
+            )
+          : modalActions.password(
+              `Wallet found in OS Keystore. Enter the password this wallet is encrypted with:`,
+            ),
+      );
 
-    const { password } = yield take(modalTypes.PASSWORD_ENTERED);
-    yield put(modalActions.loading('Decrypting ...'));
-    const decryptedWallet = yield call(
-      decryptWallet,
-      encryptedWalletString,
-      password,
-    );
-    setEnvironment({ account: decryptedWallet });
-    yield put(actions.importWalletSucceeded(decryptedWallet));
-    yield put(ethereumActions.accountChanged(`${decryptedWallet.address}`));
-    yield put(modalActions.close());
+      const { password } = yield take(modalTypes.PASSWORD_ENTERED);
+      yield put(modalActions.loading('Decrypting ...'));
+      const decryptedWallet = yield call(
+        decryptWallet,
+        encryptedWalletString,
+        password,
+      );
+      setEnvironment({ account: decryptedWallet });
+      yield put(actions.importWalletSucceeded(decryptedWallet));
+      yield put(ethereumActions.accountChanged(`${decryptedWallet.address}`));
+      yield put(modalActions.close());
+    } else {
+      console.log('No wallets found in OS keychain');
+    }
   } catch (e) {
     console.error(e);
     yield put(actions.importWalletFailed(e));
@@ -258,92 +349,13 @@ function* loadFromKeytar(wallets) {
   }
 }
 
-function* keytarChannel() {
-  const ipcChannel = eventChannel(emitter => {
-    global.ipcRenderer.on('get-wallets-success', (event, wallets) => {
-      if (wallets.length > 0) {
-        emitter({ loadFromKeytar: wallets });
-      } else {
-        console.log('No wallets found in OS keystore', wallets);
-      }
-    });
-
-    global.ipcRenderer.on('get-wallets-error', (event, error) => {
-      console.error(error);
-      emitter(
-        modalActions.error(`There was an error loading your wallet. ${error}`),
-      );
-    });
-
-    global.ipcRenderer.on('store-wallet-success', (event, address) => {
-      emitter(
-        modalActions.info({
-          title: 'Wallet securely stored',
-          body: `Your wallet (${address}) is securely stored in your operating systems keystore`,
-        }),
-      );
-    });
-
-    global.ipcRenderer.on('store-wallet-error', (event, error) => {
-      console.error(error);
-      emitter(
-        modalActions.error(`There was an error storing your wallet. ${error}`),
-      );
-    });
-
-    global.ipcRenderer.on(
-      'delete-wallet-success',
-      (event, address, deleted) => {
-        deleted
-          ? emitter(
-              modalActions.info({
-                title: 'Wallet deleted',
-                body: `Your wallet (${address}) was securely removed from your operating systems keystore`,
-              }),
-            )
-          : emitter(
-              modalActions.error(
-                `No wallet found in OS keystore with address. ${address}`,
-              ),
-            );
-      },
-    );
-
-    global.ipcRenderer.on('delete-wallet-error', (event, error) => {
-      console.error(error);
-      emitter(
-        modalActions.error(`There was an error deleting your wallet. ${error}`),
-      );
-    });
-
-    return () => {
-      global.ipcRenderer.removeAllListener('get-wallets-success');
-      global.ipcRenderer.removeAllListener('get-wallets-error');
-      global.ipcRenderer.removeAllListener('store-wallet-success');
-      global.ipcRenderer.removeAllListener('store-wallet-error');
-      global.ipcRenderer.removeAllListener('delete-wallet-success');
-      global.ipcRenderer.removeAllListener('delete-wallet-error');
-    };
-  });
-
-  while (true) {
-    const action = yield take(ipcChannel);
-
-    if (action.loadFromKeytar) {
-      yield fork(loadFromKeytar, action.loadFromKeytar);
-    } else {
-      yield put(action);
-    }
-  }
-}
-
 function* wallet() {
+  yield takeLatest(ethereumTypes.SET_PROVIDER, loadWallet);
   yield takeLatest(types.RESTORE_FROM_MNEMONIC_REQUESTED, restoreWalletSaga);
   yield takeLatest(types.DELETE_WALLET_REQUESTED, deleteWallet);
   yield takeLatest(types.IMPORT_WALLET_REQUESTED, importWallet);
   yield takeLatest(types.DOWNLOAD_JSON, downloadJSON);
   yield takeLatest(routeTypes.WALLET_GENERATE, generateMnemonic);
-  if (global.isElectron) yield fork(keytarChannel);
 }
 
 export default wallet;
