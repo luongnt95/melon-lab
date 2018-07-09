@@ -67,13 +67,13 @@ const validation = props => {
 
   return Yup.object().shape({
     price: Yup.number()
-      .min(minNumber, 'Price must be higher')
+      .min(minNumber, `Minimum price is ${minNumber}`)
       .required('Price is required.'),
     quantity: Yup.number()
-      .min(minNumber, 'Quantity must be higher')
+      .min(minNumber, `Minimum quantity is ${minNumber}`)
       .required('Quantity is required.'),
     total: Yup.number()
-      .min(minNumber, 'Total must be higher')
+      .min(minNumber, `Minimum total is ${minNumber}`)
       .required('Total is required.'),
   });
 };
