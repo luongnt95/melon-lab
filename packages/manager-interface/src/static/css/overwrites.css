@@ -13,9 +13,10 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-input {
+input,
+.ui.input input {
   text-align: right !important;
-  background-color: transparent !important;
+  background-color: transparent;
   border-left-color: rgba(34, 36, 38, 0.15) !important;
 }
 

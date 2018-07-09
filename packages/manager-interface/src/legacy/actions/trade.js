@@ -1,13 +1,23 @@
 export const types = {
-  PLACE_ORDER_REQUESTED: "PLACE_ORDER_REQUESTED:trade:melon.fund",
-  PLACE_ORDER_SUCCEEDED: "PLACE_ORDER_SUCCEEDED:trade:melon.fund",
-  PLACE_ORDER_FAILED: "PLACE_ORDER_FAILED:trade:melon.fund",
-  TAKE_ORDER_REQUESTED: "TAKE_ORDER_REQUESTED:trade:melon.fund",
-  TAKE_ORDER_SUCCEEDED: "TAKE_ORDER_SUCCEEDED:trade:melon.fund",
-  TAKE_ORDER_FAILED: "TAKE_ORDER_FAILED:trade:melon.fund",
+  FILL: 'FILL:trade:melon.fund',
+  PLACE_ORDER_REQUESTED: 'PLACE_ORDER_REQUESTED:trade:melon.fund',
+  PLACE_ORDER_SUCCEEDED: 'PLACE_ORDER_SUCCEEDED:trade:melon.fund',
+  PLACE_ORDER_FAILED: 'PLACE_ORDER_FAILED:trade:melon.fund',
+  TAKE_ORDER_REQUESTED: 'TAKE_ORDER_REQUESTED:trade:melon.fund',
+  TAKE_ORDER_SUCCEEDED: 'TAKE_ORDER_SUCCEEDED:trade:melon.fund',
+  TAKE_ORDER_FAILED: 'TAKE_ORDER_FAILED:trade:melon.fund',
 };
 
 export const actions = {
+  fill: ({ orderType, exchange, price, quantity, total, strategy }) => ({
+    type: types.FILL,
+    orderType,
+    exchange,
+    price,
+    quantity,
+    total,
+    strategy,
+  }),
   placeOrder: values => ({
     type: types.PLACE_ORDER_REQUESTED,
     values,

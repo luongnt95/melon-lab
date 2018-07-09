@@ -7,30 +7,19 @@ import {
   max,
   min,
   multiply,
-} from '~/utils/functionalBigNumber';
-
-const initialState = props => {
-  const isMarket = props.strategy === 'Market' ? true : false;
-
-  return {
-    type: props.selectedOrderType ? props.selectedOrderType : '',
-    exchange: props.selectedExchange ? props.selectedExchange : '',
-    price: props.selectedOrder && isMarket ? props.selectedOrder : '',
-    quantity: '',
-    total: '',
-  };
-};
+} from '../../utils/functionalBigNumber';
+import OrderForm from './index';
 
 const claculateInputs = (props, field, value) => {
-  const { values, info, strategy } = props;
+  const { values, info } = props;
   let maxTotal;
   let maxQuantity;
 
-  const typeValue = field === 'type' ? value : values.type;
+  const typeValue = field === 'type' ? value : values.orderType;
   const totalValue = field === 'total' ? value : values.total;
   const quantityValue = field === 'quantity' ? value : values.quantity;
 
-  if (strategy === 'Market') {
+  if (values.strategy === 'Market') {
     maxTotal =
       typeValue === 'Buy'
         ? min(info.tokens.quoteToken.balance, totalValue)
@@ -39,7 +28,7 @@ const claculateInputs = (props, field, value) => {
       typeValue === 'Sell'
         ? max(info.tokens.baseToken.balance, quantityValue)
         : quantityValue;
-  } else if (strategy === 'Limit') {
+  } else if (values.strategy === 'Limit') {
     maxTotal = typeValue === 'Buy' ? info.tokens.quoteToken.balance : Infinity;
     maxQuantity =
       typeValue === 'Sell' ? info.tokens.baseToken.balance : Infinity;
@@ -72,15 +61,31 @@ const claculateInputs = (props, field, value) => {
   }
 };
 
+const validation = props => {
+  const numberFormat = (0).toFixed(props.decimals);
+  const minNumber = numberFormat.slice(0, -1) + '1';
+
+  return Yup.object().shape({
+    price: Yup.number()
+      .min(minNumber, `Minimum price is ${minNumber}`)
+      .required('Price is required.'),
+    quantity: Yup.number()
+      .min(minNumber, `Minimum quantity is ${minNumber}`)
+      .required('Quantity is required.'),
+    total: Yup.number()
+      .min(minNumber, `Minimum total is ${minNumber}`)
+      .required('Total is required.'),
+  });
+};
+
 const withFormValidation = withFormik({
-  mapPropsToValues: props => ({ ...initialState(props) }),
-  validationSchema: Yup.object().shape({
-    price: Yup.string().required('Price is required.'),
-    quantity: Yup.string().required('Quantity is required.'),
-    total: Yup.string().required('Total is required.'),
-  }),
-  handleSubmit: values => {
-    // TODO: define handleSubmit
+  mapPropsToValues: props => ({ ...props.values }),
+  validationSchema: props => validation(props),
+  enableReinitialize: true,
+  handleSubmit: (values, form) => {
+    if (form.props.onSubmit) {
+      form.props.onSubmit(values);
+    }
   },
 });
 
@@ -93,4 +98,7 @@ const withFormHandler = compose(
   }),
 );
 
-export { withFormHandler, withFormValidation };
+export default compose(
+  withFormValidation,
+  withFormHandler,
+)(OrderForm);

@@ -832,9 +832,9 @@
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
 
-"@melonproject/smart-contracts@0.8.0-alpha.31":
-  version "0.8.0-alpha.31"
-  resolved "https://registry.yarnpkg.com/@melonproject/smart-contracts/-/smart-contracts-0.8.0-alpha.31.tgz#c80798cda8e12bc0e1c04486d48a860d592230ee"
+"@melonproject/smart-contracts@0.8.0-alpha.32":
+  version "0.8.0-alpha.32"
+  resolved "https://registry.yarnpkg.com/@melonproject/smart-contracts/-/smart-contracts-0.8.0-alpha.32.tgz#468685d19025d3e0bbf2eace07f681a9cd14e233"
   dependencies:
     "0x.js" "^0.35.0"
     "@parity/api" "^2.1.20"
@@ -13410,7 +13410,7 @@ styled-jsx@2.2.6:
     stylis "3.4.10"
     stylis-rule-sheet "0.0.8"
 
-styled-jsx@^2.2.6:
+styled-jsx@^2.2.7:
   version "2.2.7"
   resolved "https://registry.yarnpkg.com/styled-jsx/-/styled-jsx-2.2.7.tgz#0ada82e2e4b8b59e38508a8e57258fd1f70e204a"
   dependencies:

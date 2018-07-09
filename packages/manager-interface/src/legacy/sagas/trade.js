@@ -20,12 +20,12 @@ function* placeOrderSaga(action) {
   let sellHowMuch;
   let sellWhichToken;
 
-  if (action.values.type === 'Buy') {
+  if (action.values.orderType === 'Buy') {
     buyHowMuch = action.values.quantity;
     buyWhichToken = yield select(state => state.app.assetPair.base);
     sellHowMuch = action.values.total;
     sellWhichToken = yield select(state => state.app.assetPair.quote);
-  } else if (action.values.type === 'Sell') {
+  } else if (action.values.orderType === 'Sell') {
     buyHowMuch = action.values.total;
     buyWhichToken = yield select(state => state.app.assetPair.quote);
     sellHowMuch = action.values.quantity;
@@ -65,7 +65,7 @@ function* takeOrderSaga(action) {
     ),
   );
   const selectedOrder = yield select(state => state.orderbook.selectedOrder);
-  const ourOrderType = action.values.type;
+  const ourOrderType = action.values.orderType;
   const theirOrderType = ourOrderType.toLowerCase() === 'buy' ? 'sell' : 'buy';
 
   let buyHowMuch;
