@@ -3,7 +3,7 @@ import mergeReducer from '../utils/mergeReducer';
 
 export const initialState = {
   orderType: 'Buy',
-  exchange: '',
+  exchange: 'RADAR_RELAY',
   price: '',
   quantity: '',
   total: '',

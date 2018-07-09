@@ -31,6 +31,7 @@ const initialProps = {
     strategy: 'Market',
     quantity: '1.0000',
     total: '1.0000',
+    exchange: 'OASIS_DEX',
   },
   selectedExchange: 'RadarRelay',
   selectedOrderType: 'Buy',
