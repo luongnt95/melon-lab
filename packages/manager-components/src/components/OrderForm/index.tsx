@@ -54,6 +54,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
   dataValid,
 }) => {
   const isMarket = values.strategy === 'Market' ? true : false;
+  const numberPlaceholder = (0).toFixed(decimals);
 
   return (
     <div className="order-form">
@@ -112,7 +113,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
             label="Price"
             name="price"
             insideLabel="true"
-            placeholder="0.0000"
+            placeholder={numberPlaceholder}
             decimals={decimals}
             onChange={onChange}
             onBlur={handleBlur}
@@ -128,7 +129,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
             label="Quantity"
             name="quantity"
             insideLabel="true"
-            placeholder="0.0000"
+            placeholder={numberPlaceholder}
             decimals={decimals}
             onChange={onChange}
             onBlur={handleBlur}
@@ -145,7 +146,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
             label="Total"
             name="total"
             insideLabel="true"
-            placeholder="0.0000"
+            placeholder={numberPlaceholder}
             decimals={decimals}
             onChange={onChange}
             onBlur={handleBlur}
