@@ -21,7 +21,7 @@ const BLOCK_POLLING_INTERVAL = 4 * 1000;
 const MAX_INTERVAL_BETWEEN_BLOCKS = 5;
 
 function* init() {
-    const environment = yield call(getParityProvider);
+    const environment = yield call(getParityProvider, process.env.JSON_RPC_ENDPOINT);
 
     // TODO: add tracer
     setEnvironment(environment);

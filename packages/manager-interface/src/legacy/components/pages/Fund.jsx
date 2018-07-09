@@ -28,11 +28,12 @@ const Fund = ({
       <div>
         <Card.Group>
           <Factsheet />
-              {!isCompetition && isManager ? <Administration /> : <GetStarted />}
-              {!isCompetition && canInvest && !pendingRequest ? <Participation /> : <div />}
-              {!isCompetition && canInvest && pendingRequest ? <ExecuteRequest /> : <div />}
-              {!isCompetition && !canInvest ? <Card /> : <div />}
-      
+          {!isCompetition && isManager ? <Administration /> : <div />}
+          {!isCompetition && !isManager ? <GetStarted /> : <div />}
+          {!isCompetition && canInvest && !pendingRequest ? <Participation /> : <div />}
+          {!isCompetition && canInvest && pendingRequest ? <ExecuteRequest /> : <div />}
+          {!isCompetition && !canInvest ? <Card /> : <div />}
+
         </Card.Group>
         <br />
         <Holdings address={fundAddress} />

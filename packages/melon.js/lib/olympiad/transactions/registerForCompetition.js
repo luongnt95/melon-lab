@@ -1,4 +1,5 @@
 // @flow
+import BigNumber from 'bignumber.js';
 import getConfig from '../../version/calls/getConfig';
 import getOlympiadContract from '../contracts/getOlympiadContract';
 import getVersionContract from '../../version/contracts/getVersionContract';
