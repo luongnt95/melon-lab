@@ -35,6 +35,7 @@ const Toggle: StatelessComponent<ToggleProps> = ({
         checked={isChecked}
         disabled={disabled}
         onChange={handleChange}
+        hidden
       />
       <span className="toggle__text">{text}</span>
     </label>
