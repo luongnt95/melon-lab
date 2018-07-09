@@ -62,8 +62,8 @@ const claculateInputs = (props, field, value) => {
 };
 
 const validation = props => {
-  var numberFormat = (0).toFixed(props.decimals);
-  var minNumber = numberFormat.slice(0, -1) + '1';
+  const numberFormat = (0).toFixed(props.decimals);
+  const minNumber = numberFormat.slice(0, -1) + '1';
 
   return Yup.object().shape({
     price: Yup.number()
