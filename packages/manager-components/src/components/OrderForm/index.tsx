@@ -89,6 +89,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
             onChange={onChange}
             name="orderType"
             value={values.orderType}
+            isChecked={values.orderType === 'Sell' ? true : false}
             disabled={isMarket || !dataValid}
           />
         </div>

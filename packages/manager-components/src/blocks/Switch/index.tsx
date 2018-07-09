@@ -39,7 +39,7 @@ const Switch: StatelessComponent<SwitchProps> = ({
           onChange={handleChange}
           className="switch__input"
           type="checkbox"
-          defaultChecked={false}
+          checked={isChecked}
           disabled={disabled}
         />
         <span

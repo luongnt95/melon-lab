@@ -27,7 +27,7 @@ const initialProps = {
   ],
   values: {
     price: '1.0000',
-    orderType: 'Buy',
+    orderType: 'Sell',
     strategy: 'Market',
     quantity: '1.0000',
     total: '1.0000',
