@@ -1,6 +1,8 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import React from 'react';
 
+const electron = process.env.ELECTRON;
+
 export default class MyDocument extends Document {
   public static async getInitialProps(context) {
     const initialProps = await Document.getInitialProps(context);
@@ -16,10 +18,12 @@ export default class MyDocument extends Document {
             content="width=device-width, initial-scale=1, shrink-to-fit=no"
           />
           <meta name="theme-color" content="#000000" />
-          <meta
-            http-equiv="Content-Security-Policy"
-            content="default-src 'self' 'unsafe-inline'; connect-src https://kovan.melonport.com kovan.melonport.com kovan.melonport.com:443; font-src data: file:;"
-          />
+          {electron && (
+            <meta
+              http-equiv="Content-Security-Policy"
+              content="default-src 'self' 'unsafe-inline'; connect-src https://kovan.melonport.com kovan.melonport.com kovan.melonport.com:443; font-src data: file:;"
+            />
+          )}
           <link rel="manifest" href="./static/manifest.json" />
           <link rel="shortcut icon" href="./static/favicon.png?v=2" />
           <link rel="stylesheet" href="./static/css/semantic.min.css" />
