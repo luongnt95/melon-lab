@@ -8,14 +8,13 @@ const labelOrder = order => ({ ...order, exchange: 'OASIS_DEX' });
 const labelOrders = orders => orders.map(labelOrder);
 
 const getObservableOasisDex = (
+  baseTokenSymbol,
+  quoteTokenSymbol,
   baseTokenAddress,
   quoteTokenAddress,
   environment,
   config,
 ) => {
-  const baseTokenSymbol = getSymbol(config, baseTokenAddress);
-  const quoteTokenSymbol = getSymbol(config, quoteTokenAddress);
-
   const orderbook$ = Rx.Observable.defer(() =>
     getOrderbook(environment, { baseTokenSymbol, quoteTokenSymbol }),
   )

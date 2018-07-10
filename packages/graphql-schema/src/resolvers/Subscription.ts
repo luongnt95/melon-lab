@@ -2,7 +2,6 @@ import {
   getAggregatedObservable,
   Order,
 } from '@melonproject/exchange-aggregator';
-import { getAddress } from '@melonproject/melon.js';
 import BigNumber from 'bignumber.js';
 import * as R from 'ramda';
 import withUnsubscribe from '../utils/withUnsubscribe';
@@ -44,8 +43,6 @@ export const orderbook = {
   subscribe: async (parent, args, context) => {
     const { pubsub, network, config, environment } = context;
     const { baseTokenSymbol, quoteTokenSymbol, exchanges } = args;
-    const baseTokenAddress = getAddress(context.config, baseTokenSymbol);
-    const quoteTokenAddress = getAddress(context.config, quoteTokenSymbol);
 
     debug('Processed symbols.', {
       baseTokenSymbol,
@@ -53,8 +50,8 @@ export const orderbook = {
     });
 
     const orderbook$ = getAggregatedObservable(
-      baseTokenAddress,
-      quoteTokenAddress,
+      baseTokenSymbol,
+      quoteTokenSymbol,
       exchanges,
       network,
       environment,
