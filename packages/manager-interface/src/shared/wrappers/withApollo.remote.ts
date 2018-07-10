@@ -14,6 +14,7 @@ export default (introspection) => withApollo({
       new WebSocketLink({
         uri: process.env.GRAPHQL_REMOTE_WS as string,
         reconnect: true,
+        timeout: 30000,
       }),
   },
   client: options => ({
