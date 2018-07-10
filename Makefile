@@ -59,7 +59,9 @@ package:
 .PHONY: publish
 publish:
 	@docker push melonproject/graphql-server:${VERSION}
+	@docker push melonproject/graphql-server:latest
 	@docker push melonproject/faucet:${VERSION}
+	@docker push melonproject/faucet:latest
 
 # -----------------------------------------------------------------------------
 # DEVELOPMENT
