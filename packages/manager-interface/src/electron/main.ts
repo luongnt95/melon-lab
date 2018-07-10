@@ -79,6 +79,16 @@ const restoreMainWindow = async () => {
     },
   });
 
+  var handleRedirect = (e, url) => {
+    if(url != mainWindow.webContents.getURL()) {
+      e.preventDefault()
+      require('electron').shell.openExternal(url)
+    }
+  }
+
+  mainWindow.webContents.on('will-navigate', handleRedirect)
+  mainWindow.webContents.on('new-window', handleRedirect)
+
   mainWindow.loadURL(await appUrl());
 
   mainWindow.on('closed', () => {
