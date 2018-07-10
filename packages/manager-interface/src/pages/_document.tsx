@@ -3,6 +3,11 @@ import React from 'react';
 
 const electron = process.env.ELECTRON;
 
+const csp =
+  "default-src 'self' 'unsafe-inline'; \
+connect-src https://kovan.melonport.com kovan.melonport.com kovan.melonport.com:443; \
+font-src data: file:;";
+
 export default class MyDocument extends Document {
   public static async getInitialProps(context) {
     const initialProps = await Document.getInitialProps(context);
@@ -19,10 +24,7 @@ export default class MyDocument extends Document {
           />
           <meta name="theme-color" content="#000000" />
           {electron && (
-            <meta
-              http-equiv="Content-Security-Policy"
-              content="default-src 'self' 'unsafe-inline'; connect-src https://kovan.melonport.com kovan.melonport.com kovan.melonport.com:443; font-src data: file:;"
-            />
+            <meta http-equiv="Content-Security-Policy" content={csp} />
           )}
           <link rel="manifest" href="./static/manifest.json" />
           <link rel="shortcut icon" href="./static/favicon.png?v=2" />
