@@ -73,9 +73,9 @@ module.exports = withComposedConfig({
       test: /\.css$/,
       use: [
         {
-          loader: "emit-file-loader",
+          loader: 'emit-file-loader',
           options: {
-            name: "dist/[path][name].[ext].js"
+            name: 'dist/styles/[folder]/[name].[ext].js'
           }
         },
         {
@@ -89,7 +89,6 @@ module.exports = withComposedConfig({
         },
         'styled-jsx-css-loader',
       ],
-      include: path.resolve(__dirname, '../manager-components/src'),
     });
 
     if (isElectron) {
