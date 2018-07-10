@@ -7,6 +7,7 @@ import getConfig from '../../version/calls/getConfig';
 import getFundInformations from '../../fund/calls/getFundInformations';
 import getNetwork from '../../utils/environment/getNetwork';
 import getVersionContract from '../contracts/getVersionContract';
+import getCompetitionComplianceContract from '../contracts/getCompetitionComplianceContract';
 import sendTransaction from '../../utils/parity/sendTransaction';
 import type { Address } from '../../assets/schemas/Address';
 import type { Environment } from '../../utils/environment/Environment';
@@ -28,10 +29,10 @@ const setupFund = async (
   { name, signature, exchangeNames = ['MatchingMarket', 'ZeroExExchange'], track = "kovan-demo" },
 ): Promise<Fund> => {
   const config = await getConfig(environment);
-  const { quoteAssetSymbol, onlyManagerAddress, competitionComplianceAddress, riskManagementAddress } = config;
+  const { quoteAssetSymbol, onlyManagerCompetitionAddress, competitionComplianceAddress, riskManagementAddress } = config;
   let complianceAddress;
-  if (track === "kovan-demo") complianceAddress = onlyManagerAddress
-  else if (track === "kovan-competition") commplianceAddress = competitionComplianceAddress
+  if (track === "kovan-demo") complianceAddress = onlyManagerCompetitionAddress
+  else if (track === "kovan-competition") complianceAddress = competitionComplianceAddress
   else if (track === "live") complianceAddress = competitionComplianceAddress
 
   const quoteAsset = getAddress(config, quoteAssetSymbol);
@@ -40,6 +41,13 @@ const setupFund = async (
   const performanceReward = 0;
 
   const versionContract = await getVersionContract(environment, config);
+
+  if (track === "kovan-competition" || track === "live") {
+    const competitionComplianceContract = await getCompetitionComplianceContract(environment);
+    const isCompetitionAllowed = await competitionComplianceContract.instance.isCompetitionAllowed.call({}, [environment.account.address])
+    ensure(isCompetitionAllowed, 'Address not whitelisted cannot create a fund on this version');
+
+  }
 
   const isVersionShutDown = await versionContract.instance.isShutDown.call();
   ensure(!isVersionShutDown, 'Version is shut down.');

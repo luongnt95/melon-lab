@@ -38,6 +38,7 @@ const sendTransaction = async (
       'withdrawStake',
       'collectAndUpdate',
       'callOnExchange',
+      'setupFund'
     ].includes(method)
   ) {
     options[gasKeyName] = 6700000;

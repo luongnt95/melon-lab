@@ -10,7 +10,7 @@ const debug = require('debug')('exchange-aggregator');
 
 export type ExchangeCreator = (
   baseTokenAddress: string,
-  quoteTokenSymbol: string,
+  quoteTokenAddress: string,
   network: NetworkEnum,
   environment: any,
   config: any,
@@ -18,28 +18,28 @@ export type ExchangeCreator = (
 
 const exchangeToCreatorFunction: { [P in ExchangeEnum]: ExchangeCreator } = {
   RADAR_RELAY: (
-    baseTokenSymbol,
-    quoteTokenSymbol,
+    baseTokenAddress,
+    quoteTokenAddress,
     network,
     environment,
     config,
   ) =>
-    getObservableRadarRelay(baseTokenSymbol, quoteTokenSymbol, network, config),
+    getObservableRadarRelay(baseTokenAddress, quoteTokenAddress, network, config),
   OASIS_DEX: (
-    baseTokenSymbol,
-    quoteTokenSymbol,
+    baseTokenAddress,
+    quoteTokenAddress,
     network,
     environment,
     config,
   ) =>
     getObservableOasisDex(
-      baseTokenSymbol,
-      quoteTokenSymbol,
+      baseTokenAddress,
+      quoteTokenAddress,
       environment,
       config,
     ),
-  ERC_DEX: (baseTokenSymbol, quoteTokenSymbol, network, environment, config) =>
-    getObservableErcDex(baseTokenSymbol, quoteTokenSymbol, network, config),
+  ERC_DEX: (baseTokenAddress, quoteTokenAddress, network, environment, config) =>
+    getObservableErcDex(baseTokenAddress, quoteTokenAddress, network, config),
 };
 
 const concatOrderbooks = R.reduce<Order[], Order[]>(R.concat, []);
@@ -71,7 +71,7 @@ const getAggregatedObservable = (
     .map(name => exchangeToCreatorFunction[name])
     .map(create =>
       create(baseTokenAddress, quoteTokenAddress, network, environment, config),
-    )
+  )
     .combineAll<Rx.Observable<Order[]>, Order[][]>()
     .do(value => debug('Emitting combined order book.', value))
     .distinctUntilChanged(R.equals);

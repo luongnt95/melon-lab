@@ -71,6 +71,28 @@ module.exports = {
     });
 
     config.module.rules.push({
+      test: /\.css$/,
+      use: [
+        {
+          loader: 'emit-file-loader',
+          options: {
+            name: 'dist/styles/[folder]/[name].[ext].js'
+          }
+        },
+        {
+          loader: 'babel-loader',
+          options: {
+            babelrc: false,
+            plugins: [
+              ['styled-jsx/babel', { plugins: ['styled-jsx-plugin-postcss'] }],
+            ],
+          },
+        },
+        'styled-jsx-css-loader',
+      ],
+    });
+
+    config.module.rules.push({
       test: /\.(graphql|gql)$/,
       exclude: /node_modules/,
       loader: 'graphql-tag/loader',
