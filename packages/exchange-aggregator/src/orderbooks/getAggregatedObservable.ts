@@ -3,12 +3,15 @@ import * as Rx from 'rxjs';
 import getObservableErcDex from './ercDex/getObservableErcDex';
 import getObservableOasisDex from './oasisDex/getObservableOasisDex';
 import getObservableRadarRelay from './radarRelay/getObservableRadarRelay';
+import { getAddress } from '@melonproject/melon.js';
 
 import { ExchangeEnum, NetworkEnum, Order } from '../index';
 
 const debug = require('debug')('exchange-aggregator');
 
 export type ExchangeCreator = (
+  baseTokenSymbol: string,
+  quoteTokenSymbol: string,
   baseTokenAddress: string,
   quoteTokenAddress: string,
   network: NetworkEnum,
@@ -18,6 +21,8 @@ export type ExchangeCreator = (
 
 const exchangeToCreatorFunction: { [P in ExchangeEnum]: ExchangeCreator } = {
   RADAR_RELAY: (
+    baseTokenSymbol,
+    quoteTokenSymbol,
     baseTokenAddress,
     quoteTokenAddress,
     network,
@@ -26,6 +31,8 @@ const exchangeToCreatorFunction: { [P in ExchangeEnum]: ExchangeCreator } = {
   ) =>
     getObservableRadarRelay(baseTokenAddress, quoteTokenAddress, network, config),
   OASIS_DEX: (
+    baseTokenSymbol,
+    quoteTokenSymbol,
     baseTokenAddress,
     quoteTokenAddress,
     network,
@@ -33,12 +40,22 @@ const exchangeToCreatorFunction: { [P in ExchangeEnum]: ExchangeCreator } = {
     config,
   ) =>
     getObservableOasisDex(
+      baseTokenSymbol,
+      quoteTokenSymbol,
       baseTokenAddress,
       quoteTokenAddress,
       environment,
       config,
     ),
-  ERC_DEX: (baseTokenAddress, quoteTokenAddress, network, environment, config) =>
+  ERC_DEX: (
+    baseTokenSymbol,
+    quoteTokenSymbol,
+    baseTokenAddress,
+    quoteTokenAddress,
+    network,
+    environment,
+    config
+  ) =>
     getObservableErcDex(baseTokenAddress, quoteTokenAddress, network, config),
 };
 
@@ -59,18 +76,21 @@ const sortOrderBooks = R.sort<Order>((a, b) => {
 });
 
 const getAggregatedObservable = (
-  baseTokenAddress: string,
-  quoteTokenAddress: string,
+  baseTokenSymbol: string,
+  quoteTokenSymbol: string,
   exchanges: ExchangeEnum[] = ['RADAR_RELAY', 'OASIS_DEX', 'ERC_DEX'],
   network: NetworkEnum = 'KOVAN',
   environment,
   config,
 ) => {
+  const baseTokenAddress = getAddress(config, baseTokenSymbol);
+  const quoteTokenAddress = getAddress(config, quoteTokenSymbol);
+
   const exchanges$ = Rx.Observable.from<ExchangeEnum>(exchanges);
   const orderbooks$ = exchanges$
     .map(name => exchangeToCreatorFunction[name])
     .map(create =>
-      create(baseTokenAddress, quoteTokenAddress, network, environment, config),
+      create(baseTokenSymbol, quoteTokenSymbol, baseTokenAddress, quoteTokenAddress, network, environment, config),
   )
     .combineAll<Rx.Observable<Order[]>, Order[][]>()
     .do(value => debug('Emitting combined order book.', value))

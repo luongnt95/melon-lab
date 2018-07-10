@@ -1,7 +1,17 @@
 import { getPrices, getSymbol, toReadable } from '@melonproject/melon.js';
 
 const formatRelayerOrderbook = exchange => (config, bids, asks) => {
-  const formattedBids = bids.map(order => ({
+  const formattedBids = bids.filter(order => {
+    if (order.makerTokenAddress === '0x0000000000000000000000000000000000000000') {
+      return false;
+    }
+
+    if (order.takerTokenAddress === '0x0000000000000000000000000000000000000000') {
+      return false;
+    }
+
+    return true;
+  }).map(order => ({
     salt: order.salt,
     maker: order.maker,
     taker: order.taker,
