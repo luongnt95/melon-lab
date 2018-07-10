@@ -44,6 +44,32 @@ let mainWindow;
 const restoreMainWindow = async () => {
   await startServer();
 
+  // Create the Application's main menu
+  var template = [
+    {
+      label: 'Application',
+      submenu: [
+        {
+          label: 'Quit',
+          accelerator: 'Command+Q',
+          click: () => {
+            electron.app.quit();
+          },
+        },
+      ],
+    },
+    {
+      label: 'Edit',
+      submenu: [
+        { label: 'Cut', accelerator: 'CmdOrCtrl+X', selector: 'cut:' },
+        { label: 'Copy', accelerator: 'CmdOrCtrl+C', selector: 'copy:' },
+        { label: 'Paste', accelerator: 'CmdOrCtrl+V', selector: 'paste:' },
+      ],
+    },
+  ];
+
+  electron.Menu.setApplicationMenu(electron.Menu.buildFromTemplate(template));
+
   mainWindow = new electron.BrowserWindow({
     width: 1024,
     height: 800,
@@ -82,12 +108,6 @@ electron.app.on('ready', () => {
 
       callback(path.normalize(path.join(__dirname, reqUrlFinal)));
     });
-
-    electron.session.defaultSession.webRequest.onHeadersReceived(
-      (details, callback) => {
-        callback({ responseHeaders: `default-src 'none'` });
-      },
-    );
   }
 
   restoreMainWindow();
