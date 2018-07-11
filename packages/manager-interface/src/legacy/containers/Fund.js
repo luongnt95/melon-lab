@@ -11,6 +11,7 @@ const selector = formValueSelector('trade');
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: values => {
+    dispatch(actions.fill(values));
     if (values.strategy === 'Market') {
       dispatch(actions.takeOrder(values));
     } else {
