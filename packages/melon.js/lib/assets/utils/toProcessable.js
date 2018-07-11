@@ -20,14 +20,11 @@ const toProcessable = (
   config: Config,
   quantity: number | BigNumber,
   tokenSymbol: TokenSymbol,
-  shouldRound: Boolean = true,
 ): BigNumber => {
   const precision: number = getDecimals(config, tokenSymbol);
-  if (shouldRound) {
     const roundedQuantity = new BigNumber(quantity).round(precision);
     return new BigNumber(roundedQuantity).times(10 ** precision);
-  }
-  return new BigNumber(quantity).times(10 ** precision); // this is a hack to handle 0x orders with more than 15 significant digits
+
 };
 
 export default toProcessable;
