@@ -5,7 +5,7 @@ const electron = process.env.ELECTRON;
 
 const csp =
   "default-src 'self' 'unsafe-inline'; \
-connect-src https://kovan.melonport.com kovan.melonport.com kovan.melonport.com:443; \
+connect-src http://localhost:8545; \
 font-src data: file:;";
 
 export default class MyDocument extends Document {
