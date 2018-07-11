@@ -30,8 +30,8 @@ const Fund = ({
 }) => (
         <div className="App">
             <br />
-            {hasContributed?
-            <div>
+            {!hasContributed && isCompetition?
+            <ParosContributionContainer/>: <div>
                 <Card.Group>
                     <Factsheet />
                     {!isCompetition && isManager ? <Administration /> : <div />}
@@ -60,7 +60,7 @@ const Fund = ({
                 <br />
                 <RecentTrades />
                 <br />
-            </div >: <ParosContributionContainer/>
+            </div >
 
             }
         </div >
