@@ -11,6 +11,7 @@ const selector = formValueSelector('trade');
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: values => {
+    dispatch(actions.fill(values));
     if (values.strategy === 'Market') {
       dispatch(actions.takeOrder(values));
     } else {
@@ -77,6 +78,7 @@ const mapStateToProps = state => {
       decimals: 4,
       dataValid: state.ethereum.isDataValid,
     },
+    hasContributed: state.fund.totalSupply == 0 ? false: true
   };
 };
 

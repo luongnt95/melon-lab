@@ -104,6 +104,7 @@ function* checkAndLoad() {
 }
 
 function* getUsersFund({ account }) {
+  yield put(actions.signSucceeded(undefined))
   if (!account) {
     put(appActions.setUsersFund());
   } else {

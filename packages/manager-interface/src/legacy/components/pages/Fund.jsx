@@ -16,6 +16,7 @@ import TradeHelper from '../../containers/TradeHelper';
 import OpenOrders from '../../containers/OpenOrders';
 import Layout from '@melonproject/manager-components/design/Layout';
 import OrderForm from '@melonproject/manager-components/components/OrderForm/container';
+import ParosContributionContainer from '../../containers/ParosContribution';
 
 const Fund = ({
   isManager,
@@ -25,10 +26,12 @@ const Fund = ({
     isCompetition,
     orderForm,
     onSubmit,
+    hasContributed
 }) => (
         <div className="App">
             <br />
-            <div>
+            {!hasContributed && isCompetition?
+            <ParosContributionContainer/>: <div>
                 <Card.Group>
                     <Factsheet />
                     {!isCompetition && isManager ? <Administration /> : <div />}
@@ -58,6 +61,8 @@ const Fund = ({
                 <RecentTrades />
                 <br />
             </div >
+
+            }
         </div >
     );
 
