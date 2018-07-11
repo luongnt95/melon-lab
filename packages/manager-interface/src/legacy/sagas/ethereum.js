@@ -33,7 +33,7 @@ function* init() {
   yield put(fundActions.setConfig(config));
   yield put(
     appActions.updateAssetPair({
-      base: 'MLN-T',
+      base: config.melonAssetSymbol,
       quote: config.quoteAssetSymbol,
     }),
   );

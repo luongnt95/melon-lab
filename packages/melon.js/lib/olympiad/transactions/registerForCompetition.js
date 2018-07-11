@@ -17,6 +17,7 @@ const registerForCompetition = async (
     { fundAddress, signature, buyInValue },
 ): Promise<any> => {
     const config = await getConfig(environment);
+    const etherTokenSymbol = config.nativeAssetSymbol;
     const olympiadContract = await getOlympiadContract(environment);
     const isCompetitionActive = await olympiadContract.instance.isCompetitionActive.call(
         {},
@@ -92,7 +93,7 @@ const registerForCompetition = async (
         'registerForCompetition',
         [fundAddress, signature.v, signature.r, signature.s],
         environment,
-        { value: toProcessable(config, buyInValue, 'WETH-T') },
+        { value: toProcessable(config, buyInValue, etherTokenSymbol) },
     );
 
     const registerLog = findEventInLog('Register', receipt);

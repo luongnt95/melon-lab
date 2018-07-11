@@ -36,7 +36,7 @@ const setupFund = async (
   else if (track === "live") complianceAddress = competitionComplianceAddress
 
   const quoteAsset = getAddress(config, quoteAssetSymbol);
-
+  const melonAsset = track === "live" ? getAddress(config, config.melonAssetSymbol) : getAddress(config, config.melonAssetSymbol)
   const managementReward = 0;
   const performanceReward = 0;
 
@@ -83,7 +83,7 @@ const setupFund = async (
     complianceAddress,
     riskManagementAddress,
     exchanges,
-    [getAddress(config, 'MLN-T')],
+    [melonAsset],
     signature.v,
     signature.r,
     signature.s,
