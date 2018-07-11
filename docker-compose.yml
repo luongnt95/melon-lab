@@ -141,6 +141,9 @@ services:
       - "3030:3030"
     networks:
       - melonproject
+    extra_hosts:
+      - "mainnet.melonport.com:52.236.179.86"
+      - "kovan.melonport.com:13.93.111.242"
 
   manager-interface:
     build:
@@ -259,6 +262,9 @@ services:
     build:
       context: .
       dockerfile: ./packages/graphql-server/Dockerfile
+    extra_hosts:
+      - "mainnet.melonport.com:52.236.179.86"
+      - "kovan.melonport.com:13.93.111.242"
 
   faucet-prod:
     command: "/bin/sh -c 'trap : TERM INT; sleep 365d & wait'"
