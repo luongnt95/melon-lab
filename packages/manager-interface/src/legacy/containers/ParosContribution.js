@@ -16,7 +16,7 @@ const mapStateToProps = state => ({
         total: 20
     },
     displayNumber,
-    melonAssetSymbol: state.fund.config.melonAssetSymbol,
+    melonAssetSymbol: state.fund.config? state.fund.config.melonAssetSymbol: "MLN",
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

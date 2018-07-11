@@ -14,6 +14,7 @@ const MyAccount = ({
   downloadJSON,
   networkId,
   isCompetition,
+  goToFund
 }) => (
   <div>
     <Card centered>
@@ -84,7 +85,18 @@ const MyAccount = ({
                   Setup your fund
                 </Button>
               </p>
-            ) : null}
+            ) :           <p>
+                <Button
+                  basic
+                  color="green"
+                  style={{ width: '100%', marginBottom: '1em' }}
+                  onClick={() =>
+                      goToFund(associatedFund)
+                    }
+                >
+                  Go to your fund
+                </Button>
+              </p>}
             <br />
             {!isCompetition ? (
               <div>

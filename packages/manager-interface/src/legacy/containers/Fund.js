@@ -78,6 +78,7 @@ const mapStateToProps = state => {
       decimals: 4,
       dataValid: state.ethereum.isDataValid,
     },
+    hasContributed: state.fund.totalSupply == 0 ? false: true
   };
 };
 

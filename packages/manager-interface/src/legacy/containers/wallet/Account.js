@@ -15,6 +15,7 @@ const mapDispatchToProps = dispatch => ({
   downloadJSON: () => dispatch(actions.downloadJSON()),
   deleteWallet: () => dispatch(actions.deleteWallet()),
   gotoSetup: () => dispatch(routeActions.setup()),
+  goToFund: (fundAddress) => dispatch(routeActions.fund(fundAddress)),
   gotoImportJSON: () => dispatch(routeActions.walletImport()),
   gotoAccountGenerate: () => dispatch(routeActions.walletGenerate()),
   gotoAccountRestore: () => dispatch(routeActions.walletRestore()),
