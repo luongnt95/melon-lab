@@ -6,7 +6,7 @@ import formatRelayerOrderbook from '../../formatRelayerOrderbook';
 // protocol on the client.
 import WebSocket = require('isomorphic-ws');
 
-const debug = require('debug')('exchange-aggregator:radar-relay');
+const debug = require('debug')('melon-lab:exchange-aggregator:radar-relay');
 
 const subscribeMessage = (baseTokenAddress, quoteTokenAddress) =>
   JSON.stringify({

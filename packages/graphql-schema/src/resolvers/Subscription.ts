@@ -5,7 +5,7 @@ import {
 import BigNumber from 'bignumber.js';
 import * as R from 'ramda';
 import withUnsubscribe from '../utils/withUnsubscribe';
-const debug = require('debug')('graphql-schema:subscription');
+const debug = require('debug')('melon-lab:graphql-schema:subscription');
 
 const filterBuyOrders = R.filter<Order>(R.propEq('type', 'buy'));
 const filterSellOrders = R.filter<Order>(R.propEq('type', 'sell'));

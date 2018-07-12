@@ -7,7 +7,7 @@ import { getAddress } from '@melonproject/melon.js';
 
 import { ExchangeEnum, NetworkEnum, Order } from '../index';
 
-const debug = require('debug')('exchange-aggregator');
+const debug = require('debug')('melon-lab:exchange-aggregator');
 
 export type ExchangeCreator = (
   baseTokenSymbol: string,
