@@ -29,6 +29,8 @@ const loadingFund = {
   showedRegistration: undefined,
   competitionSignature: undefined,
   needsToRegister: false,
+  parosEndTime: '...',
+  isParosActive: true,
 };
 
 export const initialState = {

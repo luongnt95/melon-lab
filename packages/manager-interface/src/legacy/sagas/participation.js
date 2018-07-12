@@ -6,7 +6,9 @@ import {
     redeemAllOwnedAssets,
     getLastRequest,
     registerForCompetition,
-    signOlympiadTermsAndConditions
+    signOlympiadTermsAndConditions,
+    claimReward,
+    getParticipation
 } from '@melonproject/melon.js';
 import { delay } from 'redux-saga';
 import { types, actions } from '../actions/participation';
@@ -98,6 +100,28 @@ function* redeemAllOwnedAssetsSaga(action) {
     );
 }
 
+function* claimRewardSaga(action) {
+    function* transaction(environment) {
+        const reward = yield call(claimReward, environment)
+        const fundAddress = yield select(state => state.fund.address);
+        const sharesOwned = yield call(getParticipation, environment, { fundAddress, investorAddress: environment.account.address })
+        yield call(redeemAllOwnedAssets, environment, {
+            fundAddress,
+            numShares: sharesOwned.personalStake,
+        });
+        yield put(actions.claimRewardSucceeded());
+        yield put(modalActions.close());
+    }
+
+    yield call(
+        signer,
+        `Do you really want to claim your reward and redeem the underlying assets of your fund to your manager address?`,
+        transaction,
+        actions.claimRewardFailed,
+    );
+}
+
+
 function* executeSaga({ id }) {
     function* transaction(environment) {
         const fundAddress = yield select(state => state.fund.address);
@@ -149,6 +173,10 @@ function* participation() {
     yield takeLatest(
         types.REDEEM_ALL_OWNED_ASSETS_REQUESTED,
         redeemAllOwnedAssetsSaga,
+    );
+    yield takeLatest(
+        types.CLAIM_REWARD_REQUESTED,
+        claimRewardSaga,
     );
     yield takeLatest(types.EXECUTE_REQUESTED, executeSaga);
     yield takeLatest(fundTypes.SET_PENDING_REQUEST, waitForExecute);
