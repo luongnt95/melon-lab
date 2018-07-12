@@ -21,51 +21,51 @@ import ParosContributionContainer from '../../containers/ParosContribution';
 
 const Fund = ({
   isManager,
-  fundAddress,
-  canInvest,
-  pendingRequest,
-  isCompetition,
-  orderForm,
-  onSubmit,
-  hasContributed
+    fundAddress,
+    canInvest,
+    pendingRequest,
+    isCompetition,
+    orderForm,
+    onSubmit,
+    hasContributed,
+    isCompetitionActive
 }) => (
-    <div className="App">
-      <br />
-      {!hasContributed && isCompetition ?
-        <ParosContributionContainer /> : <div>
-          <Card.Group>
-            <Factsheet />
-            {isCompetition && hasContributed ? <ClaimRewardParos /> : <div />}
-            {!isCompetition && isManager ? <Administration /> : <div />}
-            {!isCompetition && !isManager ? <GetStarted /> : <div />}
-            {!isCompetition && canInvest && !pendingRequest ? <Participation /> : <div />}
-            {!isCompetition && canInvest && pendingRequest ? <ExecuteRequest /> : <div />}
-            {!isCompetition && !canInvest ? <Card /> : <div />}
+        <div className="App">
+            <br />
+            {!hasContributed && isCompetition && isCompetitionActive && isManager ?
+                <ParosContributionContainer /> : <div>
+                    <Card.Group>
+                        <Factsheet />
+                        {isCompetition && hasContributed && isManager ? <ClaimRewardParos /> : <div />}
+                        {!isCompetition && isManager ? <Administration /> : <div />}
+                        {!isCompetition && !isManager ? <GetStarted /> : <div />}
+                        {!isCompetition && canInvest && !pendingRequest ? <Participation /> : <div />}
+                        {!isCompetition && canInvest && pendingRequest ? <ExecuteRequest /> : <div />}
+                        {!isCompetition && !canInvest ? <Card /> : <div />}
+                    </Card.Group>
+                    <br />
+                    <Holdings address={fundAddress} />
+                    <br />
+                    {isManager ? (
+                        <div id="trade">
+                            <h3>Trade</h3>
+                            <OrderForm {...orderForm} onSubmit={onSubmit} />
+                        </div>
+                    ) : (
+                            <div />
+                        )
+                    }
+                    <br />
+                    <Orderbook />
+                    <br />
+                    <OpenOrders address={fundAddress} />
+                    <br />
+                    <RecentTrades />
+                    <br />
+                </div >
 
-          </Card.Group>
-          <br />
-          <Holdings address={fundAddress} />
-          <br />
-          {isManager ? (
-            <div id="trade">
-              <h3>Trade</h3>
-              <OrderForm {...orderForm} onSubmit={onSubmit} />
-            </div>
-          ) : (
-              <div />
-            )
-          }
-          <br />
-          <Orderbook />
-          <br />
-          <OpenOrders address={fundAddress} />
-          <br />
-          <RecentTrades />
-          <br />
+            }
         </div >
-
-      }
-    </div >
-  );
+    );
 
 export default Fund;

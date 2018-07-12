@@ -12,7 +12,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     claimReward: () => {
-        dispatch(actions.claimRewards());
+        dispatch(actions.claimReward());
     },
 });
 
