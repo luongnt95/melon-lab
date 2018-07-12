@@ -3,7 +3,7 @@ copyright: Melonport AG
 appId: com.melonproject.app
 productName: Melon Manager Interface
 artifactName: melon-manager-interface-${version}-${os}.${ext}
-asar: false
+asar: true
 extends: null
 
 directories:
