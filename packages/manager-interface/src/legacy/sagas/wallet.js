@@ -117,33 +117,72 @@ const createDownload = (data, filename, mime) => {
   }
 };
 
-function* storeWallet(decryptedWallet, encryptedWalletString) {
-  const isElectron = yield select(state => state.app.isElectron);
+function* storeWallet(decryptedWallet, encryptedWalletParam) {
+  try {
+    const isElectron = yield select(state => state.app.isElectron);
+    let encryptedWalletString = encryptedWalletParam;
 
-  if (!isElectron && process.env.NODE_ENV === 'development') {
-    console.warn(
-      'Development environment detected. Storing unencrypted wallet on localStorage!',
-    );
-    localStorage.setItem('wallet:melon.fund', JSON.stringify(decryptedWallet));
-  } else if (isElectron) {
-    try {
-      yield ipcMessage(
-        ipcMessages.STORE_WALLET,
-        decryptedWallet.address,
-        encryptedWalletString,
-      );
-      yield put(
-        modalActions.info({
-          title: 'Wallet securely stored',
-          body: `Your wallet (${address}) is securely stored in your operating systems keystore`,
-        }),
-      );
-    } catch (e) {
-      console.error(error);
-      yield put(
-        modalActions.error(`There was an error storing your wallet. ${error}`),
-      );
+    console.log(decryptedWallet.address, {
+      decryptedWallet,
+      encryptedWalletString,
+    });
+
+    if (isElectron || process.env.NODE_ENV === 'development') {
+      if (!encryptedWalletString) {
+        yield put(
+          modalActions.password(
+            `Please type a strong password to protect your wallet:`,
+          ),
+        );
+        const { password } = yield take(modalTypes.PASSWORD_ENTERED);
+
+        if (password.length < 8) {
+          yield put(
+            modalActions.error(
+              'Password needs to be at least 8 chars long. For your security!',
+            ),
+          );
+          return;
+        }
+
+        yield put(modalActions.password(`Confirm password:`));
+        const { password: confirm } = yield take(modalTypes.PASSWORD_ENTERED);
+
+        if (password !== confirm) {
+          yield put(modalActions.error("The entered passwords didn't match"));
+          return;
+        }
+
+        yield put(modalActions.loading('Encrypting wallet ...'));
+        encryptedWalletString = yield call(
+          encryptWallet,
+          decryptedWallet,
+          password,
+        );
+        yield put(modalActions.close());
+      }
+
+      if (isElectron) {
+        yield ipcMessage(
+          ipcMessages.STORE_WALLET,
+          decryptedWallet.address,
+          encryptedWalletString,
+        );
+        yield put(
+          modalActions.info({
+            title: 'Wallet securely stored',
+            body: `Your wallet (${address}) is securely stored in your operating systems keystore`,
+          }),
+        );
+      } else {
+        localStorage.setItem('wallet:melon.fund', encryptedWalletString);
+      }
     }
+  } catch (e) {
+    console.error(error);
+    yield put(
+      modalActions.error(`There was an error storing your wallet. ${error}`),
+    );
   }
 }
 
@@ -162,39 +201,7 @@ function* restoreWalletSaga({ mnemonic }) {
     const wallet = yield importWalletFromMnemonic(mnemonic);
     setEnvironment({ account: wallet });
     yield put(actions.restoreFromMnemonicSucceeded(wallet));
-
-    if (isElectron) {
-      yield put(
-        modalActions.password(
-          `Please type a strong password to protect your wallet:`,
-        ),
-      );
-      const { password } = yield take(modalTypes.PASSWORD_ENTERED);
-
-      if (password.length < 8) {
-        yield put(
-          modalActions.error(
-            'Password needs to be at least 8 chars long. For your security!',
-          ),
-        );
-        return;
-      }
-
-      yield put(modalActions.password(`Confirm password:`));
-      const { password: confirm } = yield take(modalTypes.PASSWORD_ENTERED);
-
-      if (password !== confirm) {
-        yield put(modalActions.error("The entered passwords didn't match"));
-        return;
-      }
-
-      yield put(modalActions.loading());
-      const encryptedWallet = yield call(encryptWallet, wallet, password);
-      yield call(storeWallet, wallet, encryptedWallet);
-      yield put(modalActions.close());
-    } else {
-      yield call(storeWallet, wallet);
-    }
+    yield call(storeWallet, wallet);
     yield put(routeActions.wallet());
     yield put(ethereumActions.accountChanged(`${wallet.address}`));
   } catch (err) {

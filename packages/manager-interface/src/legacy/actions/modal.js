@@ -17,7 +17,7 @@ export const interactions = {
   OK: 'Ok',
   CANCEL: 'Cancel',
   CONFIRM: 'Confirm',
-  PASSWORD: 'Password',
+  PASSWORD: 'Enter',
   RETRY: 'Retry',
 };
 
