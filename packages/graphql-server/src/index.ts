@@ -14,11 +14,22 @@ function retrieveNetwork(network: string): Network {
   }
 }
 
+type Track = 'kovan-demo' | 'kovan-competition' | 'live';
+
+function retrieveTrack(network: Network): Track {
+  if (network === 'LIVE') {
+    return 'live';
+  }
+
+  return 'kovan-demo';
+}
+
 async function start(port: number) {
   const pubsub = new PubSub();
   const network = retrieveNetwork((process.env.NETWORK as string) || 'KOVAN');
   const environment = await getParityProvider(process.env.JSON_RPC_ENDPOINT);
-  const config = await getConfig(environment);
+  const track = retrieveTrack(network);
+  const config = await getConfig(environment, track);
 
   const server = new GraphQLServer({
     schema,
