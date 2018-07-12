@@ -12,7 +12,7 @@ import startServer from './server';
 const isWindows = process.platform === 'win32';
 const isMac = process.platform === 'darwin';
 
-// debug({ enabled: true, showDevTools: true });
+debug({ enabled: true, showDevTools: true });
 
 const appUrl = async () => {
   if (!isDev) {

@@ -10,6 +10,7 @@ import {
   setEnvironment,
 } from '@melonproject/melon.js';
 import ipcMessages from '~/shared/constants/ipcMessages';
+import sendIpcMessage from '~/legacy/utils/sendIpcMessage';
 import { actions as modalActions, types as modalTypes } from '../actions/modal';
 import { types, actions } from '../actions/wallet';
 import {
@@ -22,42 +23,6 @@ import {
 } from '../actions/routes';
 import { types as browserTypes } from '../actions/browser';
 
-const randomString = (length = 10) =>
-  Math.random()
-    .toString(36)
-    .substr(2, length);
-
-const ipcMessage = async (name, ...args) =>
-  new Promise((resolve, reject) => {
-    const requestId = randomString();
-    console.log('ipcMessage', name, requestId, ...args);
-
-    const onSuccess = (event, responseId, ...result) => {
-      if (requestId === responseId) {
-        console.log('ipcMessage Success', responseId, ...result);
-        removeListeners();
-        resolve(...result);
-      }
-    };
-
-    const onError = (event, responseId, error) => {
-      if (requestId === responseId) {
-        console.log('ipcMessage Error', responseId, error);
-        removeListeners();
-        reject(error);
-      }
-    };
-
-    const removeListeners = () => {
-      global.ipcRenderer.removeListener(`${name}-success`, onSuccess);
-      global.ipcRenderer.removeListener(`${name}-error`, onSuccess);
-    };
-
-    global.ipcRenderer.on(`${name}-success`, onSuccess);
-    global.ipcRenderer.on(`${name}-error`, onError);
-    global.ipcRenderer.send(name, requestId, ...args);
-  });
-
 function* loadWallet() {
   const isElectron = global.isElectron;
 
@@ -67,7 +32,7 @@ function* loadWallet() {
       let password;
 
       if (isElectron) {
-        const wallets = yield ipcMessage(ipcMessages.GET_WALLETS);
+        const wallets = yield sendIpcMessage(ipcMessages.GET_WALLETS);
         if (wallets.length > 0) {
           yield put(
             wallets.length > 1
@@ -199,7 +164,7 @@ function* storeWallet(decryptedWallet, encryptedWalletParam) {
       }
 
       if (isElectron) {
-        yield ipcMessage(
+        yield sendIpcMessage(
           ipcMessages.STORE_WALLET,
           decryptedWallet.address,
           encryptedWalletString,
@@ -265,7 +230,7 @@ function* deleteWallet() {
   localStorage.removeItem('wallet:melon.fund');
   if (isElectron) {
     try {
-      const deleted = yield ipcMessage(ipcMessages.DELETE_WALLET, address);
+      const deleted = yield sendIpcMessage(ipcMessages.DELETE_WALLET, address);
       yield put(
         deleted
           ? modalActions.info({

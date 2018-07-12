@@ -48,12 +48,12 @@ module.exports = withComposedConfig({
       : './withApollo.remote.ts';
 
     config.resolve.alias = Object.assign({}, config.resolve.alias || {}, {
-      '~/shared': path.join(src, 'shared'),
-      '~/legacy': path.join(src, 'legacy'),
       '~/apollo': path.join(src, 'shared', 'wrappers', transport),
-      '~/components': path.join(managerComponents, 'src', 'components'),
       '~/blocks': path.join(managerComponents, 'src', 'blocks'),
+      '~/components': path.join(managerComponents, 'src', 'components'),
       '~/design': path.join(managerComponents, 'src', 'design'),
+      '~/legacy': path.join(src, 'legacy'),
+      '~/shared': path.join(src, 'shared'),
     });
 
     // Make process.env.DEBUG accessible so we can use the debug package
@@ -75,8 +75,8 @@ module.exports = withComposedConfig({
         {
           loader: 'emit-file-loader',
           options: {
-            name: 'dist/styles/[folder]/[name].[ext].js'
-          }
+            name: 'dist/[path][name].[ext].js',
+          },
         },
         {
           loader: 'babel-loader',
