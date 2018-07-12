@@ -17,6 +17,12 @@ export const types = {
   CONTRIBUTE_REQUESTED: "CONTRIBUTE_REQUESTED:participation:melon.fund",
   CONTRIBUTE_SUCCEEDED: "CONTRIBUTE_SUCCEEDED:participation:melon.fund",
   CONTRIBUTE_FAILED: "CONTRIBUTE_FAILED:participation:melon.fund",
+  CLAIM_REWARD_ASSETS_REQUESTED:
+  "CLAIM_REWARD_ASSETS_REQUESTED:participation:melon.fund",
+  CLAIM_REWARD_ASSETS_SUCCEEDED:
+  "CLAIM_REWARD_ASSETS_SUCCEEDED:participation:melon.fund",
+  CLAIM_REWARD_ASSETS_FAILED:
+  "CLAIM_REWARD_ASSETS_FAILED:participation:melon.fund",
 };
 
 export const actions = {
@@ -79,5 +85,15 @@ export const actions = {
   }),
   contributeSucceeded: () => ({
     type: types.CONTRIBUTE_SUCCEEDED,
+  }),
+  claimReward: () => ({
+    type: types.CLAIM_REWARD_REQUESTED,
+  }),
+  claimRewardFailed: reason => ({
+    type: types.CLAIM_REWARD_FAILED,
+    reason,
+  }),
+  claimRewardSucceeded: () => ({
+    type: types.CLAIM_REWARD_SUCCEEDED,
   }),
 };

@@ -9,6 +9,8 @@ import {
   requestStatus,
   getAddress,
   getConfig,
+  isCompetitionActive,
+  getEndTime
 } from '@melonproject/melon.js';
 import { takeLatest, put, call, take, select } from 'redux-saga/effects';
 import { actions, types } from '../actions/fund';
@@ -60,12 +62,17 @@ function* requestInfo({ address }) {
       { fundAddress: address, investAssetSymbol: config.quoteAssetSymbol },
     );
 
+    const parosEndTime = yield call(getEndTime, environment)
+    const isParosActive = yield call(isCompetitionActive, environment)
+
     const info = {
       ...participationAuthorizations,
       ...fundInfo,
       ...calculations,
       address,
       loading: false,
+      parosEndTime,
+      isParosActive
     };
     if (account) {
       const participation = yield call(getParticipation, environment, {

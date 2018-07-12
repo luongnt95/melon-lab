@@ -95,7 +95,9 @@ import toggleInvestment from './fund/transactions/toggleInvestment';
 import toggleRedemption from './fund/transactions/toggleRedemption';
 
 // ./lib/olympiad/calls
+import getEndTime from './olympiad/calls/getEndTime';
 import getRegistrantFund from './olympiad/calls/getRegistrantFund';
+import isCompetitionActive from './olympiad/calls/isCompetitionActive';
 
 // ./lib/olympiad/contracts
 import getOlympiadContract from './olympiad/contracts/getOlympiadContract';
@@ -221,6 +223,7 @@ import getRanking from './version/calls/getRanking';
 import getSubscriptionHistory from './version/calls/getSubscriptionHistory';
 
 // ./lib/version/contracts
+import getCompetitionComplianceContract from './version/contracts/getCompetitionComplianceContract';
 import getRankingContract from './version/contracts/getRankingContract';
 import getVersionContract from './version/contracts/getVersionContract';
 
@@ -295,7 +298,9 @@ export {
   takeOrder,
   toggleInvestment,
   toggleRedemption,
+  getEndTime,
   getRegistrantFund,
+  isCompetitionActive,
   getOlympiadContract,
   claimReward,
   registerForCompetition,
@@ -377,6 +382,7 @@ export {
   getNativeAssetSymbol,
   getRanking,
   getSubscriptionHistory,
+  getCompetitionComplianceContract,
   getRankingContract,
   getVersionContract,
   setupFund,
