@@ -24,15 +24,12 @@ app.get('/', (req, res) => {
   res.json(ranking)
 });
 
-// query interval for the ranking in seconds
+// Query interval for the ranking in miliseconds.
 const interval = 20 * 1000;
-
 async function refetchRanking(api): Promise<void> {
   ranking = await getRanking({ api });
 
-  setTimeout(async () => {
-    ranking = await getRanking({ api });
-  }, interval);
+  setTimeout(() => refetchRanking(api), interval);
 }
 
 async function start(port: number) {
