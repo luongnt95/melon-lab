@@ -10,6 +10,11 @@ import path from 'path';
 import url from 'url';
 import startServer from './server';
 
+import installExtension, {
+  REACT_DEVELOPER_TOOLS,
+  REDUX_DEVTOOLS,
+} from 'electron-devtools-installer';
+
 const isWindows = process.platform === 'win32';
 
 debug({ enabled: true, showDevTools: true });
@@ -116,6 +121,14 @@ electron.app.on('ready', () => {
 
       callback(path.normalize(path.join(__dirname, reqUrlFinal)));
     });
+
+    installExtension(REACT_DEVELOPER_TOOLS)
+      .then(name => console.log(`Added Extension:  ${name}`))
+      .catch(err => console.log('An error occurred: ', err));
+
+    installExtension(REDUX_DEVTOOLS)
+      .then(name => console.log(`Added Extension:  ${name}`))
+      .catch(err => console.log('An error occurred: ', err));
   }
 
   restoreMainWindow();
