@@ -37,6 +37,13 @@ module.exports = {
       ['@melonproject/exchange-aggregator', 'src'],
     ]);
 
+    const src = path.resolve(__dirname, 'src');
+
+    config.resolve.alias = Object.assign({}, config.resolve.alias || {}, {
+      '~/shared': path.join(src, 'shared'),
+      '~/legacy': path.join(src, 'legacy'),
+    });
+
     config.module.rules.map(rule => {
       if (rule.loader && rule.loader.match('babel-loader')) {
         // @TODO: Backpack uses their own version of babel-loader instead

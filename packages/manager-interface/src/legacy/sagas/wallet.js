@@ -1,12 +1,16 @@
-import { takeLatest, call, put, take, select } from 'redux-saga/effects';
+import { takeLatest, call, put, take, select, fork } from 'redux-saga/effects';
+import { eventChannel, END } from 'redux-saga';
 import {
   getWallet,
   createWallet,
   encryptWallet,
   importWalletFromMnemonic,
   decryptWallet,
+  getEnvironment,
   setEnvironment,
 } from '@melonproject/melon.js';
+import ipcMessages from '~/shared/constants/ipcMessages';
+import sendIpcMessage from '~/legacy/utils/sendIpcMessage';
 import { actions as modalActions, types as modalTypes } from '../actions/modal';
 import { types, actions } from '../actions/wallet';
 import {
@@ -17,14 +21,75 @@ import {
   actions as routeActions,
   types as routeTypes,
 } from '../actions/routes';
+import { types as browserTypes } from '../actions/browser';
 
-// function* encryptWalletSaga(wallet, password) {
-//   const encryptedWallet = yield call(encryptWallet, wallet, password);
-//   localStorage.setItem('wallet:melon.fund', encryptedWallet);
-//   yield put(actions.encryptWalletSucceeded());
-//   yield put(ethereumActions.accountChanged(`${wallet.address}`));
-//   setEnvironment({ account: JSON.parse(encryptedWallet) });
-// }
+function* loadWallet() {
+  const isElectron = global.isElectron;
+
+  try {
+    if (isElectron || process.env.NODE_ENV === 'development') {
+      let encryptedWallet;
+      let password;
+
+      if (isElectron) {
+        const wallets = yield sendIpcMessage(ipcMessages.GET_WALLETS);
+        if (wallets.length > 0) {
+          yield put(
+            wallets.length > 1
+              ? modalActions.password(
+                  `We found ${
+                    wallets.length
+                  } wallets in your operating system keystore but we only support one. We just took the first (${
+                    wallets[0].account
+                  }). If that is the wrong one, backup & remove the wrong ones. You can find them in your operating systems keystore (Keychain Access on Mac) and search for "melon.fund". Enter the password this wallet is encrypted with:`,
+                )
+              : modalActions.password(
+                  `Wallet found in OS Keystore (${
+                    wallets[0].account
+                  }). Enter the password this wallet is encrypted with:`,
+                ),
+          );
+          const action = yield take(modalTypes.PASSWORD_ENTERED);
+          password = action.password;
+          encryptedWallet = wallets[0].password;
+        } else {
+          console.log('No wallets found in OS keychain');
+        }
+      } else {
+        encryptedWallet = localStorage.getItem('wallet:melon.fund');
+
+        if (encryptedWallet) {
+          yield put(
+            modalActions.password(
+              `Wallet found in browser storage. Enter the password this wallet is encrypted with:`,
+            ),
+          );
+          const action = yield take(modalTypes.PASSWORD_ENTERED);
+          password = action.password;
+        }
+      }
+
+      if (password) {
+        yield put(modalActions.loading('Decrypting ...'));
+        const decryptedWallet = yield call(
+          decryptWallet,
+          encryptedWallet,
+          password,
+        );
+        setEnvironment({ account: decryptedWallet });
+        yield put(actions.importWalletSucceeded(decryptedWallet));
+        yield put(ethereumActions.accountChanged(`${decryptedWallet.address}`));
+        yield put(modalActions.close());
+      }
+    }
+  } catch (error) {
+    console.error(error);
+    yield put(actions.importWalletFailed(error));
+    yield put(
+      modalActions.error(`There was an error loading your wallet. ${error}`),
+    );
+  }
+}
 
 // from https://github.com/kennethjiang/js-file-download/blob/master/file-download.js
 const createDownload = (data, filename, mime) => {
@@ -58,42 +123,103 @@ const createDownload = (data, filename, mime) => {
   }
 };
 
-const storeWalletDev = wallet => {
-  if (process.env.NODE_ENV === 'development') {
-    console.warn(
-      'Development environment detected. Storing unencrypted wallet on localStorage!',
+function* storeWallet(decryptedWallet, encryptedWalletParam) {
+  try {
+    const isElectron = yield select(state => state.app.isElectron);
+    let encryptedWalletString = encryptedWalletParam;
+
+    if (isElectron || process.env.NODE_ENV === 'development') {
+      if (!encryptedWalletString) {
+        yield put(
+          modalActions.password(
+            `Please type a strong password to protect your wallet:`,
+          ),
+        );
+        const { password } = yield take(modalTypes.PASSWORD_ENTERED);
+
+        if (password.length < 8) {
+          yield put(
+            modalActions.error(
+              'Password needs to be at least 8 chars long. For your security!',
+            ),
+          );
+          return;
+        }
+
+        yield put(modalActions.password(`Confirm password:`));
+        const { password: confirm } = yield take(modalTypes.PASSWORD_ENTERED);
+
+        if (password !== confirm) {
+          yield put(modalActions.error("The entered passwords didn't match"));
+          return;
+        }
+
+        yield put(modalActions.loading('Encrypting wallet ...'));
+        encryptedWalletString = yield call(
+          encryptWallet,
+          decryptedWallet,
+          password,
+        );
+        yield put(modalActions.close());
+      }
+
+      if (isElectron) {
+        yield sendIpcMessage(
+          ipcMessages.STORE_WALLET,
+          decryptedWallet.address,
+          encryptedWalletString,
+        );
+        yield put(
+          modalActions.info({
+            title: 'Wallet securely stored',
+            body: `Your wallet (${
+              decryptedWallet.address
+            }) is securely stored in your operating systems keystore with the same password.`,
+          }),
+        );
+      } else {
+        localStorage.setItem('wallet:melon.fund', encryptedWalletString);
+      }
+    }
+  } catch (error) {
+    console.error(error);
+    yield put(
+      modalActions.error(`There was an error storing your wallet. ${error}`),
     );
-    localStorage.setItem('wallet:melon.fund', JSON.stringify(wallet));
   }
-};
+}
 
 function* generateMnemonic() {
   try {
     yield put(actions.generateWalletSucceeded(createWallet().mnemonic));
-  } catch (err) {
-    console.error(err);
-    yield put(actions.generateWalletFailed(err));
+  } catch (error) {
+    console.error(error);
+    yield put(actions.generateWalletFailed(error));
   }
 }
 
 function* restoreWalletSaga({ mnemonic }) {
   try {
+    const isElectron = yield select(state => state.app.isElectron);
     const wallet = yield importWalletFromMnemonic(mnemonic);
     setEnvironment({ account: wallet });
     yield put(actions.restoreFromMnemonicSucceeded(wallet));
-    yield call(storeWalletDev, wallet);
+    yield call(storeWallet, wallet);
     yield put(routeActions.wallet());
     yield put(ethereumActions.accountChanged(`${wallet.address}`));
-  } catch (err) {
-    console.error(err);
-    yield put(actions.restoreFromMnemonicFailed(err));
+  } catch (error) {
+    console.error(error);
+    yield put(actions.restoreFromMnemonicFailed(error));
   }
 }
 
 function* deleteWallet() {
+  const isElectron = yield select(state => state.app.isElectron);
+  const address = yield select(state => state.ethereum.account);
+
   yield put(
     modalActions.confirm({
-      body: `Do you really want to erase your current wallet? If yes, please type your password below:`,
+      body: `Do you really want to delete your current wallet? This cannot be undone and can lead to loss of funds if you do not have a backup!`,
     }),
   );
   yield take(modalTypes.CONFIRMED);
@@ -102,6 +228,26 @@ function* deleteWallet() {
   // Delete local storage wallet anyways. If in production, they key should
   // not exist. If it exists, then deletion is ok anyways
   localStorage.removeItem('wallet:melon.fund');
+  if (isElectron) {
+    try {
+      const deleted = yield sendIpcMessage(ipcMessages.DELETE_WALLET, address);
+      yield put(
+        deleted
+          ? modalActions.info({
+              body: `Your wallet (${address}) was securely removed from your operating systems keystore`,
+              title: 'Wallet deleted',
+            })
+          : modalActions.error(
+              `No wallet found in OS keystore with address. ${address}`,
+            ),
+      );
+    } catch (e) {
+      console.error(e);
+      yield put(
+        modalActions.error(`There was an error deleting your wallet. ${e}`),
+      );
+    }
+  }
   yield put(routeActions.root());
 }
 
@@ -162,7 +308,7 @@ function* importWallet({ encryptedWalletString }) {
     );
     setEnvironment({ account: decryptedWallet });
     yield put(actions.importWalletSucceeded(decryptedWallet));
-    yield call(storeWalletDev, decryptedWallet);
+    yield call(storeWallet, decryptedWallet, encryptedWalletString);
     yield put(ethereumActions.accountChanged(`${decryptedWallet.address}`));
     yield put(routeActions.wallet());
     yield put(modalActions.close());
@@ -174,6 +320,7 @@ function* importWallet({ encryptedWalletString }) {
 }
 
 function* wallet() {
+  yield takeLatest(ethereumTypes.SET_PROVIDER, loadWallet);
   yield takeLatest(types.RESTORE_FROM_MNEMONIC_REQUESTED, restoreWalletSaga);
   yield takeLatest(types.DELETE_WALLET_REQUESTED, deleteWallet);
   yield takeLatest(types.IMPORT_WALLET_REQUESTED, importWallet);

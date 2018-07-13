@@ -51,6 +51,7 @@
     "graphql": "^0.13.2",
     "graphql-tools": "^2.24.0",
     "history": "^4.7.2",
+    "keytar": "^4.2.1",
     "moment": "^2.20.1",
     "next": "^6.0.0",
     "next-with-apollo": "^1.0.6",

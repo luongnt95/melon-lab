@@ -7,7 +7,7 @@ import formatRelayerOrderbook from '../../formatRelayerOrderbook';
 // protocol on the client.
 import WebSocket = require('isomorphic-ws');
 
-const debug = require('debug')('exchange-aggregator:erc-dex');
+const debug = require('debug')('melon-lab:exchange-aggregator:erc-dex');
 
 const fetchOrderbook = async (baseTokenAddress, quoteTokenAddress, network) => {
   const endpoint =

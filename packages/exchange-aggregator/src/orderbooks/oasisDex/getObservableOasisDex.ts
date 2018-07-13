@@ -2,7 +2,7 @@ import { getOrderbook, getSymbol } from '@melonproject/melon.js';
 import * as R from 'ramda';
 import * as Rx from 'rxjs';
 
-const debug = require('debug')('exchange-aggregator:oasis-dex');
+const debug = require('debug')('melon-lab:exchange-aggregator:oasis-dex');
 
 const labelOrder = order => ({ ...order, exchange: 'OASIS_DEX' });
 const labelOrders = orders => orders.map(labelOrder);
