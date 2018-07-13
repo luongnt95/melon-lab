@@ -92,6 +92,16 @@ export const actions = {
     primaryInteraction: interactions.OK,
     secondaryInteraction: '',
   }),
+  fatal: body => ({
+    type: types.ERROR,
+    isOpen: true,
+    modalType: modalTypes.ERROR,
+    title: 'Fatal Error',
+    body,
+    fees: null,
+    primaryInteraction: '',
+    secondaryInteraction: '',
+  }),
   loading: (body = 'Sending transaction ...') => ({
     type: types.LOADING,
     fees: null,
