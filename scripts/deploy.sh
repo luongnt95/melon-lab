@@ -9,3 +9,5 @@ kubectl set image deployment/graphql-live graphql-live=melonproject/graphql-serv
 kubectl set image deployment/graphql-kovan graphql-kovan=melonproject/graphql-server:${TRAVIS_BUILD_ID}
 
 kubectl set image deployment/faucet faucet=melonproject/faucet:${TRAVIS_BUILD_ID}
+
+kubectl set image deployment/ranking ranking=melonproject/ranking:${TRAVIS_BUILD_ID}

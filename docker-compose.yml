@@ -253,6 +253,38 @@ services:
     networks:
       - melonproject
 
+  ranking:
+    build:
+      context: .
+      dockerfile: ./packages/ranking/Dockerfile
+    volumes:
+      - *workspace-package
+      - *workspace-yarn-lock
+      - *workspace-prettier
+      - *workspace-tsconfig
+      - *workspace-tslint
+      - *workspace-jest-config
+      - *workspace-jest-setup
+      # - *workspace-node-modules
+      # - *workspace-node-modules-cache
+      - ./packages/ranking/src:/app/packages/ranking/src
+      - ./packages/ranking/tests:/app/packages/ranking/tests
+      - ./packages/ranking/jest.config.js:/app/packages/ranking/jest.config.js
+      - ./packages/ranking/package.json:/app/packages/ranking/package.json
+      - ./packages/ranking/tsconfig.json:/app/packages/ranking/tsconfig.json
+      - ./packages/ranking/tslint.json:/app/packages/ranking/tslint.json
+      - ./packages/ranking/.babelrc:/app/packages/ranking/.babelrc
+      - ./packages/ranking/.env.defaults:/app/packages/ranking/.env.defaults
+      - ./packages/ranking/.env:/app/packages/ranking/.env
+
+      # Mount the node modules of this package with the .cache directory mounted into a volume.
+      # - ./packages/manager-components/node_modules:/app/packages/manager-components/node_modules:delegated
+      # - node_modules_cache:/app/packages/manager-components/node_modules/.cache
+    ports:
+      - "3090:3090"
+    networks:
+      - melonproject
+
   # These services are not meant to be spun up. They are just here to benefit from the
   # layer caching of this docker-compose file since the layer cache is not shared between
   # docker and docker-compose.
@@ -272,6 +304,13 @@ services:
     build:
       context: .
       dockerfile: ./packages/faucet/Dockerfile
+
+  ranking-prod:
+    command: "/bin/sh -c 'trap : TERM INT; sleep 365d & wait'"
+    image: "melonproject/ranking:latest"
+    build:
+      context: .
+      dockerfile: ./packages/ranking/Dockerfile
 
 networks:
   melonproject:

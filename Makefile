@@ -34,6 +34,7 @@ lint:
 	@docker-compose run --rm manager-interface yarn lint
 	@docker-compose run --rm manager-components yarn lint
 	@docker-compose run --rm faucet yarn lint
+	@docker-compose run --rm ranking yarn lint
 	# TODO: Fix tests and linting in imported projects.
 	# @docker-compose run --rm melon-js yarn lint
 
@@ -45,6 +46,7 @@ test:
 	@docker-compose run --rm manager-interface yarn test
 	@docker-compose run --rm manager-components yarn test
 	@docker-compose run --rm faucet yarn test
+	@docker-compose run --rm ranking yarn test
 	# TODO: Fix tests and linting in imported projects.
 	# @docker-compose run --rm melon-js yarn test
 
@@ -55,6 +57,7 @@ test:
 package:
 	@docker tag melonproject/graphql-server:latest melonproject/graphql-server:${VERSION}
 	@docker tag melonproject/faucet:latest melonproject/faucet:${VERSION}
+	@docker tag melonproject/ranking:latest melonproject/ranking:${VERSION}
 
 .PHONY: publish
 publish:
@@ -62,6 +65,8 @@ publish:
 	@docker push melonproject/graphql-server:latest
 	@docker push melonproject/faucet:${VERSION}
 	@docker push melonproject/faucet:latest
+	@docker push melonproject/ranking:${VERSION}
+	@docker push melonproject/ranking:latest
 
 # -----------------------------------------------------------------------------
 # DEVELOPMENT
