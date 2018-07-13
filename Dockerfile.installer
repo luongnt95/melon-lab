@@ -5,7 +5,7 @@ FROM node:9.7.0-alpine as apk-dependencies
 WORKDIR /app
 
 # Install system dependencies.
-RUN apk add --update --no-cache --virtual .apk git python make g++
+RUN apk add --update --no-cache --virtual .apk git python make g++ libsecret-dev
 
 # -----------------------------------------------------------------------------
 # npm dependencies
