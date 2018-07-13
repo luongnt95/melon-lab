@@ -11,23 +11,23 @@ const debug = require('debug')('melon-lab:manager-interface:index');
 //   environment,
 // }).install();
 
-debug('Starting frontend:', {
-  env: {
-    NODE_ENV: process.env.NODE_ENV,
-    DEBUG: process.env.DEBUG,
-    ELECTRON_PACKAGE: process.env.ELECTRON_PACKAGE,
-    GRAPHQL_REMOTE_HTTP: process.env.GRAPHQL_REMOTE_HTTP,
-    TRACK: process.env.TRACK,
-  },
-  isElectron: global.isElectron,
-  release: {
-    'manager-interface': __MANAGER_INTERFACE_VERSION__,
-    'melon.js': __MELON_JS_VERSION__,
-    'smart-contracts': __SMART_CONTRACTS_VERSION__,
-  },
-});
-
 if (typeof window !== 'undefined') {
+  debug('Starting frontend:', {
+    env: {
+      NODE_ENV: process.env.NODE_ENV,
+      DEBUG: process.env.DEBUG,
+      ELECTRON_PACKAGE: process.env.ELECTRON_PACKAGE,
+      GRAPHQL_REMOTE_HTTP: process.env.GRAPHQL_REMOTE_HTTP,
+      TRACK: process.env.TRACK,
+    },
+    isElectron: !!window.isElectron,
+    release: {
+      'manager-interface': __MANAGER_INTERFACE_VERSION__,
+      'melon.js': __MELON_JS_VERSION__,
+      'smart-contracts': __SMART_CONTRACTS_VERSION__,
+    },
+  });
+
   console.log(
     '%c👋🤓',
     'background: rgba(0,0,0,.87); color: #fffdf3; font-size: 30px',
@@ -38,11 +38,9 @@ if (typeof window !== 'undefined') {
     'background: rgba(0,0,0,.87); color: #fffdf3; font-size: 12px',
   );
 
-  if (isElectron) {
-    window.eval = global.eval = () => {
-      throw new Error(`Sorry, this app does not support window.eval().`);
-    };
-  }
+  window.eval = global.eval = () => {
+    throw new Error(`Sorry, this app does not support window.eval().`);
+  };
 }
 
 class MelonApp extends App {

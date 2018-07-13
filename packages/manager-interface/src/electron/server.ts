@@ -52,27 +52,31 @@ function retrieveNetwork(network: string): Network {
 }
 
 export default async () => {
-  const environment = await getParityProvider(process.env.JSON_RPC_ENDPOINT);
-  const config = await getConfig(environment);
-  const network = retrieveNetwork(
-    (process.env.TRACK as string) || 'kovan-demo',
-  );
+  try {
+    const environment = await getParityProvider(process.env.JSON_RPC_ENDPOINT);
+    const config = await getConfig(environment);
+    const network = retrieveNetwork(
+      (process.env.TRACK as string) || 'kovan-demo',
+    );
 
-  linkKeytar();
+    linkKeytar();
 
-  return new SubscriptionServer(
-    {
-      channel: 'graphql',
-      messager: ipcMain,
-    },
-    {
-      schema,
-      context: {
-        pubsub: new PubSub(),
-        network,
-        config,
-        environment,
+    return new SubscriptionServer(
+      {
+        channel: 'graphql',
+        messager: ipcMain,
       },
-    },
-  );
+      {
+        schema,
+        context: {
+          pubsub: new PubSub(),
+          network,
+          config,
+          environment,
+        },
+      },
+    );
+  } catch (error) {
+    console.error('OOOPSIII', error);
+  }
 };
