@@ -174,7 +174,7 @@ function* storeWallet(decryptedWallet, encryptedWalletParam) {
             title: 'Wallet securely stored',
             body: `Your wallet (${
               decryptedWallet.address
-            }) is securely stored in your operating systems keystore`,
+            }) is securely stored in your operating systems keystore with the same password.`,
           }),
         );
       } else {

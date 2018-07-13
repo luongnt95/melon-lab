@@ -7,58 +7,35 @@ import ipcMessages from '~/shared/constants/ipcMessages';
 import schema from '@melonproject/graphql-schema';
 import { getConfig, getParityProvider } from '@melonproject/melon.js';
 
+const debug = require('debug')('melon-lab:manager-interface:electron');
+
 const KEYCHAIN_SERVICE_NAME = 'melon.fund';
 
-const linkKeytar = () => {
-  ipcMain.on(ipcMessages.GET_WALLETS, (event, requestId) =>
-    keytar
-      .findCredentials(KEYCHAIN_SERVICE_NAME)
-      .then(credentials =>
-        event.sender.send(
-          `${ipcMessages.GET_WALLETS}-success`,
-          requestId,
-          credentials,
-        ),
-      )
-      .catch(err =>
-        event.sender.send(`${ipcMessages.GET_WALLETS}-error`, requestId, err),
-      ),
-  );
-
+const registerIpcMessageHandler = (name, handler) =>
   ipcMain.on(
-    ipcMessages.STORE_WALLET,
-    (event, requestId, address, encryptedWallet) =>
-      keytar
-        .setPassword(KEYCHAIN_SERVICE_NAME, address, encryptedWallet)
-        .then(() =>
-          event.sender.send(
-            `${ipcMessages.STORE_WALLET}-success`,
-            requestId,
-            address,
-          ),
+    name,
+    (event, requestId, ...params) =>
+      debug('onIpcMessage', ipcMessages.GET_WALLETS, requestId, params) ||
+      handler(...params)
+        .then((...result) =>
+          event.sender.send(`${name}-success`, requestId, ...result),
         )
-        .catch(err =>
-          event.sender.send(
-            `${ipcMessages.STORE_WALLET}-error`,
-            requestId,
-            err,
-          ),
-        ),
+        .catch(error => event.sender.send(`${name}-error`, requestId, error)),
   );
 
-  ipcMain.on(ipcMessages.DELETE_WALLET, (event, requestId, address) =>
-    keytar
-      .deletePassword(KEYCHAIN_SERVICE_NAME, address)
-      .then(deleted =>
-        event.sender.send(
-          `${ipcMessages.DELETE_WALLET}-success`,
-          requestId,
-          deleted,
-        ),
-      )
-      .catch(err =>
-        event.sender.send(`${ipcMessages.DELETE_WALLET}-error`, requestId, err),
-      ),
+const linkKeytar = () => {
+  registerIpcMessageHandler(ipcMessages.GET_WALLETS, () =>
+    keytar.findCredentials(KEYCHAIN_SERVICE_NAME),
+  );
+
+  registerIpcMessageHandler(
+    ipcMessages.STORE_WALLET,
+    (address, encryptedWallet) =>
+      keytar.setPassword(KEYCHAIN_SERVICE_NAME, address, encryptedWallet),
+  );
+
+  registerIpcMessageHandler(ipcMessages.DELETE_WALLET, address =>
+    keytar.deletePassword(KEYCHAIN_SERVICE_NAME, address),
   );
 };
 
