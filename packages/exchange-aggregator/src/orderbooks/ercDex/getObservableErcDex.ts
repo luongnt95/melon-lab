@@ -86,6 +86,11 @@ const getObservableErcDex = (
   );
 
   const orderbook$ = fetch$
+    .catch((error) => {
+      // If there is any error from the erc-dex api, just swallow it for now.
+      // TODO: Revisit this at some point.
+      return Rx.Observable.empty();
+    })
     .map(response => response.data)
     .distinctUntilChanged(R.equals)
     .do(value => debug('Extracting bids and asks.', value))
