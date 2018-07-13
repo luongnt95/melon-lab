@@ -1,13 +1,15 @@
+const debug = require('debug')('melon-lab:manager-interface:sendIpcMessage');
+
 let requestId = 0;
 
 const sendIpcMessage = async (name, ...args) =>
   new Promise((resolve, reject) => {
     requestId++;
-    console.log('ipcMessage', name, requestId, ...args);
+    debug('ipcMessage', name, requestId, ...args);
 
     const onSuccess = (event, responseId, ...result) => {
       if (requestId === responseId) {
-        console.log('ipcMessage Success', responseId, ...result);
+        debug('ipcMessage Success', responseId, { result, args });
         removeListeners();
         resolve(...result);
       }
@@ -15,7 +17,7 @@ const sendIpcMessage = async (name, ...args) =>
 
     const onError = (event, responseId, error) => {
       if (requestId === responseId) {
-        console.log('ipcMessage Error', responseId, error);
+        debug('ipcMessage Error', responseId, { error, args });
         removeListeners();
         reject(error);
       }
