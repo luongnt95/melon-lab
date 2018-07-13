@@ -19,7 +19,7 @@ const registerIpcMessageHandler = (name, handler) =>
       handler(...params)
         .then((...result) =>
           event.sender.send(`${name}-success`, requestId, ...result),
-        )
+      )
         .catch(error => event.sender.send(`${name}-error`, requestId, error)),
   );
 
@@ -54,6 +54,7 @@ function retrieveNetwork(network: string): Network {
 export default async () => {
   try {
     const environment = await getParityProvider(process.env.JSON_RPC_ENDPOINT);
+    environment.track = process.env.TRACK
     const config = await getConfig(environment);
     const network = retrieveNetwork(
       (process.env.TRACK as string) || 'kovan-demo',
