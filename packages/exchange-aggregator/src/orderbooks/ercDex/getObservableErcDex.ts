@@ -14,6 +14,7 @@ const fetchOrderbook = async (baseTokenAddress, quoteTokenAddress, network) => {
     network === 'KOVAN'
       ? 'https://api.ercdex.com/api/standard/42/v0/orderbook'
       : 'https://api.ercdex.com/api/standard/1/v0/orderbook';
+
   const params = {
     baseTokenAddress,
     quoteTokenAddress,
@@ -21,13 +22,17 @@ const fetchOrderbook = async (baseTokenAddress, quoteTokenAddress, network) => {
 
   debug('Fetching orderbook', params, endpoint);
 
-  const data = await axios.get(endpoint, {
+  const response = await axios.get(endpoint, {
     params,
+  }).then((response) => {
+    debug('Fetched orderbook', response);
+    return response;
+  }, (error) => {
+    debug('Error fetching orderbook', error);
+    return error;
   });
 
-  debug('Fetched orderbook', data.data);
-
-  return data.data;
+  return response;
 };
 
 const getObservableErcDexNotifications = (
@@ -76,6 +81,8 @@ const getObservableErcDex = (
   );
 
   const orderbook$ = fetch$
+    .filter(response => !(response instanceof Error))
+    .map(response => response.data)
     .distinctUntilChanged(R.equals)
     .do(value => debug('Extracting bids and asks.', value))
     .map(value => format(config, value.bids, value.asks));
