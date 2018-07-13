@@ -44,6 +44,32 @@ let mainWindow;
 const restoreMainWindow = async () => {
   await startServer();
 
+  // Create the Application's main menu
+  var template = [
+    {
+      label: 'Application',
+      submenu: [
+        {
+          label: 'Quit',
+          accelerator: 'Command+Q',
+          click: () => {
+            electron.app.quit();
+          },
+        },
+      ],
+    },
+    {
+      label: 'Edit',
+      submenu: [
+        { label: 'Cut', accelerator: 'CmdOrCtrl+X', selector: 'cut:' },
+        { label: 'Copy', accelerator: 'CmdOrCtrl+C', selector: 'copy:' },
+        { label: 'Paste', accelerator: 'CmdOrCtrl+V', selector: 'paste:' },
+      ],
+    },
+  ];
+
+  electron.Menu.setApplicationMenu(electron.Menu.buildFromTemplate(template));
+
   mainWindow = new electron.BrowserWindow({
     width: 1024,
     height: 800,
@@ -52,6 +78,16 @@ const restoreMainWindow = async () => {
       preload: path.resolve(__dirname, 'preload.js'),
     },
   });
+
+  var handleRedirect = (e, url) => {
+    if(url != mainWindow.webContents.getURL()) {
+      e.preventDefault()
+      require('electron').shell.openExternal(url)
+    }
+  }
+
+  mainWindow.webContents.on('will-navigate', handleRedirect)
+  mainWindow.webContents.on('new-window', handleRedirect)
 
   mainWindow.loadURL(await appUrl());
 
