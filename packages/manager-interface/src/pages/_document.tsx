@@ -30,7 +30,9 @@ export default class MyDocument extends Document {
           <link rel="shortcut icon" href="./static/favicon.png?v=2" />
           <link rel="stylesheet" href="./static/css/semantic.min.css" />
           <link rel="stylesheet" href="./static/css/overwrites.css" />
-          <script src="./static/tracking.js" />
+          {!electron && (
+            <script src="./static/tracking.js" />
+          )}
           <title>Melon Olympiad</title>
         </Head>
         <body style={{ padding: '2em 1em' }}>
