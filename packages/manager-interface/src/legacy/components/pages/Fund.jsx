@@ -47,10 +47,10 @@ const Fund = ({
                     <Holdings address={fundAddress} />
                     <br />
                     {isManager ? (
-                        <div id="trade">
-                            <h3>Trade</h3>
-                            <OrderForm {...orderForm} onSubmit={onSubmit} />
-                        </div>
+                      <Layout>
+                          <h3>Trade</h3>
+                          <OrderForm {...orderForm} onSubmit={onSubmit} />
+                      </Layout>
                     ) : (
                             <div />
                         )
