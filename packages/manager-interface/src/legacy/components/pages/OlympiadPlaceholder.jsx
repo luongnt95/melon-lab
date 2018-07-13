@@ -93,11 +93,11 @@ const OlympiadPlaceholder = ({ goToGenerateAccount, goToAccount, address }) => (
     </p>
     <h2>Instructions on how to participate</h2>
     <p>
-      Melonport AG is required to issue tokens via a regulated financial
-      intermediary which is subject to KYC/AML procedures. To perform the
-      KYC/AML processes, our chosen partner is Bitcoin Suisse. Each individual
-      willing to participate will have to register with Bitcoin Suisse.
+      Paros is open to all participants who have undergone the KYC process with Bitcoin Suisse and whitelisted their Ethereum addresses generated on olympiad.melon.fund.
     </p>
+    <p>
+      In order to ensure the highest level of security and performance, we strongly recommend you to download the Electron app and to run your own parity node. You can find the instructions here.
+    </p>  
     <h4>Step 1</h4> <p>
       Generate a wallet on this website (see instructions below).. Make sure
       your write down the mnemonic, and store it in a safe (and accessible)
@@ -152,19 +152,7 @@ const OlympiadPlaceholder = ({ goToGenerateAccount, goToAccount, address }) => (
       the Olympiad contract will transfer (via the requestInvestment function)
       the equivalent amount in MLN into your fund.
     </p>
-    <h4>Step 8 </h4>{' '}
-    <p>
-      Congratulations. You made it here. Now it is time to prove your asset
-      management skills. You have 2 weeks to manage your fund and grow your
-      capital.
-    </p>
-    <h4>Step 9  </h4>{' '}
-    <p>
-       At the end of the round, and only at the end, you, and only you, will
-      have the option on your fund’s page to trigger the redemption of the
-      shares and therefore to retrieve your earned assets using the wallet you
-      generated in step 1.
-    </p>
+
     <p>
       The terms and conditions must be read by all participants.{' '}
       <a
