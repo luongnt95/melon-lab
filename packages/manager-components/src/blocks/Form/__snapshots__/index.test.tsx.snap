@@ -2,12 +2,8 @@
 
 exports[`Form should render correctly 1`] = `
 <form
-  className="jsx-__scopedHash form"
+  className="form"
 >
-  <JSXStyle
-    css="__scoped"
-    styleId="__scopedHash"
-  />
   Default form
 </form>
 `;
