@@ -44,7 +44,7 @@ export default class MyDocument extends Document {
           >
             Hosted with ❤ on IPFS |
             <a
-              href="https://github.com/melonproject/ipfs-frontend/issues"
+              href="https://github.com/melonproject/melon-labs/issues"
               target="_blank"
             >
               {' '}

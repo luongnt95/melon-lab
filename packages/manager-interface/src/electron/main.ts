@@ -12,9 +12,7 @@ import startServer from './server';
 
 const isWindows = process.platform === 'win32';
 
-if (process.env.NODE_ENV === 'development') {
-  debug({ enabled: true, showDevTools: true });
-}
+debug({ enabled: true, showDevTools: true });
 
 const appUrl = async () => {
   if (!isDev) {
@@ -47,7 +45,7 @@ const restoreMainWindow = async () => {
   await startServer();
 
   // Create the Application's main menu
-  var template = [
+  const template = [
     {
       label: 'Application',
       submenu: [
@@ -81,15 +79,15 @@ const restoreMainWindow = async () => {
     },
   });
 
-  var handleRedirect = (e, url) => {
-    if(url != mainWindow.webContents.getURL()) {
-      e.preventDefault()
-      require('electron').shell.openExternal(url)
+  const handleRedirect = (e, url) => {
+    if (url !== mainWindow.webContents.getURL()) {
+      e.preventDefault();
+      require('electron').shell.openExternal(url);
     }
-  }
+  };
 
-  mainWindow.webContents.on('will-navigate', handleRedirect)
-  mainWindow.webContents.on('new-window', handleRedirect)
+  mainWindow.webContents.on('will-navigate', handleRedirect);
+  mainWindow.webContents.on('new-window', handleRedirect);
 
   mainWindow.loadURL(await appUrl());
 
