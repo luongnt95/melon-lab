@@ -5,6 +5,7 @@ import {
   onBlock,
   getParityProvider,
   providers,
+  networks,
   setEnvironment,
   getEnvironment,
 } from '@melonproject/melon.js';
@@ -13,6 +14,7 @@ import { utils } from 'ethers';
 import { types as browserTypes } from '../actions/browser';
 import { actions as appActions } from '../actions/app';
 import { actions as ethereumActions } from '../actions/ethereum';
+import { actions as modalActions } from '../actions/modal';
 import { actions as fundActions } from '../actions/fund';
 import { equals } from '../utils/functionalBigNumber';
 
@@ -25,10 +27,32 @@ function* init() {
     process.env.JSON_RPC_ENDPOINT,
   );
 
+  const networkId = yield apply(environment.api, environment.api.net.version);
+  const track = yield select(state => state.app.track);
+
+  if (track === 'live' && networkId !== networks.LIVE) {
+    yield put(
+      modalActions.fatal('Your parity-node seems to not run on the main net.'),
+    );
+    console.error(
+      'Wrong track/network combination',
+      { track, networkId },
+      environment,
+    );
+    return false;
+  } else if (networkId !== networks.KOVAN) {
+    yield put(modalActions.fatal('Your parity-node seems to not run on kovan'));
+    console.error(
+      'Wrong track/network combination',
+      { track, networkId },
+      environment,
+    );
+    return false;
+  }
+
   // TODO: add tracer
   setEnvironment(environment);
   yield put(ethereumActions.setProvider(environment.providerType));
-  const track = yield select(state => state.app.track);
   const config = yield call(getConfig, environment, track);
 
   global.MELON_PROTOCOL_CONFIG = config;
@@ -42,7 +66,6 @@ function* init() {
 
   // Reading the fund address from the URL
   const fund = yield select(state => state.fund);
-  const networkId = yield apply(environment.api, environment.api.net.version);
 
   yield put(ethereumActions.hasConnected(networkId));
 

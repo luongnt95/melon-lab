@@ -1,3 +1,4 @@
+// tslint:disable-next-line
 require('dotenv-extended').config();
 
 import electron from 'electron';
@@ -9,8 +10,12 @@ import path from 'path';
 import url from 'url';
 import startServer from './server';
 
+import installExtension, {
+  REACT_DEVELOPER_TOOLS,
+  REDUX_DEVTOOLS,
+} from 'electron-devtools-installer';
+
 const isWindows = process.platform === 'win32';
-const isMac = process.platform === 'darwin';
 
 debug({ enabled: true, showDevTools: true });
 
@@ -45,7 +50,7 @@ const restoreMainWindow = async () => {
   await startServer();
 
   // Create the Application's main menu
-  var template = [
+  const template = [
     {
       label: 'Application',
       submenu: [
@@ -79,15 +84,15 @@ const restoreMainWindow = async () => {
     },
   });
 
-  var handleRedirect = (e, url) => {
-    if(url != mainWindow.webContents.getURL()) {
-      e.preventDefault()
-      require('electron').shell.openExternal(url)
+  const handleRedirect = (e, url) => {
+    if (url !== mainWindow.webContents.getURL()) {
+      e.preventDefault();
+      require('electron').shell.openExternal(url);
     }
-  }
+  };
 
-  mainWindow.webContents.on('will-navigate', handleRedirect)
-  mainWindow.webContents.on('new-window', handleRedirect)
+  mainWindow.webContents.on('will-navigate', handleRedirect);
+  mainWindow.webContents.on('new-window', handleRedirect);
 
   mainWindow.loadURL(await appUrl());
 
@@ -116,6 +121,14 @@ electron.app.on('ready', () => {
 
       callback(path.normalize(path.join(__dirname, reqUrlFinal)));
     });
+
+    installExtension(REACT_DEVELOPER_TOOLS)
+      .then(name => console.log(`Added Extension:  ${name}`))
+      .catch(err => console.log('An error occurred: ', err));
+
+    installExtension(REDUX_DEVTOOLS)
+      .then(name => console.log(`Added Extension:  ${name}`))
+      .catch(err => console.log('An error occurred: ', err));
   }
 
   restoreMainWindow();

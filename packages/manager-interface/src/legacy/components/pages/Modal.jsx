@@ -81,12 +81,14 @@ const renderButtons = (
       </Button>
     </div>
   ) : (
-    <Button
-      style={{ width: '100%' }}
-      onClick={event => interactionHandler(event, primaryInteraction)}
-    >
-      {primaryInteraction}
-    </Button>
+    primaryInteraction && (
+      <Button
+        style={{ width: '100%' }}
+        onClick={event => interactionHandler(event, primaryInteraction)}
+      >
+        {primaryInteraction}
+      </Button>
+    )
   );
 
 const Modal = ({

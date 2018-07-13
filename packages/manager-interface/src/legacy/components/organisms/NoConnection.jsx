@@ -1,5 +1,5 @@
-import React from "react";
-import { Card } from "semantic-ui-react";
+import React from 'react';
+import { Card } from 'semantic-ui-react';
 
 const NoConnection = () => (
   <div>
@@ -9,12 +9,11 @@ const NoConnection = () => (
         <br />
         <br />
         <p>
-          {" "}
+          {' '}
           <strong>
             It seems like you are not connected to the ethereum network. Check
-            your internet connection. If you are running your own node, make
-            sure you are running on Kovan and you are synced and have enough
-            peers connected.
+            your internet connection. If you are running your own node, make you
+            are synced and have enough peers connected.
           </strong>
         </p>
         <br />

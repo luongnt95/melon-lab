@@ -32,12 +32,16 @@ export const configureStore = preloadedState => {
   /* eslint-disable no-underscore-dangle */
   const devTools =
     global.__REDUX_DEVTOOLS_EXTENSION__ &&
-    process.env.NODE_ENV === 'development'
+    (process.env.NODE_ENV === 'development' || global.isElectron)
       ? global.__REDUX_DEVTOOLS_EXTENSION__()
       : f => f;
   /* eslint-enable */
 
-  const enhanced = compose(enhancer, middlewares, devTools);
+  const enhanced = compose(
+    enhancer,
+    middlewares,
+    devTools,
+  );
 
   const store = createStore(
     combineReducers({ ...reducerMap, location }),
