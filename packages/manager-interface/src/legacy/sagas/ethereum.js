@@ -40,7 +40,7 @@ function* init() {
       environment,
     );
     return false;
-  } else if (networkId !== networks.KOVAN) {
+  } else if (track !== "live" && networkId !== networks.KOVAN) {
     yield put(modalActions.fatal('Your parity-node seems to not run on kovan'));
     console.error(
       'Wrong track/network combination',
