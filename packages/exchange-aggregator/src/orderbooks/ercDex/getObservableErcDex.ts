@@ -29,7 +29,12 @@ const fetchOrderbook = async (baseTokenAddress, quoteTokenAddress, network) => {
     return response;
   }, (error) => {
     debug('Error fetching orderbook', error);
-    return error;
+
+    if (error.response && error.response.data && error.response.data.message) {
+      throw new Error(`Error while fetching orderbook from erc-dex: ${error.response.data.message}`);
+    }
+
+    throw error;
   });
 
   return response;
@@ -81,7 +86,6 @@ const getObservableErcDex = (
   );
 
   const orderbook$ = fetch$
-    .filter(response => !(response instanceof Error))
     .map(response => response.data)
     .distinctUntilChanged(R.equals)
     .do(value => debug('Extracting bids and asks.', value))

@@ -21,7 +21,11 @@ const accumulateBuys = (accumulator: BigNumber, order: Order) => {
 };
 
 export const orderbook = {
-  resolve: (orders: Order[]) => {
+  resolve: (orders: Order[] | Error) => {
+    if (orders instanceof Error) {
+      throw orders;
+    }
+
     const [totalBuyVolume, buyEntries] = R.compose(
       R.mapAccum(accumulateBuys, new BigNumber(0)),
       filterBuyOrders,
