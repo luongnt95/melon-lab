@@ -130,7 +130,7 @@ const OlympiadPlaceholder = ({ goToGenerateAccount, goToAccount, address }) => (
     </p>
     <h4>Step 5 </h4>{' '}
     <p>
-      You are now at the <strong>contribution page</strong>. Put in the amount you want to contribute to the Paros smart contract. Below, you will see the estimated amount of MLN tokens that will be invested into your fund by the Paros smart contract (the conversion rate is fixed at 20 MLN tokens for 1 ETH). Make sure that you have enough ETH to cover the gas costs. Once you are ready, please press the “Contribute” button to send ETH to the Paros smart contract. <strong>The contract, in turn, will invest the equivalent amount in MLN to your fund.</'strong>
+      You are now at the <strong>contribution page</strong>. Put in the amount you want to contribute to the Paros smart contract. Below, you will see the estimated amount of MLN tokens that will be invested into your fund by the Paros smart contract (the conversion rate is fixed at 20 MLN tokens for 1 ETH). Make sure that you have enough ETH to cover the gas costs. Once you are ready, please press the “Contribute” button to send ETH to the Paros smart contract. <strong>The contract, in turn, will invest the equivalent amount in MLN to your fund.</strong>
     </p>
     <h4>Step 6  </h4>{' '}
     <p>
@@ -173,7 +173,7 @@ const OlympiadPlaceholder = ({ goToGenerateAccount, goToAccount, address }) => (
       create a fund, you will be prompted to cryptographically sign those terms
       and conditions to show your understanding and agreement.
     </p>
-    <h2>Generate your wallet</h2>
+    {/*<h2>Generate your wallet</h2>
     {!address ? (
       <div>
         <p>
@@ -229,7 +229,7 @@ const OlympiadPlaceholder = ({ goToGenerateAccount, goToAccount, address }) => (
           </Button>
         </p>
       </div>
-    )}
+    )}*/}
   </div>
 );
 
