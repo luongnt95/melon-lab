@@ -1,3 +1,4 @@
+// tslint:disable-next-line
 require('dotenv-extended').config();
 
 import electron from 'electron';
@@ -10,9 +11,10 @@ import url from 'url';
 import startServer from './server';
 
 const isWindows = process.platform === 'win32';
-const isMac = process.platform === 'darwin';
 
-debug({ enabled: true, showDevTools: true });
+if (process.env.NODE_ENV === 'development') {
+  debug({ enabled: true, showDevTools: true });
+}
 
 const appUrl = async () => {
   if (!isDev) {
