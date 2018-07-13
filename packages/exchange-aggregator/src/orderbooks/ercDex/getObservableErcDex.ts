@@ -89,7 +89,12 @@ const getObservableErcDex = (
     .catch((error) => {
       // If there is any error from the erc-dex api, just swallow it for now.
       // TODO: Revisit this at some point.
-      return Rx.Observable.empty();
+      return Rx.Observable.of({
+        data: {
+          bids: [],
+          asks: [],
+        },
+      });
     })
     .map(response => response.data)
     .distinctUntilChanged(R.equals)
