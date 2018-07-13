@@ -96,48 +96,41 @@ const OlympiadPlaceholder = ({ goToGenerateAccount, goToAccount, address }) => (
       Paros is open to all participants who have undergone the KYC process with Bitcoin Suisse and whitelisted their Ethereum addresses generated on olympiad.melon.fund.
     </p>
     <p>
-      In order to ensure the highest level of security and performance, we strongly recommend you to download the Electron app and to run your own parity node. You can find the instructions here.
-    </p>  
+      In order to ensure the highest level of security and performance, we strongly recommend you to download the Electron app and to run your own parity node. You can find the instructions <a
+        href="https://www.youtube.com/watch?v=Wp5DAFWfc8U&t=25s"
+        target="_blank"
+      >here</a>.
+    </p>
+    <p>
+      Before we start, make sure you have either one of the two options ready.
+    </p>
+    <p>
+      1. Your mnemonic phrase (12 words seed phrase) or
+    </p>
+    <p>
+      2. Your JSON file + password
+    </p>
+    <p>
+      In order to contribute ETH to Paros you need to first fund your wallet with the desired amount you want to contribute. In addition, you need to have a bit more ETH in your wallet to cover the gas costs for setting up your fund, register in the competition and (if applicable) to trade.
+    </p>
     <h4>Step 1</h4> <p>
-      Generate a wallet on this website (see instructions below).. Make sure
-      your write down the mnemonic, and store it in a safe (and accessible)
-      place. Make sure you remember the password you use to encrypt the wallet.
-      <strong>
-        {' '}
-        If you forget your password and you loose access to the mnemonic phrase,
-        you won't be able to participate in the challenge. Make sure you
-        download your wallet as a JSON file and store it in a safe place.{' '}
-      </strong>Save the wallet address as you will need to provide this address
-      to Bitcoin Suisse in step 3.
+      Press "Setup Fund"
     </p>
     <h4>Step 2 </h4> <p>
-      The registration with Bitcoin Suisse opens today 28/05/2018 and will last
-      until 18/06/2018. KYC with Bitcoin Suisse: go to
-      https://ico.bitcoinsuisse.ch/ and create an account with Bitcoin Suisse.
-      Follow the steps on the Bitcoin Suisse platform to get the KYC clearance.
-      Make sure you upload all required documents. Bitcoin Suisse will inform
-      you with an email once your KYC is approved. Once it is approved, you can
-      move on to Step 3.{' '}
+      Import your wallet either by importing your mnemonic phrase or by uploading your JSON file and decrypting it with your password. You can see your public address on the top right of the page, together with your ETH balance. Your wallet needs to be the whitelisted wallet on Bitcoin Suisse, otherwise you won’t be able to create a fund. In terms of the Melon protocol, this wallet will act as the owner wallet of your fund (manager address), which you will create in a minute.
     </p>
     <h4>Step 3 </h4> <p>
-       Apply for the Melon Olympiad Whitelist on the Bitcoin Suisse platform.
-      You will need to provide an Ethereum address (the one created in Step 1)
-      and the amount you wish to contribute with. It is of utmost importance
-      that you provide an Ethereum address that was generated on this website.
-      Bitcoin Suisse will inform you once your address is whitelisted. They will
-      also inform you of the maximum amount you can contribute with.
+      Read and agree to the <a
+        href="https://github.com/melonproject/contribution/blob/master/Melonport_Second%20Contribution%20Period_FINAL.pdf"
+        target="_blank"
+      >terms and conditions</a>.
     </p>
-    <h4>Step 4  </h4>
-    <p>
-       Get ready before the start of the competition. Fund your wallet
-      (generated in Step 1) with the amount of Ether you would like to
-      contribute with. After this point, you need to wait until the official
-      beginning of the challenge which will be announced shortly.
+    <h4>Step 4  </h4> <p>
+      Choose a name for your fund and press “Setup fund”.
     </p>
     <h4>Step 5 </h4>{' '}
     <p>
-       Official start of the Melon Olympiad, PAROS. Date will be announced in
-      June.
+      You are now at the <strong>contribution page</strong>. Put in the amount you want to contribute to the Paros smart contract. Below, you will see the estimated amount of MLN tokens that will be invested into your fund by the Paros smart contract (the conversion rate is fixed at 20 MLN tokens for 1 ETH). Make sure that you have enough ETH to cover the gas costs. Once you are ready, please press the “Contribute” button to send ETH to the Paros smart contract. <strong>The contract, in turn, will invest the equivalent amount in MLN to your fund.</'strong>
     </p>
     <h4>Step 6  </h4>{' '}
     <p>
@@ -146,13 +139,20 @@ const OlympiadPlaceholder = ({ goToGenerateAccount, goToAccount, address }) => (
     </p>
     <h4>Step 7  </h4>{' '}
     <p>
-      After creating your fund, you will be asked to enter the amount you wish
-      to contribute with. Once you confirm that transaction, the amount of Ether
-      will be transferred from your wallet to the Olympiad contract. In return,
-      the Olympiad contract will transfer (via the requestInvestment function)
-      the equivalent amount in MLN into your fund.
+      Your fund is now deployed to the Ethereum main net and funded with MLN tokens. You can see the public address of your fund in the URL.
     </p>
-
+    <p>
+      From this point onwards, you are free to do what you want. You can see the basic information about your fund in the middle. Your fund is denominated in WETH. There are two options:
+    </p>
+    <p>
+        1. <strong>Keep the MLN tokens</strong>. In this case, you do not need to do anything until Paros ends (you can see the official end date/time in the top right corner). Once Paros has ended, you will have the option to claim your reward and redeem your shares, which will transfer all MLN tokens of the fund to your wallet address.
+    </p>
+    <p>
+        <strong>OR</strong>
+    </p>
+    <p>
+        2. <strong>Trade</strong>. If you would like to test your fund management skills, you can do so by trading on the decentralized exchanges we have integrated (OasisDex, Radar Relay, ERCDex). As most assets are quoted against ETH, the first trade you need to place is to sell some of your MLN tokens against WETH.
+    </p>
     <p>
       The terms and conditions must be read by all participants.{' '}
       <a
