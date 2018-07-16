@@ -16,5 +16,6 @@ const Logos = ({ name, width, height }) => (
 
 const LogoDefault = () => <Logos name="default" />;
 const LogoWithText = () => <Logos name="with-text" />;
+const LogoWithBottomText = () => <Logos name="with-bottom-text" />;
 
-export { LogoDefault, LogoWithText };
+export { LogoDefault, LogoWithBottomText, LogoWithText };
