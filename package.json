@@ -25,6 +25,7 @@
   ],
   "resolutions": {
     "bignumber.js": "4.1.0",
-    "babel-core": "7.0.0-bridge.0"
+    "babel-core": "7.0.0-bridge.0",
+    "subscriptions-transport-ws": "0.9.12"
   }
 }
