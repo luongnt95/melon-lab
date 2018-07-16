@@ -10,6 +10,7 @@
   padding: var(--space-xs);
   line-height: 1;
   min-height: 38px;
+  background-color: var(--color-white);
 }
 
 .input__field,
@@ -55,8 +56,9 @@
 }
 
 .input--has-error :global(.input__field) {
-  border-color: var(--color-loss);
+  border: 1px solid var(--color-loss);
 }
+
 .input__error {
   display: none;
   font-size: var(--font-size-s);
