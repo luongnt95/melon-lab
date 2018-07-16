@@ -46,12 +46,21 @@
   margin: 0;
 }
 
-.input--has-error .input__field {
-  border-color: var(--color-loss);
+.input--has-error {
+  background-color: var(--color-loss);
 }
 
+.input--has-error :global(.input__error) {
+  display: block;
+}
+
+.input--has-error :global(.input__field) {
+  border-color: var(--color-loss);
+}
 .input__error {
+  display: none;
   font-size: var(--font-size-s);
-  color: var(--color-loss);
-  margin: var(--space-xxs) 0 0 var(--space-xs);
+  color: var(--color-white);
+  padding: var(--space-xs);
+  line-height: 1;
 }
