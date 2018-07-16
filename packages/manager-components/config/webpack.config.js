@@ -1,5 +1,6 @@
 const path = require('path');
 const base = path.resolve(process.cwd(), 'src');
+const public = path.resolve(process.cwd(), 'public');
 
 module.exports = config => {
   config.resolve.extensions.push('.ts', '.tsx');
@@ -10,6 +11,7 @@ module.exports = config => {
     '~/blocks': path.join(base, 'blocks'),
     '~/containers': path.join(base, 'containers'),
     '~/utils': path.join(base, 'utils'),
+    '~/static': path.join(public, 'static'),
   });
 
   config.module.rules.push(

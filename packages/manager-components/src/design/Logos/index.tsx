@@ -1,7 +1,7 @@
 import React from 'react';
 import Icons from '~/blocks/Icon';
 
-import '../logos.svg';
+import '~/static/images/logos.svg';
 import styles from './styles.css';
 
 const Logos = ({ name, width, height }) => (
