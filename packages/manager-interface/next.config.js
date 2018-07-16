@@ -3,6 +3,7 @@ require('dotenv-extended').config();
 const path = require('path');
 const R = require('ramda');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const withTypeScript = require('@zeit/next-typescript');
 const withQueryFiles = require('./config/withQueryFiles');
 const withLinkedDependencies = require('./config/withLinkedDependencies');
@@ -68,6 +69,18 @@ module.exports = withComposedConfig({
         __SMART_CONTRACTS_VERSION__: JSON.stringify(smartContractsPkg.version),
       }),
     );
+
+    if (!options.isServer) {
+      config.plugins.push(
+        new CopyWebpackPlugin([
+          {
+            context: path.join(__dirname, '../manager-components/public/static/'),
+            from: '**/*',
+            to: path.join(__dirname, 'src/static/')
+          },
+        ]),
+      );
+    }
 
     config.module.rules.push({
       test: /\.css$/,

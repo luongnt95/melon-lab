@@ -17,3 +17,6 @@ coverage/
 .vscode
 
 .DS_Store
+
+# Static files
+./packages/melon-interface/src/static/fonts
