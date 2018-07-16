@@ -28,8 +28,8 @@ async function start(port: number) {
   const pubsub = new PubSub();
   const network = retrieveNetwork((process.env.NETWORK as string) || 'KOVAN');
   const environment = await getParityProvider(process.env.JSON_RPC_ENDPOINT);
-  const track = retrieveTrack(network);
-  const config = await getConfig(environment, track);
+  environment.track = retrieveTrack(network);
+  const config = await getConfig(environment);
 
   const server = new GraphQLServer({
     schema,

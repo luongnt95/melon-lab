@@ -48,15 +48,15 @@ let config: Config;
 /**
  * Get config from deployed version contract
  */
-const getConfig = async (environment, track = "kovan-demo"): Promise<Config> => {
+const getConfig = async (environment): Promise<Config> => {
   if (config) return config;
 
   const network = await getNetwork(environment);
 
   let mode;
-  if (track === "kovan-demo") mode = "kovan"
-  else if (track === "kovan-competition") mode = "kovanCompetition"
-  else if (track === "live") mode = "live"
+  if (environment.track === "kovan-demo") mode = "kovan"
+  else if (environment.track === "kovan-competition") mode = "kovanCompetition"
+  else if (environment.track === "live") mode = "live"
 
   config = {
     onlyManagerCompetitionAddress: addressBook[mode].OnlyManagerCompetition,
