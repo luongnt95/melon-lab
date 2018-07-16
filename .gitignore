@@ -18,5 +18,6 @@ coverage/
 
 .DS_Store
 
-# Static files
+# Ignore copied static files
 packages/manager-interface/src/static/fonts
+packages/manager-interface/src/static/images
