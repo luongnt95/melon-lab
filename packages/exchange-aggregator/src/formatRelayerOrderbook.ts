@@ -75,7 +75,21 @@ const formatRelayerOrderbook = exchange => (config, bids, asks) => {
     catch (e) {
       return undefined;
     }
-  }).filter(order => typeof order !== 'undefined');
+  }).filter(order => {
+    if (typeof order === 'undefined') {
+      return false;
+    }
+
+    // Remove ERCDex orders that have a takerFee or makerFee that is NOT 0.
+    if (
+      (typeof order.makerFee !== 'undefined' && parseInt(order.makerFee, 10) !== 0) ||
+      (typeof order.takerFee !== 'undefined' && parseInt(order.takerFee, 10) !== 0)
+    ) {
+      return false;
+    }
+
+    return true;
+  });
 
   const orderbook = [...formattedBids, ...formattedAsks].map(order => ({
     ...order,
