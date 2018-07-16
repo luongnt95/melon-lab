@@ -51,8 +51,8 @@ function* init() {
     }
 
     // TODO: add tracer
-    setEnvironment(environment);
     environment.track = track;
+    setEnvironment(environment);
     yield put(ethereumActions.setProvider(environment.providerType));
     const config = yield call(getConfig, environment);
 
