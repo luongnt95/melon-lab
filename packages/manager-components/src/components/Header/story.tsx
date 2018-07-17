@@ -2,9 +2,6 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import Header from './index';
 
-const shortenAddress = address =>
-  `${address.slice(0, 6)}…${address.substr(-4)}`;
-
 const status = {
   message: 'Melon Node',
 };
@@ -14,8 +11,7 @@ const balances = {
 };
 
 const account = {
-  address: shortenAddress('0x32Be343B94f860124dC4fEe278FDCBD38C102D88'),
-  link: '#',
+  address: '0xa80B…d46f',
 };
 
 const data = {

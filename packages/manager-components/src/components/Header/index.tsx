@@ -13,12 +13,12 @@ export interface HeaderProps {
   network?: string;
   account: {
     address: string;
-    type: any;
-    action: any;
+    type?: any;
+    action?: any;
   };
-  home: {
-    type: any;
-    action: any;
+  home?: {
+    type?: any;
+    action?: any;
   };
 }
 

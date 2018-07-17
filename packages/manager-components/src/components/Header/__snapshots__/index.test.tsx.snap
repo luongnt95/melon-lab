@@ -11,96 +11,64 @@ exports[`Header should render correctly 1`] = `
   <div
     className="jsx-__scopedHash header__logo"
   >
-    <Icon
-      height="25px"
-      name="logos_default"
-      width="25px"
-    />
-  </div>
-  <div
-    className="jsx-__scopedHash header__name"
-  >
-    Peter-Fund
-  </div>
-  <div
-    className="jsx-__scopedHash header__price"
-  >
-    <span
-      className="jsx-__scopedHash header__price-desc"
-    >
-      Share price:
-    </span>
-    <span
-      className="jsx-__scopedHash header__price-value"
-    >
-      1.000 MLN-T-M/Share
-    </span>
-  </div>
-  <div
-    className="jsx-__scopedHash header__price"
-  >
-    <span
-      className="jsx-__scopedHash header__price-desc"
-    >
-      AUM:
-    </span>
-    <span
-      className="jsx-__scopedHash header__price-value"
-    >
-      1.000 MLN-T-M/Share
-    </span>
-  </div>
-  <div
-    className="jsx-__scopedHash header__price"
-  >
-    <span
-      className="jsx-__scopedHash header__price-desc"
-    >
-      Ranking:
-    </span>
-    <span
-      className="jsx-__scopedHash header__price-value"
-    >
+    <React.Fragment>
       <span
-        className="jsx-__scopedHash header__price-value-important"
+        className="header__logo-default"
       >
-        188
+        <Icon
+          height="30px"
+          name="logos_with-text"
+          width="115px"
+        />
       </span>
-       out of 287 Melon Funds
-    </span>
+      <span
+        className="header__logo-small"
+      >
+        <Icon
+          height="30px"
+          name="logos_default"
+          width="30px"
+        />
+      </span>
+    </React.Fragment>
   </div>
   <div
     className="jsx-__scopedHash header__account"
   >
-    <span
-      className="jsx-__scopedHash header__account-address"
-    >
-      0xA5f0…2783
-    </span>
-    <span
-      className="jsx-__scopedHash header__account-balances"
-    >
-      <span
-        className="jsx-__scopedHash header__account-balance"
-      >
-        Ⓜ 8.0000
-      </span>
-      <span
-        className="jsx-__scopedHash header__account-balance"
-      >
-        Ξ 0.3543
-      </span>
-    </span>
-    <span
-      className="jsx-__scopedHash header__account-net"
-    >
-      kovan
-    </span>
-    <span
+    <div
+      className="jsx-__scopedHash header__account-name"
+    />
+    <div
       className="jsx-__scopedHash header__account-info"
     >
-      Price feed down
-    </span>
+      <span
+        className="jsx-__scopedHash header__account-address"
+      >
+        0xa80B…d46f
+      </span>
+      <span
+        className="jsx-__scopedHash header__account-balances"
+      >
+        <span
+          className="jsx-__scopedHash header__account-balance"
+        >
+          ETH 
+          1.23422234
+        </span>
+      </span>
+      <span
+        className="jsx-__scopedHash header__account-network"
+      >
+        kovan
+      </span>
+      <span
+        className="jsx-__scopedHash header__account-warning"
+      >
+        <React.Fragment>
+          Melon Node
+        </React.Fragment>
+      </span>
+    </div>
   </div>
 </div>
 `;
