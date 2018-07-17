@@ -62,7 +62,7 @@ exports[`Header should render correctly 1`] = `
         kovan
       </span>
       <span
-        className="jsx-__scopedHash header__account-warning"
+        className="jsx-__scopedHash header__account-status"
       >
         <React.Fragment>
           Melon Node
