@@ -52,7 +52,7 @@
   }
 }
 
-.header__account-warning,
+.header__account-status,
 .header__account-network,
 .header__account-balance {
   &:before {
@@ -68,12 +68,12 @@
   text-decoration: none;
 }
 
-.header__account-warning {
-  /* color: var(--color-loss); */
+.header__account-status:after {
+  content: '';
+  margin-right: 0;
+  padding-left: 0;
+}
 
-  &:after {
-    content: '';
-    margin-right: 0;
-    padding-left: 0;
-  }
+.header__account-status--error {
+  color: var(--color-loss);
 }

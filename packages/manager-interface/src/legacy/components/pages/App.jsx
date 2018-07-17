@@ -96,6 +96,7 @@ const App = props => {
   const headerData = {
     status: {
       message: props.statusMessage,
+      type: props.statusType,
     },
     balances: {
       eth: props.ethBalance,

@@ -1,11 +1,13 @@
 import React, { StatelessComponent } from 'react';
 import Icon from '~/blocks/Icon';
 import styles from './styles.css';
+import classNames from 'classnames';
 
 export interface HeaderProps {
   status?: {
     message?: string;
     link?: string;
+    type?: string;
   };
   balances: {
     eth: number;
@@ -52,6 +54,11 @@ export const Header: StatelessComponent<HeaderProps> = ({
     Logos
   );
 
+  const statusClassName = classNames('header__account-status', {
+    'header__account-status--warning': status && status.type === 'WARNING',
+    'header__account-status--error': status && status.type === 'ERROR',
+  });
+
   return (
     <div className="header">
       <style jsx>{styles}</style>
@@ -65,7 +72,7 @@ export const Header: StatelessComponent<HeaderProps> = ({
           </span>
           <span className="header__account-network">{network}</span>
           {status && (
-            <span className="header__account-warning">
+            <span className={statusClassName}>
               {status.link ? (
                 <a href={status.link} target="_blank">
                   {status.message}
