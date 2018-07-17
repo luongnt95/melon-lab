@@ -1,10 +1,10 @@
 .order-info {
   width: 100%;
-  border: 1px solid var(--color-primary-dark);
+  border: 1px solid var(--color-border);
 }
 
 .order-info__prices {
-  border-bottom: 1px solid var(--color-primary-dark);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .order-info__prices,
