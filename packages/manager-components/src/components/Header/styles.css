@@ -77,3 +77,7 @@
 .header__account-status--error {
   color: var(--color-loss);
 }
+
+:global(.header__logo-link) {
+  font-size: 0;
+}

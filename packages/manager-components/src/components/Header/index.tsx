@@ -49,7 +49,7 @@ export const Header: StatelessComponent<HeaderProps> = ({
   );
 
   const homeLink = home && home.type ? (
-    React.createElement(home.type, { to: home.action }, Logos)
+    React.createElement(home.type, { to: home.action, className: 'header__logo-link' }, Logos)
   ) : (
     Logos
   );
