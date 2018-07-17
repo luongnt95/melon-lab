@@ -112,7 +112,7 @@ const Modal = ({
             <Container>
                 <Card
                     centered
-                    style={{ backgroundColor: '#fffdf3', padding: 10, width: 400 }}
+                    style={{ backgroundColor: '#fffdf3', padding: 10, width: 600 }}
                 >
                     <Card.Content>
                         {' '}
@@ -123,7 +123,7 @@ const Modal = ({
 
                             <p>{body}</p>
 
-                            {method ? (
+                            {method && type !== types.ERROR ? (
                                 <div>
                                     <p>
                                         The following method on the Melon Smart Contracts will be
@@ -134,46 +134,50 @@ const Modal = ({
                             ) : null}
 
                             {fees ? (
-                                <Table compact="very">
-                                    <Table.Header>
-                                        <Table.Row>
-                                            <Table.HeaderCell>Description</Table.HeaderCell>
-                                            <Table.HeaderCell>Gas Limit</Table.HeaderCell>
-                                            <Table.HeaderCell>Gas Price (Gwei)</Table.HeaderCell>
-                                            <Table.HeaderCell style={{ textAlign: 'right' }}>
-                                                Total
+                                <div>
+                                    <Table compact="very">
+                                        <Table.Header>
+                                            <Table.Row>
+                                                <Table.HeaderCell>Description</Table.HeaderCell>
+                                                <Table.HeaderCell>Gas Limit</Table.HeaderCell>
+                                                <Table.HeaderCell>Gas Price (Gwei)</Table.HeaderCell>
+                                                <Table.HeaderCell style={{ textAlign: 'right' }}>
+                                                    Total
                     </Table.HeaderCell>
-                                        </Table.Row>
-                                    </Table.Header>
-                                    <Table.Body>
-                                        {fees.map((entry, i) => (
-                                            <Table.Row key={`fee-{i}`}>
-                                                <Table.Cell>{entry.description}</Table.Cell>
-                                                <Table.Cell>{entry.gasLimit}</Table.Cell>
-                                                <Table.Cell>
-                                                    <Field
-                                                        name="gasPrice"
-                                                        component={renderInput}
-                                                        type="text" placeholder={entry.gasPrice}
-                                                    />
-                                                </Table.Cell>
-                                                <Table.Cell style={{ textAlign: 'right' }}>
-                                                    Ξ {displayNumber(entry.inEth)}
-                                                </Table.Cell>
                                             </Table.Row>
-                                        ))}
-                                    </Table.Body>
-                                    <Table.Footer>
-                                        <Table.Row>
-                                            <Table.HeaderCell />
-                                            <Table.HeaderCell />
-                                            <Table.HeaderCell />
-                                            <Table.HeaderCell style={{ textAlign: 'right' }}>
-                                                Ξ {displayNumber(add(...fees.map(e => e.inEth)))}
-                                            </Table.HeaderCell>
-                                        </Table.Row>
-                                    </Table.Footer>
-                                </Table>
+                                        </Table.Header>
+                                        <Table.Body>
+                                            {fees.map((entry, i) => (
+                                                <Table.Row key={`fee-{i}`}>
+                                                    <Table.Cell>{entry.description}</Table.Cell>
+                                                    <Table.Cell>{entry.gasLimit}</Table.Cell>
+                                                    <Table.Cell>
+                                                        <Field
+                                                            name="gasPrice"
+                                                            component={renderInput}
+                                                            type="text" placeholder={entry.gasPrice}
+                                                        />
+                                                    </Table.Cell>
+                                                    <Table.Cell style={{ textAlign: 'right' }}>
+                                                        Ξ {displayNumber(entry.inEth)}
+                                                    </Table.Cell>
+                                                </Table.Row>
+                                            ))}
+                                        </Table.Body>
+                                        <Table.Footer>
+                                            <Table.Row>
+                                                <Table.HeaderCell />
+                                                <Table.HeaderCell />
+                                                <Table.HeaderCell />
+                                                <Table.HeaderCell style={{ textAlign: 'right' }}>
+                                                    Ξ {displayNumber(add(...fees.map(e => e.inEth)))}
+                                                </Table.HeaderCell>
+                                            </Table.Row>
+                                        </Table.Footer>
+                                    </Table>
+                                    <p>If you do not change the gas price field, the default gas price will be used. If you wish to set the gas price according to network conditions, please refer to <a href="https://ethgasstation.info/" target="_blank"> Eth Gas Station.</a> </p>
+                                    <br />
+                                </div>
                             ) : null}
 
                             {type === types.PASSWORD ? (
