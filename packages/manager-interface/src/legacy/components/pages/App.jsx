@@ -109,7 +109,7 @@ const App = props => {
     home: {
       type: Link,
       action: props.rootAction,
-    }
+    },
   };
 
   return (
@@ -141,13 +141,20 @@ const App = props => {
 
       <div
         style={{
-          marginBottom: '1em',
+          position: 'fixed',
+          width: '100%',
+          top: 0,
+          zIndex: 1,
         }}
       >
         <Header {...headerData} />
       </div>
 
-      <Container>
+      <Container
+        style={{
+          marginTop: '4em',
+        }}
+      >
         {getMainComponent(props)}
       </Container>
       <Modal />
