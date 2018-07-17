@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash header"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <div
+    className="jsx-__scopedHash header__logo"
+  >
+    <React.Fragment>
+      <span
+        className="header__logo-default"
+      >
+        <Icon
+          height="30px"
+          name="logos_with-text"
+          width="115px"
+        />
+      </span>
+      <span
+        className="header__logo-small"
+      >
+        <Icon
+          height="30px"
+          name="logos_default"
+          width="30px"
+        />
+      </span>
+    </React.Fragment>
+  </div>
+  <div
+    className="jsx-__scopedHash header__account"
+  >
+    <div
+      className="jsx-__scopedHash header__account-name"
+    />
+    <div
+      className="jsx-__scopedHash header__account-info"
+    >
+      <span
+        className="jsx-__scopedHash header__account-address"
+      >
+        0xa80B…d46f
+      </span>
+      <span
+        className="jsx-__scopedHash header__account-balances"
+      >
+        <span
+          className="jsx-__scopedHash header__account-balance"
+        >
+          ETH 
+          1.23422234
+        </span>
+      </span>
+      <span
+        className="jsx-__scopedHash header__account-network"
+      >
+        kovan
+      </span>
+      <span
+        className="jsx-__scopedHash header__account-status"
+      >
+        <React.Fragment>
+          Melon Node
+        </React.Fragment>
+      </span>
+    </div>
+  </div>
+</div>
+`;

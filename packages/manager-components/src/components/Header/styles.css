@@ -1,0 +1,84 @@
+.header {
+  background-color: var(--color-secondary);
+  font-size: 0.75rem;
+  line-height: 1;
+  display: flex;
+  flex-wrap: nowrap;
+  border-bottom: 1px solid var(--color-border);
+  justify-content: space-between;
+}
+
+.header__logo {
+  float: left;
+  display: flex;
+  align-items: center;
+  padding: var(--space-xs);
+  border-right: 1px solid var(--color-border);
+}
+
+:global(.header__logo-default) {
+  display: none;
+
+  @media (--viewport-s) {
+    display: inline-block;
+  }
+}
+
+:global(.header__logo-small) {
+  display: inline-block;
+
+  @media (--viewport-s) {
+    display: none;
+  }
+}
+
+.header__account-name {
+  font-weight: var(--font-weight-bold);
+  font-size: 1rem;
+}
+
+.header__account {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-xs) var(--space-m);
+  font-size: 0.75rem;
+  justify-content: center;
+
+  @media (--viewport-m) {
+    flex: 1 0 auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+}
+
+.header__account-status,
+.header__account-network,
+.header__account-balance {
+  &:before {
+    content: '|';
+    margin-right: var(--space-xxs);
+    padding-left: var(--space-xxs);
+    color: var(--color-grey);
+  }
+}
+
+.header__account-link {
+  color: var(--color-grey);
+  text-decoration: none;
+}
+
+.header__account-status:after {
+  content: '';
+  margin-right: 0;
+  padding-left: 0;
+}
+
+.header__account-status--error {
+  color: var(--color-loss);
+}
+
+:global(.header__logo-link) {
+  font-size: 0;
+}

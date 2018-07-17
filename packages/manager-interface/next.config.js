@@ -53,6 +53,7 @@ module.exports = withComposedConfig({
       '~/blocks': path.join(managerComponents, 'src', 'blocks'),
       '~/components': path.join(managerComponents, 'src', 'components'),
       '~/design': path.join(managerComponents, 'src', 'design'),
+      '~/static': path.join(managerComponents, 'public', 'static'),
       '~/legacy': path.join(src, 'legacy'),
       '~/shared': path.join(src, 'shared'),
     });
@@ -74,35 +75,47 @@ module.exports = withComposedConfig({
       config.plugins.push(
         new CopyWebpackPlugin([
           {
-            context: path.join(__dirname, '../manager-components/public/static/'),
+            context: path.join(
+              __dirname,
+              '../manager-components/public/static/',
+            ),
             from: '**/*',
-            to: path.join(__dirname, 'src/static/')
+            to: path.join(__dirname, 'src/static/'),
           },
         ]),
       );
     }
 
-    config.module.rules.push({
-      test: /\.css$/,
-      use: [
-        {
-          loader: 'emit-file-loader',
-          options: {
-            name: 'dist/[path][name].[ext].js',
+    config.module.rules.push(
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'emit-file-loader',
+            options: {
+              name: 'dist/[path][name].[ext].js',
+            },
           },
-        },
-        {
-          loader: 'babel-loader',
-          options: {
-            babelrc: false,
-            plugins: [
-              ['styled-jsx/babel', { plugins: ['styled-jsx-plugin-postcss'] }],
-            ],
+          {
+            loader: 'babel-loader',
+            options: {
+              babelrc: false,
+              plugins: [
+                [
+                  'styled-jsx/babel',
+                  { plugins: ['styled-jsx-plugin-postcss'] },
+                ],
+              ],
+            },
           },
-        },
-        'styled-jsx-css-loader',
-      ],
-    });
+          'styled-jsx-css-loader',
+        ],
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+      },
+    );
 
     if (isElectron) {
       // Code splitting doesn't make much sense in an electron app.
