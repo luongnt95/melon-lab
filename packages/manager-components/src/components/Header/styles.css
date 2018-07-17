@@ -1,8 +1,9 @@
 .header {
   background-color: rgb(234, 229, 212);
   font-size: 0.75rem;
+  line-height: 1;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   border-bottom: 1px solid var(--color-grey);
 }
 
@@ -14,76 +15,47 @@
   border-right: 1px solid var(--color-grey);
 }
 
+:global(.header__logo-default) {
+  display: none;
+
+  @media (--viewport-s) {
+    display: inline-block;
+  }
+}
+
+:global(.header__logo-small) {
+  display: inline-block;
+
+  @media (--viewport-s) {
+    display: none;
+  }
+}
+
 .header__account-name {
   font-weight: var(--font-weight-bold);
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 
 .header__account {
-  padding: var(--space-xs);
-  font-size: 0.75rem;
-}
-
-.header__fund-info {
-  padding: var(--space-s) var(--space-xs) var(--space-xs) var(--space-xs);
   display: flex;
   flex-direction: column;
-  flex: 1 0 100%;
-  border-top: 1px solid var(--color-grey);
-
-  @media (--viewport-s) {
-    flex-direction: row;
-  }
+  padding: var(--space-xs) var(--space-m);
+  font-size: 0.75rem;
+  justify-content: center;
 
   @media (--viewport-m) {
-    flex: 1;
-    padding-left: var(--space-xxl);
-    margin: 0;
-    border: none;
+    flex: 1 0 auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
   }
-}
-
-.header__price {
-  overflow: hidden;
-  width: 100%;
-  margin-bottom: var(--space-s);
-
-  @media (--viewport-s) {
-    margin-bottom: 0;
-  }
-}
-
-.header__price:last-child {
-  margin-bottom: 0;
-}
-
-.header__price-value,
-.header__price-desc {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.header__price-desc {
-  display: block;
-  font-size: var(--font-size-xs);
-  color: var(--color-grey);
-}
-
-.header__price-value {
-  display: block;
-  font-size: var(--font-size-s);
-}
-
-.header__price-value-important {
-  font-size: var(--font-size-s);
-  font-weight: var(--font-weight-bold);
 }
 
 .header__account-warning,
-.header__account-address,
-.header__account-balance:not(:last-child) {
-  &:after {
+.header__account-network,
+.header__account-balance {
+  &:before {
     content: '|';
     margin-right: var(--space-xxs);
     padding-left: var(--space-xxs);
@@ -91,13 +63,13 @@
   }
 }
 
-.header__account-address {
+.header__account-link {
   color: var(--color-grey);
+  text-decoration: none;
 }
 
 .header__account-warning {
-  display: block;
-  color: var(--color-loss);
+  /* color: var(--color-loss); */
 
   &:after {
     content: '';

@@ -31,7 +31,7 @@ export default class MyDocument extends Document {
           {!global.isElectron && <script src="./static/tracking.js" />}
           <title>Melon Olympiad</title>
         </Head>
-        <body style={{ padding: '2em 1em' }}>
+        <body>
           <Main />
           <NextScript />
 

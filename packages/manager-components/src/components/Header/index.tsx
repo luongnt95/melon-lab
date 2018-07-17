@@ -3,45 +3,78 @@ import Icon from '~/blocks/Icon';
 import styles from './styles.css';
 
 export interface HeaderProps {
-  info?: string;
+  status?: {
+    message?: string;
+    link?: string;
+  };
+  balances: {
+    eth: number;
+  };
+  network?: string;
+  account: {
+    address: string;
+    type: any;
+    action: any;
+  };
+  home: {
+    type: any;
+    action: any;
+  };
 }
 
-export const Header: StatelessComponent<HeaderProps> = ({ children, info }) => {
+const Logos = (
+  <React.Fragment>
+    <span className="header__logo-default">
+      <Icon width="115px" height="30px" name="logos_with-text" />
+    </span>
+    <span className="header__logo-small">
+      <Icon width="30px" height="30px" name="logos_default" />
+    </span>
+  </React.Fragment>
+);
+
+export const Header: StatelessComponent<HeaderProps> = ({
+  status,
+  account,
+  balances,
+  network,
+  home,
+}) => {
+  const walletLink = account && account.type ? (
+    React.createElement(account.type, { to: account.action }, account.address)
+  ) : (
+    account.address
+  );
+
+  const homeLink = home && home.type ? (
+    React.createElement(home.type, { to: home.action }, Logos)
+  ) : (
+    Logos
+  );
+
   return (
     <div className="header">
       <style jsx>{styles}</style>
-      {children}
-      <div className="header__logo">
-        <Icon width="115px" height="30px" name="logos_with-text" />
-      </div>
+      <div className="header__logo">{homeLink}</div>
       <div className="header__account">
-        <div className="header__account-name">Peter-Fund</div>
+        <div className="header__account-name">{''}</div>
         <div className="header__account-info">
-          <span className="header__account-address">0xA5f0…2783</span>
+          <span className="header__account-address">{walletLink}</span>
           <span className="header__account-balances">
-            <span className="header__account-balance">Ⓜ 8.0000</span>
-            <span className="header__account-balance">Ξ 0.3543</span>
+            <span className="header__account-balance">ETH {balances.eth}</span>
           </span>
-          {info && (
-            <span className="header__account-warning">Price feed down</span>
+          <span className="header__account-network">{network}</span>
+          {status && (
+            <span className="header__account-warning">
+              {status.link ? (
+                <a href={status.link} target="_blank">
+                  {status.message}
+                </a>
+              ) : (
+                <React.Fragment>{status.message}</React.Fragment>
+              )}
+            </span>
           )}
-        </div>
-      </div>
-      <div className="header__fund-info">
-        <div className="header__price">
-          <span className="header__price-desc">Share price:</span>
-          <span className="header__price-value">1.000 MLN-T-M/Share</span>
-        </div>
-        <div className="header__price">
-          <span className="header__price-desc">AUM:</span>
-          <span className="header__price-value">1.000 MLN-T-M/Share</span>
-        </div>
-        <div className="header__price">
-          <span className="header__price-desc">Ranking:</span>
-          <span className="header__price-value">
-            <span className="header__price-value-important">188</span> out of
-            287 Melon Funds
-          </span>
         </div>
       </div>
     </div>
