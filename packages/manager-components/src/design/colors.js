@@ -1,9 +1,11 @@
 module.exports = {
   mainColors: {
     'color-primary': 'rgb(255, 253, 244)',
-    'color-primary-dark': 'rgb(234, 229, 212)',
+    'color-primary-dark': 'rgb(161, 147, 94)',
     'color-primary-darkest': 'rgb(161, 147, 94)',
-    'color-secondary': 'rgb(241, 238, 222)',
+    'color-secondary': 'rgb(249, 242, 219)',
+    'color-secondary-dark': 'rgb(195, 179, 121)',
+    'color-border': 'rgb(234, 229, 212)',
   },
 
   statusColors: {
