@@ -63,8 +63,10 @@ export const actions = {
     primaryInteraction: interactions.CONFIRM,
     secondaryInteraction: interactions.CANCEL,
   }),
-  confirmed: () => ({
+  confirmed: gasPrice => ({
     type: types.CONFIRMED,
+
+    gasPrice,
     isOpen: false,
   }),
   password: body => ({

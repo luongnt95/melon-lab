@@ -2,7 +2,7 @@
 import BigNumber from 'bignumber.js';
 import gasBoost from '../ethereum/gasBoost';
 import constructTransactionObject from './constructTransactionObject';
-import getEnvironment from '../environment/getEnvironment'
+import getEnvironment from '../environment/getEnvironment';
 
 const sendTransaction = async (
   contract,
@@ -13,8 +13,8 @@ const sendTransaction = async (
 ) => {
   const nonce = environment.account.sign
     ? (await environment.api.eth.getTransactionCount(
-      environment.account.address,
-    )).toNumber()
+        environment.account.address,
+      )).toNumber()
     : undefined;
 
   // Prepare raw transaction
@@ -26,7 +26,9 @@ const sendTransaction = async (
   };
 
   // HACK: If external parity signer, no need to set the nonce, Parity does it. If in-browser wallet, we need to explicitly set the nonce.
-  if (nonce) options.nonce = nonce;
+  if (nonce) {
+    options.nonce = nonce;
+  }
 
   // Estimate and adjust gas with gasBoost
   const gasKeyName = environment.account.sign ? 'gasLimit' : 'gas';
@@ -62,15 +64,18 @@ const sendTransaction = async (
         description: 'Estimated max gas cost',
         gasLimit: options[gasKeyName],
         gasPrice: (options.gasPrice * 10 ** -9).toFixed(0),
-        inEth: new BigNumber(options[gasKeyName]).times(options.gasPrice).div(10 ** 18),
+        inEth: new BigNumber(options[gasKeyName])
+          .times(options.gasPrice)
+          .div(10 ** 18),
       },
     ]);
 
-    if (!confirmed) throw new Error('Transaction cancelled');
-    environment = await getEnvironment();
+    if (!confirmed) {
+      throw new Error('Transaction cancelled');
+    }
 
-    if (environment.gasPrice !== undefined) {
-      options.gasPrice = environment.gasPrice
+    if (confirmed.gasPrice !== undefined) {
+      options.gasPrice = confirmed.gasPrice;
     }
   }
   // Construct raw transaction object
