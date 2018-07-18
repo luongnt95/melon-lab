@@ -6,10 +6,11 @@
 :global(.input__field) {
   font-family: var(--font-family-primary);
   min-width: 100%;
-  border: 1px solid var(--color-primary-dark);
+  border: 1px solid var(--color-border);
   padding: var(--space-xs);
   line-height: 1;
   min-height: 38px;
+  background-color: var(--color-white);
 }
 
 .input__field,
@@ -46,12 +47,22 @@
   margin: 0;
 }
 
-.input--has-error .input__field {
-  border-color: var(--color-loss);
+.input--has-error {
+  background-color: var(--color-loss);
+}
+
+.input--has-error :global(.input__error) {
+  display: block;
+}
+
+.input--has-error :global(.input__field) {
+  border: 1px solid var(--color-loss);
 }
 
 .input__error {
+  display: none;
   font-size: var(--font-size-s);
-  color: var(--color-loss);
-  margin: var(--space-xxs) 0 0 var(--space-xs);
+  color: var(--color-white);
+  padding: var(--space-xs);
+  line-height: 1;
 }

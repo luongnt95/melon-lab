@@ -22,6 +22,11 @@ import Modal from '../../containers/Modal';
 import { types } from '../../actions/routes';
 import ConnectionInfo from '../organisms/ConnectionInfo';
 import { greaterThan } from '../../utils/functionalBigNumber';
+import Header from '@melonproject/manager-components/components/Header';
+import '~/static/images/logos.svg';
+
+const shortenAddress = address =>
+  `${address.slice(0, 6)}…${address.substr(-4)}`;
 
 const mapOnboardingStateToMainContainer = (onboardingState, track) => {
   const map = {
@@ -32,11 +37,14 @@ const mapOnboardingStateToMainContainer = (onboardingState, track) => {
     [onboardingPath.INSUFFICIENT_FUNDS]: InsufficientFunds,
     [onboardingPath.NOT_SIGNED]: TermsAndConditionsContainer,
     [onboardingPath.NO_FUND_CREATED]: SetupContainer,
-    [onboardingPath.NOT_INVESTED_IN_OWN_FUND]: track !== 'kovan-demo' ? ParosContributionContainer : ParticipationContainer,
+    [onboardingPath.NOT_INVESTED_IN_OWN_FUND]:
+      track !== 'kovan-demo'
+        ? ParosContributionContainer
+        : ParticipationContainer,
   };
 
-  return map[onboardingState]
-}
+  return map[onboardingState];
+};
 
 const routeContainerMap = {
   [types.ROOT]: RankingContainer,
@@ -80,56 +88,79 @@ const getMainComponent = ({
       showFaucet={showFaucet}
     />
   ) : (
-      <div />
-    );
+    <div />
+  );
 };
 
-const App = props => (
-  <div className="App">
-    {(props.network !== "42" && (greaterThan(props.ethBalance, 1) || greaterThan(props.fundNav, 1))) && (
-      <a
-        href="https://github.com/melonproject/melon-lab/releases"
-        target="_blank"
+const App = props => {
+  const headerData = {
+    status: {
+      message: props.statusMessage,
+      type: props.statusType,
+    },
+    balances: {
+      eth: props.ethBalance,
+    },
+    network: props.networkName,
+    account: {
+      type: Link,
+      action: props.accountAction,
+      address: shortenAddress(props.walletAddress || ''),
+    },
+    home: {
+      type: Link,
+      action: props.rootAction,
+    },
+  };
+
+  return (
+    <div className="App">
+      {props.network !== '42' &&
+        (greaterThan(props.ethBalance, 1) || greaterThan(props.fundNav, 1)) && (
+          <a
+            href="https://github.com/melonproject/melon-lab/releases"
+            target="_blank"
+            style={{
+              position: 'fixed',
+              bottom: 0,
+              left: 0,
+              width: '100%',
+              backgroundColor: 'rgb(209, 102, 102)',
+              color: 'white',
+              fontWeight: 'bold',
+              padding: 10,
+              zIndex: 10,
+            }}
+          >
+            {' '}
+            Warning: You are using the Melon Interface in an insecure
+            environment (your browser) and putting your funds at risk! Please be
+            a good citizen and download our Electron app and run your own node
+            for a fast and secure experience.
+          </a>
+        )}
+
+      <div
         style={{
           position: 'fixed',
-          bottom: 0,
-          left: 0,
           width: '100%',
-          backgroundColor: 'rgb(209, 102, 102)',
-          color: 'white',
-          fontWeight: 'bold',
-          padding: 10,
-          zIndex: 10,
+          top: 0,
+          zIndex: 1,
         }}
       >
-        {' '}
-        Warning: You are using the Melon Interface in an insecure environment
-        (your browser) and putting your funds at risk! Please be a good citizen
-        and download our Electron app and run your own node for a fast and
-        secure experience.
-      </a>
-    )}
-
-    <ConnectionInfo
-      account={props.walletAddress}
-      mlnBalance={props.mlnBalance}
-      ethBalance={props.ethBalance}
-      statusType={props.statusType}
-      statusMessage={props.statusMessage}
-      accountAction={props.accountAction}
-      networkName={props.networkName}
-    />
-
-    <Container>
-      <div className="App-header" style={{ marginBottom: '2em' }}>
-        <Link to={props.rootAction}>
-          <Image src="./static/melon-logo.png" size="small" centered />
-        </Link>
+        <Header {...headerData} />
       </div>
-      {getMainComponent(props)}
-    </Container>
-    <Modal />
-  </div>
-);
+
+      <Container
+        style={{
+          marginTop: '4em',
+        }}
+      >
+        {getMainComponent(props)}
+      </Container>
+      <Modal />
+    </div>
+  );
+};
 
 export default App;

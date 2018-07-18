@@ -3,6 +3,7 @@ require('dotenv-extended').config();
 const path = require('path');
 const R = require('ramda');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const withTypeScript = require('@zeit/next-typescript');
 const withQueryFiles = require('./config/withQueryFiles');
 const withLinkedDependencies = require('./config/withLinkedDependencies');
@@ -52,6 +53,7 @@ module.exports = withComposedConfig({
       '~/blocks': path.join(managerComponents, 'src', 'blocks'),
       '~/components': path.join(managerComponents, 'src', 'components'),
       '~/design': path.join(managerComponents, 'src', 'design'),
+      '~/static': path.join(managerComponents, 'public', 'static'),
       '~/legacy': path.join(src, 'legacy'),
       '~/shared': path.join(src, 'shared'),
     });
@@ -69,27 +71,51 @@ module.exports = withComposedConfig({
       }),
     );
 
-    config.module.rules.push({
-      test: /\.css$/,
-      use: [
-        {
-          loader: 'emit-file-loader',
-          options: {
-            name: 'dist/[path][name].[ext].js',
+    if (!options.isServer) {
+      config.plugins.push(
+        new CopyWebpackPlugin([
+          {
+            context: path.join(
+              __dirname,
+              '../manager-components/public/static/',
+            ),
+            from: '**/*',
+            to: path.join(__dirname, 'src/static/'),
           },
-        },
-        {
-          loader: 'babel-loader',
-          options: {
-            babelrc: false,
-            plugins: [
-              ['styled-jsx/babel', { plugins: ['styled-jsx-plugin-postcss'] }],
-            ],
+        ]),
+      );
+    }
+
+    config.module.rules.push(
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: 'emit-file-loader',
+            options: {
+              name: 'dist/[path][name].[ext].js',
+            },
           },
-        },
-        'styled-jsx-css-loader',
-      ],
-    });
+          {
+            loader: 'babel-loader',
+            options: {
+              babelrc: false,
+              plugins: [
+                [
+                  'styled-jsx/babel',
+                  { plugins: ['styled-jsx-plugin-postcss'] },
+                ],
+              ],
+            },
+          },
+          'styled-jsx-css-loader',
+        ],
+      },
+      {
+        test: /\.svg$/,
+        loader: 'svg-sprite-loader',
+      },
+    );
 
     if (isElectron) {
       // Code splitting doesn't make much sense in an electron app.

@@ -17,3 +17,7 @@ coverage/
 .vscode
 
 .DS_Store
+
+# Ignore copied static files
+packages/manager-interface/src/static/fonts
+packages/manager-interface/src/static/images

@@ -1,5 +1,6 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import React from 'react';
+import flush from 'styled-jsx/server';
 
 const csp =
   "default-src 'self' 'unsafe-inline'; \
@@ -9,7 +10,8 @@ font-src data: file:;";
 export default class MyDocument extends Document {
   public static async getInitialProps(context) {
     const initialProps = await Document.getInitialProps(context);
-    return { ...initialProps };
+    const styles = flush();
+    return { ...initialProps, styles };
   }
 
   public render() {
@@ -31,7 +33,7 @@ export default class MyDocument extends Document {
           {!global.isElectron && <script src="./static/tracking.js" />}
           <title>Melon Olympiad</title>
         </Head>
-        <body style={{ padding: '2em 1em' }}>
+        <body>
           <Main />
           <NextScript />
 

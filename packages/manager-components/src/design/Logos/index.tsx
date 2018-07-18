@@ -1,7 +1,7 @@
 import React from 'react';
 import Icons from '~/blocks/Icon';
 
-import '../logos.svg';
+import '~/static/images/logos.svg';
 import styles from './styles.css';
 
 const Logos = ({ name, width, height }) => (
@@ -16,5 +16,6 @@ const Logos = ({ name, width, height }) => (
 
 const LogoDefault = () => <Logos name="default" />;
 const LogoWithText = () => <Logos name="with-text" />;
+const LogoWithBottomText = () => <Logos name="with-bottom-text" />;
 
-export { LogoDefault, LogoWithText };
+export { LogoDefault, LogoWithBottomText, LogoWithText };
