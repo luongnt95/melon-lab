@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OrderForm should render correctly 1`] = `
+<Formik
+  dataValid={true}
+  decimals={4}
+  enableReinitialize={true}
+  fund={
+    Object {
+      "sharePrice": 5,
+    }
+  }
+  handleSubmit={[Function]}
+  initialValues={Object {}}
+  isInitialValid={false}
+  onSubmit={[Function]}
+  quoteAsset="WETH-T"
+  render={[Function]}
+  setup={true}
+  validateOnBlur={true}
+  validateOnChange={true}
+  validationSchema={[Function]}
+  values={
+    Object {
+      "type": "Invest",
+    }
+  }
+/>
+`;
