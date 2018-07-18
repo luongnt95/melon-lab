@@ -1,0 +1,14 @@
+.participation-form__input {
+  margin: 0 0 var(--space-m) 0;
+}
+
+.participation-form__toggles {
+  width: 100%;
+  display: flex;
+  padding: var(--space-m) 0;
+}
+
+.participation-form__toggle {
+  flex: 0 1 33.33%;
+  overflow: hidden;
+}
