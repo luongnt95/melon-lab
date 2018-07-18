@@ -14,7 +14,7 @@ const initialProps = {
   }
 };
 
-describe('OrderForm', () => {
+describe('ParticipationForm', () => {
   const defaultElement = <ParticipationForm {...initialProps} />;
 
   it('should render correctly', () => {
