@@ -1,7 +1,8 @@
+import classNames from 'classnames';
 import React, { StatelessComponent } from 'react';
 import Icon from '~/blocks/Icon';
+
 import styles from './styles.css';
-import classNames from 'classnames';
 
 export interface HeaderProps {
   status?: {

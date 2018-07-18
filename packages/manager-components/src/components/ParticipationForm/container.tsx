@@ -1,14 +1,7 @@
 import { withFormik } from 'formik';
 import { compose, withHandlers } from 'recompose';
 import * as Yup from 'yup';
-import {
-  divide,
-  greaterThan,
-  max,
-  min,
-  multiply,
-  equals,
-} from '../../utils/functionalBigNumber';
+import { divide, equals, multiply } from '../../utils/functionalBigNumber';
 import ParticipationForm from './index';
 
 const calculateParticipationPrice = (sharePrice, type) => {
@@ -75,7 +68,6 @@ const withFormValidation = withFormik({
   validationSchema: props => validation(props),
   enableReinitialize: true,
   handleSubmit: (values, form) => {
-    console.log(values)
     if (form.props.onSubmit) {
       form.props.onSubmit(values);
     }

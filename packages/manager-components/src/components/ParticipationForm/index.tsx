@@ -1,4 +1,4 @@
-import React, { StatelessComponent, Fragment } from 'react';
+import React, { Fragment, StatelessComponent } from 'react';
 import Button from '~/blocks/Button';
 import Form from '~/blocks/Form';
 import Input from '~/blocks/Input';
