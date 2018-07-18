@@ -1,3 +1,4 @@
+import * as R from 'ramda';
 import { connect } from 'react-redux';
 import { reduxForm, reset } from 'redux-form';
 import Modal from '../components/pages/Modal';
@@ -6,6 +7,7 @@ import { getEnvironment, setEnvironment } from '@melonproject/melon.js';
 
 const mapStateToProps = state => ({
   ...state.modal,
+  gasPrice: R.pathOr(20, ['form', 'modal', 'values', 'gasPrice'], state),
   type: state.modal.modalType,
 });
 

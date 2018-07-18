@@ -98,6 +98,7 @@ const Modal = ({
   body,
   fees,
   method,
+  gasPrice,
   primaryInteraction,
   secondaryInteraction,
   interactionHandler,
@@ -160,7 +161,8 @@ const Modal = ({
                           />
                         </Table.Cell>
                         <Table.Cell style={{ textAlign: 'right' }}>
-                          Ξ {displayNumber(entry.inEth)}
+                          Ξ{' '}
+                          {displayNumber((gasPrice * entry.gasLimit) / 10 ** 9)}
                         </Table.Cell>
                       </Table.Row>
                     ))}
@@ -171,7 +173,12 @@ const Modal = ({
                       <Table.HeaderCell />
                       <Table.HeaderCell />
                       <Table.HeaderCell style={{ textAlign: 'right' }}>
-                        Ξ {displayNumber(add(...fees.map(e => e.inEth)))}
+                        Ξ{' '}
+                        {displayNumber(
+                          add(
+                            ...fees.map(e => (e.gasLimit * gasPrice) / 10 ** 9),
+                          ),
+                        )}
                       </Table.HeaderCell>
                     </Table.Row>
                   </Table.Footer>

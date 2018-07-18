@@ -64,9 +64,9 @@ const sendTransaction = async (
         description: 'Estimated max gas cost',
         gasLimit: options[gasKeyName],
         gasPrice: (options.gasPrice * 10 ** -9).toFixed(0),
-        inEth: new BigNumber(options[gasKeyName])
-          .times(options.gasPrice)
-          .div(10 ** 18),
+        // inEth: new BigNumber(options[gasKeyName])
+        //   .times(options.gasPrice)
+        //   .div(10 ** 18),
       },
     ]);
 
