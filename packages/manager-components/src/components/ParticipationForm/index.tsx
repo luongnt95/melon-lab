@@ -43,8 +43,8 @@ const ParticipationForm: StatelessComponent<ParticipationFormProps> = ({
   return (
     <div className="participation-form">
       <style jsx>{styles}</style>
+      <h3>Participation</h3>
       <Form>
-        {!dataValid && <p>Invest/Redeem not possible when price feed down</p>}
         {setup && (
           <div className="participation-form__toggles">
             <div className="participation-form__toggle">
@@ -76,7 +76,7 @@ const ParticipationForm: StatelessComponent<ParticipationFormProps> = ({
             </div>
           </div>
         )}
-
+        {!dataValid && <p>Invest/Redeem not possible when price feed down</p>}
         <div className="participation-form__input">
           <Input
             value={values.quantity}

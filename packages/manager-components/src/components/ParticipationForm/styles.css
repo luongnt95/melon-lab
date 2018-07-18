@@ -1,3 +1,7 @@
+.participation-form {
+  margin-top: 1.5em;
+}
+
 .participation-form__input {
   margin: 0 0 var(--space-m) 0;
 }
@@ -9,6 +13,6 @@
 }
 
 .participation-form__toggle {
-  flex: 0 1 33.33%;
+  flex: 1 1 auto;
   overflow: hidden;
 }

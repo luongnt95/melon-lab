@@ -53,20 +53,6 @@ const calculateInputs = (props, field, value) => {
   }
 };
 
-const initalValues = props => {
-  return {
-    ...props.values,
-    price:
-      props.fund.sharePrice === '...'
-        ? undefined
-        : calculateParticipationPrice(props.fund.sharePrice, 'Invest'),
-    total:
-      props.fund.sharePrice === '...'
-        ? undefined
-        : calculateParticipationPrice(props.fund.sharePrice, 'Invest'),
-  };
-};
-
 const validation = props => {
   const numberFormat = (0).toFixed(props.decimals);
   const minNumber = numberFormat.slice(0, -1) + '1';
@@ -85,10 +71,11 @@ const validation = props => {
 };
 
 const withFormValidation = withFormik({
-  mapPropsToValues: props => ({ ...initalValues(props) }),
+  mapPropsToValues: props => ({ ...props.initialValues }),
   validationSchema: props => validation(props),
   enableReinitialize: true,
   handleSubmit: (values, form) => {
+    console.log(values)
     if (form.props.onSubmit) {
       form.props.onSubmit(values);
     }

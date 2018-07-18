@@ -26,9 +26,9 @@ export const types = {
 };
 
 export const actions = {
-  invest: ({ amount, total, directlyExecute }) => ({
+  invest: ({ quantity, total, directlyExecute }) => ({
     type: types.INVEST_REQUESTED,
-    amount,
+    quantity,
     total,
     directlyExecute,
   }),
@@ -39,9 +39,9 @@ export const actions = {
   investSucceeded: () => ({
     type: types.INVEST_SUCCEEDED,
   }),
-  redeem: ({ amount, total }) => ({
+  redeem: ({ quantity, total }) => ({
     type: types.REDEEM_REQUESTED,
-    amount,
+    quantity,
     total,
   }),
   redeemFailed: reason => ({
@@ -51,9 +51,9 @@ export const actions = {
   redeemSucceeded: () => ({
     type: types.REDEEM_SUCCEEDED,
   }),
-  redeemAllOwnedAssets: ({ amount }) => ({
+  redeemAllOwnedAssets: ({ quantity }) => ({
     type: types.REDEEM_ALL_OWNED_ASSETS_REQUESTED,
-    amount,
+    quantity,
   }),
   redeemAllOwnedAssetsFailed: reason => ({
     type: types.REDEEM_ALL_OWNED_ASSETS_FAILED,
@@ -73,9 +73,9 @@ export const actions = {
   executeSucceeded: () => ({
     type: types.EXECUTE_SUCCEEDED,
   }),
-  contribute: ({ amount, total, directlyExecute }) => ({
+  contribute: ({ quantity, total, directlyExecute }) => ({
     type: types.CONTRIBUTE_REQUESTED,
-    amount,
+    quantity,
     total,
     directlyExecute,
   }),
