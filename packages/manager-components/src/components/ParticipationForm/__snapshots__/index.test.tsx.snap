@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OrderForm should render correctly 1`] = `
+exports[`ParticipationForm should render correctly 1`] = `
 <Formik
   dataValid={true}
   decimals={4}
