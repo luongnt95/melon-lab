@@ -1,13 +1,13 @@
 import { take, put, takeLatest, select, apply, call } from 'redux-saga/effects';
 import { eventChannel } from 'redux-saga';
 import {
-    getConfig,
-    onBlock,
-    getParityProvider,
-    providers,
-    networks,
-    setEnvironment,
-    getEnvironment,
+  getConfig,
+  onBlock,
+  getParityProvider,
+  providers,
+  networks,
+  setEnvironment,
+  getEnvironment,
 } from '@melonproject/melon.js';
 import { utils } from 'ethers';
 
@@ -22,113 +22,113 @@ const BLOCK_POLLING_INTERVAL = 4 * 1000;
 const MAX_INTERVAL_BETWEEN_BLOCKS = 5;
 
 function* init() {
-    const environment = yield call(
-        getParityProvider,
-        process.env.JSON_RPC_ENDPOINT,
-    );
+  const environment = yield call(
+    getParityProvider,
+    process.env.JSON_RPC_ENDPOINT,
+  );
 
-    const networkId = yield apply(environment.api, environment.api.net.version);
-    const track = yield select(state => state.app.track);
+  const networkId = yield apply(environment.api, environment.api.net.version);
+  const track = yield select(state => state.app.track);
 
-    if (track === 'live' && networkId !== networks.LIVE) {
-        yield put(
-            modalActions.fatal('Your parity-node seems to not run on the main net.'),
-        );
-        console.error(
-            'Wrong track/network combination',
-            { track, networkId },
-            environment,
-        );
-        return false;
-    } else if (track !== "live" && networkId !== networks.KOVAN) {
-        yield put(modalActions.fatal('Your parity-node seems to not run on kovan'));
-        console.error(
-            'Wrong track/network combination',
-            { track, networkId },
-            environment,
-        );
-        return false;
-    }
-
-    // TODO: add tracer
-    environment.track = track;
-    setEnvironment(environment);
-    yield put(ethereumActions.setProvider(environment.providerType));
-    const config = yield call(getConfig, environment);
-
-    global.MELON_PROTOCOL_CONFIG = config;
-    yield put(fundActions.setConfig(config));
+  if (track === 'live' && networkId !== networks.LIVE) {
     yield put(
-        appActions.updateAssetPair({
-            base: config.melonAssetSymbol,
-            quote: config.quoteAssetSymbol,
-        }),
+      modalActions.fatal('Your parity-node seems to not run on the main net.'),
     );
+    console.error(
+      'Wrong track/network combination',
+      { track, networkId },
+      environment,
+    );
+    return false;
+  } else if (track !== 'live' && networkId !== networks.KOVAN) {
+    yield put(modalActions.fatal('Your parity-node seems to not run on kovan'));
+    console.error(
+      'Wrong track/network combination',
+      { track, networkId },
+      environment,
+    );
+    return false;
+  }
 
-    // Reading the fund address from the URL
-    const fund = yield select(state => state.fund);
+  // TODO: add tracer
+  environment.track = track;
+  setEnvironment(environment);
+  yield put(ethereumActions.setProvider(environment.providerType));
+  const config = yield call(getConfig, environment);
 
-    yield put(ethereumActions.hasConnected(networkId));
+  global.MELON_PROTOCOL_CONFIG = config;
+  yield put(fundActions.setConfig(config));
+  yield put(
+    appActions.updateAssetPair({
+      base: config.melonAssetSymbol,
+      quote: config.quoteAssetSymbol,
+    }),
+  );
 
-    if (fund.address !== '' && fund.name === '-') {
-        yield put(fundActions.infoRequested(fund.address));
-    }
+  // Reading the fund address from the URL
+  const fund = yield select(state => state.fund);
 
-    const blockChannel = eventChannel(emitter => {
-        let lastBlockNumber;
-        let intervalsSinceLastBlock = 0;
+  yield put(ethereumActions.hasConnected(networkId));
 
-        const pollBlock = async () => {
-            try {
-                const blockNumber = await environment.api.eth.blockNumber();
+  if (fund.address !== '' && fund.name === '-') {
+    yield put(fundActions.infoRequested(fund.address));
+  }
 
-                if (!equals(blockNumber, lastBlockNumber)) {
-                    const environment = getEnvironment();
-                    const data = await onBlock(environment);
-                    emitter({ onBlock: { ...data, blockNumber } });
-                    lastBlockNumber = blockNumber;
-                    intervalsSinceLastBlock = 0;
-                } else {
-                    intervalsSinceLastBlock += 1;
-                }
+  const blockChannel = eventChannel(emitter => {
+    let lastBlockNumber;
+    let intervalsSinceLastBlock = 0;
 
-                if (intervalsSinceLastBlock > MAX_INTERVAL_BETWEEN_BLOCKS) {
-                    emitter({ blockOverdue: true });
-                }
-            } catch (e) {
-                emitter({ blockError: true });
-                console.error(e);
-            }
-        };
+    const pollBlock = async () => {
+      try {
+        const blockNumber = await environment.api.eth.blockNumber();
 
-        pollBlock();
-        const blockInterval = setInterval(pollBlock, BLOCK_POLLING_INTERVAL);
-
-        return () => {
-            clearInterval(blockInterval);
-        };
-    });
-
-    while (true) {
-        const data = yield take(blockChannel);
-        if (data.onBlock) {
-            yield put(
-                ethereumActions.newBlock({
-                    ...data.onBlock,
-                    mlnBalance: data.onBlock.melonBalance,
-                    ethBalance: data.onBlock.etherBalance,
-                }),
-            );
-        } else if (data.blockOverdue) {
-            yield put(ethereumActions.blockOverdue());
+        if (!equals(blockNumber, lastBlockNumber)) {
+          const environment = getEnvironment();
+          const data = await onBlock(environment);
+          emitter({ onBlock: { ...data, blockNumber } });
+          lastBlockNumber = blockNumber;
+          intervalsSinceLastBlock = 0;
         } else {
-            yield put(ethereumActions.blockError());
+          intervalsSinceLastBlock += 1;
         }
+
+        if (intervalsSinceLastBlock > MAX_INTERVAL_BETWEEN_BLOCKS) {
+          emitter({ blockOverdue: true });
+        }
+      } catch (e) {
+        emitter({ blockError: true });
+        console.error(e);
+      }
+    };
+
+    pollBlock();
+    const blockInterval = setInterval(pollBlock, BLOCK_POLLING_INTERVAL);
+
+    return () => {
+      clearInterval(blockInterval);
+    };
+  });
+
+  while (true) {
+    const data = yield take(blockChannel);
+    if (data.onBlock) {
+      yield put(
+        ethereumActions.newBlock({
+          ...data.onBlock,
+          ethBalance: data.onBlock.etherBalance,
+          mlnBalance: data.onBlock.melonBalance,
+        }),
+      );
+    } else if (data.blockOverdue) {
+      yield put(ethereumActions.blockOverdue());
+    } else {
+      yield put(ethereumActions.blockError());
     }
+  }
 }
 
 function* ethereum() {
-    yield takeLatest(browserTypes.LOADED, init);
+  yield takeLatest(browserTypes.LOADED, init);
 }
 
 export default ethereum;

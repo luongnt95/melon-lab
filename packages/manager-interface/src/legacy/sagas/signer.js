@@ -6,6 +6,7 @@ import {
   getWallet,
   isExternalSigner,
 } from '@melonproject/melon.js';
+
 import { actions as modalActions, types as modalTypes } from '../actions/modal';
 
 /*
@@ -26,12 +27,11 @@ function* confirmer(environment, modalSentence) {
 
   while (true) {
     const { fees, resolve, method } = yield take(confirmChannel);
-
     yield put(
       modalActions.confirm({
         body: modalSentence,
-        method,
         fees,
+        method,
       }),
     );
 
@@ -43,7 +43,7 @@ function* confirmer(environment, modalSentence) {
 
     yield put(modalActions.loading());
 
-    resolve(true);
+    resolve({ gasPrice: action.gasPrice });
   }
 }
 
