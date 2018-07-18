@@ -9,14 +9,19 @@ import getConfig from '../../version/calls/getConfig';
 import type { Environment } from '../../utils/environment/Environment';
 import type { Order, RawOrder } from '../schemas/Order';
 
+const isKnownAssetAddress = (config, address) =>
+  config.assets.find(asset => asset.address === address);
+
 /**
  * Gets the normalised order from the exchange specified by `id`.
  * Only if the order is active, it has the fields `buy` and `sell`
  */
 const getOrder = async (environment: Environment, { id }): Promise<Order> => {
   const config = await getConfig(environment);
-  const matchingMarketAdapterContract = await getMatchingMarketAdapterContract(environment);
-  const matchingMarketContract = await getMatchingMarketContract(environment)
+  const matchingMarketAdapterContract = await getMatchingMarketAdapterContract(
+    environment,
+  );
+  const matchingMarketContract = await getMatchingMarketContract(environment);
   const isActive: boolean = await matchingMarketContract.instance.isActive.call(
     {},
     [id],
@@ -36,12 +41,15 @@ const getOrder = async (environment: Environment, { id }): Promise<Order> => {
     id,
     owner,
     isActive:
-    isActive &&
-    sellWhichToken !== '0x0000000000000000000000000000000000000000' &&
-    buyWhichToken !== '0x0000000000000000000000000000000000000000',
+      isActive &&
+      sellWhichToken !== '0x0000000000000000000000000000000000000000' &&
+      buyWhichToken !== '0x0000000000000000000000000000000000000000' &&
+      isKnownAssetAddress(config, sellWhichToken) &&
+      isKnownAssetAddress(config, buyWhichToken),
   };
-  // inactive orders have token set to 0x0000... so only enhance active orders
-  if (isActive) {
+
+  if (enhancedOrder.isActive) {
+    // inactive orders have token set to 0x0000... so only enhance active orders
     const sellSymbol = getSymbol(config, sellWhichToken);
     const buySymbol = getSymbol(config, buyWhichToken);
     enhancedOrder.sell = {
@@ -54,6 +62,7 @@ const getOrder = async (environment: Environment, { id }): Promise<Order> => {
       howMuch: toReadable(config, buyHowMuch, buySymbol),
     };
   }
+
   return enhancedOrder;
 };
 
