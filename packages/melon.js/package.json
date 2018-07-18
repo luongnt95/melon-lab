@@ -1,6 +1,6 @@
 {
   "name": "@melonproject/melon.js",
-  "version": "0.8.17",
+  "version": "0.8.20",
   "description": "Reusable JS API to query/interact with the Melon protocol",
   "main": "build/index.js",
   "esnext": "lib/index.js",
@@ -21,7 +21,7 @@
     "babel:watch": "babel lib -w -d build",
     "babel": "babel lib -d build",
     "build": "yarn walklib && yarn babel",
-    "depcheck": "depcheck --ignores='@babel/*,depcheck,documentation,flow-bin'",
+    "depcheck": "depcheck --ignores='@babel/*,depcheck,documentation,flow-bin,web3'",
     "deploy:alpha": "yarn build && yarn depcheck && npm version prerelease --git-tag-version false && npm publish --tag alpha",
     "deploy": "yarn build && yarn depcheck && npm version patch && npm publish",
     "docs": "documentation build lib/** -f html -o docs --sort-order alpha",
