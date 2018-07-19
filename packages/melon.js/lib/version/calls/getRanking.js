@@ -13,16 +13,13 @@ import Utils from 'ethers-utils';
 const getRanking = async environment => {
   const config = await getConfig(environment);
   const rankingContract = await getRankingContract(environment);
-  console.log(rankingContract)
   const { versionAddress } = config;
-  console.log(versionAddress)
   const [
     fundAddresses,
     fundSharePrices,
     fundInceptions,
     fundNames,
   ] = await rankingContract.instance.getFundDetails.call({}, [versionAddress]);
-  console.log(fundAddresses, fundSharePrices, fundInceptions, fundNames)
   const fundAddressesFinal = fundAddresses.map(fund => fund._value);
   const fundInceptionsFinal = fundInceptions.map(fund => toDate(fund._value));
   const fundSharePricesFinal = fundSharePrices.map(fund =>
