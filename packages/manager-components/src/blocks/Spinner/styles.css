@@ -1,0 +1,39 @@
+.spinner {
+  position: relative;
+}
+
+.spinner__loader,
+.spinner__loader::after {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.spinner__loader {
+  position: absolute;
+  top: 0;
+  border-top: 2px solid var(--color-black);
+  border-right: 2px solid var(--color-grey);
+  border-bottom: 2px solid var(--color-black);
+  border-left: 2px solid var(--color-grey);
+  transform: translateZ(0);
+  animation: load 2s infinite linear;
+}
+
+@-webkit-keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
