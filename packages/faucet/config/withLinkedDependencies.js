@@ -23,6 +23,18 @@ const addIncludes = (includes) => {
       return rule;
     }
 
+    if (rule.use && rule.use.loader === 'hot-self-accept-loader') {
+      return rule;
+    }
+
+    if (rule.use && Array.isArray(rule.use)) {
+      for (const item of rule.use) {
+        if (item.loader === 'hot-self-accept-loader') {
+          return rule;
+        }
+      }
+    }
+
     if (rule.include && rule.include.length) {
       // Add our custom include rules including linked node modules.
       // We only need to add them if the original definition specified

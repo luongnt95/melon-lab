@@ -8,13 +8,18 @@
         }
       }
     ],
+    "@zeit/next-typescript/babel"
   ],
   "env": {
     "development": {
-      "plugins": ["inline-dotenv"]
+      "plugins": [
+        "inline-dotenv"
+      ]
     },
     "production": {
-      "plugins": ["transform-inline-environment-variables"]
+      "plugins": [
+        "transform-inline-environment-variables"
+      ]
     }
   }
 }

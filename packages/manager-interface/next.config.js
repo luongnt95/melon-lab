@@ -25,13 +25,6 @@ const managerComponents = path.resolve(
 const isElectron = JSON.parse(process.env.ELECTRON || 'false');
 
 module.exports = withComposedConfig({
-  typescriptLoaderOptions: {
-    // We have to specify this explicitly so the ts-loader does
-    // not incorrectly use one of the linked package's tsconfig.json
-    // when only compiling individual file e.g. during
-    // hot-module-replacement.
-    configFile: path.resolve(__dirname, 'tsconfig.json'),
-  },
   linkedDependencies: [
     ['@melonproject/melon.js', 'lib'],
     ['@melonproject/graphql-schema', 'src'],
