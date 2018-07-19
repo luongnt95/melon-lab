@@ -1,5 +1,6 @@
 .participation-form {
-  margin-top: 1.5em;
+  // Fix for semantic ui. Please remove asap
+  margin: 1.5em .5em;
 }
 
 .participation-form__input {
