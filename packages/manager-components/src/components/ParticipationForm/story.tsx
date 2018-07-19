@@ -3,7 +3,8 @@ import React from 'react';
 import ParticipationForm from './container';
 
 const initialProps = {
-  values: {
+  initialValues: {
+    price: 1.0000,
     type: 'Invest',
   },
   decimals: 4,

@@ -4,17 +4,6 @@ import * as Yup from 'yup';
 import { divide, equals, multiply } from '../../utils/functionalBigNumber';
 import ParticipationForm from './index';
 
-const calculateParticipationPrice = (sharePrice, type) => {
-  if (!equals(sharePrice, 1)) {
-    if (type === 'Invest') {
-      return multiply(sharePrice, 1.05);
-    }
-    return multiply(sharePrice, 0.95);
-  }
-
-  return sharePrice;
-};
-
 const calculateInputs = (props, field, value) => {
   const { values } = props;
 
@@ -22,16 +11,7 @@ const calculateInputs = (props, field, value) => {
   const quantityValue = field === 'quantity' ? value : values.quantity;
   const priceValue = field === 'price' ? value : values.price;
 
-  if (field === 'type') {
-    const participationPrice = calculateParticipationPrice(
-      values.price,
-      values.type,
-    );
-
-    if (!equals(values.price, participationPrice)) {
-      props.setFieldValue('price', participationPrice);
-    }
-  } else if (field === 'quantity' || field === 'price') {
+   if (field === 'quantity' || field === 'price') {
     const total = multiply(quantityValue, priceValue);
 
     if (values.total !== total) {

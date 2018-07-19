@@ -8,49 +8,56 @@ import { multiply, divide, equals } from '../utils/functionalBigNumber';
 import displayNumber from '../utils/displayNumber';
 
 const calculateParticipationPrice = (sharePrice, type) => {
+  // console.log(sharePrice, type);
   if (!equals(sharePrice, 1)) {
-    if (type === "Invest") {
+    if (type === 'Invest') {
       return multiply(sharePrice, 1.05);
     }
-    return multiply(sharePrice, 0.95);
+    return divide(sharePrice, 1.05);
   }
 
   return sharePrice;
 };
 
-const mapStateToProps = state => ({
-  onboardingState: state.app.onboardingState,
-  usersFund: state.app.usersFund,
-  fundAddress: state.fund.address,
-  dataValid: state.ethereum.isDataValid,
-  initialValues: {
-    type:
-      state.form.participation && state.form.participation.values
-        ? state.form.participation.values.type
-        : 'Invest',
-    quantity: displayNumber(1.0000),
-    price:
-      state.fund.sharePrice === '...'
-        ? '...'
-        : displayNumber(calculateParticipationPrice(state.fund.sharePrice, 'Invest')),
-    total:
-      state.fund.sharePrice === '...'
-        ? '...'
-        : displayNumber(calculateParticipationPrice(state.fund.sharePrice, 'Invest')),
-  },
-  displayNumber,
-  quoteAsset: state.app.assetPair.quote,
-  setup: true,
-  decimals: 4,
-});
+const mapStateToProps = state => {
+  const initialType =
+    state.form.participation && state.form.participation.values
+      ? state.form.participation.values.type
+      : 'Invest';
+
+  const ParticipationPrice = displayNumber(
+    calculateParticipationPrice(state.fund.sharePrice, initialType),
+  )
+
+  return {
+    onboardingState: state.app.onboardingState,
+    usersFund: state.app.usersFund,
+    fundAddress: state.fund.address,
+    dataValid: state.ethereum.isDataValid,
+    initialValues: {
+      type: initialType,
+      quantity: displayNumber(1.0),
+      price:
+        state.fund.sharePrice === '...'
+          ? '...'
+          : ParticipationPrice,
+      total:
+        state.fund.sharePrice === '...'
+          ? '...'
+          : ParticipationPrice,
+    },
+    displayNumber,
+    quoteAsset: state.app.assetPair.quote,
+    setup: true,
+    decimals: 4,
+  };
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   requestFund: fundAddress => dispatch(fundActions.infoRequested(fundAddress)),
   onSubmit: values => {
     if (values.type === 'Invest') {
       dispatch(actions.invest({ ...values, directlyExecute: ownProps.setup }));
-    } else if (values.type === 'Redeem') {
-      dispatch(actions.redeem(values));
     } else if (values.type === 'Slices') {
       dispatch(actions.redeemAllOwnedAssets(values));
     }

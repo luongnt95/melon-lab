@@ -59,15 +59,6 @@ const ParticipationForm: StatelessComponent<ParticipationFormProps> = ({
             <div className="participation-form__toggle">
               <Toggle
                 name="type"
-                value="Redeem"
-                text={`Redeem ${quoteAsset}`}
-                isChecked={values.type === 'Redeem'}
-                onChange={onChange}
-              />
-            </div>
-            <div className="participation-form__toggle">
-              <Toggle
-                name="type"
                 value="Slices"
                 text="Slices"
                 isChecked={values.type === 'Slices'}
