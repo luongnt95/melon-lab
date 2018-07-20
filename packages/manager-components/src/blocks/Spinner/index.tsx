@@ -8,11 +8,9 @@ const Spinner: StatelessComponent = () => {
     <div className="spinner">
       <style jsx>{styles}</style>
       <Icon width="100px" height="100px" name="logos_without-border" />
-      <div className="spinner__loader">
-      </div>
-
+      <div className="spinner__loader" />
     </div>
-  )
+  );
 };
 
 export default Spinner;
