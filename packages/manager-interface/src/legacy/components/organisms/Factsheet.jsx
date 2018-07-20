@@ -19,8 +19,9 @@ const Factsheet = ({
   loading,
   dataValid,
   expectedPrize,
-  isCompeting,
   quoteAsset,
+  shutdown,
+  isCompetition
 }) => (
     <Card id="factsheet" centered>
       <Card.Content>
@@ -66,16 +67,6 @@ const Factsheet = ({
                   <MaybeLoading>{numberOfFunds}</MaybeLoading> Melon Funds
             </List.Content>
               </List.Item>
-              {isCompeting ? (
-                <List.Item>
-                  <List.Content as="a" href="#/ranking">
-                    Expected Prize:
-                <MaybeLoading> {expectedPrize}</MaybeLoading> MLN
-              </List.Content>
-                </List.Item>
-              ) : (
-                  ''
-                )}
 
               <List.Item>
                 <List.Content>
@@ -106,6 +97,11 @@ const Factsheet = ({
                   Contact Investors/Managers
             </List.Content>
               </List.Item>
+              {!isCompetition ? <div><Divider />
+                <List.Item as="a" onClick={shutdown}>
+                  <List.Content>Irreversibly shut down fund</List.Content>
+                </List.Item> </div> : <div />}
+
             </List>
           )}
       </Card.Content>

@@ -5,15 +5,16 @@ import Factsheet from "../components/organisms/Factsheet";
 import displayNumber from "../utils/displayNumber";
 
 import { actions as appActions } from "../actions/app";
+import { actions as administrationActions } from "../actions/administration";
 
 const buildTwitterUrl = (isOwner, fundAddress, fundName, sharePrice) => {
   const text = isOwner
     ? `My #MelonFund "${fundName}" has a share price currently of ${displayNumber(
-        sharePrice,
-      )}. Have a look:`
+      sharePrice,
+    )}. Have a look:`
     : `The #MelonFund "${fundName}" has a share price currently of ${displayNumber(
-        sharePrice,
-      )}. Have a look:`;
+      sharePrice,
+    )}. Have a look:`;
 
   const url = `https://ipfs.io/ipns/melon.fund/#${fundAddress}`;
   const hashtags = "TechnologyRegulatedFunds,Melon";
@@ -30,9 +31,9 @@ const buildTwitterUrl = (isOwner, fundAddress, fundName, sharePrice) => {
 const mapStateToProps = state => ({
   aum: displayNumber(state.fund.gav),
   creationDate:
-    state.fund.inception && state.fund.inception !== "..."
-      ? moment(state.fund.inception).format("D. MMM YYYY HH:mm")
-      : "...",
+  state.fund.inception && state.fund.inception !== "..."
+    ? moment(state.fund.inception).format("D. MMM YYYY HH:mm")
+    : "...",
   managementReward: displayNumber(state.fund.managementReward),
   name: state.fund.name,
   performanceReward: displayNumber(state.fund.performanceReward),
@@ -50,12 +51,14 @@ const mapStateToProps = state => ({
   ),
   loading: state.fund.loading,
   expectedPrize: displayNumber(state.fund.expectedPrize),
-  isCompeting: state.fund.isCompeting,
   quoteAsset: state.app.assetPair.quote,
+  isCompetition: state.app.isCompetition,
+
 });
 
 const mapDispatchToProps = dispatch => ({
   scrollTo: target => dispatch(appActions.scrollTo(target)),
+  shutdown: () => dispatch(administrationActions.shutdown()),
 });
 
 const FactsheetContainer = connect(mapStateToProps, mapDispatchToProps)(

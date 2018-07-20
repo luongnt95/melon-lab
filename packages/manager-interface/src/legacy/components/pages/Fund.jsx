@@ -30,47 +30,46 @@ const Fund = ({
   hasContributed,
   isCompetitionActive,
 }) => (
-  <div className="App">
-    {!hasContributed && isCompetition && isCompetitionActive && isManager ? (
-      <ParosContributionContainer />
-    ) : (
-      <div>
-        <Layout>
-          <Card.Group>
-            <Factsheet />
-            {isCompetition &&
-              hasContributed &&
-              isManager && <ClaimRewardParos />}
-            {!isCompetition && isManager && <Administration />}
-            {!isCompetition && !isManager && <GetStarted />}
-            {!isCompetition &&
-              canInvest &&
-              !pendingRequest && <Participation />}
-            {!isCompetition &&
-              canInvest &&
-              pendingRequest && <ExecuteRequest />}
-            {!isCompetition && !canInvest && <Card />}
-          </Card.Group>
-          <br />
-          <Holdings address={fundAddress} />
-          <br />
-          {isManager && (
+    <div className="App">
+      {!hasContributed && isCompetition && isCompetitionActive && isManager ? (
+        <ParosContributionContainer />
+      ) : (
+          <div>
             <Layout>
-              <h3>Trade</h3>
-              <OrderForm {...orderForm} onSubmit={onSubmit} />
+              <Card.Group centered>
+                <Factsheet />
+                {isCompetition &&
+                  hasContributed &&
+                  isManager && <ClaimRewardParos />}
+                {!isCompetition && !isManager && <GetStarted />}
+                {!isCompetition &&
+                  canInvest &&
+                  !pendingRequest && <Participation />}
+                {!isCompetition &&
+                  canInvest &&
+                  pendingRequest && <ExecuteRequest />}
+                {!isCompetition && !canInvest && <Card />}
+              </Card.Group>
+              <br />
+              <Holdings address={fundAddress} />
+              <br />
+              {isManager && (
+                <Layout>
+                  <h3>Trade</h3>
+                  <OrderForm {...orderForm} onSubmit={onSubmit} />
+                </Layout>
+              )}
+              <br />
+              <Orderbook />
+              <br />
+              <OpenOrders address={fundAddress} />
+              <br />
+              <RecentTrades />
+              <br />
             </Layout>
-          )}
-          <br />
-          <Orderbook />
-          <br />
-          <OpenOrders address={fundAddress} />
-          <br />
-          <RecentTrades />
-          <br />
-        </Layout>
-      </div>
-    )}
-  </div>
-);
+          </div>
+        )}
+    </div>
+  );
 
 export default Fund;
