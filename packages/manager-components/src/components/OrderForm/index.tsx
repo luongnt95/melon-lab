@@ -3,9 +3,10 @@ import Button from '~/blocks/Button';
 import Dropdown from '~/blocks/Dropdown';
 import Form from '~/blocks/Form';
 import Input from '~/blocks/Input';
-import OrderInfo from '~/components/OrderInfo';
 import Switch from '~/blocks/Switch';
 import Toggle from '~/blocks/Toggle';
+import OrderInfo from '~/components/OrderInfo';
+
 
 import styles from './styles.css';
 
