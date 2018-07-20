@@ -16,9 +16,7 @@
 
 .button:disabled {
   cursor: not-allowed;
-  color: var(--color-grey);
-  background-color: var(--color-secondary);
-  border: none;
+  opacity: 0.4;
 }
 
 .button--small {
