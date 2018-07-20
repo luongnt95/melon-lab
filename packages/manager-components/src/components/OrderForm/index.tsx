@@ -60,7 +60,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
     <div className="order-form">
       <style jsx>{styles}</style>
       <Form>
-        {!dataValid ? <p>Trading not possible when price feed down</p> : null}
+        {!dataValid && <p>Trading not possible when price feed down</p>}
         <div className="order-form__toggles">
           <div className="order-form__toggle">
             <Toggle

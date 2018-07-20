@@ -1,0 +1,19 @@
+.participation-form {
+  // Fix for semantic ui. Please remove asap
+  margin: 1.5em .5em;
+}
+
+.participation-form__input {
+  margin: 0 0 var(--space-m) 0;
+}
+
+.participation-form__toggles {
+  width: 100%;
+  display: flex;
+  padding: var(--space-m) 0;
+}
+
+.participation-form__toggle {
+  flex: 1 1 auto;
+  overflow: hidden;
+}

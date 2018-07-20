@@ -10,6 +10,9 @@
   border-bottom: 2px solid var(--color-secondary);
   color: var(--color-grey);
   cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .toggle__input {
