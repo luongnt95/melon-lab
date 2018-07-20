@@ -23,9 +23,8 @@ const Factsheet = ({
   shutdown,
   isCompetition
 }) => (
-    <Card id="factsheet" centered>
-      <Card.Content>
-        <Card.Header>
+    <div id="factsheet">
+        <h3>
           <MaybeLoading>{name}</MaybeLoading>
 
           <a
@@ -36,7 +35,7 @@ const Factsheet = ({
           >
             <img src="./static/twitter.png" alt="Tweet" height="15" />
           </a>
-        </Card.Header>
+        </h3>
         {loading ? (
           <Image src="./static/melon-spinner.gif" size="tiny" centered />
         ) : (
@@ -104,8 +103,7 @@ const Factsheet = ({
 
             </List>
           )}
-      </Card.Content>
-    </Card>
+    </div>
   );
 
 export default Factsheet;

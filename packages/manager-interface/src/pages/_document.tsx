@@ -36,28 +36,6 @@ export default class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-
-          <div
-            style={{
-              textAlign: 'center',
-              marginTop: '2em',
-              marginBottom: '2em',
-            }}
-          >
-            Hosted with ❤ on IPFS |
-            <a
-              href="https://github.com/melonproject/melon-labs/issues"
-              target="_blank"
-            >
-              {' '}
-              Report an issue
-            </a>{' '}
-            |
-            <a href="https://www.melonport.com" target="_blank">
-              {' '}
-              Melonport
-            </a>
-          </div>
         </body>
       </html>
     );

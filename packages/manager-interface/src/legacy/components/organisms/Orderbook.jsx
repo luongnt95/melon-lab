@@ -86,8 +86,8 @@ const Orderbook = ({
   isReadyToTrade,
   loading,
 }) => (
-  <div id="orderbook">
-    <h3 className="App-intro">
+  <div style={{overflow: 'hidden'}}>
+    <h3>
       Orderbook for {baseToken}/{quoteToken}
     </h3>
     {loading ? (
@@ -98,7 +98,6 @@ const Orderbook = ({
       <React.Fragment>
         <Grid
           padded={false}
-          container
           columns={2}
           style={{ marginTop: 30, marginBottom: 30 }}
         >
