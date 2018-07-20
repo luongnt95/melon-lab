@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Spinner should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash spinner"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <Icon
+    height="100px"
+    name="logos_without-border"
+    width="100px"
+  />
+  <div
+    className="jsx-__scopedHash spinner__loader"
+  />
+</div>
+`;
