@@ -1,7 +1,7 @@
+import classNames from 'classnames';
 import React, { StatelessComponent } from 'react';
 import Icon from '~/blocks/Icon';
 import styles from './styles.css';
-import classNames from 'classnames';
 
 export interface HeaderProps {
   status?: {
@@ -42,17 +42,23 @@ export const Header: StatelessComponent<HeaderProps> = ({
   network,
   home,
 }) => {
-  const walletLink = account && account.type ? (
-    React.createElement(account.type, { to: account.action }, account.address)
-  ) : (
-    account.address
-  );
+  const walletLink =
+    account && account.type
+      ? React.createElement(
+          account.type,
+          { to: account.action },
+          account.address,
+        )
+      : account.address;
 
-  const homeLink = home && home.type ? (
-    React.createElement(home.type, { to: home.action, className: 'header__logo-link' }, Logos)
-  ) : (
-    Logos
-  );
+  const homeLink =
+    home && home.type
+      ? React.createElement(
+          home.type,
+          { to: home.action, className: 'header__logo-link' },
+          Logos,
+        )
+      : Logos;
 
   const statusClassName = classNames('header__account-status', {
     'header__account-status--warning': status && status.type === 'WARNING',
