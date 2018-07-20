@@ -48,7 +48,6 @@ const mapStateToProps = state => {
     },
     displayNumber,
     quoteAsset: state.app.assetPair.quote,
-    setup: true,
     decimals: 4,
   };
 };

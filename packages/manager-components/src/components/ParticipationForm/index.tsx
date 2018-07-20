@@ -45,7 +45,7 @@ const ParticipationForm: StatelessComponent<ParticipationFormProps> = ({
       <style jsx>{styles}</style>
       <h3>Participation</h3>
       <Form>
-        {setup && (
+        {!setup && (
           <div className="participation-form__toggles">
             <div className="participation-form__toggle">
               <Toggle
