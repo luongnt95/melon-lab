@@ -21,8 +21,12 @@ const Fund = ({
       </div>
       <div className="trade__holdings">{holdings}</div>
       <div className="trade__order">
-        <div className="trade__order-book" id="orderbook">{orderbook}</div>
-        <div className="trade__order-form" id="trade">{orderForm}</div>
+        <div className="trade__order-book" id="orderbook">
+          {orderbook}
+        </div>
+        <div className="trade__order-form" id="trade">
+          {orderForm}
+        </div>
       </div>
       <div className="trade__open-orders">{openOrders}</div>
       <div className="trade__recent-trades">{recentTrades}</div>

@@ -8,7 +8,7 @@ const ExecuteRequest = ({
   targetDate,
   requestId,
 }) => (
-  <div style={{padding: '1.2em', backgroundColor: 'rgba(249,209,118,1)'}}>
+  <div style={{ padding: '1.2em', backgroundColor: 'rgba(249,209,118,1)' }}>
     <h3>Waiting time required</h3>
     <p style={{ marginTop: '1em' }}>
       <a
