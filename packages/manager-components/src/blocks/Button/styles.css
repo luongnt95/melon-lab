@@ -1,9 +1,10 @@
 .button {
-  border: 1px solid var(--color-black);
+  border: none;
   padding: var(--space-s) var(--space-xl);
   font-size: var(--font-size-m);
+  font-family: var(--font-family-primary);
   color: var(--color-black);
-  background-color: transparent;
+  background-color: rgb(239,230,202);
   cursor: pointer;
   text-transform: uppercase;
   line-height: 1;
@@ -13,12 +14,12 @@
 
 .button:hover:enabled {
   color: var(--color-white);
-  background-color: var(--color-black);
+  background-color: var(--color-secondary-dark);
 }
 
 .button:disabled {
   cursor: not-allowed;
   color: var(--color-grey);
   background-color: var(--color-secondary);
-  border: 1px solid var(--color-secondary);
+  border: none;
 }

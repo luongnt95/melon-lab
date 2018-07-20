@@ -38,7 +38,7 @@
   position: absolute;
   top: var(--space-s);
   margin-bottom: 0;
-  color: var(--color-primary-darkest);
+  color: var(--color-primary-dark);
 }
 
 .input__field[type='number']::-webkit-outer-spin-button,
