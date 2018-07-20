@@ -2,16 +2,15 @@
 
 exports[`Spinner should render correctly 1`] = `
 <div
-  className="jsx-__scopedHash spinner"
+  className="jsx-__scopedHash spinner spinner--default"
 >
   <JSXStyle
     css="__scoped"
     styleId="__scopedHash"
   />
   <Icon
-    height="100px"
+    iconClass="spinner__icon"
     name="logos_without-border"
-    width="100px"
   />
   <div
     className="jsx-__scopedHash spinner__loader"

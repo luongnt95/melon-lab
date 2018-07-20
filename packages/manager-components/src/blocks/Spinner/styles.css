@@ -5,17 +5,16 @@
 .spinner__loader,
 .spinner__loader::after {
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
 }
 
 .spinner__loader {
   position: absolute;
   top: 0;
-  border-top: 2px solid var(--color-black);
-  border-right: 2px solid var(--color-grey);
-  border-bottom: 2px solid var(--color-black);
-  border-left: 2px solid var(--color-grey);
+  border-style: solid;
+  border-top-color: var(--color-black);
+  border-right-color: var(--color-grey);
+  border-bottom-color: var(--color-black);
+  border-left-color: var(--color-grey);
   transform: translateZ(0);
   animation: load 2s infinite linear;
 }
@@ -36,4 +35,24 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.spinner--default .spinner__loader,
+.spinner--default :global(.spinner__icon) {
+  width: 100px;
+  height: 100px;
+}
+
+.spinner--default .spinner__loader {
+  border-width: 2px;
+}
+
+.spinner--small .spinner__loader,
+.spinner--small :global(.spinner__icon) {
+  width: 50px;
+  height: 50px;
+}
+
+.spinner--small .spinner__loader {
+  border-width: 1px;
 }
