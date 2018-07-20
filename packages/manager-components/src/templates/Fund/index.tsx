@@ -25,7 +25,6 @@ const Fund = ({
           {orderbook}
         </div>
         <div className="trade__order-form" id="trade">
-          <h3>Trade</h3>
           {orderForm}
         </div>
       </div>
