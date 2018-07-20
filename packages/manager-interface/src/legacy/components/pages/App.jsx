@@ -23,6 +23,7 @@ import { types } from '../../actions/routes';
 import ConnectionInfo from '../organisms/ConnectionInfo';
 import { greaterThan } from '../../utils/functionalBigNumber';
 import Header from '@melonproject/manager-components/components/Header';
+import Footer from '@melonproject/manager-components/components/Footer';
 import '~/static/images/logos.svg';
 
 const shortenAddress = address =>
@@ -158,6 +159,16 @@ const App = props => {
       >
         {getMainComponent(props)}
       </Container>
+      <div
+        style={{
+          position: 'fixed',
+          width: '100%',
+          bottom: 0,
+          zIndex: 1,
+        }}
+      >
+        <Footer />
+      </div>
       <Modal />
     </div>
   );
