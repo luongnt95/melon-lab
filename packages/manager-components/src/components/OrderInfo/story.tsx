@@ -18,6 +18,6 @@ const data = {
   },
 };
 
-storiesOf('Blocks|OrderInfo', module).add('Default', () => {
+storiesOf('Components|Order Info', module).add('Default', () => {
   return <OrderInfo {...data} />;
 });
