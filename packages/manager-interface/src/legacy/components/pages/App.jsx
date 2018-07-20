@@ -153,7 +153,7 @@ const App = props => {
 
       <Container
         style={{
-          marginTop: '4em',
+          paddingTop: '47px',
         }}
       >
         {getMainComponent(props)}

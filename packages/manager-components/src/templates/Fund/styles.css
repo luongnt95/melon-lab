@@ -1,0 +1,45 @@
+.trade__info {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: var(--space-m) calc(var(--space-l) * -1);
+}
+
+.trade__info-item {
+  flex: 1;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  padding: var(--space-l);
+}
+
+.trade__order {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin: var(--space-m) calc(var(--space-l) * -1);
+
+  @media (--viewport-l) {
+    flex-wrap: nowrap;
+  }
+}
+
+.trade__order-book {
+  flex: 1 0 66.66%;
+  overflow: hidden;
+  padding: var(--space-l);
+}
+
+.trade__order-form {
+  flex: 1 0 33.33%;
+  min-width: 300px;
+  padding: var(--space-l);
+}
+
+.trade__open-orders {
+  margin-top: var(--space-xl);
+}
+
+.trade__recent-trades {
+  margin-top: var(--space-xl);
+}
