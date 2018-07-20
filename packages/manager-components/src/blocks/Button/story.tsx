@@ -11,8 +11,17 @@ storiesOf('Blocks|Button', module)
     return <Button disabled={true}>Disabled button</Button>;
   })
   .add('Small', () => {
-    return <Button size='small'>Small button</Button>;
+    return <Button size="small">Small button</Button>;
   })
   .add('Large', () => {
-    return <Button size='large'>Large button</Button>;
+    return <Button size="large">Large button</Button>;
+  })
+  .add('Warning', () => {
+    return <Button style="warning">Warning button</Button>;
+  })
+  .add('Danger', () => {
+    return <Button style="danger">Danger button</Button>;
+  })
+  .add('Success', () => {
+    return <Button style="success">Success button</Button>;
   });

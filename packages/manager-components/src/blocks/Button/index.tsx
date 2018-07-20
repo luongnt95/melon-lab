@@ -7,6 +7,7 @@ export interface ButtonProps {
   type?: string;
   onClick?: ChangeEventHandler<Element>;
   size?: string;
+  style?: string;
 }
 
 const Button: StatelessComponent<ButtonProps> = ({
@@ -15,9 +16,11 @@ const Button: StatelessComponent<ButtonProps> = ({
   onClick,
   type = 'button',
   size = 'default',
+  style = 'default',
 }) => {
   const sizeClass = `button--${size}`;
-  const classes = `button ${sizeClass}`;
+  const styleClass = `button--${style}`;
+  const classes = `button ${sizeClass} ${styleClass}`;
 
   return (
     <button

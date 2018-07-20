@@ -35,3 +35,36 @@
   font-size: var(--font-size-l);
   padding: var(--space-m) var(--space-xl);
 }
+
+.button--warning {
+  background-color: transparent;
+  border: 1px solid var(--color-warning);
+  color: var(--color-warning);
+}
+
+.button--warning:hover:enabled {
+  background-color: var(--color-warning);
+  color: var(--color-white);;
+}
+
+.button--danger {
+  background-color: transparent;
+  border: 1px solid var(--color-loss);
+  color: var(--color-loss);
+}
+
+.button--danger:hover:enabled {
+  background-color: var(--color-loss);
+  color: var(--color-white);;
+}
+
+.button--success {
+  background-color: transparent;
+  border: 1px solid var(--color-profit);
+  color: var(--color-profit);
+}
+
+.button--success:hover:enabled {
+  background-color: var(--color-profit);
+  color: var(--color-white);;
+}
