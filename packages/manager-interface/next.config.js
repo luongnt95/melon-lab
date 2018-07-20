@@ -117,6 +117,11 @@ module.exports = withComposedConfig({
           maxChunks: 1,
         }),
       );
+      config.plugins.push(
+        new webpack.DefinePlugin({ ELECTRON: true }));
+    } else {
+      config.plugins.push(
+        new webpack.DefinePlugin({ ELECTRON: false }));
     }
 
     return config;

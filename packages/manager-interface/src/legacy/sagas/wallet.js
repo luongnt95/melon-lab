@@ -24,7 +24,7 @@ import {
 import { types as browserTypes } from '../actions/browser';
 
 function* loadWallet() {
-  const isElectron = global.isElectron;
+  const isElectron = ELECTRON;
 
   try {
     if (isElectron || process.env.NODE_ENV === 'development') {

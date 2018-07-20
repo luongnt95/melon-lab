@@ -37,7 +37,7 @@ const getStatus = ({
       message: 'Price feed down',
       type: statusTypes.ERROR,
       link: `https://${
-        network === networks.KOVAN ? 'kovan.' : ''
+      network === networks.KOVAN ? 'kovan.' : ''
       }etherscan.io/address/${canonicalPriceFeedAddress}`,
     };
   if (!isReadyToInteract)
@@ -75,7 +75,8 @@ const mapStateToProps = state => {
     network: state.ethereum.network,
     networkName: getNetworkName(state.ethereum.network),
     showFaucet: state.app.track === tracks.KOVAN_DEMO,
-    track: state.app.track
+    track: state.app.track,
+    isElectron: state.app.isElectron
   };
 };
 
