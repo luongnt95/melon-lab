@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash footer"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <span
+    className="jsx-__scopedHash footer__item"
+  >
+    Hosted with ❤ on IPFS
+  </span>
+  <span
+    className="jsx-__scopedHash footer__item"
+  >
+    <a
+      className="jsx-__scopedHash footer__item-link"
+      href="https://github.com/melonproject/melon-labs/issues"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Report an issue
+    </a>
+  </span>
+  <span
+    className="jsx-__scopedHash footer__item"
+  >
+    <a
+      className="jsx-__scopedHash footer__item-link"
+      href="https://www.melonport.com"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Melonport
+    </a>
+  </span>
+</div>
+`;
