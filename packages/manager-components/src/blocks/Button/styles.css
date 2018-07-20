@@ -1,10 +1,8 @@
 .button {
   border: none;
-  padding: var(--space-s) var(--space-xl);
-  font-size: var(--font-size-m);
   font-family: var(--font-family-primary);
   color: var(--color-black);
-  background-color: rgb(239,230,202);
+  background-color: rgb(239, 230, 202);
   cursor: pointer;
   text-transform: uppercase;
   line-height: 1;
@@ -22,4 +20,19 @@
   color: var(--color-grey);
   background-color: var(--color-secondary);
   border: none;
+}
+
+.button--small {
+  font-size: var(--font-size-s);
+  padding: var(--space-xs) var(--space-xl);
+}
+
+.button--default {
+  font-size: var(--font-size-m);
+  padding: var(--space-s) var(--space-xl);
+}
+
+.button--large {
+  font-size: var(--font-size-l);
+  padding: var(--space-m) var(--space-xl);
 }

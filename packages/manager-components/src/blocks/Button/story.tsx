@@ -9,4 +9,10 @@ storiesOf('Blocks|Button', module)
   })
   .add('Disabled', () => {
     return <Button disabled={true}>Disabled button</Button>;
+  })
+  .add('Small', () => {
+    return <Button size='small'>Small button</Button>;
+  })
+  .add('Large', () => {
+    return <Button size='large'>Large button</Button>;
   });
