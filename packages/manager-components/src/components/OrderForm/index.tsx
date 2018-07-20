@@ -7,7 +7,6 @@ import Switch from '~/blocks/Switch';
 import Toggle from '~/blocks/Toggle';
 import OrderInfo from '~/components/OrderInfo';
 
-
 import styles from './styles.css';
 
 interface FormValues {
@@ -60,7 +59,6 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
   return (
     <div className="order-form">
       <style jsx>{styles}</style>
-      <h3>Trade</h3>
       <Form>
         {!dataValid && <p>Trading not possible when price feed down</p>}
         <div className="order-form__toggles">
