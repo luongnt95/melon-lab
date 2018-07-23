@@ -3,11 +3,20 @@ import Icon from '~/blocks/Icon';
 
 import styles from './styles.css';
 
-const Spinner: StatelessComponent = () => {
+export interface SpinnerProps {
+  size?: string;
+}
+
+const Spinner: StatelessComponent<SpinnerProps> = ({
+  size = 'default',
+}) => {
+  const sizeClass = `spinner--${size}`;
+  const classes = `spinner ${sizeClass}`;
+
   return (
-    <div className="spinner">
+    <div className={classes}>
       <style jsx>{styles}</style>
-      <Icon width="100px" height="100px" name="logos_without-border" />
+      <Icon iconClass="spinner__icon" name="logos_without-border" />
       <div className="spinner__loader" />
     </div>
   );
