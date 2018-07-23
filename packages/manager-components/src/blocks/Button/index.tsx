@@ -6,6 +6,8 @@ export interface ButtonProps {
   disabled?: boolean;
   type?: string;
   onClick?: ChangeEventHandler<Element>;
+  size?: string;
+  style?: string;
 }
 
 const Button: StatelessComponent<ButtonProps> = ({
@@ -13,13 +15,24 @@ const Button: StatelessComponent<ButtonProps> = ({
   disabled,
   onClick,
   type = 'button',
+  size = 'default',
+  style = 'default',
 }) => {
+  const sizeClass = `button--${size}`;
+  const styleClass = `button--${style}`;
+  const classes = `button ${sizeClass} ${styleClass}`;
+
   return (
-    <button type={type} onClick={onClick} className="button" disabled={disabled}>
+    <button
+      type={type}
+      onClick={onClick}
+      className={classes}
+      disabled={disabled}
+    >
       <style jsx>{styles}</style>
       {children}
     </button>
-  )
+  );
 };
 
 export default Button;

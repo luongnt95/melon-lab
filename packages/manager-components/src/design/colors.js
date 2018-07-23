@@ -12,6 +12,7 @@ module.exports = {
     'color-loss': 'rgb(206, 88, 102)',
     'color-secondary-profit': 'rgb(243, 249, 241)',
     'color-secondary-loss': 'rgb(252, 240, 242)',
+    'color-warning': 'rgb(249,209,118)',
   },
 
   otherColors: {
