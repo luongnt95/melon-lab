@@ -110,6 +110,8 @@ module.exports = withComposedConfig({
       },
     );
 
+    config.plugins.push(new webpack.DefinePlugin({ ELECTRON: !!isElectron }));
+
     if (isElectron) {
       // Code splitting doesn't make much sense in an electron app.
       config.plugins.push(
@@ -117,11 +119,6 @@ module.exports = withComposedConfig({
           maxChunks: 1,
         }),
       );
-      config.plugins.push(
-        new webpack.DefinePlugin({ ELECTRON: true }));
-    } else {
-      config.plugins.push(
-        new webpack.DefinePlugin({ ELECTRON: false }));
     }
 
     return config;

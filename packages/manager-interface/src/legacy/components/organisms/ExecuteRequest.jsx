@@ -14,8 +14,7 @@ const ExecuteRequest = ({
       <a
         href="https://medium.com/melonport-blog/protecting-participants-ee55a752287"
         target="_blank"
-        noopener
-        noreferrer
+        rel="noopener noreferrer"
       >
         To prevent information advantage of any economic agent over another, we
         enforce a waiting period before any subscription or redemption can be
