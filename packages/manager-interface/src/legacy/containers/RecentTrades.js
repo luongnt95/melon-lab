@@ -2,7 +2,8 @@ import moment from "moment";
 import { connect } from "react-redux";
 import { lifecycle } from "recompose";
 import { actions } from "../actions/recentTrades";
-import RecentTrades from "../components/organisms/RecentTrades";
+// import RecentTrades from "../components/organisms/RecentTrades";
+import RecentTrades from '@melonproject/manager-components/components/RecentTrades';
 import displayNumber from "../utils/displayNumber";
 
 const mapStateToProps = state => ({

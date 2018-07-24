@@ -1,0 +1,40 @@
+.recent-trades__table {
+  font-size: var(--font-size-s);
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+
+.recent-trades__row {
+  border-bottom: 1px dashed var(--color-border);
+}
+
+.recent-trades__row-body:hover {
+  background-color: var(--color-secondary)
+}
+
+.recent-trades__cell {
+  text-align: left;
+  padding: var(--space-xs) var(--space-xxs) var(--space-xxs) var(--space-xxs);
+  line-height: 1;
+}
+
+.recent-trades__cell--red {
+  color: var(--color-loss);
+}
+
+.recent-trades__cell--green {
+  color: var(--color-profit);
+}
+
+.recent-trades__cell:first-child {
+  padding-left: 0;
+}
+
+.recent-trades__cell:last-child {
+  padding-right: 0;
+}
+
+.recent-trades__cell:nth-child(n + 3) {
+  text-align: right;
+}

@@ -1,0 +1,1662 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RecentTrades should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash recent-trades"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Recent trades for 
+    MLN-T
+    /
+    WETH-T
+  </h3>
+  <table
+    className="jsx-__scopedHash recent-trades__table"
+  >
+    <thead
+      className="jsx-__scopedHash"
+    >
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-head"
+      >
+        <th
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          Time
+        </th>
+        <th
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          Type
+        </th>
+        <th
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          Price (
+          MLN-T
+          /
+          WETH-T
+          )
+        </th>
+        <th
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          Amount (
+          MLN-T
+          )
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      className="jsx-__scopedHash"
+    >
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="0"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 14:59
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0522
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          191.4630
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="1"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 14:59
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0521
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          192.0272
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="2"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 16:22
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0517
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          193.4366
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="3"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 19:47
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0515
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          194.2841
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="4"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 19:47
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0512
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.1502
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="5"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 19:47
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0512
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.2951
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="6"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 19:48
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0512
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.3698
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="7"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 19:48
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0512
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.4102
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="8"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 21:51
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0512
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.4146
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="9"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 21:51
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0512
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.4281
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="10"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 21:51
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0512
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.4735
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="11"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 21:51
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0511
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.5459
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="12"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 21:52
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0511
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.5852
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="13"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 21:52
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0511
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.5956
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="14"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 21:52
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0511
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.6337
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="15"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 21:52
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0511
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.6615
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="16"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 22:46
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0511
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.6889
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="17"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 22:47
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0511
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.7426
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="18"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 22:47
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0511
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.7552
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="19"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 22:47
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0511
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.7622
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="20"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 22:47
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0511
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.8318
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="21"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 22:48
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0511
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.8684
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="22"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 22:48
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0511
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.8775
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="23"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          23. Jul 2018 22:48
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0510
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.8963
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="24"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 00:18
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0510
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.9459
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="25"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 00:18
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0510
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.9568
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="26"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 00:19
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0510
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.9628
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="27"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 00:19
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0510
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.9792
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="28"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 00:19
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0510
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          195.9960
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="29"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 00:19
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0510
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.0429
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="30"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 00:20
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0510
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.0529
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="31"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 00:20
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0510
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.1009
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="32"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 03:25
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0510
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.1103
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="33"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 03:25
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0510
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.1177
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="34"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 03:25
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0510
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.1329
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="35"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 03:25
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0510
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.1439
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="36"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 03:26
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0510
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.1477
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="37"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 03:26
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0510
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.1824
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="38"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 03:26
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0510
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.1826
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="39"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 03:26
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0509
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.3219
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="40"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 04:54
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0509
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.3461
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="41"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 04:55
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0509
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.3796
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="42"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 04:55
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0509
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.3968
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="43"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 04:55
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0509
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.4054
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="44"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 04:55
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0509
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.4496
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="45"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 04:56
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0509
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.4975
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="46"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 04:56
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0509
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.5006
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="47"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 04:56
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0509
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.5245
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="48"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 06:00
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0509
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.5297
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="49"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 06:01
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0509
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.6486
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="50"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 06:01
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0508
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.6733
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="51"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 06:01
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0508
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.7271
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="52"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 06:01
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0508
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.7375
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="53"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 06:02
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0508
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.8085
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="54"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 06:02
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0508
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.8284
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="55"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 06:02
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0508
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.8811
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="56"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 08:06
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0508
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.8961
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="57"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 08:06
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0508
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.9129
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="58"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 08:07
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0508
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.9297
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="59"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 08:07
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0508
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.9672
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="60"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 08:07
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0508
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.9705
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="61"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 08:08
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0508
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          196.9835
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="62"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 08:08
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0508
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          197.0196
+        </td>
+      </tr>
+      <tr
+        className="jsx-__scopedHash recent-trades__row recent-trades__row-body"
+        key="63"
+      >
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          24. Jul 2018 08:08
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+        >
+          sell
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          0.0507
+        </td>
+        <td
+          className="jsx-__scopedHash recent-trades__cell"
+        >
+          197.0460
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
