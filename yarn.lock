@@ -862,9 +862,9 @@
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
 
-"@melonproject/smart-contracts@0.8.0-alpha.38":
-  version "0.8.0-alpha.38"
-  resolved "https://registry.yarnpkg.com/@melonproject/smart-contracts/-/smart-contracts-0.8.0-alpha.38.tgz#42ce5eec1a2a955a02f3da1b4c90cec1a900d29c"
+"@melonproject/smart-contracts@0.8.0-paros":
+  version "0.8.0-paros"
+  resolved "https://registry.yarnpkg.com/@melonproject/smart-contracts/-/smart-contracts-0.8.0-paros.tgz#a38f7e7e42c7ba1b0449d7678ce60d04890aded0"
   dependencies:
     "0x.js" "^0.35.0"
     "@parity/api" "^2.1.20"
@@ -1214,16 +1214,18 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-8.10.21.tgz#12b3f2359b27aa05a45d886c8ba1eb8d1a77e285"
 
 "@types/prop-types@^15.5.2":
-  version "15.5.3"
-  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.3.tgz#bef071852dca2a2dbb65fecdb7bfb30cedae2de2"
+  version "15.5.4"
+  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.5.4.tgz#9e6199bad131786e24c2baa2a82705a02139fbf8"
+  dependencies:
+    "@types/react" "*"
 
 "@types/ramda@^0.25.24":
   version "0.25.35"
   resolved "https://registry.yarnpkg.com/@types/ramda/-/ramda-0.25.35.tgz#94500755a8dd7365f80e9e99e31331add41e9880"
 
 "@types/react@*", "@types/react@^16.0.38":
-  version "16.4.6"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.6.tgz#5024957c6bcef4f02823accf5974faba2e54fada"
+  version "16.4.7"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.7.tgz#f33f6d759a7e1833befa15224d68942d178a5a3f"
   dependencies:
     csstype "^2.2.0"
 
@@ -14106,7 +14108,7 @@ unist-util-generated@^1.1.0:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/unist-util-generated/-/unist-util-generated-1.1.2.tgz#8b993f9239d8e560be6ee6e91c3f7b7208e5ce25"
 
-unist-util-is@^2.0.0, unist-util-is@^2.1.1:
+unist-util-is@^2.0.0, unist-util-is@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/unist-util-is/-/unist-util-is-2.1.2.tgz#1193fa8f2bfbbb82150633f3a8d2eb9a1c1d55db"
 
@@ -14130,11 +14132,17 @@ unist-util-stringify-position@^1.0.0, unist-util-stringify-position@^1.1.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/unist-util-stringify-position/-/unist-util-stringify-position-1.1.2.tgz#3f37fcf351279dcbca7480ab5889bb8a832ee1c6"
 
-unist-util-visit@^1.0.0, unist-util-visit@^1.1.0, unist-util-visit@^1.3.0:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-1.3.1.tgz#c019ac9337a62486be58531bc27e7499ae7d55c7"
+unist-util-visit-parents@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/unist-util-visit-parents/-/unist-util-visit-parents-2.0.0.tgz#9d4f6354e2944ce9176e953f646b884998738cd3"
   dependencies:
-    unist-util-is "^2.1.1"
+    unist-util-is "^2.1.2"
+
+unist-util-visit@^1.0.0, unist-util-visit@^1.1.0, unist-util-visit@^1.3.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/unist-util-visit/-/unist-util-visit-1.4.0.tgz#1cb763647186dc26f5e1df5db6bd1e48b3cc2fb1"
+  dependencies:
+    unist-util-visit-parents "^2.0.0"
 
 universalify@^0.1.0:
   version "0.1.2"
@@ -15265,5 +15273,5 @@ zen-observable-ts@^0.8.9:
     zen-observable "^0.8.0"
 
 zen-observable@^0.8.0:
-  version "0.8.8"
-  resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.8.tgz#1ea93995bf098754a58215a1e0a7309e5749ec42"
+  version "0.8.9"
+  resolved "https://registry.yarnpkg.com/zen-observable/-/zen-observable-0.8.9.tgz#0475c760ff0eda046bbdfa4dc3f95d392807ac53"
