@@ -151,7 +151,7 @@ function* contributeSaga(action) {
         const contribution = yield call(registerForCompetition, environment, {
             fundAddress,
             signature,
-            buyInValue: action.quantity
+            buyInValue: action.amount
         });
 
         yield put(actions.contributeSucceeded());
@@ -161,7 +161,7 @@ function* contributeSaga(action) {
 
     yield call(
         signer,
-        `Please confirm you wish to contribute ${action.quantity} ETH to the Paros Contract. By proceeding, you are cryptographically signing the terms and conditions associated with the Paros Olympiad and sending ${action.quantity} ETH to the Paros Contract. `,
+        `Please confirm you wish to contribute ${action.amount} ETH to the Paros Contract. By proceeding, you are cryptographically signing the terms and conditions associated with the Paros Olympiad and sending ${action.amount} ETH to the Paros Contract. `,
         transaction,
         actions.contributeFailed,
     );

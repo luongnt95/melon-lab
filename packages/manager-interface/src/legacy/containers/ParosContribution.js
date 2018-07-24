@@ -7,49 +7,49 @@ import { multiply, divide, equals } from "../utils/functionalBigNumber";
 import displayNumber from "../utils/displayNumber";
 
 const mapStateToProps = state => ({
-    onboardingState: state.app.onboardingState,
-    usersFund: state.app.usersFund,
-    fundAddress: state.fund.address,
-    dataValid: state.ethereum.isDataValid,
-    initialValues: {
-        amount: 1,
-        total: 20
-    },
-    displayNumber,
-    melonAssetSymbol: state.fund.config? state.fund.config.melonAssetSymbol: "MLN",
+  onboardingState: state.app.onboardingState,
+  usersFund: state.app.usersFund,
+  fundAddress: state.fund.address,
+  dataValid: state.ethereum.isDataValid,
+  initialValues: {
+    amount: 1,
+    total: 38
+  },
+  displayNumber,
+  melonAssetSymbol: state.fund.config ? state.fund.config.melonAssetSymbol : "MLN",
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    requestFund: fundAddress => dispatch(fundActions.infoRequested(fundAddress)),
-    onChange: (values, _dispatch, props, previousValues) => {
-        const changed = Object.keys(values).reduce(
-            (acc, key) => (values[key] !== previousValues[key] ? [key, ...acc] : acc),
-            [],
-        );
-        if (changed.includes("amount")) {
-            const total = multiply(values.amount, 20);
+  requestFund: fundAddress => dispatch(fundActions.infoRequested(fundAddress)),
+  onChange: (values, _dispatch, props, previousValues) => {
+    const changed = Object.keys(values).reduce(
+      (acc, key) => (values[key] !== previousValues[key] ? [key, ...acc] : acc),
+      [],
+    );
+    if (changed.includes("amount")) {
+      const total = multiply(values.amount, 38);
 
-            if (values.total !== total)
-                dispatch(change("parosContribution", "total", total));
-        } else if (changed.includes("total")) {
-            const amount = divide(values.total, 20)
-            if (amount !== values.amount)
-                dispatch(change("parosContribution", "amount", amount))
-        }
-    },
-    onSubmit: values => {
-        dispatch(actions.contribute({ ...values }));
+      if (values.total !== total)
+        dispatch(change("parosContribution", "total", total));
+    } else if (changed.includes("total")) {
+      const amount = divide(values.total, 38)
+      if (amount !== values.amount)
+        dispatch(change("parosContribution", "amount", amount))
+    }
+  },
+  onSubmit: values => {
+    dispatch(actions.contribute({ ...values }));
 
-    },
+  },
 });
 
 const ParosContributionForm = reduxForm({
-    form: "parosContribution",
-    enableReinitialize: true,
+  form: "parosContribution",
+  enableReinitialize: true,
 })(ParosContribution);
 
 const ParosContributionRedux = connect(mapStateToProps, mapDispatchToProps)(
-    ParosContributionForm,
+  ParosContributionForm,
 );
 
 export default ParosContributionRedux;

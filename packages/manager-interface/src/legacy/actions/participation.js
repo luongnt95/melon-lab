@@ -73,9 +73,9 @@ export const actions = {
   executeSucceeded: () => ({
     type: types.EXECUTE_SUCCEEDED,
   }),
-  contribute: ({ quantity, total, directlyExecute }) => ({
+  contribute: ({ amount, total, directlyExecute }) => ({
     type: types.CONTRIBUTE_REQUESTED,
-    quantity,
+    amount,
     total,
     directlyExecute,
   }),
