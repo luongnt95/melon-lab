@@ -10,7 +10,7 @@
 }
 
 .recent-trades__row-body:hover {
-  background-color: var(--color-secondary)
+  background-color: color-mod(var(--color-secondary) a(50%));
 }
 
 .recent-trades__cell {
