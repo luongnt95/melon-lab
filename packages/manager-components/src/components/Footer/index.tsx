@@ -10,7 +10,7 @@ const Footer: StatelessComponent = () => {
       <span className="footer__item">
         <a
           className="footer__item-link"
-          href="https://github.com/melonproject/melon-labs/issues"
+          href="https://github.com/melonproject/melon-lab/issues"
           target="_blank"
           rel="noopener noreferrer"
         >

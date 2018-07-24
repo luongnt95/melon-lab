@@ -18,7 +18,7 @@ exports[`Footer should render correctly 1`] = `
   >
     <a
       className="jsx-__scopedHash footer__item-link"
-      href="https://github.com/melonproject/melon-labs/issues"
+      href="https://github.com/melonproject/melon-lab/issues"
       rel="noopener noreferrer"
       target="_blank"
     >
