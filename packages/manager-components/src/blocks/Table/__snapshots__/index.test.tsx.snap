@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CellBody should render correctly 1`] = `
+<React.Fragment>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <td
+    className="jsx-__scopedHash table__cell"
+  >
+    Default button
+  </td>
+</React.Fragment>
+`;
+
+exports[`CellHead should render correctly 1`] = `
+<React.Fragment>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <th
+    className="jsx-__scopedHash table__cell"
+  >
+    Default button
+  </th>
+</React.Fragment>
+`;
+
+exports[`Row should render correctly 1`] = `
+<React.Fragment>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <tr
+    className="jsx-__scopedHash table__row--body"
+  >
+    Default button
+  </tr>
+</React.Fragment>
+`;
+
+exports[`Table should render correctly 1`] = `
+<React.Fragment>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <table
+    className="jsx-__scopedHash table"
+  >
+    Default button
+  </table>
+</React.Fragment>
+`;
+
+exports[`TableBody should render correctly 1`] = `
+<React.Fragment>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <tbody
+    className="jsx-__scopedHash table__body"
+  >
+    Default button
+  </tbody>
+</React.Fragment>
+`;
+
+exports[`TableHead should render correctly 1`] = `
+<React.Fragment>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <thead
+    className="jsx-__scopedHash table__head"
+  >
+    Default button
+  </thead>
+</React.Fragment>
+`;

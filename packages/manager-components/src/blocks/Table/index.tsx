@@ -1,5 +1,5 @@
-import React, { Fragment, StatelessComponent } from 'react';
 import classNames from 'classnames';
+import React, { Fragment, StatelessComponent } from 'react';
 import styles from './styles.css';
 
 export interface TableProps {
@@ -15,7 +15,7 @@ export interface RowProps {
   isHead?: boolean;
 }
 
-const Table: StatelessComponent<TableProps> = ({ children, tableClass }) => (
+const Table: StatelessComponent<TableProps> = ({ children }) => (
   <Fragment>
     <style jsx>{styles}</style>
     <table className="table">{children}</table>
@@ -52,7 +52,7 @@ const Row: StatelessComponent<RowProps> = ({ children, isHead }) => {
 
 const CellBody: StatelessComponent<CellProps> = ({ children, cellClass }) => {
   const classnameCellBody = classNames('table__cell', {
-    cellClass: cellClass,
+    cellClass,
   });
 
   return (
@@ -65,7 +65,7 @@ const CellBody: StatelessComponent<CellProps> = ({ children, cellClass }) => {
 
 const CellHead: StatelessComponent<CellProps> = ({ children, cellClass }) => {
   const classnameCellHead = classNames('table__cell', {
-    cellClass: cellClass,
+    cellClass,
   });
 
   return (
