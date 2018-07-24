@@ -1,4 +1,5 @@
 import React, { StatelessComponent } from 'react';
+import Button from '~/blocks/Button';
 import {
   CellBody,
   CellHead,
@@ -7,7 +8,6 @@ import {
   TableBody,
   TableHead,
 } from '~/blocks/Table';
-import Button from '~/blocks/Button';
 
 import styles from './styles.css';
 
@@ -26,6 +26,10 @@ export const Holdings: StatelessComponent<HoldingsProps> = ({
   dataValid,
   quoteAsset,
 }) => {
+  const onClick = (e, assetName) => {
+    selectAsset(assetName, isReadyToTrade, quoteAsset);
+  };
+
   return (
     <div className="holdings">
       <style jsx>{styles}</style>
@@ -56,20 +60,18 @@ export const Holdings: StatelessComponent<HoldingsProps> = ({
                   dataValid ? (
                     <Button
                       size="small"
-                      onClick={() =>
-                        selectAsset(asset.name, isReadyToTrade, quoteAsset)
-                      }
+                      buttonValue={asset.name}
+                      onClick={onClick}
                     >
-                      <span className="interactive">Buy/Sell</span>
+                      Buy/Sell
                     </Button>
                   ) : (
                     <Button
                       size="small"
-                      onClick={() =>
-                        selectAsset(asset.name, isReadyToTrade, quoteAsset)
-                      }
+                      buttonValue={asset.name}
+                      onClick={onClick}
                     >
-                      <span className="interactive">See Orderbook</span>
+                      See Orderbook
                     </Button>
                   )}
                 </CellBody>

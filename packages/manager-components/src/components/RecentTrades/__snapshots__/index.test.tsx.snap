@@ -16,1313 +16,1317 @@ exports[`RecentTrades should render correctly 1`] = `
     /
     WETH-T
   </h3>
-  <Table>
-    <TableHead>
-      <Row
-        isHead={true}
-      >
-        <CellHead>
-          Time
-        </CellHead>
-        <CellHead>
-          Type
-        </CellHead>
-        <CellHead>
-          Price (
-          MLN-T
-          /
-          WETH-T
-          )
-        </CellHead>
-        <CellHead>
-          Amount (
-          MLN-T
-          )
-        </CellHead>
-      </Row>
-    </TableHead>
-    <TableBody>
-      <Row
-        key="0"
-      >
-        <CellBody>
-          24. Jul 2018 08:08
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0507
-        </CellBody>
-        <CellBody>
-          197.0460
-        </CellBody>
-      </Row>
-      <Row
-        key="1"
-      >
-        <CellBody>
-          24. Jul 2018 08:08
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0508
-        </CellBody>
-        <CellBody>
-          197.0196
-        </CellBody>
-      </Row>
-      <Row
-        key="2"
-      >
-        <CellBody>
-          24. Jul 2018 08:08
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0508
-        </CellBody>
-        <CellBody>
-          196.9835
-        </CellBody>
-      </Row>
-      <Row
-        key="3"
-      >
-        <CellBody>
-          24. Jul 2018 08:07
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0508
-        </CellBody>
-        <CellBody>
-          196.9705
-        </CellBody>
-      </Row>
-      <Row
-        key="4"
-      >
-        <CellBody>
-          24. Jul 2018 08:07
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0508
-        </CellBody>
-        <CellBody>
-          196.9672
-        </CellBody>
-      </Row>
-      <Row
-        key="5"
-      >
-        <CellBody>
-          24. Jul 2018 08:07
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0508
-        </CellBody>
-        <CellBody>
-          196.9297
-        </CellBody>
-      </Row>
-      <Row
-        key="6"
-      >
-        <CellBody>
-          24. Jul 2018 08:06
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0508
-        </CellBody>
-        <CellBody>
-          196.9129
-        </CellBody>
-      </Row>
-      <Row
-        key="7"
-      >
-        <CellBody>
-          24. Jul 2018 08:06
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0508
-        </CellBody>
-        <CellBody>
-          196.8961
-        </CellBody>
-      </Row>
-      <Row
-        key="8"
-      >
-        <CellBody>
-          24. Jul 2018 06:02
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0508
-        </CellBody>
-        <CellBody>
-          196.8811
-        </CellBody>
-      </Row>
-      <Row
-        key="9"
-      >
-        <CellBody>
-          24. Jul 2018 06:02
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0508
-        </CellBody>
-        <CellBody>
-          196.8284
-        </CellBody>
-      </Row>
-      <Row
-        key="10"
-      >
-        <CellBody>
-          24. Jul 2018 06:02
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0508
-        </CellBody>
-        <CellBody>
-          196.8085
-        </CellBody>
-      </Row>
-      <Row
-        key="11"
-      >
-        <CellBody>
-          24. Jul 2018 06:01
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0508
-        </CellBody>
-        <CellBody>
-          196.7375
-        </CellBody>
-      </Row>
-      <Row
-        key="12"
-      >
-        <CellBody>
-          24. Jul 2018 06:01
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0508
-        </CellBody>
-        <CellBody>
-          196.7271
-        </CellBody>
-      </Row>
-      <Row
-        key="13"
-      >
-        <CellBody>
-          24. Jul 2018 06:01
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0508
-        </CellBody>
-        <CellBody>
-          196.6733
-        </CellBody>
-      </Row>
-      <Row
-        key="14"
-      >
-        <CellBody>
-          24. Jul 2018 06:01
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0509
-        </CellBody>
-        <CellBody>
-          196.6486
-        </CellBody>
-      </Row>
-      <Row
-        key="15"
-      >
-        <CellBody>
-          24. Jul 2018 06:00
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0509
-        </CellBody>
-        <CellBody>
-          196.5297
-        </CellBody>
-      </Row>
-      <Row
-        key="16"
-      >
-        <CellBody>
-          24. Jul 2018 04:56
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0509
-        </CellBody>
-        <CellBody>
-          196.5245
-        </CellBody>
-      </Row>
-      <Row
-        key="17"
-      >
-        <CellBody>
-          24. Jul 2018 04:56
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0509
-        </CellBody>
-        <CellBody>
-          196.5006
-        </CellBody>
-      </Row>
-      <Row
-        key="18"
-      >
-        <CellBody>
-          24. Jul 2018 04:56
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0509
-        </CellBody>
-        <CellBody>
-          196.4975
-        </CellBody>
-      </Row>
-      <Row
-        key="19"
-      >
-        <CellBody>
-          24. Jul 2018 04:55
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0509
-        </CellBody>
-        <CellBody>
-          196.4496
-        </CellBody>
-      </Row>
-      <Row
-        key="20"
-      >
-        <CellBody>
-          24. Jul 2018 04:55
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0509
-        </CellBody>
-        <CellBody>
-          196.4054
-        </CellBody>
-      </Row>
-      <Row
-        key="21"
-      >
-        <CellBody>
-          24. Jul 2018 04:55
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0509
-        </CellBody>
-        <CellBody>
-          196.3968
-        </CellBody>
-      </Row>
-      <Row
-        key="22"
-      >
-        <CellBody>
-          24. Jul 2018 04:55
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0509
-        </CellBody>
-        <CellBody>
-          196.3796
-        </CellBody>
-      </Row>
-      <Row
-        key="23"
-      >
-        <CellBody>
-          24. Jul 2018 04:54
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0509
-        </CellBody>
-        <CellBody>
-          196.3461
-        </CellBody>
-      </Row>
-      <Row
-        key="24"
-      >
-        <CellBody>
-          24. Jul 2018 03:26
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0509
-        </CellBody>
-        <CellBody>
-          196.3219
-        </CellBody>
-      </Row>
-      <Row
-        key="25"
-      >
-        <CellBody>
-          24. Jul 2018 03:26
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0510
-        </CellBody>
-        <CellBody>
-          196.1826
-        </CellBody>
-      </Row>
-      <Row
-        key="26"
-      >
-        <CellBody>
-          24. Jul 2018 03:26
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0510
-        </CellBody>
-        <CellBody>
-          196.1824
-        </CellBody>
-      </Row>
-      <Row
-        key="27"
-      >
-        <CellBody>
-          24. Jul 2018 03:26
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0510
-        </CellBody>
-        <CellBody>
-          196.1477
-        </CellBody>
-      </Row>
-      <Row
-        key="28"
-      >
-        <CellBody>
-          24. Jul 2018 03:25
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0510
-        </CellBody>
-        <CellBody>
-          196.1439
-        </CellBody>
-      </Row>
-      <Row
-        key="29"
-      >
-        <CellBody>
-          24. Jul 2018 03:25
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0510
-        </CellBody>
-        <CellBody>
-          196.1329
-        </CellBody>
-      </Row>
-      <Row
-        key="30"
-      >
-        <CellBody>
-          24. Jul 2018 03:25
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0510
-        </CellBody>
-        <CellBody>
-          196.1177
-        </CellBody>
-      </Row>
-      <Row
-        key="31"
-      >
-        <CellBody>
-          24. Jul 2018 03:25
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0510
-        </CellBody>
-        <CellBody>
-          196.1103
-        </CellBody>
-      </Row>
-      <Row
-        key="32"
-      >
-        <CellBody>
-          24. Jul 2018 00:20
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0510
-        </CellBody>
-        <CellBody>
-          196.1009
-        </CellBody>
-      </Row>
-      <Row
-        key="33"
-      >
-        <CellBody>
-          24. Jul 2018 00:20
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0510
-        </CellBody>
-        <CellBody>
-          196.0529
-        </CellBody>
-      </Row>
-      <Row
-        key="34"
-      >
-        <CellBody>
-          24. Jul 2018 00:19
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0510
-        </CellBody>
-        <CellBody>
-          196.0429
-        </CellBody>
-      </Row>
-      <Row
-        key="35"
-      >
-        <CellBody>
-          24. Jul 2018 00:19
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0510
-        </CellBody>
-        <CellBody>
-          195.9960
-        </CellBody>
-      </Row>
-      <Row
-        key="36"
-      >
-        <CellBody>
-          24. Jul 2018 00:19
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0510
-        </CellBody>
-        <CellBody>
-          195.9792
-        </CellBody>
-      </Row>
-      <Row
-        key="37"
-      >
-        <CellBody>
-          24. Jul 2018 00:19
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0510
-        </CellBody>
-        <CellBody>
-          195.9628
-        </CellBody>
-      </Row>
-      <Row
-        key="38"
-      >
-        <CellBody>
-          24. Jul 2018 00:18
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0510
-        </CellBody>
-        <CellBody>
-          195.9568
-        </CellBody>
-      </Row>
-      <Row
-        key="39"
-      >
-        <CellBody>
-          24. Jul 2018 00:18
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0510
-        </CellBody>
-        <CellBody>
-          195.9459
-        </CellBody>
-      </Row>
-      <Row
-        key="40"
-      >
-        <CellBody>
-          23. Jul 2018 22:48
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0510
-        </CellBody>
-        <CellBody>
-          195.8963
-        </CellBody>
-      </Row>
-      <Row
-        key="41"
-      >
-        <CellBody>
-          23. Jul 2018 22:48
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0511
-        </CellBody>
-        <CellBody>
-          195.8775
-        </CellBody>
-      </Row>
-      <Row
-        key="42"
-      >
-        <CellBody>
-          23. Jul 2018 22:48
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0511
-        </CellBody>
-        <CellBody>
-          195.8684
-        </CellBody>
-      </Row>
-      <Row
-        key="43"
-      >
-        <CellBody>
-          23. Jul 2018 22:47
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0511
-        </CellBody>
-        <CellBody>
-          195.8318
-        </CellBody>
-      </Row>
-      <Row
-        key="44"
-      >
-        <CellBody>
-          23. Jul 2018 22:47
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0511
-        </CellBody>
-        <CellBody>
-          195.7622
-        </CellBody>
-      </Row>
-      <Row
-        key="45"
-      >
-        <CellBody>
-          23. Jul 2018 22:47
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0511
-        </CellBody>
-        <CellBody>
-          195.7552
-        </CellBody>
-      </Row>
-      <Row
-        key="46"
-      >
-        <CellBody>
-          23. Jul 2018 22:47
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0511
-        </CellBody>
-        <CellBody>
-          195.7426
-        </CellBody>
-      </Row>
-      <Row
-        key="47"
-      >
-        <CellBody>
-          23. Jul 2018 22:46
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0511
-        </CellBody>
-        <CellBody>
-          195.6889
-        </CellBody>
-      </Row>
-      <Row
-        key="48"
-      >
-        <CellBody>
-          23. Jul 2018 21:52
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0511
-        </CellBody>
-        <CellBody>
-          195.6615
-        </CellBody>
-      </Row>
-      <Row
-        key="49"
-      >
-        <CellBody>
-          23. Jul 2018 21:52
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0511
-        </CellBody>
-        <CellBody>
-          195.6337
-        </CellBody>
-      </Row>
-      <Row
-        key="50"
-      >
-        <CellBody>
-          23. Jul 2018 21:52
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0511
-        </CellBody>
-        <CellBody>
-          195.5956
-        </CellBody>
-      </Row>
-      <Row
-        key="51"
-      >
-        <CellBody>
-          23. Jul 2018 21:52
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0511
-        </CellBody>
-        <CellBody>
-          195.5852
-        </CellBody>
-      </Row>
-      <Row
-        key="52"
-      >
-        <CellBody>
-          23. Jul 2018 21:51
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0511
-        </CellBody>
-        <CellBody>
-          195.5459
-        </CellBody>
-      </Row>
-      <Row
-        key="53"
-      >
-        <CellBody>
-          23. Jul 2018 21:51
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0512
-        </CellBody>
-        <CellBody>
-          195.4735
-        </CellBody>
-      </Row>
-      <Row
-        key="54"
-      >
-        <CellBody>
-          23. Jul 2018 21:51
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0512
-        </CellBody>
-        <CellBody>
-          195.4281
-        </CellBody>
-      </Row>
-      <Row
-        key="55"
-      >
-        <CellBody>
-          23. Jul 2018 21:51
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0512
-        </CellBody>
-        <CellBody>
-          195.4146
-        </CellBody>
-      </Row>
-      <Row
-        key="56"
-      >
-        <CellBody>
-          23. Jul 2018 19:48
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0512
-        </CellBody>
-        <CellBody>
-          195.4102
-        </CellBody>
-      </Row>
-      <Row
-        key="57"
-      >
-        <CellBody>
-          23. Jul 2018 19:48
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0512
-        </CellBody>
-        <CellBody>
-          195.3698
-        </CellBody>
-      </Row>
-      <Row
-        key="58"
-      >
-        <CellBody>
-          23. Jul 2018 19:47
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0512
-        </CellBody>
-        <CellBody>
-          195.2951
-        </CellBody>
-      </Row>
-      <Row
-        key="59"
-      >
-        <CellBody>
-          23. Jul 2018 19:47
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0512
-        </CellBody>
-        <CellBody>
-          195.1502
-        </CellBody>
-      </Row>
-      <Row
-        key="60"
-      >
-        <CellBody>
-          23. Jul 2018 19:47
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0515
-        </CellBody>
-        <CellBody>
-          194.2841
-        </CellBody>
-      </Row>
-      <Row
-        key="61"
-      >
-        <CellBody>
-          23. Jul 2018 16:22
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0517
-        </CellBody>
-        <CellBody>
-          193.4366
-        </CellBody>
-      </Row>
-      <Row
-        key="62"
-      >
-        <CellBody>
-          23. Jul 2018 14:59
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0521
-        </CellBody>
-        <CellBody>
-          192.0272
-        </CellBody>
-      </Row>
-      <Row
-        key="63"
-      >
-        <CellBody>
-          23. Jul 2018 14:59
-        </CellBody>
-        <CellBody>
-          <span
-            className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
-          >
-            sell
-          </span>
-        </CellBody>
-        <CellBody>
-          0.0522
-        </CellBody>
-        <CellBody>
-          191.4630
-        </CellBody>
-      </Row>
-    </TableBody>
-  </Table>
+  <div
+    className="jsx-__scopedHash recent-trades__table-wrap"
+  >
+    <Table>
+      <TableHead>
+        <Row
+          isHead={true}
+        >
+          <CellHead>
+            Time
+          </CellHead>
+          <CellHead>
+            Type
+          </CellHead>
+          <CellHead>
+            Price (
+            MLN-T
+            /
+            WETH-T
+            )
+          </CellHead>
+          <CellHead>
+            Amount (
+            MLN-T
+            )
+          </CellHead>
+        </Row>
+      </TableHead>
+      <TableBody>
+        <Row
+          key="0"
+        >
+          <CellBody>
+            24. Jul 2018 08:08
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0507
+          </CellBody>
+          <CellBody>
+            197.0460
+          </CellBody>
+        </Row>
+        <Row
+          key="1"
+        >
+          <CellBody>
+            24. Jul 2018 08:08
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0508
+          </CellBody>
+          <CellBody>
+            197.0196
+          </CellBody>
+        </Row>
+        <Row
+          key="2"
+        >
+          <CellBody>
+            24. Jul 2018 08:08
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0508
+          </CellBody>
+          <CellBody>
+            196.9835
+          </CellBody>
+        </Row>
+        <Row
+          key="3"
+        >
+          <CellBody>
+            24. Jul 2018 08:07
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0508
+          </CellBody>
+          <CellBody>
+            196.9705
+          </CellBody>
+        </Row>
+        <Row
+          key="4"
+        >
+          <CellBody>
+            24. Jul 2018 08:07
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0508
+          </CellBody>
+          <CellBody>
+            196.9672
+          </CellBody>
+        </Row>
+        <Row
+          key="5"
+        >
+          <CellBody>
+            24. Jul 2018 08:07
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0508
+          </CellBody>
+          <CellBody>
+            196.9297
+          </CellBody>
+        </Row>
+        <Row
+          key="6"
+        >
+          <CellBody>
+            24. Jul 2018 08:06
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0508
+          </CellBody>
+          <CellBody>
+            196.9129
+          </CellBody>
+        </Row>
+        <Row
+          key="7"
+        >
+          <CellBody>
+            24. Jul 2018 08:06
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0508
+          </CellBody>
+          <CellBody>
+            196.8961
+          </CellBody>
+        </Row>
+        <Row
+          key="8"
+        >
+          <CellBody>
+            24. Jul 2018 06:02
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0508
+          </CellBody>
+          <CellBody>
+            196.8811
+          </CellBody>
+        </Row>
+        <Row
+          key="9"
+        >
+          <CellBody>
+            24. Jul 2018 06:02
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0508
+          </CellBody>
+          <CellBody>
+            196.8284
+          </CellBody>
+        </Row>
+        <Row
+          key="10"
+        >
+          <CellBody>
+            24. Jul 2018 06:02
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0508
+          </CellBody>
+          <CellBody>
+            196.8085
+          </CellBody>
+        </Row>
+        <Row
+          key="11"
+        >
+          <CellBody>
+            24. Jul 2018 06:01
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0508
+          </CellBody>
+          <CellBody>
+            196.7375
+          </CellBody>
+        </Row>
+        <Row
+          key="12"
+        >
+          <CellBody>
+            24. Jul 2018 06:01
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0508
+          </CellBody>
+          <CellBody>
+            196.7271
+          </CellBody>
+        </Row>
+        <Row
+          key="13"
+        >
+          <CellBody>
+            24. Jul 2018 06:01
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0508
+          </CellBody>
+          <CellBody>
+            196.6733
+          </CellBody>
+        </Row>
+        <Row
+          key="14"
+        >
+          <CellBody>
+            24. Jul 2018 06:01
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0509
+          </CellBody>
+          <CellBody>
+            196.6486
+          </CellBody>
+        </Row>
+        <Row
+          key="15"
+        >
+          <CellBody>
+            24. Jul 2018 06:00
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0509
+          </CellBody>
+          <CellBody>
+            196.5297
+          </CellBody>
+        </Row>
+        <Row
+          key="16"
+        >
+          <CellBody>
+            24. Jul 2018 04:56
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0509
+          </CellBody>
+          <CellBody>
+            196.5245
+          </CellBody>
+        </Row>
+        <Row
+          key="17"
+        >
+          <CellBody>
+            24. Jul 2018 04:56
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0509
+          </CellBody>
+          <CellBody>
+            196.5006
+          </CellBody>
+        </Row>
+        <Row
+          key="18"
+        >
+          <CellBody>
+            24. Jul 2018 04:56
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0509
+          </CellBody>
+          <CellBody>
+            196.4975
+          </CellBody>
+        </Row>
+        <Row
+          key="19"
+        >
+          <CellBody>
+            24. Jul 2018 04:55
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0509
+          </CellBody>
+          <CellBody>
+            196.4496
+          </CellBody>
+        </Row>
+        <Row
+          key="20"
+        >
+          <CellBody>
+            24. Jul 2018 04:55
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0509
+          </CellBody>
+          <CellBody>
+            196.4054
+          </CellBody>
+        </Row>
+        <Row
+          key="21"
+        >
+          <CellBody>
+            24. Jul 2018 04:55
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0509
+          </CellBody>
+          <CellBody>
+            196.3968
+          </CellBody>
+        </Row>
+        <Row
+          key="22"
+        >
+          <CellBody>
+            24. Jul 2018 04:55
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0509
+          </CellBody>
+          <CellBody>
+            196.3796
+          </CellBody>
+        </Row>
+        <Row
+          key="23"
+        >
+          <CellBody>
+            24. Jul 2018 04:54
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0509
+          </CellBody>
+          <CellBody>
+            196.3461
+          </CellBody>
+        </Row>
+        <Row
+          key="24"
+        >
+          <CellBody>
+            24. Jul 2018 03:26
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0509
+          </CellBody>
+          <CellBody>
+            196.3219
+          </CellBody>
+        </Row>
+        <Row
+          key="25"
+        >
+          <CellBody>
+            24. Jul 2018 03:26
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0510
+          </CellBody>
+          <CellBody>
+            196.1826
+          </CellBody>
+        </Row>
+        <Row
+          key="26"
+        >
+          <CellBody>
+            24. Jul 2018 03:26
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0510
+          </CellBody>
+          <CellBody>
+            196.1824
+          </CellBody>
+        </Row>
+        <Row
+          key="27"
+        >
+          <CellBody>
+            24. Jul 2018 03:26
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0510
+          </CellBody>
+          <CellBody>
+            196.1477
+          </CellBody>
+        </Row>
+        <Row
+          key="28"
+        >
+          <CellBody>
+            24. Jul 2018 03:25
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0510
+          </CellBody>
+          <CellBody>
+            196.1439
+          </CellBody>
+        </Row>
+        <Row
+          key="29"
+        >
+          <CellBody>
+            24. Jul 2018 03:25
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0510
+          </CellBody>
+          <CellBody>
+            196.1329
+          </CellBody>
+        </Row>
+        <Row
+          key="30"
+        >
+          <CellBody>
+            24. Jul 2018 03:25
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0510
+          </CellBody>
+          <CellBody>
+            196.1177
+          </CellBody>
+        </Row>
+        <Row
+          key="31"
+        >
+          <CellBody>
+            24. Jul 2018 03:25
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0510
+          </CellBody>
+          <CellBody>
+            196.1103
+          </CellBody>
+        </Row>
+        <Row
+          key="32"
+        >
+          <CellBody>
+            24. Jul 2018 00:20
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0510
+          </CellBody>
+          <CellBody>
+            196.1009
+          </CellBody>
+        </Row>
+        <Row
+          key="33"
+        >
+          <CellBody>
+            24. Jul 2018 00:20
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0510
+          </CellBody>
+          <CellBody>
+            196.0529
+          </CellBody>
+        </Row>
+        <Row
+          key="34"
+        >
+          <CellBody>
+            24. Jul 2018 00:19
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0510
+          </CellBody>
+          <CellBody>
+            196.0429
+          </CellBody>
+        </Row>
+        <Row
+          key="35"
+        >
+          <CellBody>
+            24. Jul 2018 00:19
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0510
+          </CellBody>
+          <CellBody>
+            195.9960
+          </CellBody>
+        </Row>
+        <Row
+          key="36"
+        >
+          <CellBody>
+            24. Jul 2018 00:19
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0510
+          </CellBody>
+          <CellBody>
+            195.9792
+          </CellBody>
+        </Row>
+        <Row
+          key="37"
+        >
+          <CellBody>
+            24. Jul 2018 00:19
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0510
+          </CellBody>
+          <CellBody>
+            195.9628
+          </CellBody>
+        </Row>
+        <Row
+          key="38"
+        >
+          <CellBody>
+            24. Jul 2018 00:18
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0510
+          </CellBody>
+          <CellBody>
+            195.9568
+          </CellBody>
+        </Row>
+        <Row
+          key="39"
+        >
+          <CellBody>
+            24. Jul 2018 00:18
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0510
+          </CellBody>
+          <CellBody>
+            195.9459
+          </CellBody>
+        </Row>
+        <Row
+          key="40"
+        >
+          <CellBody>
+            23. Jul 2018 22:48
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0510
+          </CellBody>
+          <CellBody>
+            195.8963
+          </CellBody>
+        </Row>
+        <Row
+          key="41"
+        >
+          <CellBody>
+            23. Jul 2018 22:48
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0511
+          </CellBody>
+          <CellBody>
+            195.8775
+          </CellBody>
+        </Row>
+        <Row
+          key="42"
+        >
+          <CellBody>
+            23. Jul 2018 22:48
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0511
+          </CellBody>
+          <CellBody>
+            195.8684
+          </CellBody>
+        </Row>
+        <Row
+          key="43"
+        >
+          <CellBody>
+            23. Jul 2018 22:47
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0511
+          </CellBody>
+          <CellBody>
+            195.8318
+          </CellBody>
+        </Row>
+        <Row
+          key="44"
+        >
+          <CellBody>
+            23. Jul 2018 22:47
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0511
+          </CellBody>
+          <CellBody>
+            195.7622
+          </CellBody>
+        </Row>
+        <Row
+          key="45"
+        >
+          <CellBody>
+            23. Jul 2018 22:47
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0511
+          </CellBody>
+          <CellBody>
+            195.7552
+          </CellBody>
+        </Row>
+        <Row
+          key="46"
+        >
+          <CellBody>
+            23. Jul 2018 22:47
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0511
+          </CellBody>
+          <CellBody>
+            195.7426
+          </CellBody>
+        </Row>
+        <Row
+          key="47"
+        >
+          <CellBody>
+            23. Jul 2018 22:46
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0511
+          </CellBody>
+          <CellBody>
+            195.6889
+          </CellBody>
+        </Row>
+        <Row
+          key="48"
+        >
+          <CellBody>
+            23. Jul 2018 21:52
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0511
+          </CellBody>
+          <CellBody>
+            195.6615
+          </CellBody>
+        </Row>
+        <Row
+          key="49"
+        >
+          <CellBody>
+            23. Jul 2018 21:52
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0511
+          </CellBody>
+          <CellBody>
+            195.6337
+          </CellBody>
+        </Row>
+        <Row
+          key="50"
+        >
+          <CellBody>
+            23. Jul 2018 21:52
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0511
+          </CellBody>
+          <CellBody>
+            195.5956
+          </CellBody>
+        </Row>
+        <Row
+          key="51"
+        >
+          <CellBody>
+            23. Jul 2018 21:52
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0511
+          </CellBody>
+          <CellBody>
+            195.5852
+          </CellBody>
+        </Row>
+        <Row
+          key="52"
+        >
+          <CellBody>
+            23. Jul 2018 21:51
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0511
+          </CellBody>
+          <CellBody>
+            195.5459
+          </CellBody>
+        </Row>
+        <Row
+          key="53"
+        >
+          <CellBody>
+            23. Jul 2018 21:51
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0512
+          </CellBody>
+          <CellBody>
+            195.4735
+          </CellBody>
+        </Row>
+        <Row
+          key="54"
+        >
+          <CellBody>
+            23. Jul 2018 21:51
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0512
+          </CellBody>
+          <CellBody>
+            195.4281
+          </CellBody>
+        </Row>
+        <Row
+          key="55"
+        >
+          <CellBody>
+            23. Jul 2018 21:51
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0512
+          </CellBody>
+          <CellBody>
+            195.4146
+          </CellBody>
+        </Row>
+        <Row
+          key="56"
+        >
+          <CellBody>
+            23. Jul 2018 19:48
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0512
+          </CellBody>
+          <CellBody>
+            195.4102
+          </CellBody>
+        </Row>
+        <Row
+          key="57"
+        >
+          <CellBody>
+            23. Jul 2018 19:48
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0512
+          </CellBody>
+          <CellBody>
+            195.3698
+          </CellBody>
+        </Row>
+        <Row
+          key="58"
+        >
+          <CellBody>
+            23. Jul 2018 19:47
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0512
+          </CellBody>
+          <CellBody>
+            195.2951
+          </CellBody>
+        </Row>
+        <Row
+          key="59"
+        >
+          <CellBody>
+            23. Jul 2018 19:47
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0512
+          </CellBody>
+          <CellBody>
+            195.1502
+          </CellBody>
+        </Row>
+        <Row
+          key="60"
+        >
+          <CellBody>
+            23. Jul 2018 19:47
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0515
+          </CellBody>
+          <CellBody>
+            194.2841
+          </CellBody>
+        </Row>
+        <Row
+          key="61"
+        >
+          <CellBody>
+            23. Jul 2018 16:22
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0517
+          </CellBody>
+          <CellBody>
+            193.4366
+          </CellBody>
+        </Row>
+        <Row
+          key="62"
+        >
+          <CellBody>
+            23. Jul 2018 14:59
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0521
+          </CellBody>
+          <CellBody>
+            192.0272
+          </CellBody>
+        </Row>
+        <Row
+          key="63"
+        >
+          <CellBody>
+            23. Jul 2018 14:59
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash recent-trades__cell recent-trades__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            0.0522
+          </CellBody>
+          <CellBody>
+            191.4630
+          </CellBody>
+        </Row>
+      </TableBody>
+    </Table>
+  </div>
 </div>
 `;
