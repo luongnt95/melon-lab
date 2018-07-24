@@ -8,6 +8,10 @@
   border-bottom: 1px dashed var(--color-border);
 }
 
+.table__row--body:hover {
+  background-color: color-mod(var(--color-secondary) a(50%));
+}
+
 .table__row--head {
   border-bottom: 1px solid var(--color-border);
 }
