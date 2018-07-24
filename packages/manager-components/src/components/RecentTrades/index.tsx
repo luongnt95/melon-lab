@@ -39,32 +39,34 @@ export const RecentTrades: StatelessComponent<RecentTradesProps> = ({
       <h3>
         Recent trades for {baseTokenSymbol}/{quoteTokenSymbol}
       </h3>
-      <Table>
-        <TableHead>
-          <Row isHead={true}>
-            <CellHead>Time</CellHead>
-            <CellHead>Type</CellHead>
-            <CellHead>
-              Price ({baseTokenSymbol}/{quoteTokenSymbol})
-            </CellHead>
-            <CellHead>Amount ({baseTokenSymbol})</CellHead>
-          </Row>
-        </TableHead>
-        <TableBody>
-          {trades.reverse().map((trade, index) => (
-            <Row key={index}>
-              <CellBody>{trade.timestamp}</CellBody>
-              <CellBody>
-                <span className={classnameTypeCell(trade.type)}>
-                  {trade.type}
-                </span>
-              </CellBody>
-              <CellBody>{trade.price}</CellBody>
-              <CellBody>{trade.quantity}</CellBody>
+      <div className="recent-trades__table-wrap">
+        <Table>
+          <TableHead>
+            <Row isHead={true}>
+              <CellHead>Time</CellHead>
+              <CellHead>Type</CellHead>
+              <CellHead>
+                Price ({baseTokenSymbol}/{quoteTokenSymbol})
+              </CellHead>
+              <CellHead>Amount ({baseTokenSymbol})</CellHead>
             </Row>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {trades.reverse().map((trade, index) => (
+              <Row key={index}>
+                <CellBody>{trade.timestamp}</CellBody>
+                <CellBody>
+                  <span className={classnameTypeCell(trade.type)}>
+                    {trade.type}
+                  </span>
+                </CellBody>
+                <CellBody>{trade.price}</CellBody>
+                <CellBody>{trade.quantity}</CellBody>
+              </Row>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </div>
   );
 };

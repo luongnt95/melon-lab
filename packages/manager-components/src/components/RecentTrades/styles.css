@@ -9,3 +9,7 @@
 :global(.recent-trades__cell--green) {
   color: var(--color-profit);
 }
+
+.recent-trades__table-wrap {
+  overflow-x: auto;
+}

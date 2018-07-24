@@ -1,0 +1,12 @@
+.holdings__table-wrap {
+  overflow-x: auto;
+}
+
+.holdings__quote-asset {
+  display: block;
+  min-height: 28px;
+}
+
+.holdings :global(.holdings__action-cell) {
+  width: 130px;
+}

@@ -15,7 +15,7 @@ const Button: StatelessComponent<ButtonProps> = ({
   disabled,
   onClick,
   type = 'button',
-  size = 'default',
+  size = 'medium',
   style = 'default',
 }) => {
   const sizeClass = `button--${size}`;

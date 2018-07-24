@@ -24,7 +24,7 @@
   padding: var(--space-xs) var(--space-xl);
 }
 
-.button--default {
+.button--medium {
   font-size: var(--font-size-m);
   padding: var(--space-s) var(--space-xl);
 }

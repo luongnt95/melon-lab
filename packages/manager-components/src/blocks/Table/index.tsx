@@ -52,7 +52,7 @@ const Row: StatelessComponent<RowProps> = ({ children, isHead }) => {
 
 const CellBody: StatelessComponent<CellProps> = ({ children, cellClass }) => {
   const classnameCellBody = classNames('table__cell', {
-    cellClass,
+    [`${cellClass}`]: cellClass,
   });
 
   return (
@@ -65,7 +65,7 @@ const CellBody: StatelessComponent<CellProps> = ({ children, cellClass }) => {
 
 const CellHead: StatelessComponent<CellProps> = ({ children, cellClass }) => {
   const classnameCellHead = classNames('table__cell', {
-    cellClass,
+    [`${cellClass}`]: cellClass,
   });
 
   return (

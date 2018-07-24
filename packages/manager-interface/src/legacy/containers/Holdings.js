@@ -5,7 +5,8 @@ import { actions } from '../actions/holdings';
 import { actions as appActions } from '../actions/app';
 import { actions as orderbookActions } from '../actions/orderbook';
 import { actions as recentTradesActions } from '../actions/recentTrades';
-import Holdings from '../components/organisms/Holdings';
+// import Holdings from '../components/organisms/Holdings';
+import Holdings from '@melonproject/manager-components/components/Holdings';
 import displayNumber from '../utils/displayNumber';
 
 const mapStateToProps = state => ({
