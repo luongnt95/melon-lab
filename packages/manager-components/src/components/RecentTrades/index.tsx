@@ -1,5 +1,13 @@
 import React, { StatelessComponent } from 'react';
 import classNames from 'classnames';
+import {
+  Table,
+  TableBody,
+  TableHead,
+  CellBody,
+  CellHead,
+  Row,
+} from '~/blocks/Table';
 
 import styles from './styles.css';
 
@@ -31,28 +39,40 @@ export const RecentTrades: StatelessComponent<RecentTradesProps> = ({
       <h3>
         Recent trades for {baseTokenSymbol}/{quoteTokenSymbol}
       </h3>
-      <table className="recent-trades__table">
-        <thead>
-          <tr className="recent-trades__row recent-trades__row-head">
-            <th className="recent-trades__cell">Time</th>
-            <th className="recent-trades__cell">Type</th>
-            <th className="recent-trades__cell">
+      <Table>
+        <TableHead>
+          <Row
+            isHead={true}
+            className="recent-trades__row recent-trades__row-head"
+          >
+            <CellHead className="recent-trades__cell">Time</CellHead>
+            <CellHead className="recent-trades__cell">Type</CellHead>
+            <CellHead className="recent-trades__cell">
               Price ({baseTokenSymbol}/{quoteTokenSymbol})
-            </th>
-            <th className="recent-trades__cell">Amount ({baseTokenSymbol})</th>
-          </tr>
-        </thead>
-        <tbody>
+            </CellHead>
+            <CellHead className="recent-trades__cell">
+              Amount ({baseTokenSymbol})
+            </CellHead>
+          </Row>
+        </TableHead>
+        <TableBody>
           {trades.reverse().map((trade, index) => (
-            <tr className="recent-trades__row recent-trades__row-body" key={index}>
-              <td className="recent-trades__cell">{trade.timestamp}</td>
-              <td className={classnameTypeCell(trade.type)}>{trade.type}</td>
-              <td className="recent-trades__cell">{trade.price}</td>
-              <td className="recent-trades__cell">{trade.quantity}</td>
-            </tr>
+            <Row
+              className="recent-trades__row recent-trades__row-body"
+              key={index}
+            >
+              <CellBody>{trade.timestamp}</CellBody>
+              <CellBody>
+                <span className={classnameTypeCell(trade.type)}>
+                  {trade.type}
+                </span>
+              </CellBody>
+              <CellBody>{trade.price}</CellBody>
+              <CellBody>{trade.quantity}</CellBody>
+            </Row>
           ))}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     </div>
   );
 };
