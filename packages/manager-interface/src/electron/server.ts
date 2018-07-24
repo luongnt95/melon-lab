@@ -39,8 +39,8 @@ const linkKeytar = () => {
   );
 };
 
-function retrieveNetwork(network: string): Network {
-  switch (network.toUpperCase()) {
+function retrieveNetwork(track: string) {
+  switch (track) {
     case 'live':
       return 'LIVE';
     case 'kovan-competition':
