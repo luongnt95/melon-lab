@@ -43,7 +43,7 @@ export const RecentTrades: StatelessComponent<RecentTradesProps> = ({
           </tr>
         </thead>
         <tbody>
-          {trades.map((trade, index) => (
+          {trades.reverse().map((trade, index) => (
             <tr className="recent-trades__row recent-trades__row-body" key={index}>
               <td className="recent-trades__cell">{trade.timestamp}</td>
               <td className={classnameTypeCell(trade.type)}>{trade.type}</td>
