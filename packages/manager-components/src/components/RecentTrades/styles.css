@@ -18,7 +18,7 @@
 
 .recent-trades__cell {
   text-align: left;
-  padding: var(--space-xs) var(--space-xxs) var(--space-xxs) var(--space-xxs);
+  padding: var(--space-xs) var(--space-s) var(--space-xxs) var(--space-s);
   line-height: 1;
 }
 
