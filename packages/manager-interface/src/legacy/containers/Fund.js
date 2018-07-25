@@ -43,18 +43,18 @@ const mapStateToProps = state => {
       values: state.trade,
       selectedOrder: state.orderbook.selectedOrder,
       info: {
-        lastPrice: state.recentTrades.trades.length
-          ? displayNumber(
-              state.recentTrades.trades[state.recentTrades.trades.length - 1]
-                .price,
-            )
-          : 'N/A',
-        bid: state.orderbook.buyOrders.length
-          ? displayNumber(state.orderbook.buyOrders[0].price)
-          : 'N/A',
-        ask: state.orderbook.sellOrders.length
-          ? displayNumber(state.orderbook.sellOrders[0].price)
-          : 'N/A',
+        lastPrice:
+          state.recentTrades.trades.length &&
+          displayNumber(
+            state.recentTrades.trades[state.recentTrades.trades.length - 1]
+              .price,
+          ),
+        bid:
+          state.orderbook.buyOrders.length &&
+          displayNumber(state.orderbook.buyOrders[0].price),
+        ask:
+          state.orderbook.sellOrders.length &&
+          displayNumber(state.orderbook.sellOrders[0].price),
         tokens: {
           baseToken: {
             name: state.app.assetPair.base,
