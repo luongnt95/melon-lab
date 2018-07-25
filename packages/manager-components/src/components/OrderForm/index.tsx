@@ -7,7 +7,6 @@ import Switch from '~/blocks/Switch';
 import Toggle from '~/blocks/Toggle';
 import OrderInfo from '~/components/OrderInfo';
 
-
 import styles from './styles.css';
 
 interface FormValues {
@@ -37,6 +36,7 @@ export interface OrderFormProps {
   decimals?: number;
   type?: string;
   dataValid?: boolean;
+  isManager?: boolean;
 }
 
 export const OrderForm: StatelessComponent<OrderFormProps> = ({
@@ -53,6 +53,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
   touched,
   decimals,
   dataValid,
+  isManager,
 }) => {
   const isMarket = values.strategy === 'Market' ? true : false;
   const numberPlaceholder = (0).toFixed(decimals);
@@ -92,7 +93,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
             name="orderType"
             value={values.orderType}
             isChecked={values.orderType === 'Sell' ? true : false}
-            disabled={isMarket || !dataValid}
+            disabled={isMarket || !dataValid || !isManager}
           />
         </div>
         {/* <div className="order-form__dropdown">
@@ -111,7 +112,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
         <div className="order-form__input">
           <Input
             value={values.price}
-            disabled={isMarket || !dataValid}
+            disabled={isMarket || !dataValid || !isManager}
             type="number"
             label="Price"
             name="price"
@@ -139,7 +140,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
             required={true}
             formatNumber={true}
             error={touched.quantity && errors.quantity}
-            disabled={(isMarket && !values.price) || !dataValid}
+            disabled={(isMarket && !values.price) || !dataValid || !isManager}
           />
         </div>
         <div className="order-form__input">
@@ -156,11 +157,11 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
             required={true}
             formatNumber={true}
             error={touched.total && errors.total}
-            disabled={(isMarket && !values.price) || !dataValid}
+            disabled={(isMarket && !values.price) || !dataValid || !isManager}
           />
         </div>
         <Button
-          disabled={(isMarket && !values.price) || !dataValid}
+          disabled={(isMarket && !values.price) || !dataValid || !isManager}
           onClick={handleSubmit}
           type="submit"
         >
