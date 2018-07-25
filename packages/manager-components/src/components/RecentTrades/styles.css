@@ -1,12 +1,8 @@
-.recent-trades__row-body:hover {
-  background-color: color-mod(var(--color-secondary) a(50%));
-}
-
 .recent-trades__cell--red {
   color: var(--color-loss);
 }
 
-:global(.recent-trades__cell--green) {
+.recent-trades__cell--green {
   color: var(--color-profit);
 }
 

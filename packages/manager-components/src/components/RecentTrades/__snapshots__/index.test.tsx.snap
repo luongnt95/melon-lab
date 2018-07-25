@@ -30,14 +30,18 @@ exports[`RecentTrades should render correctly 1`] = `
           <CellHead>
             Type
           </CellHead>
-          <CellHead>
+          <CellHead
+            textAlign="right"
+          >
             Price (
             MLN-T
             /
             WETH-T
             )
           </CellHead>
-          <CellHead>
+          <CellHead
+            textAlign="right"
+          >
             Amount (
             MLN-T
             )
@@ -58,10 +62,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0507
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             197.0460
           </CellBody>
         </Row>
@@ -78,10 +86,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0508
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             197.0196
           </CellBody>
         </Row>
@@ -98,10 +110,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0508
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.9835
           </CellBody>
         </Row>
@@ -118,10 +134,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0508
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.9705
           </CellBody>
         </Row>
@@ -138,10 +158,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0508
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.9672
           </CellBody>
         </Row>
@@ -158,10 +182,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0508
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.9297
           </CellBody>
         </Row>
@@ -178,10 +206,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0508
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.9129
           </CellBody>
         </Row>
@@ -198,10 +230,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0508
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.8961
           </CellBody>
         </Row>
@@ -218,10 +254,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0508
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.8811
           </CellBody>
         </Row>
@@ -238,10 +278,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0508
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.8284
           </CellBody>
         </Row>
@@ -258,10 +302,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0508
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.8085
           </CellBody>
         </Row>
@@ -278,10 +326,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0508
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.7375
           </CellBody>
         </Row>
@@ -298,10 +350,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0508
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.7271
           </CellBody>
         </Row>
@@ -318,10 +374,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0508
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.6733
           </CellBody>
         </Row>
@@ -338,10 +398,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0509
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.6486
           </CellBody>
         </Row>
@@ -358,10 +422,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0509
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.5297
           </CellBody>
         </Row>
@@ -378,10 +446,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0509
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.5245
           </CellBody>
         </Row>
@@ -398,10 +470,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0509
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.5006
           </CellBody>
         </Row>
@@ -418,10 +494,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0509
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.4975
           </CellBody>
         </Row>
@@ -438,10 +518,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0509
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.4496
           </CellBody>
         </Row>
@@ -458,10 +542,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0509
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.4054
           </CellBody>
         </Row>
@@ -478,10 +566,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0509
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.3968
           </CellBody>
         </Row>
@@ -498,10 +590,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0509
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.3796
           </CellBody>
         </Row>
@@ -518,10 +614,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0509
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.3461
           </CellBody>
         </Row>
@@ -538,10 +638,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0509
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.3219
           </CellBody>
         </Row>
@@ -558,10 +662,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0510
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.1826
           </CellBody>
         </Row>
@@ -578,10 +686,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0510
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.1824
           </CellBody>
         </Row>
@@ -598,10 +710,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0510
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.1477
           </CellBody>
         </Row>
@@ -618,10 +734,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0510
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.1439
           </CellBody>
         </Row>
@@ -638,10 +758,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0510
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.1329
           </CellBody>
         </Row>
@@ -658,10 +782,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0510
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.1177
           </CellBody>
         </Row>
@@ -678,10 +806,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0510
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.1103
           </CellBody>
         </Row>
@@ -698,10 +830,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0510
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.1009
           </CellBody>
         </Row>
@@ -718,10 +854,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0510
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.0529
           </CellBody>
         </Row>
@@ -738,10 +878,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0510
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             196.0429
           </CellBody>
         </Row>
@@ -758,10 +902,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0510
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.9960
           </CellBody>
         </Row>
@@ -778,10 +926,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0510
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.9792
           </CellBody>
         </Row>
@@ -798,10 +950,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0510
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.9628
           </CellBody>
         </Row>
@@ -818,10 +974,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0510
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.9568
           </CellBody>
         </Row>
@@ -838,10 +998,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0510
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.9459
           </CellBody>
         </Row>
@@ -858,10 +1022,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0510
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.8963
           </CellBody>
         </Row>
@@ -878,10 +1046,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0511
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.8775
           </CellBody>
         </Row>
@@ -898,10 +1070,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0511
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.8684
           </CellBody>
         </Row>
@@ -918,10 +1094,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0511
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.8318
           </CellBody>
         </Row>
@@ -938,10 +1118,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0511
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.7622
           </CellBody>
         </Row>
@@ -958,10 +1142,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0511
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.7552
           </CellBody>
         </Row>
@@ -978,10 +1166,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0511
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.7426
           </CellBody>
         </Row>
@@ -998,10 +1190,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0511
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.6889
           </CellBody>
         </Row>
@@ -1018,10 +1214,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0511
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.6615
           </CellBody>
         </Row>
@@ -1038,10 +1238,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0511
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.6337
           </CellBody>
         </Row>
@@ -1058,10 +1262,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0511
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.5956
           </CellBody>
         </Row>
@@ -1078,10 +1286,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0511
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.5852
           </CellBody>
         </Row>
@@ -1098,10 +1310,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0511
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.5459
           </CellBody>
         </Row>
@@ -1118,10 +1334,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0512
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.4735
           </CellBody>
         </Row>
@@ -1138,10 +1358,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0512
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.4281
           </CellBody>
         </Row>
@@ -1158,10 +1382,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0512
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.4146
           </CellBody>
         </Row>
@@ -1178,10 +1406,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0512
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.4102
           </CellBody>
         </Row>
@@ -1198,10 +1430,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0512
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.3698
           </CellBody>
         </Row>
@@ -1218,10 +1454,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0512
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.2951
           </CellBody>
         </Row>
@@ -1238,10 +1478,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0512
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             195.1502
           </CellBody>
         </Row>
@@ -1258,10 +1502,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0515
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             194.2841
           </CellBody>
         </Row>
@@ -1278,10 +1526,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0517
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             193.4366
           </CellBody>
         </Row>
@@ -1298,10 +1550,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0521
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             192.0272
           </CellBody>
         </Row>
@@ -1318,10 +1574,14 @@ exports[`RecentTrades should render correctly 1`] = `
               sell
             </span>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             0.0522
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             191.4630
           </CellBody>
         </Row>

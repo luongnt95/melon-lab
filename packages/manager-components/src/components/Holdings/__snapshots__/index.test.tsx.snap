@@ -27,13 +27,19 @@ exports[`Holdings should render correctly 1`] = `
           <CellHead>
             Quantity
           </CellHead>
-          <CellHead>
+          <CellHead
+            textAlign="right"
+          >
             % of portfolio
           </CellHead>
-          <CellHead>
+          <CellHead
+            textAlign="right"
+          >
             Price (MLN)
           </CellHead>
-          <CellHead />
+          <CellHead
+            textAlign="right"
+          />
         </Row>
       </TableHead>
       <TableBody>
@@ -47,18 +53,24 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody>
             0.0000
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0000
+              %
             </React.Fragment>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0035
             </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
+            textAlign="right"
           >
             <Button
               buttonValue="ANT-T"
@@ -79,18 +91,24 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody>
             0.0000
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0000
+              %
             </React.Fragment>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0007
             </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
+            textAlign="right"
           >
             <Button
               buttonValue="BAT-T"
@@ -111,18 +129,24 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody>
             0.0000
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0000
+              %
             </React.Fragment>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0000
             </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
+            textAlign="right"
           >
             <Button
               buttonValue="DGD-T"
@@ -143,18 +167,24 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody>
             0.0000
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0000
+              %
             </React.Fragment>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0000
             </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
+            textAlign="right"
           >
             <Button
               buttonValue="DGX-T"
@@ -175,18 +205,24 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody>
             0.0000
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0000
+              %
             </React.Fragment>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.1113
             </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
+            textAlign="right"
           >
             <Button
               buttonValue="GNO-T"
@@ -207,18 +243,24 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody>
             0.0000
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0000
+              %
             </React.Fragment>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0648
             </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
+            textAlign="right"
           >
             <Button
               buttonValue="REP-T"
@@ -239,18 +281,24 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody>
             0.0000
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0000
+              %
             </React.Fragment>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0024
             </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
+            textAlign="right"
           >
             <Button
               buttonValue="ZRX-T"
@@ -271,18 +319,24 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody>
             0.0000
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0000
+              %
             </React.Fragment>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0001
             </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
+            textAlign="right"
           >
             <Button
               buttonValue="REQ-T"
@@ -303,18 +357,24 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody>
             0.5166
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               50.5764
+              %
             </React.Fragment>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               1.0000
             </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
+            textAlign="right"
           >
             <span
               className="jsx-__scopedHash holdings__quote-asset"
@@ -331,18 +391,24 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody>
             10.7338
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               49.4236
+              %
             </React.Fragment>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0470
             </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
+            textAlign="right"
           >
             <Button
               buttonValue="MLN-T"
@@ -363,18 +429,24 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody>
             0.0000
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0000
+              %
             </React.Fragment>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               1.3430
             </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
+            textAlign="right"
           >
             <Button
               buttonValue="MKR-T"
@@ -395,18 +467,24 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody>
             0.0000
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0000
+              %
             </React.Fragment>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0021
             </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
+            textAlign="right"
           >
             <Button
               buttonValue="DAI-T"
@@ -427,18 +505,24 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody>
             0.0000
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0000
+              %
             </React.Fragment>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0276
             </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
+            textAlign="right"
           >
             <Button
               buttonValue="KNC-T"
@@ -459,18 +543,24 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody>
             0.0000
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0000
+              %
             </React.Fragment>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0003
             </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
+            textAlign="right"
           >
             <Button
               buttonValue="JNT-T"
@@ -491,18 +581,24 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody>
             0.0000
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0000
+              %
             </React.Fragment>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0150
             </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
+            textAlign="right"
           >
             <Button
               buttonValue="OMG-T"
@@ -523,18 +619,24 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody>
             0.0000
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0000
+              %
             </React.Fragment>
           </CellBody>
-          <CellBody>
+          <CellBody
+            textAlign="right"
+          >
             <React.Fragment>
               0.0184
             </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
+            textAlign="right"
           >
             <Button
               buttonValue="NMR-T"

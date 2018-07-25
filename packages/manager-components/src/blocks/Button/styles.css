@@ -20,17 +20,17 @@
 }
 
 .button--small {
-  font-size: var(--font-size-s);
-  padding: var(--space-xs) var(--space-xl);
+  font-size: .75em;
+  padding: var(--space-xs) var(--space-l);
 }
 
 .button--medium {
-  font-size: var(--font-size-m);
-  padding: var(--space-s) var(--space-xl);
+  font-size: 1em;
+  padding: var(--space-s) var(--space-m);
 }
 
 .button--large {
-  font-size: var(--font-size-l);
+  font-size: 1.25em;
   padding: var(--space-m) var(--space-xl);
 }
 
@@ -64,5 +64,5 @@
 
 .button--success:hover:enabled {
   background-color: var(--color-profit);
-  color: var(--color-white);;
+  color: var(--color-white);
 }
