@@ -37,6 +37,7 @@ export interface OrderFormProps {
   type?: string;
   dataValid?: boolean;
   isManager?: boolean;
+  isCompetition?: boolean;
 }
 
 export const OrderForm: StatelessComponent<OrderFormProps> = ({
@@ -54,6 +55,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
   decimals,
   dataValid,
   isManager,
+  isCompetition,
 }) => {
   const isMarket = values.strategy === 'Market' ? true : false;
   const numberPlaceholder = (0).toFixed(decimals);
@@ -74,15 +76,17 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
               onChange={onChange}
             />
           </div>
-          <div className="order-form__toggle">
-            <Toggle
-              name="strategy"
-              value="Limit"
-              text="Limit"
-              isChecked={values.strategy === 'Limit'}
-              onChange={onChange}
-            />
-          </div>
+          {!isCompetition && (
+            <div className="order-form__toggle">
+              <Toggle
+                name="strategy"
+                value="Limit"
+                text="Limit"
+                isChecked={values.strategy === 'Limit'}
+                onChange={onChange}
+              />
+            </div>
+          )}
         </div>
 
         <div className="order-form__switch">
