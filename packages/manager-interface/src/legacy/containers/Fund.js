@@ -21,20 +21,23 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => {
+  const isManager =
+    state.app.isReadyToInteract &&
+    isSameAddress(state.ethereum.account, state.fund.owner);
+
   return {
     loading: state.fund.loading,
     isVisitor: state.app.isReadyToVisit && !state.app.usersFund,
     isInvestor:
-    state.app.isReadyToInteract &&
-    !isSameAddress(state.ethereum.account, state.fund.owner),
-    isManager:
-    state.app.isReadyToInteract &&
-    isSameAddress(state.ethereum.account, state.fund.owner),
+      state.app.isReadyToInteract &&
+      !isSameAddress(state.ethereum.account, state.fund.owner),
+    isManager,
     canInvest: state.app.isReadyToInteract,
     pendingRequest: state.fund.pendingRequest,
     // fundAddress: ownProps.match.params.fundAddress,
     isCompetition: state.app.isCompetition,
     orderForm: {
+      isManager,
       baseTokenSymbol: state.app.assetPair.base,
       quoteTokenSymbol: state.app.assetPair.quote,
       values: state.trade,
@@ -42,9 +45,9 @@ const mapStateToProps = state => {
       info: {
         lastPrice: state.recentTrades.trades.length
           ? displayNumber(
-            state.recentTrades.trades[state.recentTrades.trades.length - 1]
-              .price,
-          )
+              state.recentTrades.trades[state.recentTrades.trades.length - 1]
+                .price,
+            )
           : 'N/A',
         bid: state.orderbook.buyOrders.length
           ? displayNumber(state.orderbook.buyOrders[0].price)
@@ -57,16 +60,16 @@ const mapStateToProps = state => {
             name: state.app.assetPair.base,
             balance: state.holdings.holdings.length
               ? state.holdings.holdings
-                .find(a => a.name === state.app.assetPair.base)
-                .balance.toString(10)
+                  .find(a => a.name === state.app.assetPair.base)
+                  .balance.toString(10)
               : undefined,
           },
           quoteToken: {
             name: state.app.assetPair.quote,
             balance: state.holdings.holdings.length
               ? state.holdings.holdings
-                .find(a => a.name === state.app.assetPair.quote)
-                .balance.toString(10)
+                  .find(a => a.name === state.app.assetPair.quote)
+                  .balance.toString(10)
               : undefined,
           },
         },
@@ -79,7 +82,7 @@ const mapStateToProps = state => {
       dataValid: state.ethereum.isDataValid,
     },
     hasContributed: state.fund.totalSupply == 0 ? false : true,
-    isCompetitionActive: state.fund.isParosActive
+    isCompetitionActive: state.fund.isParosActive,
   };
 };
 
