@@ -24,6 +24,7 @@ const mapStateToProps = state => {
   const isManager =
     state.app.isReadyToInteract &&
     isSameAddress(state.ethereum.account, state.fund.owner);
+  const isCompetition = state.app.isCompetition;
 
   return {
     loading: state.fund.loading,
@@ -35,8 +36,9 @@ const mapStateToProps = state => {
     canInvest: state.app.isReadyToInteract,
     pendingRequest: state.fund.pendingRequest,
     // fundAddress: ownProps.match.params.fundAddress,
-    isCompetition: state.app.isCompetition,
+    isCompetition,
     orderForm: {
+      isCompetition,
       isManager,
       baseTokenSymbol: state.app.assetPair.base,
       quoteTokenSymbol: state.app.assetPair.quote,

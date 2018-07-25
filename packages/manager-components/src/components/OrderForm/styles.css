@@ -17,6 +17,11 @@
   padding: var(--space-m) 0;
 }
 
-.order-form__toggle {
-  flex: 0 1 50%;
+.order-form__toggle:first-child:nth-last-child(1) {
+    flex: 0 1 100%;
+}
+
+.order-form__toggle:first-child:nth-last-child(2),
+.order-form__toggle:first-child:nth-last-child(2) ~ .order-form__toggle {
+    flex: 0 1 50%;
 }
