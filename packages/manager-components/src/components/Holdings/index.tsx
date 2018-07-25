@@ -1,4 +1,4 @@
-import React, { StatelessComponent } from 'react';
+import React, { Fragment, StatelessComponent } from 'react';
 import Button from '~/blocks/Button';
 import {
   CellBody,
@@ -47,11 +47,15 @@ export const Holdings: StatelessComponent<HoldingsProps> = ({
           </TableHead>
           <TableBody>
             {holdings.map(asset => (
-              <Row key={asset.name}>
+              <Row key={asset.name} size="small">
                 <CellBody>{asset.name}</CellBody>
                 <CellBody>{asset.balance}</CellBody>
-                <CellBody>{asset.percentage}</CellBody>
-                <CellBody>{asset.price}</CellBody>
+                <CellBody>
+                  {dataValid && <Fragment>{asset.percentage}</Fragment>}
+                </CellBody>
+                <CellBody>
+                  {dataValid && <Fragment>{asset.price}</Fragment>}
+                </CellBody>
                 <CellBody cellClass="holdings__action-cell">
                   {asset.name === quoteAsset ? (
                     <span className="holdings__quote-asset" />

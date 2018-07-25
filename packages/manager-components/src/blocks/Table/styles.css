@@ -4,6 +4,18 @@
   border-collapse: collapse;
 }
 
+.table__row :global(td),
+.table__row :global(th) {
+  padding-top: var(--space-xs);
+  padding-bottom: var(--space-xs);
+}
+
+.table__row--small :global(td),
+.table__row--small :global(th) {
+  padding-top: var(--space-xxs);
+  padding-bottom: var(--space-xxs);
+}
+
 .table__row--body {
   border-bottom: 1px dashed var(--color-border);
 }
@@ -18,8 +30,9 @@
 
 .table__cell {
   text-align: left;
-  padding: var(--space-xs) var(--space-s) var(--space-xxs) var(--space-s);
+  padding: 0 var(--space-s);
   line-height: 1;
+  white-space: nowrap;
 }
 
 .table__cell:first-child {

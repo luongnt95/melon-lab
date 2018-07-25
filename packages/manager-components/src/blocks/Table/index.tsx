@@ -13,6 +13,7 @@ export interface CellProps {
 export interface RowProps {
   rowClass?: string;
   isHead?: boolean;
+  size?: string;
 }
 
 const Table: StatelessComponent<TableProps> = ({ children }) => (
@@ -36,10 +37,11 @@ const TableHead: StatelessComponent = ({ children }) => (
   </Fragment>
 );
 
-const Row: StatelessComponent<RowProps> = ({ children, isHead }) => {
-  const classnameCell = classNames({
+const Row: StatelessComponent<RowProps> = ({ children, isHead, size }) => {
+  const classnameCell = classNames('table__row', {
     'table__row--head': isHead,
     'table__row--body': !isHead,
+    [`table__row--${size}`]: size,
   });
 
   return (

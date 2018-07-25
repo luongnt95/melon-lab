@@ -35,7 +35,7 @@ exports[`Row should render correctly 1`] = `
     styleId="__scopedHash"
   />
   <tr
-    className="jsx-__scopedHash table__row--body"
+    className="jsx-__scopedHash table__row table__row--body"
   >
     Default button
   </tr>

@@ -39,6 +39,7 @@ exports[`Holdings should render correctly 1`] = `
       <TableBody>
         <Row
           key="ANT-T"
+          size="small"
         >
           <CellBody>
             ANT-T
@@ -47,10 +48,14 @@ exports[`Holdings should render correctly 1`] = `
             0.0000
           </CellBody>
           <CellBody>
-            0.0000
+            <React.Fragment>
+              0.0000
+            </React.Fragment>
           </CellBody>
           <CellBody>
-            0.0035
+            <React.Fragment>
+              0.0035
+            </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -66,6 +71,7 @@ exports[`Holdings should render correctly 1`] = `
         </Row>
         <Row
           key="BAT-T"
+          size="small"
         >
           <CellBody>
             BAT-T
@@ -74,10 +80,14 @@ exports[`Holdings should render correctly 1`] = `
             0.0000
           </CellBody>
           <CellBody>
-            0.0000
+            <React.Fragment>
+              0.0000
+            </React.Fragment>
           </CellBody>
           <CellBody>
-            0.0007
+            <React.Fragment>
+              0.0007
+            </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -93,6 +103,7 @@ exports[`Holdings should render correctly 1`] = `
         </Row>
         <Row
           key="DGD-T"
+          size="small"
         >
           <CellBody>
             DGD-T
@@ -101,10 +112,14 @@ exports[`Holdings should render correctly 1`] = `
             0.0000
           </CellBody>
           <CellBody>
-            0.0000
+            <React.Fragment>
+              0.0000
+            </React.Fragment>
           </CellBody>
           <CellBody>
-            0.0000
+            <React.Fragment>
+              0.0000
+            </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -120,6 +135,7 @@ exports[`Holdings should render correctly 1`] = `
         </Row>
         <Row
           key="DGX-T"
+          size="small"
         >
           <CellBody>
             DGX-T
@@ -128,10 +144,14 @@ exports[`Holdings should render correctly 1`] = `
             0.0000
           </CellBody>
           <CellBody>
-            0.0000
+            <React.Fragment>
+              0.0000
+            </React.Fragment>
           </CellBody>
           <CellBody>
-            0.0000
+            <React.Fragment>
+              0.0000
+            </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -147,6 +167,7 @@ exports[`Holdings should render correctly 1`] = `
         </Row>
         <Row
           key="GNO-T"
+          size="small"
         >
           <CellBody>
             GNO-T
@@ -155,10 +176,14 @@ exports[`Holdings should render correctly 1`] = `
             0.0000
           </CellBody>
           <CellBody>
-            0.0000
+            <React.Fragment>
+              0.0000
+            </React.Fragment>
           </CellBody>
           <CellBody>
-            0.1113
+            <React.Fragment>
+              0.1113
+            </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -174,6 +199,7 @@ exports[`Holdings should render correctly 1`] = `
         </Row>
         <Row
           key="REP-T"
+          size="small"
         >
           <CellBody>
             REP-T
@@ -182,10 +208,14 @@ exports[`Holdings should render correctly 1`] = `
             0.0000
           </CellBody>
           <CellBody>
-            0.0000
+            <React.Fragment>
+              0.0000
+            </React.Fragment>
           </CellBody>
           <CellBody>
-            0.0648
+            <React.Fragment>
+              0.0648
+            </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -201,6 +231,7 @@ exports[`Holdings should render correctly 1`] = `
         </Row>
         <Row
           key="ZRX-T"
+          size="small"
         >
           <CellBody>
             ZRX-T
@@ -209,10 +240,14 @@ exports[`Holdings should render correctly 1`] = `
             0.0000
           </CellBody>
           <CellBody>
-            0.0000
+            <React.Fragment>
+              0.0000
+            </React.Fragment>
           </CellBody>
           <CellBody>
-            0.0024
+            <React.Fragment>
+              0.0024
+            </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -228,6 +263,7 @@ exports[`Holdings should render correctly 1`] = `
         </Row>
         <Row
           key="REQ-T"
+          size="small"
         >
           <CellBody>
             REQ-T
@@ -236,10 +272,14 @@ exports[`Holdings should render correctly 1`] = `
             0.0000
           </CellBody>
           <CellBody>
-            0.0000
+            <React.Fragment>
+              0.0000
+            </React.Fragment>
           </CellBody>
           <CellBody>
-            0.0001
+            <React.Fragment>
+              0.0001
+            </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -255,6 +295,7 @@ exports[`Holdings should render correctly 1`] = `
         </Row>
         <Row
           key="WETH-T"
+          size="small"
         >
           <CellBody>
             WETH-T
@@ -263,10 +304,14 @@ exports[`Holdings should render correctly 1`] = `
             0.5166
           </CellBody>
           <CellBody>
-            50.5764
+            <React.Fragment>
+              50.5764
+            </React.Fragment>
           </CellBody>
           <CellBody>
-            1.0000
+            <React.Fragment>
+              1.0000
+            </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -278,6 +323,7 @@ exports[`Holdings should render correctly 1`] = `
         </Row>
         <Row
           key="MLN-T"
+          size="small"
         >
           <CellBody>
             MLN-T
@@ -286,10 +332,14 @@ exports[`Holdings should render correctly 1`] = `
             10.7338
           </CellBody>
           <CellBody>
-            49.4236
+            <React.Fragment>
+              49.4236
+            </React.Fragment>
           </CellBody>
           <CellBody>
-            0.0470
+            <React.Fragment>
+              0.0470
+            </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -305,6 +355,7 @@ exports[`Holdings should render correctly 1`] = `
         </Row>
         <Row
           key="MKR-T"
+          size="small"
         >
           <CellBody>
             MKR-T
@@ -313,10 +364,14 @@ exports[`Holdings should render correctly 1`] = `
             0.0000
           </CellBody>
           <CellBody>
-            0.0000
+            <React.Fragment>
+              0.0000
+            </React.Fragment>
           </CellBody>
           <CellBody>
-            1.3430
+            <React.Fragment>
+              1.3430
+            </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -332,6 +387,7 @@ exports[`Holdings should render correctly 1`] = `
         </Row>
         <Row
           key="DAI-T"
+          size="small"
         >
           <CellBody>
             DAI-T
@@ -340,10 +396,14 @@ exports[`Holdings should render correctly 1`] = `
             0.0000
           </CellBody>
           <CellBody>
-            0.0000
+            <React.Fragment>
+              0.0000
+            </React.Fragment>
           </CellBody>
           <CellBody>
-            0.0021
+            <React.Fragment>
+              0.0021
+            </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -359,6 +419,7 @@ exports[`Holdings should render correctly 1`] = `
         </Row>
         <Row
           key="KNC-T"
+          size="small"
         >
           <CellBody>
             KNC-T
@@ -367,10 +428,14 @@ exports[`Holdings should render correctly 1`] = `
             0.0000
           </CellBody>
           <CellBody>
-            0.0000
+            <React.Fragment>
+              0.0000
+            </React.Fragment>
           </CellBody>
           <CellBody>
-            0.0276
+            <React.Fragment>
+              0.0276
+            </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -386,6 +451,7 @@ exports[`Holdings should render correctly 1`] = `
         </Row>
         <Row
           key="JNT-T"
+          size="small"
         >
           <CellBody>
             JNT-T
@@ -394,10 +460,14 @@ exports[`Holdings should render correctly 1`] = `
             0.0000
           </CellBody>
           <CellBody>
-            0.0000
+            <React.Fragment>
+              0.0000
+            </React.Fragment>
           </CellBody>
           <CellBody>
-            0.0003
+            <React.Fragment>
+              0.0003
+            </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -413,6 +483,7 @@ exports[`Holdings should render correctly 1`] = `
         </Row>
         <Row
           key="OMG-T"
+          size="small"
         >
           <CellBody>
             OMG-T
@@ -421,10 +492,14 @@ exports[`Holdings should render correctly 1`] = `
             0.0000
           </CellBody>
           <CellBody>
-            0.0000
+            <React.Fragment>
+              0.0000
+            </React.Fragment>
           </CellBody>
           <CellBody>
-            0.0150
+            <React.Fragment>
+              0.0150
+            </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -440,6 +515,7 @@ exports[`Holdings should render correctly 1`] = `
         </Row>
         <Row
           key="NMR-T"
+          size="small"
         >
           <CellBody>
             NMR-T
@@ -448,10 +524,14 @@ exports[`Holdings should render correctly 1`] = `
             0.0000
           </CellBody>
           <CellBody>
-            0.0000
+            <React.Fragment>
+              0.0000
+            </React.Fragment>
           </CellBody>
           <CellBody>
-            0.0184
+            <React.Fragment>
+              0.0184
+            </React.Fragment>
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
