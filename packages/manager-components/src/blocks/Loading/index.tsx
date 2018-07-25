@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import styles from './styles.css';
 
 const Loading = () => {
   return (
-    <span className="loading">
+    <Fragment>
       <style jsx>{styles}</style>
       <span className="loading__item">.</span>
       <span className="loading__item">.</span>
       <span className="loading__item">.</span>
-    </span>
+    </Fragment>
   );
 };
 
