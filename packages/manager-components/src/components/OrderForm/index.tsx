@@ -71,7 +71,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
             <Toggle
               name="strategy"
               value="Market"
-              text="Market"
+              text="Please select an order on the orderbook"
               isChecked={values.strategy === 'Market'}
               onChange={onChange}
             />
