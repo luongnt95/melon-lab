@@ -24,85 +24,85 @@ const Factsheet = ({
   isCompetition
 }) => (
     <div id="factsheet">
-        <h3>
-          <MaybeLoading>{name}</MaybeLoading>
+      <h3>
+        <MaybeLoading>{name}</MaybeLoading>
 
-          <a
-            href={tweetHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ float: 'right' }}
-          >
-            <img src="./static/twitter.png" alt="Tweet" height="15" />
-          </a>
-        </h3>
-        {loading ? (
-          <Image src="./static/melon-spinner.gif" size="tiny" centered />
-        ) : (
-            <List>
-              <List.Item>
-                <List.Content>
-                  Creation date: <MaybeLoading>{creationDate}</MaybeLoading>
-                </List.Content>
-              </List.Item>
-              <List.Item>
-                <List.Content as="a" onClick={() => scrollTo('holdings')}>
-                  <MaybeData dataAvailable={dataValid}>
-                    AUM: <MaybeLoading>{aum}</MaybeLoading> {quoteAsset}
-                  </MaybeData>
-                </List.Content>
-              </List.Item>
-              <List.Item>
-                <List.Content as="a" onClick={() => scrollTo('holdings')}>
-                  <MaybeData dataAvailable={dataValid}>
-                    Share price: <MaybeLoading>{sharePrice}</MaybeLoading>{' '}
-                    {quoteAsset}/Share
+        <a
+          href={tweetHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ float: 'right' }}
+        >
+          <img src="./static/twitter.png" alt="Tweet" height="15" />
+        </a>
+      </h3>
+      {loading ? (
+        <Image src="./static/melon-spinner.gif" size="tiny" centered />
+      ) : (
+          <List>
+            <List.Item>
+              <List.Content>
+                Creation date: <MaybeLoading>{creationDate}</MaybeLoading>
+              </List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Content as="a" onClick={() => scrollTo('holdings')}>
+                <MaybeData dataAvailable={dataValid}>
+                  AUM: <MaybeLoading>{aum}</MaybeLoading> {quoteAsset}
+                </MaybeData>
+              </List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Content as="a" onClick={() => scrollTo('holdings')}>
+                <MaybeData dataAvailable={dataValid}>
+                  Share price: <MaybeLoading>{sharePrice}</MaybeLoading>{' '}
+                  {quoteAsset}/Share
               </MaybeData>
-                </List.Content>
-              </List.Item>
-              <List.Item>
-                <List.Content as="a" href="#/ranking">
-                  Ranking: <MaybeLoading>{rank}</MaybeLoading> out of{' '}
-                  <MaybeLoading>{numberOfFunds}</MaybeLoading> Melon Funds
+              </List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Content as="a" href="#/ranking">
+                Ranking: <MaybeLoading>{rank}</MaybeLoading> out of{' '}
+                <MaybeLoading>{numberOfFunds}</MaybeLoading> Melon Funds
             </List.Content>
-              </List.Item>
+            </List.Item>
 
-              <List.Item>
-                <List.Content>
-                  Total number of shares: <MaybeLoading>{totalSupply}</MaybeLoading>
-                </List.Content>
-              </List.Item>
-              <List.Item>
-                <List.Content>
-                  Shares owned by me: <MaybeLoading>{personalStake}</MaybeLoading>
-                </List.Content>
-              </List.Item>
-              <Divider />
-              <List.Item>
-                <List.Content>
-                  Management Reward: <MaybeLoading>{managementReward}</MaybeLoading>%
+            <List.Item>
+              <List.Content>
+                Total number of shares: <MaybeLoading>{totalSupply}</MaybeLoading>
+              </List.Content>
+            </List.Item>
+            <List.Item>
+              <List.Content>
+                Shares owned by me: <MaybeLoading>{personalStake}</MaybeLoading>
+              </List.Content>
+            </List.Item>
+            <Divider />
+            <List.Item>
+              <List.Content>
+                Management Reward: <MaybeLoading>{managementReward}</MaybeLoading>%
             </List.Content>
-              </List.Item>
-              <List.Item>
-                <List.Content>
-                  Performance Reward:{' '}
-                  <MaybeLoading>{performanceReward}</MaybeLoading>%
+            </List.Item>
+            <List.Item>
+              <List.Content>
+                Performance Reward:{' '}
+                <MaybeLoading>{performanceReward}</MaybeLoading>%
             </List.Content>
-              </List.Item>
+            </List.Item>
 
-              <Divider />
-              <List.Item>
-                <List.Content href="http://melon.email" target="_blank">
-                  Contact Investors/Managers
+            <Divider />
+            <List.Item>
+              <List.Content href="http://melon.email" target="_blank">
+                Contact Investors/Managers
             </List.Content>
-              </List.Item>
-              {!isCompetition ? <div><Divider />
-                <List.Item as="a" onClick={shutdown}>
-                  <List.Content>Irreversibly shut down fund</List.Content>
-                </List.Item> </div> : <div />}
+            </List.Item>
+            {!isCompetition ? <div><Divider />
+              <List.Item as="a" onClick={shutdown}>
+                <List.Content>Irreversibly shut down fund</List.Content>
+              </List.Item> </div> : <div />}
 
-            </List>
-          )}
+          </List>
+        )}
     </div>
   );
 
