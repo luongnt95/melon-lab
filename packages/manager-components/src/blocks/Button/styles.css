@@ -64,5 +64,5 @@
 
 .button--success:hover:enabled {
   background-color: var(--color-profit);
-  color: var(--color-white);;
+  color: var(--color-white);
 }
