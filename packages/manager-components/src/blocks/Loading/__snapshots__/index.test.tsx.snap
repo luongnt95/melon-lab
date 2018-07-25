@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button should render correctly 1`] = `
+<span
+  className="jsx-__scopedHash loading"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <span
+    className="jsx-__scopedHash loading__item"
+  >
+    .
+  </span>
+  <span
+    className="jsx-__scopedHash loading__item"
+  >
+    .
+  </span>
+  <span
+    className="jsx-__scopedHash loading__item"
+  >
+    .
+  </span>
+</span>
+`;

@@ -47,7 +47,7 @@ export const OpenOrders: StatelessComponent<OpenOrdersProps> = ({
       <div className="open-orders__table-wrap">
         <Table>
           <TableHead>
-            <Row isHead={true}>
+            <Row isHead={true} size="small">
               <CellHead>Time</CellHead>
               <CellHead>Order id</CellHead>
               <CellHead>Order type</CellHead>
@@ -62,7 +62,7 @@ export const OpenOrders: StatelessComponent<OpenOrdersProps> = ({
           <TableBody>
             {orders &&
               orders.map(order => (
-                <Row key={order.id}>
+                <Row key={order.id} size="small">
                   <CellBody>{order.timestamp}</CellBody>
                   <CellBody>{order.id}</CellBody>
                   <CellBody>

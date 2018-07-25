@@ -1,5 +1,6 @@
 import React, { Fragment, StatelessComponent } from 'react';
 import Button from '~/blocks/Button';
+import Loading from '~/blocks/Loading';
 import {
   CellBody,
   CellHead,
@@ -40,47 +41,56 @@ export const Holdings: StatelessComponent<HoldingsProps> = ({
             <Row isHead={true}>
               <CellHead>Asset</CellHead>
               <CellHead>Quantity</CellHead>
-              <CellHead>% of portfolio</CellHead>
-              <CellHead>Price (MLN)</CellHead>
-              <CellHead />
+              <CellHead textAlign="right">% of portfolio</CellHead>
+              <CellHead textAlign="right">Price (MLN)</CellHead>
+              <CellHead textAlign="right" />
             </Row>
           </TableHead>
           <TableBody>
-            {holdings && holdings.map(asset => (
-              <Row key={asset.name} size="small">
-                <CellBody>{asset.name}</CellBody>
-                <CellBody>{asset.balance}</CellBody>
-                <CellBody>
-                  {dataValid && <Fragment>{asset.percentage}</Fragment>}
-                </CellBody>
-                <CellBody>
-                  {dataValid && <Fragment>{asset.price}</Fragment>}
-                </CellBody>
-                <CellBody cellClass="holdings__action-cell">
-                  {asset.name === quoteAsset ? (
-                    <span className="holdings__quote-asset" />
-                  ) : asset.name !== quoteAsset &&
-                  isReadyToTrade &&
-                  dataValid ? (
-                    <Button
-                      size="small"
-                      buttonValue={asset.name}
-                      onClick={onClick}
-                    >
-                      Buy/Sell
-                    </Button>
-                  ) : (
-                    <Button
-                      size="small"
-                      buttonValue={asset.name}
-                      onClick={onClick}
-                    >
-                      See Orderbook
-                    </Button>
-                  )}
-                </CellBody>
-              </Row>
-            ))}
+            {holdings &&
+              holdings.map(asset => (
+                <Row key={asset.name} size="small">
+                  <CellBody>{asset.name}</CellBody>
+                  <CellBody>{asset.balance}</CellBody>
+                  <CellBody textAlign="right">
+                    {dataValid ? (
+                      <Fragment>{asset.percentage}</Fragment>
+                    ) : (
+                      <Loading />
+                    )}
+                  </CellBody>
+                  <CellBody textAlign="right">
+                    {dataValid ? (
+                      <Fragment>{asset.price}</Fragment>
+                    ) : (
+                      <Loading />
+                    )}
+                  </CellBody>
+                  <CellBody textAlign="right" cellClass="holdings__action-cell">
+                    {asset.name === quoteAsset ? (
+                      <span className="holdings__quote-asset" />
+                    ) : asset.name !== quoteAsset &&
+                    isReadyToTrade &&
+                    dataValid ? (
+                      <Button
+                        size="small"
+                        buttonValue={asset.name}
+                        onClick={onClick}
+                      >
+                        Buy/Sell
+                      </Button>
+                    ) : (
+                      <Button
+                        size="small"
+                        buttonValue={asset.name}
+                        onClick={onClick}
+                      >
+                        See Orderbook
+                      </Button>
+                    )}
+                  </CellBody>
+                </Row>
+              ))}
           </TableBody>
         </Table>
       </div>
