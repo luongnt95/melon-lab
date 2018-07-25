@@ -3,6 +3,7 @@ import React from 'react';
 import OpenOrders from './index';
 
 const data = {
+  isManager: true,
   isReadyToTrade: true,
   orders: [
     {

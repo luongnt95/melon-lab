@@ -16,12 +16,14 @@ export interface OpenOrdersProps {
   orders?: any;
   onClick?: any;
   isReadyToTrade?: boolean;
+  isManager?: boolean;
 }
 
 export const OpenOrders: StatelessComponent<OpenOrdersProps> = ({
   orders,
   onClick,
   isReadyToTrade,
+  isManager,
 }) => {
   const onCancel = (e, data) => {
     if (onClick) {
@@ -47,7 +49,7 @@ export const OpenOrders: StatelessComponent<OpenOrdersProps> = ({
       <div className="open-orders__table-wrap">
         <Table>
           <TableHead>
-            <Row isHead={true} size="small">
+            <Row isHead={true} size={isManager && 'small'}>
               <CellHead>Time</CellHead>
               <CellHead>Id</CellHead>
               <CellHead>Type</CellHead>
@@ -56,13 +58,13 @@ export const OpenOrders: StatelessComponent<OpenOrdersProps> = ({
               <CellHead>Price</CellHead>
               <CellHead>Buy Quantity</CellHead>
               <CellHead>Sell Quantity</CellHead>
-              <CellHead />
+              {isManager && <CellHead />}
             </Row>
           </TableHead>
           <TableBody>
             {orders &&
               orders.map(order => (
-                <Row key={order.id} size="small">
+                <Row key={order.id} size={isManager && 'small'}>
                   <CellBody>{order.timestamp}</CellBody>
                   <CellBody>{order.id}</CellBody>
                   <CellBody>
@@ -75,23 +77,25 @@ export const OpenOrders: StatelessComponent<OpenOrdersProps> = ({
                   <CellBody>{order.price}</CellBody>
                   <CellBody>{order.sellHowMuch}</CellBody>
                   <CellBody>{order.buyHowMuch}</CellBody>
-                  <CellBody>
-                    {{ isReadyToTrade } ? (
-                      <Button
-                        size="small"
-                        buttonValue={{
-                          id: order.id,
-                          buySymbol: order.buySymbol,
-                          sellSymbol: order.sellSymbol,
-                        }}
-                        onClick={onCancel}
-                      >
-                        Cancel
-                      </Button>
-                    ) : (
-                      <span />
-                    )}
-                  </CellBody>
+                  {isManager && (
+                    <CellBody>
+                      {{ isReadyToTrade } ? (
+                        <Button
+                          size="small"
+                          buttonValue={{
+                            id: order.id,
+                            buySymbol: order.buySymbol,
+                            sellSymbol: order.sellSymbol,
+                          }}
+                          onClick={onCancel}
+                        >
+                          Cancel
+                        </Button>
+                      ) : (
+                        <span />
+                      )}
+                    </CellBody>
+                  )}
                 </Row>
               ))}
           </TableBody>
