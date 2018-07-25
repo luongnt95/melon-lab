@@ -40,32 +40,39 @@ export const RecentTrades: StatelessComponent<RecentTradesProps> = ({
         Recent trades for {baseTokenSymbol}/{quoteTokenSymbol}
       </h3>
       <div className="recent-trades__table-wrap">
-        <Table>
-          <TableHead>
-            <Row isHead={true}>
-              <CellHead>Time</CellHead>
-              <CellHead>Type</CellHead>
-              <CellHead textAlign="right">
-                Price ({baseTokenSymbol}/{quoteTokenSymbol})
-              </CellHead>
-              <CellHead textAlign="right">Amount ({baseTokenSymbol})</CellHead>
-            </Row>
-          </TableHead>
-          <TableBody>
-            {trades && trades.reverse().map((trade, index) => (
-              <Row key={index}>
-                <CellBody>{trade.timestamp}</CellBody>
-                <CellBody>
-                  <span className={classnameTypeCell(trade.type)}>
-                    {trade.type}
-                  </span>
-                </CellBody>
-                <CellBody textAlign="right">{trade.price}</CellBody>
-                <CellBody textAlign="right">{trade.quantity}</CellBody>
+        {trades ? (
+          <Table>
+            <TableHead>
+              <Row isHead={true}>
+                <CellHead>Time</CellHead>
+                <CellHead>Type</CellHead>
+                <CellHead textAlign="right">
+                  Price ({baseTokenSymbol}/{quoteTokenSymbol})
+                </CellHead>
+                <CellHead textAlign="right">
+                  Amount ({baseTokenSymbol})
+                </CellHead>
               </Row>
-            ))}
-          </TableBody>
-        </Table>
+            </TableHead>
+            <TableBody>
+              {trades.length > 0 &&
+                trades.reverse().map((trade, index) => (
+                  <Row key={index}>
+                    <CellBody>{trade.timestamp}</CellBody>
+                    <CellBody>
+                      <span className={classnameTypeCell(trade.type)}>
+                        {trade.type}
+                      </span>
+                    </CellBody>
+                    <CellBody textAlign="right">{trade.price}</CellBody>
+                    <CellBody textAlign="right">{trade.quantity}</CellBody>
+                  </Row>
+                ))}
+            </TableBody>
+          </Table>
+        ) : (
+          <p>No recent trades</p>
+        )}
       </div>
     </div>
   );
