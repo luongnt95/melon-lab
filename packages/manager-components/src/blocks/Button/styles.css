@@ -2,7 +2,7 @@
   border: none;
   font-family: var(--font-family-primary);
   color: var(--color-black);
-  background-color: rgb(239, 230, 202);
+  background-color: color-mod(var(--color-secondary-dark) a(75%));
   cursor: pointer;
   text-transform: uppercase;
   line-height: 1;
@@ -24,7 +24,7 @@
   padding: var(--space-xs) var(--space-xl);
 }
 
-.button--default {
+.button--medium {
   font-size: var(--font-size-m);
   padding: var(--space-s) var(--space-xl);
 }

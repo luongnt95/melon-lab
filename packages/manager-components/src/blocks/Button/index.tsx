@@ -1,13 +1,14 @@
-import React, { ChangeEventHandler, StatelessComponent } from 'react';
+import React, { StatelessComponent } from 'react';
 
 import styles from './styles.css';
 
 export interface ButtonProps {
   disabled?: boolean;
   type?: string;
-  onClick?: ChangeEventHandler<Element>;
+  onClick?: any;
   size?: string;
   style?: string;
+  buttonValue?: any;
 }
 
 const Button: StatelessComponent<ButtonProps> = ({
@@ -15,17 +16,22 @@ const Button: StatelessComponent<ButtonProps> = ({
   disabled,
   onClick,
   type = 'button',
-  size = 'default',
+  size = 'medium',
   style = 'default',
+  buttonValue,
 }) => {
   const sizeClass = `button--${size}`;
   const styleClass = `button--${style}`;
   const classes = `button ${sizeClass} ${styleClass}`;
 
+  const onButtonClick = (e) => {
+    onClick(e, buttonValue);
+  };
+
   return (
     <button
       type={type}
-      onClick={onClick}
+      onClick={onButtonClick}
       className={classes}
       disabled={disabled}
     >
