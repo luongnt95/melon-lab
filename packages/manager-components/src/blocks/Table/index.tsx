@@ -8,6 +8,7 @@ export interface TableProps {
 
 export interface CellProps {
   cellClass?: string;
+  textAlign?: string;
 }
 
 export interface RowProps {
@@ -52,9 +53,14 @@ const Row: StatelessComponent<RowProps> = ({ children, isHead, size }) => {
   );
 };
 
-const CellBody: StatelessComponent<CellProps> = ({ children, cellClass }) => {
+const CellBody: StatelessComponent<CellProps> = ({
+  children,
+  cellClass,
+  textAlign,
+}) => {
   const classnameCellBody = classNames('table__cell', {
     [`${cellClass}`]: cellClass,
+    [`table__cell--${textAlign}`]: textAlign,
   });
 
   return (
@@ -65,9 +71,14 @@ const CellBody: StatelessComponent<CellProps> = ({ children, cellClass }) => {
   );
 };
 
-const CellHead: StatelessComponent<CellProps> = ({ children, cellClass }) => {
+const CellHead: StatelessComponent<CellProps> = ({
+  children,
+  cellClass,
+  textAlign,
+}) => {
   const classnameCellHead = classNames('table__cell', {
     [`${cellClass}`]: cellClass,
+    [`table__cell--${textAlign}`]: textAlign,
   });
 
   return (

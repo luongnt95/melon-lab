@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OpenOrders should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash open-orders"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Open orders
+  </h3>
+  <div
+    className="jsx-__scopedHash open-orders__table-wrap"
+  >
+    <Table>
+      <TableHead>
+        <Row
+          isHead={true}
+        >
+          <CellHead>
+            Time
+          </CellHead>
+          <CellHead>
+            Order id
+          </CellHead>
+          <CellHead>
+            Order type
+          </CellHead>
+          <CellHead>
+            Buy
+          </CellHead>
+          <CellHead>
+            Sell
+          </CellHead>
+          <CellHead>
+            Price
+          </CellHead>
+          <CellHead>
+            Buy Quantity
+          </CellHead>
+          <CellHead>
+            Sell Quantity
+          </CellHead>
+          <CellHead />
+        </Row>
+      </TableHead>
+      <TableBody>
+        <Row
+          key="12322"
+        >
+          <CellBody>
+            25. Jul 2018 11:11
+          </CellBody>
+          <CellBody>
+            12322
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash open-orders__cell open-orders__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            WETH-T
+          </CellBody>
+          <CellBody>
+            MLN-T
+          </CellBody>
+          <CellBody>
+            0.0672
+          </CellBody>
+          <CellBody>
+            0.1423
+          </CellBody>
+          <CellBody>
+            2.1180
+          </CellBody>
+          <CellBody>
+            <Button
+              buttonValue={
+                Object {
+                  "buySymbol": "MLN-T",
+                  "id": 12322,
+                  "sellSymbol": "WETH-T",
+                }
+              }
+              onClick={[Function]}
+              size="small"
+            >
+              Cancel
+            </Button>
+          </CellBody>
+        </Row>
+        <Row
+          key="29468"
+        >
+          <CellBody>
+            25. Jul 2018 11:11
+          </CellBody>
+          <CellBody>
+            29468
+          </CellBody>
+          <CellBody>
+            <span
+              className="jsx-__scopedHash open-orders__cell open-orders__cell--red"
+            >
+              sell
+            </span>
+          </CellBody>
+          <CellBody>
+            WETH-T
+          </CellBody>
+          <CellBody>
+            MLN-T
+          </CellBody>
+          <CellBody>
+            0.0672
+          </CellBody>
+          <CellBody>
+            0.1423
+          </CellBody>
+          <CellBody>
+            2.1180
+          </CellBody>
+          <CellBody>
+            <Button
+              buttonValue={
+                Object {
+                  "buySymbol": "MLN-T",
+                  "id": 29468,
+                  "sellSymbol": "WETH-T",
+                }
+              }
+              onClick={[Function]}
+              size="small"
+            >
+              Cancel
+            </Button>
+          </CellBody>
+        </Row>
+      </TableBody>
+    </Table>
+  </div>
+</div>
+`;

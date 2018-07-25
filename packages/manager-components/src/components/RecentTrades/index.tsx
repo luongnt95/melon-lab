@@ -45,14 +45,14 @@ export const RecentTrades: StatelessComponent<RecentTradesProps> = ({
             <Row isHead={true}>
               <CellHead>Time</CellHead>
               <CellHead>Type</CellHead>
-              <CellHead>
+              <CellHead textAlign="right">
                 Price ({baseTokenSymbol}/{quoteTokenSymbol})
               </CellHead>
-              <CellHead>Amount ({baseTokenSymbol})</CellHead>
+              <CellHead textAlign="right">Amount ({baseTokenSymbol})</CellHead>
             </Row>
           </TableHead>
           <TableBody>
-            {trades.reverse().map((trade, index) => (
+            {trades && trades.reverse().map((trade, index) => (
               <Row key={index}>
                 <CellBody>{trade.timestamp}</CellBody>
                 <CellBody>
@@ -60,8 +60,8 @@ export const RecentTrades: StatelessComponent<RecentTradesProps> = ({
                     {trade.type}
                   </span>
                 </CellBody>
-                <CellBody>{trade.price}</CellBody>
-                <CellBody>{trade.quantity}</CellBody>
+                <CellBody textAlign="right">{trade.price}</CellBody>
+                <CellBody textAlign="right">{trade.quantity}</CellBody>
               </Row>
             ))}
           </TableBody>

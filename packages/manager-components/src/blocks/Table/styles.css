@@ -43,6 +43,6 @@
   padding-right: 0;
 }
 
-.table__cell:nth-child(n + 3) {
+.table__cell--right {
   text-align: right;
 }

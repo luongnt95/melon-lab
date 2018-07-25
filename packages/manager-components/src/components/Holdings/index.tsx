@@ -46,7 +46,7 @@ export const Holdings: StatelessComponent<HoldingsProps> = ({
             </Row>
           </TableHead>
           <TableBody>
-            {holdings.map(asset => (
+            {holdings && holdings.map(asset => (
               <Row key={asset.name} size="small">
                 <CellBody>{asset.name}</CellBody>
                 <CellBody>{asset.balance}</CellBody>

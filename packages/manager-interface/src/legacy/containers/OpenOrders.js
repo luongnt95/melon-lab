@@ -2,7 +2,7 @@ import moment from "moment";
 import { connect } from "react-redux";
 import { lifecycle } from "recompose";
 import { actions } from "../actions/openOrders";
-import OpenOrders from "../components/organisms/OpenOrders";
+import OpenOrders from '@melonproject/manager-components/components/OpenOrders';
 import displayNumber from "../utils/displayNumber";
 
 const mapStateToProps = state => ({

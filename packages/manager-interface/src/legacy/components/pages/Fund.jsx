@@ -55,10 +55,10 @@ const Fund = ({
                 pendingRequest && <ExecuteRequest />,
               !isCompetition && !canInvest && <Card />,
             ]}
-            holdings={<Holdings address={fundAddress} />}
+            holdings={<Holdings />}
             orderForm={<OrderForm {...orderForm} onSubmit={onSubmit} />}
             orderbook={<Orderbook />}
-            openOrders={<OpenOrders address={fundAddress} />}
+            openOrders={<OpenOrders />}
             recentTrades={<RecentTrades />}
           />
         )}
