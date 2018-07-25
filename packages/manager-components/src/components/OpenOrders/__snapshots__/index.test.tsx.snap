@@ -26,10 +26,10 @@ exports[`OpenOrders should render correctly 1`] = `
             Time
           </CellHead>
           <CellHead>
-            Order id
+            Id
           </CellHead>
           <CellHead>
-            Order type
+            Type
           </CellHead>
           <CellHead>
             Buy

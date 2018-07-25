@@ -49,8 +49,8 @@ export const OpenOrders: StatelessComponent<OpenOrdersProps> = ({
           <TableHead>
             <Row isHead={true} size="small">
               <CellHead>Time</CellHead>
-              <CellHead>Order id</CellHead>
-              <CellHead>Order type</CellHead>
+              <CellHead>Id</CellHead>
+              <CellHead>Type</CellHead>
               <CellHead>Buy</CellHead>
               <CellHead>Sell</CellHead>
               <CellHead>Price</CellHead>
