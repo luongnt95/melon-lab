@@ -54,7 +54,7 @@ export const Holdings: StatelessComponent<HoldingsProps> = ({
                   <CellBody>{asset.balance}</CellBody>
                   <CellBody textAlign="right">
                     {dataValid ? (
-                      <Fragment>{asset.percentage}</Fragment>
+                      <Fragment>{asset.percentage}%</Fragment>
                     ) : (
                       <Loading />
                     )}
