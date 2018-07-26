@@ -19,9 +19,9 @@ exports[`Factsheet should render correctly 1`] = `
       target="_blank"
     >
       <Icon
-        height="14px"
+        height="12px"
         name="icons_twitter"
-        width="14px"
+        width="12px"
       />
     </a>
   </h3>
