@@ -40,7 +40,7 @@ export const RecentTrades: StatelessComponent<RecentTradesProps> = ({
         Recent trades for {baseTokenSymbol}/{quoteTokenSymbol}
       </h3>
       <div className="recent-trades__table-wrap">
-        {trades ? (
+        {trades.length > 0 ? (
           <Table>
             <TableHead>
               <Row isHead={true}>
