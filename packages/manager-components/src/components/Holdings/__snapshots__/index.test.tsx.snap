@@ -3,6 +3,7 @@
 exports[`Holdings should render correctly 1`] = `
 <div
   className="jsx-__scopedHash holdings"
+  id="holdings"
 >
   <JSXStyle
     css="__scoped"

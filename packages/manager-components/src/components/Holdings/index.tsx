@@ -32,7 +32,7 @@ export const Holdings: StatelessComponent<HoldingsProps> = ({
   };
 
   return (
-    <div className="holdings">
+    <div className="holdings" id="holdings">
       <style jsx>{styles}</style>
       <h3>Fund Holdings</h3>
       <div className="holdings__table-wrap">
