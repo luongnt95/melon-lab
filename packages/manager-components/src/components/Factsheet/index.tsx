@@ -1,5 +1,6 @@
 import React, { StatelessComponent } from 'react';
 import Button from '~/blocks/Button';
+import Icon from '~/blocks/Icon';
 import Loading from '~/blocks/Loading';
 import Spinner from '~/blocks/Spinner';
 
@@ -63,7 +64,7 @@ const Factsheet: StatelessComponent<FactsheetProps> = ({
           target="_blank"
           rel="noopener noreferrer"
         >
-          🐦
+          <Icon width="14px" height="14px" name="icons_twitter" />
         </a>
       </h3>
       {loading ? (

@@ -18,7 +18,11 @@ exports[`Factsheet should render correctly 1`] = `
       rel="noopener noreferrer"
       target="_blank"
     >
-      🐦
+      <Icon
+        height="14px"
+        name="icons_twitter"
+        width="14px"
+      />
     </a>
   </h3>
   <div
