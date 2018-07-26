@@ -1,4 +1,5 @@
 // @flow
+import BigNumber from 'bignumber.js';
 import getMethodNameSignature from '../../exchange/utils/getMethodNameSignature';
 import ensure from '../../utils/generic/ensure';
 import getAddress from '../../assets/utils/getAddress';
@@ -88,7 +89,7 @@ const preflightMakeOrder = async (
 
   ensure(
     quantityHeldInCustodyOfExchange.eq(new BigNumber(0)),
-    `Only one open order is allowed per asset. Please wait or cancel your existing open order on ${sellWhichToken}`,
+    `Only one open order is allowed per asset. Please wait or cancel your existing open order on ${makerAssetSymbol}`,
   );
 
   const isAllowed = await isMakePermitted(environment, {
