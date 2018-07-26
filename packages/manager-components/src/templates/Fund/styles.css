@@ -6,11 +6,24 @@
 }
 
 .trade__info-item {
-  flex: 1;
   margin: 0;
   padding: 0;
   width: auto;
   padding: var(--space-m);
+}
+
+.trade__info-item:nth-last-child(1) {
+    flex: 0 0 100%;
+}
+
+.trade__info-item:nth-last-child(2),
+.trade__info-item:nth-last-child(2) ~ .trade__info-item {
+    flex: 0 0 50%;
+}
+
+.trade__info-item:nth-last-child(3),
+.trade__info-item:nth-last-child(3) ~ .trade__info-item {
+    flex: 0 0 33.3333%;
 }
 
 .trade__order {

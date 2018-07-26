@@ -2,14 +2,26 @@ import React, { Fragment } from 'react';
 
 import styles from './styles.css';
 
-const Loading = () => {
+const Loading = ({ children, loading = true, dataAvailable = true }) => {
   return (
-    <Fragment>
+    <span>
       <style jsx>{styles}</style>
-      <span className="loading__item">.</span>
-      <span className="loading__item">.</span>
-      <span className="loading__item">.</span>
-    </Fragment>
+      {loading ? (
+        <Fragment>
+          <span className="loading__item">.</span>
+          <span className="loading__item">.</span>
+          <span className="loading__item">.</span>
+        </Fragment>
+      ) : (
+        <Fragment>
+          {dataAvailable ? (
+            <Fragment>{children}</Fragment>
+          ) : (
+            <span className="loading__invalid">{children}</span>
+          )}
+        </Fragment>
+      )}
+    </span>
   );
 };
 

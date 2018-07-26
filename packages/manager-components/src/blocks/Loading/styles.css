@@ -4,6 +4,10 @@
   margin-right: 1px;
 }
 
+.loading__invalid {
+  color: var(--color-loss);
+}
+
 .loading__item:nth-child(1) {
   animation: opacitychange 1s ease-in-out infinite;
 }
