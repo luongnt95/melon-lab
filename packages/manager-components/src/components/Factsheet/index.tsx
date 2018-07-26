@@ -17,7 +17,7 @@ export interface FactsheetProps {
   rank?: string,
   numberOfFunds?: string,
   tweetHref?: string,
-  scrollTo?: string,
+  scrollTo?: any,
   loading?: boolean,
   dataValid?: boolean,
   expectedPrize?: string,
