@@ -27,7 +27,7 @@ export const GetStarted: StatelessComponent<GetStartedProps> = ({
       <h3>Get started</h3>
       {networkId === '1' ? (
         <Fragment>
-          <h2> You are accessing Melon on the Ethereum main network.</h2>
+          <h4> You are accessing Melon on the Ethereum main network.</h4>
           <p>
             AT THE END OF THE TESTING PERIOD OR AT ANY ARBITRARY POINT IN TIME
             AS DEFINED BY MELONPORT AG, THE SMART CONTRACT SYSTEM WILL BE CLOSED
@@ -43,11 +43,9 @@ export const GetStarted: StatelessComponent<GetStartedProps> = ({
             <b>Melon</b>, [méllō], μέλλω; Greek for <b>"destined to be"</b>:
           </p>
           <p>
-            {' '}
             Blockchain software that seeks to enable participants to set up,
             manage and invest in technology regulated digital investment funds.
           </p>
-
           <p>
             Set up your own technology regulated fund and discover the future of
             asset management.

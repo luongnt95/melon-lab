@@ -33,7 +33,6 @@ exports[`Holdings should render correctly 1`] = `
     <p
       className="jsx-__scopedHash"
     >
-       
       Blockchain software that seeks to enable participants to set up, manage and invest in technology regulated digital investment funds.
     </p>
     <p
