@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import GetStarted from '../components/organisms/GetStarted';
+import GetStarted from '@melonproject/manager-components/components/GetStarted';
 import { actions as routeActions } from '../actions/routes';
 import { onboardingPath } from '../reducers/app';
 
@@ -36,6 +36,13 @@ const mapStateToProps = state => ({
   ...getLink(state.app.onboardingState, state.app.usersFund),
 });
 
-const GetStartedContainer = connect(mapStateToProps)(GetStarted);
+const mapDispatchToProps = dispatch => ({
+  onClick: data => dispatch(data),
+});
+
+const GetStartedContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(GetStarted);
 
 export default GetStartedContainer;
