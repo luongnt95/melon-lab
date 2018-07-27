@@ -2,7 +2,7 @@
 
 exports[`Icon should render correctly 1`] = `
 <svg
-  className="icon undefined"
+  className="icon"
   height="100%"
   width="100%"
 >

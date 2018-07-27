@@ -1,5 +1,5 @@
 import React from 'react';
-import Icons from '~/blocks/Icon';
+import Icon from '~/blocks/Icon';
 
 import '~/static/images/logos.svg';
 import styles from './styles.css';
@@ -9,7 +9,7 @@ const Logos = ({ name, width, height }) => (
     <style jsx>{styles}</style>
     <div className="logos__el">
       <span className="logos__name">{name}</span>
-      <Icons name={`logos_${name}`} height={height} width={width} />
+      <Icon name={`logos_${name}`} height={height} width={width} />
     </div>
   </div>
 );

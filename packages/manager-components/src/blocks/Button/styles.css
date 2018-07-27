@@ -66,3 +66,18 @@
   background-color: var(--color-profit);
   color: var(--color-white);
 }
+
+.button--clear {
+  background-color: transparent;
+  border: none;
+  color: var(--color-black);
+  width: auto;
+  min-width: auto;
+  padding: 0;
+  text-transform: none;
+}
+
+.button--clear:hover:enabled {
+  background-color: transparent;
+  color: var(--color-black);
+}

@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { StatelessComponent } from 'react';
 
 export interface IconProps {
@@ -13,7 +14,9 @@ const Icon: StatelessComponent<IconProps> = ({
   width,
   iconClass,
 }) => {
-  const classes = `icon ${iconClass}`;
+  const classes = classNames('icon', {
+    [`${iconClass}`]: iconClass,
+  });
 
   return (
     <svg

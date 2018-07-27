@@ -1,7 +1,7 @@
 import moment from "moment";
 import { connect } from "react-redux";
 
-import Factsheet from "../components/organisms/Factsheet";
+import Factsheet from '@melonproject/manager-components/components/Factsheet';
 import displayNumber from "../utils/displayNumber";
 
 import { actions as appActions } from "../actions/app";

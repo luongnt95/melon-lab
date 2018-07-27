@@ -25,6 +25,7 @@ import { greaterThan } from '../../utils/functionalBigNumber';
 import Header from '@melonproject/manager-components/components/Header';
 import Footer from '@melonproject/manager-components/components/Footer';
 import '~/static/images/logos.svg';
+import '~/static/images/icons.svg';
 
 const shortenAddress = address =>
   `${address.slice(0, 6)}…${address.substr(-4)}`;
