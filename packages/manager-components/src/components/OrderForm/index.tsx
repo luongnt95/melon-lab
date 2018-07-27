@@ -3,9 +3,9 @@ import Button from '~/blocks/Button';
 import Dropdown from '~/blocks/Dropdown';
 import Form from '~/blocks/Form';
 import Input from '~/blocks/Input';
-import OrderInfo from '~/blocks/OrderInfo';
 import Switch from '~/blocks/Switch';
 import Toggle from '~/blocks/Toggle';
+import OrderInfo from '~/components/OrderInfo';
 
 import styles from './styles.css';
 
@@ -36,6 +36,8 @@ export interface OrderFormProps {
   decimals?: number;
   type?: string;
   dataValid?: boolean;
+  isManager?: boolean;
+  isCompetition?: boolean;
 }
 
 export const OrderForm: StatelessComponent<OrderFormProps> = ({
@@ -52,6 +54,8 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
   touched,
   decimals,
   dataValid,
+  isManager,
+  isCompetition,
 }) => {
   const isMarket = values.strategy === 'Market' ? true : false;
   const numberPlaceholder = (0).toFixed(decimals);
@@ -59,27 +63,34 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
   return (
     <div className="order-form">
       <style jsx>{styles}</style>
+      <h3>Trade</h3>
       <Form>
-        {!dataValid ? <p>Trading not possible when price feed down</p> : null}
+        {!dataValid && <p>Trading not possible when price feed down</p>}
         <div className="order-form__toggles">
           <div className="order-form__toggle">
             <Toggle
               name="strategy"
               value="Market"
-              text="Market"
+              text={
+                isCompetition
+                  ? 'Please select an order on the orderbook'
+                  : 'Market'
+              }
               isChecked={values.strategy === 'Market'}
               onChange={onChange}
             />
           </div>
-          <div className="order-form__toggle">
-            <Toggle
-              name="strategy"
-              value="Limit"
-              text="Limit"
-              isChecked={values.strategy === 'Limit'}
-              onChange={onChange}
-            />
-          </div>
+          {!isCompetition && (
+            <div className="order-form__toggle">
+              <Toggle
+                name="strategy"
+                value="Limit"
+                text="Limit"
+                isChecked={values.strategy === 'Limit'}
+                onChange={onChange}
+              />
+            </div>
+          )}
         </div>
 
         <div className="order-form__switch">
@@ -90,7 +101,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
             name="orderType"
             value={values.orderType}
             isChecked={values.orderType === 'Sell' ? true : false}
-            disabled={isMarket || !dataValid}
+            disabled={isMarket || !dataValid || !isManager}
           />
         </div>
         {/* <div className="order-form__dropdown">
@@ -109,7 +120,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
         <div className="order-form__input">
           <Input
             value={values.price}
-            disabled={isMarket || !dataValid}
+            disabled={isMarket || !dataValid || !isManager}
             type="number"
             label="Price"
             name="price"
@@ -137,7 +148,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
             required={true}
             formatNumber={true}
             error={touched.quantity && errors.quantity}
-            disabled={(isMarket && !values.price) || !dataValid}
+            disabled={(isMarket && !values.price) || !dataValid || !isManager}
           />
         </div>
         <div className="order-form__input">
@@ -154,11 +165,11 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
             required={true}
             formatNumber={true}
             error={touched.total && errors.total}
-            disabled={(isMarket && !values.price) || !dataValid}
+            disabled={(isMarket && !values.price) || !dataValid || !isManager}
           />
         </div>
         <Button
-          disabled={(isMarket && !values.price) || !dataValid}
+          disabled={(isMarket && !values.price) || !dataValid || !isManager}
           onClick={handleSubmit}
           type="submit"
         >

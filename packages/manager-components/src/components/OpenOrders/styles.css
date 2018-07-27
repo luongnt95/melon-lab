@@ -1,0 +1,11 @@
+.open-orders__table-wrap {
+  overflow-x: auto;
+}
+
+.open-orders__cell--red {
+  color: var(--color-loss);
+}
+
+.open-orders__cell--green {
+  color: var(--color-profit);
+}

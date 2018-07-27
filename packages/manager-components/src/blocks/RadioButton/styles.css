@@ -4,15 +4,15 @@
   padding-left: var(--space-l);
   cursor: pointer;
   line-height: 1;
-  color: var(--color-primary-darkest);
+  color: var(--color-primary-dark);
 }
 
 .radio-button:hover input:enabled ~ .radio-button__checkmark {
-  background-color: var(--color-primary-darkest);
+  background-color: var(--color-primary-dark);
 }
 
 .radio-button input:checked ~ .radio-button__checkmark {
-  background-color: var(--color-primary-darkest);
+  background-color: var(--color-primary-dark);
 }
 
 .radio-button input:checked ~ .radio-button__checkmark:after {
@@ -21,11 +21,11 @@
 
 .radio-button input:disabled ~ .radio-button__text {
   text-decoration: line-through;
-  color: var(--color-primary-darkest);
+  color: var(--color-primary-dark);
 }
 
 .radio-button input:disabled ~ .radio-button__checkmark {
-  border-color: var(--color-primary-darkest);
+  border-color: var(--color-primary-dark);
   cursor: not-allowed;
 }
 
@@ -45,7 +45,7 @@
   left: 0;
   height: 16px;
   width: 16px;
-  border: 1px solid var(--color-primary-darkest);
+  border: 1px solid var(--color-primary-dark);
   border-radius: 50%;
   transition-property: background-color;
   transition-duration: var(--transition-duration-default);

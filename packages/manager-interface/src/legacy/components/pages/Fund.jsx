@@ -16,56 +16,55 @@ import TradeHelper from '../../containers/TradeHelper';
 import OpenOrders from '../../containers/OpenOrders';
 import ClaimRewardParos from '../../containers/ClaimRewardParos';
 import Layout from '@melonproject/manager-components/design/Layout';
+import FundTemplate from '@melonproject/manager-components/templates/Fund';
 import OrderForm from '@melonproject/manager-components/components/OrderForm/container';
 import ParosContributionContainer from '../../containers/ParosContribution';
 
 const Fund = ({
   isManager,
-    fundAddress,
-    canInvest,
-    pendingRequest,
-    isCompetition,
-    orderForm,
-    onSubmit,
-    hasContributed,
-    isCompetitionActive
-}) => (
-        <div className="App">
-            <br />
-            {!hasContributed && isCompetition && isCompetitionActive && isManager ?
-                <ParosContributionContainer /> : <div>
-                    <Card.Group>
-                        <Factsheet />
-                        {isCompetition && hasContributed && isManager ? <ClaimRewardParos /> : <div />}
-                        {!isCompetition && isManager ? <Administration /> : <div />}
-                        {!isCompetition && !isManager ? <GetStarted /> : <div />}
-                        {!isCompetition && canInvest && !pendingRequest ? <Participation /> : <div />}
-                        {!isCompetition && canInvest && pendingRequest ? <ExecuteRequest /> : <div />}
-                        {!isCompetition && !canInvest ? <Card /> : <div />}
-                    </Card.Group>
-                    <br />
-                    <Holdings address={fundAddress} />
-                    <br />
-                    {isManager ? (
-                      <Layout>
-                          <h3>Trade</h3>
-                          <OrderForm {...orderForm} onSubmit={onSubmit} />
-                      </Layout>
-                    ) : (
-                            <div />
-                        )
-                    }
-                    <br />
-                    <Orderbook />
-                    <br />
-                    <OpenOrders address={fundAddress} />
-                    <br />
-                    <RecentTrades />
-                    <br />
-                </div >
-
-            }
-        </div >
-    );
+  fundAddress,
+  canInvest,
+  pendingRequest,
+  isCompetition,
+  orderForm,
+  onSubmit,
+  hasContributed,
+  isCompetitionActive,
+}) => {
+  return (
+    <div className="App">
+      <Layout>
+        {!hasContributed &&
+        isCompetition &&
+        isCompetitionActive &&
+        isManager ? (
+          <ParosContributionContainer />
+        ) : (
+          <FundTemplate
+            tradeInfo={[
+              <Factsheet />,
+              isCompetition &&
+                hasContributed &&
+                isManager && <ClaimRewardParos />,
+              !isCompetition && !isManager && <GetStarted />,
+              !isCompetition &&
+                canInvest &&
+                !pendingRequest && <Participation />,
+              !isCompetition &&
+                canInvest &&
+                pendingRequest && <ExecuteRequest />,
+              !isCompetition && !canInvest && <Card />,
+            ]}
+            holdings={<Holdings />}
+            orderForm={<OrderForm {...orderForm} onSubmit={onSubmit} />}
+            orderbook={<Orderbook />}
+            openOrders={<OpenOrders />}
+            recentTrades={<RecentTrades />}
+          />
+        )}
+      </Layout>
+    </div>
+  );
+};
 
 export default Fund;

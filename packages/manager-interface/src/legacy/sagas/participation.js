@@ -23,7 +23,7 @@ function* investSaga(action) {
         const fundAddress = yield select(state => state.fund.address);
         const subscription = yield call(invest, environment, {
             fundAddress,
-            numShares: action.amount,
+            numShares: action.quantity,
             offeredValue: action.total,
             isNativeAsset: true,
         });
@@ -45,7 +45,7 @@ function* investSaga(action) {
 
     yield call(
         signer,
-        `Do you really want to buy ${action.amount} shares for ${
+        `Do you really want to buy ${action.quantity} shares for ${
         action.total
         } ${quoteAsset}`,
         transaction,
@@ -58,7 +58,7 @@ function* redeemSaga(action) {
         const fundAddress = yield select(state => state.fund.address);
         yield call(redeem, environment, {
             fundAddress,
-            numShares: action.amount,
+            numShares: action.quantity,
             requestedValue: action.total,
         });
         const pendingRequest = yield call(getLastRequest, environment, {
@@ -71,7 +71,7 @@ function* redeemSaga(action) {
 
     yield call(
         signer,
-        `Do you really want to sell ${action.amount} shares for ${
+        `Do you really want to sell ${action.quantity} shares for ${
         action.total
         } MLN?`,
         transaction,
@@ -84,7 +84,7 @@ function* redeemAllOwnedAssetsSaga(action) {
         const fundAddress = yield select(state => state.fund.address);
         yield call(redeemAllOwnedAssets, environment, {
             fundAddress,
-            numShares: action.amount,
+            numShares: action.quantity,
         });
         yield put(actions.redeemAllOwnedAssetsSucceeded());
         yield put(modalActions.close());
@@ -93,7 +93,7 @@ function* redeemAllOwnedAssetsSaga(action) {
     yield call(
         signer,
         `Do you really want to immediately redeem ${
-        action.amount
+        action.quantity
         } shares? You will receive a subset of the current fund holdings, proportionally to your requested number of shares.`,
         transaction,
         actions.redeemAllOwnedAssetsFailed,

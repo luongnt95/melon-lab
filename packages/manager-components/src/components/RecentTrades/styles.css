@@ -1,0 +1,11 @@
+.recent-trades__cell--red {
+  color: var(--color-loss);
+}
+
+.recent-trades__cell--green {
+  color: var(--color-profit);
+}
+
+.recent-trades__table-wrap {
+  overflow-x: auto;
+}

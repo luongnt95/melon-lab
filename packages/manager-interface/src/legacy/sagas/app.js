@@ -26,7 +26,7 @@ function* init() {
     );
   }
   yield put(
-    actions.setTrack({ track, isCompetition, isElectron: global.isElectron }),
+    actions.setTrack({ track, isCompetition, isElectron: ELECTRON }),
   );
 }
 

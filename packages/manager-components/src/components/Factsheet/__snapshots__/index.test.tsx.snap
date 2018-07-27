@@ -1,0 +1,159 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Factsheet should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash factsheet"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash factsheet__title"
+  >
+    Melon Fund
+    <a
+      className="jsx-__scopedHash factsheet__title-link"
+      href="..."
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <Icon
+        height="12px"
+        name="icons_twitter"
+        width="12px"
+      />
+    </a>
+  </h3>
+  <div
+    className="jsx-__scopedHash"
+  >
+    Creation date:
+     
+    <Loading
+      loading={false}
+    >
+      24. Jul 2018 09:19
+    </Loading>
+    <br
+      className="jsx-__scopedHash"
+    />
+    <Button
+      onClick={[Function]}
+      style="clear"
+    >
+      AUM:
+       
+      <Loading
+        dataAvailable={false}
+        loading={false}
+      >
+        0.9824
+      </Loading>
+       
+      WETH-T
+    </Button>
+    <br
+      className="jsx-__scopedHash"
+    />
+    <Button
+      onClick={[Function]}
+      style="clear"
+    >
+      Share price:
+       
+      <Loading
+        dataAvailable={false}
+        loading={false}
+      >
+        0.9824
+      </Loading>
+       
+      WETH-T
+      /Share
+    </Button>
+    <br
+      className="jsx-__scopedHash"
+    />
+    <a
+      className="jsx-__scopedHash"
+      href="#/ranking"
+    >
+      Ranking: 
+      <Loading
+        loading={true}
+      >
+        ...
+      </Loading>
+       out of
+       
+      <Loading
+        loading={true}
+      >
+        ...
+      </Loading>
+    </a>
+    <br
+      className="jsx-__scopedHash"
+    />
+    Melon Funds Total number of shares:
+     
+    <Loading
+      loading={false}
+    >
+      1.0000
+    </Loading>
+    <br
+      className="jsx-__scopedHash"
+    />
+    Shares owned by me:
+     
+    <Loading
+      loading={false}
+    >
+      1.0000
+    </Loading>
+    <hr
+      className="jsx-__scopedHash"
+    />
+    Management Reward:
+     
+    <Loading
+      loading={false}
+    >
+      0.0000
+    </Loading>
+    %
+    <br
+      className="jsx-__scopedHash"
+    />
+    Performance Reward:
+     
+    <Loading
+      loading={false}
+    >
+      0.0000
+    </Loading>
+    %
+    <hr
+      className="jsx-__scopedHash"
+    />
+    <a
+      className="jsx-__scopedHash"
+      href="http://melon.email"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Contact Investors/Managers
+    </a>
+    <hr
+      className="jsx-__scopedHash"
+    />
+    <Button
+      style="clear"
+    >
+      Irreversibly shut down fund
+    </Button>
+  </div>
+</div>
+`;

@@ -16,7 +16,7 @@
   position: relative;
   height: 24px;
   width: 24px;
-  background-color: var(--color-primary-darkest);
+  background-color: var(--color-primary-dark);
   border-radius: 50%;
 }
 

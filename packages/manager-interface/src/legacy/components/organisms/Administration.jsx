@@ -13,9 +13,8 @@ const Administration = ({
   isCompeting,
   quoteAsset,
 }) => (
-    <Card centered id="settings">
-      <Card.Content>
-        <Card.Header>Fund Administration</Card.Header>
+    <div id="settings">
+        <h3>Fund Administration</h3>
         <List>
           {/* {!isCompeting ? (
           <List.Item as="a" onClick={() => registerForCompetition(fundAddress)}>
@@ -41,13 +40,12 @@ const Administration = ({
             <List.Content>Irreversibly shut down fund</List.Content>
           </List.Item>
         </List>
-      </Card.Content>
       <div className={`ui ${loading ? "active" : ""} inverted dimmer`}>
         <div className="ui text loader">
           Please wait for upcoming Metamask popup
       </div>
       </div>
-    </Card>
+    </div>
   );
 
 export default Administration;

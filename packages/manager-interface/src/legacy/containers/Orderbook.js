@@ -14,7 +14,7 @@ const subscription = gql`
     orderbook(
       baseTokenSymbol: $baseToken
       quoteTokenSymbol: $quoteToken
-      exchanges: [OASIS_DEX, RADAR_RELAY]
+      exchanges: [OASIS_DEX, RADAR_RELAY, ERC_DEX]
     ) {
       totalBuyVolume
       totalSellVolume

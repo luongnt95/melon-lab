@@ -5,7 +5,7 @@ const medias = require('./src/design/medias');
 module.exports = {
   plugins: [
     postcssPresetEnv({
-      stage: 3,
+      stage: 2,
       browsers: '> 0.5%, last 2 versions, Firefox ESR, not dead',
       features: {
         'nesting-rules': true,

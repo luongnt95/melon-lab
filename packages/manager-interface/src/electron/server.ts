@@ -1,7 +1,7 @@
 import { ipcMain } from 'electron';
 import { PubSub } from 'graphql-subscriptions';
 import * as keytar from 'keytar';
-import { SubscriptionServer } from 'subscriptions-transport-electron';
+import { SubscriptionServer } from '~/shared/ipc/server';
 import ipcMessages from '~/shared/constants/ipcMessages';
 
 import schema from '@melonproject/graphql-schema';
@@ -39,8 +39,8 @@ const linkKeytar = () => {
   );
 };
 
-function retrieveNetwork(network: string): Network {
-  switch (network.toUpperCase()) {
+function retrieveNetwork(track: string) {
+  switch (track) {
     case 'live':
       return 'LIVE';
     case 'kovan-competition':
@@ -65,7 +65,7 @@ export default async () => {
     return new SubscriptionServer(
       {
         channel: 'graphql',
-        messager: ipcMain,
+        messenger: ipcMain,
       },
       {
         schema,
@@ -77,7 +77,8 @@ export default async () => {
         },
       },
     );
-  } catch (error) {
+  }
+  catch (error) {
     console.error('OOOPSIII', error);
   }
 };

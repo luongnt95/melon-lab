@@ -38,9 +38,8 @@ const ParticipationForm = ({
   quoteAsset,
   participationType,
 }) => (
-  <Card id="participation" centered>
-    <Card.Content>
-      <Card.Header>Participation</Card.Header>
+  <div id="participation">
+      <h3>Participation</h3>
       <form onSubmit={handleSubmit} name="participation">
         {setup ? (
           <p />
@@ -111,8 +110,7 @@ const ParticipationForm = ({
           Submit request
         </Button>
       </form>
-    </Card.Content>
-  </Card>
+  </div>
 );
 
 export default ParticipationForm;

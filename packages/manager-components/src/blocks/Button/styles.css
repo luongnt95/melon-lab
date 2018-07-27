@@ -1,9 +1,8 @@
 .button {
-  border: 1px solid var(--color-black);
-  padding: var(--space-s) var(--space-xl);
-  font-size: var(--font-size-m);
+  border: none;
+  font-family: var(--font-family-primary);
   color: var(--color-black);
-  background-color: transparent;
+  background-color: color-mod(var(--color-secondary-dark) a(75%));
   cursor: pointer;
   text-transform: uppercase;
   line-height: 1;
@@ -12,13 +11,73 @@
 }
 
 .button:hover:enabled {
-  color: var(--color-white);
-  background-color: var(--color-black);
+  background-color: var(--color-secondary-dark);
 }
 
 .button:disabled {
   cursor: not-allowed;
-  color: var(--color-grey);
-  background-color: var(--color-secondary);
-  border: 1px solid var(--color-secondary);
+  opacity: 0.4;
+}
+
+.button--small {
+  font-size: .75em;
+  padding: var(--space-xs) var(--space-l);
+}
+
+.button--medium {
+  font-size: 1em;
+  padding: var(--space-s) var(--space-m);
+}
+
+.button--large {
+  font-size: 1.25em;
+  padding: var(--space-m) var(--space-xl);
+}
+
+.button--warning {
+  background-color: transparent;
+  border: 1px solid var(--color-warning);
+  color: var(--color-warning);
+}
+
+.button--warning:hover:enabled {
+  background-color: var(--color-warning);
+  color: var(--color-white);;
+}
+
+.button--danger {
+  background-color: transparent;
+  border: 1px solid var(--color-loss);
+  color: var(--color-loss);
+}
+
+.button--danger:hover:enabled {
+  background-color: var(--color-loss);
+  color: var(--color-white);;
+}
+
+.button--success {
+  background-color: transparent;
+  border: 1px solid var(--color-profit);
+  color: var(--color-profit);
+}
+
+.button--success:hover:enabled {
+  background-color: var(--color-profit);
+  color: var(--color-white);
+}
+
+.button--clear {
+  background-color: transparent;
+  border: none;
+  color: var(--color-black);
+  width: auto;
+  min-width: auto;
+  padding: 0;
+  text-transform: none;
+}
+
+.button--clear:hover:enabled {
+  background-color: transparent;
+  color: var(--color-black);
 }

@@ -4,15 +4,15 @@
   padding-left: var(--space-l);
   cursor: pointer;
   line-height: 1;
-  color: var(--color-primary-darkest);
+  color: var(--color-primary-dark);
 }
 
 .checkbox:hover input:enabled ~ .checkbox__checkmark {
-  background-color: var(--color-primary-darkest);
+  background-color: var(--color-primary-dark);
 }
 
 .checkbox input:checked ~ .checkbox__checkmark {
-  background-color: var(--color-primary-darkest);
+  background-color: var(--color-primary-dark);
 }
 
 .checkbox input:checked ~ .checkbox__checkmark:after {
@@ -45,7 +45,7 @@
   left: 0;
   height: 16px;
   width: 16px;
-  border: 1px solid var(--color-primary-darkest);
+  border: 1px solid var(--color-primary-dark);
   transition-property: background-color;
   transition-duration: vvar(--transition-duration-default);
 }

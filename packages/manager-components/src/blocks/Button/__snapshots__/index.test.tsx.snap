@@ -2,7 +2,8 @@
 
 exports[`Button should render correctly 1`] = `
 <button
-  className="jsx-__scopedHash button"
+  className="jsx-__scopedHash button button--medium button--default"
+  onClick={[Function]}
   type="button"
 >
   <JSXStyle

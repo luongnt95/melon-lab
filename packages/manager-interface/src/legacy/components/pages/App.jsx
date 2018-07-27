@@ -23,7 +23,9 @@ import { types } from '../../actions/routes';
 import ConnectionInfo from '../organisms/ConnectionInfo';
 import { greaterThan } from '../../utils/functionalBigNumber';
 import Header from '@melonproject/manager-components/components/Header';
+import Footer from '@melonproject/manager-components/components/Footer';
 import '~/static/images/logos.svg';
+import '~/static/images/icons.svg';
 
 const shortenAddress = address =>
   `${address.slice(0, 6)}…${address.substr(-4)}`;
@@ -38,9 +40,9 @@ const mapOnboardingStateToMainContainer = (onboardingState, track) => {
     [onboardingPath.NOT_SIGNED]: TermsAndConditionsContainer,
     [onboardingPath.NO_FUND_CREATED]: SetupContainer,
     [onboardingPath.NOT_INVESTED_IN_OWN_FUND]:
-      track !== 'kovan-demo'
-        ? ParosContributionContainer
-        : ParticipationContainer,
+    track !== 'kovan-demo'
+      ? ParosContributionContainer
+      : ParticipationContainer,
   };
 
   return map[onboardingState];
@@ -70,12 +72,12 @@ const getMainComponent = ({
   network,
   networkName,
   track,
+  isElectron
 }) => {
   const Main =
     route === types.SETUP
       ? mapOnboardingStateToMainContainer(onboardingState, track)
       : routeContainerMap[route];
-
   return Main ? (
     <Main
       mlnBalance={mlnBalance}
@@ -88,8 +90,8 @@ const getMainComponent = ({
       showFaucet={showFaucet}
     />
   ) : (
-    <div />
-  );
+      <div />
+    );
 };
 
 const App = props => {
@@ -112,11 +114,10 @@ const App = props => {
       action: props.rootAction,
     },
   };
-
   return (
     <div className="App">
       {props.network !== '42' &&
-        (greaterThan(props.ethBalance, 1) || greaterThan(props.fundNav, 1)) && (
+        (greaterThan(props.ethBalance, 1) || greaterThan(props.fundNav, 1)) && !props.isElectron && (
           <a
             href="https://github.com/melonproject/melon-lab/releases"
             target="_blank"
@@ -153,11 +154,22 @@ const App = props => {
 
       <Container
         style={{
-          marginTop: '4em',
+          paddingTop: '70px',
+          paddingBottom: '70px',
         }}
       >
         {getMainComponent(props)}
       </Container>
+      <div
+        style={{
+          position: 'fixed',
+          width: '100%',
+          bottom: 0,
+          zIndex: 1,
+        }}
+      >
+        <Footer />
+      </div>
       <Modal />
     </div>
   );

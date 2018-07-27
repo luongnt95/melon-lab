@@ -1,7 +1,7 @@
 import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import { ApolloLink } from 'apollo-link';
 import withApollo from 'next-with-apollo';
-import { SubscriptionClient } from 'subscriptions-transport-electron';
+import { SubscriptionClient } from '~/shared/ipc/client';
 
 const isElectron =
   global.navigator &&
@@ -10,7 +10,7 @@ const isElectron =
 const client =
   isElectron &&
   new SubscriptionClient({
-    messager: global.ipcRenderer,
+    messenger: global.ipcRenderer,
     channel: 'graphql',
   });
 

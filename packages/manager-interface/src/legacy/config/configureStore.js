@@ -32,7 +32,7 @@ export const configureStore = preloadedState => {
   /* eslint-disable no-underscore-dangle */
   const devTools =
     global.__REDUX_DEVTOOLS_EXTENSION__ &&
-    (process.env.NODE_ENV === 'development' || global.isElectron)
+    (process.env.NODE_ENV === 'development' || ELECTRON)
       ? global.__REDUX_DEVTOOLS_EXTENSION__()
       : f => f;
   /* eslint-enable */
