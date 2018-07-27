@@ -8,6 +8,9 @@
 .table__row :global(th) {
   padding-top: var(--space-xs);
   padding-bottom: var(--space-xs);
+}
+
+.table__row :global(th) {
   vertical-align: initial;
 }
 
