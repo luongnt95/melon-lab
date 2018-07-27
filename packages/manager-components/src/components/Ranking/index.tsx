@@ -13,13 +13,13 @@ import {
 import styles from './styles.css';
 
 export interface RankingProps {
-  rankingList;
-  loading;
-  usersFund;
-  onFilterChange;
-  ordering;
-  setOrdering;
-  search;
+  rankingList?: any;
+  loading?: boolean;
+  usersFund?: string;
+  onFilterChange?: any;
+  ordering?: string;
+  setOrdering?: any;
+  search?: string;
 }
 
 export const Ranking: StatelessComponent<RankingProps> = ({
