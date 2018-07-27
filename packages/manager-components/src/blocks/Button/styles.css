@@ -80,6 +80,7 @@
 .button--clear:hover:enabled {
   background-color: transparent;
   color: var(--color-black);
+  text-decoration: underline;
 }
 
 .button--secondary {

@@ -99,7 +99,7 @@ export const Ranking: StatelessComponent<RankingProps> = ({
                     <CellBody>{fund.rank}</CellBody>
                     <CellBody>
                       <Button
-                        style="clean"
+                        style="clear"
                         onClick={onFundClick}
                         buttonValue={fund.address}
                       >
