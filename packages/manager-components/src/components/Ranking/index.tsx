@@ -1,4 +1,6 @@
 import React, { StatelessComponent } from 'react';
+import Highlight from 'react-highlighter';
+import Button from '~/blocks/Button';
 import Input from '~/blocks/Input';
 import Spinner from '~/blocks/Spinner';
 import {
@@ -20,6 +22,7 @@ export interface RankingProps {
   ordering?: string;
   setOrdering?: any;
   search?: string;
+  goToFund;
 }
 
 export const Ranking: StatelessComponent<RankingProps> = ({
@@ -30,12 +33,19 @@ export const Ranking: StatelessComponent<RankingProps> = ({
   ordering,
   setOrdering,
   search,
+  goToFund,
 }) => {
   const onOrdering = (e, field) => {
     if (setOrdering) {
       ordering === `+${field}`
         ? setOrdering(`-${field}`)
         : setOrdering(`+${field}`);
+    }
+  };
+
+  const onFundClick = (e, address) => {
+    if (goToFund) {
+      goToFund(address);
     }
   };
 
@@ -87,7 +97,15 @@ export const Ranking: StatelessComponent<RankingProps> = ({
                     size="large"
                   >
                     <CellBody>{fund.rank}</CellBody>
-                    <CellBody>{fund.link}</CellBody>
+                    <CellBody>
+                      <Button
+                        style="clean"
+                        onClick={onFundClick}
+                        buttonValue={fund.address}
+                      >
+                        <Highlight search={search}>{fund.name}</Highlight>
+                      </Button>
+                    </CellBody>
                     <CellBody textAlign="right">{fund.sharePrice}</CellBody>
                     <CellBody textAlign="right">{fund.inception}</CellBody>
                   </Row>

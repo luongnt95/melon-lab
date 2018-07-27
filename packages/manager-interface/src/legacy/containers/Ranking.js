@@ -6,15 +6,6 @@ import { actions } from '../actions/ranking';
 import displayNumber from '../utils/displayNumber';
 import { actions as routeActions } from '../actions/routes';
 import { greaterThan } from '../utils/functionalBigNumber';
-import { curry, map, assoc } from 'ramda';
-import Link from 'redux-first-router-link';
-import Highlight from 'react-highlighter';
-
-const addFullLink = (fund, search) => (
-  <Link to={routeActions.fund(fund.address)}>
-    <Highlight search={search}>{fund.name}</Highlight>
-  </Link>
-);
 
 const mapStateToProps = state => ({
   rankingList: state.ranking.rankingList
@@ -27,7 +18,6 @@ const mapStateToProps = state => ({
       ...fund,
       inception: moment(fund.inception).format('D. MMM YYYY HH:mm'),
       sharePrice: displayNumber(fund.sharePrice.toString()),
-      link: addFullLink(fund, state.ranking.search),
     }))
     .sort((a, b) => {
       const { ordering } = state.ranking;
@@ -57,6 +47,7 @@ const mapDispatchToProps = dispatch => ({
   getRanking: () => dispatch(actions.getRanking()),
   onFilterChange: event => dispatch(actions.setSearch(event.target.value)),
   setOrdering: ordering => dispatch(actions.setOrdering(ordering)),
+  goToFund: fundAddress => dispatch(routeActions.fund(fundAddress)),
 });
 
 const RankingLifecycle = lifecycle({

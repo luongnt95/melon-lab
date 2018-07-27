@@ -4,19 +4,18 @@ import RankingComponent from '@melonproject/manager-components/components/Rankin
 
 const Ranking = ({
   rankingList,
-  getFundLinkAction,
   loading,
   usersFund,
   search,
   onFilterChange,
   ordering,
   setOrdering,
+  goToFund,
 }) => {
   return (
     <Fragment>
       <GetStarted />
       <RankingComponent
-        getFundLinkAction={getFundLinkAction}
         rankingList={rankingList}
         ordering={ordering}
         setOrdering={setOrdering}
@@ -25,6 +24,7 @@ const Ranking = ({
         usersFund={usersFund}
         loading={loading}
         search={search}
+        goToFund={goToFund}
       />
     </Fragment>
   );
