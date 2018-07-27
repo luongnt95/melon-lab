@@ -1,11 +1,6 @@
 import React, { Fragment } from 'react';
-import { Field } from 'redux-form';
-import { Image, Table } from 'semantic-ui-react';
-import Link from 'redux-first-router-link';
-import Highlight from 'react-highlighter';
 import GetStarted from '../../containers/GetStarted';
-import RankingNew from '@melonproject/manager-components/components/Ranking';
-import { curry, map, assoc } from 'ramda';
+import RankingComponent from '@melonproject/manager-components/components/Ranking';
 
 const Ranking = ({
   rankingList,
@@ -20,7 +15,7 @@ const Ranking = ({
   return (
     <Fragment>
       <GetStarted />
-      <RankingNew
+      <RankingComponent
         getFundLinkAction={getFundLinkAction}
         rankingList={rankingList}
         ordering={ordering}
