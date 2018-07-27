@@ -8,6 +8,7 @@
 .table__row :global(th) {
   padding-top: var(--space-xs);
   padding-bottom: var(--space-xs);
+  vertical-align: initial;
 }
 
 .table__row--small :global(td),
@@ -16,12 +17,22 @@
   padding-bottom: var(--space-xxs);
 }
 
+.table__row--large :global(td),
+.table__row--large :global(th) {
+  padding-top: var(--space-s);
+  padding-bottom: var(--space-s);
+}
+
 .table__row--body {
   border-bottom: 1px dashed var(--color-border);
 }
 
 .table__row--body:hover {
   background-color: color-mod(var(--color-secondary) a(50%));
+}
+
+.table__row--active {
+  background-color: var(--color-secondary);
 }
 
 .table__row--head {

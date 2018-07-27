@@ -1,0 +1,8 @@
+.ranking__table-wrap {
+  overflow-x: auto;
+}
+
+.ranking__loading {
+  margin: 0 auto;
+  width: 100px;
+}

@@ -9,12 +9,16 @@ export interface TableProps {
 export interface CellProps {
   cellClass?: string;
   textAlign?: string;
+  onClick?: any;
+  headFor?: any;
+  colSpan?: number;
 }
 
 export interface RowProps {
   rowClass?: string;
   isHead?: boolean;
   size?: string;
+  active?: boolean;
 }
 
 const Table: StatelessComponent<TableProps> = ({ children }) => (
@@ -38,10 +42,16 @@ const TableHead: StatelessComponent = ({ children }) => (
   </Fragment>
 );
 
-const Row: StatelessComponent<RowProps> = ({ children, isHead, size }) => {
+const Row: StatelessComponent<RowProps> = ({
+  children,
+  isHead,
+  size,
+  active,
+}) => {
   const classnameCell = classNames('table__row', {
     'table__row--head': isHead,
     'table__row--body': !isHead,
+    'table__row--active': active,
     [`table__row--${size}`]: size,
   });
 
@@ -57,6 +67,7 @@ const CellBody: StatelessComponent<CellProps> = ({
   children,
   cellClass,
   textAlign,
+  colSpan,
 }) => {
   const classnameCellBody = classNames('table__cell', {
     [`${cellClass}`]: cellClass,
@@ -66,7 +77,9 @@ const CellBody: StatelessComponent<CellProps> = ({
   return (
     <Fragment>
       <style jsx>{styles}</style>
-      <td className={classnameCellBody}>{children}</td>
+      <td colSpan={colSpan} className={classnameCellBody}>
+        {children}
+      </td>
     </Fragment>
   );
 };
@@ -75,16 +88,24 @@ const CellHead: StatelessComponent<CellProps> = ({
   children,
   cellClass,
   textAlign,
+  onClick,
+  headFor,
 }) => {
   const classnameCellHead = classNames('table__cell', {
     [`${cellClass}`]: cellClass,
     [`table__cell--${textAlign}`]: textAlign,
   });
 
+  const onCellClick = e => {
+    onClick(e, headFor);
+  };
+
   return (
     <Fragment>
       <style jsx>{styles}</style>
-      <th className={classnameCellHead}>{children}</th>
+      <th onClick={onClick && onCellClick} className={classnameCellHead}>
+        {children}
+      </th>
     </Fragment>
   );
 };

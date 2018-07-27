@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Holdings should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash ranking"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Melon Funds Ranking
+  </h3>
+  <div
+    className="jsx-__scopedHash ranking__loading"
+  >
+    <Spinner />
+  </div>
+</div>
+`;
