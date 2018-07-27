@@ -12,6 +12,7 @@ export interface CellProps {
   onClick?: any;
   headFor?: any;
   colSpan?: number;
+  sorted?: string;
 }
 
 export interface RowProps {
@@ -90,10 +91,12 @@ const CellHead: StatelessComponent<CellProps> = ({
   textAlign,
   onClick,
   headFor,
+  sorted,
 }) => {
   const classnameCellHead = classNames('table__cell', {
     [`${cellClass}`]: cellClass,
     [`table__cell--${textAlign}`]: textAlign,
+    [`table__cell--clickable`]: onClick,
   });
 
   const onCellClick = e => {
@@ -105,6 +108,8 @@ const CellHead: StatelessComponent<CellProps> = ({
       <style jsx>{styles}</style>
       <th onClick={onClick && onCellClick} className={classnameCellHead}>
         {children}
+        {sorted === 'desc' && <span className="table__cell-arrow"> ↓</span>}
+        {sorted === 'asc' && <span className="table__cell-arrow"> ↑</span>}
       </th>
     </Fragment>
   );

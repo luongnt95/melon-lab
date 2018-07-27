@@ -43,6 +43,7 @@
 }
 
 .table__cell {
+  position: relative;
   text-align: left;
   padding: 0 var(--space-s);
   line-height: 1;
@@ -59,4 +60,13 @@
 
 .table__cell--right {
   text-align: right;
+}
+
+.table__cell--clickable {
+  cursor: pointer;
+}
+
+.table__cell-arrow {
+  font-size: var(--font-size-s);
+  vertical-align: baseline;
 }

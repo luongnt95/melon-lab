@@ -49,6 +49,17 @@ export const Ranking: StatelessComponent<RankingProps> = ({
     }
   };
 
+  const isActiveCol = colName => {
+    if (ordering && ordering.includes(colName)) {
+      if (ordering.includes('+')) {
+        return 'asc';
+      } else {
+        return 'desc';
+      }
+    }
+    return false;
+  };
+
   return (
     <div className="ranking">
       <style jsx>{styles}</style>
@@ -62,8 +73,12 @@ export const Ranking: StatelessComponent<RankingProps> = ({
           <Table>
             <TableHead>
               <Row isHead={true}>
-                <CellHead headFor="rank" onClick={onOrdering}>
-                  Rank
+                <CellHead
+                  headFor="rank"
+                  onClick={onOrdering}
+                  sorted={isActiveCol('rank')}
+                >
+                  #
                 </CellHead>
                 <CellHead>
                   <Input
@@ -76,6 +91,7 @@ export const Ranking: StatelessComponent<RankingProps> = ({
                   headFor="price"
                   onClick={onOrdering}
                   textAlign="right"
+                  sorted={isActiveCol('price')}
                 >
                   Share price
                 </CellHead>
@@ -83,6 +99,7 @@ export const Ranking: StatelessComponent<RankingProps> = ({
                   headFor="inception"
                   onClick={onOrdering}
                   textAlign="right"
+                  sorted={isActiveCol('inception')}
                 >
                   Inception Date
                 </CellHead>
@@ -110,13 +127,6 @@ export const Ranking: StatelessComponent<RankingProps> = ({
                     <CellBody textAlign="right">{fund.inception}</CellBody>
                   </Row>
                 ))}
-
-              {rankingList.length === 0 &&
-                search && (
-                  <Row>
-                    <CellBody colSpan={4}>No Fund found</CellBody>
-                  </Row>
-                )}
             </TableBody>
           </Table>
         </div>
