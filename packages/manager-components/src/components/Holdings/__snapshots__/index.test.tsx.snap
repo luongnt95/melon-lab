@@ -77,6 +77,7 @@ exports[`Holdings should render correctly 1`] = `
               buttonValue="ANT-T"
               onClick={[Function]}
               size="small"
+              style="secondary"
             >
               Buy/Sell
             </Button>
@@ -115,6 +116,7 @@ exports[`Holdings should render correctly 1`] = `
               buttonValue="BAT-T"
               onClick={[Function]}
               size="small"
+              style="secondary"
             >
               Buy/Sell
             </Button>
@@ -153,6 +155,7 @@ exports[`Holdings should render correctly 1`] = `
               buttonValue="DGD-T"
               onClick={[Function]}
               size="small"
+              style="secondary"
             >
               Buy/Sell
             </Button>
@@ -191,6 +194,7 @@ exports[`Holdings should render correctly 1`] = `
               buttonValue="DGX-T"
               onClick={[Function]}
               size="small"
+              style="secondary"
             >
               Buy/Sell
             </Button>
@@ -229,6 +233,7 @@ exports[`Holdings should render correctly 1`] = `
               buttonValue="GNO-T"
               onClick={[Function]}
               size="small"
+              style="secondary"
             >
               Buy/Sell
             </Button>
@@ -267,6 +272,7 @@ exports[`Holdings should render correctly 1`] = `
               buttonValue="REP-T"
               onClick={[Function]}
               size="small"
+              style="secondary"
             >
               Buy/Sell
             </Button>
@@ -305,6 +311,7 @@ exports[`Holdings should render correctly 1`] = `
               buttonValue="ZRX-T"
               onClick={[Function]}
               size="small"
+              style="secondary"
             >
               Buy/Sell
             </Button>
@@ -343,6 +350,7 @@ exports[`Holdings should render correctly 1`] = `
               buttonValue="REQ-T"
               onClick={[Function]}
               size="small"
+              style="secondary"
             >
               Buy/Sell
             </Button>
@@ -415,6 +423,7 @@ exports[`Holdings should render correctly 1`] = `
               buttonValue="MLN-T"
               onClick={[Function]}
               size="small"
+              style="secondary"
             >
               Buy/Sell
             </Button>
@@ -453,6 +462,7 @@ exports[`Holdings should render correctly 1`] = `
               buttonValue="MKR-T"
               onClick={[Function]}
               size="small"
+              style="secondary"
             >
               Buy/Sell
             </Button>
@@ -491,6 +501,7 @@ exports[`Holdings should render correctly 1`] = `
               buttonValue="DAI-T"
               onClick={[Function]}
               size="small"
+              style="secondary"
             >
               Buy/Sell
             </Button>
@@ -529,6 +540,7 @@ exports[`Holdings should render correctly 1`] = `
               buttonValue="KNC-T"
               onClick={[Function]}
               size="small"
+              style="secondary"
             >
               Buy/Sell
             </Button>
@@ -567,6 +579,7 @@ exports[`Holdings should render correctly 1`] = `
               buttonValue="JNT-T"
               onClick={[Function]}
               size="small"
+              style="secondary"
             >
               Buy/Sell
             </Button>
@@ -605,6 +618,7 @@ exports[`Holdings should render correctly 1`] = `
               buttonValue="OMG-T"
               onClick={[Function]}
               size="small"
+              style="secondary"
             >
               Buy/Sell
             </Button>
@@ -643,6 +657,7 @@ exports[`Holdings should render correctly 1`] = `
               buttonValue="NMR-T"
               onClick={[Function]}
               size="small"
+              style="secondary"
             >
               Buy/Sell
             </Button>

@@ -93,6 +93,7 @@ exports[`OpenOrders should render correctly 1`] = `
               }
               onClick={[Function]}
               size="small"
+              style="secondary"
             >
               Cancel
             </Button>
@@ -141,6 +142,7 @@ exports[`OpenOrders should render correctly 1`] = `
               }
               onClick={[Function]}
               size="small"
+              style="secondary"
             >
               Cancel
             </Button>

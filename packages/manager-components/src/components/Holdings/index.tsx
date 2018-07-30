@@ -76,6 +76,7 @@ export const Holdings: StatelessComponent<HoldingsProps> = ({
                         size="small"
                         buttonValue={asset.name}
                         onClick={onClick}
+                        style="secondary"
                       >
                         Buy/Sell
                       </Button>
@@ -84,6 +85,7 @@ export const Holdings: StatelessComponent<HoldingsProps> = ({
                         size="small"
                         buttonValue={asset.name}
                         onClick={onClick}
+                        style="secondary"
                       >
                         See Orderbook
                       </Button>

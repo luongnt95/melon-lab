@@ -83,6 +83,7 @@ export const OpenOrders: StatelessComponent<OpenOrdersProps> = ({
                         {{ isReadyToTrade } ? (
                           <Button
                             size="small"
+                            style="secondary"
                             buttonValue={{
                               id: order.id,
                               buySymbol: order.buySymbol,
