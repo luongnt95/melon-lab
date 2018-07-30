@@ -1,8 +1,7 @@
 .button {
-  border: none;
+  border: 1px solid var(--color-black);
   font-family: var(--font-family-primary);
-  color: var(--color-black);
-  background-color: color-mod(var(--color-secondary-dark) a(75%));
+  background-color: transparent;
   cursor: pointer;
   text-transform: uppercase;
   line-height: 1;
@@ -10,13 +9,55 @@
   min-width: 100%;
 }
 
-.button:hover:enabled {
+.button--primary {
+  color: var(--color-black);
+  border: 1px solid color-mod(var(--color-secondary-dark) a(75%));
+  background-color: color-mod(var(--color-secondary-dark) a(75%));
+}
+
+.button--primary:hover:enabled {
   background-color: var(--color-secondary-dark);
 }
 
-.button:disabled {
-  cursor: not-allowed;
-  opacity: 0.4;
+.button--secondary {
+  color: var(--color-black);
+  border: 1px solid currentColor;
+}
+
+.button--secondary:hover:enabled {
+  border: 1px solid var(--color-black);
+  color: var(--color-white);
+  background-color: var(--color-black);
+}
+
+.button--warning {
+  color: var(--color-warning);
+  border: 1px solid currentColor;
+}
+
+.button--warning:hover:enabled {
+  background-color: var(--color-warning);
+  color: var(--color-white);;
+}
+
+.button--danger {
+  color: var(--color-loss);
+  border: 1px solid currentColor;
+}
+
+.button--danger:hover:enabled {
+  background-color: var(--color-loss);
+  color: var(--color-white);;
+}
+
+.button--success {
+  color: var(--color-profit);
+  border: 1px solid currentColor;
+}
+
+.button--success:hover:enabled {
+  background-color: var(--color-profit);
+  color: var(--color-white);
 }
 
 .button--small {
@@ -34,39 +75,6 @@
   padding: var(--space-m) var(--space-xl);
 }
 
-.button--warning {
-  background-color: transparent;
-  border: 1px solid var(--color-warning);
-  color: var(--color-warning);
-}
-
-.button--warning:hover:enabled {
-  background-color: var(--color-warning);
-  color: var(--color-white);;
-}
-
-.button--danger {
-  background-color: transparent;
-  border: 1px solid var(--color-loss);
-  color: var(--color-loss);
-}
-
-.button--danger:hover:enabled {
-  background-color: var(--color-loss);
-  color: var(--color-white);;
-}
-
-.button--success {
-  background-color: transparent;
-  border: 1px solid var(--color-profit);
-  color: var(--color-profit);
-}
-
-.button--success:hover:enabled {
-  background-color: var(--color-profit);
-  color: var(--color-white);
-}
-
 .button--clear {
   background-color: transparent;
   border: none;
@@ -78,19 +86,11 @@
 }
 
 .button--clear:hover:enabled {
-  background-color: transparent;
   color: var(--color-black);
   text-decoration: underline;
 }
 
-.button--secondary {
-  border: 1px solid var(--color-black);
-  color: var(--color-black);
-  background-color: transparent;
-}
-
-.button--secondary:hover:enabled {
-  border: 1px solid var(--color-black);
-  color: var(--color-white);
-  background-color: var(--color-black);
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
 }
