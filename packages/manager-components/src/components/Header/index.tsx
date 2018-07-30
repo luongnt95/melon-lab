@@ -14,52 +14,32 @@ export interface HeaderProps {
     eth: number;
   };
   network?: string;
-  account: {
-    address: string;
-    type?: any;
-    action?: any;
-  };
-  home?: {
-    type?: any;
-    action?: any;
-  };
+  accountAddress?: string;
+  goToHome?: any;
+  goToWallet?: any;
 }
-
-const Logos = (
-  <React.Fragment>
-    <span className="header__logo-default">
-      <Icon width="115px" height="30px" name="logos_with-text" />
-    </span>
-    <span className="header__logo-small">
-      <Icon width="30px" height="30px" name="logos_default" />
-    </span>
-  </React.Fragment>
-);
 
 export const Header: StatelessComponent<HeaderProps> = ({
   status,
-  account,
+  accountAddress,
   balances,
   network,
-  home,
+  goToHome,
+  goToWallet,
 }) => {
-  const walletLink =
-    account && account.type
-      ? React.createElement(
-          account.type,
-          { to: account.action },
-          account.address,
-        )
-      : account.address;
+  const onClickGoToHome = e => {
+    e.preventDefault(e);
+    if (goToHome) {
+      goToHome();
+    }
+  };
 
-  const homeLink =
-    home && home.type
-      ? React.createElement(
-          home.type,
-          { to: home.action, className: 'header__logo-link' },
-          Logos,
-        )
-      : Logos;
+  const onClickGoToWallet = e => {
+    e.preventDefault(e);
+    if (goToWallet) {
+      goToWallet();
+    }
+  };
 
   const statusClassName = classNames('header__account-status', {
     'header__account-status--warning': status && status.type === 'WARNING',
@@ -69,11 +49,24 @@ export const Header: StatelessComponent<HeaderProps> = ({
   return (
     <div className="header">
       <style jsx>{styles}</style>
-      <div className="header__logo">{homeLink}</div>
+      <div className="header__logo">
+        <a href="#" onClick={onClickGoToHome}>
+          <span className="header__logo-default">
+            <Icon width="115px" height="30px" name="logos_with-text" />
+          </span>
+          <span className="header__logo-small">
+            <Icon width="30px" height="30px" name="logos_default" />
+          </span>
+        </a>
+      </div>
       <div className="header__account">
         <div className="header__account-name">{''}</div>
         <div className="header__account-info">
-          <span className="header__account-address">{walletLink}</span>
+          <span className="header__account-address">
+            <a href="#" onClick={onClickGoToWallet}>
+              {accountAddress}
+            </a>
+          </span>
           <span className="header__account-balances">
             <span className="header__account-balance">ETH {balances.eth}</span>
           </span>

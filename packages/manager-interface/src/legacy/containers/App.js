@@ -37,7 +37,7 @@ const getStatus = ({
       message: 'Price feed down',
       type: statusTypes.ERROR,
       link: `https://${
-      network === networks.KOVAN ? 'kovan.' : ''
+        network === networks.KOVAN ? 'kovan.' : ''
       }etherscan.io/address/${canonicalPriceFeedAddress}`,
     };
   if (!isReadyToInteract)
@@ -76,10 +76,18 @@ const mapStateToProps = state => {
     networkName: getNetworkName(state.ethereum.network),
     showFaucet: state.app.track === tracks.KOVAN_DEMO,
     track: state.app.track,
-    isElectron: state.app.isElectron
+    isElectron: state.app.isElectron,
   };
 };
 
-const AppContainer = connect(mapStateToProps)(App);
+const mapDispatchToProps = dispatch => ({
+  goToHome: () => dispatch(routeActions.root()),
+  goToWallet: () => dispatch(routeActions.wallet()),
+});
+
+const AppContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);
 
 export default AppContainer;

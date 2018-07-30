@@ -11,9 +11,13 @@ exports[`Header should render correctly 1`] = `
   <div
     className="jsx-__scopedHash header__logo"
   >
-    <React.Fragment>
+    <a
+      className="jsx-__scopedHash"
+      href="#"
+      onClick={[Function]}
+    >
       <span
-        className="header__logo-default"
+        className="jsx-__scopedHash header__logo-default"
       >
         <Icon
           height="30px"
@@ -22,7 +26,7 @@ exports[`Header should render correctly 1`] = `
         />
       </span>
       <span
-        className="header__logo-small"
+        className="jsx-__scopedHash header__logo-small"
       >
         <Icon
           height="30px"
@@ -30,7 +34,7 @@ exports[`Header should render correctly 1`] = `
           width="30px"
         />
       </span>
-    </React.Fragment>
+    </a>
   </div>
   <div
     className="jsx-__scopedHash header__account"
@@ -44,7 +48,11 @@ exports[`Header should render correctly 1`] = `
       <span
         className="jsx-__scopedHash header__account-address"
       >
-        0xa80B…d46f
+        <a
+          className="jsx-__scopedHash"
+          href="#"
+          onClick={[Function]}
+        />
       </span>
       <span
         className="jsx-__scopedHash header__account-balances"

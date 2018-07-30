@@ -40,9 +40,9 @@ const mapOnboardingStateToMainContainer = (onboardingState, track) => {
     [onboardingPath.NOT_SIGNED]: TermsAndConditionsContainer,
     [onboardingPath.NO_FUND_CREATED]: SetupContainer,
     [onboardingPath.NOT_INVESTED_IN_OWN_FUND]:
-    track !== 'kovan-demo'
-      ? ParosContributionContainer
-      : ParticipationContainer,
+      track !== 'kovan-demo'
+        ? ParosContributionContainer
+        : ParticipationContainer,
   };
 
   return map[onboardingState];
@@ -72,7 +72,7 @@ const getMainComponent = ({
   network,
   networkName,
   track,
-  isElectron
+  isElectron,
 }) => {
   const Main =
     route === types.SETUP
@@ -90,8 +90,8 @@ const getMainComponent = ({
       showFaucet={showFaucet}
     />
   ) : (
-      <div />
-    );
+    <div />
+  );
 };
 
 const App = props => {
@@ -104,20 +104,15 @@ const App = props => {
       eth: props.ethBalance,
     },
     network: props.networkName,
-    account: {
-      type: Link,
-      action: props.accountAction,
-      address: shortenAddress(props.walletAddress || ''),
-    },
-    home: {
-      type: Link,
-      action: props.rootAction,
-    },
+    accountAddress: shortenAddress(props.walletAddress || ''),
+    goToHome: props.goToHome,
+    goToWallet: props.goToWallet,
   };
   return (
     <div className="App">
       {props.network !== '42' &&
-        (greaterThan(props.ethBalance, 1) || greaterThan(props.fundNav, 1)) && !props.isElectron && (
+        (greaterThan(props.ethBalance, 1) || greaterThan(props.fundNav, 1)) &&
+        !props.isElectron && (
           <a
             href="https://github.com/melonproject/melon-lab/releases"
             target="_blank"
