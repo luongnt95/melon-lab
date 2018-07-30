@@ -19,7 +19,7 @@
   color: var(--color-grey);
 }
 
-.input__field,
+.input__field:disabled,
 :global(.input__field):disabled {
   background-color: var(--color-secondary);
 }
