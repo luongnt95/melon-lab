@@ -1,11 +1,8 @@
 import React, { StatelessComponent } from 'react';
 
-import styles from './styles.css';
-
 const NoConnection: StatelessComponent = () => {
   return (
     <div className="no-connection">
-      <style jsx>{styles}</style>
       <h3>Welcome to the future of investment funds</h3>
       <p>
         It seems like you are not connected to the ethereum network. Check your

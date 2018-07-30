@@ -2,20 +2,12 @@
 
 exports[`NoConnection should render correctly 1`] = `
 <div
-  className="jsx-__scopedHash no-connection"
+  className="no-connection"
 >
-  <JSXStyle
-    css="__scoped"
-    styleId="__scopedHash"
-  />
-  <h3
-    className="jsx-__scopedHash"
-  >
+  <h3>
     Welcome to the future of investment funds
   </h3>
-  <p
-    className="jsx-__scopedHash"
-  >
+  <p>
     It seems like you are not connected to the ethereum network. Check your internet connection. If you are running your own node, make you are synced and have enough peers connected.
   </p>
 </div>
