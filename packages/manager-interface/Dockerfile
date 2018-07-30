@@ -17,12 +17,17 @@ FROM development as build
 
 COPY . /app
 RUN yarn build
-RUN yarn export
 
 # -----------------------------------------------------------------------------
 # production
 # -----------------------------------------------------------------------------
-FROM nginx:1.13-alpine
+FROM melonproject/node-production:latest as production
+WORKDIR /app/packages/manager-interface
 
-RUN rm -rf /usr/share/nginx/html
-COPY --from=build /app/packages/manager-interface/export /usr/share/nginx/html
+COPY --from=dependencies /app/packages/manager-interface/node_modules /app/packages/manager-interface/node_modules
+COPY --from=build /app/packages/manager-interface/build /app/packages/manager-interface/build
+COPY packages/manager-interface/package.json packages/manager-interface/.env.defaults packages/manager-interface/next.config.js /app/packages/manager-interface/
+COPY packages/manager-interface/config /app/packages/manager-interface/config
+COPY packages/manager-interface/src/static /app/packages/manager-interface/src/static
+
+CMD ["yarn", "start"]

@@ -298,6 +298,13 @@ services:
       - "mainnet.melonport.com:52.236.179.86"
       - "kovan.melonport.com:13.93.111.242"
 
+  manager-interface-prod:
+    command: "/bin/sh -c 'trap : TERM INT; sleep 365d & wait'"
+    image: "melonproject/interface:latest"
+    build:
+      context: .
+      dockerfile: ./packages/manager-interface/Dockerfile
+
   faucet-prod:
     command: "/bin/sh -c 'trap : TERM INT; sleep 365d & wait'"
     image: "melonproject/faucet:latest"

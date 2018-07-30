@@ -58,6 +58,7 @@ package:
 	@docker tag melonproject/graphql-server:latest melonproject/graphql-server:${VERSION}
 	@docker tag melonproject/faucet:latest melonproject/faucet:${VERSION}
 	@docker tag melonproject/ranking:latest melonproject/ranking:${VERSION}
+	@docker tag melonproject/interface:latest melonproject/interface:${VERSION}
 
 .PHONY: publish
 publish:
@@ -67,6 +68,8 @@ publish:
 	@docker push melonproject/faucet:latest
 	@docker push melonproject/ranking:${VERSION}
 	@docker push melonproject/ranking:latest
+	@docker push melonproject/interface:${VERSION}
+	@docker push melonproject/interface:latest
 
 # -----------------------------------------------------------------------------
 # DEVELOPMENT
