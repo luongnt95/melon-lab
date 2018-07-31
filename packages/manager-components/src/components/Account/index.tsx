@@ -126,7 +126,6 @@ export const Account: StatelessComponent<AccountProps> = ({
             Before you can setup your fund, you need to import, restore or
             create a wallet:
           </p>
-          <br />
         </Fragment>
       )}
 

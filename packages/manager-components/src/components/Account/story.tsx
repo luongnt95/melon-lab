@@ -9,6 +9,10 @@ const data = {
   isCompetition: false,
 };
 
-storiesOf('Components|Account', module).add('Default', () => {
-  return <Account {...data} />;
-});
+storiesOf('Components|Account', module)
+  .add('Default', () => {
+    return <Account {...data} />;
+  })
+  .add('No Data', () => {
+    return <Account />;
+  });
