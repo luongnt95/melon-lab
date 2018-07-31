@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import Account from './index';
@@ -7,6 +8,13 @@ const data = {
   associatedFund: '0x0890b03f83629B397F6E5E5075400fe6Ddb4255F',
   networkId: '42',
   isCompetition: false,
+  deleteWallet: action('deleteWallet'),
+  gotoAccountGenerate: action('gotoAccountGenerate'),
+  gotoAccountRestore: action('gotoAccountRestore'),
+  gotoImportJSON: action('gotoImportJSON'),
+  gotoSetup: action('gotoSetup'),
+  downloadJSON: action('downloadJSON'),
+  goToFund: action('goToFund'),
 };
 
 storiesOf('Components|Account', module)
