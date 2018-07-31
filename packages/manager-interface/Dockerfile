@@ -25,7 +25,7 @@ RUN yarn build
 FROM node:9.7.0-alpine
 WORKDIR /app/packages/manager-interface
 
-EXPOSE 3030
+EXPOSE 3000
 
 COPY --from=installer /app/node_modules_production /app/node_modules
 COPY --from=installer /app/packages/manager-interface/node_modules ./node_modules
