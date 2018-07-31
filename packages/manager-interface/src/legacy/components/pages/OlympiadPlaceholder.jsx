@@ -7,10 +7,12 @@ import GetStarted from '../../containers/GetStarted';
 import renderInput from '../utils/renderInput';
 
 const OlympiadPlaceholder = ({ goToGenerateAccount, goToAccount, address }) => (
-  <div style={{ maxWidth: '35em', margin: '0 auto' }}>
+  <div style={{ maxWidth: '50em', margin: '0 auto' }}>
     <h1 id="history" className="App-intro">
-      Welcome to the Melon Olympiad
+      Melon Olympiad Registration
     </h1>
+    <h2>Second Round Estimated Start Time: August 13th 2018</h2>
+    <h3>What is the Melon Olympiad?</h3>
     <h5>
       <a
         href="https://medium.com/@zenkjenna/introducing-melon-olympiad-861687d0703b"
@@ -35,39 +37,35 @@ const OlympiadPlaceholder = ({ goToGenerateAccount, goToAccount, address }) => (
       {' '}
       <strong>
         The Melon Olympiad is a series of blockchain-based asset management
-        competitions composed of several rounds. Each of the rounds will set a
+        events composed of several rounds. Each of the rounds will set a
         clear goal for participants, and will issue a defined number of Melon
         tokens.
-      </strong>{' '}
-      At the end of the Melon Olympiad, all remaining Melon tokens shall have
-      been issued to the public. {' '}
+      </strong>
     </p>
     <p>
       <i>
         {' '}
         Each round of the Melon Olympiad will be named after Greek islands. The
-        first round of the Melon Olympiad is referred to as Paros.
+        first round of the Melon Olympiad was referred to as Paros. The second round of the Melon Olympiad is referred to as Naxos.
       </i>
     </p>
-    <h2>Melon Olympiad, first round: Paros</h2>
+    <h3>Melon Olympiad, second round: Naxos</h3>
     <p>
       Participants who wish to engage in testing and help us improve the
       software will be rewarded for this effort. Participants will have to
-      create a fund on this website and contribute ether to the Olympiad
+      create a fund on olympiad.melon.fund and contribute ether to the Olympiad
       contract. In return, the Olympiad contract will invest the equivalent
-      amount in MLN (+ a bonus) into the participant’s fund. The participant
+      amount in MLN (including a bonus) into the participant’s fund. The participant
       will have to manage his fund for a defined period of time (2 weeks) with
       the goal being capital appreciation. At the end of the defined management
       period, the participant will be able to trigger the redemption of the
       fund’s assets, thus receiving the fund’s AUM as a reward for his effort.{' '}
     </p>
-    <p>
-      For the Paros round, the participant compensation is as follows: for each
-      ether contributed, the participant will receive the equivalent of 2 ethers
-      in Melon tokens. The conversion rate of ether to Melon will be retrieved
-      from the Pricefeed contract.
-    </p>
-    <h2>Instructions on how to participate</h2>
+    <strong>
+      For the Naxos round, the participant compensation is as follows: for each
+      ether contributed, the participant will receive 40 Melon tokens.
+    </strong>
+    <h3>Instructions on how to participate</h3>
     <p>
       Melonport AG is required to issue tokens via a regulated financial
       intermediary which is subject to KYC/AML procedures. To perform the
@@ -75,10 +73,10 @@ const OlympiadPlaceholder = ({ goToGenerateAccount, goToAccount, address }) => (
       willing to participate will have to register with Bitcoin Suisse.
     </p>
     <h4>Step 1</h4> <p>
-      Generate a wallet on this website (see instructins below).. Make sure your
+      Generate a wallet on this website (see instructions at the bottom of this page). Make sure you
       write down the mnemonic, and store it in a safe (and accessible) place.
       Make sure you remember the password you use to encrypt the wallet. If you
-      forget your password and you loose access to the mnemonic phrase, you
+      forget your password and you lose access to the mnemonic phrase, you
       won't be able to participate in the challenge. Make sure you download your
       wallet as a JSON file and store it in a safe place. Save the wallet
       address as you will need to provide this address to Bitcoin Suisse in step
@@ -92,7 +90,7 @@ const OlympiadPlaceholder = ({ goToGenerateAccount, goToAccount, address }) => (
       Step 3.{' '}
     </p>
     <h4>Step 3 </h4> <p>
-       Apply for the Melon Olympiad Whitelist on the Bitcoin Suisse platform.
+      Apply for the Melon Olympiad Naxos Whitelist on the Bitcoin Suisse platform.
       You will need to provide an Ethereum address (the one created in Step 1)
       and the amount you wish to contribute with. It is of utmost importance
       that you provide an Ethereum address that was generated on this website.
@@ -103,18 +101,17 @@ const OlympiadPlaceholder = ({ goToGenerateAccount, goToAccount, address }) => (
     <p>
        Get ready before the start of the competition. Fund your wallet
       (generated in Step 1) with the amount of Ether you would like to
-      contribute with. After this point, you need to wait until the official
+      contribute with, plus some extra ether to account for gas. After this point, you need to wait until the official
       beginning of the challenge which will be announced shortly.
     </p>
-    <h4>Step 5 </h4> <p> Official start of the Melon Olympiad, PAROS.</p>
+    <h4>Step 5 </h4> <p> Official start of the Melon Olympiad round 2, NAXOS.</p>
     <h4>Step 6  </h4>{' '}
     <p>
-      Come back to this website olympiad.melon.fund. You will be guided to
-      create your fund. After creating your fund, you will be asked to enter the
-      amount you wish to contribute with. Once you confirm that transaction, the
-      amount of Ether will be transferred from you wallet to the Olympiad
-      contract. In return, the Olympiad contract will invest the equivalent
-      amount in MLN into your fund.
+       <a
+        href="https://github.com/melonproject/melon-lab/releases"
+        target="_blank"
+      >Download our desktop app on our Github </a> (if you're running your own node) or go to olympiad.melon.fund. You will be guided to
+      create your fund.
     </p>
     <h4>Step 7  </h4>{' '}
     <p>
@@ -128,7 +125,7 @@ const OlympiadPlaceholder = ({ goToGenerateAccount, goToAccount, address }) => (
     <p>
       Congratulations. You made it here. Now its time to prove your asset
       management skill. You have 2 weeks to manage your fund and grow your
-      capital.
+      capital. You can trade on our orderbook which aggregates the orderbooks from OasisDex, Radar Relay and ERCDex.
     </p>
     <h4>Step 9  </h4>{' '}
     <p>
