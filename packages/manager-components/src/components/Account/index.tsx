@@ -6,15 +6,15 @@ import styles from './styles.css';
 export interface AccountProps {
   currentAddress?: string;
   associatedFund?: string;
-  deleteWallet?: any;
-  gotoAccountGenerate?: any;
-  gotoAccountRestore?: any;
-  gotoImportJSON?: any;
-  gotoSetup?: any;
-  downloadJSON?: any;
+  deleteWallet?: () => void;
+  gotoAccountGenerate?: () => void;
+  gotoAccountRestore?: () => void;
+  gotoImportJSON?: () => void;
+  gotoSetup?: () => void;
+  downloadJSON?: () => void;
   networkId?: string;
   isCompetition?: boolean;
-  goToFund?: any;
+  goToFund?: (associatedFund) => void;
 }
 
 export const Account: StatelessComponent<AccountProps> = ({
@@ -30,6 +30,12 @@ export const Account: StatelessComponent<AccountProps> = ({
   isCompetition,
   goToFund,
 }) => {
+  const onClickGoToFund = () => {
+    if (associatedFund && goToFund) {
+      goToFund(associatedFund);
+    }
+  };
+
   return (
     <div className="account">
       <style jsx>{styles}</style>
@@ -92,7 +98,7 @@ export const Account: StatelessComponent<AccountProps> = ({
             </p>
           ) : (
             <p>
-              <Button style="success" onClick={() => goToFund(associatedFund)}>
+              <Button style="success" onClick={onClickGoToFund}>
                 Go to your fund
               </Button>
             </p>
