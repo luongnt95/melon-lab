@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import Layout from '@melonproject/manager-components/design/Layout';
 import GetStarted from '../../containers/GetStarted';
 import RankingComponent from '@melonproject/manager-components/components/Ranking';
 
@@ -14,7 +13,7 @@ const Ranking = ({
   goToFund,
 }) => {
   return (
-    <Layout>
+    <Fragment>
       <GetStarted />
       <RankingComponent
         rankingList={rankingList}
@@ -27,7 +26,7 @@ const Ranking = ({
         search={search}
         goToFund={goToFund}
       />
-    </Layout>
+    </Fragment>
   );
 };
 
