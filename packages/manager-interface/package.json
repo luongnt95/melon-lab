@@ -13,7 +13,6 @@
     "export": "NODE_ENV=production node --require dotenv-extended/config $(yarn bin)/next export src -o export",
     "format": "prettier --write \"{src,tests}/**/*.{ts,tsx}\"",
     "lint": "tslint -p tsconfig.json",
-    "postinstall": "electron-builder install-app-deps",
     "start": "NODE_ENV=production node --require dotenv-extended/config $(yarn bin)/next start src",
     "test": "jest"
   },
@@ -74,7 +73,6 @@
   "devDependencies": {
     "@zeit/next-typescript": "^0.1.1",
     "electron": "^2.0.0",
-    "electron-builder": "^20.13.2",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.3",

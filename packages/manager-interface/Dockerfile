@@ -18,12 +18,21 @@ FROM development as build
 
 COPY . /app
 RUN yarn build
-RUN yarn export
 
 # -----------------------------------------------------------------------------
 # production
 # -----------------------------------------------------------------------------
-FROM nginx:1.13-alpine
+FROM node:9.7.0-alpine
+WORKDIR /app/packages/manager-interface
 
-RUN rm -rf /usr/share/nginx/html
-COPY --from=build /app/packages/manager-interface/export /usr/share/nginx/html
+EXPOSE 3030
+
+COPY --from=installer /app/node_modules_production /app/node_modules
+COPY --from=installer /app/packages/manager-interface/node_modules ./node_modules
+COPY --from=build /app/packages/manager-interface/dist ./dist
+COPY --from=build /app/packages/manager-interface/src/static ./src/static
+COPY packages/manager-interface/config ./config
+COPY packages/manager-interface/package.json packages/manager-interface/.env.defaults ./
+COPY packages/manager-interface/next.config.dist.js ./next.config.js
+
+CMD ["yarn", "start"]
