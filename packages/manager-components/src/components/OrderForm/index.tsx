@@ -20,8 +20,8 @@ interface FormValues {
 
 export interface OrderFormProps {
   values: FormValues;
-  handleSubmit?: any;
-  handleBlur?: any;
+  handleSubmit?: () => void;
+  handleBlur?: () => void;
   onChange?: React.ChangeEvent<any>;
   info?: any;
   baseTokenSymbol?: string;
@@ -30,7 +30,7 @@ export interface OrderFormProps {
     name: string;
     label: string;
   }>;
-  selectedOrder?: any;
+  selectedOrder?: () => void;
   errors: any;
   touched: any;
   decimals?: number;

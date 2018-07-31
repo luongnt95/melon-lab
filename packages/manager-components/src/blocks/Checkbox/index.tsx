@@ -8,7 +8,7 @@ export interface CheckboxProps {
   value: string;
   text: string;
   defaultChecked?: boolean;
-  onInputChange?: ChangeEventHandler<Element>;
+  onInputChange?: () => void;
 }
 
 const Checkbox: StatelessComponent<CheckboxProps> = ({

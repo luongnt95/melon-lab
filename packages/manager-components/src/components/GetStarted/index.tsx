@@ -3,10 +3,13 @@ import Button from '~/blocks/Button';
 import styles from './styles.css';
 
 export interface GetStartedProps {
-  linkAction?: any;
+  linkAction?: {
+    payload: { address: string };
+    type: string;
+  };
   linkCaption?: string;
   networkId?: string;
-  onClick?: any;
+  onClick?: (action) => void;
 }
 
 export const GetStarted: StatelessComponent<GetStartedProps> = ({

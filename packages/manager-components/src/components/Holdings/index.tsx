@@ -12,12 +12,19 @@ import {
 
 import styles from './styles.css';
 
+export interface Holding {
+  name: string;
+  balance: string;
+  price: string;
+  percentage: string;
+}
+
 export interface HoldingsProps {
-  holdings?: any;
-  selectAsset?: any;
+  holdings?: Holding[];
+  selectAsset?: (assetName, isReadyToTrade, quoteAsset) => void;
   isReadyToTrade?: boolean;
   dataValid?: boolean;
-  quoteAsset?: any;
+  quoteAsset?: string;
 }
 
 export const Holdings: StatelessComponent<HoldingsProps> = ({
@@ -28,7 +35,9 @@ export const Holdings: StatelessComponent<HoldingsProps> = ({
   quoteAsset,
 }) => {
   const onClick = (e, assetName) => {
-    selectAsset(assetName, isReadyToTrade, quoteAsset);
+    if (selectAsset) {
+      selectAsset(assetName, isReadyToTrade, quoteAsset);
+    }
   };
 
   return (

@@ -7,24 +7,24 @@ import Spinner from '~/blocks/Spinner';
 import styles from './styles.css';
 
 export interface FactsheetProps {
-  aum?: string,
-  creationDate?: string,
-  managementReward?: string,
-  name?: string,
-  performanceReward?: string,
-  personalStake?: string,
-  sharePrice?: string,
-  totalSupply?: string,
-  rank?: string,
-  numberOfFunds?: string,
-  tweetHref?: string,
-  scrollTo?: any,
-  loading?: boolean,
-  dataValid?: boolean,
-  expectedPrize?: string,
-  quoteAsset?: string,
-  shutdown?: string,
-  isCompetition?: boolean,
+  aum?: string;
+  creationDate?: string;
+  managementReward?: string;
+  name?: string;
+  performanceReward?: string;
+  personalStake?: string;
+  sharePrice?: string;
+  totalSupply?: string;
+  rank?: string;
+  numberOfFunds?: string;
+  tweetHref?: string;
+  scrollTo?: (id) => void;
+  loading?: boolean;
+  dataValid?: boolean;
+  expectedPrize?: string;
+  quoteAsset?: string;
+  shutdown?: string;
+  isCompetition?: boolean;
 }
 
 const Factsheet: StatelessComponent<FactsheetProps> = ({

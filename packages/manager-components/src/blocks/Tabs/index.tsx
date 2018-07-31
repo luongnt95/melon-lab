@@ -7,7 +7,7 @@ import styles from './styles.css';
 export interface TabsProps {
   children: ReactNode;
   activeTabIndex: number;
-  handleTabClick(index: number);
+  handleTabClick: (index: number) => void;
 }
 
 export interface TabContentProps {

@@ -12,9 +12,20 @@ import {
 
 import styles from './styles.css';
 
+export interface Order {
+  buyHowMuch: string;
+  buySymbol: string;
+  id: number;
+  price: string;
+  sellHowMuch: string;
+  sellSymbol: string;
+  timestamp: string;
+  type: string;
+}
+
 export interface OpenOrdersProps {
-  orders?: any;
-  onClick?: any;
+  orders?: Order[];
+  onClick?: (id, buySymbol, sellSymbol) => void;
   isReadyToTrade?: boolean;
   isManager?: boolean;
 }

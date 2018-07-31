@@ -9,7 +9,7 @@ export interface TableProps {
 export interface CellProps {
   cellClass?: string;
   textAlign?: string;
-  onClick?: any;
+  onClick?: (e, headFor) => void;
   headFor?: any;
   colSpan?: number;
   sorted?: string;
@@ -100,7 +100,9 @@ const CellHead: StatelessComponent<CellProps> = ({
   });
 
   const onCellClick = e => {
-    onClick(e, headFor);
+    if (onClick) {
+      onClick(e, headFor);
+    }
   };
 
   return (

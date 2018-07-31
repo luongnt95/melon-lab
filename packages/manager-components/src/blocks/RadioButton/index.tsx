@@ -8,7 +8,7 @@ export interface RadioButtonProps {
   value: string;
   text: string;
   defaultChecked?: boolean;
-  onInputChange?: ChangeEventHandler<Element>;
+  onInputChange?: () => void;
 }
 
 const RadioButton: StatelessComponent<RadioButtonProps> = ({

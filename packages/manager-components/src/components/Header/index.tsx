@@ -15,8 +15,8 @@ export interface HeaderProps {
   };
   network?: string;
   accountAddress?: string;
-  goToHome?: any;
-  goToWallet?: any;
+  goToHome?: () => void;
+  goToWallet?: () => void;
 }
 
 export const Header: StatelessComponent<HeaderProps> = ({

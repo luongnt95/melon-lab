@@ -8,7 +8,7 @@ export interface ToggleProps {
   value: string;
   text: string;
   isChecked?: boolean;
-  onChange(value, event);
+  onChange: (value, event) => void;
 }
 
 const Toggle: StatelessComponent<ToggleProps> = ({

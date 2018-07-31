@@ -15,9 +15,9 @@ interface FormValues {
 
 export interface ParticipationFormProps {
   values: FormValues;
-  handleSubmit?: any;
-  handleBlur?: any;
-  onChange?: React.ChangeEvent<any>;
+  handleSubmit?: () => void;
+  handleBlur?: () => void;
+  onChange?: () => void;
   touched?: any;
   errors?: any;
   decimals?: number;

@@ -9,7 +9,7 @@ export interface SwitchProps {
   isChecked?: boolean;
   disabled?: boolean;
   value: string;
-  onChange(value, event);
+  onChange: (value, event) => void;
 }
 
 const Switch: StatelessComponent<SwitchProps> = ({

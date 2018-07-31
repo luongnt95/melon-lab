@@ -11,7 +11,7 @@ export interface DropdownProps {
   value?: string;
   name: string;
   disabled: boolean;
-  onChange(value, event);
+  onChange: (value, event) => void;
 }
 
 const renderOption = (option, index) => {

@@ -18,11 +18,11 @@ export interface RankingProps {
   rankingList?: any;
   loading?: boolean;
   usersFund?: string;
-  onFilterChange?: any;
+  onFilterChange?: () => void;
   ordering?: string;
-  setOrdering?: any;
+  setOrdering?: (field) => void;
   search?: string;
-  goToFund;
+  goToFund: (address) => void;
 }
 
 export const Ranking: StatelessComponent<RankingProps> = ({

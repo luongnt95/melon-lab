@@ -1,7 +1,7 @@
 import React, { StatelessComponent } from 'react';
 
 export interface ButtonProps {
-  onSubmit?: any;
+  onSubmit?: () => any;
 }
 
 const Form: StatelessComponent<ButtonProps> = ({ children, onSubmit }) => {

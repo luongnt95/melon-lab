@@ -5,7 +5,7 @@ import styles from './styles.css';
 export interface ButtonProps {
   disabled?: boolean;
   type?: string;
-  onClick?: any;
+  onClick: (e, value) => void;
   size?: string;
   style?: string;
   buttonValue?: any;
@@ -24,7 +24,7 @@ const Button: StatelessComponent<ButtonProps> = ({
   const styleClass = `button--${style}`;
   const classes = `button ${sizeClass} ${styleClass}`;
 
-  const onButtonClick = (e) => {
+  const onButtonClick = e => {
     onClick(e, buttonValue);
   };
 

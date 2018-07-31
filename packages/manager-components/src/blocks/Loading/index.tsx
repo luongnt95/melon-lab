@@ -1,8 +1,17 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, StatelessComponent } from 'react';
 
 import styles from './styles.css';
 
-const Loading = ({ children, loading = true, dataAvailable = true }) => {
+export interface LoadingProps {
+  loading?: boolean;
+  dataAvailable?: boolean;
+}
+
+const Loading: StatelessComponent<LoadingProps> = ({
+  children,
+  loading = true,
+  dataAvailable = true,
+}) => {
   return (
     <span>
       <style jsx>{styles}</style>
