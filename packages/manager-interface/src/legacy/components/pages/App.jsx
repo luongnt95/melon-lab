@@ -24,6 +24,7 @@ import ConnectionInfo from '../organisms/ConnectionInfo';
 import { greaterThan } from '../../utils/functionalBigNumber';
 import Header from '@melonproject/manager-components/components/Header';
 import Footer from '@melonproject/manager-components/components/Footer';
+import Layout from '@melonproject/manager-components/design/Layout';
 import '~/static/images/logos.svg';
 import '~/static/images/icons.svg';
 
@@ -153,7 +154,7 @@ const App = props => {
           paddingBottom: '70px',
         }}
       >
-        {getMainComponent(props)}
+        <Layout>{getMainComponent(props)}</Layout>
       </Container>
       <div
         style={{

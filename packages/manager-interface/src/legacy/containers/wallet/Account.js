@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import { actions } from '../../actions/wallet';
 import { actions as routeActions } from '../../actions/routes';
-import Account from '../../components/pages/wallet/Account';
+import Account from '@melonproject/manager-components/components/Account';
 
 const mapStateToProps = state => ({
   currentAddress: state.ethereum.account,
