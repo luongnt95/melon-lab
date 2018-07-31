@@ -96,7 +96,7 @@ exports[`Factsheet should render correctly 1`] = `
     <br
       className="jsx-__scopedHash"
     />
-    Melon Funds Total number of shares:
+    Total number of shares:
      
     <Loading
       loading={false}

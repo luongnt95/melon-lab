@@ -94,7 +94,7 @@ const Factsheet: StatelessComponent<FactsheetProps> = ({
             Ranking: <Loading loading={rank === '...'}>{rank}</Loading> out of{' '}
             <Loading loading={numberOfFunds === '...'}>{numberOfFunds}</Loading>
           </a>
-          <br />Melon Funds Total number of shares:{' '}
+          <br />Total number of shares:{' '}
           <Loading loading={totalSupply === '...'}>{totalSupply}</Loading>
           <br />Shares owned by me:{' '}
           <Loading loading={personalStake === '...'}>{personalStake}</Loading>
