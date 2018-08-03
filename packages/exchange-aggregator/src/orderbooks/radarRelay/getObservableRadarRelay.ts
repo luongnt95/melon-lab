@@ -59,16 +59,6 @@ const scanMessages: (
       return isSnapshotMessage(current);
     },
     (carry: AsksAndBids, current: SnapshotMessage) => {
-      current.payload.bids = current.payload.bids.filter(
-        order =>
-          order.expirationUnixTimestampSec >
-          parseInt(new Date().getTime() / 1000),
-      );
-      current.payload.asks = current.payload.asks.filter(
-        order =>
-          order.expirationUnixTimestampSec >
-          parseInt(new Date().getTime() / 1000),
-      );
       return current.payload;
     },
   ],

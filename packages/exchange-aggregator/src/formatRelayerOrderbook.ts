@@ -1,5 +1,27 @@
 import { getPrices, getSymbol, toReadable } from '@melonproject/melon.js';
 
+const filterOrder = order => {
+  if (typeof order === 'undefined') {
+    return false;
+  }
+
+  // Remove ERCDex orders that have a takerFee or makerFee that is NOT 0.
+  if (
+    (typeof order.makerFee !== 'undefined' &&
+      parseInt(order.makerFee, 10) !== 0) ||
+    (typeof order.takerFee !== 'undefined' &&
+      parseInt(order.takerFee, 10) !== 0)
+  ) {
+    return false;
+  }
+
+  if (parseInt(order.expiration, 10) < parseInt(new Date().getTime() / 1000, 10)) {
+    return false;
+  }
+
+  return true;
+}
+
 const formatRelayerOrderbook = exchange => (config, bids, asks) => {
   const formattedBids = bids
     .map(order => {
@@ -38,23 +60,7 @@ const formatRelayerOrderbook = exchange => (config, bids, asks) => {
         return undefined;
       }
     })
-    .filter(order => {
-      if (typeof order === 'undefined') {
-        return false;
-      }
-
-      // Remove ERCDex orders that have a takerFee or makerFee that is NOT 0.
-      if (
-        (typeof order.makerFee !== 'undefined' &&
-          parseInt(order.makerFee, 10) !== 0) ||
-        (typeof order.takerFee !== 'undefined' &&
-          parseInt(order.takerFee, 10) !== 0)
-      ) {
-        return false;
-      }
-
-      return true;
-    });
+    .filter(filterOrder);
 
   const formattedAsks = asks
     .map(order => {
@@ -93,23 +99,7 @@ const formatRelayerOrderbook = exchange => (config, bids, asks) => {
         return undefined;
       }
     })
-    .filter(order => {
-      if (typeof order === 'undefined') {
-        return false;
-      }
-
-      // Remove ERCDex orders that have a takerFee or makerFee that is NOT 0.
-      if (
-        (typeof order.makerFee !== 'undefined' &&
-          parseInt(order.makerFee, 10) !== 0) ||
-        (typeof order.takerFee !== 'undefined' &&
-          parseInt(order.takerFee, 10) !== 0)
-      ) {
-        return false;
-      }
-
-      return true;
-    });
+    .filter(filterOrder);
 
   const orderbook = [...formattedBids, ...formattedAsks].map(order => ({
     ...order,
