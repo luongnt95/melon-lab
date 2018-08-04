@@ -54,6 +54,6 @@ make start
 ## Exposed Interfaces
 
 * IPFS Frontend: http://localhost:3001/
-* Manager Interface (To-be-successor of IPFS Frontend): http://localhost:3000/
+* Manager Interface: http://localhost:3000/
 * GraphQL Server/Playground: http://localhost:3030/
 * Components Storybook: http://localhost:3060/
