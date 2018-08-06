@@ -33,15 +33,13 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const OpenOrdersLifecycle = lifecycle({
+const OpenOrdersWithLifecycle = lifecycle({
   componentDidMount() {
     this.props.getOpenOrders();
   },
 })(OpenOrders);
 
-const OpenOrdersContainer = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(OpenOrdersLifecycle);
-
-export default OpenOrdersContainer;
+)(OpenOrdersWithLifecycle);

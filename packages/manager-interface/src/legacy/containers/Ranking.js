@@ -52,15 +52,13 @@ const mapDispatchToProps = dispatch => ({
   goToFund: fundAddress => dispatch(routeActions.fund(fundAddress)),
 });
 
-const RankingLifecycle = lifecycle({
+const RankingWithLifecycle = lifecycle({
   componentDidMount() {
     this.props.getRanking();
   },
 })(Ranking);
 
-const RankingSetup = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(RankingLifecycle);
-
-export default RankingSetup;
+)(RankingWithLifecycle);

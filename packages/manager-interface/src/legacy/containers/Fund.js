@@ -24,6 +24,4 @@ const mapStateToProps = state => {
   };
 };
 
-const FundContainer = connect(mapStateToProps)(Fund);
-
-export default FundContainer;
+export default connect(mapStateToProps)(Fund);
