@@ -1,8 +1,8 @@
 import React from 'react';
-import CreateWallet from '@melonproject/manager-components/components/CreateWallet';
+import GenerateWallet from '@melonproject/manager-components/components/GenerateWallet';
 
 const Generate = ({ restore, mnemonic }) => (
-  <CreateWallet restore={restore} mnemonic={mnemonic} />
+  <GenerateWallet restore={restore} mnemonic={mnemonic} />
 );
 
 export default Generate;
