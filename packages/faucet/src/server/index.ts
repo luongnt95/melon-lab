@@ -34,7 +34,7 @@ const ok = (res, msg) => {
   res.status(200).json({ 'msg': msg })
 }
 
-const storage = new Storage();
+const storage = new Storage(process.env.DATABASE_FILEPATH || './storage.db');
 
 function parseList(str: string | undefined): string[] {
   return str == undefined || str == "" ? [] : str.split(',')
