@@ -16,7 +16,7 @@ import TradeHelper from '../../containers/TradeHelper';
 import OpenOrders from '../../containers/OpenOrders';
 import ClaimRewardParos from '../../containers/ClaimRewardParos';
 import FundTemplate from '@melonproject/manager-components/templates/Fund';
-import OrderForm from '@melonproject/manager-components/components/OrderForm/container';
+import OrderForm from '../../containers/OrderForm';
 import ParosContributionContainer from '../../containers/ParosContribution';
 
 const Fund = ({
@@ -47,7 +47,7 @@ const Fund = ({
             !isCompetition && !canInvest && <Card />,
           ]}
           holdings={<Holdings />}
-          orderForm={<OrderForm {...orderForm} onSubmit={onSubmit} />}
+          orderForm={<OrderForm />}
           orderbook={<Orderbook />}
           openOrders={<OpenOrders />}
           recentTrades={<RecentTrades />}
