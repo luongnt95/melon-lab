@@ -14,7 +14,6 @@ const {
 const BigNumber = require('bignumber.js');
 
 let api = undefined;
-let wallet = undefined;
 
 const balancePrecision = 3;
 
@@ -24,22 +23,30 @@ export const WETH = 'WETH-T';
 
 // setup
 
+let config = {};
+
 export async function setup(endpoint: String, keystoreFile: String, password: String) {
     const keystore = fs.readFileSync(process.env.WALLET).toString();
 
-    api     = new Api(new Api.Provider.Http(endpoint, -1));
-    wallet  = await decryptWallet(keystore, password);
+    api = new Api(new Api.Provider.Http(endpoint, -1));
+    const wallet = await decryptWallet(keystore, password);
+
+    config = {
+        api,
+        account: wallet,
+        track: process.env.TRACK
+    }
 }
 
 // send
 
 async function _sendEther(to, amount) {
-    return sendEther({ api, account: wallet }, { to, amount });
+    return sendEther(config, { to, amount });
 }
 
 async function _sendToken(to, amount, token) {
     return transferTo(
-        { api, account: wallet },
+        config,
         { symbol: token, toAddress: to, quantity: amount },
     );
 }
@@ -64,7 +71,7 @@ async function _getEther(addr) {
 }
 
 async function _getToken(addr, token) {
-    return await getBalance({api}, {tokenSymbol: token, ofAddress: addr});
+    return await getBalance(config, {tokenSymbol: token, ofAddress: addr});
 }
 
 export async function getBalances(addr) {

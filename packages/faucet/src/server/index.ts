@@ -103,9 +103,6 @@ app.prepare().then(() => {
       return
     }
 
-    /*
-    Disable ip manager
-
     const ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     console.log(`IP: ${ip}`)
     console.log(req.headers)
@@ -124,7 +121,6 @@ app.prepare().then(() => {
     } else {
       console.log(`Whitelisted`)
     }
-    */
     
     recaptcha.verify(req, async (error, data) => {
       if (error) {
