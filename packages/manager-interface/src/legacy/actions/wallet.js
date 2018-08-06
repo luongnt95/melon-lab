@@ -67,6 +67,7 @@ export const actions = {
     hasSavedMnemonic: true,
     address: wallet.address,
     privateKey: wallet.privateKey,
+    reason: '',
   }),
   restoreFromMnemonicFailed: reason => ({
     type: types.RESTORE_FROM_MNEMONIC_FAILED,

@@ -1,0 +1,7 @@
+.restore-wallet__input {
+  margin-bottom: var(--space-m);
+}
+
+.restore-wallet__error {
+  color: var(--color-loss);
+}

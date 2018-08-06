@@ -1,27 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Input should pass a typed value to the onChange handler 1`] = `
-<div
-  className="jsx-__scopedHash input"
->
-  <JSXStyle
-    css="__scoped"
-    styleId="__scopedHash"
-  />
-  <span
-    className="jsx-__scopedHash input__label"
-  />
-  <input
-    className="jsx-__scopedHash input__field"
-    onChange={[MockFunction]}
-    type="text"
-  />
-  <div
-    className="jsx-__scopedHash input__error"
-  />
-</div>
-`;
-
 exports[`Input should render correctly 1`] = `
 <div
   className="jsx-__scopedHash input"
@@ -35,6 +13,7 @@ exports[`Input should render correctly 1`] = `
   />
   <input
     className="jsx-__scopedHash input__field"
+    onChange={[Function]}
     type="text"
   />
   <div
