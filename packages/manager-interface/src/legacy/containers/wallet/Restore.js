@@ -21,9 +21,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const RestoreForm = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(RestoreWallet);
-
-export default RestoreForm;

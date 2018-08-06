@@ -1,8 +1,6 @@
 import React from 'react';
-import ImportWallet from '@melonproject/manager-components/components/ImportWallet';
+import ImportWallet from '../../../containers/wallet/Import';
 
-const Restore = ({ goToAccount, parseWallet }) => (
-  <ImportWallet goToAccount={goToAccount} parseWallet={parseWallet} />
-);
+const Restore = () => <ImportWallet />;
 
 export default Restore;
