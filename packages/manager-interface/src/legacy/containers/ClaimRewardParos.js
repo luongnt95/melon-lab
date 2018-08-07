@@ -4,20 +4,23 @@ import ClaimRewardParos from "../components/organisms/ClaimRewardParos";
 import { actions } from "../actions/participation";
 
 const mapStateToProps = state => ({
-    isParosActive: state.fund.isParosActive,
-    endTime: state.fund.parosEndTime && state.fund.parosEndTime !== "..."
-        ? moment(state.fund.parosEndTime * 1000).format("D. MMM YYYY HH:mm")
-        : "...",
+  isParosActive: state.fund.isParosActive,
+  endTime: state.fund.parosEndTime && state.fund.parosEndTime !== "..."
+    ? moment(state.fund.parosEndTime * 1000).format("D. MMM YYYY HH:mm")
+    : "...",
 });
 
 const mapDispatchToProps = dispatch => ({
-    claimReward: () => {
-        dispatch(actions.claimReward());
-    },
+  claimReward: () => {
+    dispatch(actions.claimReward());
+  },
+  redeemParosShares: () => {
+    dispatch(actions.redeemParosShares());
+  }
 });
 
 const ClaimRewardParosContainer = connect(mapStateToProps, mapDispatchToProps)(
-    ClaimRewardParos,
+  ClaimRewardParos,
 );
 
 export default ClaimRewardParosContainer;

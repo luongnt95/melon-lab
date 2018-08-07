@@ -23,6 +23,12 @@ export const types = {
   "CLAIM_REWARD_SUCCEEDED:participation:melon.fund",
   CLAIM_REWARD_FAILED:
   "CLAIM_REWARD_FAILED:participation:melon.fund",
+  REDEEM_PAROS_SHARES_REQUESTED:
+  "REDEEM_PAROS_SHARES_REQUESTED:participation:melon.fund",
+  REDEEM_PAROS_SHARES_SUCCEEDED:
+  "REDEEM_PAROS_SHARES_SUCCEEDED:participation:melon.fund",
+  REDEEM_PAROS_SHARES_FAILED:
+  "REDEEM_PAROS_SHARES_FAILED:participation:melon.fund",
 };
 
 export const actions = {
@@ -95,5 +101,15 @@ export const actions = {
   }),
   claimRewardSucceeded: () => ({
     type: types.CLAIM_REWARD_SUCCEEDED,
+  }),
+  redeemParosShares: () => ({
+    type: types.REDEEM_PAROS_SHARES_REQUESTED,
+  }),
+  redeemParosSharesFailed: reason => ({
+    type: types.REDEEM_PAROS_SHARES_FAILED,
+    reason,
+  }),
+  redeemParosSharesSucceeded: () => ({
+    type: types.REDEEM_PAROS_SHARES_SUCCEEDED,
   }),
 };

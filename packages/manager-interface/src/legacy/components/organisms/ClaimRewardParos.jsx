@@ -6,29 +6,34 @@ import { tracks } from '@melonproject/melon.js';
 import renderInput from '../utils/renderInput';
 
 // Explicitely decompose props here.
-const ClaimRewardParos = ({ claimReward, isParosActive, endTime }) => (
-  <Card>
-    <Card.Content>
-      <Card.Header>
-        Paros reward
+const ClaimRewardParos = ({ claimReward, isParosActive, endTime, redeemParosShares }) => (
+    <Card>
+        <Card.Content>
+            <Card.Header>
+                Paros reward
         </Card.Header>
-      <br />
-      {isParosActive ?
-        <div>
-          <h5>Paros reward can only be claimed at the end of the Paros epoch. The competition will end on {endTime}</h5>
-        </div> :
-        <div>
-          <h5>Paros has ended. You can now claim your reward. By clicking the below button, the shared of your fund will be transfered back to your account and redeemed. The underlying assets of your fund will then be transfered to your manager address.</h5>
-          <Button basic color="black" style={{ width: '100%' }} onClick={claimReward}>
-            Claim my shares and redeem!
+            <br />
+            {isParosActive ?
+                <div>
+                    <h5>Paros reward can only be claimed at the end of the Paros epoch. The competition will end on {endTime}</h5>
+                </div> :
+                <div>
+                    <h5>Paros has ended. You can now claim your reward. By clicking the "Claim shares" button, the shares of your fund will be transfered back to your account. Then click on the "Redeem" button, and the underlying assets of your fund will then be transfered to your manager address.</h5>
+                    <Button basic color="black" style={{ width: '100%' }} onClick={claimReward}>
+                        Step 1: Claim my shares from the Paros contract
         </Button>
-        </div>
+                    <br />
+                    <br />
+                    <Button basic color="black" style={{ width: '100%' }} onClick={redeemParosShares}>
+                        Step 2: Redeem my shares
+        </Button>
+                </div>
 
 
-      }
+            }
 
-    </Card.Content>
-  </Card >
+        </Card.Content>
+    </Card >
 );
 
 export default ClaimRewardParos;
