@@ -1,7 +1,9 @@
 import { connect } from "react-redux";
 
 import { actions } from "../actions/fund";
-import TermsAndConditions from "../components/organisms/TermsAndConditions";
+// import TermsAndConditions from "../components/organisms/TermsAndConditions";
+import TermsAndConditions from '@melonproject/manager-components/components/TermsAndConditions';
+
 
 const mapStateToProps = state => ({
   networkId: state.ethereum.network,
