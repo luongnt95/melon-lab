@@ -16,7 +16,7 @@ export const InsufficientFunds: StatelessComponent<InsufficientFundsProps> = ({
   walletAddress,
   showFaucet,
 }) => {
-  const faucetUrl = `https://faucet.melon.network/${
+  const faucetUrl = `https://faucet.melon.fund/?address=${
     walletAddress ? walletAddress : ''
   }`;
 
