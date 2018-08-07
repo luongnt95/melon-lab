@@ -40,7 +40,7 @@
 }
 
 .layout :global(h3) {
-  font-size: var(--font-size-l);
+  font-size: var(--font-size-xl);
   position: relative;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .layout :global(h4) {
-  font-size: var(--font-size-m);
+  font-size: var(--font-size-l);
   margin-bottom: var(--space-xs);
 }
 

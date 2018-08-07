@@ -3,11 +3,11 @@ module.exports = {
     'font-family-primary': '"Source Serif Pro", serif',
   },
   fontSizes: {
-    'font-size-xl': '1.5em',
-    'font-size-l': '1.25em',
-    'font-size-m': '1em',
-    'font-size-s': '.75em',
-    'font-size-xs': '.625em',
+    'font-size-xl': '1.125rem',
+    'font-size-l': '1rem',
+    'font-size-m': '0.875rem',
+    'font-size-s': '0.75rem',
+    'font-size-xs': '0.625rem',
   },
   fontWeights: {
     'font-weight-light': '300',
