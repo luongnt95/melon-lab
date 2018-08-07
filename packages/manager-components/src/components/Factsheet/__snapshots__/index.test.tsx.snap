@@ -53,9 +53,6 @@ exports[`Factsheet should render correctly 1`] = `
        
       WETH-T
     </Button>
-    <br
-      className="jsx-__scopedHash"
-    />
     <Button
       onClick={[Function]}
       style="clear"
@@ -72,9 +69,6 @@ exports[`Factsheet should render correctly 1`] = `
       WETH-T
       /Share
     </Button>
-    <br
-      className="jsx-__scopedHash"
-    />
     <a
       className="jsx-__scopedHash"
       href="#/ranking"

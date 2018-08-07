@@ -1,4 +1,5 @@
 .button {
+  display: block;
   border: 1px solid var(--color-black);
   font-family: var(--font-family-primary);
   background-color: transparent;
@@ -84,6 +85,7 @@
   min-width: auto;
   padding: 0;
   text-transform: none;
+  line-height: initial;
 }
 
 .button--clear:hover:enabled {
