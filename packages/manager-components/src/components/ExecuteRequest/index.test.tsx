@@ -1,8 +1,11 @@
 import React from 'react';
-import Input from './index';
+import ExecuteRequest from './index';
 
-describe('Input', () => {
-  const defaultElement = <Input />;
+const data = {
+};
+
+describe('ExecuteRequest', () => {
+  const defaultElement = <ExecuteRequest {...data} />;
 
   it('should render correctly', () => {
     const wrapper = shallow(defaultElement);

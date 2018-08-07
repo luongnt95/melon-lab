@@ -1,14 +1,11 @@
 import { connect } from 'react-redux';
-import { reduxForm, change } from 'redux-form';
 import { actions } from '../actions/participation';
-// import Participation from '../components/organisms/ParticipationForm';
 import Participation from '@melonproject/manager-components/components/ParticipationForm/container';
 import { actions as fundActions } from '../actions/fund';
 import { multiply, divide, equals } from '../utils/functionalBigNumber';
 import displayNumber from '../utils/displayNumber';
 
 const calculateParticipationPrice = (sharePrice, type) => {
-  // console.log(sharePrice, type);
   if (!equals(sharePrice, 1)) {
     if (type === 'Invest') {
       return multiply(sharePrice, 1.05);
@@ -27,7 +24,7 @@ const mapStateToProps = state => {
 
   const ParticipationPrice = displayNumber(
     calculateParticipationPrice(state.fund.sharePrice, initialType),
-  )
+  );
 
   return {
     onboardingState: state.app.onboardingState,
@@ -37,14 +34,8 @@ const mapStateToProps = state => {
     initialValues: {
       type: initialType,
       quantity: displayNumber(1.0),
-      price:
-        state.fund.sharePrice === '...'
-          ? '...'
-          : ParticipationPrice,
-      total:
-        state.fund.sharePrice === '...'
-          ? '...'
-          : ParticipationPrice,
+      price: state.fund.sharePrice === '...' ? '...' : ParticipationPrice,
+      total: state.fund.sharePrice === '...' ? '...' : ParticipationPrice,
     },
     displayNumber,
     quoteAsset: state.app.assetPair.quote,
@@ -63,14 +54,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   },
 });
 
-const ParticipationForm = reduxForm({
-  form: 'participation',
-  enableReinitialize: true,
-})(Participation);
-
-const ParticipationRedux = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(ParticipationForm);
-
-export default ParticipationRedux;
+)(Participation);

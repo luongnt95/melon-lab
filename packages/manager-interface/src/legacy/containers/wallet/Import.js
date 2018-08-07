@@ -1,8 +1,7 @@
 import { connect } from 'react-redux';
-
 import { actions as routeActions } from '../../actions/routes';
 import { actions as walletActions } from '../../actions/wallet';
-import Import from '../../components/pages/wallet/Import';
+import Import from '@melonproject/manager-components/components/ImportWallet';
 
 const mapStateToProps = state => ({
   mnemonic: state.wallet.mnemonic,
@@ -25,6 +24,7 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const ImportRedux = connect(mapStateToProps, mapDispatchToProps)(Import);
-
-export default ImportRedux;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Import);

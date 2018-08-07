@@ -1,0 +1,31 @@
+.notification {
+  position: relative;
+  padding: var(--space-m);
+}
+
+.notification--warning {
+  background-color: var(--color-warning);
+  border: 1px solid color-mod(var(--color-warning) b(10%));
+}
+
+.notification--error {
+  background-color: var(--color-loss);
+  border: 1px solid color-mod(var(--color-loss) b(30%));
+}
+
+.notification--is-closable {
+  padding-right: var(--space-xl);
+}
+
+.notification__close {
+  font-size: 1rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  line-height: 10px;
+  background-color: transparent;
+  border: none;
+  padding: var(--space-s);
+  cursor: pointer;
+  font-weight: bold;
+}

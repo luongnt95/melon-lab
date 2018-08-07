@@ -47,14 +47,13 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const HoldingsLifecycle = lifecycle({
+const HoldingsWithLifecycle = lifecycle({
   componentDidMount() {
     this.props.getHoldings(this.props.fundAddress);
   },
 })(Holdings);
 
-const HoldingsContainter = connect(mapStateToProps, mapDispatchToProps)(
-  HoldingsLifecycle,
-);
-
-export default HoldingsContainter;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(HoldingsWithLifecycle);

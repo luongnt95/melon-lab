@@ -45,20 +45,20 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getRanking: () => dispatch(actions.getRanking()),
-  onFilterChange: event => dispatch(actions.setSearch(event.target.value)),
+  onFilterChange: (value, event) => {
+    dispatch(actions.setSearch(event.target.value));
+  },
   setOrdering: ordering => dispatch(actions.setOrdering(ordering)),
   goToFund: fundAddress => dispatch(routeActions.fund(fundAddress)),
 });
 
-const RankingLifecycle = lifecycle({
+const RankingWithLifecycle = lifecycle({
   componentDidMount() {
     this.props.getRanking();
   },
 })(Ranking);
 
-const RankingSetup = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(RankingLifecycle);
-
-export default RankingSetup;
+)(RankingWithLifecycle);

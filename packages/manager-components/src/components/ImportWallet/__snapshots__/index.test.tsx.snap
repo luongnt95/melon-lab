@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash import-wallet"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Import wallet
+  </h3>
+  <div
+    className="jsx-__scopedHash import-wallet__dropzone"
+  >
+    <t
+      accept="application/json"
+      disableClick={false}
+      disablePreview={false}
+      disabled={false}
+      inputProps={Object {}}
+      maxSize={Infinity}
+      minSize={0}
+      multiple={true}
+      preventDropOnDocument={true}
+      style={
+        Object {
+          "border": "1px dotted black",
+          "cursor": "pointer",
+          "padding": 10,
+          "textAlign": "center",
+          "width": "100%",
+        }
+      }
+    >
+      <p
+        className="jsx-__scopedHash"
+      >
+        Select a wallet JSON file from your computer
+      </p>
+    </t>
+  </div>
+  <Button
+    style="secondary"
+  >
+    Cancel
+  </Button>
+</div>
+`;

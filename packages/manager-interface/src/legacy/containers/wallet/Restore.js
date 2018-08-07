@@ -1,25 +1,27 @@
 import { connect } from 'react-redux';
-import { reduxForm, SubmissionError } from 'redux-form';
 import { importWalletFromMnemonic } from '@melonproject/melon.js';
 import { actions } from '../../actions/wallet';
-import Restore from '../../components/pages/wallet/Restore';
+import RestoreWallet from '@melonproject/manager-components/components/RestoreWallet/container';
 
-const mapStateToProps = () => ({});
+const mapStateToProps = state => ({
+  initialValues: {
+    mnemonic: '',
+  },
+  error: state.wallet.reason,
+});
 
-const onSubmit = (values, dispatch) => {
-  try {
-    importWalletFromMnemonic(values.mnemonic);
-    dispatch(actions.restoreFromMnemonic(values.mnemonic));
-  } catch (err) {
-    console.log(err);
-    throw new SubmissionError({
-      mnemonic: 'Invalid BIP39 mnemonic',
-      _error: 'Invalid BIP39 mnemonic',
-    });
-  }
-};
+const mapDispatchToProps = dispatch => ({
+  onSubmit: values => {
+    try {
+      importWalletFromMnemonic(values.mnemonic);
+      dispatch(actions.restoreFromMnemonic(values.mnemonic));
+    } catch (err) {
+      dispatch(actions.restoreFromMnemonicFailed('Invalid BIP39 mnemonic'));
+    }
+  },
+});
 
-const RestoreRedux = connect(mapStateToProps)(Restore);
-const RestoreForm = reduxForm({ form: 'restore', onSubmit })(RestoreRedux);
-
-export default RestoreForm;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(RestoreWallet);

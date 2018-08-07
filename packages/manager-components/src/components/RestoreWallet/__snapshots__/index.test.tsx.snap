@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RestoreWallet should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash restore-wallet"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Confirm mnemonic
+  </h3>
+  <p
+    className="jsx-__scopedHash"
+  >
+    Please type your 12-words mnemonic:
+  </p>
+  <Form>
+    <div
+      className="jsx-__scopedHash restore-wallet__input"
+    >
+      <Input
+        error={false}
+        name="mnemonic"
+        placeholder="mnemonic"
+        required={true}
+        type="text"
+        value=""
+      />
+    </div>
+    <Button
+      style="secondary"
+      type="submit"
+    >
+      Import
+    </Button>
+  </Form>
+</div>
+`;

@@ -9,6 +9,7 @@ export const initialState = {
   mnemonic: '',
   loading: false,
   privateKey: '',
+  reason: '',
 };
 
 // Helper util to only add params to the state if defined in initialState

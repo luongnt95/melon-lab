@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ExecuteRequest should render correctly 1`] = `
+<div
+  className="execute-request"
+>
+  <Notification
+    isWarning={true}
+  >
+    <JSXStyle
+      css="__scoped"
+      styleId="__scopedHash"
+    />
+    <h3
+      className="jsx-__scopedHash execute-request__title"
+    >
+      Waiting time required
+    </h3>
+    <p
+      className="jsx-__scopedHash"
+    >
+      <a
+        className="jsx-__scopedHash"
+        href="https://medium.com/melonport-blog/protecting-participants-ee55a752287"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        To prevent information advantage of any economic agent over another, we enforce a waiting period before any subscription or redemption can be executed.
+      </a>
+    </p>
+    <React.Fragment>
+      Remaining waiting time before request execution:
+    </React.Fragment>
+  </Notification>
+</div>
+`;

@@ -1,8 +1,11 @@
 import React from 'react';
-import Input from './index';
+import ImportWallet from './index';
 
-describe('Input', () => {
-  const defaultElement = <Input />;
+const data = {
+};
+
+describe('Header', () => {
+  const defaultElement = <ImportWallet {...data} />;
 
   it('should render correctly', () => {
     const wrapper = shallow(defaultElement);

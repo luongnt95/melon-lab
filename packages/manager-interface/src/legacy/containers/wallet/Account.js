@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-
 import { actions } from '../../actions/wallet';
 import { actions as routeActions } from '../../actions/routes';
 import Account from '@melonproject/manager-components/components/Account';
@@ -15,15 +14,13 @@ const mapDispatchToProps = dispatch => ({
   downloadJSON: () => dispatch(actions.downloadJSON()),
   deleteWallet: () => dispatch(actions.deleteWallet()),
   gotoSetup: () => dispatch(routeActions.setup()),
-  goToFund: (fundAddress) => dispatch(routeActions.fund(fundAddress)),
+  goToFund: fundAddress => dispatch(routeActions.fund(fundAddress)),
   gotoImportJSON: () => dispatch(routeActions.walletImport()),
   gotoAccountGenerate: () => dispatch(routeActions.walletGenerate()),
   gotoAccountRestore: () => dispatch(routeActions.walletRestore()),
 });
 
-const AccountRedux = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(Account);
-
-export default AccountRedux;

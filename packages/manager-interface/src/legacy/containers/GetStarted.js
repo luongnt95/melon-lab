@@ -40,9 +40,7 @@ const mapDispatchToProps = dispatch => ({
   onClick: data => dispatch(data),
 });
 
-const GetStartedContainer = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(GetStarted);
-
-export default GetStartedContainer;

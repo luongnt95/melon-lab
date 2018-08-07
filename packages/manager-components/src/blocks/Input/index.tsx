@@ -7,9 +7,9 @@ import styles from './styles.css';
 export interface InputProps {
   disabled?: boolean;
   placeholder?: string;
-  onChange?: ChangeEventHandler<Element>;
-  onBlur?: ChangeEventHandler<Element>;
-  label: string;
+  onChange?: (value, event) => void;
+  onBlur?: () => void;
+  label?: string;
   type: string;
   insideLabel?: boolean;
   pattern?: string;
@@ -44,6 +44,13 @@ const Input: StatelessComponent<InputProps> = ({
     'input--has-error': error,
   });
 
+  const handleChange = e => {
+    const targetValue = e.target.value;
+    if (onChange) {
+      onChange({ value: targetValue }, e);
+    }
+  };
+
   return (
     <div className={classname}>
       <style jsx>{styles}</style>
@@ -75,7 +82,7 @@ const Input: StatelessComponent<InputProps> = ({
           disabled={disabled}
           placeholder={placeholder}
           value={value}
-          onChange={onChange}
+          onChange={handleChange}
           onBlur={onBlur}
         />
       )}

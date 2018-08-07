@@ -1,9 +1,7 @@
-import { connect } from "react-redux";
-
-import { actions } from "../actions/administration";
-import { actions as routeActions } from "../actions/routes";
-
-import Administration from "../components/organisms/Administration";
+import { connect } from 'react-redux';
+import { actions } from '../actions/administration';
+import { actions as routeActions } from '../actions/routes';
+import Administration from '../components/organisms/Administration';
 
 const mapStateToProps = state => ({
   subscriptionAllowed: state.fund.subscriptionAllowed,
@@ -21,8 +19,7 @@ const mapDispatchToProps = dispatch => ({
   shutdown: () => dispatch(actions.shutdown()),
 });
 
-const AdministrationContainer = connect(mapStateToProps, mapDispatchToProps)(
-  Administration,
-);
-
-export default AdministrationContainer;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Administration);

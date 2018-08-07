@@ -1,8 +1,8 @@
 import React from 'react';
-import Input from './index';
+import Notification from './index';
 
-describe('Input', () => {
-  const defaultElement = <Input />;
+describe('Notification', () => {
+  const defaultElement = <Notification />;
 
   it('should render correctly', () => {
     const wrapper = shallow(defaultElement);
