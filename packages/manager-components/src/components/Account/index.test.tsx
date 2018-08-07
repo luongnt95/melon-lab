@@ -8,7 +8,7 @@ const data = {
   isCompetition: false,
 };
 
-describe('Header', () => {
+describe('Account', () => {
   const defaultElement = <Account {...data} />;
 
   it('should render correctly', () => {

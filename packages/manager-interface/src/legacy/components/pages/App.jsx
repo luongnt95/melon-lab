@@ -4,7 +4,7 @@ import Link from 'redux-first-router-link';
 import WrongNetwork from '@melonproject/manager-components/components/WrongNetwork';
 import NoConnection from '@melonproject/manager-components/components/NoConnection';
 import LockedWallet from '../organisms/LockedWallet';
-import InsufficientFunds from '../organisms/InsufficientFunds';
+import InsufficientFunds from '@melonproject/manager-components/components/InsufficientFunds';
 import TermsAndConditionsContainer from '../../containers/TermsAndConditions';
 import SetupContainer from '../../containers/Setup';
 import ParosContributionContainer from '../../containers/ParosContribution';
