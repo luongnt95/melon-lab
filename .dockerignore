@@ -31,7 +31,7 @@
 !packages/graphql-schema/.babelrc
 
 !packages/exchange-aggregator/src/
-!packages/graphql-schema/.babelrc
+!packages/exchange-aggregator/.babelrc
 
 !packages/melon.js/lib/
 !packages/melon.js/.babelrc

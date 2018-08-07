@@ -4,13 +4,10 @@ services:
   - docker
 
 script:
-  - make bootstrap
-  - make lint
-  - make test
-  - make build
+  - make
 
 deploy:
   provider: script
-  script: bash scripts/install.sh && bash scripts/deploy.sh
+  script: bash scripts/deploy.sh
   on:
     branch: master

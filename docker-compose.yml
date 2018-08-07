@@ -141,9 +141,6 @@ services:
       - "3030:3030"
     networks:
       - melonproject
-    extra_hosts:
-      - "mainnet.melonport.com:52.236.179.86"
-      - "kovan.melonport.com:13.93.111.242"
 
   manager-interface:
     build:
@@ -284,40 +281,6 @@ services:
       - "3090:3090"
     networks:
       - melonproject
-
-  # These services are not meant to be spun up. They are just here to benefit from the
-  # layer caching of this docker-compose file since the layer cache is not shared between
-  # docker and docker-compose.
-  graphql-server-prod:
-    command: "/bin/sh -c 'trap : TERM INT; sleep 365d & wait'"
-    image: "melonproject/graphql-server:latest"
-    build:
-      context: .
-      dockerfile: ./packages/graphql-server/Dockerfile
-    extra_hosts:
-      - "mainnet.melonport.com:52.236.179.86"
-      - "kovan.melonport.com:13.93.111.242"
-
-  manager-interface-prod:
-    command: "/bin/sh -c 'trap : TERM INT; sleep 365d & wait'"
-    image: "melonproject/interface:latest"
-    build:
-      context: .
-      dockerfile: ./packages/manager-interface/Dockerfile
-
-  faucet-prod:
-    command: "/bin/sh -c 'trap : TERM INT; sleep 365d & wait'"
-    image: "melonproject/faucet:latest"
-    build:
-      context: .
-      dockerfile: ./packages/faucet/Dockerfile
-
-  ranking-prod:
-    command: "/bin/sh -c 'trap : TERM INT; sleep 365d & wait'"
-    image: "melonproject/ranking:latest"
-    build:
-      context: .
-      dockerfile: ./packages/ranking/Dockerfile
 
 networks:
   melonproject:

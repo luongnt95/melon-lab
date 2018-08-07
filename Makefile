@@ -1,4 +1,7 @@
-VERSION := $(or ${TRAVIS_BUILD_ID}, LOCAL)
+SUBDIRS=packages
+
+.PHONY: all
+all: bootstrap $(SUBDIRS)
 
 # -----------------------------------------------------------------------------
 # SETUP
@@ -7,69 +10,28 @@ VERSION := $(or ${TRAVIS_BUILD_ID}, LOCAL)
 network:
 	@docker network create melonproject > /dev/null 2> /dev/null || true
 
-.PHONY: install
-install:
-	@docker build --file Dockerfile.installer --target npm-dependencies --tag melonproject/npm-dependencies:latest .
-	@docker build --file Dockerfile.installer --target node-development --tag melonproject/node-development:latest .
-	@docker build --file Dockerfile.installer --target node-production --tag melonproject/node-production:latest .
+.PHONY: setup
+setup:
+	@docker build --file Dockerfile.installer --target npm-dependencies --tag melonproject/npm-dependencies .
+	@docker build --file Dockerfile.installer --target node-development --tag melonproject/node-development .
+	@docker build --file Dockerfile.installer --target node-production --tag melonproject/node-production .
 
 .PHONY: bootstrap
-bootstrap: network install
+bootstrap: network setup
 
 # -----------------------------------------------------------------------------
-# BUILD - COMMON
+# BUILD
 # -----------------------------------------------------------------------------
-.PHONY: all
-all: install build lint test
+test: $(SUBDIRS)
+lint: $(SUBDIRS)
+build: $(SUBDIRS)
+tag: $(SUBDIRS)
+push: $(SUBDIRS)
 
-.PHONY: build
-build:
-	@docker-compose build
+$(SUBDIRS):
+	$(MAKE) -C $@ $(MAKECMDGOALS)
 
-.PHONY: lint
-lint:
-	@docker-compose run --rm exchange-aggregator yarn lint
-	@docker-compose run --rm graphql-server yarn lint
-	@docker-compose run --rm graphql-schema yarn lint
-	@docker-compose run --rm manager-interface yarn lint
-	@docker-compose run --rm manager-components yarn lint
-	@docker-compose run --rm faucet yarn lint
-	@docker-compose run --rm ranking yarn lint
-	# TODO: Fix tests and linting in imported projects.
-	# @docker-compose run --rm melon-js yarn lint
-
-.PHONY: test
-test:
-	@docker-compose run --rm exchange-aggregator yarn test
-	@docker-compose run --rm graphql-server yarn test
-	@docker-compose run --rm graphql-schema yarn test
-	@docker-compose run --rm manager-interface yarn test
-	@docker-compose run --rm manager-components yarn test
-	@docker-compose run --rm faucet yarn test
-	@docker-compose run --rm ranking yarn test
-	# TODO: Fix tests and linting in imported projects.
-	# @docker-compose run --rm melon-js yarn test
-
-# -----------------------------------------------------------------------------
-# BUILD - CI
-# -----------------------------------------------------------------------------
-.PHONY: package
-package:
-	@docker tag melonproject/graphql-server:latest melonproject/graphql-server:${VERSION}
-	@docker tag melonproject/faucet:latest melonproject/faucet:${VERSION}
-	@docker tag melonproject/ranking:latest melonproject/ranking:${VERSION}
-	@docker tag melonproject/interface:latest melonproject/interface:${VERSION}
-
-.PHONY: publish
-publish:
-	@docker push melonproject/graphql-server:${VERSION}
-	@docker push melonproject/graphql-server:latest
-	@docker push melonproject/faucet:${VERSION}
-	@docker push melonproject/faucet:latest
-	@docker push melonproject/ranking:${VERSION}
-	@docker push melonproject/ranking:latest
-	@docker push melonproject/interface:${VERSION}
-	@docker push melonproject/interface:latest
+.PHONY: build lint test push $(SUBDIRS)
 
 # -----------------------------------------------------------------------------
 # DEVELOPMENT
@@ -84,3 +46,7 @@ stop:
 
 .PHONY: restart
 restart: stop start
+
+.PHONY: clean
+clean: stop
+	@docker-compose down --remove-orphans --volume

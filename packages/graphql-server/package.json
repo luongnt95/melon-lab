@@ -8,9 +8,9 @@
     "dev": "cross-env NODE_ENV=development backpack dev",
     "build": "cross-env NODE_ENV=production backpack build",
     "start": "cross-env NODE_ENV=production node --require dotenv-extended/config dist",
-    "lint": "tslint -p tsconfig.json || echo \"TODO: Fix linting\"",
+    "lint": "tslint -p tsconfig.json",
     "format": "prettier --write \"{src,tests}/**/*.ts\"",
-    "test": "jest || echo \"TODO: Fix tests\""
+    "test": "jest"
   },
   "author": "Melonport <team@melonport.com>",
   "contributors": [
