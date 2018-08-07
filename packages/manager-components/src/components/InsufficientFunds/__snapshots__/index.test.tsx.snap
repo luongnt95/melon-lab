@@ -13,9 +13,7 @@ exports[`InsufficientFunds should render correctly 1`] = `
   >
     Insufficient ETH Balance
   </h3>
-  <div
-    className="jsx-__scopedHash"
-  >
+  <React.Fragment>
     <p
       className="jsx-__scopedHash"
     >
@@ -33,6 +31,6 @@ exports[`InsufficientFunds should render correctly 1`] = `
         className="jsx-__scopedHash"
       />
     </p>
-  </div>
+  </React.Fragment>
 </div>
 `;

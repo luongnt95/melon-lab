@@ -1,4 +1,4 @@
-import React, { StatelessComponent } from 'react';
+import React, { Fragment, StatelessComponent } from 'react';
 import Button from '~/blocks/Button';
 
 import styles from './styles.css';
@@ -29,7 +29,7 @@ export const InsufficientFunds: StatelessComponent<InsufficientFundsProps> = ({
       <style jsx>{styles}</style>
       <h3>Insufficient ETH Balance</h3>
       {showFaucet ? (
-        <div>
+        <Fragment>
           <p>
             {' '}
             You don't have enough Kovan Ether or Kovan W-ETH. Current balances:{' '}
@@ -51,9 +51,9 @@ export const InsufficientFunds: StatelessComponent<InsufficientFundsProps> = ({
           <Button style="secondary" onClick={onClick}>
             Go to faucet
           </Button>
-        </div>
+        </Fragment>
       ) : (
-        <div>
+        <Fragment>
           <p>Your account balance is empty.</p>
           <p>
             In order to proceed, please deposit the amount of ETH that you want
@@ -63,7 +63,7 @@ export const InsufficientFunds: StatelessComponent<InsufficientFundsProps> = ({
           <p>
             <strong>{walletAddress}</strong>
           </p>
-        </div>
+        </Fragment>
       )}
     </div>
   );
