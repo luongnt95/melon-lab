@@ -1,11 +1,11 @@
 import React from 'react';
-import ImportWallet from './index';
+import InsufficientFunds from './index';
 
 const data = {
 };
 
-describe('ImportWallet', () => {
-  const defaultElement = <ImportWallet {...data} />;
+describe('InsufficientFunds', () => {
+  const defaultElement = <InsufficientFunds {...data} />;
 
   it('should render correctly', () => {
     const wrapper = shallow(defaultElement);

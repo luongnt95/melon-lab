@@ -1,24 +1,24 @@
 import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form';
-import Setup from '../components/organisms/Setup';
+import Setup from '@melonproject/manager-components/components/Setup/container';
 import { actions } from '../actions/fund';
 
 const mapStateToProps = state => ({
+  initialValues: {
+    name: '',
+  },
   loading: state.app.transactionInProgress,
   networkId: state.ethereum.network,
   config: state.fund.config,
   isCompetition: state.app.isCompetition,
 });
 
-const onSubmit = (values, dispatch) => {
-  dispatch(actions.setupRequested(values.name, true, true));
-};
+const mapDispatchToProps = dispatch => ({
+  onSubmit: values => {
+    dispatch(actions.setupRequested(values.name, true, true));
+  },
+});
 
-const SetupRedux = connect(mapStateToProps)(Setup);
-
-const SetupForm = reduxForm({
-  form: 'setup',
-  onSubmit,
-})(SetupRedux);
-
-export default SetupForm;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Setup);

@@ -13,7 +13,7 @@ export interface RestoreWalletProps {
   handleSubmit?: () => void;
   handleBlur?: () => void;
   onChange?: () => void;
-  values?: FormValues;
+  values: FormValues;
   error?: string;
   touched?: any;
   errors?: any;

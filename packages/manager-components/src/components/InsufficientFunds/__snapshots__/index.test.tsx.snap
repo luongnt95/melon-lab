@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InsufficientFunds should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash insufficient-funds"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Insufficient ETH Balance
+  </h3>
+  <React.Fragment>
+    <p
+      className="jsx-__scopedHash"
+    >
+      Your account balance is empty.
+    </p>
+    <p
+      className="jsx-__scopedHash"
+    >
+      In order to proceed, please deposit the amount of ETH that you want to contribute plus at least 0.1 ETH to cover for gas costs to your wallet address:
+    </p>
+    <p
+      className="jsx-__scopedHash"
+    >
+      <strong
+        className="jsx-__scopedHash"
+      />
+    </p>
+  </React.Fragment>
+</div>
+`;

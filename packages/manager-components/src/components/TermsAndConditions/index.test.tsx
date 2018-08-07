@@ -1,11 +1,11 @@
 import React from 'react';
-import ImportWallet from './index';
+import TermsAndConditions from './index';
 
 const data = {
 };
 
-describe('ImportWallet', () => {
-  const defaultElement = <ImportWallet {...data} />;
+describe('TermsAndConditions', () => {
+  const defaultElement = <TermsAndConditions {...data} />;
 
   it('should render correctly', () => {
     const wrapper = shallow(defaultElement);
