@@ -12,5 +12,5 @@
 }
 
 .setup__exchanges-checkbox {
-  margin-bottom: var(--space-xs);
+  margin: var(--space-xxs) 0;
 }

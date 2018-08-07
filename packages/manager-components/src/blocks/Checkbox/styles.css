@@ -2,7 +2,6 @@
   display: block;
   position: relative;
   padding-left: var(--space-l);
-  line-height: 1;
   color: var(--color-primary-dark);
 }
 
