@@ -2,7 +2,6 @@
   display: block;
   position: relative;
   padding-left: var(--space-l);
-  cursor: pointer;
   line-height: 1;
   color: var(--color-primary-dark);
 }
@@ -21,6 +20,7 @@
 
 .checkbox input:disabled ~ .checkbox__text {
   color: var(--color-grey);
+  cursor: not-allowed;
 }
 
 .checkbox input:disabled ~ .checkbox__checkmark {
@@ -36,6 +36,10 @@
 .checkbox__input {
   position: absolute;
   opacity: 0;
+  z-index: -1;
+}
+
+.checkbox__checkmark {
   cursor: pointer;
 }
 
@@ -48,6 +52,7 @@
   border: 1px solid var(--color-primary-dark);
   transition-property: background-color;
   transition-duration: vvar(--transition-duration-default);
+  cursor: pointer;
 }
 
 .checkbox__checkmark::after {
