@@ -1,17 +1,11 @@
 import React from 'react';
-import RestoreWallet from './index';
+import RestoreWallet from './container';
 
 const data = {
   initialValues: {
     mnemonic: '',
   },
   error: '',
-  touched: {
-    mnemonic: false,
-  },
-  values: {
-    mnemonic: '',
-  }
 };
 
 describe('RestoreWallet', () => {

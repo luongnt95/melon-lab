@@ -1,6 +1,6 @@
 .header {
   background-color: var(--color-secondary);
-  font-size: 0.75rem;
+  font-size: var(--font-size-s);
   line-height: 1;
   display: flex;
   flex-wrap: nowrap;
@@ -34,14 +34,14 @@
 
 .header__account-name {
   font-weight: var(--font-weight-bold);
-  font-size: 1rem;
+  font-size: var(--font-size-m);
 }
 
 .header__account {
   display: flex;
   flex-direction: column;
   padding: var(--space-xs) var(--space-m);
-  font-size: 0.75rem;
+  font-size: var(--font-size-s);
   justify-content: center;
 
   @media (--viewport-m) {

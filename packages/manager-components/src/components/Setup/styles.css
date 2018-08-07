@@ -1,0 +1,16 @@
+.setup {
+  max-width: 400px;
+  margin: 0 auto var(--space-xl) auto;
+}
+
+.setup__info {
+  margin-bottom: var(--space-l);
+}
+
+.setup__exchanges {
+  margin-bottom: var(--space-l);
+}
+
+.setup__exchanges-checkbox {
+  margin-bottom: var(--space-xs);
+}

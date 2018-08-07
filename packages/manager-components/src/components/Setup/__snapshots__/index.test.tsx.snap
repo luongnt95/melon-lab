@@ -1,13 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`RestoreWallet should render correctly 1`] = `
+exports[`Setup should render correctly 1`] = `
 <Formik
+  config={
+    Object {
+      "canonicalPriceFeedAddress": "foo",
+      "competitionComplianceAddress": "bar",
+      "onlyManagerCompetitionAddress": "foo",
+    }
+  }
   enableReinitialize={true}
-  error=""
   handleSubmit={[Function]}
   initialValues={
     Object {
-      "mnemonic": "",
+      "name": "",
     }
   }
   isInitialValid={false}
