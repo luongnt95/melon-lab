@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { actions } from '../actions/administration';
 import { actions as routeActions } from '../actions/routes';
-import Administration from '../components/organisms/Administration';
+import Administration from '@melonproject/manager-components/components/Administration';
 
 const mapStateToProps = state => ({
   subscriptionAllowed: state.fund.subscriptionAllowed,
