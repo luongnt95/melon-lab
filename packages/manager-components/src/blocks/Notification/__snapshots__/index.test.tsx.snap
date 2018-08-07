@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Notification should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash notification"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+</div>
+`;
