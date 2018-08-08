@@ -81,7 +81,6 @@ const Factsheet: StatelessComponent<FactsheetProps> = ({
             </Loading>{' '}
             {quoteAsset}
           </Button>
-          <br />
           <Button onClick={scrolltoHoldings} style="clear">
             Share price:{' '}
             <Loading dataAvailable={dataValid} loading={sharePrice === '...'}>
@@ -89,7 +88,6 @@ const Factsheet: StatelessComponent<FactsheetProps> = ({
             </Loading>{' '}
             {quoteAsset}/Share
           </Button>
-          <br />
           <a href="#/ranking">
             Ranking: <Loading loading={rank === '...'}>{rank}</Loading> out of{' '}
             <Loading loading={numberOfFunds === '...'}>{numberOfFunds}</Loading>
