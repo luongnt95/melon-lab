@@ -9,7 +9,7 @@ all: build lint test
 
 .PHONY: build
 build:
-	@docker build ${TOPDIR} --file Dockerfile --tag ${REGISTRY}/${NAMESPACE}/${PROJECT}:${TAG}
+	@docker build --cache-from ${REGISTRY}/${NAMESPACE}/${PROJECT}:${TAG} ${TOPDIR} --file Dockerfile --tag ${REGISTRY}/${NAMESPACE}/${PROJECT}:${TAG}
 
 .PHONY: lint
 lint:
@@ -25,6 +25,10 @@ test:
 .PHONY: tag
 tag:
 	@docker tag ${REGISTRY}/${NAMESPACE}/${PROJECT}:${TAG} ${REGISTRY}/${NAMESPACE}/${PROJECT}:${VERSION}
+
+.PHONY: pull
+pull:
+	@docker pull ${REGISTRY}/${NAMESPACE}/${PROJECT}:${TAG} || true
 
 .PHONY: push
 push:

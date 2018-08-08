@@ -6,8 +6,9 @@ lint: $(SUBDIRS)
 build: $(SUBDIRS)
 tag: $(SUBDIRS)
 push: $(SUBDIRS)
+pull: $(SUBDIRS)
 
 $(SUBDIRS):
 	$(MAKE) -C $@ $(MAKECMDGOALS)
 
-.PHONY: all build lint test tag push $(SUBDIRS)
+.PHONY: all build lint test tag push pull $(SUBDIRS)

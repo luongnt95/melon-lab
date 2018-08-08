@@ -27,11 +27,12 @@ lint: $(SUBDIRS)
 build: $(SUBDIRS)
 tag: $(SUBDIRS)
 push: $(SUBDIRS)
+pull: $(SUBDIRS)
 
 $(SUBDIRS):
 	$(MAKE) -C $@ $(MAKECMDGOALS)
 
-.PHONY: build lint test push $(SUBDIRS)
+.PHONY: build lint test push pull $(SUBDIRS)
 
 # -----------------------------------------------------------------------------
 # DEVELOPMENT
