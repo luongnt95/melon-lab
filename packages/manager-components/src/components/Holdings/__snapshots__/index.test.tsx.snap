@@ -57,17 +57,13 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0000
-              %
-            </React.Fragment>
+            0.0000
+            %
           </CellBody>
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0035
-            </React.Fragment>
+            0.0035
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -96,17 +92,13 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0000
-              %
-            </React.Fragment>
+            0.0000
+            %
           </CellBody>
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0007
-            </React.Fragment>
+            0.0007
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -135,17 +127,13 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0000
-              %
-            </React.Fragment>
+            0.0000
+            %
           </CellBody>
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0000
-            </React.Fragment>
+            0.0000
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -174,17 +162,13 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0000
-              %
-            </React.Fragment>
+            0.0000
+            %
           </CellBody>
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0000
-            </React.Fragment>
+            0.0000
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -213,17 +197,13 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0000
-              %
-            </React.Fragment>
+            0.0000
+            %
           </CellBody>
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.1113
-            </React.Fragment>
+            0.1113
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -252,17 +232,13 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0000
-              %
-            </React.Fragment>
+            0.0000
+            %
           </CellBody>
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0648
-            </React.Fragment>
+            0.0648
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -291,17 +267,13 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0000
-              %
-            </React.Fragment>
+            0.0000
+            %
           </CellBody>
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0024
-            </React.Fragment>
+            0.0024
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -330,17 +302,13 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0000
-              %
-            </React.Fragment>
+            0.0000
+            %
           </CellBody>
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0001
-            </React.Fragment>
+            0.0001
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -369,17 +337,13 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              50.5764
-              %
-            </React.Fragment>
+            50.5764
+            %
           </CellBody>
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              1.0000
-            </React.Fragment>
+            1.0000
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -403,17 +367,13 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              49.4236
-              %
-            </React.Fragment>
+            49.4236
+            %
           </CellBody>
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0470
-            </React.Fragment>
+            0.0470
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -442,17 +402,13 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0000
-              %
-            </React.Fragment>
+            0.0000
+            %
           </CellBody>
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              1.3430
-            </React.Fragment>
+            1.3430
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -481,17 +437,13 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0000
-              %
-            </React.Fragment>
+            0.0000
+            %
           </CellBody>
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0021
-            </React.Fragment>
+            0.0021
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -520,17 +472,13 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0000
-              %
-            </React.Fragment>
+            0.0000
+            %
           </CellBody>
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0276
-            </React.Fragment>
+            0.0276
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -559,17 +507,13 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0000
-              %
-            </React.Fragment>
+            0.0000
+            %
           </CellBody>
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0003
-            </React.Fragment>
+            0.0003
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -598,17 +542,13 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0000
-              %
-            </React.Fragment>
+            0.0000
+            %
           </CellBody>
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0150
-            </React.Fragment>
+            0.0150
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"
@@ -637,17 +577,13 @@ exports[`Holdings should render correctly 1`] = `
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0000
-              %
-            </React.Fragment>
+            0.0000
+            %
           </CellBody>
           <CellBody
             textAlign="right"
           >
-            <React.Fragment>
-              0.0184
-            </React.Fragment>
+            0.0184
           </CellBody>
           <CellBody
             cellClass="holdings__action-cell"

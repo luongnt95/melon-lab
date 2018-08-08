@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf coverage",
     "dev": "start-storybook -s ./public -p 3060 -c config",
-    "lint": "tslint -p tsconfig.json || echo \"TODO: Fix linting\"",
+    "lint": "tslint -p tsconfig.json",
     "test": "jest",
     "format": "prettier --write \"{src,tests}/**/*.{ts,tsx}\""
   },

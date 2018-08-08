@@ -13,34 +13,32 @@ exports[`Holdings should render correctly 1`] = `
   >
     Get started
   </h3>
-  <React.Fragment>
-    <p
+  <p
+    className="jsx-__scopedHash"
+  >
+    <b
       className="jsx-__scopedHash"
     >
-      <b
-        className="jsx-__scopedHash"
-      >
-        Melon
-      </b>
-      , [méllō], μέλλω; Greek for 
-      <b
-        className="jsx-__scopedHash"
-      >
-        "destined to be"
-      </b>
-      :
-    </p>
-    <p
+      Melon
+    </b>
+    , [méllō], μέλλω; Greek for 
+    <b
       className="jsx-__scopedHash"
     >
-      Blockchain software that seeks to enable participants to set up, manage and invest in technology regulated digital investment funds.
-    </p>
-    <p
-      className="jsx-__scopedHash"
-    >
-      Set up your own technology regulated fund and discover the future of asset management.
-    </p>
-  </React.Fragment>
+      "destined to be"
+    </b>
+    :
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    Blockchain software that seeks to enable participants to set up, manage and invest in technology regulated digital investment funds.
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    Set up your own technology regulated fund and discover the future of asset management.
+  </p>
   <Button
     onClick={[Function]}
   />

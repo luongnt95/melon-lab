@@ -8,22 +8,20 @@ exports[`Button should render correctly 1`] = `
     css="__scoped"
     styleId="__scopedHash"
   />
-  <React.Fragment>
-    <span
-      className="jsx-__scopedHash loading__item"
-    >
-      .
-    </span>
-    <span
-      className="jsx-__scopedHash loading__item"
-    >
-      .
-    </span>
-    <span
-      className="jsx-__scopedHash loading__item"
-    >
-      .
-    </span>
-  </React.Fragment>
+  <span
+    className="jsx-__scopedHash loading__item"
+  >
+    .
+  </span>
+  <span
+    className="jsx-__scopedHash loading__item"
+  >
+    .
+  </span>
+  <span
+    className="jsx-__scopedHash loading__item"
+  >
+    .
+  </span>
 </span>
 `;

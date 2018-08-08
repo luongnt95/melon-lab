@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CellBody should render correctly 1`] = `
-<React.Fragment>
+<Fragment>
   <JSXStyle
     css="__scoped"
     styleId="__scopedHash"
@@ -11,11 +11,11 @@ exports[`CellBody should render correctly 1`] = `
   >
     Default button
   </td>
-</React.Fragment>
+</Fragment>
 `;
 
 exports[`CellHead should render correctly 1`] = `
-<React.Fragment>
+<Fragment>
   <JSXStyle
     css="__scoped"
     styleId="__scopedHash"
@@ -25,11 +25,11 @@ exports[`CellHead should render correctly 1`] = `
   >
     Default button
   </th>
-</React.Fragment>
+</Fragment>
 `;
 
 exports[`Row should render correctly 1`] = `
-<React.Fragment>
+<Fragment>
   <JSXStyle
     css="__scoped"
     styleId="__scopedHash"
@@ -39,11 +39,11 @@ exports[`Row should render correctly 1`] = `
   >
     Default button
   </tr>
-</React.Fragment>
+</Fragment>
 `;
 
 exports[`Table should render correctly 1`] = `
-<React.Fragment>
+<Fragment>
   <JSXStyle
     css="__scoped"
     styleId="__scopedHash"
@@ -53,11 +53,11 @@ exports[`Table should render correctly 1`] = `
   >
     Default button
   </table>
-</React.Fragment>
+</Fragment>
 `;
 
 exports[`TableBody should render correctly 1`] = `
-<React.Fragment>
+<Fragment>
   <JSXStyle
     css="__scoped"
     styleId="__scopedHash"
@@ -67,11 +67,11 @@ exports[`TableBody should render correctly 1`] = `
   >
     Default button
   </tbody>
-</React.Fragment>
+</Fragment>
 `;
 
 exports[`TableHead should render correctly 1`] = `
-<React.Fragment>
+<Fragment>
   <JSXStyle
     css="__scoped"
     styleId="__scopedHash"
@@ -81,5 +81,5 @@ exports[`TableHead should render correctly 1`] = `
   >
     Default button
   </thead>
-</React.Fragment>
+</Fragment>
 `;

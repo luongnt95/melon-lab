@@ -1,4 +1,6 @@
 module.exports = {
+  "verbose": true,
+  "testURL": "http://localhost/",
   "roots": ["<rootDir>/src", "<rootDir>/tests"],
   "testEnvironment": "node",
   "moduleNameMapper": {

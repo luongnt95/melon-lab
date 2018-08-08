@@ -72,9 +72,7 @@ exports[`Header should render correctly 1`] = `
       <span
         className="jsx-__scopedHash header__account-status"
       >
-        <React.Fragment>
-          Melon Node
-        </React.Fragment>
+        Melon Node
       </span>
     </div>
   </div>

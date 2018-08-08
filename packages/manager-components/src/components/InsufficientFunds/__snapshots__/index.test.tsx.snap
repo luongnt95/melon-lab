@@ -13,24 +13,22 @@ exports[`InsufficientFunds should render correctly 1`] = `
   >
     Insufficient ETH Balance
   </h3>
-  <React.Fragment>
-    <p
+  <p
+    className="jsx-__scopedHash"
+  >
+    Your account balance is empty.
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    In order to proceed, please deposit the amount of ETH that you want to contribute plus at least 0.1 ETH to cover for gas costs to your wallet address:
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <strong
       className="jsx-__scopedHash"
-    >
-      Your account balance is empty.
-    </p>
-    <p
-      className="jsx-__scopedHash"
-    >
-      In order to proceed, please deposit the amount of ETH that you want to contribute plus at least 0.1 ETH to cover for gas costs to your wallet address:
-    </p>
-    <p
-      className="jsx-__scopedHash"
-    >
-      <strong
-        className="jsx-__scopedHash"
-      />
-    </p>
-  </React.Fragment>
+    />
+  </p>
 </div>
 `;

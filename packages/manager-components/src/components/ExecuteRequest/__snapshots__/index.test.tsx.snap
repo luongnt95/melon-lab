@@ -28,9 +28,7 @@ exports[`ExecuteRequest should render correctly 1`] = `
         To prevent information advantage of any economic agent over another, we enforce a waiting period before any subscription or redemption can be executed.
       </a>
     </p>
-    <React.Fragment>
-      Remaining waiting time before request execution:
-    </React.Fragment>
+    Remaining waiting time before request execution:
   </Notification>
 </div>
 `;

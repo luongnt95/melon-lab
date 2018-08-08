@@ -21,6 +21,7 @@ exports[`ImportWallet should render correctly 1`] = `
       disableClick={false}
       disablePreview={false}
       disabled={false}
+      getDataTransferItems={[Function]}
       inputProps={Object {}}
       maxSize={Infinity}
       minSize={0}
