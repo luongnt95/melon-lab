@@ -1,4 +1,4 @@
-SUBDIRS=exchange-aggregator graphql-schema graphql-server manager-components manager-interface faucet ranking melon.js
+SUBDIRS=exchange-aggregator graphql-schema graphql-server manager-components manager-interface melon.js
 
 all: $(SUBDIRS)
 test: $(SUBDIRS)

@@ -6,8 +6,6 @@
 !packages/graphql-server/Dockerfile
 !packages/manager-components/Dockerfile
 !packages/manager-interface/Dockerfile
-!packages/faucet/Dockerfile
-!packages/ranking/Dockerfile
 !packages/melon.js/Dockerfile
 
 # White-list packages.
@@ -16,8 +14,6 @@
 !packages/graphql-server/package.json
 !packages/manager-components/package.json
 !packages/manager-interface/package.json
-!packages/faucet/package.json
-!packages/ranking/package.json
 !packages/melon.js/package.json
 
 # Package files required for building production images.
@@ -46,20 +42,6 @@
 !packages/manager-interface/next.config.dist.js
 !packages/manager-interface/tsconfig.json
 !packages/manager-interface/introspect.js
-
-!packages/faucet/src/
-!packages/faucet/config/
-!packages/faucet/.babelrc
-!packages/faucet/.env.defaults
-!packages/faucet/next.config.js
-!packages/faucet/backpack.config.js
-!packages/faucet/tsconfig.json
-
-!packages/ranking/src/
-!packages/ranking/.babelrc
-!packages/ranking/.env.defaults
-!packages/ranking/backpack.config.js
-!packages/ranking/tsconfig.json
 
 !packages/manager-components/src/
 !packages/manager-components/public/
