@@ -13,17 +13,25 @@
 }
 
 .trade__info-item:nth-last-child(1) {
-    flex: 0 0 100%;
+  flex: 0 0 100%;
 }
 
 .trade__info-item:nth-last-child(2),
 .trade__info-item:nth-last-child(2) ~ .trade__info-item {
+  flex: 0 0 100%;
+
+  @media (--viewport-s) {
     flex: 0 0 50%;
+  }
 }
 
 .trade__info-item:nth-last-child(3),
 .trade__info-item:nth-last-child(3) ~ .trade__info-item {
+  flex: 0 0 100%;
+
+  @media (--viewport-s) {
     flex: 0 0 33.3333%;
+  }
 }
 
 .trade__order {

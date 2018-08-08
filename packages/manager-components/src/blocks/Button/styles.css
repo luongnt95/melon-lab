@@ -86,6 +86,7 @@
   padding: 0;
   text-transform: none;
   line-height: initial;
+  text-align: left;
 }
 
 .button--clear:hover:enabled {
