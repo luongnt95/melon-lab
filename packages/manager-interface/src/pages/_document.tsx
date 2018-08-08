@@ -1,4 +1,6 @@
-require('dotenv-extended').config();
+if (process.env.NODE_ENV === 'production') {
+  require('dotenv-extended').config();
+}
 
 import Document, { Head, Main, NextScript } from 'next/document';
 import React from 'react';

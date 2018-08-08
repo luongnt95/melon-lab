@@ -1,4 +1,6 @@
 import App, { Container } from 'next/app';
+import { Provider as ReduxProvider } from 'react-redux';
+import { ApolloProvider } from 'react-apollo';
 import React from 'react';
 import withApollo from '~/shared/wrappers/withApollo';
 import withReduxStore from '~/shared/wrappers/withReduxStore';
@@ -31,11 +33,15 @@ if (typeof window !== 'undefined') {
 
 class MelonApp extends App {
   public render() {
-    const { Component, pageProps } = this.props;
+    const { Component, apollo, redux, pageProps } = this.props;
 
     return (
       <Container>
-        <Component {...pageProps} />
+        <ReduxProvider store={redux}>
+          <ApolloProvider client={apollo}>
+            <Component {...pageProps} />
+          </ApolloProvider>
+        </ReduxProvider>
       </Container>
     );
   }

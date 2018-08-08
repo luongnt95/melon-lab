@@ -1,4 +1,3 @@
-import { Provider } from 'react-redux';
 import { actions } from '~/legacy/actions/browser';
 import { configureStore } from '~/legacy/config/configureStore';
 
@@ -43,10 +42,11 @@ export default BaseComponent => {
     }
 
     public render() {
+      const { initialReduxState, ...props } = this.props;
+      const store = getOrCreateStore(initialReduxState);
+
       return (
-        <Provider store={getOrCreateStore(this.props.initialReduxState)}>
-          <BaseComponent {...this.props} />
-        </Provider>
+        <BaseComponent {...this.props} redux={store} />
       );
     }
   };
