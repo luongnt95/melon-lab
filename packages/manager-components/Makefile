@@ -1,4 +1,3 @@
-NAMESPACE=local
 PROJECT=manager-components
 
 include ../../Makefile.docker

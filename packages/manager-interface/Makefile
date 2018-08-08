@@ -1,4 +1,3 @@
-NAMESPACE=manager-interface
 PROJECT=manager-interface
 
 include ../../Makefile.docker

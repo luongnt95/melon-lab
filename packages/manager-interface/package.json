@@ -79,6 +79,7 @@
     "slugify": "^1.2.9",
     "subscriptions-transport-electron": "https://github.com/fubhy/subscriptions-transport-electron.git#dist",
     "subscriptions-transport-ws": "^0.9.7",
+    "svg-sprite-loader": "^3.8.0",
     "websocket": "^1.0.26"
   },
   "devDependencies": {

@@ -1,4 +1,3 @@
-NAMESPACE=manager-interface
 PROJECT=graphql-server
 
 include ../../Makefile.docker

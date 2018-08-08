@@ -1,6 +1,8 @@
 import Document, { Head, Main, NextScript } from 'next/document';
 import React from 'react';
-import flush from 'styled-jsx/server';
+import spriteBuild from 'svg-sprite-loader/runtime/sprite.build';
+
+const sprites = spriteBuild.stringify();
 
 const csp =
   "default-src 'self' 'unsafe-inline'; \
@@ -8,12 +10,6 @@ connect-src http://localhost:8545; \
 font-src data: file:;";
 
 export default class MyDocument extends Document {
-  public static async getInitialProps(context) {
-    const initialProps = await Document.getInitialProps(context);
-    const styles = flush();
-    return { ...initialProps, styles };
-  }
-
   public render() {
     return (
       <html lang="en">
@@ -34,6 +30,7 @@ export default class MyDocument extends Document {
           <title>Melon Olympiad</title>
         </Head>
         <body>
+          <div dangerouslySetInnerHTML={{ __html: sprites }} />
           <Main />
           <NextScript />
         </body>

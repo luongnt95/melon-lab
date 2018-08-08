@@ -1,4 +1,3 @@
-NAMESPACE=local
 PROJECT=melon-js
 
 include ../../Makefile.docker

@@ -1,15 +1,9 @@
 import App, { Container } from 'next/app';
-import Raven from 'raven-js';
 import React from 'react';
 import withApollo from '~/shared/wrappers/withApollo';
 import withReduxStore from '~/shared/wrappers/withReduxStore';
 
 const debug = require('debug')('melon-lab:manager-interface:index');
-
-// Raven.config('https://14d859a5b75f4d4fbd79defb6d53129a@sentry.io/278024', {
-//   release,
-//   environment,
-// }).install();
 
 if (typeof window !== 'undefined') {
   debug('Starting frontend:', {

@@ -1,4 +1,3 @@
-NAMESPACE=local
 PROJECT=graphql-schema
 
 include ../../Makefile.docker

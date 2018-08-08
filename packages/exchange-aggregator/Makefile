@@ -1,4 +1,3 @@
-NAMESPACE=local
 PROJECT=exchange-aggregator
 
 include ../../Makefile.docker
