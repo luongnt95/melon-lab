@@ -53,12 +53,14 @@ function retrieveNetwork(track: string) {
 
 export default async () => {
   try {
-    const environment = await getParityProvider(process.env.JSON_RPC_ENDPOINT);
-    environment.track = process.env.TRACK
+    const track = (process.env.TRACK as string) || 'kovan-demo';
+    const environment = {
+      ...(await getParityProvider(process.env.JSON_RPC_ENDPOINT)),
+      track,
+    };
+
     const config = await getConfig(environment);
-    const network = retrieveNetwork(
-      (process.env.TRACK as string) || 'kovan-demo',
-    );
+    const network = retrieveNetwork(track);
 
     linkKeytar();
 

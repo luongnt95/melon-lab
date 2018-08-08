@@ -4,9 +4,9 @@ import AppContainer from '~/legacy/containers/App';
 if (typeof window !== 'undefined') {
   ReactModal.setAppElement('#__next');
 
-  if (process.env.NODE_ENV !== 'development' && !window.isElectron) {
+  if (process.env.NODE_ENV !== 'development' && !ELECTRON) {
     window.onbeforeunload = () =>
-      "You're session will be terminated. Did you save your mnemonic and/or JSON wallet?";
+      "Your session will be terminated. Did you save your mnemonic and/or JSON wallet?";
   }
 }
 

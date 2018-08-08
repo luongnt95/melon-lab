@@ -24,7 +24,7 @@ const MAX_INTERVAL_BETWEEN_BLOCKS = 5;
 function* init() {
   const environment = yield call(
     getParityProvider,
-    process.env.JSON_RPC_ENDPOINT,
+    global.JSON_RPC_ENDPOINT || process.env.JSON_RPC_ENDPOINT,
   );
 
   const networkId = yield apply(environment.api, environment.api.net.version);

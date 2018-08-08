@@ -36,25 +36,15 @@ export default BaseComponent => {
       };
     }
 
-    private reduxStore: any;
-
-    constructor(props) {
-      super(props);
-
-      // TODO: Once we get rid of componentDidMount, we can also move this to render().
-      this.reduxStore = getOrCreateStore(props.initialReduxState);
-    }
-
     public componentDidMount() {
       if (typeof window !== 'undefined') {
-        // TODO: This sucks.
-        this.reduxStore.dispatch(actions.loaded());
+        getOrCreateStore(this.props.initialReduxState).dispatch(actions.loaded());
       }
     }
 
     public render() {
       return (
-        <Provider store={this.reduxStore}>
+        <Provider store={getOrCreateStore(this.props.initialReduxState)}>
           <BaseComponent {...this.props} />
         </Provider>
       );

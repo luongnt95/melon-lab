@@ -13,17 +13,12 @@ import { isZero } from '../utils/functionalBigNumber';
 import { types as browserTypes } from '../actions/browser';
 
 function* init() {
-  const track = process.env.TRACK;
+  const track = global.TRACK || process.env.TRACK || 'kovan-demo';
   const isCompetition =
     track === tracks.KOVAN_COMPETITION || track === tracks.LIVE;
 
   if (!Object.values(tracks).includes(track)) {
-    console.warn(
-      'process.env.TRACK is set to "',
-      track,
-      '"which is not a supported tracks:',
-      Object.values(tracks),
-    );
+    console.warn(`TRACK is set to ${track} which is not a supported track.`);
   }
   yield put(
     actions.setTrack({ track, isCompetition, isElectron: ELECTRON }),

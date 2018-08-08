@@ -7,18 +7,10 @@ const debug = require('debug')('melon-lab:manager-interface:index');
 
 if (typeof window !== 'undefined') {
   debug('Starting frontend:', {
-    env: {
-      NODE_ENV: process.env.NODE_ENV,
-      DEBUG: process.env.DEBUG,
-      ELECTRON_PACKAGE: process.env.ELECTRON_PACKAGE,
-      GRAPHQL_REMOTE_HTTP: process.env.GRAPHQL_REMOTE_HTTP,
-      TRACK: process.env.TRACK,
-    },
-    isElectron: !!window.isElectron,
     release: {
       'manager-interface': __MANAGER_INTERFACE_VERSION__,
-      'melon.js': __MELON_JS_VERSION__,
       'smart-contracts': __SMART_CONTRACTS_VERSION__,
+      'melon.js': __MELON_JS_VERSION__,
     },
   });
 
@@ -49,4 +41,4 @@ class MelonApp extends App {
   }
 }
 
-export default withReduxStore(withApollo(MelonApp));
+export default withApollo(withReduxStore(MelonApp));
