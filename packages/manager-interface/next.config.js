@@ -68,9 +68,9 @@ module.exports = withComposedConfig({
       config.plugins.push(
         new CopyWebpackPlugin([
           {
-            context: path.join(__dirname, '..', 'manager-components', 'public', 'static'),
+            context: path.join(managerComponents, 'public', 'static'),
             from: '**/*',
-            to: path.join(__dirname, 'src', 'static'),
+            to: path.join(src, 'static'),
           },
         ]),
       );
