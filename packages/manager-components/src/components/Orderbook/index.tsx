@@ -1,5 +1,6 @@
 import BigNumber from 'bignumber.js';
 import React, { Fragment, StatelessComponent } from 'react';
+import Notification from '~/blocks/Notification';
 import Spinner from '~/blocks/Spinner';
 
 import styles from './styles.css';
@@ -74,134 +75,153 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
       <h3>
         Orderbook for {baseToken}/{quoteToken}
       </h3>
+
       {loading ? (
         <div className="orderbook__loading">
           <Spinner />
         </div>
       ) : (
-        <div className="orderbook__tables">
-          <div className="orderbook__table orderbook__table-buy">
-            <div>
-              <div className="orderbook__head">
-                <div className="orderbook__head-row">
-                  <div className="orderbook__head-cell">Cum. Vol.</div>
-                  <div className="orderbook__head-cell">Vol.</div>
-                  <div className="orderbook__head-cell">Bid</div>
+        <Fragment>
+          {orderbook &&
+          orderbook.sellEntries.length === 0 &&
+          orderbook.buyEntries.length === 0 ? (
+            <Notification isWarning>
+              No orders on the orderbook for this trading pair
+            </Notification>
+          ) : (
+            <div className="orderbook__tables">
+              <div className="orderbook__table orderbook__table-buy">
+                <div>
+                  <div className="orderbook__head">
+                    <div className="orderbook__head-row">
+                      <div className="orderbook__head-cell">Cum. Vol.</div>
+                      <div className="orderbook__head-cell">Vol.</div>
+                      <div className="orderbook__head-cell">Bid</div>
+                    </div>
+                  </div>
+                  <div className="orderbook__body">
+                    {orderbook &&
+                      orderbook.buyEntries.map((entry, index) => {
+                        const volume = Number.parseFloat(entry.volume).toFixed(
+                          decimals,
+                        );
+                        const howMuch = Number.parseFloat(
+                          entry.order.buy.howMuch,
+                        ).toFixed(decimals);
+                        const price = Number.parseFloat(
+                          entry.order.price,
+                        ).toFixed(decimals);
+
+                        const onClickBuyOrder = () => {
+                          if (isReadyToTrade && onClick) {
+                            onClick(orderbook.buyEntries.slice(0, index + 1));
+                          }
+                        };
+
+                        const calculatedBar = calculateBar(
+                          orderbook.buyEntries[index - 1],
+                          entry,
+                        );
+
+                        return (
+                          <div
+                            className="orderbook__body-row"
+                            key={entry.order.id}
+                            onClick={onClickBuyOrder}
+                            style={{
+                              cursor: isReadyToTrade ? 'pointer' : 'auto',
+                            }}
+                          >
+                            <div className="orderbook__body-cell">{volume}</div>
+                            <div className="orderbook__body-cell">
+                              {howMuch}
+                            </div>
+                            <div className="orderbook__body-cell">{price}</div>
+                            <div className="orderbook__bar orderbook__bar--buy">
+                              <Bar
+                                widthBar={`${calculatedBar.entryPercentage}%`}
+                                widthBorder={`${calculatedBar.percentageDiff}%`}
+                                leftSpaceBorder={`calc(100% - ${
+                                  calculatedBar.entryPercentage
+                                }% ${calculatedBar.prevEntryPercentage > 1 &&
+                                  '+ 1px'})`}
+                              />
+                            </div>
+                          </div>
+                        );
+                      })}
+                  </div>
                 </div>
               </div>
-              <div className="orderbook__body">
-                {orderbook &&
-                  orderbook.buyEntries.map((entry, index) => {
-                    const volume = Number.parseFloat(entry.volume).toFixed(
-                      decimals,
-                    );
-                    const howMuch = Number.parseFloat(
-                      entry.order.buy.howMuch,
-                    ).toFixed(decimals);
-                    const price = Number.parseFloat(entry.order.price).toFixed(
-                      decimals,
-                    );
+              <div className="orderbook__table orderbook__table-sell">
+                <div>
+                  <div className="orderbook__head">
+                    <div className="orderbook__head-row">
+                      <div className="orderbook__head-cell">Ask</div>
+                      <div className="orderbook__head-cell">Vol.</div>
+                      <div className="orderbook__head-cell">Cum. Vol.</div>
+                    </div>
+                  </div>
+                  <div className="orderbook__body">
+                    {orderbook &&
+                      orderbook.sellEntries.map((entry, index) => {
+                        const volume = Number.parseFloat(entry.volume).toFixed(
+                          decimals,
+                        );
+                        const howMuch = Number.parseFloat(
+                          entry.order.buy.howMuch,
+                        ).toFixed(decimals);
+                        const price = Number.parseFloat(
+                          entry.order.price,
+                        ).toFixed(decimals);
 
-                    const onClickBuyOrder = () => {
-                      if (isReadyToTrade && onClick) {
-                        onClick(orderbook.buyEntries.slice(0, index + 1));
-                      }
-                    };
+                        const onClickSellOrder = () => {
+                          if (isReadyToTrade && onClick) {
+                            onClick(orderbook.sellEntries.slice(0, index + 1));
+                          }
+                        };
 
-                    const calculatedBar = calculateBar(
-                      orderbook.buyEntries[index - 1],
-                      entry,
-                    );
+                        const calculatedBar = calculateBar(
+                          orderbook.sellEntries[index - 1],
+                          entry,
+                        );
 
-                    return (
-                      <div
-                        className="orderbook__body-row"
-                        key={entry.order.id}
-                        onClick={onClickBuyOrder}
-                        style={{ cursor: isReadyToTrade ? 'pointer' : 'auto' }}
-                      >
-                        <div className="orderbook__body-cell">{volume}</div>
-                        <div className="orderbook__body-cell">{howMuch}</div>
-                        <div className="orderbook__body-cell">{price}</div>
-                        <div className="orderbook__bar orderbook__bar--buy">
-                          <Bar
-                            widthBar={`${calculatedBar.entryPercentage}%`}
-                            widthBorder={`${calculatedBar.percentageDiff}%`}
-                            leftSpaceBorder={`calc(100% - ${
-                              calculatedBar.entryPercentage
-                            }% ${calculatedBar.prevEntryPercentage > 1 &&
-                              '+ 1px'})`}
-                          />
-                        </div>
-                      </div>
-                    );
-                  })}
-              </div>
-            </div>
-          </div>
-          <div className="orderbook__table orderbook__table-sell">
-            <div>
-              <div className="orderbook__head">
-                <div className="orderbook__head-row">
-                  <div className="orderbook__head-cell">Ask</div>
-                  <div className="orderbook__head-cell">Vol.</div>
-                  <div className="orderbook__head-cell">Cum. Vol.</div>
+                        return (
+                          <div
+                            className="orderbook__body-row"
+                            key={entry.order.id}
+                            onClick={onClickSellOrder}
+                            style={{
+                              cursor: isReadyToTrade ? 'pointer' : 'auto',
+                            }}
+                          >
+                            <div className="orderbook__body-cell">{price}</div>
+                            <div className="orderbook__body-cell">
+                              {howMuch}
+                            </div>
+                            <div className="orderbook__body-cell">{volume}</div>
+
+                            <div className="orderbook__bar orderbook__bar--sell">
+                              <Bar
+                                widthBar={`${calculatedBar.entryPercentage}%`}
+                                widthBorder={`${calculatedBar.percentageDiff}%`}
+                                leftSpaceBorder={`calc(${
+                                  calculatedBar.entryPercentage
+                                }% - ${
+                                  calculatedBar.percentageDiff
+                                }% ${calculatedBar.prevEntryPercentage > 1 &&
+                                  '- 1px'})`}
+                              />
+                            </div>
+                          </div>
+                        );
+                      })}
+                  </div>
                 </div>
               </div>
-              <div className="orderbook__body">
-                {orderbook &&
-                  orderbook.sellEntries.map((entry, index) => {
-                    const volume = Number.parseFloat(entry.volume).toFixed(
-                      decimals,
-                    );
-                    const howMuch = Number.parseFloat(
-                      entry.order.buy.howMuch,
-                    ).toFixed(decimals);
-                    const price = Number.parseFloat(entry.order.price).toFixed(
-                      decimals,
-                    );
-
-                    const onClickSellOrder = () => {
-                      if (isReadyToTrade && onClick) {
-                        onClick(orderbook.sellEntries.slice(0, index + 1));
-                      }
-                    };
-
-                    const calculatedBar = calculateBar(
-                      orderbook.sellEntries[index - 1],
-                      entry,
-                    );
-
-                    return (
-                      <div
-                        className="orderbook__body-row"
-                        key={entry.order.id}
-                        onClick={onClickSellOrder}
-                        style={{ cursor: isReadyToTrade ? 'pointer' : 'auto' }}
-                      >
-                        <div className="orderbook__body-cell">{price}</div>
-                        <div className="orderbook__body-cell">{howMuch}</div>
-                        <div className="orderbook__body-cell">{volume}</div>
-
-                        <div className="orderbook__bar orderbook__bar--sell">
-                          <Bar
-                            widthBar={`${calculatedBar.entryPercentage}%`}
-                            widthBorder={`${calculatedBar.percentageDiff}%`}
-                            leftSpaceBorder={`calc(${
-                              calculatedBar.entryPercentage
-                            }% - ${
-                              calculatedBar.percentageDiff
-                            }% ${calculatedBar.prevEntryPercentage > 1 &&
-                              '- 1px'})`}
-                          />
-                        </div>
-                      </div>
-                    );
-                  })}
-              </div>
             </div>
-          </div>
-        </div>
+          )}
+        </Fragment>
       )}
     </div>
   );

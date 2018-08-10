@@ -960,6 +960,23 @@ const data = {
   },
 };
 
-storiesOf('Components|Orderbook', module).add('Default', () => {
-  return <Orderbook {...data} />;
-});
+const noData = {
+  loading: false,
+  isReadyToTrade: true,
+  baseToken: 'MLN-T',
+  quoteToken: 'WETH-T',
+  orderbook: {
+    totalBuyVolume: '6014.96303423220724',
+    totalSellVolume: '2756.383767891347375',
+    buyEntries: [],
+    sellEntries: [],
+  },
+};
+
+storiesOf('Components|Orderbook', module)
+  .add('Default', () => {
+    return <Orderbook {...data} />;
+  })
+  .add('No data', () => {
+    return <Orderbook {...noData} />;
+  });
