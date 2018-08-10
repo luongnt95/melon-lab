@@ -6,6 +6,7 @@ const data = {
   isReadyToTrade: true,
   baseToken: 'MLN-T',
   quoteToken: 'WETH-T',
+  decimals: 4,
   orderbook: {
     totalBuyVolume: '6014.96303423220724',
     totalSellVolume: '2756.383767891347375',

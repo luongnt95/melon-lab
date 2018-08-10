@@ -11,14 +11,8 @@ export interface OrderbookProps {
   onClick: (index) => void;
   baseToken?: string;
   quoteToken?: string;
+  decimals?: number;
 }
-
-const getPercentage = (cumulativeVolume, totalVolume) => {
-  const percentage = new BigNumber(cumulativeVolume)
-    .div(totalVolume)
-    .times(100);
-  return percentage;
-};
 
 export const Orderbook: StatelessComponent<OrderbookProps> = ({
   orderbook,
@@ -27,7 +21,12 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
   onClick,
   baseToken,
   quoteToken,
+  decimals = 4,
 }) => {
+  const getPercentage = (cumulativeVolume, totalVolume) => {
+    return new BigNumber(cumulativeVolume).div(totalVolume).times(100);
+  };
+
   return (
     <div className="orderbook">
       <style jsx>{styles}</style>
@@ -52,12 +51,14 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
               <div className="orderbook__body">
                 {orderbook &&
                   orderbook.buyEntries.map((entry, index) => {
-                    const volume = Number.parseFloat(entry.volume).toFixed(4);
+                    const volume = Number.parseFloat(entry.volume).toFixed(
+                      decimals,
+                    );
                     const howMuch = Number.parseFloat(
                       entry.order.buy.howMuch,
-                    ).toFixed(4);
+                    ).toFixed(decimals);
                     const price = Number.parseFloat(entry.order.price).toFixed(
-                      4,
+                      decimals,
                     );
 
                     const onClickBuyOrder = () => {
@@ -126,12 +127,14 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
               <div className="orderbook__body">
                 {orderbook &&
                   orderbook.sellEntries.map((entry, index) => {
-                    const volume = Number.parseFloat(entry.volume).toFixed(4);
+                    const volume = Number.parseFloat(entry.volume).toFixed(
+                      decimals,
+                    );
                     const howMuch = Number.parseFloat(
                       entry.order.buy.howMuch,
-                    ).toFixed(4);
+                    ).toFixed(decimals);
                     const price = Number.parseFloat(entry.order.price).toFixed(
-                      4,
+                      decimals,
                     );
 
                     const onClickSellOrder = () => {

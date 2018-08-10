@@ -7,10 +7,7 @@ import gql from 'graphql-tag';
 import { actions } from '../actions/orderbook';
 
 const subscription = gql`
-  subscription OrderbookQuery(
-    $baseToken: Symbol!
-    $quoteToken: Symbol!
-  ) {
+  subscription OrderbookQuery($baseToken: Symbol!, $quoteToken: Symbol!) {
     orderbook(
       baseTokenSymbol: $baseToken
       quoteTokenSymbol: $quoteToken
@@ -111,9 +108,13 @@ const mapStateToProps = state => ({
   isReadyToTrade: state.app.isReadyToTrade,
   network: state.ethereum.network,
   config: state.fund.config,
+  decimals: 4,
 });
 
-const withState = connect(mapStateToProps, mapDispatchToProps);
+const withState = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+);
 
 const withSubscription = BaseComponent => baseProps => (
   <Subscription
@@ -135,4 +136,7 @@ const withSubscription = BaseComponent => baseProps => (
   </Subscription>
 );
 
-export default compose(withState, withSubscription)(Orderbook);
+export default compose(
+  withState,
+  withSubscription,
+)(Orderbook);
