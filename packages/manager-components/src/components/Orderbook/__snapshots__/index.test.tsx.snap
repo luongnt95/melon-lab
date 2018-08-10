@@ -72,7 +72,7 @@ exports[`Orderbook should render correctly 1`] = `
               1.0000
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               1.5000
             </div>
@@ -107,7 +107,7 @@ exports[`Orderbook should render correctly 1`] = `
               1.0000
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.5000
             </div>
@@ -142,7 +142,7 @@ exports[`Orderbook should render correctly 1`] = `
               288.4192
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0347
             </div>
@@ -177,7 +177,7 @@ exports[`Orderbook should render correctly 1`] = `
               288.4192
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0347
             </div>
@@ -212,7 +212,7 @@ exports[`Orderbook should render correctly 1`] = `
               290.1497
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0345
             </div>
@@ -247,7 +247,7 @@ exports[`Orderbook should render correctly 1`] = `
               290.1497
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0345
             </div>
@@ -282,7 +282,7 @@ exports[`Orderbook should render correctly 1`] = `
               293.3223
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0341
             </div>
@@ -317,7 +317,7 @@ exports[`Orderbook should render correctly 1`] = `
               293.3223
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0341
             </div>
@@ -352,7 +352,7 @@ exports[`Orderbook should render correctly 1`] = `
               297.0718
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0337
             </div>
@@ -387,7 +387,7 @@ exports[`Orderbook should render correctly 1`] = `
               297.0718
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0337
             </div>
@@ -422,7 +422,7 @@ exports[`Orderbook should render correctly 1`] = `
               297.6486
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0336
             </div>
@@ -457,7 +457,7 @@ exports[`Orderbook should render correctly 1`] = `
               297.6486
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0336
             </div>
@@ -492,7 +492,7 @@ exports[`Orderbook should render correctly 1`] = `
               301.3980
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0332
             </div>
@@ -527,7 +527,7 @@ exports[`Orderbook should render correctly 1`] = `
               301.3980
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0332
             </div>
@@ -562,7 +562,7 @@ exports[`Orderbook should render correctly 1`] = `
               305.4359
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0327
             </div>
@@ -597,7 +597,7 @@ exports[`Orderbook should render correctly 1`] = `
               305.4359
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0327
             </div>
@@ -632,7 +632,7 @@ exports[`Orderbook should render correctly 1`] = `
               308.0317
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0325
             </div>
@@ -667,7 +667,7 @@ exports[`Orderbook should render correctly 1`] = `
               308.0317
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0325
             </div>
@@ -702,7 +702,7 @@ exports[`Orderbook should render correctly 1`] = `
               311.4927
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0321
             </div>
@@ -737,7 +737,7 @@ exports[`Orderbook should render correctly 1`] = `
               311.4927
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0321
             </div>
@@ -772,7 +772,7 @@ exports[`Orderbook should render correctly 1`] = `
               313.5116
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0319
             </div>
@@ -807,7 +807,7 @@ exports[`Orderbook should render correctly 1`] = `
               313.5116
             </div>
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--buy"
             >
               0.0319
             </div>
@@ -867,7 +867,7 @@ exports[`Orderbook should render correctly 1`] = `
             }
           >
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--sell"
             >
               0.0347
             </div>
@@ -902,7 +902,7 @@ exports[`Orderbook should render correctly 1`] = `
             }
           >
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--sell"
             >
               0.0350
             </div>
@@ -937,7 +937,7 @@ exports[`Orderbook should render correctly 1`] = `
             }
           >
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--sell"
             >
               0.0353
             </div>
@@ -972,7 +972,7 @@ exports[`Orderbook should render correctly 1`] = `
             }
           >
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--sell"
             >
               0.0358
             </div>
@@ -1007,7 +1007,7 @@ exports[`Orderbook should render correctly 1`] = `
             }
           >
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--sell"
             >
               0.0359
             </div>
@@ -1042,7 +1042,7 @@ exports[`Orderbook should render correctly 1`] = `
             }
           >
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--sell"
             >
               0.0364
             </div>
@@ -1077,7 +1077,7 @@ exports[`Orderbook should render correctly 1`] = `
             }
           >
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--sell"
             >
               0.0369
             </div>
@@ -1112,7 +1112,7 @@ exports[`Orderbook should render correctly 1`] = `
             }
           >
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--sell"
             >
               0.0373
             </div>
@@ -1147,7 +1147,7 @@ exports[`Orderbook should render correctly 1`] = `
             }
           >
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--sell"
             >
               0.0378
             </div>
@@ -1182,7 +1182,7 @@ exports[`Orderbook should render correctly 1`] = `
             }
           >
             <div
-              className="jsx-__scopedHash orderbook__body-cell"
+              className="jsx-__scopedHash orderbook__body-cell orderbook__body-cell--sell"
             >
               0.0381
             </div>

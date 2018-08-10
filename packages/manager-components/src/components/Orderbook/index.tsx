@@ -136,7 +136,7 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
                             <div className="orderbook__body-cell">
                               {howMuch}
                             </div>
-                            <div className="orderbook__body-cell">{price}</div>
+                            <div className="orderbook__body-cell orderbook__body-cell--buy">{price}</div>
                             <div className="orderbook__bar orderbook__bar--buy">
                               <Bar
                                 widthBar={`${calculatedBar.entryPercentage}%`}
@@ -195,7 +195,7 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
                               cursor: isReadyToTrade ? 'pointer' : 'auto',
                             }}
                           >
-                            <div className="orderbook__body-cell">{price}</div>
+                            <div className="orderbook__body-cell orderbook__body-cell--sell">{price}</div>
                             <div className="orderbook__body-cell">
                               {howMuch}
                             </div>

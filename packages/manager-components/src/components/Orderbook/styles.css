@@ -87,6 +87,14 @@
   background-color: color-mod(var(--color-loss) a(25%));
 }
 
+.orderbook__body-cell--buy {
+  color: var(--color-loss);
+}
+
+.orderbook__body-cell--sell {
+  color: var(--color-profit);
+}
+
 .orderbook__table-buy .orderbook__body-cell:nth-child(3),
 .orderbook__table-buy .orderbook__head-cell:nth-child(3) {
   padding-right: var(--space-m);
