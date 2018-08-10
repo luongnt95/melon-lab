@@ -79,22 +79,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "0.016625206078721099%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(0.016625206078721099% - undefined% false)",
-                    "width": "calc(undefined%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 0.016625206078721099% false)"
+                widthBar="0.016625206078721099%"
+                widthBorder="undefined%"
               />
             </div>
           </div>
@@ -126,22 +114,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "0.033250412157442199%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(0.033250412157442199% - 0.016625206078721099% false)",
-                    "width": "calc(0.016625206078721099%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 0.033250412157442199% false)"
+                widthBar="0.033250412157442199%"
+                widthBorder="0.016625206078721099%"
               />
             </div>
           </div>
@@ -173,22 +149,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "4.828278692464548774%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(4.828278692464548774% - 4.795028280307106575% false)",
-                    "width": "calc(4.795028280307106575%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 4.828278692464548774% false)"
+                widthBar="4.828278692464548774%"
+                widthBorder="4.795028280307106575%"
               />
             </div>
           </div>
@@ -220,22 +184,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "9.623306972771655349%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(9.623306972771655349% - 4.795028280307106575% - 1px)",
-                    "width": "calc(4.795028280307106575%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 9.623306972771655349% + 1px)"
+                widthBar="9.623306972771655349%"
+                widthBorder="4.795028280307106575%"
               />
             </div>
           </div>
@@ -267,22 +219,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "14.447105422760604554%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(14.447105422760604554% - 4.823798449988949205% - 1px)",
-                    "width": "calc(4.823798449988949205%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 14.447105422760604554% + 1px)"
+                widthBar="14.447105422760604554%"
+                widthBorder="4.823798449988949205%"
               />
             </div>
           </div>
@@ -314,22 +254,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "19.270903872749553759%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(19.270903872749553759% - 4.823798449988949205% - 1px)",
-                    "width": "calc(4.823798449988949205%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 19.270903872749553759% + 1px)"
+                widthBar="19.270903872749553759%"
+                widthBorder="4.823798449988949205%"
               />
             </div>
           </div>
@@ -361,22 +289,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "24.147447633821881146%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(24.147447633821881146% - 4.876543761072327387% - 1px)",
-                    "width": "calc(4.876543761072327387%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 24.147447633821881146% + 1px)"
+                widthBar="24.147447633821881146%"
+                widthBorder="4.876543761072327387%"
               />
             </div>
           </div>
@@ -408,22 +324,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "29.023991394894208533%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(29.023991394894208533% - 4.876543761072327387% - 1px)",
-                    "width": "calc(4.876543761072327387%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 29.023991394894208533% + 1px)"
+                widthBar="29.023991394894208533%"
+                widthBorder="4.876543761072327387%"
               />
             </div>
           </div>
@@ -455,22 +359,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "33.962870523610528306%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(33.962870523610528306% - 4.938879128716319773% - 1px)",
-                    "width": "calc(4.938879128716319773%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 33.962870523610528306% + 1px)"
+                widthBar="33.962870523610528306%"
+                widthBorder="4.938879128716319773%"
               />
             </div>
           </div>
@@ -502,22 +394,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "38.901749652326848079%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(38.901749652326848079% - 4.938879128716319773% - 1px)",
-                    "width": "calc(4.938879128716319773%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 38.901749652326848079% + 1px)"
+                widthBar="38.901749652326848079%"
+                widthBorder="4.938879128716319773%"
               />
             </div>
           </div>
@@ -549,22 +429,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "43.850218837603782057%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(43.850218837603782057% - 4.948469185276933978% - 1px)",
-                    "width": "calc(4.948469185276933978%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 43.850218837603782057% + 1px)"
+                widthBar="43.850218837603782057%"
+                widthBorder="4.948469185276933978%"
               />
             </div>
           </div>
@@ -596,22 +464,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "48.798688022880716034%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(48.798688022880716034% - 4.948469185276933978% - 1px)",
-                    "width": "calc(4.948469185276933978%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 48.798688022880716034% + 1px)"
+                widthBar="48.798688022880716034%"
+                widthBorder="4.948469185276933978%"
               />
             </div>
           </div>
@@ -643,22 +499,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "53.809492575801642398%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(53.809492575801642398% - 5.010804552920926364% - 1px)",
-                    "width": "calc(5.010804552920926364%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 53.809492575801642398% + 1px)"
+                widthBar="53.809492575801642398%"
+                widthBorder="5.010804552920926364%"
               />
             </div>
           </div>
@@ -690,22 +534,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "58.820297128722568762%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(58.820297128722568762% - 5.010804552920926364% - 1px)",
-                    "width": "calc(5.010804552920926364%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 58.820297128722568762% + 1px)"
+                widthBar="58.820297128722568762%"
+                widthBorder="5.010804552920926364%"
               />
             </div>
           </div>
@@ -737,22 +569,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "63.898232077567794623%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(63.898232077567794623% - 5.077934948845225861% - 1px)",
-                    "width": "calc(5.077934948845225861%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 63.898232077567794623% + 1px)"
+                widthBar="63.898232077567794623%"
+                widthBorder="5.077934948845225861%"
               />
             </div>
           </div>
@@ -784,22 +604,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "68.976167026413020484%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(68.976167026413020484% - 5.077934948845225861% - 1px)",
-                    "width": "calc(5.077934948845225861%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 68.976167026413020484% + 1px)"
+                widthBar="68.976167026413020484%"
+                widthBorder="5.077934948845225861%"
               />
             </div>
           </div>
@@ -831,22 +639,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "74.097257229781010306%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(74.097257229781010306% - 5.121090203367989822% - 1px)",
-                    "width": "calc(5.121090203367989822%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 74.097257229781010306% + 1px)"
+                widthBar="74.097257229781010306%"
+                widthBorder="5.121090203367989822%"
               />
             </div>
           </div>
@@ -878,22 +674,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "79.218347433149000128%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(79.218347433149000128% - 5.121090203367989822% - 1px)",
-                    "width": "calc(5.121090203367989822%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 79.218347433149000128% + 1px)"
+                widthBar="79.218347433149000128%"
+                widthBorder="5.121090203367989822%"
               />
             </div>
           </div>
@@ -925,22 +709,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "84.396977975880675226%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(84.396977975880675226% - 5.178630542731675098% - 1px)",
-                    "width": "calc(5.178630542731675098%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 84.396977975880675226% + 1px)"
+                widthBar="84.396977975880675226%"
+                widthBorder="5.178630542731675098%"
               />
             </div>
           </div>
@@ -972,22 +744,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "89.575608518612350324%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(89.575608518612350324% - 5.178630542731675098% - 1px)",
-                    "width": "calc(5.178630542731675098%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 89.575608518612350324% + 1px)"
+                widthBar="89.575608518612350324%"
+                widthBorder="5.178630542731675098%"
               />
             </div>
           </div>
@@ -1019,22 +779,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "94.787804259306175162%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(94.787804259306175162% - 5.212195740693824838% - 1px)",
-                    "width": "calc(5.212195740693824838%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 94.787804259306175162% + 1px)"
+                widthBar="94.787804259306175162%"
+                widthBorder="5.212195740693824838%"
               />
             </div>
           </div>
@@ -1066,22 +814,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--buy"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "100%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "right": "calc(100% - 5.212195740693824838% - 1px)",
-                    "width": "calc(5.212195740693824838%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(100% - 100% + 1px)"
+                widthBar="100%"
+                widthBorder="5.212195740693824838%"
               />
             </div>
           </div>
@@ -1148,22 +884,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--sell"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "4.785447804222576885%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "left": "calc(4.785447804222576885% - undefined% false)",
-                    "width": "calc(undefined%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(4.785447804222576885% - undefined% false)"
+                widthBar="4.785447804222576885%"
+                widthBorder="undefined%"
               />
             </div>
           </div>
@@ -1195,22 +919,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--sell"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "9.542182921619818311%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "left": "calc(9.542182921619818311% - 4.756735117397241425% - 1px)",
-                    "width": "calc(4.756735117397241425%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(9.542182921619818311% - 4.756735117397241425% - 1px)"
+                widthBar="9.542182921619818311%"
+                widthBorder="4.756735117397241425%"
               />
             </div>
           </div>
@@ -1242,22 +954,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--sell"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "14.246278113170611395%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "left": "calc(14.246278113170611395% - 4.704095191550793085% - 1px)",
-                    "width": "calc(4.704095191550793085%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(14.246278113170611395% - 4.704095191550793085% - 1px)"
+                widthBar="14.246278113170611395%"
+                widthBorder="4.704095191550793085%"
               />
             </div>
           </div>
@@ -1289,22 +989,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--sell"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "18.888162483266510981%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "left": "calc(18.888162483266510981% - 4.641884370095899586% - 1px)",
-                    "width": "calc(4.641884370095899586%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(18.888162483266510981% - 4.641884370095899586% - 1px)"
+                widthBar="18.888162483266510981%"
+                widthBorder="4.641884370095899586%"
               />
             </div>
           </div>
@@ -1336,22 +1024,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--sell"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "23.520475957753965408%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "left": "calc(23.520475957753965408% - 4.632313474487454427% - 1px)",
-                    "width": "calc(4.632313474487454427%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(23.520475957753965408% - 4.632313474487454427% - 1px)"
+                widthBar="23.520475957753965408%"
+                widthBorder="4.632313474487454427%"
               />
             </div>
           </div>
@@ -1383,22 +1059,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--sell"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "28.090578610786526335%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "left": "calc(28.090578610786526335% - 4.570102653032560927% - 1px)",
-                    "width": "calc(4.570102653032560927%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(28.090578610786526335% - 4.570102653032560927% - 1px)"
+                widthBar="28.090578610786526335%"
+                widthBorder="4.570102653032560927%"
               />
             </div>
           </div>
@@ -1430,22 +1094,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--sell"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "32.593684994559971184%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "left": "calc(32.593684994559971184% - 4.503106383773444849% - 1px)",
-                    "width": "calc(4.503106383773444849%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(32.593684994559971184% - 4.503106383773444849% - 1px)"
+                widthBar="32.593684994559971184%"
+                widthBorder="4.503106383773444849%"
               />
             </div>
           </div>
@@ -1477,22 +1129,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--sell"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "37.053722348095412834%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "left": "calc(37.053722348095412834% - 4.46003735353544165% - 1px)",
-                    "width": "calc(4.46003735353544165%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(37.053722348095412834% - 4.46003735353544165% - 1px)"
+                widthBar="37.053722348095412834%"
+                widthBorder="4.46003735353544165%"
               />
             </div>
           </div>
@@ -1524,22 +1164,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--sell"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "41.456334327980183565%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "left": "calc(41.456334327980183565% - 4.40261197988477073% - 1px)",
-                    "width": "calc(4.40261197988477073%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(41.456334327980183565% - 4.40261197988477073% - 1px)"
+                widthBar="41.456334327980183565%"
+                widthBorder="4.40261197988477073%"
               />
             </div>
           </div>
@@ -1571,22 +1199,10 @@ exports[`Orderbook should render correctly 1`] = `
             <div
               className="jsx-__scopedHash orderbook__bar orderbook__bar--sell"
             >
-              <span
-                className="jsx-__scopedHash orderbook__bar-item"
-                style={
-                  Object {
-                    "width": "45.825448173235396256%",
-                  }
-                }
-              />
-              <span
-                className="jsx-__scopedHash orderbook__bar-border"
-                style={
-                  Object {
-                    "left": "calc(45.825448173235396256% - 4.369113845255212691% - 1px)",
-                    "width": "calc(4.369113845255212691%)",
-                  }
-                }
+              <Bar
+                leftSpaceBorder="calc(45.825448173235396256% - 4.369113845255212691% - 1px)"
+                widthBar="45.825448173235396256%"
+                widthBorder="4.369113845255212691%"
               />
             </div>
           </div>

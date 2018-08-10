@@ -51,27 +51,27 @@
   top: 0;
 }
 
-.orderbook__bar .orderbook__bar-item {
+.orderbook__bar :global(.orderbook__bar-item) {
   position: absolute;
   top: 0;
   bottom: 0;
 }
 
-.orderbook__bar--sell .orderbook__bar-item {
+.orderbook__bar--sell :global(.orderbook__bar-item) {
   left: 0;
   background-color: color-mod(var(--color-profit) a(30%));
   border-right: 1px solid color-mod(var(--color-profit) a(50%));
   /* border-bottom: 1px solid color-mod(var(--color-profit) a(50%)); */
 }
 
-.orderbook__bar--buy .orderbook__bar-item {
+.orderbook__bar--buy :global(.orderbook__bar-item) {
   right: 0;
   background-color: color-mod(var(--color-loss) a(30%));
   border-left: 1px solid color-mod(var(--color-loss) a(50%));
   /* border-bottom: 1px solid color-mod(var(--color-loss) a(50%)); */
 }
 
-.orderbook__bar--sell .orderbook__bar-border {
+.orderbook__bar--sell :global(.orderbook__bar-border) {
   position: absolute;
   top: 0;
   right: 0;
@@ -80,7 +80,7 @@
   background-color: color-mod(var(--color-profit) a(30%));
 }
 
-.orderbook__bar--buy .orderbook__bar-border {
+.orderbook__bar--buy :global(.orderbook__bar-border) {
   position: absolute;
   top: 0;
   right: 0;

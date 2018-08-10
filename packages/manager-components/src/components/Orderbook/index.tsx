@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js';
-import React, { StatelessComponent } from 'react';
+import React, { Fragment, StatelessComponent } from 'react';
 import Spinner from '~/blocks/Spinner';
 
 import styles from './styles.css';
@@ -14,6 +14,26 @@ export interface OrderbookProps {
   decimals?: number;
 }
 
+const Bar = ({ widthBar, widthBorder, leftSpaceBorder }) => {
+  return (
+    <Fragment>
+      <span
+        className="orderbook__bar-item"
+        style={{
+          width: widthBar,
+        }}
+      />
+      <span
+        className="orderbook__bar-border"
+        style={{
+          width: widthBorder,
+          left: leftSpaceBorder,
+        }}
+      />
+    </Fragment>
+  );
+};
+
 export const Orderbook: StatelessComponent<OrderbookProps> = ({
   orderbook,
   loading,
@@ -23,8 +43,29 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
   quoteToken,
   decimals = 4,
 }) => {
-  const getPercentage = (cumulativeVolume, totalVolume) => {
-    return new BigNumber(cumulativeVolume).div(totalVolume).times(100);
+  const calculateBar = (prevEntry, entry) => {
+    const getPercentage = (cumulativeVolume, totalVolume) => {
+      return new BigNumber(cumulativeVolume).div(totalVolume).times(100);
+    };
+
+    const percentageDiff =
+      prevEntry &&
+      getPercentage(
+        new BigNumber(entry.volume).minus(prevEntry.volume),
+        orderbook.totalBuyVolume,
+      );
+
+    const prevEntryPercentage =
+      prevEntry && getPercentage(prevEntry.volume, orderbook.totalBuyVolume);
+
+    const entryPercentage =
+      entry && getPercentage(entry.volume, orderbook.totalBuyVolume);
+
+    return {
+      percentageDiff,
+      prevEntryPercentage,
+      entryPercentage,
+    };
   };
 
   return (
@@ -67,21 +108,10 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
                       }
                     };
 
-                    const prevEntry = orderbook.buyEntries[index - 1];
-                    const percentageDiff =
-                      prevEntry &&
-                      getPercentage(
-                        new BigNumber(entry.volume).minus(prevEntry.volume),
-                        orderbook.totalBuyVolume,
-                      );
-
-                    const prevEntryPercentage =
-                      prevEntry &&
-                      getPercentage(prevEntry.volume, orderbook.totalBuyVolume);
-
-                    const entryPercentage =
-                      entry &&
-                      getPercentage(entry.volume, orderbook.totalBuyVolume);
+                    const calculatedBar = calculateBar(
+                      orderbook.buyEntries[index - 1],
+                      entry,
+                    );
 
                     return (
                       <div
@@ -94,19 +124,13 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
                         <div className="orderbook__body-cell">{howMuch}</div>
                         <div className="orderbook__body-cell">{price}</div>
                         <div className="orderbook__bar orderbook__bar--buy">
-                          <span
-                            className="orderbook__bar-item"
-                            style={{
-                              width: `${entryPercentage}%`,
-                            }}
-                          />
-                          <span
-                            className="orderbook__bar-border"
-                            style={{
-                              width: `calc(${percentageDiff}%)`,
-                              right: `calc(${entryPercentage}% - ${percentageDiff}% ${prevEntryPercentage >
-                                1 && '- 1px'})`,
-                            }}
+                          <Bar
+                            widthBar={`${calculatedBar.entryPercentage}%`}
+                            widthBorder={`${calculatedBar.percentageDiff}%`}
+                            leftSpaceBorder={`calc(100% - ${
+                              calculatedBar.entryPercentage
+                            }% ${calculatedBar.prevEntryPercentage > 1 &&
+                              '+ 1px'})`}
                           />
                         </div>
                       </div>
@@ -143,21 +167,10 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
                       }
                     };
 
-                    const prevEntry = orderbook.sellEntries[index - 1];
-                    const percentageDiff =
-                      prevEntry &&
-                      getPercentage(
-                        new BigNumber(entry.volume).minus(prevEntry.volume),
-                        orderbook.totalBuyVolume,
-                      );
-
-                    const prevEntryPercentage =
-                      prevEntry &&
-                      getPercentage(prevEntry.volume, orderbook.totalBuyVolume);
-
-                    const entryPercentage =
-                      entry &&
-                      getPercentage(entry.volume, orderbook.totalBuyVolume);
+                    const calculatedBar = calculateBar(
+                      orderbook.sellEntries[index - 1],
+                      entry,
+                    );
 
                     return (
                       <div
@@ -171,19 +184,15 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
                         <div className="orderbook__body-cell">{volume}</div>
 
                         <div className="orderbook__bar orderbook__bar--sell">
-                          <span
-                            className="orderbook__bar-item"
-                            style={{
-                              width: `${entryPercentage}%`,
-                            }}
-                          />
-                          <span
-                            className="orderbook__bar-border"
-                            style={{
-                              width: `calc(${percentageDiff}%)`,
-                              left: `calc(${entryPercentage}% - ${percentageDiff}% ${prevEntryPercentage >
-                                1 && '- 1px'})`,
-                            }}
+                          <Bar
+                            widthBar={`${calculatedBar.entryPercentage}%`}
+                            widthBorder={`${calculatedBar.percentageDiff}%`}
+                            leftSpaceBorder={`calc(${
+                              calculatedBar.entryPercentage
+                            }% - ${
+                              calculatedBar.percentageDiff
+                            }% ${calculatedBar.prevEntryPercentage > 1 &&
+                              '- 1px'})`}
                           />
                         </div>
                       </div>
