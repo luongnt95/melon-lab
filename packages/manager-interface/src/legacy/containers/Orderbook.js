@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { compose } from 'recompose';
-import Orderbook from '../components/organisms/Orderbook';
+import Orderbook from '@melonproject/manager-components/components/Orderbook';
 import React from 'react';
 import { Subscription } from 'react-apollo';
 import gql from 'graphql-tag';

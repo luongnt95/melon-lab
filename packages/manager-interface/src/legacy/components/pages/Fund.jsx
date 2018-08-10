@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Card } from 'semantic-ui-react';
 
 import { tracks } from '@melonproject/melon.js';
@@ -48,7 +48,11 @@ const Fund = ({
           ]}
           holdings={<Holdings />}
           orderForm={<OrderForm />}
-          orderbook={<Orderbook />}
+          orderbook={
+            <Fragment>
+              <Orderbook />
+            </Fragment>
+          }
           openOrders={<OpenOrders />}
           recentTrades={<RecentTrades />}
         />
