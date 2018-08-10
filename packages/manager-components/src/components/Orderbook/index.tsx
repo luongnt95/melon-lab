@@ -24,13 +24,13 @@ const Bar = ({ widthBar, widthBorder, leftSpaceBorder }) => {
           width: widthBar,
         }}
       />
-      {/* <span
+      <span
         className="orderbook__bar-border"
         style={{
           width: widthBorder,
           left: leftSpaceBorder,
         }}
-      /> */}
+      />
     </Fragment>
   );
 };
@@ -143,7 +143,7 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
                                 widthBorder={`${calculatedBar.percentageDiff}%`}
                                 leftSpaceBorder={`calc(100% - ${
                                   calculatedBar.entryPercentage
-                                }% ${calculatedBar.prevEntryPercentage > 1 &&
+                                }% ${calculatedBar.prevEntryPercentage > 0.5 &&
                                   '+ 1px'})`}
                               />
                             </div>
@@ -209,7 +209,7 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
                                   calculatedBar.entryPercentage
                                 }% - ${
                                   calculatedBar.percentageDiff
-                                }% ${calculatedBar.prevEntryPercentage > 1 &&
+                                }% ${calculatedBar.prevEntryPercentage > 0.5 &&
                                   '- 1px'})`}
                               />
                             </div>
