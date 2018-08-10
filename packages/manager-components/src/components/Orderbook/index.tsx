@@ -24,13 +24,13 @@ const Bar = ({ widthBar, widthBorder, leftSpaceBorder }) => {
           width: widthBar,
         }}
       />
-      <span
+      {/* <span
         className="orderbook__bar-border"
         style={{
           width: widthBorder,
           left: leftSpaceBorder,
         }}
-      />
+      /> */}
     </Fragment>
   );
 };
