@@ -61,14 +61,12 @@
   left: 0;
   background-color: color-mod(var(--color-profit) a(30%));
   border-right: 1px solid color-mod(var(--color-profit) a(50%));
-  /* border-bottom: 1px solid color-mod(var(--color-profit) a(50%)); */
 }
 
 .orderbook__bar--buy :global(.orderbook__bar-item) {
   right: 0;
   background-color: color-mod(var(--color-loss) a(30%));
   border-left: 1px solid color-mod(var(--color-loss) a(50%));
-  /* border-bottom: 1px solid color-mod(var(--color-loss) a(50%)); */
 }
 
 .orderbook__bar--sell :global(.orderbook__bar-border) {
