@@ -5,9 +5,9 @@ import Spinner from '~/blocks/Spinner';
 import styles from './styles.css';
 
 export interface OrderbookProps {
-  orderbook;
-  loading;
-  isReadyToTrade;
+  orderbook?: any;
+  loading: boolean;
+  isReadyToTrade: boolean;
   onClick: (index) => void;
   baseToken?: string;
   quoteToken?: string;
