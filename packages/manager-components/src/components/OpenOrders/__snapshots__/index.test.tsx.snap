@@ -91,6 +91,7 @@ exports[`OpenOrders should render correctly 1`] = `
                   "sellSymbol": "WETH-T",
                 }
               }
+              disabled={false}
               onClick={[Function]}
               size="small"
               style="secondary"
@@ -140,6 +141,7 @@ exports[`OpenOrders should render correctly 1`] = `
                   "sellSymbol": "WETH-T",
                 }
               }
+              disabled={false}
               onClick={[Function]}
               size="small"
               style="secondary"

@@ -91,22 +91,19 @@ export const OpenOrders: StatelessComponent<OpenOrdersProps> = ({
                     <CellBody>{order.buyHowMuch}</CellBody>
                     {isManager && (
                       <CellBody>
-                        {{ isReadyToTrade } ? (
-                          <Button
-                            size="small"
-                            style="secondary"
-                            buttonValue={{
-                              id: order.id,
-                              buySymbol: order.buySymbol,
-                              sellSymbol: order.sellSymbol,
-                            }}
-                            onClick={onCancel}
-                          >
-                            Cancel
-                          </Button>
-                        ) : (
-                          <span />
-                        )}
+                        <Button
+                          size="small"
+                          style="secondary"
+                          buttonValue={{
+                            id: order.id,
+                            buySymbol: order.buySymbol,
+                            sellSymbol: order.sellSymbol,
+                          }}
+                          onClick={onCancel}
+                          disabled={!isReadyToTrade}
+                        >
+                          Cancel
+                        </Button>
                       </CellBody>
                     )}
                   </Row>
