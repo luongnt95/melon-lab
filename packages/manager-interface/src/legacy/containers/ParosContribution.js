@@ -13,7 +13,7 @@ const mapStateToProps = state => ({
   dataValid: state.ethereum.isDataValid,
   initialValues: {
     amount: 1,
-    total: 38
+    total: 60
   },
   displayNumber,
   melonAssetSymbol: state.fund.config ? state.fund.config.melonAssetSymbol : "MLN",
@@ -27,12 +27,12 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
       [],
     );
     if (changed.includes("amount")) {
-      const total = multiply(values.amount, 38);
+      const total = multiply(values.amount, 60);
 
       if (values.total !== total)
         dispatch(change("parosContribution", "total", total));
     } else if (changed.includes("total")) {
-      const amount = divide(values.total, 38)
+      const amount = divide(values.total, 60)
       if (amount !== values.amount)
         dispatch(change("parosContribution", "amount", amount))
     }
