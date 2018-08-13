@@ -71,26 +71,20 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
             <Toggle
               name="strategy"
               value="Market"
-              text={
-                isCompetition
-                  ? 'Please select an order on the orderbook'
-                  : 'Market'
-              }
+              text="Market"
               isChecked={values.strategy === 'Market'}
               onChange={onChange}
             />
           </div>
-          {!isCompetition && (
-            <div className="order-form__toggle">
-              <Toggle
-                name="strategy"
-                value="Limit"
-                text="Limit"
-                isChecked={values.strategy === 'Limit'}
-                onChange={onChange}
-              />
-            </div>
-          )}
+          <div className="order-form__toggle">
+            <Toggle
+              name="strategy"
+              value="Limit"
+              text="Limit"
+              isChecked={values.strategy === 'Limit'}
+              onChange={onChange}
+            />
+          </div>
         </div>
 
         <div className="order-form__switch">
