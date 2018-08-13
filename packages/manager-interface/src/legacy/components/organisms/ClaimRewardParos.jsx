@@ -10,7 +10,7 @@ const ClaimRewardParos = ({ claimReward, isParosActive, endTime, redeemParosShar
   <Card>
     <Card.Content>
       <Card.Header>
-        Paros reward
+        Naxos reward
         </Card.Header>
       <br />
       {isParosActive ?
