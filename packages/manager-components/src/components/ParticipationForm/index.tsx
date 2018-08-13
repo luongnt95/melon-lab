@@ -129,9 +129,11 @@ const ParticipationForm: StatelessComponent<ParticipationFormProps> = ({
           </Fragment>
         )}
 
-        <Button onClick={handleSubmit} type="submit" disabled={!dataValid}>
-          Submit request
-        </Button>
+        <div className="participation-form__input">
+          <Button onClick={handleSubmit} type="submit" disabled={!dataValid}>
+            Submit request
+          </Button>
+        </div>
       </Form>
     </div>
   );
