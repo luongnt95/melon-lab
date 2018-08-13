@@ -49,6 +49,7 @@
   height: 100%;
   z-index: -1;
   top: 0;
+  overflow: hidden;
 }
 
 .orderbook__bar :global(.orderbook__bar-item) {
@@ -72,7 +73,7 @@
 .orderbook__bar--sell :global(.orderbook__bar-border) {
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   height: 1px;
   z-index: -1;
   background-color: color-mod(var(--color-profit) a(25%));
