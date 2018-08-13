@@ -13,8 +13,8 @@ export interface Observable<T> {
   subscribe(
     observer: Observer<T>,
   ): {
-      unsubscribe: () => void;
-    };
+    unsubscribe: () => void;
+  };
 }
 
 export interface OperationOptions {
@@ -49,7 +49,7 @@ export class SubscriptionClient {
     this.operations = {};
     this.nextOperationId = 0;
 
-    this.messenger.on(`${this.channel}-res`, this.onMessage.bind(this));
+    this.messenger && this.messenger.on(`${this.channel}-res`, this.onMessage.bind(this));
   }
 
   public request(request: OperationOptions): Observable<ExecutionResult> {
