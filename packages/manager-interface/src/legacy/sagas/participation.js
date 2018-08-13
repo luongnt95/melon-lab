@@ -8,7 +8,7 @@ import {
   registerForCompetition,
   signOlympiadTermsAndConditions,
   claimReward,
-  getParticipation
+  getParticipation,
 } from '@melonproject/melon.js';
 import { delay } from 'redux-saga';
 import { types, actions } from '../actions/participation';
@@ -18,7 +18,7 @@ import { actions as routesActions } from '../actions/routes';
 import signer from './signer';
 
 function* investSaga(action) {
-  const quoteAsset = yield select(state => state.fund.config.quoteAssetSymbol)
+  const quoteAsset = yield select(state => state.fund.config.quoteAssetSymbol);
   function* transaction(environment) {
     const fundAddress = yield select(state => state.fund.address);
     const subscription = yield call(invest, environment, {
@@ -46,7 +46,7 @@ function* investSaga(action) {
   yield call(
     signer,
     `Do you really want to buy ${action.quantity} shares for ${
-    action.total
+      action.total
     } ${quoteAsset}`,
     transaction,
     actions.investFailed,
@@ -72,7 +72,7 @@ function* redeemSaga(action) {
   yield call(
     signer,
     `Do you really want to sell ${action.quantity} shares for ${
-    action.total
+      action.total
     } MLN?`,
     transaction,
     actions.redeemFailed,
@@ -93,7 +93,7 @@ function* redeemAllOwnedAssetsSaga(action) {
   yield call(
     signer,
     `Do you really want to immediately redeem ${
-    action.quantity
+      action.quantity
     } shares? You will receive a subset of the current fund holdings, proportionally to your requested number of shares.`,
     transaction,
     actions.redeemAllOwnedAssetsFailed,
@@ -102,7 +102,7 @@ function* redeemAllOwnedAssetsSaga(action) {
 
 function* claimRewardSaga(action) {
   function* transaction(environment) {
-    const reward = yield call(claimReward, environment)
+    const reward = yield call(claimReward, environment);
     // const fundAddress = yield select(state => state.fund.address);
     // const sharesOwned = yield call(getParticipation, environment, { fundAddress, investorAddress: environment.account.address })
     // yield call(redeemAllOwnedAssets, environment, {
@@ -115,18 +115,19 @@ function* claimRewardSaga(action) {
 
   yield call(
     signer,
-    `Please confirm you wish to claim your Paros reward.`,
+    `Please confirm you wish to claim your Naxos reward.`,
     transaction,
     actions.claimRewardFailed,
   );
 }
 
-
-
 function* redeemParosSharesSaga(action) {
   function* transaction(environment) {
     const fundAddress = yield select(state => state.fund.address);
-    const sharesOwned = yield call(getParticipation, environment, { fundAddress, investorAddress: environment.account.address })
+    const sharesOwned = yield call(getParticipation, environment, {
+      fundAddress,
+      investorAddress: environment.account.address,
+    });
     yield call(redeemAllOwnedAssets, environment, {
       fundAddress,
       numShares: sharesOwned.personalStake,
@@ -168,21 +169,25 @@ function* waitForExecute({ pendingRequest: { canBeExecutedInMs } }) {
 function* contributeSaga(action) {
   function* transaction(environment) {
     const fundAddress = yield select(state => state.fund.address);
-    const signature = yield call(signOlympiadTermsAndConditions, environment)
+    const signature = yield call(signOlympiadTermsAndConditions, environment);
     const contribution = yield call(registerForCompetition, environment, {
       fundAddress,
       signature,
-      buyInValue: action.amount
+      buyInValue: action.amount,
     });
 
     yield put(actions.contributeSucceeded());
     yield put(modalActions.close());
-    yield put(routesActions.fund(fundAddress))
+    yield put(routesActions.fund(fundAddress));
   }
 
   yield call(
     signer,
-    `Please confirm you wish to contribute ${action.amount} ETH to the Paros Contract. By proceeding, you are cryptographically signing the terms and conditions associated with the Paros Olympiad and sending ${action.amount} ETH to the Paros Contract. `,
+    `Please confirm you wish to contribute ${
+      action.amount
+    } ETH to the Naxos Contract. By proceeding, you are cryptographically signing the terms and conditions associated with the Naxos Olympiad and sending ${
+      action.amount
+    } ETH to the Naxos Contract. `,
     transaction,
     actions.contributeFailed,
   );
@@ -195,14 +200,8 @@ function* participation() {
     types.REDEEM_ALL_OWNED_ASSETS_REQUESTED,
     redeemAllOwnedAssetsSaga,
   );
-  yield takeLatest(
-    types.CLAIM_REWARD_REQUESTED,
-    claimRewardSaga,
-  );
-  yield takeLatest(
-    types.REDEEM_PAROS_SHARES_REQUESTED,
-    redeemParosSharesSaga,
-  );
+  yield takeLatest(types.CLAIM_REWARD_REQUESTED, claimRewardSaga);
+  yield takeLatest(types.REDEEM_PAROS_SHARES_REQUESTED, redeemParosSharesSaga);
   yield takeLatest(types.EXECUTE_REQUESTED, executeSaga);
   yield takeLatest(fundTypes.SET_PENDING_REQUEST, waitForExecute);
   yield takeLatest(types.CONTRIBUTE_REQUESTED, contributeSaga);
