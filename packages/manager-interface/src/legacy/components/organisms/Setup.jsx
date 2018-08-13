@@ -66,7 +66,7 @@ const Setup = ({ loading, handleSubmit, networkId, config, isCompetition }) => (
           </List.Item>
           <List.Item>
             <List.Content>
-              Asset Registrar: <strong>Melon Paros Asset Universe</strong>
+              Asset Registrar: <strong>Melon Naxos Asset Universe</strong>
             </List.Content>
           </List.Item>
           {isCompetition ? (
@@ -78,7 +78,7 @@ const Setup = ({ loading, handleSubmit, networkId, config, isCompetition }) => (
                 target="_blank"
               >
                 Compliance (invest/redeem):{' '}
-                <strong>Only Paros contribution contract can invest</strong>
+                <strong>Only Naxos contribution contract can invest</strong>
               </List.Content>
             </List.Item>
           ) : (
