@@ -861,9 +861,9 @@
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
 
-"@melonproject/smart-contracts@0.8.0-naxos":
-  version "0.8.0-naxos"
-  resolved "https://registry.yarnpkg.com/@melonproject/smart-contracts/-/smart-contracts-0.8.0-naxos.tgz#1748fba0c5af2d9a18257f8e27c336888e139015"
+"@melonproject/smart-contracts@0.8.3-naxos":
+  version "0.8.3-naxos"
+  resolved "https://registry.yarnpkg.com/@melonproject/smart-contracts/-/smart-contracts-0.8.3-naxos.tgz#f4091ca62866d15cc0a901b937227545ba4f3aa3"
   dependencies:
     "0x.js" "^0.35.0"
     "@parity/api" "^2.1.20"

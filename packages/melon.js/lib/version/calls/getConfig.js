@@ -66,7 +66,7 @@ const getConfig = async (environment): Promise<Config> => {
     zeroExV1Address: addressBook[mode].ZeroExExchange,
     zeroExV1AdapterAddress: addressBook[mode].ZeroExV1Adapter,
     canonicalPriceFeedAddress: addressBook[mode].CanonicalPriceFeed,
-    rankingAddress: addressBook[mode].Fundranking,
+    rankingAddress: addressBook[mode].FundRanking,
     riskManagementAddress: addressBook[mode].NoRiskMgmt,
     versionAddress: addressBook[mode].Version,
     governanceAddress: addressBook[mode].Governance,
