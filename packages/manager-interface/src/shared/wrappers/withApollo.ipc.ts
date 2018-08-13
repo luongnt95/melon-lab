@@ -2,6 +2,7 @@ import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemo
 import { ApolloLink } from 'apollo-link';
 import withApollo from 'next-with-apollo';
 import ApolloClient from 'apollo-client';
+import { SubscriptionClient } from '../ipc/client';
 
 const client = ELECTRON && new SubscriptionClient({
   messenger: global.ipcRenderer,
