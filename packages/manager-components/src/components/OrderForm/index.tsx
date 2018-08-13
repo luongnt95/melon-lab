@@ -3,6 +3,7 @@ import Button from '~/blocks/Button';
 import Dropdown from '~/blocks/Dropdown';
 import Form from '~/blocks/Form';
 import Input from '~/blocks/Input';
+import Notification from '~/blocks/Notification';
 import Switch from '~/blocks/Switch';
 import Toggle from '~/blocks/Toggle';
 import OrderInfo from '~/components/OrderInfo';
@@ -65,7 +66,11 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
       <style jsx>{styles}</style>
       <h3>Trade</h3>
       <Form>
-        {!dataValid && <p>Trading not possible when price feed down</p>}
+        {!dataValid && (
+          <Notification isWarning>
+            Trading not possible when price feed down
+          </Notification>
+        )}
         <div className="order-form__toggles">
           <div className="order-form__toggle">
             <Toggle
