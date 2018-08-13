@@ -10,7 +10,7 @@ import {
   getAddress,
   getConfig,
   isCompetitionActive,
-  getEndTime
+  getEndTime,
 } from '@melonproject/melon.js';
 import { takeLatest, put, call, take, select } from 'redux-saga/effects';
 import { actions, types } from '../actions/fund';
@@ -62,8 +62,8 @@ function* requestInfo({ address }) {
       { fundAddress: address, investAssetSymbol: config.quoteAssetSymbol },
     );
 
-    const parosEndTime = yield call(getEndTime, environment)
-    const isParosActive = yield call(isCompetitionActive, environment)
+    const parosEndTime = yield call(getEndTime, environment);
+    const isParosActive = yield call(isCompetitionActive, environment);
 
     const info = {
       ...participationAuthorizations,
@@ -72,7 +72,7 @@ function* requestInfo({ address }) {
       address,
       loading: false,
       parosEndTime,
-      isParosActive
+      isParosActive,
     };
     if (account) {
       const participation = yield call(getParticipation, environment, {
@@ -111,7 +111,7 @@ function* checkAndLoad() {
 }
 
 function* getUsersFund({ account }) {
-  yield put(actions.signSucceeded(undefined))
+  yield put(actions.signSucceeded(undefined));
   if (!account) {
     put(appActions.setUsersFund());
   } else {
@@ -155,7 +155,7 @@ function* afterTradeUpdate() {
   yield put(orderbookActions.getOrderbook());
   yield put(recentTradesActions.getRecentTrades());
   yield put(tradeHistoryActions.getTradeHistory(fundAddress));
-  yield put(openOrdersActions.getOpenOrders());
+  yield put(openOrdersActions.getOpenOrders(fundAddress));
 }
 
 function* requestSharePrice() {

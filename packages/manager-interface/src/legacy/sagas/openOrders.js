@@ -1,13 +1,13 @@
-import { takeLatest, call, put, select, take } from "redux-saga/effects";
+import { takeLatest, call, put, select, take } from 'redux-saga/effects';
 import {
   getOpenOrders,
   cancelOrder,
   getEnvironment,
-} from "@melonproject/melon.js";
-import { actions, types } from "../actions/openOrders";
-import { types as ethereumTypes } from "../actions/ethereum";
-import { actions as modalActions } from "../actions/modal";
-import signer from "./signer";
+} from '@melonproject/melon.js';
+import { actions, types } from '../actions/openOrders';
+import { types as ethereumTypes } from '../actions/ethereum';
+import { actions as modalActions } from '../actions/modal';
+import signer from './signer';
 
 function* getOpenOrdersSaga() {
   const isConnected = yield select(state => state.ethereum.isConnected);
@@ -37,9 +37,15 @@ function* cancelOrderSaga({ orderId, makerAssetSymbol, takerAssetSymbol }) {
 
   const fundAddress = yield select(state => state.fund.address);
   function* transaction(environment) {
-    yield call(cancelOrder, environment, { identifier: orderId, fundAddress, makerAssetSymbol, takerAssetSymbol });
+    yield call(cancelOrder, environment, {
+      identifier: orderId,
+      fundAddress,
+      makerAssetSymbol,
+      takerAssetSymbol,
+    });
     yield put(actions.cancelOrderSucceeded());
     yield put(modalActions.close());
+    yield put(actions.getOpenOrders(fundAddress));
   }
 
   yield call(
