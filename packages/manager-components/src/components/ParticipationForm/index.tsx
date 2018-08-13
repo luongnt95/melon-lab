@@ -2,6 +2,7 @@ import React, { Fragment, StatelessComponent } from 'react';
 import Button from '~/blocks/Button';
 import Form from '~/blocks/Form';
 import Input from '~/blocks/Input';
+import Notification from '~/blocks/Notification';
 import Toggle from '~/blocks/Toggle';
 
 import styles from './styles.css';
@@ -45,6 +46,12 @@ const ParticipationForm: StatelessComponent<ParticipationFormProps> = ({
       <style jsx>{styles}</style>
       <h3>Participation</h3>
       <Form>
+        {!dataValid && (
+          <Notification isWarning>
+            Invest/Redeem not possible when price feed down
+          </Notification>
+        )}
+
         {!setup && (
           <div className="participation-form__toggles">
             <div className="participation-form__toggle">
@@ -67,7 +74,7 @@ const ParticipationForm: StatelessComponent<ParticipationFormProps> = ({
             </div>
           </div>
         )}
-        {!dataValid && <p>Invest/Redeem not possible when price feed down</p>}
+
         <div className="participation-form__input">
           <Input
             value={values.quantity}
