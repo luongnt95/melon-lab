@@ -17,7 +17,7 @@ import installExtension, {
 
 const isWindows = process.platform === 'win32';
 
-// debug({ enabled: true, showDevTools: true });
+debug({ enabled: true, showDevTools: true });
 
 const appUrl = async () => {
   if (!isDev) {

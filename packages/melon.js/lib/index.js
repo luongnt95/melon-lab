@@ -140,6 +140,7 @@ import getStakingToken from './pricefeeds/calls/getStakingToken';
 import getTotalStaked from './pricefeeds/calls/getTotalStaked';
 import getTotalStakedByAddr from './pricefeeds/calls/getTotalStakedByAddr';
 import getUpdateInterval from './pricefeeds/calls/getUpdateInterval';
+import getWithdrawalDelay from './pricefeeds/calls/getWithdrawalDelay';
 import hasRecentPrice from './pricefeeds/calls/hasRecentPrice';
 import pricesToCommit from './pricefeeds/calls/pricesToCommit';
 
@@ -156,6 +157,7 @@ import collectAndUpdate from './pricefeeds/transactions/multisig/collectAndUpdat
 // ./lib/pricefeeds/transactions/operator
 import depositStake from './pricefeeds/transactions/operator/depositStake';
 import setupPriceFeed from './pricefeeds/transactions/operator/setupPriceFeed';
+import unstake from './pricefeeds/transactions/operator/unstake';
 import updatePriceFeed from './pricefeeds/transactions/operator/updatePriceFeed';
 import withdrawStake from './pricefeeds/transactions/operator/withdrawStake';
 
@@ -329,6 +331,7 @@ export {
   getTotalStaked,
   getTotalStakedByAddr,
   getUpdateInterval,
+  getWithdrawalDelay,
   hasRecentPrice,
   pricesToCommit,
   getCanonicalPriceFeedContract,
@@ -337,6 +340,7 @@ export {
   collectAndUpdate,
   depositStake,
   setupPriceFeed,
+  unstake,
   updatePriceFeed,
   withdrawStake,
   isMakePermitted,
