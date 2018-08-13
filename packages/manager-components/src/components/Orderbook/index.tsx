@@ -136,10 +136,16 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
                             <div className="orderbook__body-cell">
                               {howMuch}
                             </div>
-                            <div className="orderbook__body-cell orderbook__body-cell--buy">{price}</div>
+                            <div className="orderbook__body-cell orderbook__body-cell--buy">
+                              {price}
+                            </div>
                             <div className="orderbook__bar orderbook__bar--buy">
                               <Bar
-                                widthBar={`${calculatedBar.entryPercentage}%`}
+                                widthBar={`${
+                                  calculatedBar.entryPercentage > 100
+                                    ? 100
+                                    : calculatedBar.entryPercentage
+                                }%`}
                                 widthBorder={`${calculatedBar.percentageDiff}%`}
                                 leftSpaceBorder={`calc(100% - ${
                                   calculatedBar.entryPercentage
@@ -195,7 +201,9 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
                               cursor: isReadyToTrade ? 'pointer' : 'auto',
                             }}
                           >
-                            <div className="orderbook__body-cell orderbook__body-cell--sell">{price}</div>
+                            <div className="orderbook__body-cell orderbook__body-cell--sell">
+                              {price}
+                            </div>
                             <div className="orderbook__body-cell">
                               {howMuch}
                             </div>
@@ -203,7 +211,11 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
 
                             <div className="orderbook__bar orderbook__bar--sell">
                               <Bar
-                                widthBar={`${calculatedBar.entryPercentage}%`}
+                                widthBar={`${
+                                  calculatedBar.entryPercentage > 100
+                                    ? 100
+                                    : calculatedBar.entryPercentage
+                                }%`}
                                 widthBorder={`${calculatedBar.percentageDiff}%`}
                                 leftSpaceBorder={`calc(${
                                   calculatedBar.entryPercentage

@@ -49,6 +49,7 @@
   height: 100%;
   z-index: -1;
   top: 0;
+  overflow: hidden;
 }
 
 .orderbook__bar :global(.orderbook__bar-item) {
