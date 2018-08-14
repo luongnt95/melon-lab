@@ -1,0 +1,9 @@
+import { storiesOf } from '@storybook/react';
+import React from 'react';
+import LockedWallet from './index';
+
+const data = {};
+
+storiesOf('Components|Locked Wallet', module).add('Default', () => {
+  return <LockedWallet {...data} />;
+});
