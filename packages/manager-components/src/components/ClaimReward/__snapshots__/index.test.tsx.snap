@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ClaimReward should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash claim-reward"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Naxos
+     reward
+  </h3>
+  <div
+    className="jsx-__scopedHash claim-reward__message"
+  >
+    Naxos
+     has ended. You can now claim your reward. By clicking the "Claim shares" button, the shares of your fund will be transfered back to your account. Then click on the "Redeem" button, and the underlying assets of your fund will then be transfered to your manager address.
+  </div>
+  <ul
+    className="jsx-__scopedHash claim-reward__steps"
+  >
+    <li
+      className="jsx-__scopedHash claim-reward__step"
+    >
+      <span
+        className="jsx-__scopedHash claim-reward__step-text"
+      >
+        Claim my shares from the 
+        Naxos
+         contract
+      </span>
+      <Button>
+        Claim
+      </Button>
+    </li>
+    <li
+      className="jsx-__scopedHash claim-reward__step"
+    >
+      <span
+        className="jsx-__scopedHash claim-reward__step-text"
+      >
+        Redeem my shares
+      </span>
+      <Button>
+        Redeem
+      </Button>
+    </li>
+  </ul>
+</div>
+`;
