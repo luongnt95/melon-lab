@@ -2,7 +2,8 @@ if (process.env.NODE_ENV === 'production') {
   require('dotenv-extended').config();
 }
 
-import Document, { Head, Main, NextScript } from 'next/document';
+import Document, { Head, Main, NextScript } from "next/document";
+import flush from 'styled-jsx/server';
 import React from 'react';
 import spriteBuild from 'svg-sprite-loader/runtime/sprite.build';
 
@@ -21,6 +22,12 @@ const env = [
 ].map((key) => `window.${key}=${JSON.stringify(process.env[key])};`).join('');
 
 export default class MyDocument extends Document {
+  static getInitialProps({ renderPage }) {
+    const { html, head, errorHtml, chunks } = renderPage();
+    const styles = flush();
+    return { html, head, errorHtml, chunks, styles };
+  }
+
   public render() {
     return (
       <html lang="en">
