@@ -27,5 +27,5 @@
   border: none;
   padding: var(--space-s);
   cursor: pointer;
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
 }

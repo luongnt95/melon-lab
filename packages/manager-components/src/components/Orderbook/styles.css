@@ -35,7 +35,7 @@
 }
 
 .orderbook__head-row {
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
 }
 
 .orderbook__table-buy .orderbook__body-cell,
