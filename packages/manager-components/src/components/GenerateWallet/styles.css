@@ -12,6 +12,6 @@
 .generate-wallet__mnemonic {
   font-size: var(--font-size-xl);
   font-family: monospace;
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
   margin-top: var(--space-m);
 }

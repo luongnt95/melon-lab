@@ -25,6 +25,7 @@ export interface SetupProps {
   values?: FormValues;
   touched?: any;
   errors?: any;
+  competitionName?: string;
 }
 
 export const Setup: StatelessComponent<SetupProps> = ({
@@ -38,6 +39,7 @@ export const Setup: StatelessComponent<SetupProps> = ({
   values,
   touched,
   errors,
+  competitionName = 'Naxos',
 }) => {
   return (
     <div className="setup">
@@ -95,7 +97,7 @@ export const Setup: StatelessComponent<SetupProps> = ({
             <strong>Canonical PriceFeed</strong>
           </a>
           <br />
-          Asset Registrar: <strong>Melon Naxos Asset Universe</strong>
+          Asset Registrar: <strong>Melon {competitionName} Asset Universe</strong>
           {isCompetition ? (
             <div>
               Compliance (invest/redeem):{' '}
@@ -106,7 +108,7 @@ export const Setup: StatelessComponent<SetupProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <strong>Only Naxos contribution contract can invest</strong>
+                <strong>Only {competitionName} contribution contract can invest</strong>
               </a>
             </div>
           ) : (
