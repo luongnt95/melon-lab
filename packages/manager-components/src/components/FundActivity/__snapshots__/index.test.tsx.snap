@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FundActivity should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash fund-activity"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Fund Activity
+  </h3>
+  <p
+    className="jsx-__scopedHash"
+  >
+    Recent Subscriptions
+    <br
+      className="jsx-__scopedHash"
+    />
+    Recent Redemptions
+  </p>
+  <Button
+    onClick={[Function]}
+    style="secondary"
+  >
+    Request full subscriptions/redeem history
+  </Button>
+</div>
+`;
