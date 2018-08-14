@@ -10,7 +10,7 @@ import type { Environment } from '../../utils/environment/Environment';
 import type { Order, RawOrder } from '../schemas/Order';
 
 const isKnownAssetAddress = (config, address) =>
-  config.assets.find(asset => asset.address === address);
+  config.assets.find(asset => asset.address.toLowerCase() === address.toLowerCase());
 
 /**
  * Gets the normalised order from the exchange specified by `id`.
