@@ -14,7 +14,7 @@ import type { Order } from '../schemas/Order';
  */
 const getActiveOrders = async (
   environment,
-  { baseTokenSymbol, quoteTokenSymbol, numberOfOrders = 105 },
+  { baseTokenSymbol, quoteTokenSymbol, numberOfOrders = 250 },
 ): Promise<[Order]> => {
   const matchingMarketAdapterContract = await getMatchingMarketAdapterContract(environment);
   const config = await getConfig(environment);
