@@ -38,7 +38,9 @@ const Fund = ({
         <FundTemplate
           tradeInfo={[
             <Factsheet />,
-            <ClaimRewardCompetition />,
+            isCompetition &&
+              hasContributed &&
+              isManager && <ClaimRewardCompetition />,
             !isCompetition && !isManager && <GetStarted />,
             !isCompetition && canInvest && !pendingRequest && <Participation />,
             !isCompetition && canInvest && pendingRequest && <ExecuteRequest />,
