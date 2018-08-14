@@ -14,7 +14,7 @@ import Participation from '../../containers/Participation';
 import ExecuteRequest from '../../containers/ExecuteRequest';
 import TradeHelper from '../../containers/TradeHelper';
 import OpenOrders from '../../containers/OpenOrders';
-import ClaimRewardParos from '../../containers/ClaimRewardParos';
+import ClaimRewardCompetition from '../../containers/ClaimRewardCompetition';
 import FundTemplate from '@melonproject/manager-components/templates/Fund';
 import OrderForm from '../../containers/OrderForm';
 import ParosContributionContainer from '../../containers/ParosContribution';
@@ -38,7 +38,7 @@ const Fund = ({
         <FundTemplate
           tradeInfo={[
             <Factsheet />,
-            <ClaimRewardParos />,
+            <ClaimRewardCompetition />,
             !isCompetition && !isManager && <GetStarted />,
             !isCompetition && canInvest && !pendingRequest && <Participation />,
             !isCompetition && canInvest && pendingRequest && <ExecuteRequest />,
