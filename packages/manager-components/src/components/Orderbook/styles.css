@@ -60,14 +60,14 @@
 
 .orderbook__bar--sell :global(.orderbook__bar-item) {
   left: 0;
-  background-color: color-mod(var(--color-profit) a(20%));
-  border-right: 1px solid color-mod(var(--color-profit) a(25%));
+  background-color: color-mod(var(--color-loss) a(20%));
+  border-left: 1px solid color-mod(var(--color-loss) a(25%));
 }
 
 .orderbook__bar--buy :global(.orderbook__bar-item) {
   right: 0;
-  background-color: color-mod(var(--color-loss) a(20%));
-  border-left: 1px solid color-mod(var(--color-loss) a(25%));
+  background-color: color-mod(var(--color-profit) a(20%));
+  border-right: 1px solid color-mod(var(--color-profit) a(25%));
 }
 
 .orderbook__bar--sell :global(.orderbook__bar-border) {
@@ -76,7 +76,7 @@
   left: 0;
   height: 1px;
   z-index: -1;
-  background-color: color-mod(var(--color-profit) a(25%));
+  background-color: color-mod(var(--color-loss) a(25%));
 }
 
 .orderbook__bar--buy :global(.orderbook__bar-border) {
@@ -85,15 +85,15 @@
   right: 0;
   height: 1px;
   z-index: -1;
-  background-color: color-mod(var(--color-loss) a(25%));
+  background-color: color-mod(var(--color-profit) a(25%));
 }
 
 .orderbook__body-cell--buy {
-  color: var(--color-loss);
+  color: var(--color-profit);
 }
 
 .orderbook__body-cell--sell {
-  color: var(--color-profit);
+  color: var(--color-loss);
 }
 
 .orderbook__table-buy .orderbook__body-cell:nth-child(3),
