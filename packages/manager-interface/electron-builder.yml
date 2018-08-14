@@ -16,6 +16,8 @@ files:
     to: .
   - from: build/app/export
     to: .
+  - .env
+  - .env.defaults
 
 linux:
   category: Finance

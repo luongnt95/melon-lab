@@ -3,7 +3,6 @@ import { PubSub } from 'graphql-subscriptions';
 import * as keytar from 'keytar';
 import { SubscriptionServer } from '~/shared/ipc/server';
 import ipcMessages from '~/shared/constants/ipcMessages';
-
 import schema from '@melonproject/graphql-schema';
 import { getConfig, getParityProvider } from '@melonproject/melon.js';
 

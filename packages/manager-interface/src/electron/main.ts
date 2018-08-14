@@ -1,5 +1,11 @@
+
+
 // tslint:disable-next-line
-require('dotenv-extended').config();
+const find = require('find-up');
+require('dotenv-extended').config({
+  path: find.sync('.env'),
+  defaults: find.sync('.env.defaults'),
+});
 
 import electron from 'electron';
 import debug from 'electron-debug';
