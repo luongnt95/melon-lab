@@ -38,7 +38,8 @@ function* init() {
 
   // Reading the fund address from the URL
   const fund = yield select(state => state.fund);
-  const networkId = yield apply(api, api.net.version);
+  // const networkId = yield apply(api, api.net.version);
+  const networkId = 42;
 
   yield put(ethereumActions.hasConnected(networkId));
   if (providerType !== providers.INJECTED) {
