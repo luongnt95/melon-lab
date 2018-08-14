@@ -1,11 +1,5 @@
-
-
-// tslint:disable-next-line
-const find = require('find-up');
-require('dotenv-extended').config({
-  path: find.sync('.env'),
-  defaults: find.sync('.env.defaults'),
-});
+process.env.JSON_RPC_ENDPOINT = "http://localhost:8545/"
+process.env.TRACK = "live"
 
 import electron from 'electron';
 import debug from 'electron-debug';
@@ -23,7 +17,7 @@ import installExtension, {
 
 const isWindows = process.platform === 'win32';
 
-debug({ enabled: true, showDevTools: true });
+// debug({ enabled: true, showDevTools: true });
 
 const appUrl = async () => {
   if (!isDev) {
