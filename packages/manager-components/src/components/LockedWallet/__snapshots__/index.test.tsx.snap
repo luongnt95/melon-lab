@@ -2,7 +2,7 @@
 
 exports[`LockedWallet should render correctly 1`] = `
 <div
-  className="header"
+  className="locked-wallet"
 >
   <h3>
     Welcome to the future of investment funds

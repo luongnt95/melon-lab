@@ -1,8 +1,7 @@
 import React from 'react';
 import LockedWallet from './index';
 
-const data = {
-};
+const data = {};
 
 describe('LockedWallet', () => {
   const defaultElement = <LockedWallet {...data} />;

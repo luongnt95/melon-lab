@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TradeHistory should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash trade-history"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Fund Trading History (Last 24 hours)
+  </h3>
+  <Table>
+    <TableHead>
+      <Row
+        isHead={true}
+      >
+        <CellHead>
+          Time
+        </CellHead>
+        <CellHead>
+          Type
+        </CellHead>
+        <CellHead
+          textAlign="right"
+        >
+          Price
+        </CellHead>
+        <CellHead>
+          Buy
+        </CellHead>
+        <CellHead>
+          Sell
+        </CellHead>
+        <CellHead
+          textAlign="right"
+        >
+          Amount
+        </CellHead>
+      </Row>
+    </TableHead>
+    <TableBody>
+      <Row
+        key="trade-0"
+      >
+        <CellBody>
+          00/00/0000
+        </CellBody>
+        <CellBody>
+          <span
+            className="jsx-__scopedHash trade-history__type--buy"
+          >
+            buy
+          </span>
+        </CellBody>
+        <CellBody
+          textAlign="right"
+        >
+          0.23424323
+        </CellBody>
+        <CellBody>
+          MLN
+        </CellBody>
+        <CellBody>
+          ETH
+        </CellBody>
+        <CellBody
+          textAlign="right"
+        >
+          234.234234
+        </CellBody>
+      </Row>
+      <Row
+        key="trade-1"
+      >
+        <CellBody>
+          00/00/0000
+        </CellBody>
+        <CellBody>
+          <span
+            className="jsx-__scopedHash trade-history__type--sell"
+          >
+            sell
+          </span>
+        </CellBody>
+        <CellBody
+          textAlign="right"
+        >
+          0.23424323
+        </CellBody>
+        <CellBody>
+          MLN
+        </CellBody>
+        <CellBody>
+          ETH
+        </CellBody>
+        <CellBody
+          textAlign="right"
+        >
+          234.234234
+        </CellBody>
+      </Row>
+    </TableBody>
+  </Table>
+</div>
+`;

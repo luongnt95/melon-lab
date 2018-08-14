@@ -1,7 +1,7 @@
 import React, { StatelessComponent } from 'react';
 
 export const LockedWallet: StatelessComponent = ({}) => (
-  <div className="header">
+  <div className="locked-wallet">
     <h3>Welcome to the future of investment funds</h3>
     <p>
       You are almost ready to use Melon! It seems like you have Metamask set on

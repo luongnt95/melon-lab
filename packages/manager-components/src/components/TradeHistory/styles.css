@@ -1,0 +1,7 @@
+.trade-history__type--buy {
+  color: var(--color-profit);
+}
+
+.trade-history__type--sell {
+  color: var(--color-loss);
+}
