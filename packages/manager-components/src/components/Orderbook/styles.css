@@ -61,13 +61,13 @@
 .orderbook__bar--sell :global(.orderbook__bar-item) {
   left: 0;
   background-color: color-mod(var(--color-loss) a(20%));
-  border-left: 1px solid color-mod(var(--color-loss) a(25%));
+  border-right: 1px solid color-mod(var(--color-loss) a(25%));
 }
 
 .orderbook__bar--buy :global(.orderbook__bar-item) {
   right: 0;
   background-color: color-mod(var(--color-profit) a(20%));
-  border-right: 1px solid color-mod(var(--color-profit) a(25%));
+  border-left: 1px solid color-mod(var(--color-profit) a(25%));
 }
 
 .orderbook__bar--sell :global(.orderbook__bar-border) {
