@@ -1,16 +1,16 @@
-import moment from "moment";
-import { connect } from "react-redux";
-import { lifecycle } from "recompose";
-import { actions } from "../actions/tradeHistory";
-import TradeHistory from "../components/organisms/TradeHistory";
-import displayNumber from "../utils/displayNumber";
+import moment from 'moment';
+import { connect } from 'react-redux';
+import { lifecycle } from 'recompose';
+import { actions } from '../actions/tradeHistory';
+import TradeHistory from '@melonproject/manager-components/components/TradeHistory';
+import displayNumber from '../utils/displayNumber';
 
 const mapStateToProps = state => ({
   ...state.tradeHistory,
   trades: state.tradeHistory.trades.map(trade => ({
     price: displayNumber(trade.price),
     quantity: displayNumber(trade.quantity),
-    timestamp: moment(trade.timestamp).format("D. MMM YYYY HH:mm"),
+    timestamp: moment(trade.timestamp).format('D. MMM YYYY HH:mm'),
     type: trade.type,
     buyToken: trade.buyToken,
     sellToken: trade.sellToken,
@@ -29,8 +29,7 @@ const TradeHistoryLifecycle = lifecycle({
   },
 })(TradeHistory);
 
-const TradeHistoryContainer = connect(mapStateToProps, mapDispatchToProps)(
-  TradeHistoryLifecycle,
-);
-
-export default TradeHistoryContainer;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(TradeHistoryLifecycle);

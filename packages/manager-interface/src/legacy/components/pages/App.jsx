@@ -3,7 +3,7 @@ import { Image, Container } from 'semantic-ui-react';
 import Link from 'redux-first-router-link';
 import WrongNetwork from '@melonproject/manager-components/components/WrongNetwork';
 import NoConnection from '@melonproject/manager-components/components/NoConnection';
-import LockedWallet from '../organisms/LockedWallet';
+import LockedWallet from '@melonproject/manager-components/components/LockedWallet';
 import InsufficientFunds from '@melonproject/manager-components/components/InsufficientFunds';
 import TermsAndConditionsContainer from '../../containers/TermsAndConditions';
 import SetupContainer from '../../containers/Setup';
