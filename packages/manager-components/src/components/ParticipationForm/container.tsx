@@ -1,7 +1,7 @@
 import { withFormik } from 'formik';
 import { compose, withHandlers } from 'recompose';
 import * as Yup from 'yup';
-import { divide, equals, multiply } from '../../utils/functionalBigNumber';
+import { divide, multiply } from '../../utils/functionalBigNumber';
 import ParticipationForm from './index';
 
 const calculateInputs = (props, field, value) => {
@@ -11,7 +11,7 @@ const calculateInputs = (props, field, value) => {
   const quantityValue = field === 'quantity' ? value : values.quantity;
   const priceValue = field === 'price' ? value : values.price;
 
-   if (field === 'quantity' || field === 'price') {
+  if (field === 'quantity' || field === 'price') {
     const total = multiply(quantityValue, priceValue);
 
     if (values.total !== total) {
