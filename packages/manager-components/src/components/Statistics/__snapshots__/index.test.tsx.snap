@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Statistics should render correctly 1`] = `
+<div
+  className="jsx-__scopedHash statistics"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Statistics
+  </h3>
+  <Notification
+    isWarning={true}
+  >
+    In development
+  </Notification>
+  <div
+    className="jsx-__scopedHash statistics__table"
+  >
+    <Table>
+      <TableBody>
+        <Row>
+          <CellBody>
+            All time reward payout
+          </CellBody>
+          <CellBody>
+            0
+             MLN
+          </CellBody>
+        </Row>
+        <Row>
+          <CellBody>
+            All time investment
+          </CellBody>
+          <CellBody>
+            0
+             MLN
+          </CellBody>
+        </Row>
+        <Row>
+          <CellBody>
+            All time redeemals
+          </CellBody>
+          <CellBody>
+            0
+             MLN
+          </CellBody>
+        </Row>
+        <Row>
+          <CellBody>
+            All time number of trades
+          </CellBody>
+          <CellBody>
+            0
+          </CellBody>
+        </Row>
+        <Row>
+          <CellBody>
+            All time high share price
+          </CellBody>
+          <CellBody>
+            0
+          </CellBody>
+        </Row>
+        <Row>
+          <CellBody>
+            All time net asset value
+          </CellBody>
+          <CellBody>
+            0
+          </CellBody>
+        </Row>
+      </TableBody>
+    </Table>
+  </div>
+</div>
+`;
