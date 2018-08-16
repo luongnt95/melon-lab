@@ -19,7 +19,6 @@ export const ImportWallet: StatelessComponent<ImportWalletProps> = ({
       <h3>Import wallet</h3>
       <div className="import-wallet__dropzone">
         <Dropzone
-          accept="application/json"
           onDrop={parseWallet}
           style={{
             width: '100%',
