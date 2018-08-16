@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { lifecycle } from 'recompose';
-import Ranking from '../components/pages/Ranking';
+import Ranking from '@melonproject/manager-components/components/Ranking';
 import { actions } from '../actions/ranking';
 import displayNumber from '../utils/displayNumber';
 import { actions as routeActions } from '../actions/routes';

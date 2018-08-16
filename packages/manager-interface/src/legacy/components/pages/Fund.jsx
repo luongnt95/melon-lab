@@ -14,23 +14,20 @@ import OpenOrders from '../../containers/OpenOrders';
 import ClaimRewardCompetition from '../../containers/ClaimRewardCompetition';
 import FundTemplate from '@melonproject/manager-components/templates/Fund';
 import OrderForm from '../../containers/OrderForm';
-import ParosContributionContainer from '../../containers/ParosContribution';
+import ParosContribution from '../../containers/ParosContribution';
 
 const Fund = ({
   isManager,
-  fundAddress,
   canInvest,
   pendingRequest,
   isCompetition,
-  orderForm,
-  onSubmit,
   hasContributed,
   isCompetitionActive,
 }) => {
   return (
     <div className="App">
       {!hasContributed && isCompetition && isCompetitionActive && isManager ? (
-        <ParosContributionContainer />
+        <ParosContribution />
       ) : (
         <FundTemplate
           tradeInfo={[

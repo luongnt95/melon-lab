@@ -9,8 +9,8 @@ import TermsAndConditionsContainer from '../../containers/TermsAndConditions';
 import SetupContainer from '../../containers/Setup';
 import ParosContributionContainer from '../../containers/ParosContribution';
 import { onboardingPath } from '../../reducers/app';
-import FundContainer from '../../containers/Fund';
-import RankingContainer from '../../containers/Ranking';
+import FundContainer from './Fund';
+import OverviewContainer from './Overview';
 import ParticipationContainer from '../../containers/Participation';
 import WalletContainer from '../../containers/wallet/Account';
 import WalletGenerate from '../../containers/wallet/Generate';
@@ -49,8 +49,8 @@ const mapOnboardingStateToMainContainer = (onboardingState, track) => {
 };
 
 const routeContainerMap = {
-  [types.ROOT]: RankingContainer,
-  [types.RANKING]: RankingContainer,
+  [types.ROOT]: OverviewContainer,
+  [types.RANKING]: OverviewContainer,
   [types.WALLET_GENERATE]: WalletGenerate,
   [types.WALLET_RESTORE]: RestoreContainer,
   [types.WALLET_CREATE]: WalletContainer,
