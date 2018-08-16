@@ -20,7 +20,6 @@ import CompetitionRegistrationContainer from '../../containers/CompetitionRegist
 import OlympiadPlaceholderContainer from '../../containers/OlympiadPlaceholder';
 import Modal from '../../containers/Modal';
 import { types } from '../../actions/routes';
-import ConnectionInfo from '../organisms/ConnectionInfo';
 import { greaterThan } from '../../utils/functionalBigNumber';
 import Header from '@melonproject/manager-components/components/Header';
 import Footer from '@melonproject/manager-components/components/Footer';

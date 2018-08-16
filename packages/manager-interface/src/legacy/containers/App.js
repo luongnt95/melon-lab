@@ -7,8 +7,14 @@ import {
   tracks,
 } from '@melonproject/melon.js';
 import App from '../components/pages/App';
-import { statusTypes } from '../components/organisms/ConnectionInfo';
 import { actions as routeActions } from '../actions/routes';
+
+export const statusTypes = {
+  NEUTRAL: 'NEUTRAL',
+  WARNING: 'WARNING',
+  ERROR: 'ERROR',
+  GOOD: 'GOOD',
+};
 
 const getStatus = ({
   syncing,
