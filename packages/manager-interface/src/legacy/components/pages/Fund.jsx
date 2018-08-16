@@ -41,7 +41,6 @@ const Fund = ({
             !isCompetition && !isManager && <GetStarted />,
             !isCompetition && canInvest && !pendingRequest && <Participation />,
             !isCompetition && canInvest && pendingRequest && <ExecuteRequest />,
-            !isCompetition && !canInvest && <Card />,
           ]}
           holdings={<Holdings />}
           orderForm={<OrderForm />}
