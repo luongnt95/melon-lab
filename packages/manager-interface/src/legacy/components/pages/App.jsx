@@ -9,7 +9,7 @@ import TermsAndConditionsContainer from '../../containers/TermsAndConditions';
 import SetupContainer from '../../containers/Setup';
 import ParosContributionContainer from '../../containers/ParosContribution';
 import { onboardingPath } from '../../reducers/app';
-import FundContainer from './Fund';
+import FundContainer from './../../containers/Fund';
 import OverviewContainer from './Overview';
 import ParticipationContainer from '../../containers/Participation';
 import WalletContainer from '../../containers/wallet/Account';
