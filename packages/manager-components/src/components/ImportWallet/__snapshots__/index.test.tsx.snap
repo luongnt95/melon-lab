@@ -17,7 +17,6 @@ exports[`ImportWallet should render correctly 1`] = `
     className="jsx-__scopedHash import-wallet__dropzone"
   >
     <t
-      accept="application/json"
       disableClick={false}
       disablePreview={false}
       disabled={false}
