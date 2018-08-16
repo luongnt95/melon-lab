@@ -1,8 +1,5 @@
 import React, { Fragment } from 'react';
-import { Card } from 'semantic-ui-react';
-
 import { tracks } from '@melonproject/melon.js';
-
 import Factsheet from '../../containers/Factsheet';
 import Holdings from '../../containers/Holdings';
 import Administration from '../../containers/Administration';
