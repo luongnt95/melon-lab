@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContributionForm should render correctly 1`] = `
+<Formik
+  dataValid={true}
+  enableReinitialize={true}
+  handleSubmit={[Function]}
+  initialValues={
+    Object {
+      "amount": "",
+      "total": "",
+    }
+  }
+  isInitialValid={false}
+  melonAssetSymbol="MLN"
+  onSubmit={[Function]}
+  render={[Function]}
+  validateOnBlur={true}
+  validateOnChange={true}
+  validationSchema={[Function]}
+/>
+`;

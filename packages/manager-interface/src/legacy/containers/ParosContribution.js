@@ -1,10 +1,7 @@
-import { connect } from "react-redux";
-import { reduxForm, change } from "redux-form";
-import { actions } from "../actions/participation";
-import ParosContribution from "../components/organisms/ParosContributionForm";
-import { actions as fundActions } from "../actions/fund";
-import { multiply, divide, equals } from "../utils/functionalBigNumber";
-import displayNumber from "../utils/displayNumber";
+import { connect } from 'react-redux';
+import { actions } from '../actions/participation';
+import ContributionForm from '@melonproject/manager-components/components/ContributionForm/container';
+import { actions as fundActions } from '../actions/fund';
 
 const mapStateToProps = state => ({
   onboardingState: state.app.onboardingState,
@@ -13,43 +10,21 @@ const mapStateToProps = state => ({
   dataValid: state.ethereum.isDataValid,
   initialValues: {
     amount: 1,
-    total: 60
+    total: 60,
   },
-  displayNumber,
-  melonAssetSymbol: state.fund.config ? state.fund.config.melonAssetSymbol : "MLN",
+  melonAssetSymbol: state.fund.config
+    ? state.fund.config.melonAssetSymbol
+    : 'MLN',
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
   requestFund: fundAddress => dispatch(fundActions.infoRequested(fundAddress)),
-  onChange: (values, _dispatch, props, previousValues) => {
-    const changed = Object.keys(values).reduce(
-      (acc, key) => (values[key] !== previousValues[key] ? [key, ...acc] : acc),
-      [],
-    );
-    if (changed.includes("amount")) {
-      const total = multiply(values.amount, 60);
-
-      if (values.total !== total)
-        dispatch(change("parosContribution", "total", total));
-    } else if (changed.includes("total")) {
-      const amount = divide(values.total, 60)
-      if (amount !== values.amount)
-        dispatch(change("parosContribution", "amount", amount))
-    }
-  },
   onSubmit: values => {
     dispatch(actions.contribute({ ...values }));
-
   },
 });
 
-const ParosContributionForm = reduxForm({
-  form: "parosContribution",
-  enableReinitialize: true,
-})(ParosContribution);
-
-const ParosContributionRedux = connect(mapStateToProps, mapDispatchToProps)(
-  ParosContributionForm,
-);
-
-export default ParosContributionRedux;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ContributionForm);

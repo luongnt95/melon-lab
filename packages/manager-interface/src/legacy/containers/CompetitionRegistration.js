@@ -1,9 +1,7 @@
-import { connect } from "react-redux";
-
-import { actions } from "../actions/fund";
-import { actions as routeActions } from "../actions/routes";
-
-import CompetitionRegistration from "../components/organisms/CompetitionRegistration";
+import { connect } from 'react-redux';
+import { actions } from '../actions/fund';
+import { actions as routeActions } from '../actions/routes';
+import CompetitionRegistration from '@melonproject/manager-components/components/CompetitionRegistration';
 
 const mapStateToProps = state => ({
   fundAddress: state.fund.address,
@@ -29,9 +27,7 @@ const mapDispatchToProps = dispatch => ({
   isRegistered: () => dispatch(routeActions.root()),
 });
 
-const CompetitionRegistrationRedux = connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps,
 )(CompetitionRegistration);
-
-export default CompetitionRegistrationRedux;
