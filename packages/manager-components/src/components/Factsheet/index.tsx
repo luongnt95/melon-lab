@@ -112,7 +112,7 @@ const Factsheet: StatelessComponent<FactsheetProps> = ({
               rel="noopener noreferrer"
             >
               Contact Investors/Managers
-          </a>
+            </a>
             <hr />
             {!isCompetition ? (
               <Button onClick={shutdown} style="clear">
