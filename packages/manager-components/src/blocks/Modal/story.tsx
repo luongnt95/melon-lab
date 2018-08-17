@@ -4,7 +4,7 @@ import Modal from './index';
 
 storiesOf('Blocks|Modal', module).add('Default', () => {
   return (
-    <Modal isOpen title="Hello World">
+    <Modal isOpen loading title="Hello World">
       Hello World
     </Modal>
   );

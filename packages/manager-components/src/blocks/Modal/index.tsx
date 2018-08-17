@@ -2,6 +2,7 @@ import React, { Fragment, StatelessComponent } from 'react';
 import ReactModal from 'react-modal';
 import Button from '~/blocks/Button';
 import Form from '~/blocks/Form';
+import Spinner from '~/blocks/Spinner';
 
 import styles from './styles.css';
 
@@ -86,7 +87,9 @@ const Modal: StatelessComponent<ModalProps> = ({
             interactionHandler,
           )
         ) : (
-          <Fragment>Loading</Fragment>
+          <div className="modal__spinner">
+            <Spinner size="inflated" />
+          </div>
         )}
       </Form>
     </ReactModal>

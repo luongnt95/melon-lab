@@ -66,7 +66,7 @@ export const Ranking: StatelessComponent<RankingProps> = ({
       <h3>Melon Funds Ranking</h3>
       {loading ? (
         <div className="ranking__loading">
-          <Spinner />
+          <Spinner icon />
         </div>
       ) : (
         <div className="ranking__table-wrap">
