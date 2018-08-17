@@ -9,7 +9,6 @@ import {
   Table,
 } from 'semantic-ui-react';
 import { Field } from 'redux-form';
-import ReactModal from 'react-modal';
 import renderInput from '../utils/renderInput';
 import { add } from '../../utils/functionalBigNumber';
 import displayNumber from '../../utils/displayNumber';
@@ -49,16 +48,17 @@ const Modal = ({
     loading={type === types.LOADING}
     error={type === types.ERROR}
   >
-    {method && type !== types.ERROR ? (
-      <div>
-        <p>
-          The following method on the Melon Smart Contracts will be executed:
-        </p>
-        <h4>{method}</h4>
-      </div>
-    ) : null}
+    {method &&
+      type !== types.ERROR && (
+        <div>
+          <p>
+            The following method on the Melon Smart Contracts will be executed:
+          </p>
+          <h4>{method}</h4>
+        </div>
+      )}
 
-    {fees ? (
+    {fees && (
       <div>
         <Table compact="very">
           <Table.Header>
@@ -115,13 +115,13 @@ const Modal = ({
         </p>
         <br />
       </div>
-    ) : null}
+    )}
 
-    {type === types.PASSWORD ? (
+    {type === types.PASSWORD && (
       <div style={{ marginBottom: 10 }}>
         <Field name="password" component={renderInput} type="password" />
       </div>
-    ) : null}
+    )}
   </ModalComponent>
 );
 
