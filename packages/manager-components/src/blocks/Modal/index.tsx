@@ -24,30 +24,34 @@ const renderButtons = (
   secondaryInteraction,
   interactionHandler,
 ) => {
-  const onClick = (event, handler) => {
-    interactionHandler(event, handler);
+  const onClickPrimaryInteraction = event => {
+    interactionHandler(event, primaryInteraction);
+  };
+
+  const onClickSecondaryInteraction = event => {
+    interactionHandler(event, secondaryInteraction);
   };
 
   return secondaryInteraction ? (
     <div className="modal__actions">
       <div className="modal__action">
         <Button
+          type="button"
           style="secondary"
-          buttonValue={secondaryInteraction}
-          onClick={onClick}
+          onClick={onClickSecondaryInteraction}
         >
           {secondaryInteraction}
         </Button>
       </div>
       <div className="modal__action">
-        <Button buttonValue={primaryInteraction} onClick={onClick}>
+        <Button type="submit" onClick={onClickPrimaryInteraction}>
           {primaryInteraction}
         </Button>
       </div>
     </div>
   ) : (
     primaryInteraction && (
-      <Button buttonValue={primaryInteraction} onClick={onClick}>
+      <Button type="submit" onClick={onClickPrimaryInteraction}>
         {primaryInteraction}
       </Button>
     )
