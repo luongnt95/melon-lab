@@ -16,7 +16,9 @@ exports[`Holdings should render correctly 1`] = `
   <div
     className="jsx-__scopedHash ranking__loading"
   >
-    <Spinner />
+    <Spinner
+      icon={true}
+    />
   </div>
 </div>
 `;
