@@ -16,15 +16,16 @@ const withComposedConfig = R.compose(
 const managerPkg = require('@melonproject/manager-interface/package.json');
 const melonJsPkg = require('@melonproject/melon.js/package.json');
 const smartContractsPkg = require('@melonproject/smart-contracts/package.json');
-const componentsPkg = require.resolve('@melonproject/manager-components/package.json');
 
 const managerComponents = path.resolve(path.dirname(require.resolve('@melonproject/manager-components/package.json')));
 const managerInterface = path.resolve(path.dirname(require.resolve('@melonproject/manager-interface/package.json')));
+const managerApp = path.resolve(path.dirname(require.resolve('@melonproject/manager-app/package.json')));
 
 module.exports = withComposedConfig({
   linkedDependencies: [
     ['@melonproject/melon.js', 'lib'],
     ['@melonproject/graphql-schema', 'src'],
+    ['@melonproject/manager-interface', 'src'],
     ['@melonproject/manager-components', 'src'],
     ['@melonproject/exchange-aggregator', 'src'],
   ],
@@ -40,6 +41,10 @@ module.exports = withComposedConfig({
       '~/components': path.join(managerComponents, 'src', 'components'),
       '~/design': path.join(managerComponents, 'src', 'design'),
       '~/static': path.join(managerComponents, 'public', 'static'),
+      '~/ipc': path.join(managerApp, 'ipc'),
+
+      // Overrides for component imports from the web app.
+      '~/wrappers/withApollo': path.join(managerInterface, 'src', 'wrappers'),
     });
 
     config.plugins.push(
@@ -51,6 +56,17 @@ module.exports = withComposedConfig({
     );
 
     if (!options.isServer) {
+      config.plugins.push(
+        new CopyWebpackPlugin([
+          {
+            context: path.join(managerInterface, 'src', 'static'),
+            from: '**/*',
+            to: path.join(options.dir, 'static'),
+            force: true,
+          },
+        ]),
+      );
+
       config.plugins.push(
         new CopyWebpackPlugin([
           {
@@ -94,7 +110,14 @@ module.exports = withComposedConfig({
       },
     );
 
-    config.plugins.push(new webpack.DefinePlugin({ ELECTRON: false }));
+    config.plugins.push(new webpack.DefinePlugin({ ELECTRON: true }));
+
+    // Code splitting doesn't make much sense in an electron app.
+    config.plugins.push(
+      new webpack.optimize.LimitChunkCountPlugin({
+        maxChunks: 1,
+      }),
+    );
 
     return config;
   },

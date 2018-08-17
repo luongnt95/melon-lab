@@ -1,4 +1,4 @@
-import * as MessageTypes from './message-types';
+import * as MessageTypes from './constants';
 import {
   parse,
   execute,
