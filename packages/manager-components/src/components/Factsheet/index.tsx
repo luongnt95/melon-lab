@@ -70,59 +70,59 @@ const Factsheet: StatelessComponent<FactsheetProps> = ({
       {loading ? (
         <Spinner size="small" />
       ) : (
-        <div>
-          Creation date:{' '}
-          <Loading loading={creationDate === '...'}>{creationDate}</Loading>
-          <br />
-          <Button onClick={scrolltoHoldings} style="clear">
-            AUM:{' '}
-            <Loading dataAvailable={dataValid} loading={aum === '...'}>
-              {aum}
-            </Loading>{' '}
-            {quoteAsset}
-          </Button>
-          <Button onClick={scrolltoHoldings} style="clear">
-            Share price:{' '}
-            <Loading dataAvailable={dataValid} loading={sharePrice === '...'}>
-              {sharePrice}
-            </Loading>{' '}
-            {quoteAsset}/Share
-          </Button>
-          <a href="#/ranking">
-            Ranking: <Loading loading={rank === '...'}>{rank}</Loading> out of{' '}
-            <Loading loading={numberOfFunds === '...'}>{numberOfFunds}</Loading>
-          </a>
-          <br />Total number of shares:{' '}
-          <Loading loading={totalSupply === '...'}>{totalSupply}</Loading>
-          <br />Shares owned by me:{' '}
-          <Loading loading={personalStake === '...'}>{personalStake}</Loading>
-          <hr />
-          Management Reward:{' '}
-          <Loading loading={managementReward === '...'}>
-            {managementReward}
-          </Loading>%
-          <br />Performance Reward:{' '}
-          <Loading loading={performanceReward === '...'}>
-            {performanceReward}
-          </Loading>%
-          <hr />
-          <a
-            href="http://melon.email"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Contact Investors/Managers
-          </a>
-          <hr />
-          {!isCompetition ? (
-            <Button onClick={shutdown} style="clear">
-              Irreversibly shut down fund
+          <div>
+            Creation date:{' '}
+            <Loading loading={creationDate === '...'}>{creationDate}</Loading>
+            <br />
+            <Button onClick={scrolltoHoldings} style="clear">
+              AUM:{' '}
+              <Loading dataAvailable={dataValid} loading={aum === '...'}>
+                {aum}
+              </Loading>{' '}
+              {quoteAsset}
             </Button>
-          ) : (
-            <div />
-          )}
-        </div>
-      )}
+            <Button onClick={scrolltoHoldings} style="clear">
+              Share price:{' '}
+              <Loading dataAvailable={dataValid} loading={sharePrice === '...'}>
+                {sharePrice}
+              </Loading>{' '}
+              {quoteAsset}/Share
+          </Button>
+            <a href="#/ranking">
+              Ranking: <Loading loading={rank === '...'}>{rank}</Loading> out of{' '}
+              <Loading loading={numberOfFunds === '...'}>{numberOfFunds}</Loading>
+            </a>
+            <br />Total number of shares:{' '}
+            <Loading loading={totalSupply === '...'}>{totalSupply}</Loading>
+            <br />Shares owned by me:{' '}
+            <Loading loading={personalStake === '...'}>{personalStake}</Loading>
+            <hr />
+            Management Reward:{' '}
+            <Loading loading={managementReward === '...'}>
+              {managementReward}
+            </Loading>%
+          <br />Performance Reward:{' '}
+            <Loading loading={performanceReward === '...'}>
+              {performanceReward}
+            </Loading>%
+          <hr />
+            <a
+              href="https://ipfs.io/ipfs/Qmc9JRw4zarrs6gJwu6tC58UAgeEujNg9VMWcH8MUEd5TW/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Contact Investors/Managers
+          </a>
+            <hr />
+            {!isCompetition ? (
+              <Button onClick={shutdown} style="clear">
+                Irreversibly shut down fund
+            </Button>
+            ) : (
+                <div />
+              )}
+          </div>
+        )}
     </div>
   );
 };
