@@ -2,7 +2,7 @@
   "name": "@melonproject/manager-interface",
   "description": "Melon interface",
   "homepage": "http://melonport.com",
-  "version": "0.8.3",
+  "version": "0.8.4",
   "private": true,
   "license": "AGPL-3.0",
   "main": "main.js",
