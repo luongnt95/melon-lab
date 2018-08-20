@@ -24,7 +24,6 @@ const Modal = ({
   handleSubmit,
   onAfterOpen,
 }) => {
-  console.log(type)
   return (
     <ModalComponent
       isOpen={isOpen}
