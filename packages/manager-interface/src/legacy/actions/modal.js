@@ -60,8 +60,6 @@ export const actions = {
     body,
     fees,
     method,
-    primaryInteraction: interactions.CONFIRM,
-    secondaryInteraction: interactions.CANCEL,
   }),
   confirmed: gasPrice => ({
     type: types.CONFIRMED,

@@ -26,6 +26,14 @@
     url('./static/fonts/source-serif-pro-v5-latin-700.woff') format('woff');
 }
 
+.layout {
+  margin: 70px 12px;
+
+  @media (--viewport-s) {
+    margin: 70px 7%;
+  }
+}
+
 .layout :global(*),
 .layout :global(:before),
 .layout :global(:after) {

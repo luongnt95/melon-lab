@@ -1,19 +1,7 @@
 import React from 'react';
-import {
-  Segment,
-  Container,
-  Card,
-  Header,
-  Loader,
-  Button,
-  Table,
-} from 'semantic-ui-react';
-import { Field } from 'redux-form';
-import renderInput from '../utils/renderInput';
-import { add } from '../../utils/functionalBigNumber';
-import displayNumber from '../../utils/displayNumber';
 import ModalComponent from '@melonproject/manager-components/blocks/Modal';
 import PasswordForm from '../../containers/PasswordForm';
+import FeeForm from '../../containers/FeeForm';
 
 export const types = {
   ERROR: 'ERROR',
@@ -57,69 +45,13 @@ const Modal = ({
               The following method on the Melon Smart Contracts will be
               executed:
             </p>
-            <h4>{method}</h4>
+            <p>
+              <b>{method}</b>
+            </p>
           </div>
         )}
 
-      {fees && (
-        <div>
-          <Table compact="very">
-            <Table.Header>
-              <Table.Row>
-                <Table.HeaderCell>Description</Table.HeaderCell>
-                <Table.HeaderCell>Gas Limit</Table.HeaderCell>
-                <Table.HeaderCell>Gas Price (Gwei)</Table.HeaderCell>
-                <Table.HeaderCell style={{ textAlign: 'right' }}>
-                  Total
-                </Table.HeaderCell>
-              </Table.Row>
-            </Table.Header>
-            <Table.Body>
-              {fees.map((entry, i) => (
-                <Table.Row key={`fee-{i}`}>
-                  <Table.Cell>{entry.description}</Table.Cell>
-                  <Table.Cell>{entry.gasLimit}</Table.Cell>
-                  <Table.Cell>
-                    <Field
-                      name="gasPrice"
-                      component={renderInput}
-                      type="text"
-                      placeholder={entry.gasPrice}
-                    />
-                  </Table.Cell>
-                  <Table.Cell style={{ textAlign: 'right' }}>
-                    Ξ {displayNumber((gasPrice * entry.gasLimit) / 10 ** 9)}
-                  </Table.Cell>
-                </Table.Row>
-              ))}
-            </Table.Body>
-            <Table.Footer>
-              <Table.Row>
-                <Table.HeaderCell />
-                <Table.HeaderCell />
-                <Table.HeaderCell />
-                <Table.HeaderCell style={{ textAlign: 'right' }}>
-                  Ξ{' '}
-                  {displayNumber(
-                    add(...fees.map(e => (e.gasLimit * gasPrice) / 10 ** 9)),
-                  )}
-                </Table.HeaderCell>
-              </Table.Row>
-            </Table.Footer>
-          </Table>
-          <p>
-            If you do not change the gas price field, the default gas price will
-            be used. If you wish to set the gas price according to network
-            conditions, please refer to{' '}
-            <a href="https://ethgasstation.info/" target="_blank">
-              {' '}
-              Eth Gas Station.
-            </a>{' '}
-          </p>
-          <br />
-        </div>
-      )}
-
+      {fees && <FeeForm fees={fees} />}
       {type === types.PASSWORD && <PasswordForm />}
     </ModalComponent>
   );
