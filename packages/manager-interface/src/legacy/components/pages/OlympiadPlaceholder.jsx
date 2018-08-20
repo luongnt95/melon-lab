@@ -1,10 +1,4 @@
 import React from 'react';
-import { Field } from 'redux-form';
-import { Image, Table, Card, Button } from 'semantic-ui-react';
-import Link from 'redux-first-router-link';
-import Highlight from 'react-highlighter';
-import GetStarted from '../../containers/GetStarted';
-import renderInput from '../utils/renderInput';
 
 const OlympiadPlaceholder = ({ goToGenerateAccount, goToAccount, address }) => (
   <div style={{ maxWidth: '70em', margin: '0 auto' }}>

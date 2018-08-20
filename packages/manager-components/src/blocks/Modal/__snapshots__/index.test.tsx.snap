@@ -20,7 +20,7 @@ exports[`Modal should render correctly 1`] = `
     styleId="__scopedHash"
   />
   <h3
-    className="jsx-__scopedHash"
+    className="jsx-__scopedHash modal__title"
   >
     Hello World
   </h3>

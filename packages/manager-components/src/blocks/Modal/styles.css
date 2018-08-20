@@ -49,3 +49,7 @@
   height: 50px;
   margin: var(--space-s) auto;
 }
+
+.modal__title {
+  margin-top: 0;
+}

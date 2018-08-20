@@ -42,8 +42,6 @@ export default class MyDocument extends Document {
           )}
           <link rel="manifest" href="./static/manifest.json" />
           <link rel="shortcut icon" href="./static/favicon.png?v=2" />
-          <link rel="stylesheet" href="./static/css/semantic.min.css" />
-          <link rel="stylesheet" href="./static/css/overwrites.css" />
           {!ELECTRON && <script src="./static/tracking.js" />}
           <title>Melon Olympiad</title>
         </Head>

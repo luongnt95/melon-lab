@@ -3,11 +3,15 @@ import { connect } from 'react-redux';
 import FeeForm from '@melonproject/manager-components/components/FeeForm/container';
 import { actions } from '../actions/modal';
 
-const mapStateToProps = state => ({
-  initialValues: {
-    gasPrice: R.pathOr(20, ['form', 'modal', 'values', 'gasPrice'], state),
-  },
-});
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    initialValues: {
+      gasPrice: R.pathOr(20, ['form', 'modal', 'values', 'gasPrice'], state),
+    },
+    fees: state.modal.fees,
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: values => {
@@ -15,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
   },
   onCancel: () => {
     dispatch(actions.cancel());
-  }
+  },
 });
 
 export default connect(

@@ -79,7 +79,7 @@ const Modal: StatelessComponent<ModalProps> = ({
       isOpen={isOpen}
     >
       <style jsx>{styles}</style>
-      <h3>{title}</h3>
+      <h3 className="modal__title">{title}</h3>
       <p>{body}</p>
       {children}
 

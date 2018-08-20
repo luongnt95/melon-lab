@@ -18,13 +18,13 @@ const Modal = ({
   body,
   fees,
   method,
-  gasPrice,
   primaryInteraction,
   secondaryInteraction,
   interactionHandler,
   handleSubmit,
   onAfterOpen,
 }) => {
+  console.log(type)
   return (
     <ModalComponent
       isOpen={isOpen}
