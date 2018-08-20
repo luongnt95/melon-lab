@@ -18,7 +18,7 @@ import RestoreContainer from '../../containers/wallet/Restore';
 import ImportContainer from '../../containers/wallet/Import';
 import CompetitionRegistrationContainer from '../../containers/CompetitionRegistration';
 import OlympiadPlaceholderContainer from '../../containers/OlympiadPlaceholder';
-import Modal from '../../containers/Modal';
+import ModalContainer from '../../containers/Modal';
 import { types } from '../../actions/routes';
 import { greaterThan } from '../../utils/functionalBigNumber';
 import Header from '@melonproject/manager-components/components/Header';
@@ -165,7 +165,7 @@ const App = props => {
       >
         <Footer />
       </div>
-      <Modal />
+      <ModalContainer />
     </div>
   );
 };

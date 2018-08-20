@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PasswordForm should render correctly 1`] = `
+<Formik
+  enableReinitialize={true}
+  handleSubmit={[Function]}
+  initialValues={
+    Object {
+      "password": "",
+    }
+  }
+  isInitialValid={false}
+  onSubmit={[Function]}
+  render={[Function]}
+  validateOnBlur={true}
+  validateOnChange={true}
+  validationSchema={[Function]}
+/>
+`;

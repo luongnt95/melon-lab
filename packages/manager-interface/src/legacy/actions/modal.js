@@ -76,8 +76,6 @@ export const actions = {
     title: 'Enter password',
     body,
     method: null,
-    primaryInteraction: interactions.PASSWORD,
-    secondaryInteraction: interactions.CANCEL,
   }),
   passwordEntered: password => ({
     type: types.PASSWORD_ENTERED,

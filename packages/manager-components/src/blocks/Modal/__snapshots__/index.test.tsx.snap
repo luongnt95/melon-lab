@@ -27,8 +27,7 @@ exports[`Modal should render correctly 1`] = `
   <p
     className="jsx-__scopedHash"
   />
-  <Form>
-    Hello World
-  </Form>
+  Hello World
+  <Form />
 </Modal>
 `;

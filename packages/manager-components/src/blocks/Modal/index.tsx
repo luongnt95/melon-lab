@@ -13,8 +13,8 @@ export interface ModalProps {
   primaryInteraction?: () => void;
   secondaryInteraction?: () => void;
   interactionHandler?: () => void;
-  handleSubmit?: () => void;
   onAfterOpen?: () => void;
+  handleSubmit?: () => void;
   loading?: boolean;
   error?: boolean;
 }
@@ -65,11 +65,11 @@ const Modal: StatelessComponent<ModalProps> = ({
   primaryInteraction,
   secondaryInteraction,
   interactionHandler,
-  handleSubmit,
   onAfterOpen,
   children,
   loading,
   error,
+  handleSubmit,
 }) => {
   return (
     <ReactModal
@@ -81,21 +81,21 @@ const Modal: StatelessComponent<ModalProps> = ({
       <style jsx>{styles}</style>
       <h3>{title}</h3>
       <p>{body}</p>
-      <Form onSubmit={handleSubmit}>
-        {children}
+      {children}
 
-        {!loading ? (
-          renderButtons(
+      {!loading ? (
+        <Form onSubmit={handleSubmit}>
+          {renderButtons(
             primaryInteraction,
             secondaryInteraction,
             interactionHandler,
-          )
-        ) : (
-          <div className="modal__spinner">
-            <Spinner size="inflated" />
-          </div>
-        )}
-      </Form>
+          )}
+        </Form>
+      ) : (
+        <div className="modal__spinner">
+          <Spinner size="inflated" />
+        </div>
+      )}
     </ReactModal>
   );
 };
