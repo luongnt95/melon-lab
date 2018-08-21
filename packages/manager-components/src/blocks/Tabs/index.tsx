@@ -31,12 +31,12 @@ const Tabs: StatelessComponent<TabsProps> = ({
   handleTabClick,
 }) => {
   const activeTabContent = getTabs(children).map((child, index) => {
-    const classname = classNames('tabs__content', {
+    const tabContentClassNames = classNames('tabs__content', {
       'tabs__content--active': activeTabIndex === index,
     });
 
     return (
-      <div className={classname} key={index}>
+      <div className={tabContentClassNames} key={index}>
         {child}
       </div>
     );
@@ -54,7 +54,7 @@ const Tabs: StatelessComponent<TabsProps> = ({
   };
 
   const tabs = getTabs(children).map((child, index) => {
-    const classname = classNames('tabs__tab', {
+    const tabClassNames = classNames('tabs__tab', {
       'tabs__tab--active': activeTabIndex === index,
     });
     const title = child.props.title;
@@ -67,7 +67,7 @@ const Tabs: StatelessComponent<TabsProps> = ({
       <div
         aria-label={title}
         aria-selected={activeTabIndex === index ? true : false}
-        className={classname}
+        className={tabClassNames}
         onClick={handleClick(index)}
         onKeyPress={handleKeyPress(index)}
         onKeyDown={handleKeyPress(index)}

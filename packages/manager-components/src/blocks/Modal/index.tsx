@@ -1,4 +1,4 @@
-import React, { Fragment, StatelessComponent } from 'react';
+import React, { StatelessComponent } from 'react';
 import ReactModal from 'react-modal';
 import Button from '~/blocks/Button';
 import Form from '~/blocks/Form';

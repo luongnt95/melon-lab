@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Toggle should render correctly 1`] = `
+<label
+  className="jsx-__scopedHash toggle"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <input
+    className="jsx-__scopedHash toggle__input"
+    hidden={true}
+    name="strategy"
+    onChange={[Function]}
+    type="radio"
+    value="Limit"
+  />
+  <span
+    className="jsx-__scopedHash toggle__text"
+  >
+    Limit
+  </span>
+</label>
+`;

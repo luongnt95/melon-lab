@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { ChangeEventHandler, StatelessComponent } from 'react';
+import React, { StatelessComponent } from 'react';
 import * as NumberFormat from 'react-number-format';
 
 import styles from './styles.css';
@@ -39,7 +39,7 @@ const Input: StatelessComponent<InputProps> = ({
   error,
   hidden,
 }) => {
-  const classname = classNames('input', {
+  const inputClassNames = classNames('input', {
     'input--inside-label': insideLabel,
     'input--has-error': error,
   });
@@ -52,7 +52,7 @@ const Input: StatelessComponent<InputProps> = ({
   };
 
   return (
-    <div className={classname}>
+    <div className={inputClassNames}>
       <style jsx>{styles}</style>
       <span className="input__label">{label}</span>
       {formatNumber ? (

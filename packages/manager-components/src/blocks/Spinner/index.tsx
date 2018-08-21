@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { StatelessComponent } from 'react';
 import Icon from '~/blocks/Icon';
 
@@ -12,11 +13,12 @@ const Spinner: StatelessComponent<SpinnerProps> = ({
   size = 'default',
   icon,
 }) => {
-  const sizeClass = `spinner--${size}`;
-  const classes = `spinner ${sizeClass}`;
+  const spinnerClassNames = classNames('spinner', {
+    [`spinner--${size}`]: size,
+  });
 
   return (
-    <div className={classes}>
+    <div className={spinnerClassNames}>
       <style jsx>{styles}</style>
       {icon &&
         <Icon iconClass="spinner__icon" name="logos_without-border" />

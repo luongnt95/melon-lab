@@ -49,7 +49,7 @@ const Row: StatelessComponent<RowProps> = ({
   size,
   active,
 }) => {
-  const classnameCell = classNames('table__row', {
+  const cellClassNames = classNames('table__row', {
     'table__row--head': isHead,
     'table__row--body': !isHead,
     'table__row--active': active,
@@ -59,7 +59,7 @@ const Row: StatelessComponent<RowProps> = ({
   return (
     <Fragment>
       <style jsx>{styles}</style>
-      <tr className={classnameCell}>{children}</tr>
+      <tr className={cellClassNames}>{children}</tr>
     </Fragment>
   );
 };
@@ -70,7 +70,7 @@ const CellBody: StatelessComponent<CellProps> = ({
   textAlign,
   colSpan,
 }) => {
-  const classnameCellBody = classNames('table__cell', {
+  const cellBodyClassNames = classNames('table__cell', {
     [`${cellClass}`]: cellClass,
     [`table__cell--${textAlign}`]: textAlign,
   });
@@ -78,7 +78,7 @@ const CellBody: StatelessComponent<CellProps> = ({
   return (
     <Fragment>
       <style jsx>{styles}</style>
-      <td colSpan={colSpan} className={classnameCellBody}>
+      <td colSpan={colSpan} className={cellBodyClassNames}>
         {children}
       </td>
     </Fragment>
@@ -93,7 +93,7 @@ const CellHead: StatelessComponent<CellProps> = ({
   headFor,
   sorted,
 }) => {
-  const classnameCellHead = classNames('table__cell', {
+  const cellHeadClassNames = classNames('table__cell', {
     [`${cellClass}`]: cellClass,
     [`table__cell--${textAlign}`]: textAlign,
     [`table__cell--clickable`]: onClick,
@@ -108,7 +108,7 @@ const CellHead: StatelessComponent<CellProps> = ({
   return (
     <Fragment>
       <style jsx>{styles}</style>
-      <th onClick={onClick && onCellClick} className={classnameCellHead}>
+      <th onClick={onClick && onCellClick} className={cellHeadClassNames}>
         {children}
         {sorted === 'desc' && <span className="table__cell-arrow"> ↓</span>}
         {sorted === 'asc' && <span className="table__cell-arrow"> ↑</span>}

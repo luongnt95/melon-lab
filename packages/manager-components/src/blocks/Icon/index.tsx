@@ -14,13 +14,13 @@ const Icon: StatelessComponent<IconProps> = ({
   width,
   iconClass,
 }) => {
-  const classes = classNames('icon', {
+  const iconClassNames = classNames('icon', {
     [`${iconClass}`]: iconClass,
   });
 
   return (
     <svg
-      className={classes}
+      className={iconClassNames}
       height={height ? height : '100%'}
       width={width ? width : '100%'}
     >

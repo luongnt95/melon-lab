@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, StatelessComponent } from 'react';
+import React, { StatelessComponent } from 'react';
 
 import styles from './styles.css';
 

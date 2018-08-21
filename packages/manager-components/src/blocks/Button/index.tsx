@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { StatelessComponent } from 'react';
 
 import styles from './styles.css';
@@ -20,9 +21,10 @@ const Button: StatelessComponent<ButtonProps> = ({
   style = 'primary',
   buttonValue,
 }) => {
-  const sizeClass = `button--${size}`;
-  const styleClass = `button--${style}`;
-  const classes = `button ${sizeClass} ${styleClass}`;
+  const buttonClassNames = classNames('button', {
+    [`button--${size}`]: size,
+    [`button--${style}`]: style,
+  });
 
   const onButtonClick = e => {
     onClick(e, buttonValue);
@@ -32,7 +34,7 @@ const Button: StatelessComponent<ButtonProps> = ({
     <button
       type={type}
       onClick={onButtonClick}
-      className={classes}
+      className={buttonClassNames}
       disabled={disabled}
     >
       <style jsx>{styles}</style>

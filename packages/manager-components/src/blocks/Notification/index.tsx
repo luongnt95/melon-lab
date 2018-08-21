@@ -17,7 +17,7 @@ const Notification: StatelessComponent<NotificationProps> = ({
   isError,
   isClosable,
 }) => {
-  const classnameNotification = classNames('notification', {
+  const notificationClassNames = classNames('notification', {
     'notification--inline': isInline,
     'notification--warning': isWarning,
     'notification--error': isError,
@@ -25,7 +25,7 @@ const Notification: StatelessComponent<NotificationProps> = ({
   });
 
   return (
-    <div className={classnameNotification}>
+    <div className={notificationClassNames}>
       <style jsx>{styles}</style>
       {children}
       {isClosable && <button className="notification__close">&times;</button>}

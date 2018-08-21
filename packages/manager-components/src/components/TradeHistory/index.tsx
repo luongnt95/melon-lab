@@ -1,6 +1,4 @@
-import classNames from 'classnames';
 import React, { StatelessComponent } from 'react';
-import Icon from '~/blocks/Icon';
 import {
   CellBody,
   CellHead,
