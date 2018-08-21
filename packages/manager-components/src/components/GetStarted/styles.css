@@ -1,4 +1,33 @@
 .get-started {
-  max-width: 400px;
-  margin: 0 auto var(--space-xl) auto;
+  display: flex;
+  flex-flow: column;
+
+  @media (--viewport-m) {
+    flex-flow: row;
+  }
+}
+
+.get-started__name {
+  @media (--viewport-m) {
+    display: block;
+  }
+}
+
+.get-started__title {
+  margin: 0;
+  line-height: 1.2em;
+
+  @media (--viewport-m) {
+    margin: 0.2em 0;
+    font-size: 4em;
+  }
+}
+
+.get-started__welcome {
+  padding-right: var(--space-l);
+  flex: 0 0 50%;
+}
+
+.get-started__desc {
+  flex: 0 0 50%;
 }

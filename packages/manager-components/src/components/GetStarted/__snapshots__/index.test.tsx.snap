@@ -8,39 +8,52 @@ exports[`Holdings should render correctly 1`] = `
     css="__scoped"
     styleId="__scopedHash"
   />
-  <h3
-    className="jsx-__scopedHash"
+  <div
+    className="jsx-__scopedHash get-started__welcome"
   >
-    Get started
-  </h3>
-  <p
-    className="jsx-__scopedHash"
+    <h1
+      className="jsx-__scopedHash get-started__title"
+    >
+      Welcome to 
+      <span
+        className="jsx-__scopedHash get-started__name"
+      >
+        Melon
+      </span>
+    </h1>
+  </div>
+  <div
+    className="jsx-__scopedHash get-started__description"
   >
-    <b
+    <p
       className="jsx-__scopedHash"
     >
-      Melon
-    </b>
-    , [méllō], μέλλω; Greek for 
-    <b
+      <b
+        className="jsx-__scopedHash"
+      >
+        Melon
+      </b>
+      , [méllō], μέλλω; Greek for 
+      <b
+        className="jsx-__scopedHash"
+      >
+        "destined to be"
+      </b>
+      :
+    </p>
+    <p
       className="jsx-__scopedHash"
     >
-      "destined to be"
-    </b>
-    :
-  </p>
-  <p
-    className="jsx-__scopedHash"
-  >
-    Blockchain software that seeks to enable participants to set up, manage and invest in technology regulated digital investment funds.
-  </p>
-  <p
-    className="jsx-__scopedHash"
-  >
-    Set up your own technology regulated fund and discover the future of asset management.
-  </p>
-  <Button
-    onClick={[Function]}
-  />
+      Blockchain software that seeks to enable participants to set up, manage and invest in technology regulated digital investment funds.
+    </p>
+    <p
+      className="jsx-__scopedHash"
+    >
+      Set up your own technology regulated fund and discover the future of asset management.
+    </p>
+    <Button
+      onClick={[Function]}
+    />
+  </div>
 </div>
 `;
