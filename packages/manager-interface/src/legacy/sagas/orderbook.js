@@ -5,7 +5,6 @@ import {
   averagePrice,
   getEnvironment,
 } from '@melonproject/melon.js';
-import { change } from 'redux-form';
 import { types, actions } from '../actions/orderbook';
 import { types as ethereumTypes } from '../actions/ethereum';
 import { actions as tradeActions } from '../actions/trade';

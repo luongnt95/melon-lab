@@ -9,7 +9,6 @@ import TradeHistory from '../../containers/TradeHistory';
 import GetStarted from '../../containers/GetStarted';
 import Participation from '../../containers/Participation';
 import ExecuteRequest from '../../containers/ExecuteRequest';
-import TradeHelper from '../../containers/TradeHelper';
 import OpenOrders from '../../containers/OpenOrders';
 import ClaimRewardCompetition from '../../containers/ClaimRewardCompetition';
 import FundTemplate from '@melonproject/manager-components/templates/Fund';
