@@ -1,8 +1,7 @@
 import React from 'react';
 import TermsAndConditions from './index';
 
-const data = {
-};
+const data = {};
 
 describe('TermsAndConditions', () => {
   const defaultElement = <TermsAndConditions {...data} />;

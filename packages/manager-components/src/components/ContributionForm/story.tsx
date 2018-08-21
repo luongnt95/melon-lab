@@ -8,7 +8,7 @@ const initialProps = {
     total: '',
   },
   dataValid: true,
-  melonAssetSymbol: 'MLN'
+  melonAssetSymbol: 'MLN',
 };
 
 storiesOf('Components|Contribution Form', module).add('Default', () => {

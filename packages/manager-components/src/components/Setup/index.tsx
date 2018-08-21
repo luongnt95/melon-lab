@@ -97,7 +97,8 @@ export const Setup: StatelessComponent<SetupProps> = ({
             <strong>Canonical PriceFeed</strong>
           </a>
           <br />
-          Asset Registrar: <strong>Melon {competitionName} Asset Universe</strong>
+          Asset Registrar:{' '}
+          <strong>Melon {competitionName} Asset Universe</strong>
           {isCompetition ? (
             <div>
               Compliance (invest/redeem):{' '}
@@ -108,7 +109,9 @@ export const Setup: StatelessComponent<SetupProps> = ({
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <strong>Only {competitionName} contribution contract can invest</strong>
+                <strong>
+                  Only {competitionName} contribution contract can invest
+                </strong>
               </a>
             </div>
           ) : (

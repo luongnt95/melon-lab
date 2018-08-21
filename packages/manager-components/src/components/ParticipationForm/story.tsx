@@ -4,7 +4,7 @@ import ParticipationForm from './container';
 
 const initialProps = {
   initialValues: {
-    price: 1.0000,
+    price: 1.0,
     type: 'Invest',
   },
   decimals: 4,
@@ -12,8 +12,8 @@ const initialProps = {
   dataValid: true,
   quoteAsset: 'WETH-T',
   fund: {
-    sharePrice: 5
-  }
+    sharePrice: 5,
+  },
 };
 
 storiesOf('Components|Participation Form', module).add('Default', () => {

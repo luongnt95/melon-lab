@@ -6,7 +6,6 @@ const options = ['ETH-T', 'MLN-T'];
 
 const labels = ['Buy', 'Sell'];
 
-storiesOf('Blocks|Switch', module)
-  .add('Default', () => {
-    return <Switch options={options} labels={labels} />;
-  });
+storiesOf('Blocks|Switch', module).add('Default', () => {
+  return <Switch options={options} labels={labels} />;
+});

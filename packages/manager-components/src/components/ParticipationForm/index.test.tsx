@@ -10,8 +10,8 @@ const initialProps = {
   dataValid: true,
   quoteAsset: 'WETH-T',
   fund: {
-    sharePrice: 5
-  }
+    sharePrice: 5,
+  },
 };
 
 describe('ParticipationForm', () => {

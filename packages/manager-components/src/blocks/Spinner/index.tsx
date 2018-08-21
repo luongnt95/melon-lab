@@ -20,9 +20,7 @@ const Spinner: StatelessComponent<SpinnerProps> = ({
   return (
     <div className={spinnerClassNames}>
       <style jsx>{styles}</style>
-      {icon &&
-        <Icon iconClass="spinner__icon" name="logos_without-border" />
-      }
+      {icon && <Icon iconClass="spinner__icon" name="logos_without-border" />}
       <div className="spinner__loader" />
     </div>
   );

@@ -3,7 +3,7 @@ import React from 'react';
 import TermsAndConditions from './index';
 
 const data = {
-  networkId: '1'
+  networkId: '1',
 };
 
 storiesOf('Components|Terms And Conditions', module)

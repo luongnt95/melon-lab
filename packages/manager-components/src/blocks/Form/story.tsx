@@ -4,11 +4,10 @@ import React from 'react';
 import Button from '../Button/index';
 import Form from './index';
 
-storiesOf('Blocks|Form', module)
-  .add('Default', () => {
-    return (
+storiesOf('Blocks|Form', module).add('Default', () => {
+  return (
     <Form onSubmit={action('submit')}>
       <Button type="submit">Submit</Button>
     </Form>
-    );
-  });
+  );
+});

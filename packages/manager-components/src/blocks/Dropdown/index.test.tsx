@@ -37,7 +37,10 @@ describe('Dropdown', () => {
     const wrapper = shallow(<Dropdown {...data} onChange={onChange} />);
 
     expect(wrapper).toMatchSnapshot();
-    wrapper.find('select').simulate('change', { target: { value: "value" } });
-    expect(onChange).toBeCalledWith({ value: "value" }, { target: { value: "value" } });
+    wrapper.find('select').simulate('change', { target: { value: 'value' } });
+    expect(onChange).toBeCalledWith(
+      { value: 'value' },
+      { target: { value: 'value' } },
+    );
   });
 });

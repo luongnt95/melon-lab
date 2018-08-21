@@ -1,9 +1,7 @@
 import React from 'react';
 import GetStarted from './index';
 
-const data = {
-
-};
+const data = {};
 
 describe('Holdings', () => {
   const defaultElement = <GetStarted {...data} />;

@@ -45,12 +45,12 @@ export const TermsAndConditions: StatelessComponent<
             <strong>
               DEPLOYMENT OF MELON PROTOCOL IN A MAINNET ENVIRONMENT ONLY FOR
               TESTING PURPOSES
-            </strong>: Melonport AG (the “Company”) has developed a
-            Smart-Contract-System (the “Melon Protocol”) which enables users, to
-            manage crypto assets. THE SOFTWARE DEPLOYMENT OF THE CURRENT VERSION
-            OF THE MELON PROTOCOL TO THE ETHEREUM MAINNET IS MADE FOR TESTING
-            PURPOSES IN A LIVE ENVIRONMENT ONLY and within the clear framework
-            set out by the{' '}
+            </strong>
+            : Melonport AG (the “Company”) has developed a Smart-Contract-System
+            (the “Melon Protocol”) which enables users, to manage crypto assets.
+            THE SOFTWARE DEPLOYMENT OF THE CURRENT VERSION OF THE MELON PROTOCOL
+            TO THE ETHEREUM MAINNET IS MADE FOR TESTING PURPOSES IN A LIVE
+            ENVIRONMENT ONLY and within the clear framework set out by the{' '}
             <a
               href={
                 `https://github.com/melonproject/contribution/blob/master/` +
@@ -60,7 +60,8 @@ export const TermsAndConditions: StatelessComponent<
               rel="noopener noreferrer"
             >
               first capsule (Paros) and second contribution period terms{' '}
-            </a>.
+            </a>
+            .
           </p>
 
           <p>
@@ -90,17 +91,19 @@ export const TermsAndConditions: StatelessComponent<
           <p>
             <strong>
               NO INVOLVEMENT OF COMPANY IN ANY TRANSACTIONS BETWEEN USERS
-            </strong>: WHILE THE COMPANY DEVELOPED THE MELON PROTOCOL, IT IS
-            IMPORTANT TO NOTE THAT THE COMPANY IS NOT INVOLVED IN ANY OF THE
-            INTERACTIONS BY MANAGERS WITH THE MELON PROTOCOL, NOR DOES IT HOLD
-            CUSTODY OF ANY OF THE USER ASSETS INVOLVED DURING THE COMPETITION.
+            </strong>
+            : WHILE THE COMPANY DEVELOPED THE MELON PROTOCOL, IT IS IMPORTANT TO
+            NOTE THAT THE COMPANY IS NOT INVOLVED IN ANY OF THE INTERACTIONS BY
+            MANAGERS WITH THE MELON PROTOCOL, NOR DOES IT HOLD CUSTODY OF ANY OF
+            THE USER ASSETS INVOLVED DURING THE COMPETITION.
           </p>
           <p>
             <strong>
               RESPONSIBILTY FOR SECURITY OF PASSWORDS REMAINS SOLELY WITH USER
-            </strong>: There is no possibility for the Company to recover USER’S
-            private password, respectively USER’S private key. When setting up
-            an account within the Melon platform, user will be responsible for
+            </strong>
+            : There is no possibility for the Company to recover USER’S private
+            password, respectively USER’S private key. When setting up an
+            account within the Melon platform, user will be responsible for
             keeping user’s own account secrets, which may be a twelve-word seed
             phrase, an account file, or other locally stored secret information.
             The Melon Protocol encrypts this information locally with a password
@@ -110,8 +113,8 @@ export const TermsAndConditions: StatelessComponent<
             this section.
           </p>
           <p>
-            <strong>INTERACTIONS WITH PROTOCOL CANNOT BE REVISED </strong>
-            : User understands there are no rights of recourse or compensation
+            <strong>INTERACTIONS WITH PROTOCOL CANNOT BE REVISED </strong>: User
+            understands there are no rights of recourse or compensation
             whatsoever especially with regards to any complaints of theft,
             malfunctioning of the Melon Protocol, external abuse of the Melon
             Protocol, misbehavior of managers etc.
@@ -120,17 +123,18 @@ export const TermsAndConditions: StatelessComponent<
           <p>
             <strong>
               RESPONSIBILITY FOR LEGAL COMPLIANCE AND TAXATION SOLELY WITH USER
-            </strong>: User understands and accepts that user is solely
-            responsible for compliance with all laws that may apply to user’s
-            particular use of the Melon Protocol. Company makes no
-            representation regarding the application of any laws. User is aware
-            of the fact, that the use of the Melon Protocol may be qualified
-            differently in different jurisdictions and agrees that Company is
-            not responsible for determining whether or which laws may apply to
-            his/her use of the Melon Protocol. Further, user understands and
-            accepts that it is user’s sole responsibility to assess whether any
-            taxes will become due for his/her interactions with the Melon
-            Protocol under any applicable jurisdiction.
+            </strong>
+            : User understands and accepts that user is solely responsible for
+            compliance with all laws that may apply to user’s particular use of
+            the Melon Protocol. Company makes no representation regarding the
+            application of any laws. User is aware of the fact, that the use of
+            the Melon Protocol may be qualified differently in different
+            jurisdictions and agrees that Company is not responsible for
+            determining whether or which laws may apply to his/her use of the
+            Melon Protocol. Further, user understands and accepts that it is
+            user’s sole responsibility to assess whether any taxes will become
+            due for his/her interactions with the Melon Protocol under any
+            applicable jurisdiction.
           </p>
           <p>
             <strong>JURISDICTION AND GOVERNING LAW</strong>: Any disputes

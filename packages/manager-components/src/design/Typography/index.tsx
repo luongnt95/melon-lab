@@ -6,7 +6,7 @@ import styles from './styles.css';
 const FontSizes = () => (
   <div className="fonts">
     <style jsx>{styles}</style>
-    {Object.keys(typography.fontSizes).map((key) => (
+    {Object.keys(typography.fontSizes).map(key => (
       <div key={key} className="fonts__row">
         <div
           className="fonts__col"
@@ -28,7 +28,7 @@ const FontSizes = () => (
 const FontFamilies = () => (
   <div className="fonts">
     <style jsx>{styles}</style>
-    {Object.keys(typography.fontFamilies).map((key) => (
+    {Object.keys(typography.fontFamilies).map(key => (
       <div key={key} className="fonts__row">
         <div
           className="fonts__col"
@@ -50,7 +50,7 @@ const FontFamilies = () => (
 const FontWeights = () => (
   <div className="fonts">
     <style jsx>{styles}</style>
-    {Object.keys(typography.fontWeights).map((key) => (
+    {Object.keys(typography.fontWeights).map(key => (
       <div key={key} className="fonts__row">
         <div
           className="fonts__col"

@@ -46,7 +46,8 @@ export const Account: StatelessComponent<AccountProps> = ({
             Your ethereum address. Use this for white listing on{' '}
             <a href="https://ico.bitcoinsuisse.ch/" target="_blank">
               ico.bitcoinsuisse.ch
-            </a>:
+            </a>
+            :
             <strong>
               <a
                 href={`https://${

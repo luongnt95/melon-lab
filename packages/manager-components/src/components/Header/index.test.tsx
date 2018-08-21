@@ -17,7 +17,7 @@ const data = {
   status,
   balances,
   account,
-  network: 'kovan'
+  network: 'kovan',
 };
 
 describe('Header', () => {

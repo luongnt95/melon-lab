@@ -8,7 +8,11 @@ storiesOf('Blocks|Button', module)
     return <Button onClick={action('clicked')}>Default button</Button>;
   })
   .add('Secondary', () => {
-    return <Button style="secondary" onClick={action('clicked')}>Secondary button</Button>;
+    return (
+      <Button style="secondary" onClick={action('clicked')}>
+        Secondary button
+      </Button>
+    );
   })
   .add('Disabled', () => {
     return <Button disabled={true}>Disabled button</Button>;

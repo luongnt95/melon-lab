@@ -13,8 +13,7 @@ const data = {
   totalSupply: '1.0000',
   rank: '...',
   numberOfFunds: '...',
-  tweetHref:
-    '...',
+  tweetHref: '...',
   loading: false,
   dataValid: false,
   expectedPrize: '...',

@@ -7,12 +7,7 @@ const func = () => true;
 storiesOf('Blocks|Toggle', module)
   .add('Default', () => {
     return (
-      <Toggle
-        name="strategy"
-        value="Limit"
-        text="Limit"
-        onChange={func}
-      />
+      <Toggle name="strategy" value="Limit" text="Limit" onChange={func} />
     );
   })
   .add('Is checked', () => {

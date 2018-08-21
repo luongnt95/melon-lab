@@ -1,8 +1,7 @@
 import React from 'react';
 import Administration from './index';
 
-const data = {
-};
+const data = {};
 
 describe('Administration', () => {
   const defaultElement = <Administration {...data} />;

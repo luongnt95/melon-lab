@@ -2,15 +2,9 @@ import React from 'react';
 import Switch from './index';
 
 describe('Switch', () => {
-  const options = [
-    'ETH-T-M',
-    'MLN-T-M',
-  ];
+  const options = ['ETH-T-M', 'MLN-T-M'];
 
-  const labels = [
-    'Buy',
-    'Sell',
-  ];
+  const labels = ['Buy', 'Sell'];
 
   const defaultElement = <Switch options={options} labels={labels} />;
 

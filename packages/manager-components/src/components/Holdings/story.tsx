@@ -5,7 +5,7 @@ import Holdings from './index';
 const data = {
   isReadyToTrade: true,
   dataValid: true,
-  quoteAsset: "WETH-T",
+  quoteAsset: 'WETH-T',
   holdings: [
     { name: 'ANT-T', balance: '0.0000', price: '0.0035', percentage: '0.0000' },
     { name: 'BAT-T', balance: '0.0000', price: '0.0007', percentage: '0.0000' },

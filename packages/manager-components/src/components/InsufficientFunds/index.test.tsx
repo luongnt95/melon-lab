@@ -1,8 +1,7 @@
 import React from 'react';
 import InsufficientFunds from './index';
 
-const data = {
-};
+const data = {};
 
 describe('InsufficientFunds', () => {
   const defaultElement = <InsufficientFunds {...data} />;

@@ -24,7 +24,9 @@ const ColorWrapper = ({ colors }) => (
 );
 
 const MainColors = () => <ColorWrapper colors={colorsVariables.mainColors} />;
-const StatusColors = () => <ColorWrapper colors={colorsVariables.statusColors} />;
+const StatusColors = () => (
+  <ColorWrapper colors={colorsVariables.statusColors} />
+);
 const OtherColors = () => <ColorWrapper colors={colorsVariables.otherColors} />;
 
 export { MainColors, StatusColors, OtherColors };

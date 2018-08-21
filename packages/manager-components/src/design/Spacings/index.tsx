@@ -4,7 +4,7 @@ import spacings from '~/design/spacings.js';
 import styles from './styles.css';
 
 const Spacings = () => (
-  <div className='spacings'>
+  <div className="spacings">
     <style jsx>{styles}</style>
     {Object.keys(spacings).map((key, index) => (
       <div key={key} className="spacings__row">
