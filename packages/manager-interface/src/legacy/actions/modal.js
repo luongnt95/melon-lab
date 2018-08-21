@@ -48,10 +48,14 @@ export const actions = {
   close: () => ({
     type: types.CLOSE,
     isOpen: false,
+    primaryInteraction: null,
+    secondaryInteraction: null,
   }),
   cancel: () => ({
     type: types.CANCEL,
     isOpen: false,
+    primaryInteraction: null,
+    secondaryInteraction: null,
   }),
   confirm: ({ body, method }) => ({
     type: types.CONFIRM,
@@ -76,9 +80,10 @@ export const actions = {
   }),
   confirmed: gasPrice => ({
     type: types.CONFIRMED,
-
     gasPrice,
     isOpen: false,
+    primaryInteraction: null,
+    secondaryInteraction: null,
   }),
   password: body => ({
     type: types.PASSWORD,
@@ -110,8 +115,8 @@ export const actions = {
     title: 'Fatal Error',
     body,
     fees: null,
-    primaryInteraction: '',
-    secondaryInteraction: '',
+    primaryInteraction: null,
+    secondaryInteraction: null,
   }),
   loading: (body = 'Sending transaction ...') => ({
     type: types.LOADING,

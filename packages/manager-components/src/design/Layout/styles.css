@@ -35,10 +35,10 @@
 }
 
 .layout {
-  padding: 50px 16px;
+  margin: 70px 16px;
 
   @media (--viewport-s) {
-    padding: 50px 7%;
+    margin: 70px 7%;
   }
 }
 
