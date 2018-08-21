@@ -28,7 +28,7 @@ function* confirmer(environment, modalSentence) {
   while (true) {
     const { fees, resolve, method } = yield take(confirmChannel);
     yield put(
-      modalActions.confirm({
+      modalActions.confirmFee({
         body: modalSentence,
         fees,
         method,

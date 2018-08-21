@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  interactionHandler: interaction => {
+  interactionHandler: (event, interaction) => {
     // Hint: Submit is handled by the form, not as action. But we need to
     // prevent form submitting for the other actions.
     if (interaction === interactions.CANCEL) {

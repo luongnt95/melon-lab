@@ -4,7 +4,6 @@ import FeeForm from '@melonproject/manager-components/components/FeeForm/contain
 import { actions } from '../actions/modal';
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     initialValues: {
       gasPrice: R.pathOr(20, ['form', 'modal', 'values', 'gasPrice'], state),

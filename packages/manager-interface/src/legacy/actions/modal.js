@@ -5,6 +5,7 @@ export const types = {
   CLOSE: 'CLOSE:modal:melon.fund',
   CANCEL: 'CANCEL:modal:melon.fund',
   CONFIRM: 'CONFIRM:modal:melon.fund',
+  CONFIRM_FEE: 'CONFIRM_FEE:modal:melon.fund',
   CONFIRMED: 'CONFIRMED:modal:melon.fund',
   ERROR: 'ERROR:modal:melon.fund',
   LOADING: 'LOADING:modal.melon.fund',
@@ -52,8 +53,18 @@ export const actions = {
     type: types.CANCEL,
     isOpen: false,
   }),
-  confirm: ({ body, fees, method }) => ({
+  confirm: ({ body, method }) => ({
     type: types.CONFIRM,
+    isOpen: true,
+    modalType: modalTypes.CONFIRM,
+    title: 'Confirm',
+    body,
+    method,
+    primaryInteraction: interactions.CONFIRM,
+    secondaryInteraction: interactions.CANCEL,
+  }),
+  confirmFee: ({ body, fees, method }) => ({
+    type: types.CONFIRM_FEE,
     isOpen: true,
     modalType: modalTypes.CONFIRM,
     title: 'Confirm',
