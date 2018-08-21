@@ -5,7 +5,7 @@ import Ranking from '../../containers/Ranking';
 const Overview = () => {
   return (
     <Fragment>
-      <GetStarted />
+      <GetStarted isHome />
       <Ranking />
     </Fragment>
   );

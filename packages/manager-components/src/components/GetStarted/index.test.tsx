@@ -3,7 +3,7 @@ import GetStarted from './index';
 
 const data = {};
 
-describe('Holdings', () => {
+describe('GetStarted', () => {
   const defaultElement = <GetStarted {...data} />;
 
   it('should render correctly', () => {

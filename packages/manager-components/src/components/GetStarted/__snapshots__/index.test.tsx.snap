@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Holdings should render correctly 1`] = `
+exports[`GetStarted should render correctly 1`] = `
 <div
   className="jsx-__scopedHash get-started"
 >
@@ -8,20 +8,11 @@ exports[`Holdings should render correctly 1`] = `
     css="__scoped"
     styleId="__scopedHash"
   />
-  <div
-    className="jsx-__scopedHash get-started__welcome"
+  <h3
+    className="jsx-__scopedHash"
   >
-    <h1
-      className="jsx-__scopedHash get-started__title"
-    >
-      Welcome to 
-      <span
-        className="jsx-__scopedHash get-started__name"
-      >
-        Melon
-      </span>
-    </h1>
-  </div>
+    Get started
+  </h3>
   <div
     className="jsx-__scopedHash get-started__description"
   >

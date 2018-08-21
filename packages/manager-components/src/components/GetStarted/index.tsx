@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React, { Fragment, StatelessComponent } from 'react';
 import Button from '~/blocks/Button';
 import styles from './styles.css';
@@ -10,6 +11,7 @@ export interface GetStartedProps {
   linkCaption?: string;
   networkId?: string;
   onClick?: (action) => void;
+  isHome?: boolean;
 }
 
 export const GetStarted: StatelessComponent<GetStartedProps> = ({
@@ -17,6 +19,7 @@ export const GetStarted: StatelessComponent<GetStartedProps> = ({
   linkCaption,
   networkId,
   onClick,
+  isHome,
 }) => {
   const onStart = () => {
     if (onClick) {
@@ -24,15 +27,24 @@ export const GetStarted: StatelessComponent<GetStartedProps> = ({
     }
   };
 
+  const getStartedClassNames = classNames('get-started', {
+    [`get-started--is-home`]: isHome,
+  });
+
   return (
-    <div className="get-started">
+    <div className={getStartedClassNames}>
       <style jsx>{styles}</style>
 
-      <div className="get-started__welcome">
-        <h1 className="get-started__title">
-          Welcome to <span className="get-started__name">Melon</span>
-        </h1>
-      </div>
+      {isHome ? (
+        <div className="get-started__welcome">
+          <h1 className="get-started__title">
+            Welcome to <span className="get-started__name">Melon</span>
+          </h1>
+        </div>
+      ) : (
+        <h3>Get started</h3>
+      )}
+
       <div className="get-started__description">
         {networkId === '1' ? (
           <Fragment>
