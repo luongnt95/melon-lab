@@ -41,7 +41,7 @@ export default class MyDocument extends Document {
             <meta http-equiv="Content-Security-Policy" content={csp} />
           )}
           <link rel="manifest" href="./static/manifest.json" />
-          <link rel="shortcut icon" href="./static/favicon.png?v=2" />
+          <link rel="shortcut icon" href="./static/images/favicon.png" />
           {!ELECTRON && <script src="./static/tracking.js" />}
           <title>Melon Olympiad</title>
         </Head>
