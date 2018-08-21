@@ -2,14 +2,14 @@
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  margin: var(--space-m) calc(var(--space-m) * -1);
+  margin: 0 calc(var(--space-m) * -1);
 }
 
 .trade__info-item {
   margin: 0;
   padding: 0;
   width: auto;
-  padding: var(--space-m);
+  padding: 0 var(--space-m);
 }
 
 .trade__info-item:nth-last-child(1) {
