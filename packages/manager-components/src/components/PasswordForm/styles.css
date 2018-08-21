@@ -1,0 +1,10 @@
+.password-form__buttons {
+  margin-top: var(--space-m);
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.password-form__button {
+  flex: 0 0 40%;
+}

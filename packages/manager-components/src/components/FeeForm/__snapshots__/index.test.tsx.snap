@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FeeForm should render correctly 1`] = `
+<Formik
+  enableReinitialize={true}
+  handleSubmit={[Function]}
+  initialValues={
+    Object {
+      "gasPrice": "20.000",
+    }
+  }
+  isInitialValid={false}
+  onSubmit={[Function]}
+  render={[Function]}
+  validateOnBlur={true}
+  validateOnChange={true}
+/>
+`;

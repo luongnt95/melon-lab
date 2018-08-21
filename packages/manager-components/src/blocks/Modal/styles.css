@@ -1,0 +1,62 @@
+:global(.modal__wrap) {
+  background: rgb(255, 253, 243);
+  position: absolute;
+  border: none;
+  overflow: auto;
+  border-radius: 0px;
+  outline: none;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  top: 16px;
+}
+
+@media (--viewport-m) {
+  :global(.modal__wrap) {
+    top: 40px;
+    width: 700px;
+    bottom: auto;
+    left: auto;
+    right: auto;
+  }
+}
+
+:global(.modal__overlay) {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 200;
+  display: flex;
+  justify-content: center;
+}
+
+:global(.modal__actions) {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+:global(.modal__action) {
+  flex: 0 0 40%;
+}
+
+:global(.modal__spinner) {
+  width: 50px;
+  height: 50px;
+  margin: var(--space-s) auto;
+}
+
+.modal__title {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-l);
+  background-color: var(--color-secondary);
+  margin-top: 0;
+  padding: var(--space-s) var(--space-m);
+}
+
+.modal__content {
+  margin: var(--space-m);
+}

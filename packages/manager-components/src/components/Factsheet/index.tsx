@@ -68,7 +68,7 @@ const Factsheet: StatelessComponent<FactsheetProps> = ({
         </a>
       </h3>
       {loading ? (
-        <Spinner size="small" />
+        <Spinner icon size="small" />
       ) : (
           <div>
             Creation date:{' '}

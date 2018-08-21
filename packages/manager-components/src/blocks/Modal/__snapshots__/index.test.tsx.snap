@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal should render correctly 1`] = `
+<Modal
+  ariaHideApp={true}
+  bodyOpenClassName="ReactModal__Body--open"
+  className="modal__wrap"
+  closeTimeoutMS={0}
+  isOpen={true}
+  overlayClassName="modal__overlay"
+  parentSelector={[Function]}
+  portalClassName="ReactModalPortal"
+  shouldCloseOnEsc={true}
+  shouldCloseOnOverlayClick={true}
+  shouldFocusAfterRender={true}
+  shouldReturnFocusAfterClose={true}
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <div
+    className="jsx-__scopedHash modal__title"
+  >
+    Hello World
+  </div>
+  <div
+    className="jsx-__scopedHash modal__content"
+  >
+    <p
+      className="jsx-__scopedHash"
+    />
+    Hello World
+    <Form />
+  </div>
+</Modal>
+`;

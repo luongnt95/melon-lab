@@ -5,10 +5,12 @@ import styles from './styles.css';
 
 export interface SpinnerProps {
   size?: string;
+  icon?: boolean;
 }
 
 const Spinner: StatelessComponent<SpinnerProps> = ({
   size = 'default',
+  icon,
 }) => {
   const sizeClass = `spinner--${size}`;
   const classes = `spinner ${sizeClass}`;
@@ -16,7 +18,9 @@ const Spinner: StatelessComponent<SpinnerProps> = ({
   return (
     <div className={classes}>
       <style jsx>{styles}</style>
-      <Icon iconClass="spinner__icon" name="logos_without-border" />
+      {icon &&
+        <Icon iconClass="spinner__icon" name="logos_without-border" />
+      }
       <div className="spinner__loader" />
     </div>
   );

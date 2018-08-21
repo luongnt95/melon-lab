@@ -1,5 +1,4 @@
 import React from 'react';
-import { Image, Container } from 'semantic-ui-react';
 import Link from 'redux-first-router-link';
 import WrongNetwork from '@melonproject/manager-components/components/WrongNetwork';
 import NoConnection from '@melonproject/manager-components/components/NoConnection';
@@ -18,7 +17,7 @@ import RestoreContainer from '../../containers/wallet/Restore';
 import ImportContainer from '../../containers/wallet/Import';
 import CompetitionRegistrationContainer from '../../containers/CompetitionRegistration';
 import OlympiadPlaceholderContainer from '../../containers/OlympiadPlaceholder';
-import Modal from '../../containers/Modal';
+import ModalContainer from '../../containers/Modal';
 import { types } from '../../actions/routes';
 import { greaterThan } from '../../utils/functionalBigNumber';
 import Header from '@melonproject/manager-components/components/Header';
@@ -147,14 +146,7 @@ const App = props => {
         <Header {...headerData} />
       </div>
 
-      <Container
-        style={{
-          paddingTop: '70px',
-          paddingBottom: '70px',
-        }}
-      >
-        <Layout>{getMainComponent(props)}</Layout>
-      </Container>
+      <Layout>{getMainComponent(props)}</Layout>
       <div
         style={{
           position: 'fixed',
@@ -165,7 +157,7 @@ const App = props => {
       >
         <Footer />
       </div>
-      <Modal />
+      <ModalContainer />
     </div>
   );
 };

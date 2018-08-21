@@ -78,7 +78,7 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
 
       {loading ? (
         <div className="orderbook__loading">
-          <Spinner />
+          <Spinner icon />
         </div>
       ) : (
           <Fragment>

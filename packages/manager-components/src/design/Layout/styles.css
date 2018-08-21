@@ -26,25 +26,34 @@
     url('./static/fonts/source-serif-pro-v5-latin-700.woff') format('woff');
 }
 
-.layout :global(*),
-.layout :global(:before),
-.layout :global(:after) {
+:global(body) {
+  font-family: 'Source Serif Pro', serif;
+  background: #fffdf3;
+  font-size: 14px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.layout {
+  margin: 70px 16px;
+
+  @media (--viewport-s) {
+    margin: 70px 7%;
+  }
+}
+
+:global(*),
+:global(:before),
+:global(:after) {
   box-sizing: border-box;
 }
 
-.layout :global(body),
-.layout {
-  font-family: 'Source Serif Pro', serif;
-  font-size: 14px;
-  line-height: 1.4;
-}
-
-.layout :global(h3) {
+:global(h3) {
   font-size: var(--font-size-xl);
   position: relative;
 }
 
-.layout :global(h3):after {
+:global(h3):after {
   content: ' ';
   position: absolute;
   bottom: -5px;
@@ -54,17 +63,17 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.layout :global(h4) {
+:global(h4) {
   font-size: var(--font-size-l);
   margin-bottom: var(--space-xs);
 }
 
-.layout :global(a) {
+:global(a) {
   text-decoration: none;
   color: var(--color-black);
 }
 
-.layout :global(hr) {
+:global(hr) {
   border: 0;
   height: 0;
   border-top: 1px solid var(--color-border);

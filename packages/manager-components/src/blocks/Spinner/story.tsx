@@ -4,8 +4,11 @@ import Spinner from './index';
 
 storiesOf('Blocks|Spinner', module)
   .add('Default', () => {
-    return <Spinner />;
+    return <Spinner icon />;
   })
   .add('Small', () => {
-    return <Spinner size="small" />;
+    return <Spinner icon size="small" />;
+  })
+  .add('without Icon', () => {
+    return <Spinner size="inflated" />;
   });
