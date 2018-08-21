@@ -1,6 +1,6 @@
 import React, { StatelessComponent } from 'react';
 import Button from '~/blocks/Button';
-import Dropdown from '~/blocks/Dropdown';
+// import Dropdown from '~/blocks/Dropdown';
 import Form from '~/blocks/Form';
 import Input from '~/blocks/Input';
 import Notification from '~/blocks/Notification';

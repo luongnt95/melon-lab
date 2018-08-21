@@ -22,7 +22,7 @@ export const RecentTrades: StatelessComponent<RecentTradesProps> = ({
   quoteTokenSymbol,
   trades,
 }) => {
-  const classnameTypeCell = type =>
+  const typeCellClassNames = type =>
     classNames(
       'recent-trades__cell',
       {
@@ -60,7 +60,7 @@ export const RecentTrades: StatelessComponent<RecentTradesProps> = ({
                   <Row key={index}>
                     <CellBody>{trade.timestamp}</CellBody>
                     <CellBody>
-                      <span className={classnameTypeCell(trade.type)}>
+                      <span className={typeCellClassNames(trade.type)}>
                         {trade.type}
                       </span>
                     </CellBody>

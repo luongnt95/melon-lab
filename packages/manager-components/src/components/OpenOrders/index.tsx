@@ -42,7 +42,7 @@ export const OpenOrders: StatelessComponent<OpenOrdersProps> = ({
     }
   };
 
-  const classnameTypeCell = type =>
+  const typeCellClassNames = type =>
     classNames(
       'open-orders__cell',
       {
@@ -80,7 +80,7 @@ export const OpenOrders: StatelessComponent<OpenOrdersProps> = ({
                     <CellBody>{order.timestamp}</CellBody>
                     <CellBody>{order.id}</CellBody>
                     <CellBody>
-                      <span className={classnameTypeCell(order.type)}>
+                      <span className={typeCellClassNames(order.type)}>
                         {order.type}
                       </span>
                     </CellBody>
