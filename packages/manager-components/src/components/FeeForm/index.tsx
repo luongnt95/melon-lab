@@ -10,7 +10,7 @@ import {
   TableBody,
   TableHead,
 } from '~/blocks/Table';
-import { add } from '../../utils/functionalBigNumber';
+import { add, toBigNumber } from '../../utils/functionalBigNumber';
 
 import styles from './styles.css';
 
@@ -83,7 +83,7 @@ export const FeeForm: StatelessComponent<FeeFormProps> = ({
                     <CellBody>{entry.description}</CellBody>
                     <CellBody>{entry.gasLimit}</CellBody>
                     <CellBody>
-                      Ξ {(values.gasPrice * entry.gasLimit) / 10 ** 9}
+                      Ξ {toBigNumber((values.gasPrice * entry.gasLimit) / 10 ** 9).toFixed(4)}
                     </CellBody>
                   </Row>
                 ))}
@@ -93,11 +93,11 @@ export const FeeForm: StatelessComponent<FeeFormProps> = ({
                   <CellHead />
                   <CellHead>
                     Ξ{' '}
-                    {add(
+                    {toBigNumber(add(
                       ...fees.map(
                         e => (e.gasLimit * values.gasPrice) / 10 ** 9,
                       ),
-                    )}
+                    )).toFixed(4)}
                   </CellHead>
                 </Row>
               </TableBody>
