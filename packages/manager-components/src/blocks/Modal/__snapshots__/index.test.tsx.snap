@@ -4,7 +4,7 @@ exports[`Modal should render correctly 1`] = `
 <Modal
   ariaHideApp={true}
   bodyOpenClassName="ReactModal__Body--open"
-  className="modal__content"
+  className="modal__wrap"
   closeTimeoutMS={0}
   isOpen={true}
   overlayClassName="modal__overlay"
@@ -19,15 +19,19 @@ exports[`Modal should render correctly 1`] = `
     css="__scoped"
     styleId="__scopedHash"
   />
-  <h3
+  <div
     className="jsx-__scopedHash modal__title"
   >
     Hello World
-  </h3>
-  <p
-    className="jsx-__scopedHash"
-  />
-  Hello World
-  <Form />
+  </div>
+  <div
+    className="jsx-__scopedHash modal__content"
+  >
+    <p
+      className="jsx-__scopedHash"
+    />
+    Hello World
+    <Form />
+  </div>
 </Modal>
 `;

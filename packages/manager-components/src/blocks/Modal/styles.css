@@ -1,11 +1,10 @@
-:global(.modal__content) {
+:global(.modal__wrap) {
   background: rgb(255, 253, 243);
   position: absolute;
   border: none;
   overflow: auto;
   border-radius: 0px;
   outline: none;
-  padding: 20px;
   left: 16px;
   right: 16px;
   bottom: 16px;
@@ -13,7 +12,7 @@
 }
 
 @media (--viewport-m) {
-  :global(.modal__content) {
+  :global(.modal__wrap) {
     top: 40px;
     width: 700px;
     bottom: auto;
@@ -51,5 +50,13 @@
 }
 
 .modal__title {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-l);
+  background-color: var(--color-secondary);
   margin-top: 0;
+  padding: var(--space-s) var(--space-m);
+}
+
+.modal__content {
+  margin: var(--space-m);
 }
