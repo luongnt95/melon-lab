@@ -6,7 +6,6 @@ import {
   deserializeOrder,
   matchOrders,
 } from '@melonproject/melon.js';
-import { reset } from 'redux-form';
 import { types, actions } from '../actions/trade';
 import { actions as fundActions } from '../actions/fund';
 import { actions as modalActions } from '../actions/modal';
@@ -42,7 +41,6 @@ function* placeOrderSaga(action) {
     });
     yield put(actions.placeOrderSucceeded());
     yield put(modalActions.close());
-    yield put(reset('trade'));
   }
 
   yield call(
@@ -95,7 +93,6 @@ function* takeOrderSaga(action) {
     });
     yield put(actions.takeOrderSucceeded());
     yield put(modalActions.close());
-    yield put(reset('trade'));
     yield put(fundActions.infoRequested(fundAddress));
   }
 

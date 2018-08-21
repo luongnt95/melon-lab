@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { reset } from 'redux-form';
 import { lifecycle } from 'recompose';
 import { actions } from '../actions/holdings';
 import { actions as appActions } from '../actions/app';
@@ -37,7 +36,6 @@ const mapDispatchToProps = dispatch => ({
       dispatch(appActions.updateAssetPair({ base: asset }));
       dispatch(orderbookActions.getOrderbook());
       dispatch(recentTradesActions.getRecentTrades());
-      dispatch(reset('trade'));
       if (isReadyToTrade) {
         dispatch(appActions.scrollTo('trade'));
       } else {
