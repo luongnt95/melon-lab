@@ -69,7 +69,6 @@ The whole source code can be found in `/src`. The main architectural patterns ar
 * [Create React App](https://github.com/facebookincubator/create-react-app)
 * [Redux](https://redux.js.org/)
 * [Redux Saga](https://redux-saga.js.org/)
-* [Semantic UI React](https://react.semantic-ui.com/introduction) (We will move away from this)
 
 Here is a quick overview and description of the subfolders of `/src`:
 
