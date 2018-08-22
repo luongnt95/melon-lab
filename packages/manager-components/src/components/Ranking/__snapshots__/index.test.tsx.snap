@@ -11,7 +11,7 @@ exports[`Holdings should render correctly 1`] = `
   <h3
     className="jsx-__scopedHash"
   >
-    Melon Funds Ranking
+    Funds Ranking
   </h3>
   <div
     className="jsx-__scopedHash ranking__loading"

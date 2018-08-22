@@ -1,16 +1,8 @@
 import React, { StatelessComponent } from 'react';
-import Highlight from 'react-highlighter';
-import Button from '~/blocks/Button';
+import Card from '~/blocks/Card';
+import Dropdown from '~/blocks/Dropdown';
 import Input from '~/blocks/Input';
 import Spinner from '~/blocks/Spinner';
-import {
-  CellBody,
-  CellHead,
-  Row,
-  Table,
-  TableBody,
-  TableHead,
-} from '~/blocks/Table';
 
 import styles from './styles.css';
 
@@ -35,100 +27,82 @@ export const Ranking: StatelessComponent<RankingProps> = ({
   search,
   goToFund,
 }) => {
-  const onOrdering = (e, field) => {
+  const onOrdering = (field, e) => {
     if (setOrdering) {
-      ordering === `+${field}`
-        ? setOrdering(`-${field}`)
-        : setOrdering(`+${field}`);
+      ordering === field.value
+        ? setOrdering(field.value)
+        : setOrdering(field.value);
     }
   };
 
-  const onFundClick = (e, address) => {
+  const onFundClick = address => {
     if (goToFund) {
       goToFund(address);
     }
   };
 
-  const isActiveCol = colName => {
-    if (ordering && ordering.includes(colName)) {
-      if (ordering.includes('+')) {
-        return 'asc';
-      } else {
-        return 'desc';
-      }
-    }
-    return false;
+  const sorting = {
+    options: [
+      {
+        name: 'Highest rank',
+        value: '+rank',
+      },
+      {
+        name: 'Lowest rank',
+        value: '-rank',
+      },
+      {
+        name: 'Highest price',
+        value: '-price',
+      },
+      {
+        name: 'Lowest price',
+        value: '+price',
+      },
+      {
+        name: 'Newest',
+        value: '-inception',
+      },
+      {
+        name: 'Oldest',
+        value: '+inception',
+      },
+    ],
   };
 
   return (
     <div className="ranking">
       <style jsx>{styles}</style>
-      <h3>Melon Funds Ranking</h3>
+      <h3>Funds Ranking</h3>
       {loading ? (
         <div className="ranking__loading">
           <Spinner icon />
         </div>
       ) : (
         <div className="ranking__table-wrap">
-          <Table>
-            <TableHead>
-              <Row isHead={true}>
-                <CellHead
-                  headFor="rank"
-                  onClick={onOrdering}
-                  sorted={isActiveCol('rank')}
-                >
-                  #
-                </CellHead>
-                <CellHead>
-                  <Input
-                    name="search"
-                    placeholder="Search fund"
-                    onChange={onFilterChange && onFilterChange}
-                  />
-                </CellHead>
-                <CellHead
-                  headFor="price"
-                  onClick={onOrdering}
-                  textAlign="right"
-                  sorted={isActiveCol('price')}
-                >
-                  Share price
-                </CellHead>
-                <CellHead
-                  headFor="inception"
-                  onClick={onOrdering}
-                  textAlign="right"
-                  sorted={isActiveCol('inception')}
-                >
-                  Inception Date
-                </CellHead>
-              </Row>
-            </TableHead>
-            <TableBody>
-              {rankingList.length > 0 &&
-                rankingList.map(fund => (
-                  <Row
-                    key={fund.address}
-                    active={fund.address === usersFund && true}
-                    size="large"
-                  >
-                    <CellBody>{fund.rank}</CellBody>
-                    <CellBody>
-                      <Button
-                        style="clear"
-                        onClick={onFundClick}
-                        buttonValue={fund.address}
-                      >
-                        <Highlight search={search}>{fund.name}</Highlight>
-                      </Button>
-                    </CellBody>
-                    <CellBody textAlign="right">{fund.sharePrice}</CellBody>
-                    <CellBody textAlign="right">{fund.inception}</CellBody>
-                  </Row>
-                ))}
-            </TableBody>
-          </Table>
+          <div className="ranking__filters">
+            <div className="ranking__search">
+              <Input
+                name="search"
+                placeholder="Search fund"
+                onChange={onFilterChange && onFilterChange}
+              />
+            </div>
+            <div className="ranking__sort">
+              <Dropdown {...sorting} onChange={onOrdering} />
+            </div>
+          </div>
+          <div className="ranking__funds">
+            {rankingList.length > 0 &&
+              rankingList.map(fund => (
+                <Card
+                  isActive={fund.address === usersFund && true}
+                  onClick={onFundClick}
+                  key={fund.address}
+                  {...fund}
+                />
+              ))}
+          </div>
         </div>
       )}
     </div>
