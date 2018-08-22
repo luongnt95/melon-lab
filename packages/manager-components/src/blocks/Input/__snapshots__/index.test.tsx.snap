@@ -8,9 +8,6 @@ exports[`Input should render correctly 1`] = `
     css="__scoped"
     styleId="__scopedHash"
   />
-  <span
-    className="jsx-__scopedHash input__label"
-  />
   <input
     className="jsx-__scopedHash input__field"
     onChange={[Function]}

@@ -54,7 +54,7 @@ const Input: StatelessComponent<InputProps> = ({
   return (
     <div className={inputClassNames}>
       <style jsx>{styles}</style>
-      <span className="input__label">{label}</span>
+      {label && <span className="input__label">{label}</span>}
       {formatNumber ? (
         <NumberFormat
           hidden={hidden}
