@@ -16,7 +16,7 @@
   border-radius: 0;
 }
 
-.input__field,
+.input__field::placeholder,
 :global(.input__field)::placeholder {
   color: var(--color-grey);
 }
