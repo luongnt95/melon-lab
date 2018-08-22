@@ -27,6 +27,7 @@
 }
 
 .dropdown__select {
+  font-family: var(--font-family-primary);
   appearance: none;
   border: none;
   width: 100%;
