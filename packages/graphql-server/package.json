@@ -7,7 +7,7 @@
     "clean": "rimraf coverage dist",
     "dev": "cross-env NODE_ENV=development backpack dev",
     "build": "cross-env NODE_ENV=production backpack build",
-    "start": "cross-env NODE_ENV=production node --require dotenv-extended/config dist",
+    "start": "cross-env NODE_ENV=production node dist",
     "lint": "tslint -p tsconfig.json",
     "format": "prettier --write \"{src,tests}/**/*.ts\"",
     "test": "jest"
@@ -23,8 +23,9 @@
     "body-parser": "^1.18.3",
     "cross-env": "^5.1.5",
     "debug": "2.6.9",
-    "dotenv-extended": "^2.0.1",
+    "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "find-up": "^3.0.0",
     "graphql": "^0.13.2",
     "graphql-subscriptions": "^0.5.8",
     "subscriptions-transport-ws": "^0.9.12"

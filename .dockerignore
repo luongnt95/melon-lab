@@ -19,7 +19,6 @@
 # Package files required for building production images.
 !packages/graphql-server/src/
 !packages/graphql-server/.babelrc
-!packages/graphql-server/.env.defaults
 !packages/graphql-server/backpack.config.js
 !packages/graphql-server/tsconfig.json
 
@@ -36,7 +35,6 @@
 !packages/manager-interface/src/
 !packages/manager-interface/config/
 !packages/manager-interface/.babelrc
-!packages/manager-interface/.env.defaults
 !packages/manager-interface/postcss.config.js
 !packages/manager-interface/electron-builder.yml
 !packages/manager-interface/next.config.js
@@ -56,3 +54,4 @@
 !yarn.lock
 !package.json
 !tsconfig.json
+!.env.defaults

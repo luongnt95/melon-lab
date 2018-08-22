@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: require('find-up').sync(['.env', '.env.defaults']),
+});
+
 import schema, { Network } from '@melonproject/graphql-schema';
 import { getConfig, getParityProvider } from '@melonproject/melon.js';
 import { graphqlExpress } from 'apollo-server-express';
@@ -79,4 +83,4 @@ async function start(port: number) {
   });
 }
 
-start(parseInt(process.env.PORT as string, 10));
+start(3030);

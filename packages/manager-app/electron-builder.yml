@@ -16,8 +16,6 @@ files:
     to: .
   - from: renderer/export
     to: .
-  - .env
-  - .env.defaults
 
 linux:
   category: Finance

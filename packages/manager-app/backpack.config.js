@@ -1,8 +1,11 @@
-require('dotenv-extended').config();
+require('dotenv').config({
+  path: require('find-up').sync(['.env', '.env.defaults']),
+});
 
 const path = require('path');
 const fs = require('fs');
 const externals = require('webpack-node-externals');
+const Dotenv = require('dotenv-webpack');
 const resolveWorkspaces = require('@melonproject/manager-interface/config/resolveWorkspaces');
 
 module.exports = {
@@ -74,6 +77,11 @@ module.exports = {
     config.plugins = config.plugins.filter(
       plugin => !(plugin instanceof webpack.BannerPlugin),
     );
+
+    config.plugins.push(new Dotenv({
+      path: require('find-up').sync(['.env', '.env.defaults']),
+      systemvars: true,
+    }));
 
     // Disable polyfilling of __dirname and __filename.
     config.node = Object.assign(config.node || {}, {
