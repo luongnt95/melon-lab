@@ -21,3 +21,11 @@
   width: 100%;
   justify-content: space-between;
 }
+
+.ranking__search :global(input) {
+  max-width: 120px;
+
+  @media (--viewport-m) {
+    max-width: 200px;
+  }
+}
