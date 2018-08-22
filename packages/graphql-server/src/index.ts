@@ -1,3 +1,7 @@
+require('dotenv').config({
+  path: require('find-up').sync(['.env', '.env.defaults']),
+});
+
 import schema, { Network } from '@melonproject/graphql-schema';
 import { getConfig, getParityProvider } from '@melonproject/melon.js';
 import { graphqlExpress } from 'apollo-server-express';
@@ -8,33 +12,26 @@ import { PubSub } from 'graphql-subscriptions';
 import { createServer } from 'http';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 
-function retrieveNetwork(network: string): Network {
-  switch (network.toUpperCase()) {
-    case 'LIVE':
+type Track = 'kovan-demo' | 'kovan-competition' | 'live';
+
+function retrieveNetwork(track: Track): Network {
+  switch (track) {
+    case 'live':
       return 'LIVE';
-    case 'KOVAN':
+    case 'kovan-competition':
+    case 'kovan-demo':
       return 'KOVAN';
     default:
       return 'KOVAN';
   }
 }
 
-type Track = 'kovan-demo' | 'kovan-competition' | 'live';
-
-function retrieveTrack(network: Network): Track {
-  if (network === 'LIVE') {
-    return 'live';
-  }
-
-  return 'kovan-demo';
-}
-
 async function start(port: number) {
   const app = express();
 
   const pubsub = new PubSub();
-  const network = retrieveNetwork((process.env.NETWORK as string) || 'KOVAN');
-  const track = retrieveTrack(network);
+  const track = (process.env.TRACK as Track) || 'kovan-demo';
+  const network = retrieveNetwork(track);
   const environment = Object.assign(await getParityProvider(process.env.JSON_RPC_ENDPOINT), { track });
   const config = await getConfig(environment);
 
@@ -79,4 +76,4 @@ async function start(port: number) {
   });
 }
 
-start(parseInt(process.env.PORT as string, 10));
+start(3030);
