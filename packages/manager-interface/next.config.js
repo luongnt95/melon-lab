@@ -16,7 +16,6 @@ const withComposedConfig = R.compose(
 const managerPkg = require('@melonproject/manager-interface/package.json');
 const melonJsPkg = require('@melonproject/melon.js/package.json');
 const smartContractsPkg = require('@melonproject/smart-contracts/package.json');
-const componentsPkg = require.resolve('@melonproject/manager-components/package.json');
 
 const managerComponents = path.resolve(path.dirname(require.resolve('@melonproject/manager-components/package.json')));
 const managerInterface = path.resolve(path.dirname(require.resolve('@melonproject/manager-interface/package.json')));
