@@ -12,7 +12,11 @@ exports[`Card should render correctly 1`] = `
   <div
     className="jsx-__scopedHash card__rank"
   >
-    #
+    <span
+      className="jsx-__scopedHash card__rank-symbol"
+    >
+      #
+    </span>
   </div>
   <div
     className="jsx-__scopedHash card__info-cell"

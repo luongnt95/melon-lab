@@ -35,7 +35,10 @@ const Card: StatelessComponent<CardProps> = ({
   return (
     <div onClick={onCardClick} className={cardClassNames}>
       <style jsx>{styles}</style>
-      <div className="card__rank">#{rank}</div>
+      <div className="card__rank">
+        <span className="card__rank-symbol">#</span>
+        {rank}
+      </div>
       <div className="card__info-cell">
         <div className="card__info-wrap">
           <div className="card__name">{name}</div>

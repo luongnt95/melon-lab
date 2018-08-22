@@ -70,3 +70,7 @@
   display: block;
   padding-bottom: var(--space-xxs);
 }
+
+.card__rank-symbol {
+  font-size: var(--font-size-xs);
+}
