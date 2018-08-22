@@ -1,4 +1,5 @@
 /build
+/export
 
 # Static files are copied over from the interface workspace.
 /src/static
