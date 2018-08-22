@@ -1,34 +1,31 @@
 export const types = {
-  INVEST_REQUESTED: "INVEST_REQUESTED:participation:melon.fund",
-  INVEST_SUCCEEDED: "INVEST_SUCCEEDED:participation:melon.fund",
-  INVEST_FAILED: "INVEST_FAILED:participation:melon.fund",
-  REDEEM_REQUESTED: "REDEEM_REQUESTED:participation:melon.fund",
-  REDEEM_SUCCEEDED: "REDEEM_SUCCEEDED:participation:melon.fund",
-  REDEEM_FAILED: "REDEEM_FAILED:participation:melon.fund",
+  INVEST_REQUESTED: 'INVEST_REQUESTED:participation:melon.fund',
+  INVEST_SUCCEEDED: 'INVEST_SUCCEEDED:participation:melon.fund',
+  INVEST_FAILED: 'INVEST_FAILED:participation:melon.fund',
+  REDEEM_REQUESTED: 'REDEEM_REQUESTED:participation:melon.fund',
+  REDEEM_SUCCEEDED: 'REDEEM_SUCCEEDED:participation:melon.fund',
+  REDEEM_FAILED: 'REDEEM_FAILED:participation:melon.fund',
   REDEEM_ALL_OWNED_ASSETS_REQUESTED:
-  "REDEEM_ALL_OWNED_ASSETS_REQUESTED:participation:melon.fund",
+    'REDEEM_ALL_OWNED_ASSETS_REQUESTED:participation:melon.fund',
   REDEEM_ALL_OWNED_ASSETS_SUCCEEDED:
-  "REDEEM_ALL_OWNED_ASSETS_SUCCEEDED:participation:melon.fund",
+    'REDEEM_ALL_OWNED_ASSETS_SUCCEEDED:participation:melon.fund',
   REDEEM_ALL_OWNED_ASSETS_FAILED:
-  "REDEEM_ALL_OWNED_ASSETS_FAILED:participation:melon.fund",
-  EXECUTE_REQUESTED: "EXECUTE_REQUESTED:participation:melon.fund",
-  EXECUTE_SUCCEEDED: "EXECUTE_SUCCEEDED:participation:melon.fund",
-  EXECUTE_FAILED: "EXECUTE_FAILED:participation:melon.fund",
-  CONTRIBUTE_REQUESTED: "CONTRIBUTE_REQUESTED:participation:melon.fund",
-  CONTRIBUTE_SUCCEEDED: "CONTRIBUTE_SUCCEEDED:participation:melon.fund",
-  CONTRIBUTE_FAILED: "CONTRIBUTE_FAILED:participation:melon.fund",
-  CLAIM_REWARD_REQUESTED:
-  "CLAIM_REWARD_REQUESTED:participation:melon.fund",
-  CLAIM_REWARD_SUCCEEDED:
-  "CLAIM_REWARD_SUCCEEDED:participation:melon.fund",
-  CLAIM_REWARD_FAILED:
-  "CLAIM_REWARD_FAILED:participation:melon.fund",
+    'REDEEM_ALL_OWNED_ASSETS_FAILED:participation:melon.fund',
+  EXECUTE_REQUESTED: 'EXECUTE_REQUESTED:participation:melon.fund',
+  EXECUTE_SUCCEEDED: 'EXECUTE_SUCCEEDED:participation:melon.fund',
+  EXECUTE_FAILED: 'EXECUTE_FAILED:participation:melon.fund',
+  CONTRIBUTE_REQUESTED: 'CONTRIBUTE_REQUESTED:participation:melon.fund',
+  CONTRIBUTE_SUCCEEDED: 'CONTRIBUTE_SUCCEEDED:participation:melon.fund',
+  CONTRIBUTE_FAILED: 'CONTRIBUTE_FAILED:participation:melon.fund',
+  CLAIM_REWARD_REQUESTED: 'CLAIM_REWARD_REQUESTED:participation:melon.fund',
+  CLAIM_REWARD_SUCCEEDED: 'CLAIM_REWARD_SUCCEEDED:participation:melon.fund',
+  CLAIM_REWARD_FAILED: 'CLAIM_REWARD_FAILED:participation:melon.fund',
   REDEEM_PAROS_SHARES_REQUESTED:
-  "REDEEM_PAROS_SHARES_REQUESTED:participation:melon.fund",
+    'REDEEM_PAROS_SHARES_REQUESTED:participation:melon.fund',
   REDEEM_PAROS_SHARES_SUCCEEDED:
-  "REDEEM_PAROS_SHARES_SUCCEEDED:participation:melon.fund",
+    'REDEEM_PAROS_SHARES_SUCCEEDED:participation:melon.fund',
   REDEEM_PAROS_SHARES_FAILED:
-  "REDEEM_PAROS_SHARES_FAILED:participation:melon.fund",
+    'REDEEM_PAROS_SHARES_FAILED:participation:melon.fund',
 };
 
 export const actions = {

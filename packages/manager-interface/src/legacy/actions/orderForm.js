@@ -3,14 +3,7 @@ export const types = {
 };
 
 export const actions = {
-  fill: ({
-    orderType,
-    exchange,
-    price,
-    quantity,
-    total,
-    strategy,
-  }) => ({
+  fill: ({ orderType, exchange, price, quantity, total, strategy }) => ({
     type: types.FILL,
     orderType,
     exchange,
@@ -18,5 +11,5 @@ export const actions = {
     quantity,
     total,
     strategy,
-  })
+  }),
 };
