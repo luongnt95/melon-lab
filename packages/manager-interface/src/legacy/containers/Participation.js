@@ -17,11 +17,7 @@ const calculateParticipationPrice = (sharePrice, type) => {
 };
 
 const mapStateToProps = state => {
-  const initialType =
-    state.form.participation && state.form.participation.values
-      ? state.form.participation.values.type
-      : 'Invest';
-
+  const initialType = 'Invest';
   const ParticipationPrice = displayNumber(
     calculateParticipationPrice(state.fund.sharePrice, initialType),
   );

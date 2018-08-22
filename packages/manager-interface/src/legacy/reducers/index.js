@@ -1,5 +1,3 @@
-import { reducer as form } from 'redux-form';
-
 import app from './app';
 import ethereum from './ethereum';
 import fund from './fund';
@@ -16,7 +14,6 @@ import wallet from './wallet';
 const reducerMap = {
   app,
   ethereum,
-  form,
   fund,
   holdings,
   modal,
