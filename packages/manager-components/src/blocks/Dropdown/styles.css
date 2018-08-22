@@ -6,6 +6,7 @@
 
 .dropdown__label {
   color: var(--color-grey);
+  margin-right: var(--space-s);
 }
 
 .dropdown__wrapper {

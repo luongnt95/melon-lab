@@ -90,7 +90,12 @@ export const Ranking: StatelessComponent<RankingProps> = ({
               />
             </div>
             <div className="ranking__sort">
-              <Dropdown {...sorting} value={ordering} onChange={onOrdering} />
+              <Dropdown
+                {...sorting}
+                label="Sort by"
+                value={ordering}
+                onChange={onOrdering}
+              />
             </div>
           </div>
           <div className="ranking__funds">
