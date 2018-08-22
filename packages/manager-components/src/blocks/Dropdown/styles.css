@@ -38,6 +38,7 @@
   border-radius: 0;
   padding: var(--space-xs) var(--space-xl) var(--space-xs) var(--space-s);
   line-height: 1.6;
+  margin: 0;
 }
 
 .dropdown__select::-ms-expand {
