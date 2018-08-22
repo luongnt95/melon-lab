@@ -1,7 +1,7 @@
 import { ExecutionResult } from 'graphql/execution/execute';
 import { DocumentNode } from 'graphql/language/ast';
 import $$observable from 'symbol-observable';
-import * as MessageTypes from './message-types';
+import * as MessageTypes from './constants';
 
 export interface Observer<T> {
   next?: (value: T) => void;

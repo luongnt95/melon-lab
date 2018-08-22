@@ -16,7 +16,7 @@ CMD ["yarn", "dev"]
 FROM development as build
 
 COPY . /app
-RUN yarn build:web
+RUN yarn build
 
 # -----------------------------------------------------------------------------
 # production
