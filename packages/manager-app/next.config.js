@@ -6,6 +6,7 @@ const path = require('path');
 const R = require('ramda');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 const withTypeScript = require('@zeit/next-typescript');
 const withQueryFiles = require('@melonproject/manager-interface/config/withQueryFiles');
 const withLinkedDependencies = require('@melonproject/manager-interface/config/withLinkedDependencies');
@@ -111,6 +112,11 @@ module.exports = withComposedConfig({
     );
 
     config.plugins.push(new webpack.DefinePlugin({ ELECTRON: true }));
+
+    config.plugins.push(new Dotenv({
+      path: require('find-up').sync(['.env', '.env.defaults']),
+      systemvars: true,
+    }));
 
     // Code splitting doesn't make much sense in an electron app.
     config.plugins.push(
