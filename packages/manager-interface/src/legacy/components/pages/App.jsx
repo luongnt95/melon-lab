@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'redux-first-router-link';
 import WrongNetwork from '@melonproject/manager-components/components/WrongNetwork';
 import NoConnection from '@melonproject/manager-components/components/NoConnection';
 import LockedWallet from '@melonproject/manager-components/components/LockedWallet';
