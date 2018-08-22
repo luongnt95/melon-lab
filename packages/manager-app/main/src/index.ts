@@ -45,7 +45,7 @@ const restoreMainWindow = async () => {
     width: 1024,
     height: 800,
     webPreferences: {
-      nodeIntegration: false,
+      nodeIntegration: !!isDev,
       preload: path.resolve(__dirname, 'preload.js'),
     },
   });
@@ -122,6 +122,8 @@ electron.app.on('ready', () => {
     install(REDUX_DEVTOOLS)
       .then(name => console.log(`Added Extension:  ${name}`))
       .catch(error => console.error('An error occurred: ', error));
+
+    require('devtron').install();
   }
 
   restoreMainWindow();

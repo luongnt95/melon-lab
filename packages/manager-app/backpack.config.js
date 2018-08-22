@@ -31,7 +31,11 @@ module.exports = {
         // of correctly resolving our version as a peer dependency. Hence, we
         // need to override this here so we can use Babel 7+.
         // @see https://github.com/jaredpalmer/backpack/issues/106
-        rule.loader = 'babel-loader';
+        rule.loader = require.resolve('babel-loader');
+        rule.options = {
+          babelrc: true,
+          cacheDirectory: true,
+        };
       }
 
       return rule;

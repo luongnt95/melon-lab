@@ -1,5 +1,8 @@
 import App, { Container } from 'next/app';
+import { ApolloProvider } from 'react-apollo';
+import React from 'react';
 import ReactModal from 'react-modal';
+import withApollo from '../wrappers/withApollo';
 
 if (typeof window !== 'undefined') {
   window.eval = global.eval = () => {
@@ -11,14 +14,16 @@ if (typeof window !== 'undefined') {
 
 class MelonApp extends App {
   public render() {
-    const { Component, pageProps } = this.props;
+    const { Component, apollo, pageProps } = this.props;
 
     return (
       <Container>
-        <Component {...pageProps} />
+        <ApolloProvider client={apollo}>
+          <Component {...pageProps} />
+        </ApolloProvider>
       </Container>
     );
   }
 }
 
-export default MelonApp;
+export default withApollo(MelonApp);

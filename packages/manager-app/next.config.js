@@ -28,6 +28,7 @@ module.exports = withComposedConfig({
     ['@melonproject/manager-interface', 'src'],
     ['@melonproject/manager-components', 'src'],
     ['@melonproject/exchange-aggregator', 'src'],
+    ['@melonproject/manager-app', 'ipc'],
   ],
   distDir: path.join('..', 'build'),
   exportPathMap: () => ({
@@ -42,9 +43,6 @@ module.exports = withComposedConfig({
       '~/design': path.join(managerComponents, 'src', 'design'),
       '~/static': path.join(managerComponents, 'public', 'static'),
       '~/ipc': path.join(managerApp, 'ipc'),
-
-      // Overrides for component imports from the web app.
-      '~/wrappers/withApollo': path.join(managerInterface, 'src', 'wrappers'),
     });
 
     config.plugins.push(
