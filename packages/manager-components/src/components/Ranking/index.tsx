@@ -85,6 +85,7 @@ export const Ranking: StatelessComponent<RankingProps> = ({
               <Input
                 name="search"
                 placeholder="Search fund"
+                value={search}
                 onChange={onFilterChange && onFilterChange}
               />
             </div>
