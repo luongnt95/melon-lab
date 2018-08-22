@@ -1,7 +1,7 @@
 import React from 'react';
 import Loading from './index';
 
-describe('Button', () => {
+describe('Loading', () => {
   const defaultElement = <Loading />;
 
   it('should render correctly', () => {

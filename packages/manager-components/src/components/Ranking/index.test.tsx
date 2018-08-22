@@ -45,7 +45,7 @@ const data = {
   ordering: '+rank',
 };
 
-describe('Holdings', () => {
+describe('Ranking', () => {
   const defaultElement = <Ranking {...data} />;
 
   it('should render correctly', () => {

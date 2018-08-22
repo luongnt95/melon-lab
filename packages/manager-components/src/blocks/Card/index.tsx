@@ -44,10 +44,10 @@ const Card: StatelessComponent<CardProps> = ({
           <div className="card__name">{name}</div>
           <div className="card__info">
             <div className="card__share-price">
-              <span className="card__label">Share price:</span> {sharePrice}
+              <span className="card__label">Share price</span> {sharePrice}
             </div>
             <div className="card__inception-date">
-              <span className="card__label">Inception Date:</span> {inception}
+              <span className="card__label">Inception Date</span> {inception}
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Holdings should render correctly 1`] = `
+exports[`Ranking should render correctly 1`] = `
 <div
   className="jsx-__scopedHash ranking"
 >

@@ -36,7 +36,7 @@ exports[`Card should render correctly 1`] = `
           <span
             className="jsx-__scopedHash card__label"
           >
-            Share price:
+            Share price
           </span>
            
         </div>
@@ -46,7 +46,7 @@ exports[`Card should render correctly 1`] = `
           <span
             className="jsx-__scopedHash card__label"
           >
-            Inception Date:
+            Inception Date
           </span>
            
         </div>

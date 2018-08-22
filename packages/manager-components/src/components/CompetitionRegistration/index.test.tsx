@@ -15,7 +15,7 @@ const data = {
   v: 'foo',
 };
 
-describe('Header', () => {
+describe('CompetitionRegistration', () => {
   const defaultElement = <CompetitionRegistration {...data} />;
 
   it('should render correctly', () => {
