@@ -6,6 +6,7 @@
 .orderbook__tables {
   display: flex;
   width: 100%;
+  overflow-x: auto;
 }
 
 .orderbook__table {
