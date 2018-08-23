@@ -13,24 +13,24 @@ interface FormValues {
 
 export interface ContributionFormProps {
   dataValid: boolean;
-  melonAssetSymbol?: string;
-  values: FormValues;
-  handleSubmit?: () => void;
+  errors?: any;
   handleBlur?: () => void;
+  handleSubmit?: () => void;
+  melonAssetSymbol?: string;
   onChange?: () => void;
   touched?: any;
-  errors?: any;
+  values: FormValues;
 }
 
 export const ContributionForm: StatelessComponent<ContributionFormProps> = ({
-  handleSubmit,
   dataValid,
-  melonAssetSymbol,
-  values,
+  errors,
   handleBlur,
+  handleSubmit,
+  melonAssetSymbol,
   onChange,
   touched,
-  errors,
+  values,
 }) => {
   return (
     <div className="contribution-form">

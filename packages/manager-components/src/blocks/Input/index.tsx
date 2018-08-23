@@ -5,39 +5,39 @@ import * as NumberFormat from 'react-number-format';
 import styles from './styles.css';
 
 export interface InputProps {
-  disabled?: boolean;
-  placeholder?: string;
-  onChange?: (value, event) => void;
-  onBlur?: () => void;
-  label?: string;
-  type: string;
-  insideLabel?: boolean;
-  pattern?: string;
-  step?: string;
-  formatNumber?: boolean;
   decimals?: number;
-  value?: string;
-  name: string;
+  disabled?: boolean;
   error?: string;
+  formatNumber?: boolean;
   hidden?: boolean;
+  insideLabel?: boolean;
+  label?: string;
+  name: string;
+  onBlur?: () => void;
+  onChange?: (value, event) => void;
+  pattern?: string;
+  placeholder?: string;
+  step?: string;
+  type: string;
+  value?: string;
 }
 
 const Input: StatelessComponent<InputProps> = ({
-  disabled,
-  placeholder,
-  onChange,
-  onBlur,
-  label,
-  type = 'text',
-  insideLabel,
-  step,
-  pattern,
   decimals = 4,
-  value,
-  formatNumber,
-  name,
+  disabled,
   error,
+  formatNumber,
   hidden,
+  insideLabel,
+  label,
+  name,
+  onBlur,
+  onChange,
+  pattern,
+  placeholder,
+  step,
+  type = 'text',
+  value,
 }) => {
   const inputClassNames = classNames('input', {
     'input--inside-label': insideLabel,

@@ -2,32 +2,32 @@ import React, { Fragment, StatelessComponent } from 'react';
 import Button from '~/blocks/Button';
 
 export interface CompetitionRegistrationProps {
-  skipRegistration: () => void;
-  continueToSignCompetitionTerms: () => void;
-  sign: () => void;
-  isRegistered: () => void;
-  fundAddress?: string;
-  managerAddress?: string;
-  showedRegistration?: boolean;
   competitionSignature?: boolean;
+  continueToSignCompetitionTerms: () => void;
+  fundAddress?: string;
+  isRegistered: () => void;
+  managerAddress?: string;
   r?: string;
   s?: string;
+  showedRegistration?: boolean;
+  sign: () => void;
+  skipRegistration: () => void;
   v?: string;
 }
 
 export const CompetitionRegistration: StatelessComponent<
   CompetitionRegistrationProps
 > = ({
-  fundAddress,
-  managerAddress,
-  showedRegistration,
-  skipRegistration,
-  continueToSignCompetitionTerms,
-  sign,
-  isRegistered,
   competitionSignature,
+  continueToSignCompetitionTerms,
+  fundAddress,
+  isRegistered,
+  managerAddress,
   r,
   s,
+  showedRegistration,
+  sign,
+  skipRegistration,
   v,
 }) => {
   const onClickPursue = () => {

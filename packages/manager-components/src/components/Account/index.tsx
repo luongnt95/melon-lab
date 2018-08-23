@@ -4,31 +4,31 @@ import Button from '~/blocks/Button';
 import styles from './styles.css';
 
 export interface AccountProps {
-  currentAddress?: string;
   associatedFund?: string;
+  currentAddress?: string;
   deleteWallet: () => void;
+  downloadJSON: () => void;
   gotoAccountGenerate: () => void;
   gotoAccountRestore: () => void;
+  goToFund?: (associatedFund) => void;
   gotoImportJSON: () => void;
   gotoSetup: () => void;
-  downloadJSON: () => void;
-  networkId: string;
   isCompetition?: boolean;
-  goToFund?: (associatedFund) => void;
+  networkId: string;
 }
 
 export const Account: StatelessComponent<AccountProps> = ({
-  currentAddress,
   associatedFund,
+  currentAddress,
   deleteWallet,
+  downloadJSON,
   gotoAccountGenerate,
   gotoAccountRestore,
+  goToFund,
   gotoImportJSON,
   gotoSetup,
-  downloadJSON,
-  networkId,
   isCompetition,
-  goToFund,
+  networkId,
 }) => {
   const onClickGoToFund = () =>
     associatedFund && goToFund && goToFund(associatedFund);

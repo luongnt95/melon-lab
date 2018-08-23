@@ -8,18 +8,18 @@ export interface TableProps {
 
 export interface CellProps {
   cellClass?: string;
-  textAlign?: string;
-  onClick?: (e, headFor) => void;
-  headFor?: any;
   colSpan?: number;
+  headFor?: any;
+  onClick?: (e, headFor) => void;
   sorted?: string;
+  textAlign?: string;
 }
 
 export interface RowProps {
-  rowClass?: string;
-  isHead?: boolean;
-  size?: string;
   active?: boolean;
+  isHead?: boolean;
+  rowClass?: string;
+  size?: string;
 }
 
 const Table: StatelessComponent<TableProps> = ({ children }) => (
@@ -44,10 +44,10 @@ const TableHead: StatelessComponent = ({ children }) => (
 );
 
 const Row: StatelessComponent<RowProps> = ({
+  active,
   children,
   isHead,
   size,
-  active,
 }) => {
   const cellClassNames = classNames('table__row', {
     'table__row--head': isHead,
@@ -65,10 +65,10 @@ const Row: StatelessComponent<RowProps> = ({
 };
 
 const CellBody: StatelessComponent<CellProps> = ({
-  children,
   cellClass,
-  textAlign,
+  children,
   colSpan,
+  textAlign,
 }) => {
   const cellBodyClassNames = classNames('table__cell', {
     [`${cellClass}`]: cellClass,
@@ -86,12 +86,12 @@ const CellBody: StatelessComponent<CellProps> = ({
 };
 
 const CellHead: StatelessComponent<CellProps> = ({
-  children,
   cellClass,
-  textAlign,
-  onClick,
+  children,
   headFor,
+  onClick,
   sorted,
+  textAlign,
 }) => {
   const cellHeadClassNames = classNames('table__cell', {
     [`${cellClass}`]: cellClass,

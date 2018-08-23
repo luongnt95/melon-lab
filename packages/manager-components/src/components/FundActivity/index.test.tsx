@@ -2,7 +2,7 @@ import React from 'react';
 import FundActivity from './index';
 
 const data = {
-  requestFullParticipationHistory: () => true,
+  requestFullParticipationHistory: () => null,
 };
 
 describe('FundActivity', () => {

@@ -8,15 +8,15 @@ import styles from './styles.css';
 export interface ExecuteRequestProps {
   onExecute: (id) => void;
   readyToExecute?: boolean;
-  targetDate?;
   requestId: number;
+  targetDate?: string;
 }
 
 export const ExecuteRequest: StatelessComponent<ExecuteRequestProps> = ({
   onExecute,
   readyToExecute,
-  targetDate,
   requestId,
+  targetDate,
 }) => {
   const onClickExecute = () => onExecute && onExecute(requestId);
 

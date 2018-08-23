@@ -44,7 +44,9 @@ exports[`GetStarted should render correctly 1`] = `
     </p>
     <Button
       onClick={[Function]}
-    />
+    >
+      Setup your fund
+    </Button>
   </div>
 </div>
 `;

@@ -4,27 +4,27 @@ import Button from '~/blocks/Button';
 import styles from './styles.css';
 
 export interface AdministrationProps {
-  subscriptionAllowed?: boolean;
-  toggleSubscription: () => void;
   convertUnclaimedRewards: () => void;
-  shutdown: () => void;
-  loading?: boolean;
-  registerForCompetition?: () => void;
   fundAddress?: string;
   isCompeting?: boolean;
+  loading?: boolean;
   quoteAsset: string;
+  registerForCompetition?: () => void;
+  shutdown: () => void;
+  subscriptionAllowed?: boolean;
+  toggleSubscription: () => void;
 }
 
 export const Administration: StatelessComponent<AdministrationProps> = ({
-  subscriptionAllowed,
-  toggleSubscription,
   convertUnclaimedRewards,
-  shutdown,
-  loading,
-  registerForCompetition,
   fundAddress,
   isCompeting,
+  loading,
   quoteAsset,
+  registerForCompetition,
+  shutdown,
+  subscriptionAllowed,
+  toggleSubscription,
 }) => {
   return (
     <div className="administration">

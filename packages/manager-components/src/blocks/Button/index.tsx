@@ -4,22 +4,22 @@ import React, { StatelessComponent } from 'react';
 import styles from './styles.css';
 
 export interface ButtonProps {
+  buttonValue?: any;
   disabled?: boolean;
-  type?: string;
   onClick: (e, value) => void;
   size?: string;
   style?: string;
-  buttonValue?: any;
+  type?: string;
 }
 
 const Button: StatelessComponent<ButtonProps> = ({
+  buttonValue,
   children,
   disabled,
   onClick,
-  type = 'button',
   size = 'medium',
   style = 'primary',
-  buttonValue,
+  type = 'button',
 }) => {
   const buttonClassNames = classNames('button', {
     [`button--${size}`]: size,

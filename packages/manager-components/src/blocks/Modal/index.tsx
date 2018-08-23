@@ -7,16 +7,16 @@ import Spinner from '~/blocks/Spinner';
 import styles from './styles.css';
 
 export interface ModalProps {
-  isOpen?: boolean;
-  title?: string;
   body?: string;
+  error?: boolean;
+  handleSubmit?: () => void;
+  interactionHandler?: () => void;
+  isOpen?: boolean;
+  loading?: boolean;
+  onAfterOpen?: () => void;
   primaryInteraction?: () => void;
   secondaryInteraction?: () => void;
-  interactionHandler?: () => void;
-  onAfterOpen?: () => void;
-  handleSubmit?: () => void;
-  loading?: boolean;
-  error?: boolean;
+  title?: string;
 }
 
 const renderButtons = (
@@ -59,17 +59,17 @@ const renderButtons = (
 };
 
 const Modal: StatelessComponent<ModalProps> = ({
-  isOpen,
-  title,
   body,
-  primaryInteraction,
-  secondaryInteraction,
-  interactionHandler,
-  onAfterOpen,
   children,
-  loading,
   error,
   handleSubmit,
+  interactionHandler,
+  isOpen,
+  loading,
+  onAfterOpen,
+  primaryInteraction,
+  secondaryInteraction,
+  title,
 }) => {
   return (
     <ReactModal

@@ -4,20 +4,20 @@ import styles from './styles.css';
 
 export interface ToggleProps {
   disabled?: boolean;
-  name: string;
-  value: string;
-  text: string;
   isChecked?: boolean;
+  name: string;
   onChange?: (value, event) => void;
+  text: string;
+  value: string;
 }
 
 const Toggle: StatelessComponent<ToggleProps> = ({
   disabled,
-  name,
-  value,
-  text,
   isChecked,
+  name,
   onChange,
+  text,
+  value,
 }) => {
   const handleChange = (e: any): void => {
     const targetValue = e.target.value;

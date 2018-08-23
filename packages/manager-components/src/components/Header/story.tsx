@@ -1,24 +1,19 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import Header from './index';
 
-const status = {
-  message: 'Melon Node',
-};
-
-const balances = {
-  eth: 1.23422234,
-};
-
-const account = {
-  address: '0xa80B…d46f',
-};
-
 const data = {
-  status,
-  balances,
-  account,
+  status: { message: 'Melon Node' },
+  balances: {
+    eth: 1.23422234,
+  },
+  account: {
+    address: '0xa80B…d46f',
+  },
   network: 'kovan',
+  goToHome: action('goToHome'),
+  goToWallet: action('goToWallet'),
 };
 
 storiesOf('Components|Header', module).add('Default', () => {

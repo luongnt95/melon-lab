@@ -5,27 +5,27 @@ import Icon from '~/blocks/Icon';
 import styles from './styles.css';
 
 export interface HeaderProps {
+  accountAddress?: string;
+  balances: {
+    eth: number;
+  };
+  goToHome: () => void;
+  goToWallet: () => void;
+  network?: string;
   status?: {
     message?: string;
     link?: string;
     type?: string;
   };
-  balances: {
-    eth: number;
-  };
-  network?: string;
-  accountAddress?: string;
-  goToHome?: () => void;
-  goToWallet?: () => void;
 }
 
 export const Header: StatelessComponent<HeaderProps> = ({
-  status,
   accountAddress,
   balances,
-  network,
   goToHome,
   goToWallet,
+  network,
+  status,
 }) => {
   const onClickGoToHome = (e: any): void => {
     e.preventDefault(e);

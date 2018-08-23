@@ -5,8 +5,8 @@ import React, { Fragment, ReactNode, StatelessComponent } from 'react';
 import styles from './styles.css';
 
 export interface TabsProps {
-  children: ReactNode;
   activeTabIndex: number;
+  children: ReactNode;
   handleTabClick: (index: number) => void;
 }
 
@@ -26,8 +26,8 @@ const getTabs: any = R.compose(
 );
 
 const Tabs: StatelessComponent<TabsProps> = ({
-  children,
   activeTabIndex,
+  children,
   handleTabClick,
 }) => {
   const activeTabContent = getTabs(children).map((child, index) => {

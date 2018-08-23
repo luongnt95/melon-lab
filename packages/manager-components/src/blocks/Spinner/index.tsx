@@ -5,13 +5,13 @@ import Icon from '~/blocks/Icon';
 import styles from './styles.css';
 
 export interface SpinnerProps {
-  size?: string;
   icon?: boolean;
+  size?: string;
 }
 
 const Spinner: StatelessComponent<SpinnerProps> = ({
-  size = 'default',
   icon,
+  size = 'default',
 }) => {
   const spinnerClassNames = classNames('spinner', {
     [`spinner--${size}`]: size,

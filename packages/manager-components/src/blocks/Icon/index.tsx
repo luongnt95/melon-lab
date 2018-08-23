@@ -2,17 +2,17 @@ import classNames from 'classnames';
 import React, { StatelessComponent } from 'react';
 
 export interface IconProps {
-  name: string;
-  iconClass?: string;
   height?: string;
+  iconClass?: string;
+  name: string;
   width?: string;
 }
 
 const Icon: StatelessComponent<IconProps> = ({
-  name,
   height,
-  width,
   iconClass,
+  name,
+  width,
 }) => {
   const iconClassNames = classNames('icon', {
     [`${iconClass}`]: iconClass,

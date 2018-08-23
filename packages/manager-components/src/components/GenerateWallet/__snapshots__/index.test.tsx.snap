@@ -25,11 +25,14 @@ exports[`GenerateWallet should render correctly 1`] = `
   </Notification>
   <p
     className="jsx-__scopedHash generate-wallet__mnemonic"
-  />
+  >
+    lorem ipsum
+  </p>
   <p
     className="jsx-__scopedHash"
   >
     <Button
+      onClick={[Function]}
       style="secondary"
     >
       I have written down the mnemonic

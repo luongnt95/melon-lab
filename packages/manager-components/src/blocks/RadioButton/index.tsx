@@ -3,21 +3,21 @@ import React, { StatelessComponent } from 'react';
 import styles from './styles.css';
 
 export interface RadioButtonProps {
+  defaultChecked?: boolean;
   disabled?: boolean;
   name: string;
-  value: string;
-  text: string;
-  defaultChecked?: boolean;
   onInputChange?: () => void;
+  text: string;
+  value: string;
 }
 
 const RadioButton: StatelessComponent<RadioButtonProps> = ({
+  defaultChecked,
   disabled,
   name,
-  value,
-  text,
-  defaultChecked,
   onInputChange,
+  text,
+  value,
 }) => (
   <label className="radio-button">
     <style jsx>{styles}</style>

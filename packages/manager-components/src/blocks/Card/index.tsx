@@ -4,23 +4,23 @@ import React, { StatelessComponent } from 'react';
 import styles from './styles.css';
 
 export interface CardProps {
-  rank?: number;
-  name?: string;
-  sharePrice?: string;
-  inception?: string;
   address?: string;
-  onClick?: (id) => void;
+  inception?: string;
   isActive?: boolean;
+  name?: string;
+  onClick?: (id) => void;
+  rank?: number;
+  sharePrice?: string;
 }
 
 const Card: StatelessComponent<CardProps> = ({
-  rank,
-  name,
-  sharePrice,
-  inception,
-  onClick,
   address,
+  inception,
   isActive,
+  name,
+  onClick,
+  rank,
+  sharePrice,
 }) => {
   const cardClassNames = classNames('card', {
     'card--active': isActive,

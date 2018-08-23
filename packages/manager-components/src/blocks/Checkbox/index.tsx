@@ -3,21 +3,21 @@ import React, { StatelessComponent } from 'react';
 import styles from './styles.css';
 
 export interface CheckboxProps {
+  defaultChecked?: boolean;
   disabled?: boolean;
   name: string;
-  value: string;
-  text: string;
-  defaultChecked?: boolean;
   onInputChange?: () => void;
+  text: string;
+  value: string;
 }
 
 const Checkbox: StatelessComponent<CheckboxProps> = ({
+  defaultChecked,
   disabled,
   name,
-  value,
-  text,
-  defaultChecked,
   onInputChange,
+  text,
+  value,
 }) => (
   <label className="checkbox">
     <style jsx>{styles}</style>

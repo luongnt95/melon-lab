@@ -4,18 +4,18 @@ import React, { StatelessComponent } from 'react';
 import styles from './styles.css';
 
 export interface NotificationProps {
+  isClosable?: boolean;
+  isError?: boolean;
   isInline?: boolean;
   isWarning?: boolean;
-  isError?: boolean;
-  isClosable?: boolean;
 }
 
 const Notification: StatelessComponent<NotificationProps> = ({
   children,
+  isClosable,
+  isError,
   isInline,
   isWarning,
-  isError,
-  isClosable,
 }) => {
   const notificationClassNames = classNames('notification', {
     'notification--inline': isInline,

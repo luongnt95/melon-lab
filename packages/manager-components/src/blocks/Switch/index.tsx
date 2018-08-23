@@ -3,22 +3,22 @@ import React, { StatelessComponent } from 'react';
 import styles from './styles.css';
 
 export interface SwitchProps {
-  options: string[];
+  disabled?: boolean;
+  isChecked?: boolean;
   labels: string[];
   name: string;
-  isChecked?: boolean;
-  disabled?: boolean;
-  value: string;
   onChange: (value, event) => void;
+  options: string[];
+  value: string;
 }
 
 const Switch: StatelessComponent<SwitchProps> = ({
-  options,
-  labels,
-  onChange,
-  name,
-  isChecked,
   disabled,
+  isChecked,
+  labels,
+  name,
+  onChange,
+  options,
   value,
 }) => {
   const handleChange = (e: any): void => {

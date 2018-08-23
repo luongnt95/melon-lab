@@ -4,18 +4,18 @@ import Button from '~/blocks/Button';
 import styles from './styles.css';
 
 export interface ClaimRewardProps {
-  competitionName: string;
   claimReward: () => void;
-  isCompetitionActive?: boolean;
+  competitionName: string;
   endTime?: string;
+  isCompetitionActive?: boolean;
   redeemParosShares: () => void;
 }
 
 export const ClaimReward: StatelessComponent<ClaimRewardProps> = ({
-  competitionName = 'Naxos',
   claimReward,
-  isCompetitionActive,
+  competitionName = 'Naxos',
   endTime,
+  isCompetitionActive,
   redeemParosShares,
 }) => {
   return (

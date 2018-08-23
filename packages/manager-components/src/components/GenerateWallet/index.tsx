@@ -5,13 +5,13 @@ import Notification from '~/blocks/Notification';
 import styles from './styles.css';
 
 export interface GenerateWalletProps {
-  restore?: () => void;
   mnemonic: string;
+  restore: () => void;
 }
 
 export const GenerateWallet: StatelessComponent<GenerateWalletProps> = ({
-  restore,
   mnemonic,
+  restore,
 }) => {
   return (
     <div className="generate-wallet">

@@ -4,22 +4,22 @@ import Button from '~/blocks/Button';
 import styles from './styles.css';
 
 export interface GetStartedProps {
+  isHome?: boolean;
   linkAction?: {
     payload: { address: string };
     type: string;
   };
-  linkCaption?: string;
+  linkCaption: string;
   networkId?: string;
-  onClick?: (action) => void;
-  isHome?: boolean;
+  onClick: (action) => void;
 }
 
 export const GetStarted: StatelessComponent<GetStartedProps> = ({
+  isHome,
   linkAction,
   linkCaption,
   networkId,
   onClick,
-  isHome,
 }) => {
   const onStart = () => onClick && onClick(linkAction);
 

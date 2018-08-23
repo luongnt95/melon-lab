@@ -4,7 +4,7 @@ import React from 'react';
 import FundActivity from './index';
 
 const data = {
-  requestFullParticipationHistory: action('clicked'),
+  requestFullParticipationHistory: action('requestFullParticipationHistory'),
 };
 
 storiesOf('Components|Fund Activity', module).add('Default', () => {

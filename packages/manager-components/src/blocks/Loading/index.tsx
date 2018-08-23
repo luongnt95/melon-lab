@@ -3,14 +3,14 @@ import React, { Fragment, StatelessComponent } from 'react';
 import styles from './styles.css';
 
 export interface LoadingProps {
-  loading?: boolean;
   dataAvailable?: boolean;
+  loading?: boolean;
 }
 
 const Loading: StatelessComponent<LoadingProps> = ({
   children,
-  loading = true,
   dataAvailable = true,
+  loading = true,
 }) => {
   return (
     <span>

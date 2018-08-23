@@ -3,15 +3,15 @@ import React, { StatelessComponent } from 'react';
 import styles from './styles.css';
 
 export interface DropdownProps {
+  disabled?: boolean;
+  label?: string;
+  name: string;
+  onChange: (value, event) => void;
   options: Array<{
     value: string;
     name: string;
   }>;
-  label?: string;
   value?: string;
-  name: string;
-  disabled?: boolean;
-  onChange: (value, event) => void;
 }
 
 const renderOption = (option, index) => {
@@ -23,12 +23,12 @@ const renderOption = (option, index) => {
 };
 
 const Dropdown: StatelessComponent<DropdownProps> = ({
-  options,
-  onChange,
-  label,
-  value,
-  name,
   disabled,
+  label,
+  name,
+  onChange,
+  options,
+  value,
 }) => {
   const ops =
     options && options.map((item, index) => renderOption(item, index));
