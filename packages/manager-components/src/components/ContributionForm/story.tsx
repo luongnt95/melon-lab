@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import ContributionForm from './container';
 
-const initialProps = {
+const data = {
   initialValues: {
     amount: '',
     total: '',
@@ -12,5 +12,5 @@ const initialProps = {
 };
 
 storiesOf('Components|Contribution Form', module).add('Default', () => {
-  return <ContributionForm {...initialProps} />;
+  return <ContributionForm {...data} />;
 });

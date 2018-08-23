@@ -1,8 +1,9 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import FeeForm from './container';
 
-const initialProps = {
+const data = {
   initialValues: {
     gasPrice: '20.000',
   },
@@ -20,8 +21,10 @@ const initialProps = {
       gasTotal: '0.0006',
     },
   ],
+  onSubmit: action('onSubmit'),
+  onCancel: action('onCancel'),
 };
 
 storiesOf('Components|Fees Form', module).add('Default', () => {
-  return <FeeForm {...initialProps} />;
+  return <FeeForm {...data} />;
 });

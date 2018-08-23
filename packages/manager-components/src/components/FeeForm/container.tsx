@@ -4,16 +4,17 @@ import * as Yup from 'yup';
 
 import FeeForm from './index';
 
-const calculateTotal = (props, field, value) => {
-  const { values } = props;
-};
-
 const withFormValidation = withFormik({
   mapPropsToValues: props => ({ ...props.initialValues }),
   enableReinitialize: true,
+  validationSchema: Yup.object().shape({
+    gasPrice: Yup.number()
+      .required('Gas price is required.')
+      .moreThan(0, 'Please enter a valid  gas price'),
+  }),
   handleSubmit: (values, form) => {
     if (form.props.onSubmit) {
-      form.props.onSubmit(values, 'passwordForm');
+      form.props.onSubmit(values);
     }
   },
 });
@@ -22,7 +23,6 @@ const withFormHandler = compose(
   withHandlers({
     onChange: props => (values, event) => {
       props.setFieldValue(event.target.name, values.value);
-      calculateTotal(props, event.target.name, values.value);
     },
   }),
 );

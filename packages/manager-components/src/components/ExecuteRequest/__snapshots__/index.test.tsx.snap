@@ -28,7 +28,12 @@ exports[`ExecuteRequest should render correctly 1`] = `
         To prevent information advantage of any economic agent over another, we enforce a waiting period before any subscription or redemption can be executed.
       </a>
     </p>
-    Remaining waiting time before request execution:
+    <Button
+      onClick={[Function]}
+      style="secondary"
+    >
+      Execute my request!
+    </Button>
   </Notification>
 </div>
 `;

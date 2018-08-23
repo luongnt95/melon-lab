@@ -6,10 +6,10 @@ import Notification from '~/blocks/Notification';
 import styles from './styles.css';
 
 export interface ExecuteRequestProps {
-  onExecute?: (id) => void;
+  onExecute: (id) => void;
   readyToExecute?: boolean;
-  targetDate;
-  requestId?: string;
+  targetDate?;
+  requestId: number;
 }
 
 export const ExecuteRequest: StatelessComponent<ExecuteRequestProps> = ({

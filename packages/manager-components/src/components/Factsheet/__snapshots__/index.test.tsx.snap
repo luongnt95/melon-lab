@@ -14,7 +14,7 @@ exports[`Factsheet should render correctly 1`] = `
     Melon Fund
     <a
       className="jsx-__scopedHash factsheet__title-link"
-      href="..."
+      href="melonport"
       rel="noopener noreferrer"
       target="_blank"
     >
@@ -75,16 +75,16 @@ exports[`Factsheet should render correctly 1`] = `
     >
       Ranking: 
       <Loading
-        loading={true}
+        loading={false}
       >
-        ...
+        1
       </Loading>
        out of
        
       <Loading
-        loading={true}
+        loading={false}
       >
-        ...
+        12
       </Loading>
     </a>
     <br
@@ -144,6 +144,7 @@ exports[`Factsheet should render correctly 1`] = `
       className="jsx-__scopedHash"
     />
     <Button
+      onClick={[Function]}
       style="clear"
     >
       Irreversibly shut down fund

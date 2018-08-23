@@ -9,43 +9,43 @@ import styles from './styles.css';
 export interface FactsheetProps {
   aum?: string;
   creationDate?: string;
-  managementReward?: string;
-  name?: string;
-  performanceReward?: string;
-  personalStake?: string;
-  sharePrice?: string;
-  totalSupply?: string;
-  rank?: string;
-  numberOfFunds?: string;
-  tweetHref?: string;
-  scrollTo?: (id) => void;
-  loading?: boolean;
   dataValid?: boolean;
   expectedPrize?: string;
-  quoteAsset?: string;
-  shutdown?: string;
   isCompetition?: boolean;
+  loading?: boolean;
+  managementReward?: string;
+  name?: string;
+  numberOfFunds?: string;
+  performanceReward?: string;
+  personalStake?: string;
+  quoteAsset?: string;
+  rank?: string;
+  scrollTo?: (id) => void;
+  sharePrice?: string;
+  shutdown: () => void;
+  totalSupply?: string;
+  tweetHref?: string;
 }
 
 const Factsheet: StatelessComponent<FactsheetProps> = ({
   aum,
   creationDate,
-  managementReward,
-  name,
-  performanceReward,
-  personalStake,
-  sharePrice,
-  totalSupply,
-  rank,
-  numberOfFunds,
-  tweetHref,
-  scrollTo,
-  loading,
   dataValid,
   expectedPrize,
-  quoteAsset,
-  shutdown,
   isCompetition,
+  loading,
+  managementReward,
+  name,
+  numberOfFunds,
+  performanceReward,
+  personalStake,
+  quoteAsset,
+  rank,
+  scrollTo,
+  sharePrice,
+  shutdown,
+  totalSupply,
+  tweetHref,
 }) => {
   const scrolltoHoldings = () => scrollTo && scrollTo('holdings');
 

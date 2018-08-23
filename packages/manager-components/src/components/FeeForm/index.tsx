@@ -19,27 +19,27 @@ interface FormValues {
 }
 
 export interface FeeFormProps {
-  values: FormValues;
-  handleSubmit: () => void;
-  handleReset: () => void;
-  onCancel: () => void;
-  handleBlur?: () => void;
-  onChange?: () => void;
-  touched?: any;
   errors?: any;
   fees?: any;
+  handleBlur: () => void;
+  handleReset: () => void;
+  handleSubmit: () => void;
+  onCancel: () => void;
+  onChange: () => void;
+  touched?: any;
+  values: FormValues;
 }
 
 export const FeeForm: StatelessComponent<FeeFormProps> = ({
-  values,
-  handleBlur,
-  onChange,
-  touched,
   errors,
+  fees,
+  handleBlur,
+  handleReset,
   handleSubmit,
   onCancel,
-  handleReset,
-  fees,
+  onChange,
+  touched,
+  values,
 }) => {
   const handleCancel = () => {
     handleReset();

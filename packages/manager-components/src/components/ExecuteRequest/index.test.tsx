@@ -1,7 +1,11 @@
 import React from 'react';
 import ExecuteRequest from './index';
 
-const data = {};
+const data = {
+  onExecute: () => null,
+  readyToExecute: true,
+  requestId: 1,
+};
 
 describe('ExecuteRequest', () => {
   const defaultElement = <ExecuteRequest {...data} />;

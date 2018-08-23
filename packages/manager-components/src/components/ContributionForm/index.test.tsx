@@ -1,7 +1,7 @@
 import React from 'react';
 import ContributionForm from './container';
 
-const initialProps = {
+const data = {
   initialValues: {
     amount: '',
     total: '',
@@ -11,7 +11,7 @@ const initialProps = {
 };
 
 describe('ContributionForm', () => {
-  const defaultElement = <ContributionForm {...initialProps} />;
+  const defaultElement = <ContributionForm {...data} />;
 
   it('should render correctly', () => {
     const wrapper = shallow(defaultElement);

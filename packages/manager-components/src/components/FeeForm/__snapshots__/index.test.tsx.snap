@@ -10,9 +10,11 @@ exports[`FeeForm should render correctly 1`] = `
     }
   }
   isInitialValid={false}
+  onCancel={[Function]}
   onSubmit={[Function]}
   render={[Function]}
   validateOnBlur={true}
   validateOnChange={true}
+  validationSchema={[Function]}
 />
 `;
