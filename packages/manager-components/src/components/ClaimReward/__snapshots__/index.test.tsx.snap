@@ -33,7 +33,9 @@ exports[`ClaimReward should render correctly 1`] = `
         Naxos
          contract
       </span>
-      <Button>
+      <Button
+        onClick={[Function]}
+      >
         Claim
       </Button>
     </li>
@@ -45,7 +47,9 @@ exports[`ClaimReward should render correctly 1`] = `
       >
         Redeem my shares
       </span>
-      <Button>
+      <Button
+        onClick={[Function]}
+      >
         Redeem
       </Button>
     </li>

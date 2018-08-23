@@ -2,13 +2,13 @@ import React from 'react';
 import CompetitionRegistration from './index';
 
 const data = {
+  skipRegistration: () => null,
+  continueToSignCompetitionTerms: () => null,
+  sign: () => null,
+  isRegistered: () => null,
   fundAddress: 'foo',
   managerAddress: 'foo',
   showedRegistration: true,
-  skipRegistration: () => true,
-  continueToSignCompetitionTerms: false,
-  sign: () => true,
-  isRegistered: false,
   competitionSignature: false,
   r: 'foo',
   s: 'foo',

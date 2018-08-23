@@ -14,16 +14,20 @@ exports[`Administration should render correctly 1`] = `
     Fund Administration
   </h3>
   <Button
+    onClick={[Function]}
     style="clear"
   >
     Enable subscription
   </Button>
   <Button
+    onClick={[Function]}
     style="clear"
   >
     Convert unclaimed rewards: 0 
+    MLN
   </Button>
   <Button
+    onClick={[Function]}
     style="clear"
   >
     Irreversibly shut down fund

@@ -1,21 +1,33 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import CompetitionRegistration from './index';
 
 const data = {
+  skipRegistration: action('skipRegistration'),
+  continueToSignCompetitionTerms: action('continueToSignCompetitionTerms'),
+  sign: action('sign'),
+  isRegistered: action('isRegistered'),
   fundAddress: 'foo',
   managerAddress: 'foo',
-  showedRegistration: true,
-  skipRegistration: () => true,
-  continueToSignCompetitionTerms: false,
-  sign: () => true,
-  isRegistered: false,
-  competitionSignature: false,
   r: 'foo',
   s: 'foo',
   v: 'foo',
 };
 
-storiesOf('Components|Competition Registration', module).add('Default', () => {
-  return <CompetitionRegistration {...data} />;
-});
+storiesOf('Components|Competition Registration', module)
+  .add('Default', () => {
+    return <CompetitionRegistration {...data} showedRegistration={true} />;
+  })
+  .add('Registration', () => {
+    return <CompetitionRegistration {...data} showedRegistration={false} />;
+  })
+  .add('Signature', () => {
+    return (
+      <CompetitionRegistration
+        {...data}
+        showedRegistration={true}
+        competitionSignature={true}
+      />
+    );
+  });

@@ -5,14 +5,14 @@ import styles from './styles.css';
 
 export interface AdministrationProps {
   subscriptionAllowed?: boolean;
-  toggleSubscription?: () => void;
-  convertUnclaimedRewards?: () => void;
-  shutdown?: () => void;
+  toggleSubscription: () => void;
+  convertUnclaimedRewards: () => void;
+  shutdown: () => void;
   loading?: boolean;
-  registerForCompetition: () => void;
+  registerForCompetition?: () => void;
   fundAddress?: string;
   isCompeting?: boolean;
-  quoteAsset?: string;
+  quoteAsset: string;
 }
 
 export const Administration: StatelessComponent<AdministrationProps> = ({

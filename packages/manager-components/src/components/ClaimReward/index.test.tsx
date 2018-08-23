@@ -1,7 +1,13 @@
 import React from 'react';
 import ClaimReward from './index';
 
-const data = {};
+const data = {
+  competitionName: 'Naxos',
+  claimReward: () => null,
+  isCompetitionActive: false,
+  endTime: 'Tomorrow',
+  redeemParosShares: () => null,
+};
 
 describe('ClaimReward', () => {
   const defaultElement = <ClaimReward {...data} />;

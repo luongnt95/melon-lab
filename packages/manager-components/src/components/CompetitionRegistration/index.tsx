@@ -2,13 +2,13 @@ import React, { Fragment, StatelessComponent } from 'react';
 import Button from '~/blocks/Button';
 
 export interface CompetitionRegistrationProps {
+  skipRegistration: () => void;
+  continueToSignCompetitionTerms: () => void;
+  sign: () => void;
+  isRegistered: () => void;
   fundAddress?: string;
   managerAddress?: string;
   showedRegistration?: boolean;
-  skipRegistration: () => void;
-  continueToSignCompetitionTerms;
-  sign: () => void;
-  isRegistered?: boolean;
   competitionSignature?: boolean;
   r?: string;
   s?: string;
