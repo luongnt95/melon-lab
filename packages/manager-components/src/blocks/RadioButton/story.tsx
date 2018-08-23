@@ -2,33 +2,19 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import RadioButton from './index';
 
+const data = {
+  name: 'name',
+  value: 'value',
+  text: 'Text',
+};
+
 storiesOf('Blocks|Radio Button', module)
   .add('Default', () => {
-    return (
-      <RadioButton
-        name={'Default text'}
-        value={'Default text'}
-        text={'Default text'}
-      />
-    );
+    return <RadioButton {...data} />;
   })
   .add('Disabled', () => {
-    return (
-      <RadioButton
-        name={'Default text'}
-        value={'Default text'}
-        text={'Default text'}
-        disabled={true}
-      />
-    );
+    return <RadioButton {...data} disabled={true} />;
   })
   .add('Checked', () => {
-    return (
-      <RadioButton
-        name={'Default text'}
-        value={'Default text'}
-        text={'Default text'}
-        defaultChecked={true}
-      />
-    );
+    return <RadioButton {...data} defaultChecked={true} />;
   });

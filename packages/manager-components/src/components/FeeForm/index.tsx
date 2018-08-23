@@ -27,7 +27,7 @@ export interface FeeFormProps {
   onChange?: () => void;
   touched?: any;
   errors?: any;
-  fees;
+  fees?: any;
 }
 
 export const FeeForm: StatelessComponent<FeeFormProps> = ({

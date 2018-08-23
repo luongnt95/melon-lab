@@ -13,15 +13,19 @@ exports[`Tabs should render correctly 1`] = `
     className="jsx-__scopedHash tabs__nav"
   >
     <div
-      aria-selected={false}
-      className="tabs__tab"
+      aria-label="Tab 0"
+      aria-selected={true}
+      className="tabs__tab tabs__tab--active"
       key="0"
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}
       tabIndex={1}
-    />
+    >
+      Tab 0
+    </div>
     <div
+      aria-label="Tab 1"
       aria-selected={false}
       className="tabs__tab"
       key="1"
@@ -29,13 +33,17 @@ exports[`Tabs should render correctly 1`] = `
       onKeyDown={[Function]}
       onKeyPress={[Function]}
       tabIndex={1}
-    />
+    >
+      Tab 1
+    </div>
   </div>
   <div
-    className="tabs__content"
+    className="tabs__content tabs__content--active"
     key="0"
   >
-    <TabContent>
+    <TabContent
+      title="Tab 0"
+    >
       Tab 0
     </TabContent>
   </div>
@@ -43,7 +51,9 @@ exports[`Tabs should render correctly 1`] = `
     className="tabs__content"
     key="1"
   >
-    <TabContent>
+    <TabContent
+      title="Tab 1"
+    >
       Tab 1
     </TabContent>
   </div>

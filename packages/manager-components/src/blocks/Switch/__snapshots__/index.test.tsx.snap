@@ -13,8 +13,10 @@ exports[`Switch should render correctly 1`] = `
   >
     <input
       className="jsx-__scopedHash switch__input"
+      name="name"
       onChange={[Function]}
       type="checkbox"
+      value="value"
     />
     <span
       className="jsx-__scopedHash switch__label"

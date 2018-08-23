@@ -10,6 +10,7 @@ exports[`Input should render correctly 1`] = `
   />
   <input
     className="jsx-__scopedHash input__field"
+    name="input"
     onChange={[Function]}
     type="text"
   />

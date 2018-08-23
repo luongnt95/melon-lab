@@ -2,22 +2,17 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import Toggle from './index';
 
-const func = () => true;
+const data = {
+  name: 'name',
+  value: 'value',
+  text: 'text',
+  onChange: () => null,
+};
 
 storiesOf('Blocks|Toggle', module)
   .add('Default', () => {
-    return (
-      <Toggle name="strategy" value="Limit" text="Limit" onChange={func} />
-    );
+    return <Toggle {...data} />;
   })
   .add('Is checked', () => {
-    return (
-      <Toggle
-        name="strategy"
-        value="Limit"
-        text="Limit"
-        isChecked={true}
-        onChange={func}
-      />
-    );
+    return <Toggle {...data} isChecked={true} />;
   });

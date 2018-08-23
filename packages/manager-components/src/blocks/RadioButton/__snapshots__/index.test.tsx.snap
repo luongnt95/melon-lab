@@ -10,9 +10,9 @@ exports[`RadioButton should render correctly 1`] = `
   />
   <input
     className="jsx-__scopedHash radio-button__input"
-    name="Default name"
+    name="name"
     type="radio"
-    value="Default value"
+    value="value"
   />
   <span
     className="jsx-__scopedHash radio-button__checkmark"
@@ -20,7 +20,7 @@ exports[`RadioButton should render correctly 1`] = `
   <span
     className="jsx-__scopedHash radio-button__text"
   >
-    Default text
+    Text
   </span>
 </label>
 `;

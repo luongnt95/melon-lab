@@ -1,28 +1,21 @@
 import React from 'react';
 import { TabContent, Tabs } from './index';
 
+const data = {
+  activeTabIndex: 0,
+  handleTabClick: () => null,
+};
+
 describe('Tabs', () => {
   const defaultElement = (
-    <Tabs>
-      <TabContent>Tab 0</TabContent>
-      <TabContent>Tab 1</TabContent>
+    <Tabs {...data}>
+      <TabContent title="Tab 0">Tab 0</TabContent>
+      <TabContent title="Tab 1">Tab 1</TabContent>
     </Tabs>
   );
 
   it('should render correctly', () => {
     const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should be selectable by class "tabs"', () => {
-    expect(shallow(defaultElement).is('.tabs')).toBe(true);
-  });
-
-  it('should mount in a full DOM', () => {
-    expect(mount(defaultElement).find('.tabs').length).toBe(1);
-  });
-
-  xit('should render to static HTML', () => {
-    expect(render(defaultElement).text()).toEqual('Tabs');
   });
 });

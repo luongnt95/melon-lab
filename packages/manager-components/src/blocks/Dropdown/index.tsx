@@ -7,10 +7,10 @@ export interface DropdownProps {
     value: string;
     name: string;
   }>;
-  label: string;
+  label?: string;
   value?: string;
   name: string;
-  disabled: boolean;
+  disabled?: boolean;
   onChange: (value, event) => void;
 }
 

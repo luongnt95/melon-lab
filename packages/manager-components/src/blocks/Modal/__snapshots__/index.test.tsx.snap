@@ -22,7 +22,7 @@ exports[`Modal should render correctly 1`] = `
   <div
     className="jsx-__scopedHash modal__title"
   >
-    Hello World
+    Modal
   </div>
   <div
     className="jsx-__scopedHash modal__content"
@@ -31,7 +31,13 @@ exports[`Modal should render correctly 1`] = `
       className="jsx-__scopedHash"
     />
     Hello World
-    <Form />
+    <div
+      className="jsx-__scopedHash modal__spinner"
+    >
+      <Spinner
+        size="inflated"
+      />
+    </div>
   </div>
 </Modal>
 `;

@@ -3,34 +3,26 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import Input from './index';
 
+const data = {
+  name: 'input',
+  type: 'text',
+};
+
 storiesOf('Blocks|Input', module)
   .add('Default', () => {
-    return <Input name="text" type="text" onChange={action('changed')} />;
+    return <Input {...data} onChange={action('changed')} />;
   })
   .add('Disabled', () => {
-    return <Input name="text" type="text" disabled={true} />;
+    return <Input {...data} disabled={true} />;
   })
   .add('With placeholder', () => {
-    return <Input name="text" type="text" placeholder="Placeholder..." />;
+    return <Input {...data} placeholder="Placeholder..." />;
   })
   .add('With label', () => {
-    return (
-      <Input
-        name="text"
-        type="text"
-        placeholder="Placeholder..."
-        label="Label"
-      />
-    );
+    return <Input {...data} placeholder="Placeholder..." label="Label" />;
   })
   .add('With inside label', () => {
     return (
-      <Input
-        name="text"
-        type="number"
-        placeholder="0.000"
-        label="Label"
-        insideLabel={true}
-      />
+      <Input {...data} placeholder="0.000" label="Label" insideLabel={true} />
     );
   });

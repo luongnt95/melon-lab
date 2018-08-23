@@ -2,33 +2,19 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import Checkbox from './index';
 
+const data = {
+  name: 'name',
+  value: 'value',
+  text: 'Text',
+};
+
 storiesOf('Blocks|Checkbox', module)
   .add('Default', () => {
-    return (
-      <Checkbox
-        name={'Default text'}
-        value={'Default text'}
-        text={'Default text'}
-      />
-    );
+    return <Checkbox {...data} />;
   })
   .add('Disabled', () => {
-    return (
-      <Checkbox
-        name={'Default text'}
-        value={'Default text'}
-        text={'Default text'}
-        disabled={true}
-      />
-    );
+    return <Checkbox {...data} disabled={true} />;
   })
   .add('Checked', () => {
-    return (
-      <Checkbox
-        name={'Default text'}
-        value={'Default text'}
-        text={'Default text'}
-        defaultChecked={true}
-      />
-    );
+    return <Checkbox {...data} defaultChecked={true} />;
   });

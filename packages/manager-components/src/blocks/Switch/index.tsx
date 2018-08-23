@@ -3,8 +3,8 @@ import React, { StatelessComponent } from 'react';
 import styles from './styles.css';
 
 export interface SwitchProps {
-  options: Array<[string]>;
-  labels: Array<[string]>;
+  options: string[];
+  labels: string[];
   name: string;
   isChecked?: boolean;
   disabled?: boolean;

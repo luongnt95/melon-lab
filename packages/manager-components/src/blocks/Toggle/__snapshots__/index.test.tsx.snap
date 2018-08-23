@@ -11,15 +11,15 @@ exports[`Toggle should render correctly 1`] = `
   <input
     className="jsx-__scopedHash toggle__input"
     hidden={true}
-    name="strategy"
+    name="name"
     onChange={[Function]}
     type="radio"
-    value="Limit"
+    value="value"
   />
   <span
     className="jsx-__scopedHash toggle__text"
   >
-    Limit
+    text
   </span>
 </label>
 `;

@@ -3,32 +3,60 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import Button from './index';
 
+const data = {
+  onClick: action('clicked'),
+};
+
 storiesOf('Blocks|Button', module)
   .add('Default', () => {
-    return <Button onClick={action('clicked')}>Default button</Button>;
+    return <Button {...data}>Default button</Button>;
   })
   .add('Secondary', () => {
     return (
-      <Button style="secondary" onClick={action('clicked')}>
+      <Button {...data} style="secondary">
         Secondary button
       </Button>
     );
   })
   .add('Disabled', () => {
-    return <Button disabled={true}>Disabled button</Button>;
+    return (
+      <Button {...data} disabled={true}>
+        Disabled button
+      </Button>
+    );
   })
   .add('Small', () => {
-    return <Button size="small">Small button</Button>;
+    return (
+      <Button {...data} size="small">
+        Small button
+      </Button>
+    );
   })
   .add('Large', () => {
-    return <Button size="large">Large button</Button>;
+    return (
+      <Button {...data} size="large">
+        Large button
+      </Button>
+    );
   })
   .add('Warning', () => {
-    return <Button style="warning">Warning button</Button>;
+    return (
+      <Button {...data} style="warning">
+        Warning button
+      </Button>
+    );
   })
   .add('Danger', () => {
-    return <Button style="danger">Danger button</Button>;
+    return (
+      <Button {...data} style="danger">
+        Danger button
+      </Button>
+    );
   })
   .add('Success', () => {
-    return <Button style="success">Success button</Button>;
+    return (
+      <Button {...data} style="success">
+        Success button
+      </Button>
+    );
   });

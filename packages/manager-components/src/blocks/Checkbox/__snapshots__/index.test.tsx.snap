@@ -10,9 +10,9 @@ exports[`Checkbox should render correctly 1`] = `
   />
   <input
     className="jsx-__scopedHash checkbox__input"
-    name="Default name"
+    name="name"
     type="checkbox"
-    value="Default value"
+    value="value"
   />
   <span
     className="jsx-__scopedHash checkbox__checkmark"
@@ -20,7 +20,7 @@ exports[`Checkbox should render correctly 1`] = `
   <span
     className="jsx-__scopedHash checkbox__text"
   >
-    Default text
+    Text
   </span>
 </label>
 `;
