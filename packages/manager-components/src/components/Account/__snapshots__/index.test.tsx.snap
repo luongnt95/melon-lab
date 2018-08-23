@@ -80,6 +80,7 @@ exports[`Account should render correctly 1`] = `
     className="jsx-__scopedHash"
   >
     <Button
+      onClick={[Function]}
       style="secondary"
     >
       Download wallet backup JSON
@@ -146,6 +147,7 @@ exports[`Account should render correctly 1`] = `
     className="jsx-__scopedHash"
   >
     <Button
+      onClick={[Function]}
       style="danger"
     >
       Create a new wallet
@@ -155,6 +157,7 @@ exports[`Account should render correctly 1`] = `
     className="jsx-__scopedHash"
   >
     <Button
+      onClick={[Function]}
       style="danger"
     >
       Restore from mnemonic
@@ -164,6 +167,7 @@ exports[`Account should render correctly 1`] = `
     className="jsx-__scopedHash"
   >
     <Button
+      onClick={[Function]}
       style="danger"
     >
       Import wallet JSON
@@ -173,6 +177,7 @@ exports[`Account should render correctly 1`] = `
     className="jsx-__scopedHash"
   >
     <Button
+      onClick={[Function]}
       style="danger"
     >
       Delete wallet

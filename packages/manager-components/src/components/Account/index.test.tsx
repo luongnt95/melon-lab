@@ -6,6 +6,12 @@ const data = {
   associatedFund: '0x0890b03f83629B397F6E5E5075400fe6Ddb4255F',
   networkId: '42',
   isCompetition: false,
+  deleteWallet: () => null,
+  gotoAccountGenerate: () => null,
+  gotoAccountRestore: () => null,
+  gotoImportJSON: () => null,
+  gotoSetup: () => null,
+  downloadJSON: () => null,
 };
 
 describe('Account', () => {

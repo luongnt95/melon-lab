@@ -6,13 +6,13 @@ import styles from './styles.css';
 export interface AccountProps {
   currentAddress?: string;
   associatedFund?: string;
-  deleteWallet?: () => void;
-  gotoAccountGenerate?: () => void;
-  gotoAccountRestore?: () => void;
-  gotoImportJSON?: () => void;
-  gotoSetup?: () => void;
-  downloadJSON?: () => void;
-  networkId?: string;
+  deleteWallet: () => void;
+  gotoAccountGenerate: () => void;
+  gotoAccountRestore: () => void;
+  gotoImportJSON: () => void;
+  gotoSetup: () => void;
+  downloadJSON: () => void;
+  networkId: string;
   isCompetition?: boolean;
   goToFund?: (associatedFund) => void;
 }
