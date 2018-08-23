@@ -1,15 +1,16 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import TermsAndConditions from './index';
 
 const data = {
-  networkId: '1',
+  sign: action('sign'),
 };
 
 storiesOf('Components|Terms And Conditions', module)
   .add('Default', () => {
-    return <TermsAndConditions />;
+    return <TermsAndConditions {...data} />;
   })
   .add('Network 1', () => {
-    return <TermsAndConditions {...data} />;
+    return <TermsAndConditions {...data} networkId="1" />;
   });

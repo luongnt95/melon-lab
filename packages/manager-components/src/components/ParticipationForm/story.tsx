@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import ParticipationForm from './container';
 
-const initialProps = {
+const data = {
   initialValues: {
     price: 1.0,
     type: 'Invest',
@@ -17,5 +17,5 @@ const initialProps = {
 };
 
 storiesOf('Components|Participation Form', module).add('Default', () => {
-  return <ParticipationForm {...initialProps} />;
+  return <ParticipationForm {...data} />;
 });

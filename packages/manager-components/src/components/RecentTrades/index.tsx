@@ -14,7 +14,7 @@ import styles from './styles.css';
 export interface RecentTradesProps {
   baseTokenSymbol: string;
   quoteTokenSymbol: string;
-  trades: any;
+  trades?: any;
 }
 
 export const RecentTrades: StatelessComponent<RecentTradesProps> = ({

@@ -1,7 +1,7 @@
 import React from 'react';
 import ParticipationForm from './container';
 
-const initialProps = {
+const data = {
   values: {
     type: 'Invest',
   },
@@ -15,7 +15,7 @@ const initialProps = {
 };
 
 describe('ParticipationForm', () => {
-  const defaultElement = <ParticipationForm {...initialProps} />;
+  const defaultElement = <ParticipationForm {...data} />;
 
   it('should render correctly', () => {
     const wrapper = shallow(defaultElement);

@@ -1,10 +1,8 @@
 import React from 'react';
 import LockedWallet from './index';
 
-const data = {};
-
 describe('LockedWallet', () => {
-  const defaultElement = <LockedWallet {...data} />;
+  const defaultElement = <LockedWallet />;
 
   it('should render correctly', () => {
     const wrapper = shallow(defaultElement);

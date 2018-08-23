@@ -1,7 +1,7 @@
 import React from 'react';
 import OrderForm from './container';
 
-const initialProps = {
+const data = {
   baseTokenSymbol: 'ETH-T-M',
   quoteTokenSymbol: 'MLN-T-M',
   strategy: 'Limit',
@@ -32,7 +32,7 @@ const initialProps = {
 };
 
 describe('OrderForm', () => {
-  const defaultElement = <OrderForm {...initialProps} />;
+  const defaultElement = <OrderForm {...data} />;
 
   it('should render correctly', () => {
     const wrapper = shallow(defaultElement);

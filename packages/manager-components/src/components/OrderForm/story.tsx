@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import OrderForm from './container';
 
-const initialProps = {
+const data = {
   baseTokenSymbol: 'ETH-T-M',
   quoteTokenSymbol: 'MLN-T-M',
   selectedOrder: false,
@@ -40,5 +40,5 @@ const initialProps = {
 };
 
 storiesOf('Components|Order Form', module).add('Default', () => {
-  return <OrderForm {...initialProps} />;
+  return <OrderForm {...data} />;
 });

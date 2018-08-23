@@ -2,13 +2,13 @@ import React, { Fragment, StatelessComponent } from 'react';
 import Button from '~/blocks/Button';
 
 export interface TermsAndConditionsProps {
-  sign?: () => void;
   networkId?: string;
+  sign: () => void;
 }
 
 export const TermsAndConditions: StatelessComponent<
   TermsAndConditionsProps
-> = ({ sign, networkId }) => {
+> = ({ networkId, sign }) => {
   return (
     <div className="conditions">
       {networkId === '1' ? (

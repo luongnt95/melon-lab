@@ -43,6 +43,9 @@ const data = {
   usersFund: '0xce35Be39A76706f314B2B430e80DaCB77c886242',
   search: '',
   ordering: '+rank',
+  goToFund: () => null,
+  onFilterChange: () => null,
+  setOrdering: () => null,
 };
 
 describe('Ranking', () => {

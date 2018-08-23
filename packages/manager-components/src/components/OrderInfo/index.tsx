@@ -4,9 +4,9 @@ import NumberFormat from 'react-number-format';
 import styles from './styles.css';
 
 export interface OrderInfoProps {
-  lastPrice: number;
-  bid: number;
   ask: number;
+  bid: number;
+  lastPrice: number;
   tokens: {
     [key: string]: {
       name: string;
@@ -16,9 +16,9 @@ export interface OrderInfoProps {
 }
 
 const OrderInfo: StatelessComponent<OrderInfoProps> = ({
-  lastPrice,
-  bid,
   ask,
+  bid,
+  lastPrice,
   tokens,
 }) => {
   return (

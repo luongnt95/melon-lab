@@ -5,7 +5,7 @@ const data = {
   initialValues: {
     mnemonic: '',
   },
-  error: '',
+  onSubmit: () => null,
 };
 
 describe('RestoreWallet', () => {

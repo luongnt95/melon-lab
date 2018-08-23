@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import Orderbook from './index';
@@ -958,6 +959,7 @@ const data = {
       },
     ],
   },
+  onClick: action('onClick'),
 };
 
 const noData = {
@@ -971,6 +973,7 @@ const noData = {
     buyEntries: [],
     sellEntries: [],
   },
+  onClick: action('onClick'),
 };
 
 storiesOf('Components|Orderbook', module)

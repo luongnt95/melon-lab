@@ -1,6 +1,6 @@
 import React, { StatelessComponent } from 'react';
 
-export const LockedWallet: StatelessComponent = ({}) => (
+export const LockedWallet: StatelessComponent = () => (
   <div className="locked-wallet">
     <h3>Welcome to the future of investment funds</h3>
     <p>

@@ -1,14 +1,16 @@
 import React from 'react';
 import PasswordForm from './container';
 
-const initialProps = {
+const data = {
   initialValues: {
     password: '',
   },
+  onCancel: () => null,
+  onSubmit: () => null,
 };
 
 describe('PasswordForm', () => {
-  const defaultElement = <PasswordForm {...initialProps} />;
+  const defaultElement = <PasswordForm {...data} />;
 
   it('should render correctly', () => {
     const wrapper = shallow(defaultElement);

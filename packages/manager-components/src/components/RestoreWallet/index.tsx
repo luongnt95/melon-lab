@@ -10,23 +10,23 @@ interface FormValues {
 }
 
 export interface RestoreWalletProps {
-  handleSubmit?: () => void;
-  handleBlur?: () => void;
-  onChange?: () => void;
-  values: FormValues;
   error?: string;
-  touched?: any;
   errors?: any;
+  handleBlur?: () => void;
+  handleSubmit?: () => void;
+  onChange?: () => void;
+  touched?: any;
+  values: FormValues;
 }
 
 export const RestoreWallet: StatelessComponent<RestoreWalletProps> = ({
-  handleSubmit,
-  handleBlur,
-  onChange,
   error,
-  values,
-  touched,
   errors,
+  handleBlur,
+  handleSubmit,
+  onChange,
+  touched,
+  values,
 }) => {
   return (
     <div className="restore-wallet">

@@ -7,25 +7,25 @@ import Spinner from '~/blocks/Spinner';
 import styles from './styles.css';
 
 export interface RankingProps {
-  rankingList?: any;
-  loading?: boolean;
-  usersFund?: string;
-  onFilterChange?: () => void;
-  ordering?: string;
-  setOrdering?: (field) => void;
-  search?: string;
   goToFund: (address) => void;
+  loading?: boolean;
+  onFilterChange: () => void;
+  ordering?: string;
+  rankingList?: any;
+  search?: string;
+  setOrdering: (field) => void;
+  usersFund?: string;
 }
 
 export const Ranking: StatelessComponent<RankingProps> = ({
-  rankingList,
+  goToFund,
   loading,
-  usersFund,
   onFilterChange,
   ordering,
-  setOrdering,
+  rankingList,
   search,
-  goToFund,
+  setOrdering,
+  usersFund,
 }) => {
   const onOrdering = (field, e) => {
     if (setOrdering) {

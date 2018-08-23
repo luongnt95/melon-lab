@@ -24,23 +24,20 @@ export interface Order {
 }
 
 export interface OpenOrdersProps {
-  orders?: Order[];
-  onClick?: (id, buySymbol, sellSymbol) => void;
-  isReadyToTrade?: boolean;
   isManager?: boolean;
+  isReadyToTrade?: boolean;
+  onClick: (id, buySymbol, sellSymbol) => void;
+  orders?: Order[];
 }
 
 export const OpenOrders: StatelessComponent<OpenOrdersProps> = ({
-  orders,
-  onClick,
-  isReadyToTrade,
   isManager,
+  isReadyToTrade,
+  onClick,
+  orders,
 }) => {
-  const onCancel = (e, data) => {
-    if (onClick) {
-      onClick(data.id, data.buySymbol, data.sellSymbol);
-    }
-  };
+  const onCancel = (e: any, data: any): void =>
+    onClick(data.id, data.buySymbol, data.sellSymbol);
 
   const typeCellClassNames = (type: string) =>
     classNames(

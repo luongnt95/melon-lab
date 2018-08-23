@@ -5,13 +5,13 @@ import Button from '~/blocks/Button';
 import styles from './styles.css';
 
 export interface ImportWalletProps {
-  parseWallet?: () => void;
-  goToAccount?: () => void;
+  goToAccount: () => void;
+  parseWallet: () => void;
 }
 
 export const ImportWallet: StatelessComponent<ImportWalletProps> = ({
-  parseWallet,
   goToAccount,
+  parseWallet,
 }) => {
   return (
     <div className="import-wallet">

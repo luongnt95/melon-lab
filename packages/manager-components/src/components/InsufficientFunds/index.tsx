@@ -5,16 +5,16 @@ import styles from './styles.css';
 
 export interface InsufficientFundsProps {
   ethBalance?: string;
-  wethBalance?: string;
-  walletAddress?: string;
   showFaucet?: boolean;
+  walletAddress?: string;
+  wethBalance?: string;
 }
 
 export const InsufficientFunds: StatelessComponent<InsufficientFundsProps> = ({
   ethBalance,
-  wethBalance,
-  walletAddress,
   showFaucet,
+  walletAddress,
+  wethBalance,
 }) => {
   const faucetUrl = `https://faucet.melon.fund/?address=${
     walletAddress ? walletAddress : ''

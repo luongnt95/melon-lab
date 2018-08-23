@@ -8,36 +8,36 @@ import Toggle from '~/blocks/Toggle';
 import styles from './styles.css';
 
 interface FormValues {
-  type: string;
-  quantity: string;
   price: string;
+  quantity: string;
   total: string;
+  type: string;
 }
 
 export interface ParticipationFormProps {
-  values: FormValues;
-  handleSubmit?: () => void;
-  handleBlur?: () => void;
-  onChange?: () => void;
-  touched?: any;
-  errors?: any;
-  decimals?: number;
-  setup: boolean;
   dataValid: boolean;
+  decimals?: number;
+  errors?: any;
+  handleBlur?: () => void;
+  handleSubmit?: () => void;
+  onChange?: () => void;
   quoteAsset: string;
+  setup: boolean;
+  touched?: any;
+  values: FormValues;
 }
 
 const ParticipationForm: StatelessComponent<ParticipationFormProps> = ({
-  values,
-  handleSubmit,
-  handleBlur,
-  onChange,
-  touched,
-  errors,
-  decimals,
-  setup,
   dataValid,
+  decimals,
+  errors,
+  handleBlur,
+  handleSubmit,
+  onChange,
   quoteAsset,
+  setup,
+  touched,
+  values,
 }) => {
   const numberPlaceholder = (0).toFixed(decimals);
 

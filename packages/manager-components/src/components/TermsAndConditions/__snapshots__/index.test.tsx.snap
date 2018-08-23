@@ -49,6 +49,7 @@ exports[`TermsAndConditions should render correctly 1`] = `
     </strong>
   </p>
   <Button
+    onClick={[Function]}
     style="secondary"
   >
     I understand and agree to sign the above terms and conditions.

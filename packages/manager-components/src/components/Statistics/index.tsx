@@ -5,21 +5,21 @@ import { CellBody, Row, Table, TableBody } from '~/blocks/Table';
 import styles from './styles.css';
 
 export interface StatisticsProps {
-  rewardsSum?: string;
-  investmentsSum?: string;
-  redeemalsSum?: string;
-  tradesCount?: string;
   highestSharePrice?: string;
+  investmentsSum?: string;
   netAssetValue?: string;
+  redeemalsSum?: string;
+  rewardsSum?: string;
+  tradesCount?: string;
 }
 
 export const Statistics: StatelessComponent<StatisticsProps> = ({
-  rewardsSum,
-  investmentsSum,
-  redeemalsSum,
-  tradesCount,
   highestSharePrice,
+  investmentsSum,
   netAssetValue,
+  redeemalsSum,
+  rewardsSum,
+  tradesCount,
 }) => {
   return (
     <div className="statistics">

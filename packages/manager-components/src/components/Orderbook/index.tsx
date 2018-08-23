@@ -6,13 +6,13 @@ import Spinner from '~/blocks/Spinner';
 import styles from './styles.css';
 
 export interface OrderbookProps {
-  orderbook?: any;
-  loading: boolean;
-  isReadyToTrade: boolean;
-  onClick: (index) => void;
   baseToken?: string;
-  quoteToken?: string;
   decimals?: number;
+  isReadyToTrade: boolean;
+  loading: boolean;
+  onClick: (index) => void;
+  orderbook?: any;
+  quoteToken?: string;
 }
 
 const Bar = ({ widthBar, widthBorder, leftSpaceBorder }) => {
@@ -27,8 +27,8 @@ const Bar = ({ widthBar, widthBorder, leftSpaceBorder }) => {
       <span
         className="orderbook__bar-border"
         style={{
-          width: widthBorder,
           left: leftSpaceBorder,
+          width: widthBorder,
         }}
       />
     </Fragment>
@@ -36,13 +36,13 @@ const Bar = ({ widthBar, widthBorder, leftSpaceBorder }) => {
 };
 
 export const Orderbook: StatelessComponent<OrderbookProps> = ({
-  orderbook,
-  loading,
-  isReadyToTrade = true,
-  onClick,
   baseToken,
-  quoteToken,
   decimals = 4,
+  isReadyToTrade = true,
+  loading,
+  onClick,
+  orderbook,
+  quoteToken,
 }) => {
   const calculateBar = (prevEntry, entry) => {
     const getPercentage = (cumulativeVolume, totalVolume) => {

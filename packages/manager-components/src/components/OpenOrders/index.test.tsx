@@ -26,6 +26,7 @@ const data = {
       type: 'sell',
     },
   ],
+  onClick: () => null,
 };
 
 describe('OpenOrders', () => {

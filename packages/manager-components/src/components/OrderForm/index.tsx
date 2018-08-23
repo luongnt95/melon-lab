@@ -11,52 +11,52 @@ import OrderInfo from '~/components/OrderInfo';
 import styles from './styles.css';
 
 interface FormValues {
-  price: string;
-  quantity: string;
-  total: string;
   exchange: string;
   orderType: string;
+  price: string;
+  quantity: string;
   strategy: string;
+  total: string;
 }
 
 export interface OrderFormProps {
-  values: FormValues;
-  handleSubmit?: () => void;
-  handleBlur?: () => void;
-  onChange?: React.ChangeEvent<any>;
-  info?: any;
   baseTokenSymbol?: string;
-  quoteTokenSymbol?: string;
+  dataValid?: boolean;
+  decimals?: number;
+  errors: any;
   exchanges: Array<{
     name: string;
     label: string;
   }>;
-  selectedOrder?: () => void;
-  errors: any;
-  touched: any;
-  decimals?: number;
-  type?: string;
-  dataValid?: boolean;
-  isManager?: boolean;
+  handleBlur?: () => void;
+  handleSubmit?: () => void;
+  info?: any;
   isCompetition?: boolean;
+  isManager?: boolean;
+  onChange?: React.ChangeEvent<any>;
+  quoteTokenSymbol?: string;
+  selectedOrder?: () => void;
+  touched: any;
+  type?: string;
+  values: FormValues;
 }
 
 export const OrderForm: StatelessComponent<OrderFormProps> = ({
-  handleSubmit,
-  handleBlur,
-  onChange,
-  info,
   baseTokenSymbol,
-  quoteTokenSymbol,
-  exchanges,
-  selectedOrder,
-  errors,
-  values,
-  touched,
-  decimals,
   dataValid,
-  isManager,
+  decimals,
+  errors,
+  exchanges,
+  handleBlur,
+  handleSubmit,
+  info,
   isCompetition,
+  isManager,
+  onChange,
+  quoteTokenSymbol,
+  selectedOrder,
+  touched,
+  values,
 }) => {
   const isMarket = values.strategy === 'Market' ? true : false;
   const numberPlaceholder = (0).toFixed(decimals);

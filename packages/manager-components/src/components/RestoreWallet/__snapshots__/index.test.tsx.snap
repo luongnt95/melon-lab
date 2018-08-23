@@ -3,7 +3,6 @@
 exports[`RestoreWallet should render correctly 1`] = `
 <Formik
   enableReinitialize={true}
-  error=""
   handleSubmit={[Function]}
   initialValues={
     Object {

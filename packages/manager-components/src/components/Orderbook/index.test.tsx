@@ -958,6 +958,7 @@ const data = {
       },
     ],
   },
+  onClick: () => null,
 };
 
 describe('Orderbook', () => {

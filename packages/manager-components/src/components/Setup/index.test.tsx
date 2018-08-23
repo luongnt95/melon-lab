@@ -10,6 +10,7 @@ const data = {
     competitionComplianceAddress: 'bar',
     onlyManagerCompetitionAddress: 'foo',
   },
+  onSubmit: () => null,
 };
 
 describe('Setup', () => {

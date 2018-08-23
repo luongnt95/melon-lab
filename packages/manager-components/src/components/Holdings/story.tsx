@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import Holdings from './index';
@@ -6,6 +7,7 @@ const data = {
   isReadyToTrade: true,
   dataValid: true,
   quoteAsset: 'WETH-T',
+  selectAsset: action('selectAsset'),
   holdings: [
     { name: 'ANT-T', balance: '0.0000', price: '0.0035', percentage: '0.0000' },
     { name: 'BAT-T', balance: '0.0000', price: '0.0007', percentage: '0.0000' },

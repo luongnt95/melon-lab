@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import Ranking from './index';
@@ -44,6 +45,9 @@ const data = {
   usersFund: '0xce35Be39A76706f314B2B430e80DaCB77c886242',
   search: '',
   ordering: '+rank',
+  goToFund: action('goToFund'),
+  onFilterChange: action('onFilterChange'),
+  setOrdering: action('setOrdering'),
 };
 
 storiesOf('Components|Ranking', module).add('Default', () => {

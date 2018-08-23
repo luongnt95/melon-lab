@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import OpenOrders from './index';
@@ -27,6 +28,7 @@ const data = {
       type: 'sell',
     },
   ],
+  onClick: action('onClick'),
 };
 
 storiesOf('Components|Open Orders', module).add('Default', () => {

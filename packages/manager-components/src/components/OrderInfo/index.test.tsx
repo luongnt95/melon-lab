@@ -17,7 +17,7 @@ const data = {
   },
 };
 
-describe('OrderInfo', () => {
+describe('Order Info', () => {
   const defaultElement = <OrderInfo {...data} />;
 
   it('should render correctly', () => {

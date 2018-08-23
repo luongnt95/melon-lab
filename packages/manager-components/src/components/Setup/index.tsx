@@ -11,35 +11,35 @@ interface FormValues {
 }
 
 export interface SetupProps {
-  loading?: boolean;
-  handleSubmit?: () => void;
-  networkId?: string;
+  competitionName?: string;
   config: {
     canonicalPriceFeedAddress: string;
     competitionComplianceAddress: string;
     onlyManagerCompetitionAddress: string;
   };
-  isCompetition?: boolean;
-  onChange?: () => void;
-  handleBlur?: () => void;
-  values?: FormValues;
-  touched?: any;
   errors?: any;
-  competitionName?: string;
+  handleBlur?: () => void;
+  handleSubmit?: () => void;
+  isCompetition?: boolean;
+  loading?: boolean;
+  networkId?: string;
+  onChange?: () => void;
+  touched?: any;
+  values?: FormValues;
 }
 
 export const Setup: StatelessComponent<SetupProps> = ({
-  loading,
-  handleSubmit,
-  networkId,
-  config,
-  isCompetition,
-  onChange,
-  handleBlur,
-  values,
-  touched,
-  errors,
   competitionName = 'Naxos',
+  config,
+  errors,
+  handleBlur,
+  handleSubmit,
+  isCompetition,
+  loading,
+  networkId,
+  onChange,
+  touched,
+  values,
 }) => {
   return (
     <div className="setup">

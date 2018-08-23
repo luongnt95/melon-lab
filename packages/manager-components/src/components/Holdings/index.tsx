@@ -13,28 +13,28 @@ import {
 import styles from './styles.css';
 
 export interface Holding {
-  name: string;
   balance: string;
-  price: string;
+  name: string;
   percentage: string;
+  price: string;
 }
 
 export interface HoldingsProps {
-  holdings?: Holding[];
-  selectAsset?: (assetName, isReadyToTrade, quoteAsset) => void;
-  isReadyToTrade?: boolean;
   dataValid?: boolean;
+  holdings?: Holding[];
+  isReadyToTrade?: boolean;
   quoteAsset?: string;
+  selectAsset?: (assetName, isReadyToTrade, quoteAsset) => void;
 }
 
 export const Holdings: StatelessComponent<HoldingsProps> = ({
-  holdings,
-  selectAsset,
-  isReadyToTrade,
   dataValid,
+  holdings,
+  isReadyToTrade,
   quoteAsset,
+  selectAsset,
 }) => {
-  const onClick = (e, assetName) => {
+  const onClick = (e: any, assetName: string): void => {
     if (selectAsset) {
       selectAsset(assetName, isReadyToTrade, quoteAsset);
     }

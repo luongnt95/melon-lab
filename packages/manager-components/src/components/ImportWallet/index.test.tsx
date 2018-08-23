@@ -1,7 +1,10 @@
 import React from 'react';
 import ImportWallet from './index';
 
-const data = {};
+const data = {
+  parseWallet: () => null,
+  goToAccount: () => null,
+};
 
 describe('ImportWallet', () => {
   const defaultElement = <ImportWallet {...data} />;

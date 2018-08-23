@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OrderInfo should render correctly 1`] = `
+exports[`Order Info should render correctly 1`] = `
 <div
   className="jsx-__scopedHash order-info"
 >
