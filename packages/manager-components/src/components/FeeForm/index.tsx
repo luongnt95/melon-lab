@@ -27,7 +27,6 @@ export interface FeeFormProps {
   onChange?: () => void;
   touched?: any;
   errors?: any;
-  gasPrice;
   fees;
 }
 
@@ -40,13 +39,19 @@ export const FeeForm: StatelessComponent<FeeFormProps> = ({
   handleSubmit,
   onCancel,
   handleReset,
-  gasPrice,
   fees,
 }) => {
   const handleCancel = () => {
     handleReset();
     onCancel();
   };
+
+  const calcEntryTotal = (gasLimit: number) =>
+    toBigNumber((values.gasPrice * gasLimit) / 10 ** 9).toFixed(4);
+
+  const total = toBigNumber(
+    add(...fees.map(e => (e.gasLimit * values.gasPrice) / 10 ** 9)),
+  ).toFixed(4);
 
   return (
     <div className="fee-form">
@@ -78,27 +83,18 @@ export const FeeForm: StatelessComponent<FeeFormProps> = ({
                 </Row>
               </TableHead>
               <TableBody>
-                {fees.map((entry, i) => (
+                {fees.map((entry, i: number) => (
                   <Row key={`fee-${i}`}>
                     <CellBody>{entry.description}</CellBody>
                     <CellBody>{entry.gasLimit}</CellBody>
-                    <CellBody>
-                      Ξ {toBigNumber((values.gasPrice * entry.gasLimit) / 10 ** 9).toFixed(4)}
-                    </CellBody>
+                    <CellBody>Ξ {calcEntryTotal(entry.gasLimit)}</CellBody>
                   </Row>
                 ))}
 
                 <Row>
                   <CellHead />
                   <CellHead />
-                  <CellHead>
-                    Ξ{' '}
-                    {toBigNumber(add(
-                      ...fees.map(
-                        e => (e.gasLimit * values.gasPrice) / 10 ** 9,
-                      ),
-                    )).toFixed(4)}
-                  </CellHead>
+                  <CellHead>Ξ {total}</CellHead>
                 </Row>
               </TableBody>
             </Table>

@@ -21,11 +21,7 @@ export const GetStarted: StatelessComponent<GetStartedProps> = ({
   onClick,
   isHome,
 }) => {
-  const onStart = () => {
-    if (onClick) {
-      onClick(linkAction);
-    }
-  };
+  const onStart = () => onClick && onClick(linkAction);
 
   const getStartedClassNames = classNames('get-started', {
     [`get-started--is-home`]: isHome,

@@ -30,11 +30,8 @@ export const Account: StatelessComponent<AccountProps> = ({
   isCompetition,
   goToFund,
 }) => {
-  const onClickGoToFund = () => {
-    if (associatedFund && goToFund) {
-      goToFund(associatedFund);
-    }
-  };
+  const onClickGoToFund = () =>
+    associatedFund && goToFund && goToFund(associatedFund);
 
   return (
     <div className="account">

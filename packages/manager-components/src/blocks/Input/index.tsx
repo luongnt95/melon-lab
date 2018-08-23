@@ -44,7 +44,7 @@ const Input: StatelessComponent<InputProps> = ({
     'input--has-error': error,
   });
 
-  const handleChange = e => {
+  const handleChange = (e: any): void => {
     const targetValue = e.target.value;
     if (onChange) {
       onChange({ value: targetValue }, e);

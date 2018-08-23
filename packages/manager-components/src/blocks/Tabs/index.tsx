@@ -42,7 +42,7 @@ const Tabs: StatelessComponent<TabsProps> = ({
     );
   });
 
-  const handleKeyPress = index => e => {
+  const handleKeyPress = index => (e: any): void => {
     const keycode = e.keyCode ? e.keyCode : e.which;
     if (keycode === 39 && e.target.nextElementSibling) {
       e.target.nextElementSibling.focus();
@@ -59,7 +59,7 @@ const Tabs: StatelessComponent<TabsProps> = ({
     });
     const title = child.props.title;
 
-    const handleClick = tabIndex => e => {
+    const handleClick = tabIndex => (e: any): void => {
       handleTabClick(tabIndex);
     };
 

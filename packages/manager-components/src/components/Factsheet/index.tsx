@@ -47,11 +47,7 @@ const Factsheet: StatelessComponent<FactsheetProps> = ({
   shutdown,
   isCompetition,
 }) => {
-  const scrolltoHoldings = () => {
-    if (scrollTo) {
-      scrollTo('holdings');
-    }
-  };
+  const scrolltoHoldings = () => scrollTo && scrollTo('holdings');
 
   return (
     <div className="factsheet">

@@ -26,7 +26,7 @@ const Button: StatelessComponent<ButtonProps> = ({
     [`button--${style}`]: style,
   });
 
-  const onButtonClick = e => {
+  const onButtonClick = (e: any): void => {
     onClick(e, buttonValue);
   };
 

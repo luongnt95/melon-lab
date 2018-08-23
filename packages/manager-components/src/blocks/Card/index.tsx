@@ -26,11 +26,7 @@ const Card: StatelessComponent<CardProps> = ({
     'card--active': isActive,
   });
 
-  const onCardClick = () => {
-    if (onClick) {
-      onClick(address);
-    }
-  };
+  const onCardClick = () => onClick && onClick(address);
 
   return (
     <div onClick={onCardClick} className={cardClassNames}>

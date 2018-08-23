@@ -112,11 +112,10 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
                           entry.order.price,
                         ).toFixed(decimals);
 
-                        const onClickBuyOrder = () => {
-                          if (isReadyToTrade && onClick) {
-                            onClick(orderbook.buyEntries.slice(0, index + 1));
-                          }
-                        };
+                        const onClickBuyOrder = () =>
+                          isReadyToTrade &&
+                          onClick &&
+                          onClick(orderbook.buyEntries.slice(0, index + 1));
 
                         const calculatedBar = calculateBar(
                           orderbook.buyEntries[index - 1],
@@ -181,11 +180,10 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
                           entry.order.price,
                         ).toFixed(decimals);
 
-                        const onClickSellOrder = () => {
-                          if (isReadyToTrade && onClick) {
-                            onClick(orderbook.sellEntries.slice(0, index + 1));
-                          }
-                        };
+                        const onClickSellOrder = () =>
+                          isReadyToTrade &&
+                          onClick &&
+                          onClick(orderbook.sellEntries.slice(0, index + 1));
 
                         const calculatedBar = calculateBar(
                           orderbook.sellEntries[index - 1],

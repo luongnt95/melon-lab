@@ -19,7 +19,7 @@ const Toggle: StatelessComponent<ToggleProps> = ({
   isChecked,
   onChange,
 }) => {
-  const handleChange = e => {
+  const handleChange = (e: any): void => {
     const targetValue = e.target.value;
     onChange({ value: targetValue }, e);
   };

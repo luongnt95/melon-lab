@@ -18,11 +18,7 @@ export const ExecuteRequest: StatelessComponent<ExecuteRequestProps> = ({
   targetDate,
   requestId,
 }) => {
-  const onClickExecute = () => {
-    if (onExecute) {
-      onExecute(requestId);
-    }
-  };
+  const onClickExecute = () => onExecute && onExecute(requestId);
 
   return (
     <div className="execute-request">

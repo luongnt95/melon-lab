@@ -22,7 +22,7 @@ export const RecentTrades: StatelessComponent<RecentTradesProps> = ({
   quoteTokenSymbol,
   trades,
 }) => {
-  const typeCellClassNames = type =>
+  const typeCellClassNames = (type: string) =>
     classNames(
       'recent-trades__cell',
       {

@@ -27,14 +27,14 @@ export const Header: StatelessComponent<HeaderProps> = ({
   goToHome,
   goToWallet,
 }) => {
-  const onClickGoToHome = e => {
+  const onClickGoToHome = (e: any): void => {
     e.preventDefault(e);
     if (goToHome) {
       goToHome();
     }
   };
 
-  const onClickGoToWallet = e => {
+  const onClickGoToWallet = (e: any): void => {
     e.preventDefault(e);
     if (goToWallet) {
       goToWallet();

@@ -42,7 +42,7 @@ export const OpenOrders: StatelessComponent<OpenOrdersProps> = ({
     }
   };
 
-  const typeCellClassNames = type =>
+  const typeCellClassNames = (type: string) =>
     classNames(
       'open-orders__cell',
       {

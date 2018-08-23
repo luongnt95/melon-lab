@@ -99,7 +99,7 @@ const CellHead: StatelessComponent<CellProps> = ({
     [`table__cell--clickable`]: onClick,
   });
 
-  const onCellClick = e => {
+  const onCellClick = (e: any): void => {
     if (onClick) {
       onClick(e, headFor);
     }

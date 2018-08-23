@@ -20,9 +20,8 @@ export const InsufficientFunds: StatelessComponent<InsufficientFundsProps> = ({
     walletAddress ? walletAddress : ''
   }`;
 
-  const onClick = () => {
+  const onClick = () =>
     window.open(faucetUrl, '_blank', 'noopener', 'noreferrer');
-  };
 
   return (
     <div className="insufficient-funds">
