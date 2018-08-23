@@ -114,7 +114,7 @@ services:
       target: development
     volumes:
       - *workspace-env
-      - *workspace-env-defautls
+      - *workspace-env-defaults
       - *workspace-package
       - *workspace-yarn-lock
       - *workspace-prettier
