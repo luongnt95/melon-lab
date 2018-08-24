@@ -34,7 +34,7 @@ exports[`ClaimReward should render correctly 1`] = `
          contract
       </span>
       <Button
-        onClick={[Function]}
+        onClick={[MockFunction]}
       >
         Claim
       </Button>
@@ -48,11 +48,38 @@ exports[`ClaimReward should render correctly 1`] = `
         Redeem my shares
       </span>
       <Button
-        onClick={[Function]}
+        onClick={[MockFunction]}
       >
         Redeem
       </Button>
     </li>
   </ul>
+</div>
+`;
+
+exports[`ClaimReward should render correctly with isCompetitionActive 1`] = `
+<div
+  className="jsx-__scopedHash claim-reward"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Naxos
+     reward
+  </h3>
+  <div
+    className="jsx-__scopedHash claim-reward__message"
+  >
+    Naxos
+     reward can only be claimed at the end of the
+     
+    Naxos
+     epoch. The competition will end on 
+    Tomorrow
+  </div>
 </div>
 `;

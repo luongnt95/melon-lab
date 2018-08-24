@@ -1,6 +1,8 @@
 import React from 'react';
 import Ranking from './index';
 
+const mockCallback = jest.fn();
+const mockCallbackFund = jest.fn();
 const data = {
   rankingList: [
     {
@@ -24,35 +26,49 @@ const data = {
       sharePrice: '1.0000',
       rank: 3,
     },
-    {
-      name: 'SolidEarnings',
-      address: '0xE28073701a7Ba04D30059507B8Ec11Fcc4FD034e',
-      inception: '25. Jul 2018 08:26',
-      sharePrice: '1.0000',
-      rank: 4,
-    },
-    {
-      name: 'JZ',
-      address: '0xDB14bA0Ad1939ACE877262Dadb56d15Fe4966bd5',
-      inception: '23. Jul 2018 12:43',
-      sharePrice: '1.0000',
-      rank: 5,
-    },
   ],
-  loading: true,
-  usersFund: '0xce35Be39A76706f314B2B430e80DaCB77c886242',
+  usersFund: '0x5bBA9263Ab1eA26FF9c0FeE3619e7AAf7C79E02b',
   search: '',
   ordering: '+rank',
-  goToFund: () => null,
+  goToFund: mockCallbackFund,
   onFilterChange: () => null,
-  setOrdering: () => null,
+  setOrdering: mockCallback,
 };
 
 describe('Ranking', () => {
   const defaultElement = <Ranking {...data} />;
 
+  it('should render correctly when loading', () => {
+    const defaultElement = <Ranking {...data} loading={true} />;
+    const wrapper = shallow(defaultElement);
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('should render correctly', () => {
     const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('onChange order event', () => {
+    const wrapper = shallow(defaultElement);
+    wrapper
+      .find('Dropdown')
+      .simulate('change', { target: undefined, value: '+rank' });
+    expect(mockCallback.mock.calls.length).toBe(1);
+    expect(mockCallback.mock.calls[0][0]).toBe('+rank');
+    wrapper
+      .find('Dropdown')
+      .simulate('change', { target: undefined, value: '-rank' });
+    expect(mockCallback.mock.calls.length).toBe(2);
+    expect(mockCallback.mock.calls[1][0]).toBe('-rank');
+  });
+
+  it('onClick fund event', () => {
+    const wrapper = shallow(defaultElement);
+    wrapper
+      .find('Card')
+      .first()
+      .simulate('click');
+    expect(mockCallbackFund.mock.calls.length).toBe(1);
   });
 });

@@ -24,9 +24,7 @@ const Switch: StatelessComponent<SwitchProps> = ({
   const handleChange = (e: any): void => {
     const checked = e.target.checked;
     const checkedValue = !checked ? labels[0] : labels[1];
-    if (onChange) {
-      onChange({ value: checkedValue }, e);
-    }
+    onChange({ value: checkedValue }, e);
   };
 
   return (

@@ -1590,3 +1590,31 @@ exports[`RecentTrades should render correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`RecentTrades should render correctly without trades 1`] = `
+<div
+  className="jsx-__scopedHash recent-trades"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Recent trades for 
+    MLN-T
+    /
+    WETH-T
+  </h3>
+  <div
+    className="jsx-__scopedHash recent-trades__table-wrap"
+  >
+    <p
+      className="jsx-__scopedHash"
+    >
+      No recent trades
+    </p>
+  </div>
+</div>
+`;
