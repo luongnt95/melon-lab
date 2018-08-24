@@ -22,19 +22,19 @@ describe('Account', () => {
 
   it('should render correctly without currentAddress', () => {
     customeElement = <Account {...data} currentAddress="" />;
-    const wrapper = shallow(defaultElement);
+    const wrapper = shallow(customeElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly without associatedFund', () => {
     customeElement = <Account {...data} associatedFund="" />;
-    const wrapper = shallow(defaultElement);
+    const wrapper = shallow(customeElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly without networkId', () => {
     customeElement = <Account {...data} networkId="" />;
-    const wrapper = shallow(defaultElement);
+    const wrapper = shallow(customeElement);
     expect(wrapper).toMatchSnapshot();
   });
 

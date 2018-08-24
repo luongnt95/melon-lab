@@ -136,37 +136,25 @@ export const Account: StatelessComponent<AccountProps> = ({
       <Fragment>
         {!isCompetition && (
           <p>
-            <Button
-              style={currentAddress ? 'danger' : 'secondary'}
-              onClick={gotoAccountGenerate}
-            >
+            <Button style="danger" onClick={gotoAccountGenerate}>
               Create a new wallet
             </Button>
           </p>
         )}
         <p>
-          <Button
-            style={currentAddress ? 'danger' : 'secondary'}
-            onClick={gotoAccountRestore}
-          >
+          <Button style="danger" onClick={gotoAccountRestore}>
             Restore from mnemonic
           </Button>
         </p>
         <p>
-          <Button
-            style={currentAddress ? 'danger' : 'secondary'}
-            onClick={gotoImportJSON}
-          >
+          <Button style="danger" onClick={gotoImportJSON}>
             Import wallet JSON
           </Button>
         </p>
         {currentAddress &&
           !isCompetition && (
             <p>
-              <Button
-                style={currentAddress ? 'danger' : 'secondary'}
-                onClick={deleteWallet}
-              >
+              <Button style="danger" onClick={deleteWallet}>
                 Delete wallet
               </Button>
             </p>

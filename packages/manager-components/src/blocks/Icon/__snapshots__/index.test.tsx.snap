@@ -2,9 +2,33 @@
 
 exports[`Icon should render correctly 1`] = `
 <svg
-  className="icon"
+  className="icon iconClass"
   height="100%"
   width="100%"
+>
+  <use
+    xlinkHref="#logos_default"
+  />
+</svg>
+`;
+
+exports[`Icon should render correctly with height 1`] = `
+<svg
+  className="icon iconClass"
+  height="1px"
+  width="100%"
+>
+  <use
+    xlinkHref="#logos_default"
+  />
+</svg>
+`;
+
+exports[`Icon should render correctly with width 1`] = `
+<svg
+  className="icon iconClass"
+  height="100%"
+  width="1px"
 >
   <use
     xlinkHref="#logos_default"

@@ -34,3 +34,78 @@ exports[`Administration should render correctly 1`] = `
   </Button>
 </div>
 `;
+
+exports[`Administration should render correctly with loading 1`] = `
+<div
+  className="jsx-__scopedHash administration"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Fund Administration
+  </h3>
+  <Button
+    onClick={[Function]}
+    style="clear"
+  >
+    Enable subscription
+  </Button>
+  <Button
+    onClick={[Function]}
+    style="clear"
+  >
+    Convert unclaimed rewards: 0 
+    MLN
+  </Button>
+  <Button
+    onClick={[Function]}
+    style="clear"
+  >
+    Irreversibly shut down fund
+  </Button>
+  <p
+    className="jsx-__scopedHash"
+  >
+    Please wait for upcoming Metamask popup
+  </p>
+</div>
+`;
+
+exports[`Administration should render correctly with subscriptionAllowed 1`] = `
+<div
+  className="jsx-__scopedHash administration"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Fund Administration
+  </h3>
+  <Button
+    onClick={[Function]}
+    style="clear"
+  >
+    Disable subscription
+  </Button>
+  <Button
+    onClick={[Function]}
+    style="clear"
+  >
+    Convert unclaimed rewards: 0 
+    MLN
+  </Button>
+  <Button
+    onClick={[Function]}
+    style="clear"
+  >
+    Irreversibly shut down fund
+  </Button>
+</div>
+`;

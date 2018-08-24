@@ -4,9 +4,9 @@ import NumberFormat from 'react-number-format';
 import styles from './styles.css';
 
 export interface OrderInfoProps {
-  ask: number;
-  bid: number;
-  lastPrice: number;
+  ask?: number;
+  bid?: number;
+  lastPrice?: number;
   tokens: {
     [key: string]: {
       name: string;

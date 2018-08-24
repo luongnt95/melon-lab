@@ -144,11 +144,193 @@ exports[`Factsheet should render correctly 1`] = `
       className="jsx-__scopedHash"
     />
     <Button
-      onClick={[Function]}
+      onClick={[MockFunction]}
       style="clear"
     >
       Irreversibly shut down fund
     </Button>
   </div>
+</div>
+`;
+
+exports[`Factsheet should render correctly with isCompetition 1`] = `
+<div
+  className="jsx-__scopedHash factsheet"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash factsheet__title"
+  >
+    Melon Fund
+    <a
+      className="jsx-__scopedHash factsheet__title-link"
+      href="melonport"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <Icon
+        height="12px"
+        name="icons_twitter"
+        width="12px"
+      />
+    </a>
+  </h3>
+  <div
+    className="jsx-__scopedHash"
+  >
+    Creation date:
+     
+    <Loading
+      loading={false}
+    >
+      24. Jul 2018 09:19
+    </Loading>
+    <br
+      className="jsx-__scopedHash"
+    />
+    <Button
+      onClick={[Function]}
+      style="clear"
+    >
+      AUM:
+       
+      <Loading
+        dataAvailable={false}
+        loading={false}
+      >
+        0.9824
+      </Loading>
+       
+      WETH-T
+    </Button>
+    <Button
+      onClick={[Function]}
+      style="clear"
+    >
+      Share price:
+       
+      <Loading
+        dataAvailable={false}
+        loading={false}
+      >
+        0.9824
+      </Loading>
+       
+      WETH-T
+      /Share
+    </Button>
+    <a
+      className="jsx-__scopedHash"
+      href="#/ranking"
+    >
+      Ranking: 
+      <Loading
+        loading={false}
+      >
+        1
+      </Loading>
+       out of
+       
+      <Loading
+        loading={false}
+      >
+        12
+      </Loading>
+    </a>
+    <br
+      className="jsx-__scopedHash"
+    />
+    Total number of shares:
+     
+    <Loading
+      loading={false}
+    >
+      1.0000
+    </Loading>
+    <br
+      className="jsx-__scopedHash"
+    />
+    Shares owned by me:
+     
+    <Loading
+      loading={false}
+    >
+      1.0000
+    </Loading>
+    <hr
+      className="jsx-__scopedHash"
+    />
+    Management Reward:
+     
+    <Loading
+      loading={false}
+    >
+      0.0000
+    </Loading>
+    %
+    <br
+      className="jsx-__scopedHash"
+    />
+    Performance Reward:
+     
+    <Loading
+      loading={false}
+    >
+      0.0000
+    </Loading>
+    %
+    <hr
+      className="jsx-__scopedHash"
+    />
+    <a
+      className="jsx-__scopedHash"
+      href="https://ipfs.io/ipfs/Qmc9JRw4zarrs6gJwu6tC58UAgeEujNg9VMWcH8MUEd5TW/"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Contact Investors/Managers
+    </a>
+    <hr
+      className="jsx-__scopedHash"
+    />
+    <div
+      className="jsx-__scopedHash"
+    />
+  </div>
+</div>
+`;
+
+exports[`Factsheet should render correctly with loading 1`] = `
+<div
+  className="jsx-__scopedHash factsheet"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash factsheet__title"
+  >
+    Melon Fund
+    <a
+      className="jsx-__scopedHash factsheet__title-link"
+      href="melonport"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      <Icon
+        height="12px"
+        name="icons_twitter"
+        width="12px"
+      />
+    </a>
+  </h3>
+  <Spinner
+    icon={true}
+    size="small"
+  />
 </div>
 `;

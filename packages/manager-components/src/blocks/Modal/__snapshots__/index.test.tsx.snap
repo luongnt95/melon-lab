@@ -32,31 +32,12 @@ exports[`Modal should render correctly 1`] = `
     />
     Hello World
     <Form>
-      <div
-        className="modal__actions"
+      <Button
+        onClick={[Function]}
+        type="submit"
       >
-        <div
-          className="modal__action"
-        >
-          <Button
-            onClick={[Function]}
-            style="secondary"
-            type="button"
-          >
-            secondaryInteraction
-          </Button>
-        </div>
-        <div
-          className="modal__action"
-        >
-          <Button
-            onClick={[Function]}
-            type="submit"
-          >
-            primaryInteraction
-          </Button>
-        </div>
-      </div>
+        primaryInteraction
+      </Button>
     </Form>
   </div>
 </Modal>

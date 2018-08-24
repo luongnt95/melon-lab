@@ -7,35 +7,40 @@ const data = {
   loading: false,
   title: 'Modal',
   primaryInteraction: 'primaryInteraction',
-  secondaryInteraction: 'secondaryInteraction',
   interactionHandler: mockCallback,
 };
 
 describe('Modal', () => {
   const defaultElement = <Modal {...data}>Hello World</Modal>;
+  let customElement;
 
   it('should render correctly', () => {
     const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('onClick secondary action', () => {
-    const wrapper = shallow(defaultElement);
-    wrapper
-      .find('Button')
-      .at(0)
-      .simulate('click');
-    expect(mockCallback.mock.calls.length).toBe(1);
-    expect(mockCallback.mock.calls[0][1]).toBe(data.secondaryInteraction);
-  });
-
   it('onClick primary action', () => {
     const wrapper = shallow(defaultElement);
     wrapper
       .find('Button')
-      .at(1)
+      .first()
+      .simulate('click');
+    expect(mockCallback.mock.calls.length).toBe(1);
+    expect(mockCallback.mock.calls[0][1]).toBe(data.primaryInteraction);
+  });
+
+  it('onClick primary action', () => {
+    customElement = (
+      <Modal {...data} secondaryInteraction="secondaryInteraction">
+        Hello World
+      </Modal>
+    );
+    const wrapper = shallow(customElement);
+    wrapper
+      .find('Button')
+      .first()
       .simulate('click');
     expect(mockCallback.mock.calls.length).toBe(2);
-    expect(mockCallback.mock.calls[1][1]).toBe(data.primaryInteraction);
+    expect(mockCallback.mock.calls[1][1]).toBe('secondaryInteraction');
   });
 });
