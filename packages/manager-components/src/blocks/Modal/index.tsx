@@ -14,8 +14,8 @@ export interface ModalProps {
   isOpen?: boolean;
   loading?: boolean;
   onAfterOpen?: () => void;
-  primaryInteraction?: () => void;
-  secondaryInteraction?: () => void;
+  primaryInteraction?: string;
+  secondaryInteraction?: string;
   title?: string;
 }
 

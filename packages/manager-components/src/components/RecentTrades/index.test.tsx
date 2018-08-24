@@ -394,6 +394,13 @@ const data = {
 
 describe('RecentTrades', () => {
   const defaultElement = <RecentTrades {...data} />;
+  let customElement;
+
+  it('should render correctly without trades', () => {
+    customElement = <RecentTrades {...data} trades={[]} />;
+    const wrapper = shallow(customElement);
+    expect(wrapper).toMatchSnapshot();
+  });
 
   it('should render correctly', () => {
     const wrapper = shallow(defaultElement);

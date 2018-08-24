@@ -25,3 +25,28 @@ exports[`Loading should render correctly 1`] = `
   </span>
 </span>
 `;
+
+exports[`Loading should render correctly without dataAvailable 1`] = `
+<span
+  className="jsx-__scopedHash"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <span
+    className="jsx-__scopedHash loading__invalid"
+  />
+</span>
+`;
+
+exports[`Loading should render correctly without loading 1`] = `
+<span
+  className="jsx-__scopedHash"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+</span>
+`;

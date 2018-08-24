@@ -34,11 +34,8 @@ export const Holdings: StatelessComponent<HoldingsProps> = ({
   quoteAsset,
   selectAsset,
 }) => {
-  const onClick = (e: any, assetName: string): void => {
-    if (selectAsset) {
-      selectAsset(assetName, isReadyToTrade, quoteAsset);
-    }
-  };
+  const onClick = (e: any, assetName: string): void =>
+    selectAsset && selectAsset(assetName, isReadyToTrade, quoteAsset);
 
   return (
     <div className="holdings" id="holdings">

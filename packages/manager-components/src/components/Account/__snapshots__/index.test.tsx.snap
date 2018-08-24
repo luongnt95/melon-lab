@@ -185,3 +185,561 @@ exports[`Account should render correctly 1`] = `
   </p>
 </div>
 `;
+
+exports[`Account should render correctly without associatedFund 1`] = `
+<div
+  className="jsx-__scopedHash account"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Your Wallet
+  </h3>
+  <p
+    className="jsx-__scopedHash"
+  >
+    Your ethereum address. Use this for white listing on
+     
+    <a
+      className="jsx-__scopedHash"
+      href="https://ico.bitcoinsuisse.ch/"
+      target="_blank"
+    >
+      ico.bitcoinsuisse.ch
+    </a>
+    :
+    <strong
+      className="jsx-__scopedHash"
+    >
+      <a
+        className="jsx-__scopedHash"
+        href="https://kovan.etherscan.io/address/0x270c65cb31d037E4269dC8F736350FDc8ED07353"
+        target="_blank"
+      >
+         
+        0x270c65cb31d037E4269dC8F736350FDc8ED07353
+         
+      </a>
+    </strong>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    Associated fund address:
+     
+    <strong
+      className="jsx-__scopedHash"
+    >
+      <a
+        className="jsx-__scopedHash"
+        href="https://kovan.etherscan.io/address/0x0890b03f83629B397F6E5E5075400fe6Ddb4255F"
+        target="_blank"
+      >
+        0x0890b03f83629B397F6E5E5075400fe6Ddb4255F
+      </a>
+    </strong>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <strong
+      className="jsx-__scopedHash"
+    >
+      It is highly recommended to download a backup of your wallet. You can import this into
+       
+      <a
+        className="jsx-__scopedHash"
+        href="https://mycrypto.com/"
+        target="_blank"
+      >
+        MyCrypto.com
+      </a>
+       
+      or Parity.
+    </strong>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="secondary"
+    >
+      Download wallet backup JSON
+    </Button>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="success"
+    >
+      Go to your fund
+    </Button>
+  </p>
+  <br
+    className="jsx-__scopedHash"
+  />
+  <p
+    className="jsx-__scopedHash"
+  >
+    <strong
+      className="jsx-__scopedHash"
+    >
+       [IMPORTANT] - Please read carefully
+    </strong>
+     
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    Careful, below actions have 
+    <strong
+      className="jsx-__scopedHash"
+    >
+       irreversible
+    </strong>
+     
+    effects. If you do not have a backup of the mnemonic phrase that generated your current address,
+    <strong
+      className="jsx-__scopedHash"
+    >
+       
+      you will never be able to access your current wallet again
+       
+    </strong>
+     
+    after performing one of the below actions.
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    If you do not wish to continue,
+     
+    <a
+      className="jsx-__scopedHash"
+      href="/"
+    >
+      click here to go back to your fund's page
+    </a>
+    .
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="danger"
+    >
+      Create a new wallet
+    </Button>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="danger"
+    >
+      Restore from mnemonic
+    </Button>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="danger"
+    >
+      Import wallet JSON
+    </Button>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="danger"
+    >
+      Delete wallet
+    </Button>
+  </p>
+</div>
+`;
+
+exports[`Account should render correctly without currentAddress 1`] = `
+<div
+  className="jsx-__scopedHash account"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Your Wallet
+  </h3>
+  <p
+    className="jsx-__scopedHash"
+  >
+    Your ethereum address. Use this for white listing on
+     
+    <a
+      className="jsx-__scopedHash"
+      href="https://ico.bitcoinsuisse.ch/"
+      target="_blank"
+    >
+      ico.bitcoinsuisse.ch
+    </a>
+    :
+    <strong
+      className="jsx-__scopedHash"
+    >
+      <a
+        className="jsx-__scopedHash"
+        href="https://kovan.etherscan.io/address/0x270c65cb31d037E4269dC8F736350FDc8ED07353"
+        target="_blank"
+      >
+         
+        0x270c65cb31d037E4269dC8F736350FDc8ED07353
+         
+      </a>
+    </strong>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    Associated fund address:
+     
+    <strong
+      className="jsx-__scopedHash"
+    >
+      <a
+        className="jsx-__scopedHash"
+        href="https://kovan.etherscan.io/address/0x0890b03f83629B397F6E5E5075400fe6Ddb4255F"
+        target="_blank"
+      >
+        0x0890b03f83629B397F6E5E5075400fe6Ddb4255F
+      </a>
+    </strong>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <strong
+      className="jsx-__scopedHash"
+    >
+      It is highly recommended to download a backup of your wallet. You can import this into
+       
+      <a
+        className="jsx-__scopedHash"
+        href="https://mycrypto.com/"
+        target="_blank"
+      >
+        MyCrypto.com
+      </a>
+       
+      or Parity.
+    </strong>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="secondary"
+    >
+      Download wallet backup JSON
+    </Button>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="success"
+    >
+      Go to your fund
+    </Button>
+  </p>
+  <br
+    className="jsx-__scopedHash"
+  />
+  <p
+    className="jsx-__scopedHash"
+  >
+    <strong
+      className="jsx-__scopedHash"
+    >
+       [IMPORTANT] - Please read carefully
+    </strong>
+     
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    Careful, below actions have 
+    <strong
+      className="jsx-__scopedHash"
+    >
+       irreversible
+    </strong>
+     
+    effects. If you do not have a backup of the mnemonic phrase that generated your current address,
+    <strong
+      className="jsx-__scopedHash"
+    >
+       
+      you will never be able to access your current wallet again
+       
+    </strong>
+     
+    after performing one of the below actions.
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    If you do not wish to continue,
+     
+    <a
+      className="jsx-__scopedHash"
+      href="/"
+    >
+      click here to go back to your fund's page
+    </a>
+    .
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="danger"
+    >
+      Create a new wallet
+    </Button>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="danger"
+    >
+      Restore from mnemonic
+    </Button>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="danger"
+    >
+      Import wallet JSON
+    </Button>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="danger"
+    >
+      Delete wallet
+    </Button>
+  </p>
+</div>
+`;
+
+exports[`Account should render correctly without networkId 1`] = `
+<div
+  className="jsx-__scopedHash account"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Your Wallet
+  </h3>
+  <p
+    className="jsx-__scopedHash"
+  >
+    Your ethereum address. Use this for white listing on
+     
+    <a
+      className="jsx-__scopedHash"
+      href="https://ico.bitcoinsuisse.ch/"
+      target="_blank"
+    >
+      ico.bitcoinsuisse.ch
+    </a>
+    :
+    <strong
+      className="jsx-__scopedHash"
+    >
+      <a
+        className="jsx-__scopedHash"
+        href="https://kovan.etherscan.io/address/0x270c65cb31d037E4269dC8F736350FDc8ED07353"
+        target="_blank"
+      >
+         
+        0x270c65cb31d037E4269dC8F736350FDc8ED07353
+         
+      </a>
+    </strong>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    Associated fund address:
+     
+    <strong
+      className="jsx-__scopedHash"
+    >
+      <a
+        className="jsx-__scopedHash"
+        href="https://kovan.etherscan.io/address/0x0890b03f83629B397F6E5E5075400fe6Ddb4255F"
+        target="_blank"
+      >
+        0x0890b03f83629B397F6E5E5075400fe6Ddb4255F
+      </a>
+    </strong>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <strong
+      className="jsx-__scopedHash"
+    >
+      It is highly recommended to download a backup of your wallet. You can import this into
+       
+      <a
+        className="jsx-__scopedHash"
+        href="https://mycrypto.com/"
+        target="_blank"
+      >
+        MyCrypto.com
+      </a>
+       
+      or Parity.
+    </strong>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="secondary"
+    >
+      Download wallet backup JSON
+    </Button>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="success"
+    >
+      Go to your fund
+    </Button>
+  </p>
+  <br
+    className="jsx-__scopedHash"
+  />
+  <p
+    className="jsx-__scopedHash"
+  >
+    <strong
+      className="jsx-__scopedHash"
+    >
+       [IMPORTANT] - Please read carefully
+    </strong>
+     
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    Careful, below actions have 
+    <strong
+      className="jsx-__scopedHash"
+    >
+       irreversible
+    </strong>
+     
+    effects. If you do not have a backup of the mnemonic phrase that generated your current address,
+    <strong
+      className="jsx-__scopedHash"
+    >
+       
+      you will never be able to access your current wallet again
+       
+    </strong>
+     
+    after performing one of the below actions.
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    If you do not wish to continue,
+     
+    <a
+      className="jsx-__scopedHash"
+      href="/"
+    >
+      click here to go back to your fund's page
+    </a>
+    .
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="danger"
+    >
+      Create a new wallet
+    </Button>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="danger"
+    >
+      Restore from mnemonic
+    </Button>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="danger"
+    >
+      Import wallet JSON
+    </Button>
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="danger"
+    >
+      Delete wallet
+    </Button>
+  </p>
+</div>
+`;
