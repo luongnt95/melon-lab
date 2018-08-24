@@ -33,7 +33,7 @@ describe('Input', () => {
     expect(mockCallback.mock.calls[0][0].value).toBe('test');
   });
 
-  it('onChange event', () => {
+  it('without onChange event', () => {
     customElement = <Input {...data} onChange={undefined} />;
     const wrapper = shallow(customElement);
     wrapper
