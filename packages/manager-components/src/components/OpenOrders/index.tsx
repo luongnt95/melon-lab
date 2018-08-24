@@ -36,6 +36,9 @@ export const OpenOrders: StatelessComponent<OpenOrdersProps> = ({
   onClick,
   orders,
 }) => {
+  const onCancel = (e: any, data: any): void =>
+    onClick(data.id, data.buySymbol, data.sellSymbol);
+
   const typeCellClassNames = (type: string) =>
     classNames(
       'open-orders__cell',
@@ -69,39 +72,39 @@ export const OpenOrders: StatelessComponent<OpenOrdersProps> = ({
             </TableHead>
             <TableBody>
               {orders &&
-                orders.map(order => {
-                  const onCancel = (): void =>
-                    onClick(order.id, order.buySymbol, order.sellSymbol);
-
-                  return (
-                    <Row key={order.id} size={isManager && 'small'}>
-                      <CellBody>{order.timestamp}</CellBody>
-                      <CellBody>{order.id}</CellBody>
+                orders.map(order => (
+                  <Row key={order.id} size={isManager && 'small'}>
+                    <CellBody>{order.timestamp}</CellBody>
+                    <CellBody>{order.id}</CellBody>
+                    <CellBody>
+                      <span className={typeCellClassNames(order.type)}>
+                        {order.type}
+                      </span>
+                    </CellBody>
+                    <CellBody>{order.sellSymbol}</CellBody>
+                    <CellBody>{order.buySymbol}</CellBody>
+                    <CellBody>{order.price}</CellBody>
+                    <CellBody>{order.sellHowMuch}</CellBody>
+                    <CellBody>{order.buyHowMuch}</CellBody>
+                    {isManager && (
                       <CellBody>
-                        <span className={typeCellClassNames(order.type)}>
-                          {order.type}
-                        </span>
+                        <Button
+                          size="small"
+                          style="secondary"
+                          buttonValue={{
+                            id: order.id,
+                            buySymbol: order.buySymbol,
+                            sellSymbol: order.sellSymbol,
+                          }}
+                          onClick={onCancel}
+                          disabled={!isReadyToTrade}
+                        >
+                          Cancel
+                        </Button>
                       </CellBody>
-                      <CellBody>{order.sellSymbol}</CellBody>
-                      <CellBody>{order.buySymbol}</CellBody>
-                      <CellBody>{order.price}</CellBody>
-                      <CellBody>{order.sellHowMuch}</CellBody>
-                      <CellBody>{order.buyHowMuch}</CellBody>
-                      {isManager && (
-                        <CellBody>
-                          <Button
-                            size="small"
-                            style="secondary"
-                            onClick={onCancel}
-                            disabled={!isReadyToTrade}
-                          >
-                            Cancel
-                          </Button>
-                        </CellBody>
-                      )}
-                    </Row>
-                  );
-                })}
+                    )}
+                  </Row>
+                ))}
             </TableBody>
           </Table>
         ) : (

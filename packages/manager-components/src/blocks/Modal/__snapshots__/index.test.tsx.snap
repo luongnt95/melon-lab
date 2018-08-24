@@ -31,33 +31,13 @@ exports[`Modal should render correctly 1`] = `
       className="jsx-__scopedHash"
     />
     Hello World
-    <Form>
-      <div
-        className="modal__actions"
-      >
-        <div
-          className="modal__action"
-        >
-          <Button
-            onClick={[Function]}
-            style="secondary"
-            type="button"
-          >
-            secondaryInteraction
-          </Button>
-        </div>
-        <div
-          className="modal__action"
-        >
-          <Button
-            onClick={[Function]}
-            type="submit"
-          >
-            primaryInteraction
-          </Button>
-        </div>
-      </div>
-    </Form>
+    <div
+      className="jsx-__scopedHash modal__spinner"
+    >
+      <Spinner
+        size="inflated"
+      />
+    </div>
   </div>
 </Modal>
 `;

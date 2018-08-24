@@ -2,7 +2,7 @@
 
 exports[`Notification should render correctly 1`] = `
 <div
-  className="jsx-__scopedHash notification notification--is-closable"
+  className="jsx-__scopedHash notification"
 >
   <JSXStyle
     css="__scoped"
@@ -11,10 +11,5 @@ exports[`Notification should render correctly 1`] = `
   Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
 eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam
 voluptua. At vero eos et accusam et justo duo dolores et ea rebum.
-  <button
-    className="jsx-__scopedHash notification__close"
-  >
-    ×
-  </button>
 </div>
 `;

@@ -1,12 +1,11 @@
 import React from 'react';
 import Holdings from './index';
 
-const mockCallback = jest.fn();
 const data = {
   isReadyToTrade: true,
   dataValid: true,
   quoteAsset: 'WETH-T',
-  selectAsset: mockCallback,
+  selectAsset: () => null,
   holdings: [
     { name: 'ANT-T', balance: '0.0000', price: '0.0035', percentage: '0.0000' },
     { name: 'BAT-T', balance: '0.0000', price: '0.0007', percentage: '0.0000' },
@@ -40,24 +39,8 @@ const data = {
 describe('Holdings', () => {
   const defaultElement = <Holdings {...data} />;
 
-  it('should render correctly without dataValid ', () => {
-    const defaultElement = <Holdings {...data} dataValid={false} />;
-    const wrapper = shallow(defaultElement);
-    expect(wrapper).toMatchSnapshot();
-  });
-
   it('should render correctly', () => {
     const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
-  });
-
-  it('onClick event', () => {
-    const wrapper = shallow(defaultElement);
-    wrapper
-      .find('Button')
-      .last()
-      .simulate('click');
-    expect(mockCallback.mock.calls.length).toBe(1);
-    expect(mockCallback.mock.calls[0][2]).toEqual(data.quoteAsset);
   });
 });

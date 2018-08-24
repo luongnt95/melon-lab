@@ -84,6 +84,13 @@ exports[`OpenOrders should render correctly 1`] = `
           </CellBody>
           <CellBody>
             <Button
+              buttonValue={
+                Object {
+                  "buySymbol": "MLN-T",
+                  "id": 12322,
+                  "sellSymbol": "WETH-T",
+                }
+              }
               disabled={false}
               onClick={[Function]}
               size="small"
@@ -127,6 +134,13 @@ exports[`OpenOrders should render correctly 1`] = `
           </CellBody>
           <CellBody>
             <Button
+              buttonValue={
+                Object {
+                  "buySymbol": "MLN-T",
+                  "id": 29468,
+                  "sellSymbol": "WETH-T",
+                }
+              }
               disabled={false}
               onClick={[Function]}
               size="small"
@@ -138,31 +152,6 @@ exports[`OpenOrders should render correctly 1`] = `
         </Row>
       </TableBody>
     </Table>
-  </div>
-</div>
-`;
-
-exports[`OpenOrders should render correctly without orders 1`] = `
-<div
-  className="jsx-__scopedHash open-orders"
->
-  <JSXStyle
-    css="__scoped"
-    styleId="__scopedHash"
-  />
-  <h3
-    className="jsx-__scopedHash"
-  >
-    Open orders
-  </h3>
-  <div
-    className="jsx-__scopedHash open-orders__table-wrap"
-  >
-    <p
-      className="jsx-__scopedHash"
-    >
-      No open orders
-    </p>
   </div>
 </div>
 `;

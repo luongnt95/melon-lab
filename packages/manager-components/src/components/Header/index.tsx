@@ -29,12 +29,16 @@ export const Header: StatelessComponent<HeaderProps> = ({
 }) => {
   const onClickGoToHome = (e: any): void => {
     e.preventDefault(e);
-    goToHome();
+    if (goToHome) {
+      goToHome();
+    }
   };
 
   const onClickGoToWallet = (e: any): void => {
     e.preventDefault(e);
-    goToWallet();
+    if (goToWallet) {
+      goToWallet();
+    }
   };
 
   const statusClassName = classNames('header__account-status', {

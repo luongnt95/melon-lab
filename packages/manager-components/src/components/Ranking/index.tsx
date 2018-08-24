@@ -35,7 +35,11 @@ export const Ranking: StatelessComponent<RankingProps> = ({
     }
   };
 
-  const onFundClick = address => goToFund && goToFund(address);
+  const onFundClick = address => {
+    if (goToFund) {
+      goToFund(address);
+    }
+  };
 
   const sorting = {
     options: [

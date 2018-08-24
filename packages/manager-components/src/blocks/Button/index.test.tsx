@@ -1,9 +1,8 @@
 import React from 'react';
 import Button from './index';
 
-const mockCallback = jest.fn();
 const data = {
-  onClick: mockCallback,
+  onClick: () => null,
 };
 
 describe('Button', () => {
@@ -12,11 +11,5 @@ describe('Button', () => {
   it('should render correctly', () => {
     const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
-  });
-
-  it('onClick event', () => {
-    const wrapper = shallow(defaultElement);
-    wrapper.find('button').simulate('click');
-    expect(mockCallback.mock.calls.length).toBe(1);
   });
 });
