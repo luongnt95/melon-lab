@@ -33,6 +33,8 @@ export const Account: StatelessComponent<AccountProps> = ({
   const onClickGoToFund = () =>
     associatedFund && goToFund && goToFund(associatedFund);
 
+  const isDanger = currentAddress ? 'danger' : 'secondary';
+
   return (
     <div className="account">
       <style jsx>{styles}</style>
@@ -136,25 +138,25 @@ export const Account: StatelessComponent<AccountProps> = ({
       <Fragment>
         {!isCompetition && (
           <p>
-            <Button style="danger" onClick={gotoAccountGenerate}>
+            <Button style={isDanger} onClick={gotoAccountGenerate}>
               Create a new wallet
             </Button>
           </p>
         )}
         <p>
-          <Button style="danger" onClick={gotoAccountRestore}>
+          <Button style={isDanger} onClick={gotoAccountRestore}>
             Restore from mnemonic
           </Button>
         </p>
         <p>
-          <Button style="danger" onClick={gotoImportJSON}>
+          <Button style={isDanger} onClick={gotoImportJSON}>
             Import wallet JSON
           </Button>
         </p>
         {currentAddress &&
           !isCompetition && (
             <p>
-              <Button style="danger" onClick={deleteWallet}>
+              <Button style={isDanger} onClick={deleteWallet}>
                 Delete wallet
               </Button>
             </p>

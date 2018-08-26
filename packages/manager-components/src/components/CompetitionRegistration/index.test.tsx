@@ -17,27 +17,24 @@ const data = {
 
 describe('CompetitionRegistration', () => {
   const defaultElement = <CompetitionRegistration {...data} />;
-  let customElement;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly without showedRegistration', () => {
-    customElement = (
-      <CompetitionRegistration {...data} showedRegistration={false} />
-    );
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ showedRegistration: false });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('onClick pursue registration event', () => {
     global.open = jest.fn();
-    customElement = (
-      <CompetitionRegistration {...data} competitionSignature={true} />
-    );
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ competitionSignature: true });
     wrapper
       .find('Button')
       .first()

@@ -378,7 +378,7 @@ exports[`Account should render correctly without currentAddress 1`] = `
   >
     <Button
       onClick={[Function]}
-      style="danger"
+      style="secondary"
     >
       Create a new wallet
     </Button>
@@ -388,7 +388,7 @@ exports[`Account should render correctly without currentAddress 1`] = `
   >
     <Button
       onClick={[Function]}
-      style="danger"
+      style="secondary"
     >
       Restore from mnemonic
     </Button>
@@ -398,7 +398,7 @@ exports[`Account should render correctly without currentAddress 1`] = `
   >
     <Button
       onClick={[Function]}
-      style="danger"
+      style="secondary"
     >
       Import wallet JSON
     </Button>
