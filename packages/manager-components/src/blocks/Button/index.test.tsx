@@ -8,14 +8,17 @@ const data = {
 
 describe('Button', () => {
   const defaultElement = <Button {...data}>Default button</Button>;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('onClick event', () => {
-    const wrapper = shallow(defaultElement);
     wrapper.find('button').simulate('click');
     expect(mockCallback.mock.calls.length).toBe(1);
   });

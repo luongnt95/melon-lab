@@ -10,22 +10,23 @@ const data = {
 
 describe('Input', () => {
   const defaultElement = <Input {...data} />;
-  let customElement;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly with number', () => {
-    const defaultElementNumber = <Input {...data} formatNumber />;
-    const wrapper = shallow(defaultElementNumber);
+    wrapper.setProps({ formatNumber: true });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('onChange event', () => {
-    customElement = <Input {...data} onChange={mockCallback} />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ onChange: mockCallback });
     wrapper
       .find('.input__field')
       .simulate('change', { target: { value: 'test' } });
@@ -34,8 +35,7 @@ describe('Input', () => {
   });
 
   it('without onChange event', () => {
-    customElement = <Input {...data} onChange={undefined} />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ onChange: undefined });
     wrapper
       .find('.input__field')
       .simulate('change', { target: { value: 'test' } });

@@ -394,16 +394,18 @@ const data = {
 
 describe('RecentTrades', () => {
   const defaultElement = <RecentTrades {...data} />;
-  let customElement;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly without trades', () => {
-    customElement = <RecentTrades {...data} trades={[]} />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ trades: [] });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 });

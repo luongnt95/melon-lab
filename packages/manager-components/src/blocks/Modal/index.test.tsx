@@ -12,15 +12,17 @@ const data = {
 
 describe('Modal', () => {
   const defaultElement = <Modal {...data}>Hello World</Modal>;
-  let customElement;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('onClick primary action', () => {
-    const wrapper = shallow(defaultElement);
     wrapper
       .find('Button')
       .first()
@@ -30,12 +32,7 @@ describe('Modal', () => {
   });
 
   it('onClick primary action', () => {
-    customElement = (
-      <Modal {...data} secondaryInteraction="secondaryInteraction">
-        Hello World
-      </Modal>
-    );
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ secondaryInteraction: 'secondaryInteraction' });
     wrapper
       .find('Button')
       .first()

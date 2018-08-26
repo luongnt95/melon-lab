@@ -13,21 +13,22 @@ const data = {
 
 describe('ClaimReward', () => {
   const defaultElement = <ClaimReward {...data} />;
-  let customElement;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly with isCompetitionActive', () => {
-    customElement = <ClaimReward {...data} isCompetitionActive={true} />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ isCompetitionActive: true });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('onClick claimReward event', () => {
-    const wrapper = shallow(defaultElement);
     wrapper
       .find('Button')
       .first()
@@ -36,7 +37,6 @@ describe('ClaimReward', () => {
   });
 
   it('onClick redeemParosShares event', () => {
-    const wrapper = shallow(defaultElement);
     wrapper
       .find('Button')
       .last()

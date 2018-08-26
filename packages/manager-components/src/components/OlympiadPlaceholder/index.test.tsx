@@ -5,9 +5,13 @@ const data = {};
 
 describe('OlympiadPlaceholder', () => {
   const defaultElement = <OlympiadPlaceholder {...data} />;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 });

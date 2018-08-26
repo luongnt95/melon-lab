@@ -26,27 +26,27 @@ const data = {
 
 describe('Factsheet', () => {
   const defaultElement = <Factsheet {...data} />;
-  let customElement;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly with loading', () => {
-    customElement = <Factsheet {...data} loading />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ loading: true });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly with isCompetition', () => {
-    customElement = <Factsheet {...data} isCompetition />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ isCompetition: true });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('scrollTo event', () => {
-    const wrapper = shallow(defaultElement);
     wrapper
       .find('Button')
       .first()
@@ -56,7 +56,6 @@ describe('Factsheet', () => {
   });
 
   it('shutdown event', () => {
-    const wrapper = shallow(defaultElement);
     wrapper
       .find('Button')
       .last()

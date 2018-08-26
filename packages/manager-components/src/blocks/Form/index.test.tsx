@@ -3,9 +3,13 @@ import Form from './index';
 
 describe('Form', () => {
   const defaultElement = <Form>Default form</Form>;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 });

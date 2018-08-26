@@ -32,21 +32,22 @@ const data = {
 
 describe('OpenOrders', () => {
   const defaultElement = <OpenOrders {...data} />;
-  let customElement;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly without orders', () => {
-    customElement = <OpenOrders {...data} orders={[]} />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ orders: [] });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('onClick cancel event', () => {
-    const wrapper = shallow(defaultElement);
     wrapper
       .find('Button')
       .first()

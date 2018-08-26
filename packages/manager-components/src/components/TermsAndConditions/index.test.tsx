@@ -8,16 +8,18 @@ const data = {
 
 describe('TermsAndConditions', () => {
   const defaultElement = <TermsAndConditions {...data} />;
-  let customElement;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly without networkId', () => {
-    customElement = <TermsAndConditions {...data} networkId="" />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ networkId: undefined });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 });

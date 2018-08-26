@@ -8,22 +8,23 @@ const data = {
 
 describe('Icon', () => {
   const defaultElement = <Icon {...data} />;
-  let customElement;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly with width', () => {
-    customElement = <Icon {...data} width="1px" />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ width: '1px' });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly with height', () => {
-    customElement = <Icon {...data} height="1px" />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ height: '1px' });
     expect(wrapper).toMatchSnapshot();
   });
 });

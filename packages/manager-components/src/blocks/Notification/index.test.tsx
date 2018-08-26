@@ -11,9 +11,13 @@ const data = {
 
 describe('Notification', () => {
   const defaultElement = <Notification {...data}>{text}</Notification>;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 });

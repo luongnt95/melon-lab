@@ -16,9 +16,13 @@ const data = {
 
 describe('ParticipationForm', () => {
   const defaultElement = <ParticipationForm {...data} />;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 });

@@ -13,14 +13,17 @@ const data = {
 
 describe('Card', () => {
   const defaultElement = <Card {...data} />;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('onClick event', () => {
-    const wrapper = shallow(defaultElement);
     wrapper.find('.card').simulate('click');
     expect(mockCallback.mock.calls.length).toBe(1);
   });

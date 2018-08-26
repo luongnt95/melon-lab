@@ -10,22 +10,23 @@ const data = {
 
 describe('InsufficientFunds', () => {
   const defaultElement = <InsufficientFunds {...data} />;
-  let customElement;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly without walletAddress', () => {
-    customElement = <InsufficientFunds {...data} walletAddress="" />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ walletAddress: undefined });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('onClick event', () => {
     global.open = jest.fn();
-    const wrapper = shallow(defaultElement);
     wrapper.find('Button').simulate('click');
     expect(global.open).toBeCalled();
   });

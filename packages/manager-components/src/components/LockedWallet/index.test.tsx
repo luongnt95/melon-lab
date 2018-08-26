@@ -3,9 +3,13 @@ import LockedWallet from './index';
 
 describe('LockedWallet', () => {
   const defaultElement = <LockedWallet />;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 });

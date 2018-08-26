@@ -21,21 +21,22 @@ const data = {
 
 describe('Header', () => {
   const defaultElement = <Header {...data} />;
-  let customElement;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly with status', () => {
-    customElement = <Header {...data} status={{ link: 'linkr' }} />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ status: { link: 'link' } });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('onClick go to home event', () => {
-    const wrapper = shallow(defaultElement);
     wrapper.find('.header__logo a').simulate('click', {
       // tslint:disable-next-line
       preventDefault: () => {},
@@ -44,7 +45,6 @@ describe('Header', () => {
   });
 
   it('onClick go to wallet event', () => {
-    const wrapper = shallow(defaultElement);
     wrapper.find('.header__account-address a').simulate('click', {
       // tslint:disable-next-line
       preventDefault: () => {},

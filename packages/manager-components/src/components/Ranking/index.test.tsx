@@ -37,21 +37,22 @@ const data = {
 
 describe('Ranking', () => {
   const defaultElement = <Ranking {...data} />;
-  let customElement;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly when loading', () => {
-    customElement = <Ranking {...data} loading={true} />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ loading: true });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('onChange order event', () => {
-    const wrapper = shallow(defaultElement);
     wrapper
       .find('Dropdown')
       .simulate('change', { target: undefined, value: '+rank' });
@@ -65,7 +66,6 @@ describe('Ranking', () => {
   });
 
   it('onClick fund event', () => {
-    const wrapper = shallow(defaultElement);
     wrapper
       .find('Card')
       .first()

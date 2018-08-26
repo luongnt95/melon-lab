@@ -8,9 +8,13 @@ const data = {
 
 describe('ImportWallet', () => {
   const defaultElement = <ImportWallet {...data} />;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 });

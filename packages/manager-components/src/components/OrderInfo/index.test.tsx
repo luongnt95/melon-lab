@@ -16,28 +16,28 @@ const data = {
 
 describe('Order Info', () => {
   const defaultElement = <OrderInfo {...data} />;
-  let customElement;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly with lastPrice', () => {
-    customElement = <OrderInfo {...data} lastPrice={0.5} />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ lastPrice: 0.5 });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly with bid', () => {
-    customElement = <OrderInfo {...data} bid={0.5} />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ bid: 0.5 });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly with ask', () => {
-    customElement = <OrderInfo {...data} ask={0.5} />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ ask: 0.5 });
     expect(wrapper).toMatchSnapshot();
   });
 });

@@ -10,14 +10,17 @@ const data = {
 
 describe('ExecuteRequest', () => {
   const defaultElement = <ExecuteRequest {...data} />;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('onExecute event', () => {
-    const wrapper = shallow(defaultElement);
     wrapper.find('Button').simulate('click');
     expect(mockCallback.mock.calls.length).toBe(1);
     expect(mockCallback.mock.calls[0][0]).toEqual(data.requestId);

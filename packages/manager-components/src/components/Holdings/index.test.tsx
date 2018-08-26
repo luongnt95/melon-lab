@@ -39,21 +39,22 @@ const data = {
 
 describe('Holdings', () => {
   const defaultElement = <Holdings {...data} />;
-  let customElement;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly without dataValid ', () => {
-    customElement = <Holdings {...data} dataValid={false} />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ dataValid: false });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('onClick event', () => {
-    const wrapper = shallow(defaultElement);
     wrapper
       .find('Button')
       .last()

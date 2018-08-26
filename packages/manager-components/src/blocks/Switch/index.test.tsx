@@ -12,14 +12,17 @@ const data = {
 
 describe('Switch', () => {
   const defaultElement = <Switch {...data} />;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('onChange event', () => {
-    const wrapper = shallow(defaultElement);
     wrapper
       .find('.switch__input')
       .simulate('change', { target: { checked: true } });

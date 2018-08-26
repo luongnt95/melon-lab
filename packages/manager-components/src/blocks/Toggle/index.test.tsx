@@ -11,14 +11,17 @@ const data = {
 
 describe('Toggle', () => {
   const defaultElement = <Toggle {...data} />;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('onChange event', () => {
-    const wrapper = shallow(defaultElement);
     wrapper
       .find('.toggle__input')
       .simulate('change', { target: { checked: true, value: data.value } });

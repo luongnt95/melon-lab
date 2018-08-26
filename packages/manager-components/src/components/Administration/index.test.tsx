@@ -10,22 +10,23 @@ const data = {
 
 describe('Administration', () => {
   const defaultElement = <Administration {...data} />;
-  let customElement;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly with loading', () => {
-    customElement = <Administration {...data} loading />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ loading: true });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly with subscriptionAllowed', () => {
-    customElement = <Administration {...data} subscriptionAllowed />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ subscriptionAllowed: true });
     expect(wrapper).toMatchSnapshot();
   });
 });

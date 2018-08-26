@@ -18,33 +18,32 @@ const data = {
 
 describe('Account', () => {
   const defaultElement = <Account {...data} />;
-  let customeElement;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly without currentAddress', () => {
-    customeElement = <Account {...data} currentAddress="" />;
-    const wrapper = shallow(customeElement);
+    wrapper.setProps({ currentAddress: undefined });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly without associatedFund', () => {
-    customeElement = <Account {...data} associatedFund="" />;
-    const wrapper = shallow(customeElement);
+    wrapper.setProps({ associatedFund: undefined });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly without networkId', () => {
-    customeElement = <Account {...data} networkId="" />;
-    const wrapper = shallow(customeElement);
+    wrapper.setProps({ networkId: undefined });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('onClick go to fund event', () => {
-    const wrapper = shallow(defaultElement);
     wrapper
       .find('Button')
       .at(1)

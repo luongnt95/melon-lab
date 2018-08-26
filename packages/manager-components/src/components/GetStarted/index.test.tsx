@@ -14,21 +14,22 @@ const data = {
 
 describe('GetStarted', () => {
   const defaultElement = <GetStarted {...data} />;
-  let customElement;
+  let wrapper;
+
+  beforeEach(() => {
+    wrapper = shallow(defaultElement);
+  });
 
   it('should render correctly', () => {
-    const wrapper = shallow(defaultElement);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should render correctly with isHome', () => {
-    customElement = <GetStarted {...data} isHome />;
-    const wrapper = shallow(customElement);
+    wrapper.setProps({ isHome: true });
     expect(wrapper).toMatchSnapshot();
   });
 
   it('onClick action', () => {
-    const wrapper = shallow(defaultElement);
     wrapper.find('Button').simulate('click');
     expect(mockCallback.mock.calls.length).toBe(1);
     expect(mockCallback.mock.calls[0][0]).toBe(data.linkAction);
