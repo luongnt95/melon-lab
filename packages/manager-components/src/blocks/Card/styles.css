@@ -74,3 +74,23 @@
 .card__rank-symbol {
   font-size: var(--font-size-xs);
 }
+
+.card__report {
+  z-index: 1;
+  margin-left: var(--space-xxl);
+  font-size: var(--font-size-xs);
+  padding: var(--space-xs) var(--space-l);
+  color: var(--color-black);
+  border: 1px solid currentColor;
+  font-family: var(--font-family-primary);
+  cursor: pointer;
+  text-transform: uppercase;
+  line-height: 1;
+  transition-duration: var(--transition-duration-default);
+}
+
+.card__report:hover {
+  border: 1px solid var(--color-black);
+  color: var(--color-white);
+  background-color: var(--color-black);
+}

@@ -64,4 +64,12 @@ describe('Ranking', () => {
     expect(mockCallback.mock.calls.length).toBe(2);
     expect(mockCallback.mock.calls[1][0]).toBe('-rank');
   });
+
+  it('onClick fund event', () => {
+    wrapper
+      .find('Card')
+      .first()
+      .simulate('click');
+    expect(mockCallbackFund.mock.calls.length).toBe(1);
+  });
 });

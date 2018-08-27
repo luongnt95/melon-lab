@@ -28,13 +28,11 @@ const Card: StatelessComponent<CardProps> = ({
     'card--active': isActive,
   });
 
+  const onCardClick = e =>
+    e.target.tagName !== 'A' && onClick && onClick(address);
+
   return (
-    <a
-      href={reportUrl}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={cardClassNames}
-    >
+    <div onClick={onCardClick} className={cardClassNames}>
       <style jsx>{styles}</style>
       <div className="card__rank">
         <span className="card__rank-symbol">#</span>
@@ -50,10 +48,13 @@ const Card: StatelessComponent<CardProps> = ({
             <div className="card__inception-date">
               <span className="card__label">Inception Date</span> {inception}
             </div>
+            <a className="card__report" href={reportUrl} target="_blank">
+              Show Report
+            </a>
           </div>
         </div>
       </div>
-    </a>
+    </div>
   );
 };
 

@@ -53,6 +53,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.setSearch(event.target.value));
   },
   setOrdering: ordering => dispatch(actions.setOrdering(ordering)),
+  goToFund: fundAddress => dispatch(routeActions.fund(fundAddress)),
 });
 
 const RankingWithLifecycle = lifecycle({
