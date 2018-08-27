@@ -22,6 +22,7 @@ const data = {
   scrollTo: mockCallbackScrollTo,
   totalSupply: '1.0000',
   tweetHref: 'melonport',
+  reportUrl: 'https://melon-reporting.now.sh/report/',
 };
 
 describe('Factsheet', () => {

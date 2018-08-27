@@ -21,6 +21,7 @@ const data = {
   shutdown: action('shitdown'),
   totalSupply: '1.0000',
   tweetHref: 'melonport',
+  reportUrl: 'https://melon-reporting.now.sh/report/',
 };
 
 storiesOf('Components|Factsheet', module).add('Default', () => {

@@ -20,12 +20,12 @@ export interface FactsheetProps {
   personalStake?: string;
   quoteAsset?: string;
   rank?: string;
+  reportUrl?: string;
   scrollTo?: (id) => void;
   sharePrice?: string;
   shutdown: () => void;
   totalSupply?: string;
   tweetHref?: string;
-  reportUrl?: string;
 }
 
 const Factsheet: StatelessComponent<FactsheetProps> = ({
@@ -42,12 +42,12 @@ const Factsheet: StatelessComponent<FactsheetProps> = ({
   personalStake,
   quoteAsset,
   rank,
+  reportUrl,
   scrollTo,
   sharePrice,
   shutdown,
   totalSupply,
   tweetHref,
-  reportUrl,
 }) => {
   const scrolltoHoldings = () => scrollTo && scrollTo('holdings');
 

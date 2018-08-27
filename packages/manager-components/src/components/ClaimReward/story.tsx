@@ -9,7 +9,6 @@ const data = {
   isCompetitionActive: false,
   endTime: 'Tomorrow',
   redeemParosShares: action('redeemParosShares'),
-  reportUrl: 'https://melon-reporting.now.sh/browse',
 };
 
 storiesOf('Components|Claim Reward', module).add('Default', () => {

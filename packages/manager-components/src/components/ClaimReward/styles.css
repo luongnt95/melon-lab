@@ -28,7 +28,3 @@
   counter-increment: section;
   content: 'Step ' counter(section) ': ';
 }
-
-.claim-reward__report-link {
-  text-decoration: underline;
-}
