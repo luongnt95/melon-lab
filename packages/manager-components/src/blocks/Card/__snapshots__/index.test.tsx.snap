@@ -55,12 +55,16 @@ exports[`Card should render correctly 1`] = `
            
           26. Jul 2018 10:48
         </div>
-        <a
+        <div
           className="jsx-__scopedHash card__report"
-          target="_blank"
         >
-          Show Report
-        </a>
+          <a
+            className="jsx-__scopedHash card__report-link"
+            target="_blank"
+          >
+            Show Report
+          </a>
+        </div>
       </div>
     </div>
   </div>

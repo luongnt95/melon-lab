@@ -48,9 +48,11 @@ const Card: StatelessComponent<CardProps> = ({
             <div className="card__inception-date">
               <span className="card__label">Inception Date</span> {inception}
             </div>
-            <a className="card__report" href={reportUrl} target="_blank">
-              Show Report
-            </a>
+            <div className="card__report">
+              <a className="card__report-link" href={reportUrl} target="_blank">
+                Show Report
+              </a>
+            </div>
           </div>
         </div>
       </div>

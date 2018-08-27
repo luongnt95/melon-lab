@@ -19,10 +19,12 @@
   line-height: 1;
   padding-top: var(--space-xxs);
   justify-content: space-between;
+  flex-wrap: wrap;
 
   @media (--viewport-m) {
     padding: 0;
     width: 50%;
+    flex-wrap: nowrap;
   }
 }
 
@@ -76,8 +78,19 @@
 }
 
 .card__report {
-  z-index: 1;
-  margin-left: var(--space-xxl);
+  width: 100%;
+  margin-top: var(--space-xs);
+
+  @media (--viewport-m) {
+    width: auto;
+    margin-top: 0;
+    margin-left: var(--space-xxl);
+  }
+}
+
+.card__report-link {
+  display: inline-block;
+  white-space: nowrap;
   font-size: var(--font-size-xs);
   padding: var(--space-xs) var(--space-l);
   color: var(--color-black);
@@ -89,7 +102,7 @@
   transition-duration: var(--transition-duration-default);
 }
 
-.card__report:hover {
+.card__report-link:hover {
   border: 1px solid var(--color-black);
   color: var(--color-white);
   background-color: var(--color-black);
