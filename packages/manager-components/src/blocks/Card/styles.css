@@ -19,12 +19,10 @@
   line-height: 1;
   padding-top: var(--space-xxs);
   justify-content: space-between;
-  flex-wrap: wrap;
 
   @media (--viewport-m) {
     padding: 0;
     width: 50%;
-    flex-wrap: nowrap;
   }
 }
 
@@ -42,6 +40,7 @@
 
   @media (--viewport-m) {
     flex-grow: 1;
+    margin-right: var(--space-m);
   }
 }
 
@@ -80,11 +79,15 @@
 .card__report {
   width: 100%;
   margin-top: var(--space-xs);
+  padding-top: var(--space-xs);
+  border-top: 1px solid var(--color-border);
 
   @media (--viewport-m) {
     width: auto;
-    margin-top: 0;
-    margin-left: var(--space-xxl);
+    border-top: none;
+    border-left: 1px solid var(--color-border);
+    padding: 0 0 0 var(--space-m);
+    margin: 0 0 0 var(--space-m);
   }
 }
 
@@ -103,7 +106,6 @@
 }
 
 .card__report-link:hover {
-  border: 1px solid var(--color-black);
   color: var(--color-white);
   background-color: var(--color-black);
 }
