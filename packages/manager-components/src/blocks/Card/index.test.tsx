@@ -22,9 +22,4 @@ describe('Card', () => {
   it('should render correctly', () => {
     expect(wrapper).toMatchSnapshot();
   });
-
-  it('onClick event', () => {
-    wrapper.find('.card').simulate('click');
-    expect(mockCallback.mock.calls.length).toBe(1);
-  });
 });

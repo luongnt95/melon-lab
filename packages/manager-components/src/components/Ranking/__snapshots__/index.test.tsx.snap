@@ -76,7 +76,6 @@ exports[`Ranking should render correctly 1`] = `
         isActive={true}
         key="0x5bBA9263Ab1eA26FF9c0FeE3619e7AAf7C79E02b"
         name="Black Turtle"
-        onClick={[Function]}
         rank={1}
         sharePrice="1.0081"
       />
@@ -86,7 +85,6 @@ exports[`Ranking should render correctly 1`] = `
         isActive={false}
         key="0xFfDd0ae2efcBDb95fbCd189Fbb194708B3a3B3F9"
         name="Quants"
-        onClick={[Function]}
         rank={2}
         sharePrice="1.0000"
       />
@@ -96,7 +94,6 @@ exports[`Ranking should render correctly 1`] = `
         isActive={false}
         key="0xF1e9868Dc7b02AD30358476380Bfcb77A6c2e74e"
         name="Titanium"
-        onClick={[Function]}
         rank={3}
         sharePrice="1.0000"
       />

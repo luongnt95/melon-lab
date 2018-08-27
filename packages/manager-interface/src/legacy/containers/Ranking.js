@@ -6,6 +6,7 @@ import { actions } from '../actions/ranking';
 import displayNumber from '../utils/displayNumber';
 import { actions as routeActions } from '../actions/routes';
 import { greaterThan } from '../utils/functionalBigNumber';
+import { networks } from '@melonproject/melon.js';
 
 const mapStateToProps = state => ({
   rankingList: state.ranking.rankingList
@@ -18,6 +19,9 @@ const mapStateToProps = state => ({
       ...fund,
       inception: moment(fund.inception).format('D. MMM YYYY HH:mm'),
       sharePrice: displayNumber(fund.sharePrice.toString()),
+      reportUrl: `https://${
+        state.ethereum.network === networks.KOVAN ? 'melon' : 'olympiad'
+      }-reporting.now.sh/report/${fund.address}`,
     }))
     .sort((a, b) => {
       const { ordering } = state.ranking;
@@ -49,7 +53,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch(actions.setSearch(event.target.value));
   },
   setOrdering: ordering => dispatch(actions.setOrdering(ordering)),
-  goToFund: fundAddress => dispatch(routeActions.fund(fundAddress)),
 });
 
 const RankingWithLifecycle = lifecycle({
