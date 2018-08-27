@@ -28,28 +28,28 @@ export const ClaimReward: StatelessComponent<ClaimRewardProps> = ({
           {competitionName} epoch. The competition will end on {endTime}
         </div>
       ) : (
-          <Fragment>
-            <div className="claim-reward__message">
-              {competitionName} has ended. You can now claim your reward. By
+        <Fragment>
+          <div className="claim-reward__message">
+            {competitionName} has ended. You can now claim your reward. By
             clicking the "Claim shares" button, the shares of your fund will be
             transfered back to your account. Then click on the "Redeem" button,
             and the underlying assets of your fund will then be transfered to
             your manager address.
           </div>
-            <ul className="claim-reward__steps">
-              <li className="claim-reward__step">
-                <span className="claim-reward__step-text">
-                  Claim my shares from the {competitionName} contract
+          <ul className="claim-reward__steps">
+            <li className="claim-reward__step">
+              <span className="claim-reward__step-text">
+                Claim my shares from the {competitionName} contract
               </span>
-                <Button onClick={claimReward}>Claim</Button>
-              </li>
-              <li className="claim-reward__step">
-                <span className="claim-reward__step-text">Redeem my shares</span>
-                <Button onClick={redeemParosShares}>Redeem</Button>
-              </li>
-            </ul>
-          </Fragment>
-        )}
+              <Button onClick={claimReward}>Claim</Button>
+            </li>
+            <li className="claim-reward__step">
+              <span className="claim-reward__step-text">Redeem my shares</span>
+              <Button onClick={redeemParosShares}>Redeem</Button>
+            </li>
+          </ul>
+        </Fragment>
+      )}
     </div>
   );
 };

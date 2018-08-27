@@ -140,6 +140,9 @@ exports[`Factsheet should render correctly 1`] = `
     >
       Contact Investors/Managers
     </a>
+    <hr
+      className="jsx-__scopedHash"
+    />
     <a
       className="jsx-__scopedHash"
       rel="noopener noreferrer"
@@ -300,6 +303,9 @@ exports[`Factsheet should render correctly with isCompetition 1`] = `
     >
       Contact Investors/Managers
     </a>
+    <hr
+      className="jsx-__scopedHash"
+    />
     <a
       className="jsx-__scopedHash"
       rel="noopener noreferrer"
