@@ -2,7 +2,6 @@ import React from 'react';
 import Input from './index';
 
 const mockCallback = jest.fn();
-const mockCallback2 = jest.fn();
 const data = {
   name: 'name',
   type: 'text',
