@@ -140,6 +140,13 @@ exports[`Factsheet should render correctly 1`] = `
     >
       Contact Investors/Managers
     </a>
+    <a
+      className="jsx-__scopedHash"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Generate fund report
+    </a>
     <hr
       className="jsx-__scopedHash"
     />
@@ -292,6 +299,13 @@ exports[`Factsheet should render correctly with isCompetition 1`] = `
       target="_blank"
     >
       Contact Investors/Managers
+    </a>
+    <a
+      className="jsx-__scopedHash"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      Generate fund report
     </a>
     <hr
       className="jsx-__scopedHash"

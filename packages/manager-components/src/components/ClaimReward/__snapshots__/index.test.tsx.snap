@@ -53,23 +53,6 @@ exports[`ClaimReward should render correctly 1`] = `
         Redeem
       </Button>
     </li>
-    <li
-      className="jsx-__scopedHash claim-reward__step"
-    >
-      <span
-        className="jsx-__scopedHash claim-reward__step-text"
-      >
-        Show
-         
-        <a
-          className="jsx-__scopedHash claim-reward__report-link"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          fund report
-        </a>
-      </span>
-    </li>
   </ul>
 </div>
 `;
