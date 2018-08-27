@@ -9,6 +9,7 @@ export interface ClaimRewardProps {
   endTime?: string;
   isCompetitionActive?: boolean;
   redeemParosShares: () => void;
+  reportUrl?: string;
 }
 
 export const ClaimReward: StatelessComponent<ClaimRewardProps> = ({
@@ -17,6 +18,7 @@ export const ClaimReward: StatelessComponent<ClaimRewardProps> = ({
   endTime,
   isCompetitionActive,
   redeemParosShares,
+  reportUrl,
 }) => {
   return (
     <div className="claim-reward">
@@ -46,6 +48,19 @@ export const ClaimReward: StatelessComponent<ClaimRewardProps> = ({
             <li className="claim-reward__step">
               <span className="claim-reward__step-text">Redeem my shares</span>
               <Button onClick={redeemParosShares}>Redeem</Button>
+            </li>
+            <li className="claim-reward__step">
+              <span className="claim-reward__step-text">
+                Show{' '}
+                <a
+                  className="claim-reward__report-link"
+                  href={reportUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  fund report
+                </a>
+              </span>
             </li>
           </ul>
         </Fragment>
