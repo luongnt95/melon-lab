@@ -2,8 +2,9 @@ import React from 'react';
 import Input from './index';
 
 const mockCallback = jest.fn();
+const mockCallback2 = jest.fn();
 const data = {
-  name: 'input',
+  name: 'name',
   type: 'text',
   label: 'label',
 };
@@ -31,14 +32,6 @@ describe('Input', () => {
       .find('.input__field')
       .simulate('change', { target: { value: 'test' } });
     expect(mockCallback.mock.calls.length).toBe(1);
-    expect(mockCallback.mock.calls[0][0].target.value ).toBe('test');
-  });
-
-  it('without onChange event', () => {
-    wrapper.setProps({ onChange: undefined });
-    wrapper
-      .find('.input__field')
-      .simulate('change', { target: { value: 'test' } });
-    expect(mockCallback.mock.calls.length).toBe(1);
+    expect(mockCallback.mock.calls[0][0].target.value).toBe('test');
   });
 });
