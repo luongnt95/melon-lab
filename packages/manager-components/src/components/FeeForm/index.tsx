@@ -22,10 +22,10 @@ export interface FeeFormProps {
   errors?: any;
   fees?: any;
   handleBlur: () => void;
+  handleChange: () => void;
   handleReset: () => void;
   handleSubmit: () => void;
   onCancel: () => void;
-  onChange: () => void;
   touched?: any;
   values: FormValues;
 }
@@ -34,10 +34,10 @@ export const FeeForm: StatelessComponent<FeeFormProps> = ({
   errors,
   fees,
   handleBlur,
+  handleChange,
   handleReset,
   handleSubmit,
   onCancel,
-  onChange,
   touched,
   values,
 }) => {
@@ -60,11 +60,10 @@ export const FeeForm: StatelessComponent<FeeFormProps> = ({
         <div className="fee-form__input">
           <Input
             value={values.gasPrice}
-            type="number"
             label="Gas price"
             name="gasPrice"
             insideLabel="true"
-            onChange={onChange}
+            onChange={handleChange}
             onBlur={handleBlur}
             required={true}
             formatNumber={true}

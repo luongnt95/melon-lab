@@ -7,7 +7,7 @@ export interface SwitchProps {
   isChecked?: boolean;
   labels: string[];
   name: string;
-  onChange: (value, event) => void;
+  onChange: (e) => void;
   options: string[];
   value: string;
 }
@@ -24,7 +24,8 @@ const Switch: StatelessComponent<SwitchProps> = ({
   const handleChange = (e: any): void => {
     const checked = e.target.checked;
     const checkedValue = !checked ? labels[0] : labels[1];
-    onChange({ value: checkedValue }, e);
+    e.target.value = checkedValue;
+    onChange(e);
   };
 
   return (

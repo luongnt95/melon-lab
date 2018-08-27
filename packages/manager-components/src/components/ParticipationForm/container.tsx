@@ -56,9 +56,9 @@ const withFormValidation = withFormik({
 
 const withFormHandler = compose(
   withHandlers({
-    onChange: props => (values, event) => {
-      props.setFieldValue(event.target.name, values.value);
-      calculateInputs(props, event.target.name, values.value);
+    onChange: props => event => {
+      props.setFieldValue(event.target.name, event.target.value);
+      calculateInputs(props, event.target.name, event.target.value);
     },
   }),
 );

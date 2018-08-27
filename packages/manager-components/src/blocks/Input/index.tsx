@@ -14,11 +14,11 @@ export interface InputProps {
   label?: string;
   name: string;
   onBlur?: () => void;
-  onChange?: (value, event) => void;
+  onChange?: (e) => void;
   pattern?: string;
   placeholder?: string;
   step?: string;
-  type: string;
+  type?: string;
   value?: string;
 }
 
@@ -44,10 +44,9 @@ const Input: StatelessComponent<InputProps> = ({
     'input--has-error': error,
   });
 
-  const handleChange = (e: any): void => {
-    const targetValue = e.target.value;
+  const handleChange = (values: any, e: any): void => {
     if (onChange) {
-      onChange({ value: targetValue }, e);
+      onChange(e);
     }
   };
 
@@ -65,11 +64,12 @@ const Input: StatelessComponent<InputProps> = ({
           disabled={disabled}
           placeholder={placeholder}
           value={value}
-          onValueChange={onChange}
+          onValueChange={handleChange}
           onBlur={onBlur}
           decimalScale={decimals}
           fixedDecimalScale={true}
           isNumericString={true}
+          type="text"
         />
       ) : (
         <input
@@ -82,7 +82,7 @@ const Input: StatelessComponent<InputProps> = ({
           disabled={disabled}
           placeholder={placeholder}
           value={value}
-          onChange={handleChange}
+          onChange={onChange}
           onBlur={onBlur}
         />
       )}

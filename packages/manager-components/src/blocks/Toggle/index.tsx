@@ -6,7 +6,7 @@ export interface ToggleProps {
   disabled?: boolean;
   isChecked?: boolean;
   name: string;
-  onChange?: (value, event) => void;
+  onChange?: () => void;
   text: string;
   value: string;
 }
@@ -19,11 +19,6 @@ const Toggle: StatelessComponent<ToggleProps> = ({
   text,
   value,
 }) => {
-  const handleChange = (e: any): void => {
-    const targetValue = e.target.value;
-    onChange({ value: targetValue }, e);
-  };
-
   return (
     <label className="toggle">
       <style jsx>{styles}</style>
@@ -34,7 +29,7 @@ const Toggle: StatelessComponent<ToggleProps> = ({
         value={value}
         checked={isChecked}
         disabled={disabled}
-        onChange={handleChange}
+        onChange={onChange}
         hidden
       />
       <span className="toggle__text">{text}</span>

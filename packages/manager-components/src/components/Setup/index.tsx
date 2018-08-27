@@ -19,13 +19,13 @@ export interface SetupProps {
   };
   errors?: any;
   handleBlur?: () => void;
+  handleChange?: () => void;
   handleSubmit?: () => void;
   isCompetition?: boolean;
   loading?: boolean;
   networkId?: string;
-  onChange?: () => void;
   touched?: any;
-  values?: FormValues;
+  values: FormValues;
 }
 
 export const Setup: StatelessComponent<SetupProps> = ({
@@ -33,11 +33,11 @@ export const Setup: StatelessComponent<SetupProps> = ({
   config,
   errors,
   handleBlur,
+  handleChange,
   handleSubmit,
   isCompetition,
   loading,
   networkId,
-  onChange,
   touched,
   values,
 }) => {
@@ -49,7 +49,7 @@ export const Setup: StatelessComponent<SetupProps> = ({
 
       <Form>
         <Input
-          onChange={onChange}
+          onChange={handleChange}
           onBlur={handleBlur}
           value={values.name}
           required={true}

@@ -120,7 +120,6 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
           <Input
             value={values.price}
             disabled={isMarket || !dataValid || !isManager}
-            type="number"
             label="Price"
             name="price"
             insideLabel="true"
@@ -136,7 +135,6 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
         <div className="order-form__input">
           <Input
             value={values.quantity}
-            type="number"
             label="Quantity"
             name="quantity"
             insideLabel="true"
@@ -153,7 +151,6 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
         <div className="order-form__input">
           <Input
             value={values.total}
-            type="number"
             label="Total"
             name="total"
             insideLabel="true"

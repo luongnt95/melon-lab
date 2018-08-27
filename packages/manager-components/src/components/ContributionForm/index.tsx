@@ -44,7 +44,6 @@ export const ContributionForm: StatelessComponent<ContributionFormProps> = ({
         <div className="contribution-form__input">
           <Input
             value={values.amount}
-            type="number"
             label="Quantity of ETH to contribute"
             name="amount"
             insideLabel="true"
@@ -59,7 +58,6 @@ export const ContributionForm: StatelessComponent<ContributionFormProps> = ({
         <div className="contribution-form__input">
           <Input
             value={values.total}
-            type="number"
             label={`Estimated ${melonAssetSymbol} to receive`}
             name="total"
             insideLabel="true"

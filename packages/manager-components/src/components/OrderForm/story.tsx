@@ -6,6 +6,7 @@ const data = {
   baseTokenSymbol: 'ETH-T-M',
   quoteTokenSymbol: 'MLN-T-M',
   selectedOrder: false,
+  isManager: true,
   info: {
     lastPrice: 0.5,
     bid: 0,
@@ -28,7 +29,7 @@ const data = {
   values: {
     price: '1.0000',
     orderType: 'Sell',
-    strategy: 'Market',
+    strategy: 'Limit',
     quantity: '1.0000',
     total: '1.0000',
     exchange: 'OASIS_DEX',

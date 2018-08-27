@@ -10,7 +10,7 @@ import {
 } from '../../utils/functionalBigNumber';
 import OrderForm from './index';
 
-const claculateInputs = (props, field, value) => {
+const calculateInputs = (props, field, value) => {
   const { values, info } = props;
   let maxTotal;
   let maxQuantity;
@@ -91,9 +91,9 @@ const withFormValidation = withFormik({
 
 const withFormHandler = compose(
   withHandlers({
-    onChange: props => (values, event) => {
-      props.setFieldValue(event.target.name, values.value);
-      claculateInputs(props, event.target.name, values.value);
+    onChange: props => event => {
+      props.setFieldValue(event.target.name, event.target.value);
+      calculateInputs(props, event.target.name, event.target.value);
     },
   }),
 );

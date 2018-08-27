@@ -31,7 +31,7 @@ describe('Input', () => {
       .find('.input__field')
       .simulate('change', { target: { value: 'test' } });
     expect(mockCallback.mock.calls.length).toBe(1);
-    expect(mockCallback.mock.calls[0][0].value).toBe('test');
+    expect(mockCallback.mock.calls[0][0].target.value ).toBe('test');
   });
 
   it('without onChange event', () => {
