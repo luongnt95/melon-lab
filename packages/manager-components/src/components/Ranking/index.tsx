@@ -7,7 +7,6 @@ import Spinner from '~/blocks/Spinner';
 import styles from './styles.css';
 
 export interface RankingProps {
-  goToFund: (address) => void;
   loading?: boolean;
   onFilterChange: () => void;
   ordering?: string;
@@ -18,7 +17,6 @@ export interface RankingProps {
 }
 
 export const Ranking: StatelessComponent<RankingProps> = ({
-  goToFund,
   loading,
   onFilterChange,
   ordering,
@@ -34,8 +32,6 @@ export const Ranking: StatelessComponent<RankingProps> = ({
         : setOrdering(field.value);
     }
   };
-
-  const onFundClick = address => goToFund && goToFund(address);
 
   const sorting = {
     options: [
@@ -99,7 +95,6 @@ export const Ranking: StatelessComponent<RankingProps> = ({
               rankingList.map(fund => (
                 <Card
                   isActive={fund.address === usersFund && true}
-                  onClick={onFundClick}
                   key={fund.address}
                   {...fund}
                 />

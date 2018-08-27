@@ -11,6 +11,7 @@ export interface CardProps {
   onClick?: (id) => void;
   rank?: number;
   sharePrice?: string;
+  reportUrl?: string;
 }
 
 const Card: StatelessComponent<CardProps> = ({
@@ -21,15 +22,19 @@ const Card: StatelessComponent<CardProps> = ({
   onClick,
   rank,
   sharePrice,
+  reportUrl,
 }) => {
   const cardClassNames = classNames('card', {
     'card--active': isActive,
   });
 
-  const onCardClick = () => onClick && onClick(address);
-
   return (
-    <div onClick={onCardClick} className={cardClassNames}>
+    <a
+      href={reportUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cardClassNames}
+    >
       <style jsx>{styles}</style>
       <div className="card__rank">
         <span className="card__rank-symbol">#</span>
@@ -48,7 +53,7 @@ const Card: StatelessComponent<CardProps> = ({
           </div>
         </div>
       </div>
-    </div>
+    </a>
   );
 };
 
