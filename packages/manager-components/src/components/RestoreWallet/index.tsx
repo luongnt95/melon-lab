@@ -14,7 +14,7 @@ export interface RestoreWalletProps {
   errors?: any;
   handleBlur?: () => void;
   handleSubmit?: () => void;
-  onChange?: () => void;
+  handleChange?: () => void;
   touched?: any;
   values: FormValues;
 }
@@ -24,7 +24,7 @@ export const RestoreWallet: StatelessComponent<RestoreWalletProps> = ({
   errors,
   handleBlur,
   handleSubmit,
-  onChange,
+  handleChange,
   touched,
   values,
 }) => {
@@ -38,7 +38,7 @@ export const RestoreWallet: StatelessComponent<RestoreWalletProps> = ({
       <Form>
         <div className="restore-wallet__input">
           <Input
-            onChange={onChange}
+            onChange={handleChange}
             onBlur={handleBlur}
             value={values.mnemonic}
             required={true}
