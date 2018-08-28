@@ -49,8 +49,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getRanking: () => dispatch(actions.getRanking()),
-  onFilterChange: (value, event) => {
-    dispatch(actions.setSearch(event.target.value));
+  onFilterChange: e => {
+    dispatch(actions.setSearch(e.target.value));
   },
   setOrdering: ordering => dispatch(actions.setOrdering(ordering)),
   goToFund: fundAddress => dispatch(routeActions.fund(fundAddress)),
