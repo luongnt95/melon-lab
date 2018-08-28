@@ -37,10 +37,10 @@ export const ContributionForm: StatelessComponent<ContributionFormProps> = ({
   return (
     <div className="contribution-form">
       <style jsx>{styles}</style>
-      <h3>ATTENTION REQUIRED: Contribution to ${competitionName}</h3>
+      <h3>ATTENTION REQUIRED: Contribution to {competitionName}</h3>
       <p>
-        You are about to send ether to the ${competitionName} contract. Please
-        type in the amount of ETH you wish to contribute in the $
+        You are about to send ether to the {competitionName} contract. Please
+        type in the amount of ETH you wish to contribute in the
         {competitionName} Olympiad.
       </p>
       <Form onSubmit={handleSubmit}>
@@ -81,7 +81,7 @@ export const ContributionForm: StatelessComponent<ContributionFormProps> = ({
         <div className="contribution-form__notification">
           <Notification isWarning>
             This step will transfer the desired amount of ETH from your wallet
-            to the ${competitionName} Contribution contract. The $
+            to the {competitionName} Contribution contract. The
             {competitionName} Contribution contract will then invest the
             corresponding amount of MLN into your Melon fund (as per terms and
             conditions). By proceeding you acknowledge your understanding of the

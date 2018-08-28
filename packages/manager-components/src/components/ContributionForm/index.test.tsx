@@ -21,4 +21,9 @@ describe('ContributionForm', () => {
   it('should render correctly', () => {
     expect(tree).toMatchSnapshot();
   });
+
+  it('should render correctly without dataValid', () => {
+    tree.setProps({ dataValid: false });
+    expect(tree).toMatchSnapshot();
+  });
 });
