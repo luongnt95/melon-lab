@@ -45,7 +45,7 @@ function* placeOrderSaga(action) {
 
   yield call(
     signer,
-    `Do you really want to place the following limit order:  BUY ${buyHowMuch} ${buyWhichToken} and SELL ${sellHowMuch} ${sellWhichToken}? If yes, please type your password below:`,
+    `Do you really want to place the following limit order: BUY ${buyHowMuch} ${buyWhichToken} and SELL ${sellHowMuch} ${sellWhichToken}?`,
     transaction,
     actions.placeOrderFailed,
   );
@@ -98,11 +98,11 @@ function* takeOrderSaga(action) {
 
   yield call(
     signer,
-    `Do you really want to place the following market order:  BUY ${displayNumber(
+    `Do you really want to place the following market order: BUY ${displayNumber(
       buyHowMuch,
     )} ${buyWhichToken} and SELL ${displayNumber(
       sellHowMuch,
-    )} ${sellWhichToken}? If yes, please type your password below:`,
+    )} ${sellWhichToken}?`,
     transaction,
     actions.takeOrderFailed,
   );
