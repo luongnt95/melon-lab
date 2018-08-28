@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { StatelessComponent } from 'react';
-import * as NumberFormat from 'react-number-format';
+import NumberFormat from 'react-number-format';
 
 import styles from './styles.css';
 
@@ -44,12 +44,6 @@ const Input: StatelessComponent<InputProps> = ({
     'input--has-error': error,
   });
 
-  const handleChange = (values: any, e: any): void => {
-    if (onChange) {
-      onChange(e);
-    }
-  };
-
   return (
     <div className={inputClassNames}>
       <style jsx>{styles}</style>
@@ -64,7 +58,7 @@ const Input: StatelessComponent<InputProps> = ({
           disabled={disabled}
           placeholder={placeholder}
           value={value}
-          onValueChange={handleChange}
+          onChange={onChange}
           onBlur={onBlur}
           decimalScale={decimals}
           fixedDecimalScale={true}

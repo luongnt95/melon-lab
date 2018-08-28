@@ -33,4 +33,13 @@ describe('Input', () => {
     expect(mockCallback.mock.calls.length).toBe(1);
     expect(mockCallback.mock.calls[0][0].target.value).toBe('test');
   });
+
+  it('onChange event', () => {
+    wrapper.setProps({ onChange: mockCallback, formatNumber: true });
+    wrapper
+      .find('.input__field')
+      .simulate('change', { target: { value: 'test' } });
+    expect(mockCallback.mock.calls.length).toBe(2);
+    expect(mockCallback.mock.calls[1][0].target.value).toBe('test');
+  });
 });

@@ -37,7 +37,7 @@ exports[`Input should render correctly with number 1`] = `
   >
     label
   </span>
-  <[object Object]
+  <NumberFormat
     allowEmptyFormatting={false}
     allowNegative={true}
     className="input__field"
