@@ -1,5 +1,4 @@
 import { withFormik } from 'formik';
-import { compose, withHandlers } from 'recompose';
 import * as Yup from 'yup';
 
 import FeeForm from './index';
@@ -19,15 +18,4 @@ const withFormValidation = withFormik({
   },
 });
 
-const withFormHandler = compose(
-  withHandlers({
-    onChange: props => (values, event) => {
-      props.setFieldValue(event.target.name, values.value);
-    },
-  }),
-);
-
-export default compose(
-  withFormValidation,
-  withFormHandler,
-)(FeeForm);
+export default withFormValidation(FeeForm);

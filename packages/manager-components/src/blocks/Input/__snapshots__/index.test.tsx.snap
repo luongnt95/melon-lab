@@ -15,8 +15,7 @@ exports[`Input should render correctly 1`] = `
   </span>
   <input
     className="jsx-__scopedHash input__field"
-    name="input"
-    onChange={[Function]}
+    name="name"
     type="text"
   />
   <div
@@ -38,7 +37,7 @@ exports[`Input should render correctly with number 1`] = `
   >
     label
   </span>
-  <[object Object]
+  <NumberFormat
     allowEmptyFormatting={false}
     allowNegative={true}
     className="input__field"
@@ -49,7 +48,7 @@ exports[`Input should render correctly with number 1`] = `
     getInputRef={[Function]}
     isAllowed={[Function]}
     isNumericString={true}
-    name="input"
+    name="name"
     onBlur={[Function]}
     onChange={[Function]}
     onFocus={[Function]}

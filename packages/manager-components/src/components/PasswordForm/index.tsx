@@ -12,6 +12,7 @@ interface FormValues {
 export interface PasswordFormProps {
   errors?: any;
   handleBlur?: () => void;
+  handleChange: () => void;
   handleReset: () => void;
   handleSubmit: () => void;
   onCancel: () => void;
@@ -23,10 +24,10 @@ export interface PasswordFormProps {
 export const PasswordForm: StatelessComponent<PasswordFormProps> = ({
   errors,
   handleBlur,
+  handleChange,
   handleReset,
   handleSubmit,
   onCancel,
-  onChange,
   touched,
   values,
 }) => {
@@ -45,7 +46,7 @@ export const PasswordForm: StatelessComponent<PasswordFormProps> = ({
             type="password"
             placeholder="Password"
             name="password"
-            onChange={onChange}
+            onChange={handleChange}
             onBlur={handleBlur}
             required={true}
             error={touched.password && errors.password}

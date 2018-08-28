@@ -27,11 +27,11 @@ describe('Switch', () => {
       .find('.switch__input')
       .simulate('change', { target: { checked: true } });
     expect(mockCallback.mock.calls.length).toBe(1);
-    expect(mockCallback.mock.calls[0][0].value).toBe(data.labels[1]);
+    expect(mockCallback.mock.calls[0][0].target.value).toBe(data.labels[1]);
     wrapper
       .find('.switch__input')
       .simulate('change', { target: { checked: false } });
     expect(mockCallback.mock.calls.length).toBe(2);
-    expect(mockCallback.mock.calls[1][0].value).toBe(data.labels[0]);
+    expect(mockCallback.mock.calls[1][0].target.value).toBe(data.labels[0]);
   });
 });

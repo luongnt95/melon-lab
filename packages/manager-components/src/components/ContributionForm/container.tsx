@@ -32,7 +32,7 @@ const withFormValidation = withFormik({
   mapPropsToValues: props => ({ ...props.initialValues }),
   validationSchema: Yup.object().shape({
     amount: Yup.number().required('Amount is required.'),
-    total: Yup.string().required('Total is required.'),
+    total: Yup.number().required('Total is required.'),
   }),
   enableReinitialize: true,
   handleSubmit: (values, form) => {

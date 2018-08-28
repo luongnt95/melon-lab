@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { StatelessComponent } from 'react';
-import * as NumberFormat from 'react-number-format';
+import NumberFormat from 'react-number-format';
 
 import styles from './styles.css';
 
@@ -14,11 +14,11 @@ export interface InputProps {
   label?: string;
   name: string;
   onBlur?: () => void;
-  onChange?: (value, event) => void;
+  onChange?: () => void;
   pattern?: string;
   placeholder?: string;
   step?: string;
-  type: string;
+  type?: string;
   value?: string;
 }
 
@@ -44,13 +44,6 @@ const Input: StatelessComponent<InputProps> = ({
     'input--has-error': error,
   });
 
-  const handleChange = (e: any): void => {
-    const targetValue = e.target.value;
-    if (onChange) {
-      onChange({ value: targetValue }, e);
-    }
-  };
-
   return (
     <div className={inputClassNames}>
       <style jsx>{styles}</style>
@@ -65,11 +58,12 @@ const Input: StatelessComponent<InputProps> = ({
           disabled={disabled}
           placeholder={placeholder}
           value={value}
-          onValueChange={onChange}
+          onChange={onChange}
           onBlur={onBlur}
           decimalScale={decimals}
           fixedDecimalScale={true}
           isNumericString={true}
+          type="text"
         />
       ) : (
         <input
@@ -82,7 +76,7 @@ const Input: StatelessComponent<InputProps> = ({
           disabled={disabled}
           placeholder={placeholder}
           value={value}
-          onChange={handleChange}
+          onChange={onChange}
           onBlur={onBlur}
         />
       )}

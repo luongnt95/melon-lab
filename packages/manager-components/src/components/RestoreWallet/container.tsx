@@ -1,5 +1,5 @@
 import { withFormik } from 'formik';
-import { compose, withHandlers } from 'recompose';
+import { compose } from 'recompose';
 import * as Yup from 'yup';
 import RestoreWallet from './index';
 
@@ -16,15 +16,4 @@ const withFormValidation = withFormik({
   },
 });
 
-const withFormHandler = compose(
-  withHandlers({
-    onChange: props => (values, event) => {
-      props.setFieldValue(event.target.name, values.value);
-    },
-  }),
-);
-
-export default compose(
-  withFormValidation,
-  withFormHandler,
-)(RestoreWallet);
+export default compose(withFormValidation)(RestoreWallet);

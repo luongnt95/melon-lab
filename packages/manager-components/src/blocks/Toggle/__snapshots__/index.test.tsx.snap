@@ -12,7 +12,7 @@ exports[`Toggle should render correctly 1`] = `
     className="jsx-__scopedHash toggle__input"
     hidden={true}
     name="name"
-    onChange={[Function]}
+    onChange={[MockFunction]}
     type="radio"
     value="value"
   />
