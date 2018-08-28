@@ -45,7 +45,7 @@ const ParticipationForm: StatelessComponent<ParticipationFormProps> = ({
     <div className="participation-form">
       <style jsx>{styles}</style>
       <h3>Participation</h3>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         {!dataValid && (
           <Notification isWarning>
             Invest/Redeem not possible when price feed down
@@ -130,7 +130,7 @@ const ParticipationForm: StatelessComponent<ParticipationFormProps> = ({
         )}
 
         <div className="participation-form__input">
-          <Button onClick={handleSubmit} type="submit" disabled={!dataValid}>
+          <Button type="submit" disabled={!dataValid}>
             Submit request
           </Button>
         </div>

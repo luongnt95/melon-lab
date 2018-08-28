@@ -39,7 +39,7 @@ export const PasswordForm: StatelessComponent<PasswordFormProps> = ({
   return (
     <div className="password-form">
       <style jsx>{styles}</style>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <div className="password-form__input">
           <Input
             value={values.password}
@@ -59,9 +59,7 @@ export const PasswordForm: StatelessComponent<PasswordFormProps> = ({
             </Button>
           </div>
           <div className="password-form__button">
-            <Button type="submit" onClick={handleSubmit}>
-              Confirm
-            </Button>
+            <Button type="submit">Confirm</Button>
           </div>
         </div>
       </Form>

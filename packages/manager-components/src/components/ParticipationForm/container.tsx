@@ -47,11 +47,8 @@ const withFormValidation = withFormik({
   mapPropsToValues: props => ({ ...props.initialValues }),
   validationSchema: props => validation(props),
   enableReinitialize: true,
-  handleSubmit: (values, form) => {
-    if (form.props.onSubmit) {
-      form.props.onSubmit(values);
-    }
-  },
+  handleSubmit: (values, form) =>
+    form.props.onSubmit && form.props.onSubmit(values),
 });
 
 const withFormHandler = compose(

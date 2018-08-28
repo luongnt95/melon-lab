@@ -12,13 +12,13 @@ const data = {
 
 describe('ContributionForm', () => {
   const defaultElement = <ContributionForm {...data} />;
-  let wrapper;
+  let tree;
 
   beforeEach(() => {
-    wrapper = shallow(defaultElement);
+    tree = mount(defaultElement);
   });
 
   it('should render correctly', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 });

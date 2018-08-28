@@ -56,7 +56,7 @@ export const FeeForm: StatelessComponent<FeeFormProps> = ({
   return (
     <div className="fee-form">
       <style jsx>{styles}</style>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <div className="fee-form__input">
           <Input
             value={values.gasPrice}
@@ -115,9 +115,7 @@ export const FeeForm: StatelessComponent<FeeFormProps> = ({
             </Button>
           </div>
           <div className="fee-form__button">
-            <Button type="submit" onClick={handleSubmit}>
-              Confirm
-            </Button>
+            <Button type="submit">Confirm</Button>
           </div>
         </div>
       </Form>

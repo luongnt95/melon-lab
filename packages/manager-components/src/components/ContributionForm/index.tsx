@@ -20,6 +20,7 @@ export interface ContributionFormProps {
   onChange?: () => void;
   touched?: any;
   values: FormValues;
+  competitionName?: string;
 }
 
 export const ContributionForm: StatelessComponent<ContributionFormProps> = ({
@@ -31,16 +32,18 @@ export const ContributionForm: StatelessComponent<ContributionFormProps> = ({
   onChange,
   touched,
   values,
+  competitionName = 'Naxos',
 }) => {
   return (
     <div className="contribution-form">
       <style jsx>{styles}</style>
-      <h3>ATTENTION REQUIRED: Contribution to Naxos</h3>
+      <h3>ATTENTION REQUIRED: Contribution to ${competitionName}</h3>
       <p>
-        You are about to send ether to the Naxos contract. Please type in the
-        amount of ETH you wish to contribute in the Naxos Olympiad.
+        You are about to send ether to the ${competitionName} contract. Please
+        type in the amount of ETH you wish to contribute in the $
+        {competitionName} Olympiad.
       </p>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <div className="contribution-form__input">
           <Input
             value={values.amount}
@@ -78,10 +81,11 @@ export const ContributionForm: StatelessComponent<ContributionFormProps> = ({
         <div className="contribution-form__notification">
           <Notification isWarning>
             This step will transfer the desired amount of ETH from your wallet
-            to the Naxos Contribution contract. The Naxos Contribution contract
-            will then invest the corresponding amount of MLN into your Melon
-            fund (as per terms and conditions). By proceeding you acknowledge
-            your understanding of the terms and conditions (
+            to the ${competitionName} Contribution contract. The $
+            {competitionName} Contribution contract will then invest the
+            corresponding amount of MLN into your Melon fund (as per terms and
+            conditions). By proceeding you acknowledge your understanding of the
+            terms and conditions (
             <a
               href={
                 `https://github.com/melonproject/contribution/blob/master/misc/` +
@@ -101,7 +105,7 @@ export const ContributionForm: StatelessComponent<ContributionFormProps> = ({
           </Notification>
         </div>
 
-        <Button style="secondary" disabled={!dataValid} onClick={handleSubmit}>
+        <Button style="secondary" disabled={!dataValid} type="submit">
           I agree, sign and contribute
         </Button>
       </Form>

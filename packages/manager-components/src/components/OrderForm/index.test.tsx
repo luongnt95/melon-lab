@@ -33,13 +33,13 @@ const data = {
 
 describe('OrderForm', () => {
   const defaultElement = <OrderForm {...data} />;
-  let wrapper;
+  let tree;
 
   beforeEach(() => {
-    wrapper = shallow(defaultElement);
+    tree = mount(defaultElement);
   });
 
   it('should render correctly', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 });

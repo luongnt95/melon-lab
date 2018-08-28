@@ -1,19 +1,149 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`RestoreWallet should render correctly 1`] = `
-<Formik
-  enableReinitialize={true}
-  handleSubmit={[Function]}
+<WithFormik(Function)
   initialValues={
     Object {
       "mnemonic": "",
     }
   }
-  isInitialValid={false}
-  onSubmit={[Function]}
-  render={[Function]}
-  validateOnBlur={true}
-  validateOnChange={true}
-  validationSchema={[Function]}
-/>
+  onSubmit={[MockFunction]}
+>
+  <Formik
+    enableReinitialize={true}
+    handleSubmit={[Function]}
+    initialValues={
+      Object {
+        "mnemonic": "",
+      }
+    }
+    isInitialValid={false}
+    onSubmit={[Function]}
+    render={[Function]}
+    validateOnBlur={true}
+    validateOnChange={true}
+    validationSchema={[Function]}
+  >
+    <Component
+      dirty={false}
+      errors={Object {}}
+      handleBlur={[Function]}
+      handleChange={[Function]}
+      handleReset={[Function]}
+      handleSubmit={[Function]}
+      initialValues={
+        Object {
+          "mnemonic": "",
+        }
+      }
+      isSubmitting={false}
+      isValid={false}
+      isValidating={false}
+      onSubmit={[MockFunction]}
+      registerField={[Function]}
+      resetForm={[Function]}
+      setError={[Function]}
+      setErrors={[Function]}
+      setFieldError={[Function]}
+      setFieldTouched={[Function]}
+      setFieldValue={[Function]}
+      setFormikState={[Function]}
+      setStatus={[Function]}
+      setSubmitting={[Function]}
+      setTouched={[Function]}
+      setValues={[Function]}
+      submitCount={0}
+      submitForm={[Function]}
+      touched={Object {}}
+      unregisterField={[Function]}
+      validateField={[Function]}
+      validateForm={[Function]}
+      validateOnBlur={true}
+      validateOnChange={true}
+      values={
+        Object {
+          "mnemonic": "",
+        }
+      }
+    >
+      <div
+        className="jsx-__scopedHash restore-wallet"
+      >
+        <JSXStyle
+          css="__scoped"
+          styleId="__scopedHash"
+        />
+        <h3
+          className="jsx-__scopedHash"
+        >
+          Confirm mnemonic
+        </h3>
+        <p
+          className="jsx-__scopedHash"
+        >
+          Please type your 12-words mnemonic:
+        </p>
+        <Form
+          onSubmit={[Function]}
+        >
+          <form
+            className="form"
+            onSubmit={[Function]}
+          >
+            <div
+              className="jsx-__scopedHash restore-wallet__input"
+            >
+              <Input
+                name="mnemonic"
+                onBlur={[Function]}
+                onChange={[Function]}
+                placeholder="mnemonic"
+                required={true}
+                type="text"
+                value=""
+              >
+                <div
+                  className="jsx-__scopedHash input"
+                >
+                  <JSXStyle
+                    css="__scoped"
+                    styleId="__scopedHash"
+                  />
+                  <input
+                    className="jsx-__scopedHash input__field"
+                    name="mnemonic"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    placeholder="mnemonic"
+                    type="text"
+                    value=""
+                  />
+                  <div
+                    className="jsx-__scopedHash input__error"
+                  />
+                </div>
+              </Input>
+            </div>
+            <Button
+              style="secondary"
+              type="submit"
+            >
+              <button
+                className="jsx-__scopedHash button button--medium button--secondary"
+                onClick={[Function]}
+                type="submit"
+              >
+                <JSXStyle
+                  css="__scoped"
+                  styleId="__scopedHash"
+                />
+                Import
+              </button>
+            </Button>
+          </form>
+        </Form>
+      </div>
+    </Component>
+  </Formik>
+</WithFormik(Function)>
 `;

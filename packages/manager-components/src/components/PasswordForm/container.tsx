@@ -11,11 +11,8 @@ const withFormValidation = withFormik({
       .min(8, 'Password needs to be at least 8 chars long. For your security!'),
   }),
   enableReinitialize: true,
-  handleSubmit: (values, form) => {
-    if (form.props.onSubmit) {
-      form.props.onSubmit(values, 'passwordForm');
-    }
-  },
+  handleSubmit: (values, form) =>
+    form.props.onSubmit && form.props.onSubmit(values, 'passwordForm'),
 });
 
 export default withFormValidation(PasswordForm);

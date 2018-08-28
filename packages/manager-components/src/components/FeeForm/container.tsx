@@ -11,11 +11,8 @@ const withFormValidation = withFormik({
       .required('Gas price is required.')
       .moreThan(0, 'Please enter a valid  gas price'),
   }),
-  handleSubmit: (values, form) => {
-    if (form.props.onSubmit) {
-      form.props.onSubmit(values);
-    }
-  },
+  handleSubmit: (values, form) =>
+    form.props.onSubmit && form.props.onSubmit(values),
 });
 
 export default withFormValidation(FeeForm);

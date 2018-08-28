@@ -47,7 +47,7 @@ export const Setup: StatelessComponent<SetupProps> = ({
       <h3>Setup your fund</h3>
       {loading && <p>Deploying your fund to the Ethereum blockchain</p>}
 
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Input
           onChange={handleChange}
           onBlur={handleBlur}
@@ -130,9 +130,7 @@ export const Setup: StatelessComponent<SetupProps> = ({
           )}
           Risk Management: <strong>Disabled (all trades allowed)</strong>
         </div>
-        <Button onClick={handleSubmit} type="submit">
-          Create and deploy my fund!
-        </Button>
+        <Button type="submit">Create and deploy my fund!</Button>
       </Form>
     </div>
   );

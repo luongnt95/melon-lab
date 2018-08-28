@@ -35,7 +35,7 @@ export const RestoreWallet: StatelessComponent<RestoreWalletProps> = ({
       <p>Please type your 12-words mnemonic:</p>
       {touched.mnemonic &&
         error && <p className="restore-wallet__error">{error}</p>}
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <div className="restore-wallet__input">
           <Input
             onChange={handleChange}
@@ -48,7 +48,7 @@ export const RestoreWallet: StatelessComponent<RestoreWalletProps> = ({
             error={touched.mnemonic && errors.mnemonic}
           />
         </div>
-        <Button type="submit" onClick={handleSubmit} style="secondary">
+        <Button type="submit" style="secondary">
           Import
         </Button>
       </Form>

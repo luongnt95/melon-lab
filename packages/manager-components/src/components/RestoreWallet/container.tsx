@@ -9,11 +9,8 @@ const withFormValidation = withFormik({
     mnemonic: Yup.string().required('mnemonic is required.'),
   }),
   enableReinitialize: true,
-  handleSubmit: (values, form) => {
-    if (form.props.onSubmit) {
-      form.props.onSubmit(values);
-    }
-  },
+  handleSubmit: (values, form) =>
+    form.props.onSubmit && form.props.onSubmit(values),
 });
 
 export default compose(withFormValidation)(RestoreWallet);

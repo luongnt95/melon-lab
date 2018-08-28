@@ -1,9 +1,13 @@
 import React from 'react';
+import Form from './';
 import ParticipationForm from './container';
 
+const onSubmit = jest.fn();
+
 const data = {
-  values: {
-    type: 'Invest',
+  initialValues: {
+    price: 1.0,
+    type: 'Slices',
   },
   decimals: 4,
   setup: true,
@@ -16,13 +20,13 @@ const data = {
 
 describe('ParticipationForm', () => {
   const defaultElement = <ParticipationForm {...data} />;
-  let wrapper;
+  let tree;
 
   beforeEach(() => {
-    wrapper = shallow(defaultElement);
+    tree = mount(defaultElement);
   });
 
   it('should render correctly', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 });

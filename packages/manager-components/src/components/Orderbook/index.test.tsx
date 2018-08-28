@@ -972,4 +972,26 @@ describe('Orderbook', () => {
   it('should render correctly', () => {
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('should render correctly with loading', () => {
+    wrapper.setProps({ loading: true });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should render correctly without entries', () => {
+    wrapper.setProps({
+      orderbook: {
+        totalBuyVolume: '6014.96303423220724',
+        totalSellVolume: '2756.383767891347375',
+        buyEntries: [],
+        sellEntries: [],
+      },
+    });
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('should render correctly without isReadyToTrade', () => {
+    wrapper.setProps({ isReadyToTrade: false });
+    expect(wrapper).toMatchSnapshot();
+  });
 });

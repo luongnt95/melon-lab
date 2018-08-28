@@ -65,7 +65,7 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
     <div className="order-form">
       <style jsx>{styles}</style>
       <h3>Trade</h3>
-      <Form>
+      <Form onSubmit={handleSubmit}>
         {!dataValid && (
           <Notification isWarning>
             Trading not possible when price feed down
@@ -166,7 +166,6 @@ export const OrderForm: StatelessComponent<OrderFormProps> = ({
         </div>
         <Button
           disabled={(isMarket && !values.price) || !dataValid || !isManager}
-          onClick={handleSubmit}
           type="submit"
         >
           {values.orderType}

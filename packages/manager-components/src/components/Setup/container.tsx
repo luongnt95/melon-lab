@@ -8,11 +8,8 @@ const withFormValidation = withFormik({
     name: Yup.string().required('name is required.'),
   }),
   enableReinitialize: true,
-  handleSubmit: (values, form) => {
-    if (form.props.onSubmit) {
-      form.props.onSubmit(values);
-    }
-  },
+  handleSubmit: (values, form) =>
+    form.props.onSubmit && form.props.onSubmit(values),
 });
 
 export default withFormValidation(Setup);
