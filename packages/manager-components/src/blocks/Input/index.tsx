@@ -14,7 +14,7 @@ export interface InputProps {
   label?: string;
   name: string;
   onBlur?: () => void;
-  onChange?: (e) => void;
+  onChange?: () => void;
   pattern?: string;
   placeholder?: string;
   step?: string;
