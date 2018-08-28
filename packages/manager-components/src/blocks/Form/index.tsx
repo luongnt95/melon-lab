@@ -1,15 +1,13 @@
 import React, { StatelessComponent } from 'react';
 
-export interface ButtonProps {
+export interface FormProps {
   onSubmit?: () => any;
 }
 
-const Form: StatelessComponent<ButtonProps> = ({ children, onSubmit }) => {
-  return (
-    <form onSubmit={onSubmit} className="form">
-      {children}
-    </form>
-  );
-};
+const Form: StatelessComponent<FormProps> = ({ children, onSubmit }) => (
+  <form onSubmit={onSubmit} className="form">
+    {children}
+  </form>
+);
 
 export default Form;

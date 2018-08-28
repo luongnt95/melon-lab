@@ -247,8 +247,7 @@ exports[`Setup should render correctly 1`] = `
               <br
                 className="jsx-__scopedHash"
               />
-              Asset Registrar:
-               
+              Asset Registrar: 
               <strong
                 className="jsx-__scopedHash"
               >
@@ -554,8 +553,7 @@ exports[`Setup should render correctly with isCompetition 1`] = `
               <br
                 className="jsx-__scopedHash"
               />
-              Asset Registrar:
-               
+              Asset Registrar: 
               <strong
                 className="jsx-__scopedHash"
               >
@@ -868,8 +866,7 @@ exports[`Setup should render correctly with loading 1`] = `
               <br
                 className="jsx-__scopedHash"
               />
-              Asset Registrar:
-               
+              Asset Registrar: 
               <strong
                 className="jsx-__scopedHash"
               >
@@ -1175,8 +1172,7 @@ exports[`Setup should render correctly with networkId 1`] = `
               <br
                 className="jsx-__scopedHash"
               />
-              Asset Registrar:
-               
+              Asset Registrar: 
               <strong
                 className="jsx-__scopedHash"
               >

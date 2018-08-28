@@ -18,23 +18,21 @@ const Toggle: StatelessComponent<ToggleProps> = ({
   onChange,
   text,
   value,
-}) => {
-  return (
-    <label className="toggle">
-      <style jsx>{styles}</style>
-      <input
-        className="toggle__input"
-        type="radio"
-        name={name}
-        value={value}
-        checked={isChecked}
-        disabled={disabled}
-        onChange={onChange}
-        hidden
-      />
-      <span className="toggle__text">{text}</span>
-    </label>
-  );
-};
+}) => (
+  <label className="toggle">
+    <style jsx>{styles}</style>
+    <input
+      className="toggle__input"
+      type="radio"
+      name={name}
+      value={value}
+      checked={isChecked}
+      disabled={disabled}
+      onChange={onChange}
+      hidden
+    />
+    <span className="toggle__text">{text}</span>
+  </label>
+);
 
 export default Toggle;

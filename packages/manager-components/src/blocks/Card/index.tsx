@@ -4,7 +4,6 @@ import React, { StatelessComponent } from 'react';
 import styles from './styles.css';
 
 export interface CardProps {
-  address?: string;
   inception?: string;
   isActive?: boolean;
   name?: string;
@@ -15,7 +14,6 @@ export interface CardProps {
 }
 
 const Card: StatelessComponent<CardProps> = ({
-  address,
   inception,
   isActive,
   name,
@@ -28,11 +26,8 @@ const Card: StatelessComponent<CardProps> = ({
     'card--active': isActive,
   });
 
-  const onCardClick = e =>
-    e.target.tagName !== 'A' && onClick && onClick(address);
-
   return (
-    <div onClick={onCardClick} className={cardClassNames}>
+    <div onClick={onClick} className={cardClassNames}>
       <style jsx>{styles}</style>
       <div className="card__rank">
         <span className="card__rank-symbol">#</span>

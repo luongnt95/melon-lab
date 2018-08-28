@@ -27,33 +27,31 @@ export const RestoreWallet: StatelessComponent<RestoreWalletProps> = ({
   handleChange,
   touched,
   values,
-}) => {
-  return (
-    <div className="restore-wallet">
-      <style jsx>{styles}</style>
-      <h3>Confirm mnemonic</h3>
-      <p>Please type your 12-words mnemonic:</p>
-      {touched.mnemonic &&
-        error && <p className="restore-wallet__error">{error}</p>}
-      <Form onSubmit={handleSubmit}>
-        <div className="restore-wallet__input">
-          <Input
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.mnemonic}
-            required={true}
-            name="mnemonic"
-            type="text"
-            placeholder="mnemonic"
-            error={touched.mnemonic && errors.mnemonic}
-          />
-        </div>
-        <Button type="submit" style="secondary">
-          Import
-        </Button>
-      </Form>
-    </div>
-  );
-};
+}) => (
+  <div className="restore-wallet">
+    <style jsx>{styles}</style>
+    <h3>Confirm mnemonic</h3>
+    <p>Please type your 12-words mnemonic:</p>
+    {touched.mnemonic &&
+      error && <p className="restore-wallet__error">{error}</p>}
+    <Form onSubmit={handleSubmit}>
+      <div className="restore-wallet__input">
+        <Input
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.mnemonic}
+          required={true}
+          name="mnemonic"
+          type="text"
+          placeholder="mnemonic"
+          error={touched.mnemonic && errors.mnemonic}
+        />
+      </div>
+      <Button type="submit" style="secondary">
+        Import
+      </Button>
+    </Form>
+  </div>
+);
 
 export default RestoreWallet;

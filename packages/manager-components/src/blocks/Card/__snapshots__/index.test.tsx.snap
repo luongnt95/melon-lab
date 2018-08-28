@@ -3,7 +3,7 @@
 exports[`Card should render correctly 1`] = `
 <div
   className="jsx-__scopedHash card"
-  onClick={[Function]}
+  onClick={[MockFunction]}
 >
   <JSXStyle
     css="__scoped"

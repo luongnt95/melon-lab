@@ -10,18 +10,18 @@ const buildTwitterUrl = (isOwner, fundAddress, fundName, sharePrice, track) => {
   const text = isOwner
     ? track !== 'live'
       ? `My #MelonFund "${fundName}" has a share price currently of ${displayNumber(
-        sharePrice,
-      )}. Have a look:`
+          sharePrice,
+        )}. Have a look:`
       : `Check out my on-chain decentralized hedge fund "${fundName}". It currently has a share price of ${displayNumber(
-        sharePrice,
-      )}. Have a look:`
+          sharePrice,
+        )}. Have a look:`
     : track !== 'live'
       ? `The #MelonFund "${fundName}" has a share price currently of ${displayNumber(
-        sharePrice,
-      )}. Have a look:`
+          sharePrice,
+        )}. Have a look:`
       : `Check out this on-chain decentralized hedge fund "${fundName}". It currently has a share price of ${displayNumber(
-        sharePrice,
-      )}. Have a look:`;
+          sharePrice,
+        )}. Have a look:`;
 
   const url =
     track === 'live'
@@ -41,9 +41,9 @@ const buildTwitterUrl = (isOwner, fundAddress, fundName, sharePrice, track) => {
 const mapStateToProps = state => ({
   aum: displayNumber(state.fund.gav),
   creationDate:
-  state.fund.inception && state.fund.inception !== '...'
-    ? moment(state.fund.inception).format('D. MMM YYYY HH:mm')
-    : '...',
+    state.fund.inception && state.fund.inception !== '...'
+      ? moment(state.fund.inception).format('D. MMM YYYY HH:mm')
+      : '...',
   managementReward: displayNumber(state.fund.managementReward),
   name: state.fund.name,
   performanceReward: displayNumber(state.fund.performanceReward),
@@ -66,8 +66,8 @@ const mapStateToProps = state => ({
   isCompetition: state.app.isCompetition,
   track: state.app.track,
   reportUrl: `https://${
-  state.ethereum.network === networks.KOVAN ? 'melon' : 'olympiad'
-  }-reporting.now.sh/report/${state.fund.address}`
+    state.ethereum.network === networks.KOVAN ? 'melon' : 'olympiad'
+  }-reporting.now.sh/report/${state.fund.address}`,
 });
 
 const mapDispatchToProps = dispatch => ({

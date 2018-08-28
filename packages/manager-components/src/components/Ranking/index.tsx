@@ -35,8 +35,6 @@ export const Ranking: StatelessComponent<RankingProps> = ({
     }
   };
 
-  const onFundClick = address => goToFund && goToFund(address);
-
   const sorting = {
     options: [
       {
@@ -96,14 +94,18 @@ export const Ranking: StatelessComponent<RankingProps> = ({
           </div>
           <div className="ranking__funds">
             {rankingList.length > 0 &&
-              rankingList.map(fund => (
-                <Card
-                  isActive={fund.address === usersFund && true}
-                  onClick={onFundClick}
-                  key={fund.address}
-                  {...fund}
-                />
-              ))}
+              rankingList.map(fund => {
+                const onFundClick = () => goToFund && goToFund(fund.address);
+
+                return (
+                  <Card
+                    isActive={fund.address === usersFund && true}
+                    onClick={onFundClick}
+                    key={fund.address}
+                    {...fund}
+                  />
+                );
+              })}
           </div>
         </div>
       )}

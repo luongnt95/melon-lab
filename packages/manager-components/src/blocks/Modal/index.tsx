@@ -70,36 +70,34 @@ const Modal: StatelessComponent<ModalProps> = ({
   primaryInteraction,
   secondaryInteraction,
   title,
-}) => {
-  return (
-    <ReactModal
-      className="modal__wrap"
-      overlayClassName="modal__overlay"
-      onAfterOpen={onAfterOpen}
-      isOpen={isOpen}
-    >
-      <style jsx>{styles}</style>
-      <div className="modal__title">{title}</div>
-      <div className="modal__content">
-        <p>{body}</p>
-        {children}
+}) => (
+  <ReactModal
+    className="modal__wrap"
+    overlayClassName="modal__overlay"
+    onAfterOpen={onAfterOpen}
+    isOpen={isOpen}
+  >
+    <style jsx>{styles}</style>
+    <div className="modal__title">{title}</div>
+    <div className="modal__content">
+      <p>{body}</p>
+      {children}
 
-        {!loading ? (
-          <Form onSubmit={handleSubmit}>
-            {renderButtons(
-              primaryInteraction,
-              secondaryInteraction,
-              interactionHandler,
-            )}
-          </Form>
-        ) : (
-          <div className="modal__spinner">
-            <Spinner size="inflated" />
-          </div>
-        )}
-      </div>
-    </ReactModal>
-  );
-};
+      {!loading ? (
+        <Form onSubmit={handleSubmit}>
+          {renderButtons(
+            primaryInteraction,
+            secondaryInteraction,
+            interactionHandler,
+          )}
+        </Form>
+      ) : (
+        <div className="modal__spinner">
+          <Spinner size="inflated" />
+        </div>
+      )}
+    </div>
+  </ReactModal>
+);
 
 export default Modal;

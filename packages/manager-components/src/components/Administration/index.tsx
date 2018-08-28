@@ -25,37 +25,35 @@ export const Administration: StatelessComponent<AdministrationProps> = ({
   shutdown,
   subscriptionAllowed,
   toggleSubscription,
-}) => {
-  return (
-    <div className="administration">
-      <style jsx>{styles}</style>
-      <h3>Fund Administration</h3>
-      {/* {!isCompeting ? (
+}) => (
+  <div className="administration">
+    <style jsx>{styles}</style>
+    <h3>Fund Administration</h3>
+    {/* {!isCompeting ? (
           <Button onClick={() => registerForCompetition(fundAddress)}>
             Register for competition
           </Button>
         ) : (
           ""
         )} */}
-      {subscriptionAllowed ? (
-        <Button style="clear" onClick={toggleSubscription}>
-          Disable subscription
-        </Button>
-      ) : (
-        <Button style="clear" onClick={toggleSubscription}>
-          Enable subscription
-        </Button>
-      )}
+    {subscriptionAllowed ? (
+      <Button style="clear" onClick={toggleSubscription}>
+        Disable subscription
+      </Button>
+    ) : (
+      <Button style="clear" onClick={toggleSubscription}>
+        Enable subscription
+      </Button>
+    )}
 
-      <Button style="clear" onClick={convertUnclaimedRewards}>
-        Convert unclaimed rewards: 0 {quoteAsset}
-      </Button>
-      <Button style="clear" onClick={shutdown}>
-        Irreversibly shut down fund
-      </Button>
-      {loading && <p>Please wait for upcoming Metamask popup</p>}
-    </div>
-  );
-};
+    <Button style="clear" onClick={convertUnclaimedRewards}>
+      Convert unclaimed rewards: 0 {quoteAsset}
+    </Button>
+    <Button style="clear" onClick={shutdown}>
+      Irreversibly shut down fund
+    </Button>
+    {loading && <p>Please wait for upcoming Metamask popup</p>}
+  </div>
+);
 
 export default Administration;
