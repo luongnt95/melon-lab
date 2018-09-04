@@ -21,18 +21,18 @@ export const Generate: StatelessComponent<GenerateProps> = ({
         The standard bip39 is used to generate a mnemonic phrase, from which
         your wallet will be cryptographically derived.
       </p>
-      <Notification isWarning>
-        Please write down the following mnemonic and store it in a safe place!
-        If you loose your mnemonic you will not be able to access your fund
-        again. If someone else gets a copy of this, they can take over your
-        wallet & fund and steal your price!
-      </Notification>
-      <p className="generate__mnemonic">{generatedMnemonic}</p>
-      <p>
-        <Button style="secondary" onClick={onSubmit}>
-          I have written down the mnemonic
-        </Button>
-      </p>
+      <div className="generate__notification">
+        <Notification isWarning>
+          Please write down the following mnemonic and store it in a safe place!
+          If you loose your mnemonic you will not be able to access your fund
+          again. If someone else gets a copy of this, they can take over your
+          wallet & fund and steal your price!
+          <div className="generate__mnemonic">{generatedMnemonic}</div>
+        </Notification>
+      </div>
+      <Button style="secondary" onClick={onSubmit}>
+        Generate
+      </Button>
     </div>
   );
 };
