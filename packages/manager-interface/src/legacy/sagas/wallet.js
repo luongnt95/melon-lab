@@ -129,8 +129,29 @@ function* storeWallet(decryptedWallet, encryptedWalletParam) {
 
     if (isElectron || process.env.NODE_ENV === 'development') {
       if (!encryptedWalletString) {
-        yield put(actions.password());
-        const { password } = yield take(types.PASSWORD_ENTERED);
+        yield put(
+          modalActions.password(
+            `Please type a strong password to protect your wallet:`,
+          ),
+        );
+        const { password } = yield take(modalTypes.PASSWORD_ENTERED);
+
+        if (password.length < 8) {
+          yield put(
+            modalActions.error(
+              'Password needs to be at least 8 chars long. For your security!',
+            ),
+          );
+          return;
+        }
+
+        yield put(modalActions.password(`Confirm password:`));
+        const { password: confirm } = yield take(modalTypes.PASSWORD_ENTERED);
+
+        if (password !== confirm) {
+          yield put(modalActions.error("The entered passwords didn't match"));
+          return;
+        }
 
         yield put(modalActions.loading('Encrypting wallet ...'));
         encryptedWalletString = yield call(

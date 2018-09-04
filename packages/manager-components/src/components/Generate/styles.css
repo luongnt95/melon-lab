@@ -3,11 +3,4 @@
   font-family: monospace;
   font-weight: var(--font-weight-bold);
   margin-top: var(--space-m);
-  padding-top: var(--space-s);
-  text-align: center;
-  border-top: 1px solid color-mod(var(--color-warning) b(10%));
-}
-
-.generate__notification {
-  margin-bottom: var(--space-m);
 }

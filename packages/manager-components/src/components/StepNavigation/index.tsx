@@ -8,17 +8,15 @@ export interface StepNavigationProps {
     name: string;
   }>;
   activeStep: number;
-  page;
 }
 
 export const StepNavigation: StatelessComponent<StepNavigationProps> = ({
   steps,
-  page,
 }) => {
-  const activeStepClassName = (step, i) =>
+  const activeStepClassName = step =>
     classNames('step-navigation__step', {
-      'step-navigation__step--active': page === i,
-      'step-navigation__step--completed': page > i,
+      'step-navigation__step--active': step.isActive,
+      'step-navigation__step--completed': step.isCompleted,
     });
 
   return (
@@ -26,7 +24,7 @@ export const StepNavigation: StatelessComponent<StepNavigationProps> = ({
       <style jsx>{styles}</style>
       {steps &&
         steps.map((step, i) => (
-          <li key={i} className={activeStepClassName(step, i)}>
+          <li key={i} className={activeStepClassName(step)}>
             <span className="step-navigation__wrap">
               <span className="step-navigation__counter" />
               <span className="step-navigation__text">{step.name}</span>

@@ -17,20 +17,9 @@ export const types = {
   IMPORT_WALLET_REQUESTED: 'IMPORT_WALLET_REQUESTED:newuser:melon.fund',
   IMPORT_WALLET_SUCCEEDED: 'IMPORT_WALLET_SUCCEEDED:newuser:melon.fund',
   IMPORT_WALLET_FAILED: 'IMPORT_WALLET_FAILED:newuser:melon.fund',
-  PASSWORD: 'PASSWORD:newuser.melon.fund',
-  PASSWORD_ENTERED: 'PASSWORD_ENTERED:newuser:melon.fund',
-  PASSWORD_ERROR: 'PASSWORD_Error:newuser:melon.fund',
 };
 
 export const actions = {
-  password: password => ({
-    type: types.PASSWORD,
-    password,
-  }),
-  passwordEntered: password => ({
-    type: types.PASSWORD_ENTERED,
-    password,
-  }),
   generateWallet: () => ({
     type: types.GENERATE_WALLET_REQUESTED,
     loading: false,
@@ -43,7 +32,6 @@ export const actions = {
     type: types.GENERATE_WALLET_SUCCEEDED,
     hasGenerated: true,
     mnemonic,
-    reason: '',
   }),
   importWallet: encryptedWalletString => ({
     type: types.IMPORT_WALLET_REQUESTED,

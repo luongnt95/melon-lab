@@ -3,7 +3,6 @@ import Generate from '~/components/Generate';
 import PasswordForm from '~/components/PasswordForm/container';
 import RestoreWallet from '~/components/RestoreWallet/container';
 import StepNavigation from '~/components/StepNavigation';
-import TermsAndConditions from '~/components/TermsAndConditions';
 
 import styles from './styles.css';
 
@@ -15,10 +14,7 @@ export interface GenerateWalletProps {
   setPage;
   onSubmitMnemonic;
   onSubmitPassword;
-  onSubmitSign;
   error;
-  generate;
-  setupFund;
 }
 
 export const GenerateWallet: StatelessComponent<GenerateWalletProps> = ({
@@ -29,10 +25,7 @@ export const GenerateWallet: StatelessComponent<GenerateWalletProps> = ({
   setPage,
   onSubmitMnemonic,
   onSubmitPassword,
-  onSubmitSign,
   error,
-  generate = true,
-  setupFund = false,
 }) => {
   const handleSubmitGenerate = () => {
     return setPage(page + 1);
@@ -49,15 +42,25 @@ export const GenerateWallet: StatelessComponent<GenerateWalletProps> = ({
   };
 
   const handleSubmitPassword = values => {
-    onSubmitPassword(values);
-    if (setupFund) {
-      return setPage(page + 1);
-    }
+    return onSubmitPassword(values);
   };
 
   const steps = [
     {
-      name: 'Import',
+      name: 'Generate',
+      isActive: page === 0,
+      isCompleted: page > 0,
+      element: (
+        <Generate
+          generatedMnemonic={generatedMnemonic}
+          onSubmit={handleSubmitGenerate}
+        />
+      ),
+    },
+    {
+      name: 'Confirm',
+      isActive: page === 1,
+      isCompleted: page > 1,
       element: (
         <RestoreWallet
           {...restoreWallet}
@@ -68,6 +71,8 @@ export const GenerateWallet: StatelessComponent<GenerateWalletProps> = ({
     },
     {
       name: 'Password',
+      isActive: page === 2,
+      isCompleted: page > 2,
       element: (
         <PasswordForm
           {...passwordForm}
@@ -79,30 +84,11 @@ export const GenerateWallet: StatelessComponent<GenerateWalletProps> = ({
     },
   ];
 
-  if (generate) {
-    steps.unshift({
-      name: 'Generate',
-      element: (
-        <Generate
-          generatedMnemonic={generatedMnemonic}
-          onSubmit={handleSubmitGenerate}
-        />
-      ),
-    });
-  }
-
-  if (setupFund) {
-    steps.push({
-      name: 'Terms',
-      element: <TermsAndConditions sign={onSubmitSign} />,
-    });
-  }
-
   return (
     <div className="generate-wallet">
       <style jsx>{styles}</style>
 
-      <StepNavigation steps={steps} page={page} />
+      <StepNavigation steps={steps} />
 
       <div className="generate-wallet__content">{steps[page].element}</div>
     </div>
