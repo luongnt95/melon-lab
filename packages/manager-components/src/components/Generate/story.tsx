@@ -6,7 +6,7 @@ import Generate from './';
 const data = {
   generatedMnemonic:
     'next glass shell collect erupt image drive tumble motor gym glove inside',
-  restore: action('restore'),
+  onSubmit: action('restore'),
 };
 
 storiesOf('Components|Generate', module).add('Default', () => {

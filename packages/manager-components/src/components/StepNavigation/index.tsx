@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { Fragment, StatelessComponent } from 'react';
+import React, { StatelessComponent } from 'react';
 
 import styles from './styles.css';
 
@@ -12,7 +12,6 @@ export interface StepNavigationProps {
 
 export const StepNavigation: StatelessComponent<StepNavigationProps> = ({
   steps,
-  activeStep,
 }) => {
   const activeStepClassName = step =>
     classNames('step-navigation__step', {
@@ -25,7 +24,7 @@ export const StepNavigation: StatelessComponent<StepNavigationProps> = ({
       <style jsx>{styles}</style>
       {steps &&
         steps.map((step, i) => (
-          <li className={activeStepClassName(step)}>
+          <li key={i} className={activeStepClassName(step)}>
             <span className="step-navigation__wrap">
               <span className="step-navigation__counter" />
               <span className="step-navigation__text">{step.name}</span>

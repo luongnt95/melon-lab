@@ -6,12 +6,12 @@ import styles from './styles.css';
 
 export interface GenerateProps {
   generatedMnemonic: string;
-  restore;
+  onSubmit;
 }
 
 export const Generate: StatelessComponent<GenerateProps> = ({
   generatedMnemonic,
-  restore,
+  onSubmit,
 }) => {
   return (
     <div className="generate">
@@ -29,7 +29,7 @@ export const Generate: StatelessComponent<GenerateProps> = ({
       </Notification>
       <p className="generate__mnemonic">{generatedMnemonic}</p>
       <p>
-        <Button style="secondary" onClick={restore}>
+        <Button style="secondary" onClick={onSubmit}>
           I have written down the mnemonic
         </Button>
       </p>

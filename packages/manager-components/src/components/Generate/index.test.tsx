@@ -2,7 +2,7 @@ import React from 'react';
 import Generate from './index';
 
 const data = {
-  restore: () => null,
+  onSubmit: () => null,
   mnemonic: 'lorem ipsum',
 };
 
