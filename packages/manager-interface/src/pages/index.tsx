@@ -1,11 +1,12 @@
-import AppContainer from '~/legacy/containers/App';
-import withReduxStore from '~/wrappers/withReduxStore';
-import { Provider as ReduxProvider } from 'react-redux';
+import React, { Fragment } from 'react';
+import GetStarted from '~/legacy/containers/GetStarted';
+import Ranking from '~/legacy/containers/Ranking';
 
-const Index = ({ redux, ...props }) => (
-  <ReduxProvider store={redux}>
-    <AppContainer {...props} />
-  </ReduxProvider>
+const Index = (props) => (
+  <Fragment>
+    <GetStarted isHome />
+    <Ranking />
+  </Fragment>
 );
 
-export default withReduxStore(Index);
+export default Index;

@@ -26,7 +26,7 @@ WORKDIR /app/packages/graphql-server
 
 COPY --from=build /app/packages/graphql-server/dist /app/packages/graphql-server/dist
 COPY --from=dependencies /app/packages/graphql-server/node_modules /app/packages/graphql-server/node_modules
-COPY .env.defaults /app/
+COPY .env.defaults /app/.env.defaults
 COPY packages/graphql-server/package.json /app/packages/graphql-server/
 
 CMD ["yarn", "start"]

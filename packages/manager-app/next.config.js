@@ -34,13 +34,12 @@ module.exports = withComposedConfig({
     ['@melonproject/manager-app', 'ipc'],
   ],
   distDir: path.join('..', 'build'),
-  exportPathMap: () => ({
-    '/': { page: '/' },
-  }),
+  exportPathMap: () => require('./next.routes.js'),
   webpack: (config, options) => {
     config.resolve.alias = Object.assign({}, config.resolve.alias || {}, {
       '~/legacy': path.join(managerInterface, 'src', 'legacy'),
       '~/wrappers': path.join(managerInterface, 'src', 'wrappers'),
+      '~/pages': path.join(managerInterface, 'src', 'pages'),
       '~/blocks': path.join(managerComponents, 'src', 'blocks'),
       '~/components': path.join(managerComponents, 'src', 'components'),
       '~/design': path.join(managerComponents, 'src', 'design'),

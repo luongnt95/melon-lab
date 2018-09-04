@@ -31,9 +31,13 @@ async function start(port: number) {
 
   const pubsub = new PubSub();
   const track = (process.env.TRACK as Track) || 'kovan-demo';
-  const network = retrieveNetwork(track);
-  const environment = Object.assign(await getParityProvider(process.env.JSON_RPC_ENDPOINT), { track });
+  const environment = {
+    ...(await getParityProvider(process.env.JSON_RPC_ENDPOINT)),
+    track,
+  };
+
   const config = await getConfig(environment);
+  const network = retrieveNetwork(track);
 
   const context = {
     pubsub,
