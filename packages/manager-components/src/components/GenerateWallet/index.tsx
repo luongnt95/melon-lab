@@ -62,7 +62,11 @@ export const GenerateWallet: StatelessComponent<GenerateWalletProps> = ({
       isActive: page === 1,
       isCompleted: page > 1,
       element: (
-        <RestoreWallet {...restoreWallet} onSubmit={handleSubmitMnemonic} error={error} />
+        <RestoreWallet
+          {...restoreWallet}
+          onSubmit={handleSubmitMnemonic}
+          error={error}
+        />
       ),
     },
     {
