@@ -8,7 +8,8 @@ import setupGql from './services/graphql';
 
 const isWindows = process.platform === 'win32';
 
-if (isDev) {
+const isDevOrForced = isDev || JSON.parse((process.env.FORCE_DEV || 'true').toLocaleLowerCase());
+if (isDevOrForced) {
   require('electron-debug')({ enabled: true, showDevTools: true });
 }
 
@@ -45,7 +46,7 @@ const restoreMainWindow = async () => {
     width: 1024,
     height: 800,
     webPreferences: {
-      nodeIntegration: !!isDev,
+      nodeIntegration: !!isDevOrForced,
       preload: path.resolve(__dirname, 'preload.js'),
     },
   });
@@ -112,7 +113,8 @@ electron.app.on('ready', () => {
       callback(path.normalize(path.join(__dirname, reqUrlFinal)));
     });
   }
-  else {
+
+  if (isDevOrForced) {
     const { default: install, REACT_DEVELOPER_TOOLS, REDUX_DEVTOOLS } = require('electron-devtools-installer');
 
     install(REACT_DEVELOPER_TOOLS)

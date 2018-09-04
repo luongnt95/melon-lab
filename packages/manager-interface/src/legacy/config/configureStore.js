@@ -20,9 +20,7 @@ const routerMiddleware = () => {
       Router.router.events.off('routeChangeComplete', complete);
       Router.router.events.off('routeChangeError', complete);
 
-      if (url === path) {
-        return next(action);
-      }
+      return next(action);
     };
 
     Router.router.events.on('routeChangeComplete', complete);
