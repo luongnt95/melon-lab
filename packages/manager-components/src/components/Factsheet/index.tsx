@@ -116,7 +116,7 @@ const Factsheet: StatelessComponent<FactsheetProps> = ({
             {quoteAsset}
             /Share
           </Button>
-          <a href="#/ranking">
+          <a href="/">
             Ranking: <Loading loading={rank === '...'}>{rank}</Loading> out of{' '}
             <Loading loading={numberOfFunds === '...'}>{numberOfFunds}</Loading>
           </a>
