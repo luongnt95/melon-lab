@@ -107,19 +107,11 @@ type Signature {
   v: Int!
 }
 
-type RankingEntry {
-  rank: Int!
-  address: String!
-  name: String!
-  sharePrice: Float!
-  inception: String!
-}
-
 type Query {
-  price(symbol: Symbol!): String!
-  ranking: [RankingEntry]
-  fund(address: String!): Fund!
-  funds(addresses: [String]): [Fund!]!
+  openOrders(address: String!): [Order]
+  price(symbol: Symbol!): String
+  fund(address: String!): Fund
+  funds(addresses: [String]): [Fund]
 }
 
 type Subscription {

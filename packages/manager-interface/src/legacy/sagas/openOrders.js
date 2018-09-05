@@ -9,28 +9,6 @@ import { types as ethereumTypes } from '../actions/ethereum';
 import { actions as modalActions } from '../actions/modal';
 import signer from './signer';
 
-function* getOpenOrdersSaga() {
-  const isConnected = yield select(state => state.ethereum.isConnected);
-  if (!isConnected) yield take(ethereumTypes.HAS_CONNECTED);
-
-  const fundAddress = yield select(state => state.fund.address);
-
-  const environment = getEnvironment();
-
-  try {
-    const orders = yield call(getOpenOrders, environment, { fundAddress });
-
-    yield put(
-      actions.getOpenOrdersSucceeded({
-        orders,
-      }),
-    );
-  } catch (err) {
-    console.error(err);
-    yield put(actions.getOpenOrdersFailed(err));
-  }
-}
-
 function* cancelOrderSaga({ orderId, makerAssetSymbol, takerAssetSymbol }) {
   const isConnected = yield select(state => state.ethereum.isConnected);
   if (!isConnected) yield take(ethereumTypes.HAS_CONNECTED);
@@ -45,7 +23,8 @@ function* cancelOrderSaga({ orderId, makerAssetSymbol, takerAssetSymbol }) {
     });
     yield put(actions.cancelOrderSucceeded());
     yield put(modalActions.close());
-    yield put(actions.getOpenOrders(fundAddress));
+
+    // TODO: Remove entry from apollo (or refetch).
   }
 
   yield call(
@@ -57,7 +36,6 @@ function* cancelOrderSaga({ orderId, makerAssetSymbol, takerAssetSymbol }) {
 }
 
 function* openOrders() {
-  yield takeLatest(types.GET_OPEN_ORDERS_REQUESTED, getOpenOrdersSaga);
   yield takeLatest(types.CANCEL_ORDER_REQUESTED, cancelOrderSaga);
   yield takeLatest(types.CANCEL_ORDER_SUCCEEDED, getOpenOrdersSaga);
 }

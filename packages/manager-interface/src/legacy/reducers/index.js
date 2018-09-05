@@ -3,7 +3,6 @@ import ethereum from './ethereum';
 import fund from './fund';
 import holdings from './holdings';
 import modal from './modal';
-import openOrders from './openOrders';
 import orderbook from './orderbook';
 import ranking from './ranking';
 import recentTrades from './recentTrades';
@@ -17,7 +16,6 @@ const reducerMap = {
   fund,
   holdings,
   modal,
-  openOrders,
   orderbook,
   ranking,
   recentTrades,

@@ -34,12 +34,12 @@ const mapStateToProps = state => {
         displayNumber(
           state.recentTrades.trades[state.recentTrades.trades.length - 1].price,
         ),
-      bid:
-        state.orderbook.buyOrders.length &&
-        displayNumber(state.orderbook.buyOrders[0].price),
-      ask:
-        state.orderbook.sellOrders.length &&
-        displayNumber(state.orderbook.sellOrders[0].price),
+      // bid:
+      //   state.orderbook.buyOrders.length &&
+      //   displayNumber(state.orderbook.buyOrders[0].price),
+      // ask:
+      //   state.orderbook.sellOrders.length &&
+      //   displayNumber(state.orderbook.sellOrders[0].price),
       tokens: {
         baseToken: {
           name: state.app.assetPair.base,

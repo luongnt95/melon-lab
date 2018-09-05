@@ -38,10 +38,11 @@ const createLink = options => {
   return split(isSubscription, wsLink, httpLink);
 };
 
-export default withApollo(options => {
+export const createClient = options => {
   const link = createLink(options);
 
   return new ApolloClient({
+    ssrMode: typeof window === 'undefined',
     link,
     cache: new InMemoryCache({
       fragmentMatcher: new IntrospectionFragmentMatcher({
@@ -49,4 +50,8 @@ export default withApollo(options => {
       }),
     }),
   });
+};
+
+export default withApollo(options => {
+  return createClient(options);
 });

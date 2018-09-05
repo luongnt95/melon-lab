@@ -21,6 +21,7 @@
     "@melonproject/graphql-schema": "*",
     "apollo-server-express": "^1.4.0",
     "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
     "cross-env": "^5.1.5",
     "debug": "2.6.9",
     "dotenv": "^6.0.0",

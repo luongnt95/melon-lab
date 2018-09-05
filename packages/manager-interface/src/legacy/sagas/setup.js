@@ -1,5 +1,6 @@
 import { takeLatest, call, put, take, select } from 'redux-saga/effects';
 import slugify from 'slugify';
+import gql from 'graphql-tag';
 
 import {
   getEnvironment,
@@ -9,6 +10,7 @@ import {
   signCompetitionTermsAndConditions,
 } from '@melonproject/melon.js';
 import { actions as modalActions, types as modalTypes } from '../actions/modal';
+import { createClient } from '~/wrappers/withApollo';
 
 import { types, actions } from '../actions/fund';
 import { actions as appActions, types as appTypes } from '../actions/app';
@@ -74,24 +76,27 @@ function* signCompetition() {
     console.log(JSON.stringify(err, null, 4));
   }
 }
+const query = gql`
+  query FundNamesQuery {
+    funds {
+      name
+    }
+  }
+`;
 
 function* createFund({ name, OasisDex, ZeroEx }) {
-  const rankingLoaded = yield select(
-    state => state.ranking.rankingList.length > 0,
-  );
+  const client = yield call(createClient, {});
+  const response = yield call(client.query, {
+    query,
+  });
 
-  if (!rankingLoaded) {
-    yield put(rankingActions.getRanking());
-    yield take(rankingTypes.GET_RANKING_SUCCEEDED);
-  }
-
-  const ranking = yield select(state => state.ranking.rankingList);
-  const track = yield select(state => state.app.track);
-
+  const ranking = response && response.data && response.data.funds;
   if (ranking.find(fund => slugify(fund.name) === slugify(name))) {
     yield put(modalActions.error('Fund with similar name already registered'));
     return;
   }
+
+  const track = yield select(state => state.app.track);
   let exchangeNames = [];
   if (OasisDex) exchangeNames.push('MatchingMarket');
   if (ZeroEx) exchangeNames.push('ZeroExExchange');

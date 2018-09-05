@@ -31,11 +31,6 @@ import {
 } from '../actions/openOrders';
 import { types as tradeTypes } from '../actions/trade';
 
-import {
-  actions as rankingActions,
-  types as rankingTypes,
-} from '../actions/ranking';
-
 import { types as participationTypes } from '../actions/participation';
 
 function* requestInfo({ address }) {
@@ -126,28 +121,6 @@ function* getUsersFund({ account }) {
   }
 }
 
-function* getRanking() {
-  yield put(rankingActions.getRanking());
-}
-
-function* addRanking() {
-  const ranking = yield select(state => state.ranking.rankingList);
-  const fundAddress = yield select(state => state.fund.address);
-  const fundRanking = ranking.find(r => r.address === fundAddress);
-
-  if (fundRanking) {
-    const numberOfFunds = ranking.length ? ranking.length : 'N/A';
-    yield put(
-      actions.updateRanking({
-        rank: fundRanking.rank,
-        numberOfFunds,
-        expectedPrize: fundRanking.expectedPrize,
-        isCompeting: fundRanking.isCompeting,
-      }),
-    );
-  }
-}
-
 function* afterTradeUpdate() {
   const fundAddress = yield select(state => state.fund.address);
   yield put(actions.sharePriceRequested());
@@ -185,8 +158,6 @@ function* fund() {
   yield takeLatest(types.SHARE_PRICE_REQUESTED, requestSharePrice);
   yield takeLatest(routeTypes.FUND, checkAndLoad);
   yield takeLatest(ethereumTypes.ACCOUNT_CHANGED, getUsersFund);
-  yield takeLatest(orderbookTypes.GET_ORDERBOOK_SUCCEEDED, getRanking);
-  yield takeLatest(rankingTypes.GET_RANKING_SUCCEEDED, addRanking);
   yield takeLatest(tradeTypes.TAKE_ORDER_SUCCEEDED, afterTradeUpdate);
   yield takeLatest(tradeTypes.PLACE_ORDER_SUCCEEDED, afterTradeUpdate);
   yield takeLatest(

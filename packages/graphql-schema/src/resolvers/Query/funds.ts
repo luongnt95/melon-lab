@@ -1,7 +1,6 @@
 import {
   getFundInformations,
   getHoldingsAndPrices,
-  getPrice,
   getRanking,
   performCalculations,
 } from '@melonproject/melon.js';
@@ -32,11 +31,7 @@ const calculationFields = [
 const containsField = (fields, query) =>
   fields.find(field => query.includes(field));
 
-const price = async (parent, args, context) => {
-  return getPrice(context.environment, args.symbol);
-};
-
-const funds = async (parent, args, context, info) => {
+async function funds(parent, args, context, info) {
   const ranking = await getRanking(context.environment);
   const fields = Object.keys(graphqlFields(info));
   const addresses = args.addresses || ranking.map(fund => fund.address);
@@ -86,7 +81,4 @@ const funds = async (parent, args, context, info) => {
   return result;
 };
 
-export default {
-  price,
-  funds,
-};
+export default funds;

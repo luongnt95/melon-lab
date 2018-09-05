@@ -24,7 +24,7 @@ const mapOnboardingStateToMainContainer = (onboardingState, track) => {
         : ParticipationContainer,
   };
 
-  return map[onboardingState];
+  return map[onboardingState] || SetupContainer;
 };
 
 const Setup = (props) => {

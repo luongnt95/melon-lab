@@ -2,8 +2,6 @@ import { types } from "../actions/ranking";
 import mergeReducer from "../utils/mergeReducer";
 
 export const initialState = {
-  rankingList: [],
-  loading: false,
   search: "",
   ordering: "+rank",
 };

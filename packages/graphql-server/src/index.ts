@@ -7,6 +7,7 @@ import { getConfig, getParityProvider } from '@melonproject/melon.js';
 import { graphqlExpress } from 'apollo-server-express';
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
+import * as cors from 'cors';
 import { execute, subscribe } from 'graphql';
 import { PubSub } from 'graphql-subscriptions';
 import { createServer } from 'http';
@@ -47,13 +48,15 @@ async function start(port: number) {
   };
 
   const json = bodyParser.json();
+  const urlencoded = bodyParser.urlencoded({ extended: true });
 
   const gql = graphqlExpress({
     schema,
     context,
   });
 
-  app.use('/', json, gql);
+  app.use(cors())
+  app.use('/', cors(), urlencoded, json, gql);
 
   const server = createServer(app);
 
