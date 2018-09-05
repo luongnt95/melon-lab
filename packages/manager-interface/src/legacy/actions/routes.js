@@ -1,11 +1,9 @@
 export const types = {
   SETUP: 'SETUP:routes:melon.fund',
-  ROOT: 'ROOT:routes:melon.fund',
   FUND: 'FUND:routes:melon.fund',
   RANKING: 'RANKING:routes:melon.fund',
   WALLET_GENERATE: 'WALLET_GENERATE:routes:melon.fund',
   WALLET_RESTORE: 'WALLET_RESTORE:routes:melon.fund',
-  WALLET_CREATE: 'WALLET_CREATE:routes:melon.fund',
   WALLET_IMPORT: 'WALLET_IMPORT:routes:melon.fund',
   WALLET: 'WALLET:routes:melon.fund',
   DONE: 'DONE:routes:melon.fund',
@@ -14,28 +12,22 @@ export const types = {
 };
 
 export const routeMap = {
+  [types.RANKING]: '/',
   [types.SETUP]: '/setup',
-  [types.ROOT]: '/',
-  [types.RANKING]: '/ranking',
   [types.WALLET_GENERATE]: '/wallet/generate',
   [types.WALLET_RESTORE]: '/wallet/restore',
-  [types.WALLET_CREATE]: '/wallet/create',
   [types.WALLET_IMPORT]: '/wallet/import',
   [types.WALLET]: '/wallet',
-  [types.FUND]: '/:address',
-  [types.COMPETITION]: '/:address/competition',
+  [types.FUND]: '/manage',
 };
 
 export const actions = {
   fund: address => ({
     type: types.FUND,
-    payload: { address },
+    payload: { query: { address } },
   }),
   ranking: () => ({
     type: types.RANKING,
-  }),
-  root: () => ({
-    type: types.ROOT,
   }),
   setup: () => ({
     type: types.SETUP,
@@ -52,9 +44,5 @@ export const actions = {
   wallet: onboarding => ({
     type: types.WALLET,
     query: onboarding ? { onboarding: true } : null,
-  }),
-  competition: address => ({
-    type: types.COMPETITION,
-    payload: { address },
   }),
 };

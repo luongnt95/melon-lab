@@ -30,7 +30,6 @@ export default class MyDocument extends Document {
           <meta name="theme-color" content="#000000" />
           <link rel="manifest" href="./static/manifest.json" />
           <link rel="shortcut icon" href="./static/images/favicon.png" />
-          <script src="./static/tracking.js" />
           <title>Melon Olympiad</title>
         </Head>
         <body>

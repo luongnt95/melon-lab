@@ -23,14 +23,12 @@ import {
 import { types as browserTypes } from '../actions/browser';
 
 function* loadWallet() {
-  const isElectron = ELECTRON;
-
   try {
-    if (isElectron || process.env.NODE_ENV === 'development') {
+    if (ELECTRON || process.env.NODE_ENV === 'development') {
       let encryptedWallet;
       let password;
 
-      if (isElectron) {
+      if (ELECTRON) {
         const wallets = yield sendIpcMessage('get-wallets');
         if (wallets.length > 0) {
           yield put(
@@ -124,10 +122,9 @@ const createDownload = (data, filename, mime) => {
 
 function* storeWallet(decryptedWallet, encryptedWalletParam) {
   try {
-    const isElectron = yield select(state => state.app.isElectron);
     let encryptedWalletString = encryptedWalletParam;
 
-    if (isElectron || process.env.NODE_ENV === 'development') {
+    if (ELECTRON || process.env.NODE_ENV === 'development') {
       if (!encryptedWalletString) {
         yield put(
           modalActions.password(
@@ -162,7 +159,7 @@ function* storeWallet(decryptedWallet, encryptedWalletParam) {
         yield put(modalActions.close());
       }
 
-      if (isElectron) {
+      if (ELECTRON) {
         yield sendIpcMessage(
           'store-wallet',
           decryptedWallet.address,
@@ -199,7 +196,6 @@ function* generateMnemonic() {
 
 function* restoreWalletSaga({ mnemonic }) {
   try {
-    const isElectron = yield select(state => state.app.isElectron);
     const wallet = yield importWalletFromMnemonic(mnemonic);
     setEnvironment({ account: wallet });
     yield put(actions.restoreFromMnemonicSucceeded(wallet));
@@ -213,7 +209,6 @@ function* restoreWalletSaga({ mnemonic }) {
 }
 
 function* deleteWallet() {
-  const isElectron = yield select(state => state.app.isElectron);
   const address = yield select(state => state.ethereum.account);
 
   yield put(
@@ -227,7 +222,8 @@ function* deleteWallet() {
   // Delete local storage wallet anyways. If in production, they key should
   // not exist. If it exists, then deletion is ok anyways
   localStorage.removeItem('wallet:melon.fund');
-  if (isElectron) {
+
+  if (ELECTRON) {
     try {
       const deleted = yield sendIpcMessage('delete-wallet', address);
       yield put(
@@ -247,7 +243,7 @@ function* deleteWallet() {
       );
     }
   }
-  yield put(routeActions.root());
+  yield put(routeActions.ranking());
 }
 
 function* downloadJSON() {

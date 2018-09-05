@@ -27,7 +27,6 @@ const initialState = {
   assetPair: { base: '...', quote: '...' },
   track: '',
   isCompetition: false,
-  isElectron: false,
 };
 
 const reducers = {
