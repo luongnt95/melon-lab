@@ -13,6 +13,7 @@ import {
   getEndTime,
 } from '@melonproject/melon.js';
 import Router from 'next/router';
+import { extractQueryParam } from '~/legacy/utils/parseUrl';
 import { takeLatest, put, call, take, select } from 'redux-saga/effects';
 import { actions, types } from '../actions/fund';
 import { types as ethereumTypes } from '../actions/ethereum';
@@ -92,8 +93,9 @@ function* requestInfo({ address }) {
   }
 }
 
+const getFundAddress = extractQueryParam('address');
 function* checkAndLoad() {
-  const address = Router.router.query && Router.router.query.address || '';
+  const address = getFundAddress(Router.router.asPath) || '';
   let isReadyToVisit = yield select(state => state.app.isReadyToVisit);
   yield put(actions.setLoading(address));
 

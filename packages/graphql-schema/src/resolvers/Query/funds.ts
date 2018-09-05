@@ -79,6 +79,6 @@ async function funds(parent, args, context, info) {
   const result = await Promise.all(promises);
 
   return result;
-};
+}
 
 export default funds;

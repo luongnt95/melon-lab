@@ -14,7 +14,7 @@ exports[`Factsheet should render correctly 1`] = `
     Melon Fund
     <a
       className="jsx-__scopedHash factsheet__title-link"
-      href="melonport"
+      href="https://twitter.com/intent/tweet?text=The%20%23MelonFund%20%22Melon%20Fund%22%20has%20a%20share%20price%20currently%20of%200.9824.%20Have%20a%20look%3A&url=https%3A%2F%2Fmelon.fund%2F%23undefined&hashtags=TechnologyRegulatedFunds%2CMelon%2CMelonFund&via=melonport&related=melonport"
       rel="noopener noreferrer"
       target="_blank"
     >
@@ -105,7 +105,7 @@ exports[`Factsheet should render correctly 1`] = `
     <Loading
       loading={false}
     >
-      1.0000
+      1
     </Loading>
     <hr
       className="jsx-__scopedHash"
@@ -115,7 +115,7 @@ exports[`Factsheet should render correctly 1`] = `
     <Loading
       loading={false}
     >
-      0.0000
+      0
     </Loading>
     %
     <br
@@ -126,7 +126,7 @@ exports[`Factsheet should render correctly 1`] = `
     <Loading
       loading={false}
     >
-      0.0000
+      0
     </Loading>
     %
     <hr
@@ -178,7 +178,7 @@ exports[`Factsheet should render correctly with isCompetition 1`] = `
     Melon Fund
     <a
       className="jsx-__scopedHash factsheet__title-link"
-      href="melonport"
+      href="https://twitter.com/intent/tweet?text=The%20%23MelonFund%20%22Melon%20Fund%22%20has%20a%20share%20price%20currently%20of%200.9824.%20Have%20a%20look%3A&url=https%3A%2F%2Fmelon.fund%2F%23undefined&hashtags=TechnologyRegulatedFunds%2CMelon%2CMelonFund&via=melonport&related=melonport"
       rel="noopener noreferrer"
       target="_blank"
     >
@@ -269,7 +269,7 @@ exports[`Factsheet should render correctly with isCompetition 1`] = `
     <Loading
       loading={false}
     >
-      1.0000
+      1
     </Loading>
     <hr
       className="jsx-__scopedHash"
@@ -279,7 +279,7 @@ exports[`Factsheet should render correctly with isCompetition 1`] = `
     <Loading
       loading={false}
     >
-      0.0000
+      0
     </Loading>
     %
     <br
@@ -290,7 +290,7 @@ exports[`Factsheet should render correctly with isCompetition 1`] = `
     <Loading
       loading={false}
     >
-      0.0000
+      0
     </Loading>
     %
     <hr
@@ -339,7 +339,7 @@ exports[`Factsheet should render correctly with loading 1`] = `
     Melon Fund
     <a
       className="jsx-__scopedHash factsheet__title-link"
-      href="melonport"
+      href="https://twitter.com/intent/tweet?text=The%20%23MelonFund%20%22Melon%20Fund%22%20has%20a%20share%20price%20currently%20of%200.9824.%20Have%20a%20look%3A&url=https%3A%2F%2Fmelon.fund%2F%23undefined&hashtags=TechnologyRegulatedFunds%2CMelon%2CMelonFund&via=melonport&related=melonport"
       rel="noopener noreferrer"
       target="_blank"
     >

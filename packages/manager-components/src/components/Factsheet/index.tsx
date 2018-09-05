@@ -7,10 +7,9 @@ import Spinner from '~/blocks/Spinner';
 import styles from './styles.css';
 
 export interface FactsheetProps {
-  aum?: string;
+  gav?: string;
   creationDate?: string;
   dataValid?: boolean;
-  expectedPrize?: string;
   isCompetition?: boolean;
   loading?: boolean;
   managementReward?: string;
@@ -26,13 +25,15 @@ export interface FactsheetProps {
   shutdown: () => void;
   totalSupply?: string;
   tweetHref?: string;
+  address?: string;
+  track?: string;
+  owner?: boolean;
 }
 
 const Factsheet: StatelessComponent<FactsheetProps> = ({
-  aum,
+  gav,
   creationDate,
   dataValid,
-  expectedPrize,
   isCompetition,
   loading,
   managementReward,
@@ -47,9 +48,37 @@ const Factsheet: StatelessComponent<FactsheetProps> = ({
   sharePrice,
   shutdown,
   totalSupply,
-  tweetHref,
+  address,
+  track,
+  owner,
 }) => {
   const scrolltoHoldings = () => scrollTo && scrollTo('holdings');
+
+  const buildTwitterUrl = () => {
+    const text = owner
+      ? track !== 'live'
+        ? `My #MelonFund "${name}" has a share price currently of ${sharePrice}. Have a look:`
+        : `Check out my on-chain decentralized hedge fund "${name}". ` +
+          `It currently has a share price of ${sharePrice}. Have a look:`
+      : track !== 'live'
+        ? `The #MelonFund "${name}" has a share price currently of ${sharePrice}. Have a look:`
+        : `Check out this on-chain decentralized hedge fund "${name}". ` +
+          `It currently has a share price of ${sharePrice}. Have a look:`;
+
+    const url =
+      track === 'live'
+        ? `https://olympiad.melon.fund/#${address}`
+        : `https://melon.fund/#${address}`;
+    const hashtags = 'TechnologyRegulatedFunds,Melon,MelonFund';
+    const via = 'melonport';
+    const related = 'melonport';
+
+    return `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+      text,
+    )}&url=${encodeURIComponent(url)}&hashtags=${encodeURIComponent(
+      hashtags,
+    )}&via=${encodeURIComponent(via)}&related=${encodeURIComponent(related)}`;
+  };
 
   return (
     <div className="factsheet">
@@ -58,7 +87,7 @@ const Factsheet: StatelessComponent<FactsheetProps> = ({
         {name}
         <a
           className="factsheet__title-link"
-          href={tweetHref}
+          href={buildTwitterUrl()}
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -74,15 +103,15 @@ const Factsheet: StatelessComponent<FactsheetProps> = ({
           <br />
           <Button onClick={scrolltoHoldings} style="clear">
             AUM:{' '}
-            <Loading dataAvailable={dataValid} loading={aum === '...'}>
-              {aum}
+            <Loading dataAvailable={dataValid} loading={gav === '...'}>
+              {gav.toFixed(4)}
             </Loading>{' '}
             {quoteAsset}
           </Button>
           <Button onClick={scrolltoHoldings} style="clear">
             Share price:{' '}
             <Loading dataAvailable={dataValid} loading={sharePrice === '...'}>
-              {sharePrice}
+              {sharePrice.toFixed(4)}
             </Loading>{' '}
             {quoteAsset}
             /Share

@@ -9,6 +9,7 @@ import Symbol from './resolvers/Symbol';
 export default {
   DateTime,
   Query: {
+    fund: require('./resolvers/Query/fund').default,
     funds: require('./resolvers/Query/funds').default,
     price: require('./resolvers/Query/price').default,
     openOrders: require('./resolvers/Query/openOrders').default,
