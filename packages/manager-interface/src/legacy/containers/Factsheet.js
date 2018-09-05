@@ -18,6 +18,7 @@ const mapStateToProps = (state, props) => ({
   reportUrl: `https://${
     state.ethereum.network === networks.KOVAN ? 'melon' : 'olympiad'
   }-reporting.now.sh/report/${props.address}`,
+  account: state.ethereum.account,
 });
 
 const mapDispatchToProps = dispatch => ({

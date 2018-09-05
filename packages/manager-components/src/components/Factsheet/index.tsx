@@ -28,6 +28,7 @@ export interface FactsheetProps {
   address?: string;
   track?: string;
   owner?: boolean;
+  account?: string;
 }
 
 const Factsheet: StatelessComponent<FactsheetProps> = ({
@@ -51,11 +52,14 @@ const Factsheet: StatelessComponent<FactsheetProps> = ({
   address,
   track,
   owner,
+  account,
 }) => {
   const scrolltoHoldings = () => scrollTo && scrollTo('holdings');
 
+  const isOwner = owner === account;
+
   const buildTwitterUrl = () => {
-    const text = owner
+    const text = isOwner
       ? track !== 'live'
         ? `My #MelonFund "${name}" has a share price currently of ${sharePrice}. Have a look:`
         : `Check out my on-chain decentralized hedge fund "${name}". ` +
@@ -149,13 +153,12 @@ const Factsheet: StatelessComponent<FactsheetProps> = ({
             Generate fund report
           </a>
           <hr />
-          {!isCompetition ? (
-            <Button onClick={shutdown} style="clear">
-              Irreversibly shut down fund
-            </Button>
-          ) : (
-            <div />
-          )}
+          {!isCompetition &&
+            isOwner && (
+              <Button onClick={shutdown} style="clear">
+                Irreversibly shut down fund
+              </Button>
+            )}
         </div>
       )}
     </div>
