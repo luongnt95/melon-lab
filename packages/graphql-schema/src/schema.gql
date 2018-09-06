@@ -75,6 +75,7 @@ type ZeroExOrder implements Order {
   takerFee: String!
   signature: Signature
   feeRecipient: String
+  timestamp: DateTime
 }
 
 type OasisDexOrder implements Order {
@@ -88,6 +89,7 @@ type OasisDexOrder implements Order {
   exchangeContractAddress: String
   exchange: String
   id: String!
+  timestamp: DateTime
 }
 
 type Orderbook {

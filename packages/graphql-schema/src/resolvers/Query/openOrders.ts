@@ -4,7 +4,7 @@ async function openOrders(parent, args, context) {
   const { environment, config } = context;
   const orders = (await getOpenOrders(environment, {
     fundAddress: args.address,
-  })).map((order) => ({
+  })).map(order => ({
     id: order.exchangeOrderId,
     isActive: true,
     exchange: 'OASIS_DEX',
@@ -19,6 +19,7 @@ async function openOrders(parent, args, context) {
       symbol: order.sellSymbol,
       howMuch: order.sellHowMuch,
     },
+    timestamp: order.timestamp,
   }));
 
   return orders;

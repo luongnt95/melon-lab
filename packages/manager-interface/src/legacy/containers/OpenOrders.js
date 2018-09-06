@@ -8,7 +8,7 @@ import isSameAddress from '../utils/isSameAddress';
 import { extractQueryParam } from '~/legacy/utils/parseUrl';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import { withRouter } from 'next/router'
+import { withRouter } from 'next/router';
 
 const mapStateToProps = state => ({
   isReadyToTrade: state.app.isReadyToTrade,
@@ -28,7 +28,7 @@ const withState = connect(
   mapDispatchToProps,
 );
 
-const withMappedOrders = withPropsOnChange(['orders'], (props) => ({
+const withMappedOrders = withPropsOnChange(['orders'], props => ({
   orders: props.orders.map(order => ({
     ...order,
     price: displayNumber(order.price),
@@ -36,8 +36,7 @@ const withMappedOrders = withPropsOnChange(['orders'], (props) => ({
     buySymbol: order.buy.symbol,
     sellHowMuch: displayNumber(order.sell.howMuch),
     sellSymbol: order.sell.symbol,
-    // TODO: Fix timestamp.
-    timestamp: '', //moment(order.timestamp).format('D. MMM YYYY HH:mm'),
+    timestamp: moment(order.timestamp).format('D. MMM YYYY HH:mm'),
     type: order.type,
   })),
 }));
@@ -52,6 +51,7 @@ const query = gql`
         exchangeContractAddress
         type
         price
+        timestamp
         buy {
           howMuch
           symbol
@@ -77,7 +77,7 @@ const withOpenOrders = BaseComponent => baseProps => (
     {props => (
       <BaseComponent
         {...baseProps}
-        orders={props.data && props.data.openOrders || []}
+        orders={(props.data && props.data.openOrders) || []}
         loading={props.loading}
       />
     )}
