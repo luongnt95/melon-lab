@@ -4,6 +4,7 @@ import OrderForm from '@melonproject/manager-components/components/OrderForm/con
 import isSameAddress from '../utils/isSameAddress';
 import displayNumber from '../utils/displayNumber';
 import { compose, withPropsOnChange } from 'recompose';
+import { isCompetition } from '~/legacy/utils/track';
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: values => {
@@ -20,7 +21,6 @@ const mapStateToProps = state => {
   const isManager =
     state.app.isReadyToInteract &&
     isSameAddress(state.ethereum.account, state.fund.owner);
-  const isCompetition = state.app.isCompetition;
 
   return {
     isCompetition,

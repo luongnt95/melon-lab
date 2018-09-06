@@ -5,6 +5,7 @@ import Factsheet from '@melonproject/manager-components/components/Factsheet';
 import { actions as appActions } from '../actions/app';
 import { actions as administrationActions } from '../actions/administration';
 import { networks } from '@melonproject/melon.js';
+import { track, isCompetition } from '~/legacy/utils/track';
 
 const mapStateToProps = (state, props) => ({
   creationDate:
@@ -13,12 +14,12 @@ const mapStateToProps = (state, props) => ({
   dataValid: state.ethereum.isDataValid,
   numberOfFunds: state.fund.numberOfFunds,
   quoteAsset: state.app.assetPair.quote,
-  isCompetition: state.app.isCompetition,
-  track: state.app.track,
   reportUrl: `https://${
     state.ethereum.network === networks.KOVAN ? 'melon' : 'olympiad'
   }-reporting.now.sh/report/${props.address}`,
   account: state.ethereum.account,
+  track,
+  isCompetition,
 });
 
 const mapDispatchToProps = dispatch => ({

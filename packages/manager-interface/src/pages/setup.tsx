@@ -8,8 +8,9 @@ import TermsAndConditionsContainer from '~/legacy/containers/TermsAndConditions'
 import SetupContainer from '~/legacy/containers/Setup';
 import ParosContributionContainer from '~/legacy/containers/ParosContribution';
 import ParticipationContainer from '~/legacy/containers/Participation';
+import { track } from '~/legacy/utils/track';
 
-const mapOnboardingStateToMainContainer = (onboardingState, track) => {
+const mapOnboardingStateToMainContainer = (onboardingState) => {
   const map = {
     [onboardingPath.NO_PROVIDER]: NoConnection,
     [onboardingPath.NO_CONNECTION]: NoConnection,
@@ -28,7 +29,7 @@ const mapOnboardingStateToMainContainer = (onboardingState, track) => {
 };
 
 const Setup = (props) => {
-  const Component = mapOnboardingStateToMainContainer(props.onboardingState, props.track);
+  const Component = mapOnboardingStateToMainContainer(props.onboardingState);
   return Component && <Component {...props} />;
 };
 

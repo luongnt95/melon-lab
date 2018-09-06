@@ -34,22 +34,10 @@ const loadingFund = {
 };
 
 export const initialState = {
-  address: "",
   ...loadingFund,
-  loading: false,
 };
 
 const reducers = {
-  setAddress: (state, { address }) => ({
-    ...state,
-    address,
-    fundAddress: address,
-  }),
-  setLoading: (state, { address }) => ({
-    ...loadingFund,
-    loading: true,
-    address,
-  }),
   resetPendingRequest: state => ({
     ...state,
     pendingRequest: null,
@@ -63,20 +51,16 @@ const reducers = {
 };
 
 const mapActionToReducer = {
-  [types.SET]: reducers.setAddress,
   [types.SETUP_SUCCEEDED]: reducers.merge,
   [types.SIGN_SUCCEEDED]: reducers.merge,
   [types.SIGN_COMPETITION_SUCCEEDED]: reducers.merge,
   [types.SHOWED_REGISTRATION]: reducers.merge,
   [types.NEEDS_TO_REGISTER]: reducers.merge,
   [types.IS_REGISTERED]: reducers.merge,
-  [types.INFO_SUCCEEDED]: reducers.merge,
   [types.SHARE_PRICE_SUCCEEDED]: reducers.merge,
-  [types.INFO_REQUESTED]: reducers.merge,
   [types.UPDATE_RANKING]: reducers.merge,
   [types.SET_PENDING_REQUEST]: reducers.merge,
   [types.READY_TO_EXECUTE]: reducers.merge,
-  [types.SET_LOADING]: reducers.setLoading,
   [types.PROGRESSIVE_UPDATE]: reducers.merge,
   [participationTypes.EXECUTE_SUCCEEDED]: reducers.resetPendingRequest,
   [adminTypes.TOGGLE_SUBSCRIPTION_SUCCEEDED]: reducers.merge,

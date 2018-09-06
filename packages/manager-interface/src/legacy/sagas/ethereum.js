@@ -17,6 +17,7 @@ import { actions as ethereumActions } from '../actions/ethereum';
 import { actions as modalActions } from '../actions/modal';
 import { actions as fundActions } from '../actions/fund';
 import { equals } from '../utils/functionalBigNumber';
+import { track } from '~/legacy/utils/track';
 
 const BLOCK_POLLING_INTERVAL = 4 * 1000;
 const MAX_INTERVAL_BETWEEN_BLOCKS = 5;
@@ -28,7 +29,6 @@ function* init() {
   );
 
   const networkId = yield apply(environment.api, environment.api.net.version);
-  const track = yield select(state => state.app.track);
 
   if (track === 'live' && networkId !== networks.LIVE) {
     yield put(

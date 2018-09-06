@@ -12,6 +12,7 @@ import {
 import { actions as modalActions, types as modalTypes } from '../actions/modal';
 import { createClient } from '~/wrappers/withApollo';
 
+import { track } from '~/legacy/utils/track';
 import { types, actions } from '../actions/fund';
 import { actions as appActions, types as appTypes } from '../actions/app';
 import {
@@ -96,7 +97,6 @@ function* createFund({ name, OasisDex, ZeroEx }) {
     return;
   }
 
-  const track = yield select(state => state.app.track);
   let exchangeNames = [];
   if (OasisDex) exchangeNames.push('MatchingMarket');
   if (ZeroEx) exchangeNames.push('ZeroExExchange');
@@ -107,7 +107,6 @@ function* createFund({ name, OasisDex, ZeroEx }) {
       name,
       signature,
       exchangeNames,
-      track
     });
     yield put(
       actions.setupSucceeded({ ...fund, owner: environment.account.address }),

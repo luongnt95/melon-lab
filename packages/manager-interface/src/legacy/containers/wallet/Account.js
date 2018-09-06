@@ -2,12 +2,13 @@ import { connect } from 'react-redux';
 import { actions } from '../../actions/wallet';
 import { actions as routeActions } from '../../actions/routes';
 import Account from '@melonproject/manager-components/components/Account';
+import { isCompetition } from '~/legacy/utils/track';
 
 const mapStateToProps = state => ({
   currentAddress: state.ethereum.account,
   associatedFund: state.app.usersFund,
   networkId: state.ethereum.network,
-  isCompetition: state.app.isCompetition,
+  isCompetition,
 });
 
 const mapDispatchToProps = dispatch => ({

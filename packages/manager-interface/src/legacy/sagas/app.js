@@ -9,30 +9,18 @@ import {
 import { types as fundTypes, actions as fundActions } from '../actions/fund';
 import isSameAddress from '../utils/isSameAddress';
 import { isZero } from '../utils/functionalBigNumber';
-
+import { track, isCompetition } from '~/legacy/utils/track';
 import { types as browserTypes } from '../actions/browser';
-
-function* init() {
-  const track = global.TRACK || process.env.TRACK || 'kovan-demo';
-  const isCompetition =
-    track === tracks.KOVAN_COMPETITION || track === tracks.LIVE;
-
-  if (!Object.values(tracks).includes(track)) {
-    console.warn(`TRACK is set to ${track} which is not a supported track.`);
-  }
-  yield put(
-    actions.setTrack({ track, isCompetition }),
-  );
-}
 
 const getOnboardingState = ({ ethereum, app, fund }) => {
   if (!ethereum.isConnected) return onboardingPath.NO_CONNECTION;
   if (ethereum.network !== networks.KOVAN && ethereum.network !== networks.LIVE)
     return onboardingPath.WRONG_NETWORK;
   if (!ethereum.account) return onboardingPath.NO_ACCOUNT;
+
   if (
     isZero(ethereum.ethBalance) ||
-    (!app.isCompetition && (isZero(ethereum.wethBalance) && !app.usersFund))
+    (!isCompetition && (isZero(ethereum.wethBalance) && !app.usersFund))
   )
     return onboardingPath.INSUFFICIENT_FUNDS;
   if (fund.signature === undefined && !app.usersFund)
@@ -61,7 +49,7 @@ function* deriveReadyState() {
     !isZero(ethereum.ethBalance);
 
   const isReadyToInvest =
-    isReadyToInteract && app.isCompetition
+    isReadyToInteract && isCompetition
       ? true
       : !isZero(ethereum.wethBalance);
 
@@ -87,8 +75,7 @@ function* deriveReadyState() {
 }
 
 function* scrollTo({ id }) {
-  const target = document.getElementById(id);
-
+  const target = document && document.getElementById(id);
   yield call(global.scrollTo, 0, target.offsetTop);
 }
 
@@ -96,7 +83,6 @@ const onlyMelonActions = action =>
   action.type !== types.SET_READY_STATE && action.type.includes('melon');
 
 function* appSaga() {
-  yield takeLatest(browserTypes.LOADED, init);
   yield takeLatest(onlyMelonActions, deriveReadyState);
   yield takeLatest(types.SCROLL_TO, scrollTo);
 }

@@ -18,6 +18,7 @@ import FundTemplate from '@melonproject/manager-components/templates/Fund';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { withRouter } from 'next/router';
+import { isCompetition } from '~/legacy/utils/track';
 
 const Fund = ({
   isManager,
@@ -58,7 +59,6 @@ const mapStateToProps = (state, props) => {
     props.fund &&
     state.app.isReadyToInteract &&
     isSameAddress(state.ethereum.account, props.fund.owner);
-  const isCompetition = state.app.isCompetition;
 
   return {
     isVisitor: state.app.isReadyToVisit && !state.app.usersFund,

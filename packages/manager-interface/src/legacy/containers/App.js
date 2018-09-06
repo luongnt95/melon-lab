@@ -9,6 +9,7 @@ import {
 import { withRouter } from 'next/router';
 import App from '../components/App';
 import { actions as routeActions } from '../actions/routes';
+import { track } from '~/legacy/utils/track';
 
 export const statusTypes = {
   NEUTRAL: 'NEUTRAL',
@@ -82,8 +83,8 @@ const mapStateToProps = (state, props) => {
     accountAction: routeActions.wallet(),
     network: state.ethereum.network,
     networkName: getNetworkName(state.ethereum.network),
-    showFaucet: state.app.track === tracks.KOVAN_DEMO,
-    track: state.app.track,
+    showFaucet: track === tracks.KOVAN_DEMO,
+    track,
   };
 };
 

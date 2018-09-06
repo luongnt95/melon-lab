@@ -25,8 +25,6 @@ const initialState = {
   usersFundChecked: false,
   usersFund: '',
   assetPair: { base: '...', quote: '...' },
-  track: '',
-  isCompetition: false,
 };
 
 const reducers = {
@@ -59,7 +57,6 @@ const mapActionToReducer = {
   [types.TRANSACTION_STARTED]: reducers.transactionStarted,
   [types.TRANSACTION_FINISHED]: reducers.transactionFinished,
   [types.SET_READY_STATE]: reducers.merge,
-  [types.SET_TRACK]: reducers.merge,
   [types.SET_USERS_FUND]: reducers.setUsersFund,
   [types.UPDATE_ASSET_PAIR]: reducers.updateAssetPair,
 };

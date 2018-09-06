@@ -32,77 +32,72 @@ import { types as tradeTypes } from '../actions/trade';
 
 import { types as participationTypes } from '../actions/participation';
 
-function* requestInfo({ address }) {
-  const isConnected = yield select(state => state.ethereum.isConnected);
-  if (!isConnected) yield take(ethereumTypes.HAS_CONNECTED);
+// TODO: Migrate this to graphql
+// function* requestInfo({ address }) {
+//   const isConnected = yield select(state => state.ethereum.isConnected);
+//   if (!isConnected) yield take(ethereumTypes.HAS_CONNECTED);
 
-  try {
-    const account = yield select(state => state.ethereum.account);
-    const environment = getEnvironment();
-    const fundInfo = yield call(getFundInformations, environment, {
-      fundAddress: address,
-    });
-    yield put(actions.progressiveUpdate({ ...fundInfo, address }));
-    const calculations = yield call(performCalculations, environment, {
-      fundAddress: address,
-    });
-    yield put(actions.progressiveUpdate(calculations));
+//   try {
+//     const account = yield select(state => state.ethereum.account);
+//     const environment = getEnvironment();
+//     const fundInfo = yield call(getFundInformations, environment, {
+//       fundAddress: address,
+//     });
+//     yield put(actions.progressiveUpdate({ ...fundInfo, address }));
+//     const calculations = yield call(performCalculations, environment, {
+//       fundAddress: address,
+//     });
+//     yield put(actions.progressiveUpdate(calculations));
 
-    const config = yield call(getConfig);
-    yield put(actions.progressiveUpdate({ config }));
+//     const config = yield call(getConfig);
+//     yield put(actions.progressiveUpdate({ config }));
 
-    const participationAuthorizations = yield call(
-      isInvestAllowed,
-      environment,
-      { fundAddress: address, investAssetSymbol: config.quoteAssetSymbol },
-    );
+//     const participationAuthorizations = yield call(
+//       isInvestAllowed,
+//       environment,
+//       { fundAddress: address, investAssetSymbol: config.quoteAssetSymbol },
+//     );
 
-    const parosEndTime = yield call(getEndTime, environment);
-    const isParosActive = yield call(isCompetitionActive, environment);
+//     const parosEndTime = yield call(getEndTime, environment);
+//     const isParosActive = yield call(isCompetitionActive, environment);
 
-    const info = {
-      ...participationAuthorizations,
-      ...fundInfo,
-      ...calculations,
-      address,
-      loading: false,
-      parosEndTime,
-      isParosActive,
-    };
-    if (account) {
-      const participation = yield call(getParticipation, environment, {
-        fundAddress: fundInfo.fundAddress,
-        investorAddress: account,
-      });
-      info.personalStake = participation.personalStake;
-    }
+//     const info = {
+//       ...participationAuthorizations,
+//       ...fundInfo,
+//       ...calculations,
+//       address,
+//       loading: false,
+//       parosEndTime,
+//       isParosActive,
+//     };
+//     if (account) {
+//       const participation = yield call(getParticipation, environment, {
+//         fundAddress: fundInfo.fundAddress,
+//         investorAddress: account,
+//       });
+//       info.personalStake = participation.personalStake;
+//     }
 
-    const lastRequest = yield call(getLastRequest, environment, fundInfo);
-    const existsRequest = lastRequest.id.toString() !== '1.157920892373162e+77';
+//     const lastRequest = yield call(getLastRequest, environment, fundInfo);
+//     const existsRequest = lastRequest.id.toString() !== '1.157920892373162e+77';
 
-    if (lastRequest.status === requestStatus.ACTIVE && existsRequest) {
-      yield put(actions.setPendingRequest(lastRequest));
-    }
+//     if (lastRequest.status === requestStatus.ACTIVE && existsRequest) {
+//       yield put(actions.setPendingRequest(lastRequest));
+//     }
 
-    yield put(actions.infoSucceeded(info));
-  } catch (err) {
-    console.error(err);
-    yield put(actions.infoFailed(err));
-  }
-}
+//     yield put(actions.infoSucceeded(info));
+//   } catch (err) {
+//     console.error(err);
+//     yield put(actions.infoFailed(err));
+//   }
+// }
 
 const getFundAddress = extractQueryParam('address');
-function* checkAndLoad() {
+function* setAddress() {
+  // TODO: This is actually not used anymore but we still need
+  // to set the address in the reducer because other things use it.
   const address = getFundAddress(Router.router.asPath) || '';
-  let isReadyToVisit = yield select(state => state.app.isReadyToVisit);
-  yield put(actions.setLoading(address));
-
-  while (!isReadyToVisit) {
-    yield take(appTypes.SET_READY_STATE);
-    isReadyToVisit = yield select(state => state.app.isReadyToVisit);
-  }
-
-  yield put(actions.infoRequested(address));
+  yield put(actions.set(address));
 }
 
 function* getUsersFund({ account }) {
@@ -149,9 +144,8 @@ function* afterCancelOrderUpdate() {
 }
 
 function* fund() {
-  yield takeLatest(types.INFO_REQUESTED, requestInfo);
   yield takeLatest(types.SHARE_PRICE_REQUESTED, requestSharePrice);
-  yield takeLatest(routeTypes.FUND, checkAndLoad);
+  yield takeLatest(routeTypes.FUND, setAddress);
   yield takeLatest(ethereumTypes.ACCOUNT_CHANGED, getUsersFund);
   yield takeLatest(tradeTypes.TAKE_ORDER_SUCCEEDED, afterTradeUpdate);
   yield takeLatest(tradeTypes.PLACE_ORDER_SUCCEEDED, afterTradeUpdate);
