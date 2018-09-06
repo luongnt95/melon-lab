@@ -6,7 +6,8 @@ import {
   networks,
   tracks,
 } from '@melonproject/melon.js';
-import App from '../components/pages/App';
+import { withRouter } from 'next/router';
+import App from '../components/App';
 import { actions as routeActions } from '../actions/routes';
 
 export const statusTypes = {
@@ -56,14 +57,15 @@ const getStatus = ({
   return { message: 'Melon Node', type: statusTypes.NEUTRAL };
 };
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, props) => {
   const { message, type, link } = getStatus({
     ...state.app,
     ...state.ethereum,
     ...state.fund.config,
   });
+
   return {
-    route: state.location.type,
+    ...props,
     usersFund: state.app.usersFund,
     onboardingState: state.app.onboardingState,
     isReadyToTrade: state.app.isReadyToTrade,
@@ -76,24 +78,23 @@ const mapStateToProps = state => {
     ethBalance: new BigNumber(state.ethereum.ethBalance || 0).toFixed(4),
     wethBalance: new BigNumber(state.ethereum.wethBalance || 0).toFixed(4),
     fundAum: state.fund.nav,
-    rootAction: routeActions.root(),
+    rootAction: routeActions.ranking(),
     accountAction: routeActions.wallet(),
     network: state.ethereum.network,
     networkName: getNetworkName(state.ethereum.network),
     showFaucet: state.app.track === tracks.KOVAN_DEMO,
     track: state.app.track,
-    isElectron: state.app.isElectron,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  goToHome: () => dispatch(routeActions.root()),
+  goToHome: () => dispatch(routeActions.ranking()),
   goToWallet: () => dispatch(routeActions.wallet()),
 });
 
-const AppContainer = connect(
+const AppContainer = withRouter(connect(
   mapStateToProps,
   mapDispatchToProps,
-)(App);
+)(App));
 
 export default AppContainer;

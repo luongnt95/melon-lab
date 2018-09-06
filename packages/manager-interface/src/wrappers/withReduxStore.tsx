@@ -1,8 +1,6 @@
 import { actions } from '~/legacy/actions/browser';
 import { configureStore } from '~/legacy/config/configureStore';
 
-let sharedReduxStore: any;
-
 function getOrCreateStore(initialState?) {
   // Always make a new store if server, otherwise state is shared between requests.
   if (typeof window === 'undefined') {
@@ -10,11 +8,12 @@ function getOrCreateStore(initialState?) {
   }
 
   // Store in global variable if on the client.
-  if (typeof sharedReduxStore === 'undefined') {
-    return (sharedReduxStore = configureStore(initialState));
+  if (typeof window.sharedReduxStore === 'undefined') {
+    window.sharedReduxStore = configureStore(initialState);
+    return window.sharedReduxStore;
   }
 
-  return sharedReduxStore;
+  return window.sharedReduxStore;
 }
 
 export default BaseComponent => {
@@ -46,7 +45,7 @@ export default BaseComponent => {
       const store = getOrCreateStore(initialReduxState);
 
       return (
-        <BaseComponent {...this.props} redux={store} />
+        <BaseComponent {...props} redux={store} />
       );
     }
   };

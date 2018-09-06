@@ -1,30 +1,39 @@
-import { connectRoutes } from 'redux-first-router';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import createSagaMiddleware from 'redux-saga';
-
-import createHashHistory from 'history/createHashHistory';
-import createMemoryHistory from 'history/createMemoryHistory';
-
+import Router from 'next/router';
+import queryString from 'query-string';
 import { routeMap } from '../actions/routes';
 import reducerMap from '../reducers';
 import rootSaga from '../sagas';
 
-export const configureStore = preloadedState => {
-  const {
-    reducer: location,
-    middleware: routerMiddleware,
-    enhancer,
-    initialDispatch,
-  } = connectRoutes(routeMap, {
-    initialDispatch: false,
-    createHistory:
-      typeof window !== 'undefined' ? createHashHistory : createMemoryHistory,
-  });
+const routerMiddleware = () => {
+  return next => action => {
+    if (!routeMap[action.type]) {
+      return next(action);
+    }
 
+    const search = action.payload && action.payload.query && `?${queryString.stringify(action.payload.query)}` || '';
+    const path =`${routeMap[action.type]}${search}`;
+    Router.push(path);
+
+    const complete = (error, url = error) => {
+      Router.router.events.off('routeChangeComplete', complete);
+      Router.router.events.off('routeChangeError', complete);
+
+      return next(action);
+    };
+
+    Router.router.events.on('routeChangeComplete', complete);
+    Router.router.events.on('routeChangeError', complete);
+  };
+};
+
+export const configureStore = preloadedState => {
   const sagaMiddleware = createSagaMiddleware({
     onError: global.Raven ? global.Raven.captureException : undefined,
   });
 
+  // The router middleware has to run before the saga middleware.
   const middlewares = applyMiddleware(routerMiddleware, sagaMiddleware);
 
   // TODO: For security reasons (intercepting passwords and stuff), disable
@@ -38,19 +47,17 @@ export const configureStore = preloadedState => {
   /* eslint-enable */
 
   const enhanced = compose(
-    enhancer,
     middlewares,
     devTools,
   );
 
   const store = createStore(
-    combineReducers({ ...reducerMap, location }),
+    combineReducers({ ...reducerMap }),
     preloadedState,
     enhanced,
   );
 
   sagaMiddleware.run(rootSaga);
-  initialDispatch();
 
   return store;
 };
