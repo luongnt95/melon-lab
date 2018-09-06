@@ -4,7 +4,6 @@ import fund from './fund';
 import modal from './modal';
 import orderbook from './orderbook';
 import ranking from './ranking';
-import recentTrades from './recentTrades';
 import trade from './trade';
 import wallet from './wallet';
 
@@ -15,7 +14,6 @@ const reducerMap = {
   modal,
   orderbook,
   ranking,
-  recentTrades,
   trade,
   wallet,
 };

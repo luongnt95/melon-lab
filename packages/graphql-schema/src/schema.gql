@@ -52,6 +52,13 @@ interface Order {
   exchange: String
 }
 
+type Trade {
+  price: String
+  quantity: String
+  timestamp: String
+  type: String
+}
+
 type ZeroExOrder implements Order {
   maker: String!
   taker: String
@@ -109,6 +116,7 @@ type Signature {
 
 type Query {
   openOrders(address: String!): [Order]
+  recentTrades(baseTokenSymbol: String!, quoteTokenSymbol: String!): [Trade]
   price(symbol: Symbol!): String
   fund(address: String!): Fund
   funds(addresses: [String]): [Fund]

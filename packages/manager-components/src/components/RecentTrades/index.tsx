@@ -22,6 +22,7 @@ export const RecentTrades: StatelessComponent<RecentTradesProps> = ({
   quoteTokenSymbol,
   trades,
 }) => {
+  console.log(trades)
   const typeCellClassNames = (type: string) =>
     classNames(
       'recent-trades__cell',
@@ -56,7 +57,7 @@ export const RecentTrades: StatelessComponent<RecentTradesProps> = ({
             </TableHead>
             <TableBody>
               {trades.length > 0 &&
-                trades.reverse().map((trade, index) => (
+                trades.map((trade, index) => (
                   <Row key={index}>
                     <CellBody>{trade.timestamp}</CellBody>
                     <CellBody>

@@ -35,7 +35,7 @@ const mapStateToProps = state => {
     ],
     decimals: 4,
     dataValid: state.ethereum.isDataValid,
-    recentTrades: state.recentTrades,
+    // recentTrades: state.recentTrades,
   };
 };
 
@@ -46,11 +46,11 @@ const withState = connect(
 
 const withMappedOrders = withPropsOnChange(['holdings'], props => ({
   info: {
-    lastPrice:
-      props.recentTrades.trades.length &&
-      displayNumber(
-        props.recentTrades.trades[props.recentTrades.trades.length - 1].price,
-      ),
+    // lastPrice:
+    //   props.recentTrades.trades.length &&
+    //   displayNumber(
+    //     props.recentTrades.trades[props.recentTrades.trades.length - 1].price,
+    //   ),
     // TODO: bid and ask
     // bid:
     //   state.orderbook.buyOrders.length &&

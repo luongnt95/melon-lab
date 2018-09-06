@@ -24,7 +24,6 @@ import {
   actions as orderbookActions,
 } from '../actions/orderbook';
 import { actions as holdingsActions } from '../actions/holdings';
-import { actions as recentTradesActions } from '../actions/recentTrades';
 import {
   actions as openOrdersActions,
   types as openOrdersTypes,
@@ -126,7 +125,6 @@ function* afterTradeUpdate() {
   const fundAddress = yield select(state => state.fund.address);
   yield put(actions.sharePriceRequested());
   yield put(orderbookActions.getOrderbook());
-  yield put(recentTradesActions.getRecentTrades());
   yield put(openOrdersActions.getOpenOrders(fundAddress));
 }
 

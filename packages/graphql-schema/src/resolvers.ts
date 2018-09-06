@@ -13,6 +13,7 @@ export default {
     funds: require('./resolvers/Query/funds').default,
     price: require('./resolvers/Query/price').default,
     openOrders: require('./resolvers/Query/openOrders').default,
+    recentTrades: require('./resolvers/Query/recentTrades').default,
   },
   Subscription,
   Symbol,
