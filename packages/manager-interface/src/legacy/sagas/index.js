@@ -9,7 +9,6 @@ import participation from './participation';
 import recentTrades from './recentTrades';
 import setup from './setup';
 import trade from './trade';
-import tradeHistory from './tradeHistory';
 import wallet from './wallet';
 
 function* rootSaga() {
@@ -22,7 +21,6 @@ function* rootSaga() {
   yield fork(recentTrades);
   yield fork(setup);
   yield fork(trade);
-  yield fork(tradeHistory);
   yield fork(wallet);
 }
 

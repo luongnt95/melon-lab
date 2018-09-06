@@ -25,7 +25,6 @@ import {
 } from '../actions/orderbook';
 import { actions as holdingsActions } from '../actions/holdings';
 import { actions as recentTradesActions } from '../actions/recentTrades';
-import { actions as tradeHistoryActions } from '../actions/tradeHistory';
 import {
   actions as openOrdersActions,
   types as openOrdersTypes,
@@ -128,7 +127,6 @@ function* afterTradeUpdate() {
   yield put(actions.sharePriceRequested());
   yield put(orderbookActions.getOrderbook());
   yield put(recentTradesActions.getRecentTrades());
-  yield put(tradeHistoryActions.getTradeHistory(fundAddress));
   yield put(openOrdersActions.getOpenOrders(fundAddress));
 }
 
