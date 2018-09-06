@@ -3,6 +3,7 @@ import { actions } from '../actions/trade';
 import OrderForm from '@melonproject/manager-components/components/OrderForm/container';
 import isSameAddress from '../utils/isSameAddress';
 import displayNumber from '../utils/displayNumber';
+import { compose, withPropsOnChange } from 'recompose';
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: values => {
@@ -28,47 +29,57 @@ const mapStateToProps = state => {
     quoteTokenSymbol: state.app.assetPair.quote,
     values: state.trade,
     selectedOrder: state.orderbook.selectedOrder,
-    info: {
-      lastPrice:
-        state.recentTrades.trades.length &&
-        displayNumber(
-          state.recentTrades.trades[state.recentTrades.trades.length - 1].price,
-        ),
-      // bid:
-      //   state.orderbook.buyOrders.length &&
-      //   displayNumber(state.orderbook.buyOrders[0].price),
-      // ask:
-      //   state.orderbook.sellOrders.length &&
-      //   displayNumber(state.orderbook.sellOrders[0].price),
-      tokens: {
-        baseToken: {
-          name: state.app.assetPair.base,
-          balance: state.holdings.holdings.length
-            ? state.holdings.holdings
-                .find(a => a.name === state.app.assetPair.base)
-                .balance.toString(10)
-            : undefined,
-        },
-        quoteToken: {
-          name: state.app.assetPair.quote,
-          balance: state.holdings.holdings.length
-            ? state.holdings.holdings
-                .find(a => a.name === state.app.assetPair.quote)
-                .balance.toString(10)
-            : undefined,
-        },
-      },
-    },
     exchanges: [
       { value: 'RADAR_RELAY', name: 'Radar Relay' },
       { value: 'OASIS_DEX', name: 'OasisDEX' },
     ],
     decimals: 4,
     dataValid: state.ethereum.isDataValid,
+    recentTrades: state.recentTrades,
   };
 };
 
-export default connect(
+const withState = connect(
   mapStateToProps,
   mapDispatchToProps,
+);
+
+const withMappedOrders = withPropsOnChange(['holdings'], props => ({
+  info: {
+    lastPrice:
+      props.recentTrades.trades.length &&
+      displayNumber(
+        props.recentTrades.trades[props.recentTrades.trades.length - 1].price,
+      ),
+    // TODO: bid and ask
+    // bid:
+    //   state.orderbook.buyOrders.length &&
+    //   displayNumber(state.orderbook.buyOrders[0].price),
+    // ask:
+    //   state.orderbook.sellOrders.length &&
+    //   displayNumber(state.orderbook.sellOrders[0].price),
+    tokens: {
+      baseToken: {
+        name: props.baseTokenSymbol,
+        balance: props.holdings.length
+          ? props.holdings
+              .find(a => a.symbol === props.baseTokenSymbol)
+              .balance.toString(10)
+          : undefined,
+      },
+      quoteToken: {
+        name: props.quoteTokenSymbol,
+        balance: props.holdings.length
+          ? props.holdings
+              .find(a => a.symbol === props.quoteTokenSymbol)
+              .balance.toString(10)
+          : undefined,
+      },
+    },
+  },
+}));
+
+export default compose(
+  withState,
+  withMappedOrders,
 )(OrderForm);

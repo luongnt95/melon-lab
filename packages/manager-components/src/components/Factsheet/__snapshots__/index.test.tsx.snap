@@ -14,7 +14,7 @@ exports[`Factsheet should render correctly 1`] = `
     Melon Fund
     <a
       className="jsx-__scopedHash factsheet__title-link"
-      href="https://twitter.com/intent/tweet?text=The%20%23MelonFund%20%22Melon%20Fund%22%20has%20a%20share%20price%20currently%20of%200.9824.%20Have%20a%20look%3A&url=https%3A%2F%2Fmelon.fund%2F%23undefined&hashtags=TechnologyRegulatedFunds%2CMelon%2CMelonFund&via=melonport&related=melonport"
+      href="https://twitter.com/intent/tweet?text=My%20%23MelonFund%20%22Melon%20Fund%22%20has%20a%20share%20price%20currently%20of%200.9824.%20Have%20a%20look%3A&url=https%3A%2F%2Fmelon.fund%2F%23undefined&hashtags=TechnologyRegulatedFunds%2CMelon%2CMelonFund&via=melonport&related=melonport"
       rel="noopener noreferrer"
       target="_blank"
     >
@@ -71,7 +71,7 @@ exports[`Factsheet should render correctly 1`] = `
     </Button>
     <a
       className="jsx-__scopedHash"
-      href="#/ranking"
+      href="/"
     >
       Ranking: 
       <Loading
@@ -178,7 +178,7 @@ exports[`Factsheet should render correctly with isCompetition 1`] = `
     Melon Fund
     <a
       className="jsx-__scopedHash factsheet__title-link"
-      href="https://twitter.com/intent/tweet?text=The%20%23MelonFund%20%22Melon%20Fund%22%20has%20a%20share%20price%20currently%20of%200.9824.%20Have%20a%20look%3A&url=https%3A%2F%2Fmelon.fund%2F%23undefined&hashtags=TechnologyRegulatedFunds%2CMelon%2CMelonFund&via=melonport&related=melonport"
+      href="https://twitter.com/intent/tweet?text=My%20%23MelonFund%20%22Melon%20Fund%22%20has%20a%20share%20price%20currently%20of%200.9824.%20Have%20a%20look%3A&url=https%3A%2F%2Fmelon.fund%2F%23undefined&hashtags=TechnologyRegulatedFunds%2CMelon%2CMelonFund&via=melonport&related=melonport"
       rel="noopener noreferrer"
       target="_blank"
     >
@@ -235,7 +235,7 @@ exports[`Factsheet should render correctly with isCompetition 1`] = `
     </Button>
     <a
       className="jsx-__scopedHash"
-      href="#/ranking"
+      href="/"
     >
       Ranking: 
       <Loading
@@ -318,9 +318,6 @@ exports[`Factsheet should render correctly with isCompetition 1`] = `
     <hr
       className="jsx-__scopedHash"
     />
-    <div
-      className="jsx-__scopedHash"
-    />
   </div>
 </div>
 `;
@@ -339,7 +336,7 @@ exports[`Factsheet should render correctly with loading 1`] = `
     Melon Fund
     <a
       className="jsx-__scopedHash factsheet__title-link"
-      href="https://twitter.com/intent/tweet?text=The%20%23MelonFund%20%22Melon%20Fund%22%20has%20a%20share%20price%20currently%20of%200.9824.%20Have%20a%20look%3A&url=https%3A%2F%2Fmelon.fund%2F%23undefined&hashtags=TechnologyRegulatedFunds%2CMelon%2CMelonFund&via=melonport&related=melonport"
+      href="https://twitter.com/intent/tweet?text=My%20%23MelonFund%20%22Melon%20Fund%22%20has%20a%20share%20price%20currently%20of%200.9824.%20Have%20a%20look%3A&url=https%3A%2F%2Fmelon.fund%2F%23undefined&hashtags=TechnologyRegulatedFunds%2CMelon%2CMelonFund&via=melonport&related=melonport"
       rel="noopener noreferrer"
       target="_blank"
     >

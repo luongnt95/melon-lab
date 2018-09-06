@@ -28,32 +28,30 @@ const Fund = ({
   isCompetitionActive,
   fund,
   loading,
-}) => {
-  return (
-    <div className="App">
-      {!hasContributed && isCompetition && isCompetitionActive && isManager ? (
-        <ParosContribution />
-      ) : (
-        <FundTemplate
-          tradeInfo={[
-            <Factsheet {...fund} loading={loading} />,
-            isCompetition &&
-              hasContributed &&
-              isManager && <ClaimRewardCompetition />,
-            !isCompetition && !isManager && <GetStarted />,
-            !isCompetition && canInvest && !pendingRequest && <Participation />,
-            !isCompetition && canInvest && pendingRequest && <ExecuteRequest />,
-          ]}
-          holdings={<Holdings />}
-          orderForm={<OrderForm />}
-          orderbook={<OrderBook />}
-          openOrders={<OpenOrders />}
-          recentTrades={<RecentTrades />}
-        />
-      )}
-    </div>
-  );
-};
+}) => (
+  <div className="App">
+    {!hasContributed && isCompetition && isCompetitionActive && isManager ? (
+      <ParosContribution />
+    ) : (
+      <FundTemplate
+        tradeInfo={[
+          <Factsheet {...fund} loading={loading} />,
+          isCompetition &&
+            hasContributed &&
+            isManager && <ClaimRewardCompetition />,
+          !isCompetition && !isManager && <GetStarted />,
+          !isCompetition && canInvest && !pendingRequest && <Participation />,
+          !isCompetition && canInvest && pendingRequest && <ExecuteRequest />,
+        ]}
+        holdings={<Holdings {...fund} />}
+        orderForm={<OrderForm holdings={(fund && fund.holdings) || []} />}
+        orderbook={<OrderBook />}
+        openOrders={<OpenOrders />}
+        recentTrades={<RecentTrades />}
+      />
+    )}
+  </div>
+);
 
 const mapStateToProps = (state, props) => {
   const isManager =
@@ -92,6 +90,13 @@ const query = gql`
       inception
       address
       gav
+      nav
+      holdings {
+        symbol
+        balance
+        price
+        fraction
+      }
     }
   }
 `;

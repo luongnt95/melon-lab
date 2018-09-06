@@ -1,7 +1,6 @@
 import app from './app';
 import ethereum from './ethereum';
 import fund from './fund';
-import holdings from './holdings';
 import modal from './modal';
 import orderbook from './orderbook';
 import ranking from './ranking';
@@ -14,7 +13,6 @@ const reducerMap = {
   app,
   ethereum,
   fund,
-  holdings,
   modal,
   orderbook,
   ranking,

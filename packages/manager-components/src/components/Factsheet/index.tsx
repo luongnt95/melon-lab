@@ -108,14 +108,14 @@ const Factsheet: StatelessComponent<FactsheetProps> = ({
           <Button onClick={scrolltoHoldings} style="clear">
             AUM:{' '}
             <Loading dataAvailable={dataValid} loading={gav === '...'}>
-              {gav.toFixed(4)}
+              {gav && gav.toFixed(4)}
             </Loading>{' '}
             {quoteAsset}
           </Button>
           <Button onClick={scrolltoHoldings} style="clear">
             Share price:{' '}
             <Loading dataAvailable={dataValid} loading={sharePrice === '...'}>
-              {sharePrice.toFixed(4)}
+              {sharePrice && sharePrice.toFixed(4)}
             </Loading>{' '}
             {quoteAsset}
             /Share

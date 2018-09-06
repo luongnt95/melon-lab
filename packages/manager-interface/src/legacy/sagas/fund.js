@@ -126,7 +126,6 @@ function* getUsersFund({ account }) {
 function* afterTradeUpdate() {
   const fundAddress = yield select(state => state.fund.address);
   yield put(actions.sharePriceRequested());
-  yield put(holdingsActions.getHoldings(fundAddress));
   yield put(orderbookActions.getOrderbook());
   yield put(recentTradesActions.getRecentTrades());
   yield put(tradeHistoryActions.getTradeHistory(fundAddress));
@@ -147,12 +146,10 @@ function* requestSharePrice() {
 function* afterParticipationUpdate() {
   const fundAddress = yield select(state => state.fund.address);
   yield put(actions.infoRequested(fundAddress));
-  yield put(holdingsActions.getHoldings(fundAddress));
 }
 
 function* afterCancelOrderUpdate() {
   const fundAddress = yield select(state => state.fund.address);
-  yield put(holdingsActions.getHoldings(fundAddress));
 }
 
 function* fund() {

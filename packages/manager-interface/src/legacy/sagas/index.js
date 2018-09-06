@@ -4,7 +4,6 @@ import administration from './administration';
 import app from './app';
 import ethereum from './ethereum';
 import fund from './fund';
-import holdings from './holdings';
 import orderbook from './orderbook';
 import participation from './participation';
 import recentTrades from './recentTrades';
@@ -18,7 +17,6 @@ function* rootSaga() {
   yield fork(app);
   yield fork(ethereum);
   yield fork(fund);
-  yield fork(holdings);
   yield fork(orderbook);
   yield fork(participation);
   yield fork(recentTrades);
