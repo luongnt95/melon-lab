@@ -1,11 +1,10 @@
 import App, { Container } from 'next/app';
 import { ApolloProvider } from 'react-apollo';
 import React from 'react';
-import ReactModal from 'react-modal';
-import { Provider as ReduxProvider } from 'react-redux';
 import withApollo from '~/wrappers/withApollo';
-import withReduxStore from '~/wrappers/withReduxStore';
-import AppContainer from '~/legacy/containers/App';
+
+import '~/static/images/logos.svg';
+import '~/static/images/icons.svg';
 
 const debug = require('debug')('melon-lab:manager-interface:index');
 
@@ -36,24 +35,20 @@ if (typeof window !== 'undefined') {
     window.onbeforeunload = () =>
       "Your session will be terminated. Did you save your mnemonic and/or JSON wallet?";
   }
-
-  ReactModal.setAppElement('#__next');
 }
 
 class MelonApp extends App {
   public render() {
-    const { Component, apollo, redux, pageProps } = this.props;
+    const { Component, apollo, pageProps } = this.props;
 
     return (
       <Container>
-        <ReduxProvider store={redux}>
-          <ApolloProvider client={apollo}>
-            <AppContainer Component={Component} {...pageProps} />
-          </ApolloProvider>
-        </ReduxProvider>
+        <ApolloProvider client={apollo}>
+          <Component {...pageProps} />
+        </ApolloProvider>
       </Container>
     );
   }
 }
 
-export default withApollo(withReduxStore(MelonApp));
+export default withApollo(MelonApp);

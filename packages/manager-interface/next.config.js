@@ -33,12 +33,16 @@ module.exports = withComposedConfig({
   exportPathMap: () => require('./next.routes.js'),
   webpack: (config, options) => {
     config.resolve.alias = Object.assign({}, config.resolve.alias || {}, {
-      '~/legacy': path.join(managerInterface, 'src', 'legacy'),
-      '~/wrappers': path.join(managerInterface, 'src', 'wrappers'),
+      // Aliases for paths within the manager components package.
       '~/blocks': path.join(managerComponents, 'src', 'blocks'),
       '~/components': path.join(managerComponents, 'src', 'components'),
       '~/design': path.join(managerComponents, 'src', 'design'),
       '~/static': path.join(managerComponents, 'public', 'static'),
+
+      // Aliases for paths within the manager interface package.
+      '+/components': path.join(managerInterface, 'src', 'components'),
+      '~/legacy': path.join(managerInterface, 'src', 'legacy'),
+      '~/wrappers': path.join(managerInterface, 'src', 'wrappers'),
     });
 
     config.plugins.push(

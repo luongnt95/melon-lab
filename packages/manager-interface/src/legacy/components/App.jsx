@@ -24,20 +24,6 @@ const App = ({ Component, ...props }) => {
     goToWallet: props.goToWallet,
   };
 
-  const fixedTop = {
-    position: 'fixed',
-    width: '100%',
-    top: 0,
-    zIndex: 1,
-  };
-
-  const fixedBottom = {
-    position: 'fixed',
-    width: '100%',
-    bottom: 0,
-    zIndex: 1,
-  };
-
   return (
     <div className="App">
       <div style={fixedTop}>

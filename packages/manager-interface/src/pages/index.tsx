@@ -1,12 +1,13 @@
-import React, { Fragment } from 'react';
-import GetStarted from '~/legacy/containers/GetStarted';
-import Ranking from '~/legacy/containers/Ranking';
+import React from 'react';
+import Layout from '+/components/Layout';
+import Ranking from '+/components/Ranking';
+import GetStarted from '+/components/GetStarted';
 
 const Index = (props) => (
-  <Fragment>
+  <Layout noHeader>
     <GetStarted isHome />
     <Ranking />
-  </Fragment>
+  </Layout>
 );
 
 export default Index;
