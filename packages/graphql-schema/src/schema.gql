@@ -119,6 +119,7 @@ type Signature {
 type Query {
   openOrders(address: String!): [Order]
   recentTrades(baseTokenSymbol: String!, quoteTokenSymbol: String!): [Trade]
+  totalFunds: Int!
   price(symbol: Symbol!): String
   fund(address: String!): Fund
   funds(addresses: [String]): [Fund]

@@ -1,7 +1,6 @@
 import React, { StatelessComponent } from 'react';
 import Button from '~/blocks/Button';
 import Icon from '~/blocks/Icon';
-import Loading from '~/blocks/Loading';
 import Spinner from '~/blocks/Spinner';
 
 import styles from './styles.css';
@@ -9,7 +8,6 @@ import styles from './styles.css';
 export interface FactsheetProps {
   gav?: string;
   creationDate?: string;
-  dataValid?: boolean;
   isCompetition?: boolean;
   loading?: boolean;
   managementReward?: string;
@@ -34,7 +32,6 @@ export interface FactsheetProps {
 const Factsheet: StatelessComponent<FactsheetProps> = ({
   gav,
   creationDate,
-  dataValid,
   isCompetition,
   loading,
   managementReward,
@@ -102,44 +99,26 @@ const Factsheet: StatelessComponent<FactsheetProps> = ({
         <Spinner icon size="small" />
       ) : (
         <div>
-          Creation date:{' '}
-          <Loading loading={creationDate === '...'}>{creationDate}</Loading>
+          Creation date: {creationDate}
           <br />
           <Button onClick={scrolltoHoldings} style="clear">
-            AUM:{' '}
-            <Loading dataAvailable={dataValid} loading={gav === '...'}>
-              {gav && gav.toFixed(4)}
-            </Loading>{' '}
-            {quoteAsset}
+            AUM: {gav} {quoteAsset}
           </Button>
           <Button onClick={scrolltoHoldings} style="clear">
-            Share price:{' '}
-            <Loading dataAvailable={dataValid} loading={sharePrice === '...'}>
-              {sharePrice && sharePrice.toFixed(4)}
-            </Loading>{' '}
-            {quoteAsset}
+            Share price: {sharePrice} {quoteAsset}
             /Share
           </Button>
           <a href="/">
-            Ranking: <Loading loading={rank === '...'}>{rank}</Loading> out of{' '}
-            <Loading loading={numberOfFunds === '...'}>{numberOfFunds}</Loading>
+            Ranking: {rank} out of {numberOfFunds}
           </a>
           <br />
-          Total number of shares:{' '}
-          <Loading loading={totalSupply === '...'}>{totalSupply}</Loading>
+          Total number of shares: {totalSupply}
           <br />
-          Shares owned by me:{' '}
-          <Loading loading={personalStake === '...'}>{personalStake}</Loading>
+          Shares owned by me: {personalStake}
           <hr />
-          Management Reward:{' '}
-          <Loading loading={managementReward === '...'}>
-            {managementReward}
-          </Loading>
+          Management Reward: {managementReward}
           %<br />
-          Performance Reward:{' '}
-          <Loading loading={performanceReward === '...'}>
-            {performanceReward}
-          </Loading>
+          Performance Reward: {performanceReward}
           %<hr />
           <a
             href="https://ipfs.io/ipfs/Qmc9JRw4zarrs6gJwu6tC58UAgeEujNg9VMWcH8MUEd5TW/"

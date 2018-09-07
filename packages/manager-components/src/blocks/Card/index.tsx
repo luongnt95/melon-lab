@@ -7,20 +7,20 @@ export interface CardProps {
   inception?: string;
   isActive?: boolean;
   name?: string;
-  onClick?: (id) => void;
   rank?: number;
   sharePrice?: string;
   reportUrl?: string;
+  onClick?: React.MouseEventHandler;
 }
 
 const Card: StatelessComponent<CardProps> = ({
   inception,
   isActive,
   name,
-  onClick,
   rank,
   sharePrice,
   reportUrl,
+  onClick,
 }) => {
   const cardClassNames = classNames('card', {
     'card--active': isActive,

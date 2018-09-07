@@ -8,3 +8,5 @@ export const extractQueryParam = R.curryN(2, (name, url) => {
 });
 
 export const extractAddress = extractQueryParam('address');
+export const extractBaseSymbol = extractQueryParam('base');
+export const extractQuoteSymbol = extractQueryParam('quote');

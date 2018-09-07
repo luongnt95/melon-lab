@@ -65,8 +65,6 @@ export const createClient = options => {
     cache,
   });
 
-  console.log(client);
-
   return client;
 };
 

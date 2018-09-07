@@ -7,7 +7,8 @@ import Spinner from '~/blocks/Spinner';
 import styles from './styles.css';
 
 export interface RankingProps {
-  goToFund: (address: string) => void;
+  Link: React.ComponentType<any>,
+  LinkProps?: { [key: string]: any },
   loading?: boolean;
   funds?: any;
   ordering?: string;
@@ -18,7 +19,8 @@ export interface RankingProps {
 }
 
 export const Ranking: StatelessComponent<RankingProps> = ({
-  goToFund,
+  Link,
+  LinkProps = {},
   loading,
   funds,
   ordering,
@@ -93,20 +95,14 @@ export const Ranking: StatelessComponent<RankingProps> = ({
             </div>
           </div>
           <div className="ranking__funds">
-            {funds.length > 0 &&
-              funds.map(fund => {
-                // TODO: Make this a Link component.
-                const onFundClick = () => goToFund && goToFund(fund.address);
-
-                return (
-                  <Card
-                    isActive={fund.address === usersFund && true}
-                    onClick={onFundClick}
-                    key={fund.address}
-                    {...fund}
-                  />
-                );
-              })}
+            {funds.length && funds.map(fund => (
+              <Link {...LinkProps} key={fund.address} address={fund.address}>
+                <Card
+                  isActive={fund.address === usersFund && true}
+                  {...fund}
+                />
+              </Link>
+            ))}
           </div>
         </div>
       )}

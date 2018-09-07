@@ -7,6 +7,7 @@ import { greaterThan } from '~/utils/functionalBigNumber';
 import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 import * as R from 'ramda';
+import Link from 'next/link';
 
 const filterRankings = R.curryN(2, (search, fund) => {
   return fund.name.toLocaleLowerCase().includes(search);
@@ -95,7 +96,6 @@ const withRanking = BaseComponent => baseProps => (
           <Query query={rankingQuery} ssr={false}>
           {props => (
             <BaseComponent
-              {...baseProps}
               setOrdering={(order) => setRankingOrder({ variables: { order }})}
               setSearch={(search) => setRankingSearch({ variables: { search }})}
               funds={props.data && props.data.funds}
@@ -103,6 +103,9 @@ const withRanking = BaseComponent => baseProps => (
               search={props.data && props.data.rankingSearchString}
               network={props.data && props.data.ethereumNetwork}
               loading={props.loading}
+              Link={({ children, address }) => (
+                <Link href={`/manage?address=${address}&base=MLN-T&quote=WETH-T`}>{children}</Link>
+              )}
             />
           )}
           </Query>

@@ -14,6 +14,7 @@ export default {
     price: require('./resolvers/Query/price').default,
     openOrders: require('./resolvers/Query/openOrders').default,
     recentTrades: require('./resolvers/Query/recentTrades').default,
+    totalFunds: require('./resolvers/Query/totalFunds').default,
   },
   Subscription,
   Symbol,
