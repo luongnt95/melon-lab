@@ -1,16 +1,17 @@
 // Import the introspection results (handled with a custom webpack loader)
 // for the schema.
 import introspection from '@melonproject/graphql-schema/schema.gql';
+import { getParityProvider } from '@melonproject/melon.js';
 import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import { withClientState } from 'apollo-link-state';
 import ApolloClient from 'apollo-client';
 import { split, from } from 'apollo-link';
+import { setContext } from 'apollo-link-context';
 import { HttpLink } from 'apollo-link-http';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 import withApollo from 'next-with-apollo';
-import gql from 'graphql-tag';
-import { getParityProvider } from '@melonproject/melon.js';
+import { defaults, resolvers } from '~/resolvers';
 
 const isSubscription = ({ query }) => {
   const { kind, operation } = getMainDefinition(query);
@@ -26,54 +27,23 @@ const createLink = (options, cache) => {
     headers: options.headers,
   });
 
-  const stateLink = withClientState({
-    cache,
-    resolvers: {
-      Query: {
-        ethereumNetwork: async () => {
-          const endpoint = global.JSON_RPC_ENDPOINT || process.env.JSON_RPC_ENDPOINT;
-          const environment = await getParityProvider(endpoint);
-          const network = await environment.api.net.version();
-          return network;
-        },
-      },
-      Mutation: {
-        rankingOrdering: (parent, args, { cache }) => {
-          const query = gql`
-            query RankingOrderingQuery {
-              rankingOrdering @client
-            }
-          `;
+  const clientContext = setContext(async (operation) => {
+    const endpoint = global.JSON_RPC_ENDPOINT || process.env.JSON_RPC_ENDPOINT;
+    const environment = await getParityProvider(endpoint);
 
-          cache.writeQuery({ query, data: {
-            rankingOrdering: args.order,
-          }});
-
-          return args.order;
-        },
-        rankingSearchString: (parent, args, { cache }) => {
-          const query = gql`
-            query RankingSearchStringQuery {
-              rankingSearchString @client
-            }
-          `;
-
-          cache.writeQuery({ query, data: {
-            rankingSearchString: args.search,
-          }});
-
-          return args.search;
-        },
-      },
-    },
-    defaults: {
-      ethereumNetwork: null,
-      rankingOrdering: '+rank',
-      rankingSearchString: '',
-    },
+    return {
+      environment,
+    };
   });
 
-  const httpAndStateLink = from([stateLink, httpLink]);
+  const stateLink = withClientState({
+    cache,
+    resolvers,
+    defaults,
+  });
+
+  const stateLinkWithContext = from([clientContext, stateLink]);
+  const httpAndStateLink = from([stateLinkWithContext, httpLink]);
 
   // Do not use the websocket link on the server.
   if (typeof window === 'undefined') {
