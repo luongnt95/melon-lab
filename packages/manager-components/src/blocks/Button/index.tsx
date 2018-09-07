@@ -7,9 +7,9 @@ export interface ButtonProps {
   buttonValue?: any;
   disabled?: boolean;
   onClick?: (e, value) => void;
-  size?: string;
-  style?: string;
-  type?: string;
+  size?: 'small' | 'medium' | 'large';
+  style?: 'primary' | 'secondary' | 'clear';
+  type?: 'warning' | 'danger' | 'success';
 }
 
 const Button: StatelessComponent<ButtonProps> = ({
