@@ -57,7 +57,8 @@ const getConfig = async (environment): Promise<Config> => {
   if (environment.track === "kovan-demo") mode = "kovan"
   else if (environment.track === "kovan-competition") mode = "kovanCompetition"
   else if (environment.track === "live") mode = "live"
-
+  else mode = "kovan"
+  
   config = {
     onlyManagerCompetitionAddress: addressBook[mode].OnlyManagerCompetition,
     competitionComplianceAddress: addressBook[mode].CompetitionCompliance,
