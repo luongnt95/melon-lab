@@ -1,9 +1,9 @@
+import { networks } from '@melonproject/melon.js';
 import moment from 'moment';
 import { compose, withPropsOnChange } from 'recompose';
 import Ranking from '~/components/Ranking';
-import displayNumber from '~/legacy/utils/displayNumber';
-import { greaterThan } from '~/legacy/utils/functionalBigNumber';
-import { networks } from '@melonproject/melon.js';
+import displayNumber from '~/utils/displayNumber';
+import { greaterThan } from '~/utils/functionalBigNumber';
 import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 import * as R from 'ramda';
@@ -15,7 +15,7 @@ const filterRankings = R.curryN(2, (search, fund) => {
 const mapRankings = R.curryN(2, (network, fund) => ({
   ...fund,
   inception: moment(fund.inception).format('D. MMM YYYY HH:mm'),
-  sharePrice: displayNumber(fund.sharePrice.toString()),
+  sharePrice: displayNumber(fund.sharePrice),
   reportUrl: `https://${
     network === networks.KOVAN ? 'melon' : 'olympiad'
   }-reporting.now.sh/report/${fund.address}`,

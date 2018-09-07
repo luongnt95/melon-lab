@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { compose } from 'recompose';
-import { connect } from 'react-redux';
-import { extractQueryParam } from '~/legacy/utils/parseUrl';
+import { extractAddress } from '~/legacy/utils/parseUrl';
 import isSameAddress from '~/legacy/utils/isSameAddress';
 import Factsheet from '~/legacy/containers/Factsheet';
 import Holdings from '~/legacy/containers/Holdings';
@@ -18,7 +17,6 @@ import FundTemplate from '@melonproject/manager-components/templates/Fund';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { withRouter } from 'next/router';
-import { isCompetition } from '~/legacy/utils/track';
 
 const Fund = ({
   isManager,
@@ -30,7 +28,7 @@ const Fund = ({
   fund,
   loading,
 }) => (
-  <div className="App">
+  <Fragment>
     {!hasContributed && isCompetition && isCompetitionActive && isManager ? (
       <ParosContribution />
     ) : (
@@ -51,31 +49,31 @@ const Fund = ({
         recentTrades={<RecentTrades />}
       />
     )}
-  </div>
+  </Fragment>
 );
 
-const mapStateToProps = (state, props) => {
-  const isManager =
-    props.fund &&
-    state.app.isReadyToInteract &&
-    isSameAddress(state.ethereum.account, props.fund.owner);
+// const mapStateToProps = (state, props) => {
+//   const isManager =
+//     props.fund &&
+//     state.app.isReadyToInteract &&
+//     isSameAddress(state.ethereum.account, props.fund.owner);
 
-  return {
-    isVisitor: state.app.isReadyToVisit && !state.app.usersFund,
-    isInvestor:
-      props.fund &&
-      state.app.isReadyToInteract &&
-      !isSameAddress(state.ethereum.account, props.fund.owner),
-    isManager,
-    canInvest: state.app.isReadyToInteract,
-    pendingRequest: state.app.pendingRequest,
-    isCompetition,
-    hasContributed: !props.fund || props.fund.totalSupply == 0 ? false : true,
-    isCompetitionActive: props.fund && props.fund.isParosActive,
-  };
-};
+//   return {
+//     isVisitor: state.app.isReadyToVisit && !state.app.usersFund,
+//     isInvestor:
+//       props.fund &&
+//       state.app.isReadyToInteract &&
+//       !isSameAddress(state.ethereum.account, props.fund.owner),
+//     isManager,
+//     canInvest: state.app.isReadyToInteract,
+//     pendingRequest: state.app.pendingRequest,
+//     isCompetition,
+//     hasContributed: !props.fund || props.fund.totalSupply == 0 ? false : true,
+//     isCompetitionActive: props.fund && props.fund.isParosActive,
+//   };
+// };
 
-const withState = connect(mapStateToProps);
+// const withState = connect(mapStateToProps);
 
 const query = gql`
   query FundQuery($address: String!) {
@@ -101,12 +99,11 @@ const query = gql`
   }
 `;
 
-const getAddress = extractQueryParam('address');
 const withFund = BaseComponent => baseProps => (
   <Query
     query={query}
     variables={{
-      address: getAddress(baseProps.router.asPath),
+      address: extractAddress(baseProps.router.asPath),
     }}
     ssr={false}
   >
@@ -123,5 +120,4 @@ const withFund = BaseComponent => baseProps => (
 export default compose(
   withRouter,
   withFund,
-  withState,
 )(Fund);

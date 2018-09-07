@@ -42,6 +42,7 @@ module.exports = withComposedConfig({
       // Aliases for paths within the manager interface package.
       '+/components': path.join(managerInterface, 'src', 'components'),
       '~/resolvers': path.join(managerInterface, 'src', 'resolvers'),
+      '~/utils': path.join(managerInterface, 'src', 'utils'),
       '~/legacy': path.join(managerInterface, 'src', 'legacy'),
       '~/wrappers': path.join(managerInterface, 'src', 'wrappers'),
     });

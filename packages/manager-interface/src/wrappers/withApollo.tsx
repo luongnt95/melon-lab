@@ -1,7 +1,6 @@
 // Import the introspection results (handled with a custom webpack loader)
 // for the schema.
 import introspection from '@melonproject/graphql-schema/schema.gql';
-import { getParityProvider } from '@melonproject/melon.js';
 import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 import { withClientState } from 'apollo-link-state';
 import ApolloClient from 'apollo-client';
@@ -11,7 +10,7 @@ import { HttpLink } from 'apollo-link-http';
 import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 import withApollo from 'next-with-apollo';
-import { defaults, resolvers } from '~/resolvers';
+import { defaults, resolvers, withContext } from '~/resolvers';
 
 const isSubscription = ({ query }) => {
   const { kind, operation } = getMainDefinition(query);
@@ -27,15 +26,7 @@ const createLink = (options, cache) => {
     headers: options.headers,
   });
 
-  const clientContext = setContext(async (operation) => {
-    const endpoint = global.JSON_RPC_ENDPOINT || process.env.JSON_RPC_ENDPOINT;
-    const environment = await getParityProvider(endpoint);
-
-    return {
-      environment,
-    };
-  });
-
+  const clientContext = setContext(withContext(cache));
   const stateLink = withClientState({
     cache,
     resolvers,
@@ -68,12 +59,15 @@ export const createClient = options => {
   });
 
   const link = createLink(options, cache);
-
-  return new ApolloClient({
+  const client = new ApolloClient({
     ssrMode: typeof window === 'undefined',
     link,
     cache,
   });
+
+  console.log(client);
+
+  return client;
 };
 
 export default withApollo(options => {
