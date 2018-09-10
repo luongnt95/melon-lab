@@ -12,15 +12,15 @@ const EthereumState = ({
   loading,
   data,
   children,
-}) => {
-  // TODO: Compute state like "isReadyToInteract".
-  const state = {};
+}) => (
+  <Query query={ethereumQuery} pollInterval={5000} ssr={false}>
+    {(props) => {
+      // TODO: Compute state like "isReadyToInteract".
+      const state = {};
 
-  return (
-    <Query query={ethereumQuery} pollInterval={5000} ssr={false}>
-      {children(state)}
-    </Query>
-  );
-};
+      return children(state);
+    }}
+  </Query>
+);
 
 export default EthereumState;
