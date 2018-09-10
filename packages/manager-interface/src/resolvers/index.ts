@@ -1,36 +1,92 @@
-import { getParityProvider } from '@melonproject/melon.js';
+import { getParityProvider, getParticipation, getBalance, getConfig, getAccountAddress, hasRecentPrice, toReadable } from '@melonproject/melon.js';
 import * as R from 'ramda';
 import ethereumNetwork from './etherumNetwork';
-import currentUser from './currentUser';
 import personalStake from './personalStake';
-import getConfig from 'next/config';
+import getNextConfig from 'next/config';
 
-const { publicRuntimeConfig: config } = getConfig();
+const { publicRuntimeConfig: nextConfig } = getNextConfig();
 
 export const defaults = {
   ethereumNetwork: null,
-  currentUser: {
-    __typename: 'User',
-    ethereumAddress: '0xa80B5F4103C8d027b2ba88bE9Ed9Bb009bF3d46f' ,
-  },
+  melonBalance: null,
+  etherBalance: null,
+  walletAddress: null,
+  isSyncing: null,
+  isDataValid: null,
 };
 
 export const resolvers = R.reduce(R.mergeDeepLeft, {})([
   ethereumNetwork,
-  currentUser,
   personalStake,
 ]);
 
 let environment;
+let config;
+
 export const withContext = cache => async operation => {
   if (typeof environment === 'undefined') {
     environment = {
-      ...(await getParityProvider(config.jsonRpcEndpoint)),
-      track: config.track,
+      ...(await getParityProvider(nextConfig.jsonRpcEndpoint)),
+      track: nextConfig.track,
+      account: {
+        address: '0x12BcF5de4cbE5199e1A1e4746FA9046124343F8C',
+      },
     };
+
+    config = await getConfig(environment);
   }
 
   return {
     environment,
+    config,
+    loaders: {
+      currentBlock: R.memoizeWith(R.identity, () => {
+        return Promise.race([
+          new Promise((resolve) => {
+            // If we can't determine the current block within
+            // 500ms, assume that we are out of date.
+            setTimeout(() => resolve(null), 500);
+          }),
+          environment.api.eth.blockNumber(),
+        ]);
+      }),
+      ethereumNetwork: R.memoizeWith(R.identity, () => {
+        return environment.api.net.version();
+      }),
+      etherBalance: R.memoizeWith(R.identity, async (address) => {
+        const balance = await environment.api.eth.getBalance(address);
+        return toReadable(config, balance, config.nativeAssetSymbol);
+      }),
+      melonBalance: R.memoizeWith(R.identity, async (address) => {
+        return getBalance(environment, {
+          tokenSymbol: config.melonAssetSymbol,
+          ofAddress: address,
+        });
+      }),
+      nativeBalance: R.memoizeWith(R.identity, async (address) => {
+        return getBalance(environment, {
+          tokenSymbol: config.nativeAssetSymbol,
+          ofAddress: address,
+        });
+      }),
+      isSyncing: R.memoizeWith(R.identity, async () => {
+        const syncing = await environment.api.eth.syncing();
+        return syncing ? !!syncing.result : syncing;
+      }),
+      isDataValid: R.memoizeWith(R.identity, () => {
+        return hasRecentPrice(environment);
+      }),
+      accountAddress: R.memoizeWith(R.identity, () => {
+        return getAccountAddress(environment);
+      }),
+      getParticipation: R.memoizeWith((fund, investor) => {
+        return `${fund}:${investor}`;
+      }, (fund, investor) => {
+        return getParticipation(environment, {
+          fundAddress: fund,
+          investorAddress: investor,
+        });
+      })
+    },
   };
 };

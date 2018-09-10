@@ -14,7 +14,6 @@ import { compose } from 'recompose';
 // import ParosContribution from '~/legacy/containers/ParosContribution';
 // import FundTemplate from '@melonproject/manager-components/templates/Fund';
 import FundTemplate from '~/templates/Fund';
-import EthereumState from '+/components/EthereumState';
 import FactSheet from '+/components/FactSheet';
 import Orderbook from '+/components/Orderbook';
 import Holdings from '+/components/Holdings';
@@ -23,7 +22,6 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
 const Fund = ({
-  isManager,
   canInvest,
   pendingRequest,
   isCompetition,
@@ -36,7 +34,7 @@ const Fund = ({
   loading,
 }) => (
   <Fragment>
-    {!hasContributed && isCompetition && isCompetitionActive && isManager ? (
+    {!hasContributed && isCompetition && isCompetitionActive && fund.isManager ? (
       // <ParosContribution />
       null
     ) : (
@@ -88,6 +86,7 @@ const fundQuery = gql`
     totalFunds
     fund(address: $address) {
       personalStake @client
+      isManager @client
       rank
       name
       managementReward
@@ -110,27 +109,23 @@ const fundQuery = gql`
 `;
 
 const withFund = BaseComponent => baseProps => (
-  <EthereumState>
-    {(state) => (
-      <Query
-        query={fundQuery}
-        variables={{
-          address: baseProps.address,
-        }}
-        ssr={false}
-      >
-        {props => (
-          <BaseComponent
-            fund={props.data && props.data.fund}
-            totalFunds={props.data && props.data.totalFunds}
-            quoteAsset={baseProps.quote}
-            baseAsset={baseProps.base}
-            loading={props.loading}
-          />
-        )}
-      </Query>
+  <Query
+    query={fundQuery}
+    variables={{
+      address: baseProps.address,
+    }}
+    ssr={false}
+  >
+    {props => (
+      <BaseComponent
+        fund={props.data && props.data.fund}
+        totalFunds={props.data && props.data.totalFunds}
+        quoteAsset={baseProps.quote}
+        baseAsset={baseProps.base}
+        loading={props.loading}
+      />
     )}
-  </EthereumState>
+  </Query>
 );
 
 export default compose(

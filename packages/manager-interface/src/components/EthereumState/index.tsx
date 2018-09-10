@@ -1,24 +1,123 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import { isZero } from '~/utils/functionalBigNumber';
+import { networks, providers } from '@melonproject/melon.js';
+
+export const statusTypes = {
+  NEUTRAL: 'NEUTRAL',
+  WARNING: 'WARNING',
+  ERROR: 'ERROR',
+  GOOD: 'GOOD',
+};
+
+const getStatus = ({
+  canonicalPriceFeedAddress,
+  currentBlock,
+  ethereumNetwork,
+  isSyncing,
+  isNetworkValid,
+  isReadyToInvest,
+  isReadyToInteract,
+  isDataValid,
+  provider,
+}) => {
+  if (!currentBlock) {
+    return {
+      message: 'Block overdue',
+      type: statusTypes.WARNING,
+    };
+  }
+
+  if (!isNetworkValid) {
+    return {
+      message: 'Not ready',
+      type: statusTypes.WARNING,
+    };
+  }
+
+  if (isSyncing) {
+    return {
+      message: 'Node not synced',
+      type: statusTypes.WARNING,
+    };
+  }
+
+  if (!isDataValid) {
+    return {
+      message: 'Price feed down',
+      type: statusTypes.ERROR,
+      link: `https://${
+        ethereumNetwork === networks.KOVAN ? 'kovan.' : ''
+      }etherscan.io/address/${canonicalPriceFeedAddress}`,
+    };
+  }
+
+  if (!isReadyToInteract) {
+    return {
+      message: 'Insufficent ETH',
+      type: statusTypes.WARNING,
+    };
+  }
+
+  if (!isReadyToInvest) {
+    return {
+      message: 'Insufficent MLN',
+      type: statusTypes.WARNING,
+    };
+  }
+
+  if ([providers.PARITY, providers.INJECTED].includes(provider)) {
+    return {
+      message: 'Local node',
+      type: statusTypes.GOOD,
+    };
+  }
+
+  return {
+    message: 'Melon Node',
+    type: statusTypes.NEUTRAL,
+  };
+};
 
 const ethereumQuery = gql`
-  query EthereumQuery {
+  query ConnectionStateQuery {
     ethereumNetwork @client
+    isSyncing @client
+    isNetworkValid @client
+    isDataValid @client
+    currentBlock @client
+    ethBalance @client
+    wethBalance @client
+    mlnBalance @client
+    accountAddress @client
   }
 `;
 
 const EthereumState = ({
-  loading,
-  data,
   children,
 }) => (
   <Query query={ethereumQuery} pollInterval={5000} ssr={false}>
     {(props) => {
-      // TODO: Compute state like "isReadyToInteract".
-      const state = {};
+      const { data = {}, loading } = props;
 
-      return children(state);
+      const isNetworkValid = !!data.isNetworkValid;
+      const isSyncing = !!data.isSyncing;
+      const hasAccount = !!data.accountAddress;
+      const hasEth = data.ethBalance && !isZero(data.ethBalance);
+      const hasCurrentBlock = data.currentBlock && !isZero(data.currentBlock);
+
+      const state = {
+        ...data,
+        isReadyToInteract: !isSyncing && isNetworkValid && hasAccount && hasCurrentBlock && hasEth,
+        isReadyToInvest: false,
+      };
+
+      return children({
+        ...state,
+        status: !loading && getStatus(state),
+        loading,
+      });
     }}
   </Query>
 );

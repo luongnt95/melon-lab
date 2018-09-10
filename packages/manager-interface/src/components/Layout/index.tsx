@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import Header from '+/components/Header';
+import Header from '~/components/Header';
 import Footer from '~/components/Footer';
 import Content from '~/design/Layout';
 
@@ -17,15 +17,15 @@ const fixedBottom = {
   zIndex: 1,
 };
 
-const Layout = ({ children, noHeader = false }) => (
+const Layout = ({ children, noHeader = false, headerProps = {} }) => (
   <Fragment>
     {!noHeader && (
       <div style={fixedTop}>
-        <Header />
+        <Header {...headerProps} />
       </div>
     )}
 
-    <Content>{children}</Content>
+    <Content foo="bar">{children}</Content>
 
     <div style={fixedBottom}>
       <Footer />

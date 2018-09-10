@@ -7,7 +7,6 @@ import { greaterThan } from '~/utils/functionalBigNumber';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import * as R from 'ramda';
-import Link from 'next/link';
 
 const filterRankings = R.curryN(2, (search, fund) => {
   return fund.name.toLocaleLowerCase().includes(search);

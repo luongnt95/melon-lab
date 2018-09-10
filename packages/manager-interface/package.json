@@ -33,6 +33,7 @@
     "bignumber.js": "4.1.0",
     "copy-webpack-plugin": "^4.5.2",
     "cross-env": "^5.1.5",
+    "dataloader": "^1.4.0",
     "debug": "2.6.9",
     "dotenv": "^6.0.0",
     "ethers": "^2.1.3",

@@ -1,31 +1,18 @@
-import { getParticipation } from '@melonproject/melon.js';
-import gql from 'graphql-tag';
+import isSameAddress from '~/utils/isSameAddress';
 
 export default {
   Fund: {
-    personalStake: async (parent, args, { environment, cache }) => {
-      if (!parent.address) {
+    isManager: async (parent, args, { loaders }) => {
+      const account = await loaders.accountAddress();
+      return isSameAddress(parent.owner, account);
+    },
+    personalStake: async (parent, args, { loaders }) => {
+      const investor = await loaders.accountAddress();
+      if (!investor) {
         return null;
       }
 
-      const query = gql`
-        query CurrentUserQuery {
-          currentUser @client {
-            ethereumAddress
-          }
-        }
-      `;
-
-      const result = cache.readQuery({ query });
-      if (!result.currentUser || !result.currentUser.ethereumAddress) {
-        return null;
-      }
-
-      const participation = await getParticipation(environment, {
-        fundAddress: parent.address,
-        investorAddress: result.currentUser.ethereumAddress,
-      });
-
+      const participation = await loaders.getParticipation(parent.address, investor);
       return participation && participation.personalStake;
     },
   },
