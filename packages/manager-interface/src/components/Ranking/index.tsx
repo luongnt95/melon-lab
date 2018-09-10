@@ -56,7 +56,7 @@ const withSearchAndSorting = withPropsOnChange(
     funds: !props.loading && (props.funds || []).slice()
       .filter(filterRankings(props.search.toLocaleLowerCase()))
       .map(mapRankings(props.network))
-      .sort(sortRankings(props.ordering)),
+      .sort(sortRankings(props.ordering)) || [],
   }),
 );
 

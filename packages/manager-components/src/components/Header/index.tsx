@@ -63,10 +63,14 @@ export const Header: StatelessComponent<HeaderProps> = ({
               {accountAddress}
             </a>
           </span>
-          <span className="header__account-balances">
-            <span className="header__account-balance">ETH {balances.eth}</span>
-          </span>
-          <span className="header__account-network">{network}</span>
+          {balances && balances.eth && (
+            <span className="header__account-balances">
+              <span className="header__account-balance">ETH {balances.eth}</span>
+            </span>
+          )}
+          {network && (
+            <span className="header__account-network">{network}</span>
+          )}
           {status && (
             <span className={statusClassName}>
               {status.link ? (

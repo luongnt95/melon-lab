@@ -5,7 +5,7 @@ import { extractAddress, extractBaseSymbol, extractQuoteSymbol } from '~/utils/p
 import { withRouter } from 'next/router';
 
 const Page = (props) => (
-  <Layout noHeader>
+  <Layout>
     <Manage
       address={extractAddress(props.router.asPath)}
       quote={extractQuoteSymbol(props.router.asPath)}
