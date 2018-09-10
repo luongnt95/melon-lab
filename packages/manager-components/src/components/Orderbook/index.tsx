@@ -6,13 +6,13 @@ import Spinner from '~/blocks/Spinner';
 import styles from './styles.css';
 
 export interface OrderbookProps {
-  baseToken?: string;
+  baseAsset?: string;
   decimals?: number;
   isReadyToTrade: boolean;
   loading: boolean;
   onClick: (index) => void;
   orderbook?: any;
-  quoteToken?: string;
+  quoteAsset?: string;
 }
 
 const Bar = ({ widthBar, widthBorder, leftSpaceBorder }) => {
@@ -36,13 +36,13 @@ const Bar = ({ widthBar, widthBorder, leftSpaceBorder }) => {
 };
 
 export const Orderbook: StatelessComponent<OrderbookProps> = ({
-  baseToken,
+  baseAsset,
   decimals = 4,
   isReadyToTrade = true,
   loading,
   onClick,
   orderbook,
-  quoteToken,
+  quoteAsset,
 }) => {
   const calculateBar = (prevEntry, entry) => {
     const getPercentage = (cumulativeVolume, totalVolume) => {
@@ -73,7 +73,7 @@ export const Orderbook: StatelessComponent<OrderbookProps> = ({
     <div className="orderbook">
       <style jsx>{styles}</style>
       <h3>
-        Orderbook for {baseToken}/{quoteToken}
+        Orderbook for {baseAsset}/{quoteAsset}
       </h3>
 
       {loading ? (

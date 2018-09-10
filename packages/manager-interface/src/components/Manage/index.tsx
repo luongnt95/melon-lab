@@ -15,6 +15,7 @@ import { compose } from 'recompose';
 // import FundTemplate from '@melonproject/manager-components/templates/Fund';
 import FundTemplate from '~/templates/Fund';
 import FactSheet from '+/components/FactSheet';
+import Orderbook from '+/components/Orderbook';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
@@ -48,7 +49,7 @@ const Fund = ({
         ]}
         // holdings={<Holdings {...fund} />}
         // orderForm={<OrderForm holdings={(fund && fund.holdings) || []} />}
-        // orderbook={<OrderBook />}
+        orderbook={<Orderbook quoteAsset={quoteAsset} baseAsset={baseAsset} loading={loading} />}
         // openOrders={<OpenOrders />}
         // recentTrades={<RecentTrades />}
       />
