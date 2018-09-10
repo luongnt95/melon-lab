@@ -49,7 +49,7 @@ const Fund = ({
           // !isCompetition && canInvest && !pendingRequest && <Participation />,
           // !isCompetition && canInvest && pendingRequest && <ExecuteRequest />,
         ]}
-        holdings={<Holdings {...fund} loading={loading} />}
+        holdings={<Holdings {...fund} quoteAsset={quoteAsset} loading={loading} />}
         // orderForm={<OrderForm holdings={(fund && fund.holdings) || []} />}
         orderbook={<Orderbook quoteAsset={quoteAsset} baseAsset={baseAsset} loading={loading} />}
         // openOrders={<OpenOrders />}

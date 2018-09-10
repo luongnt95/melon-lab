@@ -6,7 +6,7 @@ import styles from './styles.css';
 export interface LinkProps {
   size?: string;
   style?: string;
-  url: string;
+  href?: string;
   target?: string;
 }
 
@@ -14,7 +14,7 @@ const Link: StatelessComponent<LinkProps> = ({
   children,
   size,
   style,
-  url,
+  href,
   target = '_self',
 }) => {
   const linkClassNames = classNames('link', {
@@ -23,7 +23,7 @@ const Link: StatelessComponent<LinkProps> = ({
   });
 
   return (
-    <a href={url} target={target} className={linkClassNames}>
+    <a href={href} target={target} className={linkClassNames}>
       <style jsx>{styles}</style>
       {children}
     </a>
