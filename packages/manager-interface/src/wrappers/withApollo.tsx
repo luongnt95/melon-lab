@@ -11,18 +11,18 @@ import { WebSocketLink } from 'apollo-link-ws';
 import { getMainDefinition } from 'apollo-utilities';
 import withApollo from 'next-with-apollo';
 import { defaults, resolvers, withContext } from '~/resolvers';
+import getConfig from 'next/config';
+
+const { publicRuntimeConfig: config } = getConfig();
 
 const isSubscription = ({ query }) => {
   const { kind, operation } = getMainDefinition(query);
   return kind === 'OperationDefinition' && operation === 'subscription';
 };
 
-const httpUri = (global.GRAPHQL_REMOTE_HTTP || process.env.GRAPHQL_REMOTE_HTTP) as string;
-const wsUri = (global.GRAPHQL_REMOTE_WS || process.env.GRAPHQL_REMOTE_WS) as string;
-
 const createLink = (options, cache) => {
   const httpLink = new HttpLink({
-    uri: httpUri,
+    uri: config.graphqlRemoteHttp,
     headers: options.headers,
   });
 
@@ -42,7 +42,7 @@ const createLink = (options, cache) => {
   }
 
   const wsLink = new WebSocketLink({
-    uri: wsUri,
+    uri: config.graphqlRemoteWs,
     options: {
       reconnect: true,
     },

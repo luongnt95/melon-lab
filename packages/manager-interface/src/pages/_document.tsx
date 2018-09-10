@@ -5,13 +5,6 @@ import spriteBuild from 'svg-sprite-loader/runtime/sprite.build';
 
 const sprites = spriteBuild.stringify();
 
-const env = [
-  'GRAPHQL_REMOTE_WS',
-  'GRAPHQL_REMOTE_HTTP',
-  'JSON_RPC_ENDPOINT',
-  'TRACK',
-].map((key) => `window.${key}=${JSON.stringify(process.env[key])};`).join('');
-
 export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
     const { html, head, errorHtml, chunks } = renderPage();
@@ -35,7 +28,6 @@ export default class MyDocument extends Document {
         <body>
           <div dangerouslySetInnerHTML={{ __html: sprites }} />
           <Main />
-          <script dangerouslySetInnerHTML={{ __html: env }} />
           <NextScript />
         </body>
       </html>

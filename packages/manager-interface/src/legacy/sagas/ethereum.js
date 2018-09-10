@@ -18,6 +18,9 @@ import { actions as modalActions } from '../actions/modal';
 import { actions as fundActions } from '../actions/fund';
 import { equals } from '../utils/functionalBigNumber';
 import { track } from '~/legacy/utils/track';
+import getConfig from 'next/config';
+
+const { publicRuntimeConfig: config } = getConfig();
 
 const BLOCK_POLLING_INTERVAL = 4 * 1000;
 const MAX_INTERVAL_BETWEEN_BLOCKS = 5;
@@ -25,7 +28,7 @@ const MAX_INTERVAL_BETWEEN_BLOCKS = 5;
 function* init() {
   const environment = yield call(
     getParityProvider,
-    global.JSON_RPC_ENDPOINT || process.env.JSON_RPC_ENDPOINT,
+    config.jsonRpcEndpoint,
   );
 
   const networkId = yield apply(environment.api, environment.api.net.version);

@@ -5,7 +5,7 @@ import Ranking from '~/components/Ranking';
 import displayNumber from '~/utils/displayNumber';
 import { greaterThan } from '~/utils/functionalBigNumber';
 import gql from 'graphql-tag';
-import { Query, Mutation } from 'react-apollo';
+import { Query } from 'react-apollo';
 import * as R from 'ramda';
 import Link from 'next/link';
 
@@ -53,7 +53,7 @@ const sortRankings = ordering => (a, b) => {
 const withSearchAndSorting = withPropsOnChange(
   ['loading', 'funds', 'search', 'ordering', 'network'],
   props => ({
-    funds: !props.loading && props.funds.slice()
+    funds: !props.loading && (props.funds || []).slice()
       .filter(filterRankings(props.search.toLocaleLowerCase()))
       .map(mapRankings(props.network))
       .sort(sortRankings(props.ordering)),

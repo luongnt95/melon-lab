@@ -31,6 +31,12 @@ module.exports = withComposedConfig({
   ],
   distDir: path.join('..', 'build'),
   exportPathMap: () => require('./next.routes.js'),
+  publicRuntimeConfig: {
+    graphqlRemoteWs: process.env.GRAPHQL_REMOTE_WS,
+    graphqlRemoteHttp: process.env.GRAPHQL_REMOTE_HTTP,
+    jsonRpcEndpoint: process.env.JSON_RPC_ENDPOINT,
+    track: process.env.TRACK,
+  },
   webpack: (config, options) => {
     config.resolve.alias = Object.assign({}, config.resolve.alias || {}, {
       // Aliases for paths within the manager components package.

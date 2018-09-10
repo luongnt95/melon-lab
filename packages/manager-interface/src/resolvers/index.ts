@@ -3,6 +3,9 @@ import * as R from 'ramda';
 import ethereumNetwork from './etherumNetwork';
 import currentUser from './currentUser';
 import personalStake from './personalStake';
+import getConfig from 'next/config';
+
+const { publicRuntimeConfig: config } = getConfig();
 
 export const defaults = {
   ethereumNetwork: null,
@@ -21,11 +24,9 @@ export const resolvers = R.reduce(R.mergeDeepLeft, {})([
 let environment;
 export const withContext = cache => async operation => {
   if (typeof environment === 'undefined') {
-    const endpoint = global.JSON_RPC_ENDPOINT || process.env.JSON_RPC_ENDPOINT;
-    const track = global.TRACK || process.env.TRACK;
     environment = {
-      ...(await getParityProvider(endpoint)),
-      track,
+      ...(await getParityProvider(config.jsonRpcEndpoint)),
+      track: config.track,
     };
   }
 
