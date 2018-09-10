@@ -1,0 +1,40 @@
+.link {
+  font-style: italic;
+}
+
+.link--button {
+  text-align: center;
+  display: block;
+  border: 1px solid var(--color-black);
+  font-family: var(--font-family-primary);
+  background-color: transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+  line-height: 1;
+  transition-duration: var(--transition-duration-default);
+  min-width: 100%;
+  font-size: var(--font-size-s);
+  color: var(--color-black);
+  border: 1px solid currentColor;
+}
+
+.link--button:hover:enabled {
+  border: 1px solid var(--color-black);
+  color: var(--color-white);
+  background-color: var(--color-black);
+}
+
+.link--small {
+  font-size: var(--font-size-xs);
+  padding: var(--space-xs) var(--space-l);
+}
+
+.link--medium {
+  font-size: var(--font-size-x);
+  padding: var(--space-s) var(--space-m);
+}
+
+.link--large {
+  font-size: var(--font-size-m);
+  padding: var(--space-m) var(--space-xl);
+}
