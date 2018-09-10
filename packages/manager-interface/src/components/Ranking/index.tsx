@@ -1,6 +1,6 @@
 import { networks } from '@melonproject/melon.js';
 import moment from 'moment';
-import { compose, withPropsOnChange } from 'recompose';
+import { compose, withState, withPropsOnChange } from 'recompose';
 import Ranking from '~/components/Ranking';
 import displayNumber from '~/utils/displayNumber';
 import { greaterThan } from '~/utils/functionalBigNumber';
@@ -50,7 +50,7 @@ const sortRankings = ordering => (a, b) => {
   return 0;
 };
 
-const withFilteringAndSorting = withPropsOnChange(
+const withSearchAndSorting = withPropsOnChange(
   ['loading', 'funds', 'search', 'ordering', 'network'],
   props => ({
     funds: !props.loading && props.funds.slice()
@@ -63,8 +63,6 @@ const withFilteringAndSorting = withPropsOnChange(
 const rankingQuery = gql`
   query RankingQuery {
     ethereumNetwork @client
-    rankingOrdering @client
-    rankingSearchString @client
 
     funds {
       rank
@@ -76,46 +74,31 @@ const rankingQuery = gql`
   }
 `;
 
-const rankingOrderingMutation = gql`
-  mutation RankingOrderingMutation($order: String!) {
-    rankingOrdering(order: $order) @client
-  }
-`;
-
-const rankingSearchMutation = gql`
-  mutation RankingSearchMutation($search: String!) {
-    rankingSearchString(search: $search) @client
-  }
-`;
-
 const withRanking = BaseComponent => baseProps => (
-  <Mutation mutation={rankingSearchMutation}>
-    {(setRankingSearch) => (
-      <Mutation mutation={rankingOrderingMutation}>
-        {(setRankingOrder) => (
-          <Query query={rankingQuery} ssr={false}>
-          {props => (
-            <BaseComponent
-              setOrdering={(order) => setRankingOrder({ variables: { order }})}
-              setSearch={(search) => setRankingSearch({ variables: { search }})}
-              funds={props.data && props.data.funds}
-              ordering={props.data && props.data.rankingOrdering}
-              search={props.data && props.data.rankingSearchString}
-              network={props.data && props.data.ethereumNetwork}
-              loading={props.loading}
-              Link={({ children, address }) => (
-                <Link href={`/manage?address=${address}&base=MLN-T&quote=WETH-T`}>{children}</Link>
-              )}
-            />
-          )}
-          </Query>
+  <Query query={rankingQuery} ssr={false}>
+    {props => (
+      <BaseComponent
+        setOrdering={(order) => baseProps.setOrdering({ variables: { order }})}
+        setSearch={(search) => baseProps.setSearch({ variables: { search }})}
+        ordering={baseProps.ordering}
+        search={baseProps.search}
+        funds={props.data && props.data.funds}
+        network={props.data && props.data.ethereumNetwork}
+        loading={props.loading}
+        Link={({ children, address }) => (
+          <Link href={`/manage?address=${address}&base=MLN-T&quote=WETH-T`}>{children}</Link>
         )}
-      </Mutation>
+      />
     )}
-  </Mutation>
+  </Query>
 );
+
+const withOrdering = withState('ordering', 'setOrdering', '+rank');
+const withSearch = withState('search', 'setSearch', '');
 
 export default compose(
   withRanking,
-  withFilteringAndSorting,
+  withSearch,
+  withOrdering,
+  withSearchAndSorting,
 )(Ranking);

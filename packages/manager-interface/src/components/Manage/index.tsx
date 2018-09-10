@@ -14,6 +14,7 @@ import { compose } from 'recompose';
 // import ParosContribution from '~/legacy/containers/ParosContribution';
 // import FundTemplate from '@melonproject/manager-components/templates/Fund';
 import FundTemplate from '~/templates/Fund';
+import EthereumState from '+/components/EthereumState';
 import FactSheet from '+/components/FactSheet';
 import Orderbook from '+/components/Orderbook';
 import Holdings from '+/components/Holdings';
@@ -81,12 +82,6 @@ const Fund = ({
 
 // const withState = connect(mapStateToProps);
 
-const ethereumQuery = gql`
-  query EthereumQuery {
-    ethereumNetwork @client
-  }
-`;
-
 const fundQuery = gql`
   query FundQuery($address: String!) {
     totalFunds
@@ -114,8 +109,8 @@ const fundQuery = gql`
 `;
 
 const withFund = BaseComponent => baseProps => (
-  <Query query={ethereumQuery} pollInterval={5000} ssr={false}>
-    {props => (
+  <EthereumState>
+    {(state) => (
       <Query
         query={fundQuery}
         variables={{
@@ -134,7 +129,7 @@ const withFund = BaseComponent => baseProps => (
         )}
       </Query>
     )}
-  </Query>
+  </EthereumState>
 );
 
 export default compose(
