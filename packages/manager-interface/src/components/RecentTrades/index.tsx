@@ -1,19 +1,9 @@
 import moment from 'moment';
-import { connect } from 'react-redux';
 import { compose, withPropsOnChange } from 'recompose';
 import RecentTrades from '@melonproject/manager-components/components/RecentTrades';
-import displayNumber from '../utils/displayNumber';
+import displayNumber from '../../utils/displayNumber';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-
-const mapStateToProps = state => ({
-  baseTokenSymbol:
-    state.app.assetPair.base != '...' && state.app.assetPair.base,
-  quoteTokenSymbol:
-    state.app.assetPair.quote != '...' && state.app.assetPair.quote,
-});
-
-const withState = connect(mapStateToProps);
 
 const withMappedTrades = withPropsOnChange(['trades'], props => ({
   trades: props.trades.map(trade => ({
@@ -45,8 +35,8 @@ const withRecentTrades = BaseComponent => baseProps => (
   <Query
     query={query}
     variables={{
-      baseTokenSymbol: baseProps.baseTokenSymbol,
-      quoteTokenSymbol: baseProps.quoteTokenSymbol,
+      baseTokenSymbol: baseProps.baseAsset,
+      quoteTokenSymbol: baseProps.quoteAsset,
     }}
     ssr={false}
   >
@@ -61,7 +51,6 @@ const withRecentTrades = BaseComponent => baseProps => (
 );
 
 export default compose(
-  withState,
   withRecentTrades,
   withMappedTrades,
 )(RecentTrades);

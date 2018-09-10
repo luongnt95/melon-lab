@@ -12,14 +12,14 @@ import {
 import styles from './styles.css';
 
 export interface RecentTradesProps {
-  baseTokenSymbol: string;
-  quoteTokenSymbol: string;
+  baseAsset: string;
+  quoteAsset: string;
   trades?: any;
 }
 
 export const RecentTrades: StatelessComponent<RecentTradesProps> = ({
-  baseTokenSymbol,
-  quoteTokenSymbol,
+  baseAsset,
+  quoteAsset,
   trades,
 }) => {
   const typeCellClassNames = (type: string) =>
@@ -37,7 +37,7 @@ export const RecentTrades: StatelessComponent<RecentTradesProps> = ({
     <div className="recent-trades">
       <style jsx>{styles}</style>
       <h3>
-        Recent trades for {baseTokenSymbol}/{quoteTokenSymbol}
+        Recent trades for {baseAsset}/{quoteAsset}
       </h3>
       <div className="recent-trades__table-wrap">
         {trades.length > 0 ? (
@@ -47,11 +47,9 @@ export const RecentTrades: StatelessComponent<RecentTradesProps> = ({
                 <CellHead>Time</CellHead>
                 <CellHead>Type</CellHead>
                 <CellHead textAlign="right">
-                  Price ({baseTokenSymbol}/{quoteTokenSymbol})
+                  Price ({baseAsset}/{quoteAsset})
                 </CellHead>
-                <CellHead textAlign="right">
-                  Amount ({baseTokenSymbol})
-                </CellHead>
+                <CellHead textAlign="right">Amount ({baseAsset})</CellHead>
               </Row>
             </TableHead>
             <TableBody>

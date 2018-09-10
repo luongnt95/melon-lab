@@ -18,6 +18,7 @@ import EthereumState from '+/components/EthereumState';
 import FactSheet from '+/components/FactSheet';
 import Orderbook from '+/components/Orderbook';
 import Holdings from '+/components/Holdings';
+import RecentTrades from '+/components/RecentTrades';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
@@ -53,7 +54,7 @@ const Fund = ({
         // orderForm={<OrderForm holdings={(fund && fund.holdings) || []} />}
         orderbook={<Orderbook quoteAsset={quoteAsset} baseAsset={baseAsset} loading={loading} />}
         // openOrders={<OpenOrders />}
-        // recentTrades={<RecentTrades />}
+        recentTrades={<RecentTrades quoteAsset={quoteAsset} baseAsset={baseAsset} />}
       />
     )}
   </Fragment>

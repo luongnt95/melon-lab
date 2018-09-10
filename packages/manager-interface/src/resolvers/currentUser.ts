@@ -8,7 +8,7 @@ export default {
   },
   User: {
     ethereumAddress: () => {
-      return '0x45786AF84843917F0a87475FfA096A90567Fe5De';
+      return '0x8F1C6BCe6c18DD8f5e6e7701627Ccf8e045DBa2a';
     },
   },
 };
