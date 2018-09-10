@@ -23,9 +23,7 @@ const getParticipation = async (
   { fundAddress, investorAddress },
 ): Promise<Participation> => {
   const config = await getConfig(environment);
-  console.log(config);
   const fundContract = await getFundContract(environment, fundAddress);
-  console.log(fundContract);
   const personalStake = await fundContract.instance.balanceOf.call({}, [
     investorAddress,
   ]);
