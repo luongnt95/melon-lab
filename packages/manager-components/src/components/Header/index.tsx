@@ -6,7 +6,7 @@ import Link from '~/link';
 import styles from './styles.css';
 
 export interface HeaderProps {
-  accountAddress?: string;
+  address?: string;
   balances: {
     eth: number;
   };
@@ -19,7 +19,7 @@ export interface HeaderProps {
 }
 
 export const Header: StatelessComponent<HeaderProps> = ({
-  accountAddress,
+  address,
   balances,
   network,
   status,
@@ -50,7 +50,7 @@ export const Header: StatelessComponent<HeaderProps> = ({
           <span className="header__account-address">
             <Link href="/wallet">
               <a>
-                {accountAddress}
+                {address}
               </a>
             </Link>
           </span>

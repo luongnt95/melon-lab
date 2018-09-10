@@ -1,7 +1,15 @@
-import Page from '~/legacy/containers/wallet/Restore';
+import React from 'react';
+import Layout from '+/components/Layout';
+import EthereumState from '+/components/EthereumState';
 
-const RestoreWallet = (props) => (
-  <Page {...props} />
+const Page = (props) => (
+  <EthereumState>
+    {(state) => (
+      <Layout ethereumState={state}>
+        <div>Hello world!</div>
+      </Layout>
+    )}
+  </EthereumState>
 );
 
-export default RestoreWallet;
+export default Page;

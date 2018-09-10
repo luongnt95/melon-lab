@@ -22,6 +22,7 @@ export const resolvers = R.reduce(R.mergeDeepLeft, {})([
 
 let environment;
 let config;
+let network;
 
 export const withContext = cache => async operation => {
   if (typeof environment === 'undefined') {
@@ -34,12 +35,15 @@ export const withContext = cache => async operation => {
     };
 
     config = await getConfig(environment);
+    network = await environment.api.net.version();
   }
 
   return {
     environment,
+    network,
     config,
     loaders: {
+      ethereumNetwork: () => network,
       currentBlock: R.memoizeWith(R.identity, () => {
         return Promise.race([
           new Promise((resolve) => {
@@ -49,9 +53,6 @@ export const withContext = cache => async operation => {
           }),
           environment.api.eth.blockNumber(),
         ]);
-      }),
-      ethereumNetwork: R.memoizeWith(R.identity, () => {
-        return environment.api.net.version();
       }),
       etherBalance: R.memoizeWith(R.identity, async (address) => {
         const balance = await environment.api.eth.getBalance(address);

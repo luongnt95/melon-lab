@@ -6,10 +6,6 @@ export default {
     isDataValid: (parent, args, { loaders }) => {
       return loaders.isDataValid();
     },
-    isNetworkValid: async (parent, args, { loaders }) => {
-      const network = await loaders.ethereumNetwork();
-      return network === '42' || network === '1';
-    },
     currentBlock: (parent, args, { loaders }) => {
       return loaders.currentBlock();
     },
@@ -18,15 +14,18 @@ export default {
     },
     ethBalance: async (parent, args, { loaders }) => {
       const address = await loaders.accountAddress();
-      return address && await loaders.etherBalance(address);
+      const balance = address && await loaders.etherBalance(address);
+      return balance && balance.toString();
     },
     wethBalance: async (parent, args, { loaders }) => {
       const address = await loaders.accountAddress();
-      return address && await loaders.nativeBalance(address);
+      const balance = address && await loaders.nativeBalance(address);
+      return balance && balance.toString();
     },
     mlnBalance: async (parent, args, { loaders }) => {
       const address = await loaders.accountAddress();
-      return address && await loaders.melonBalance(address);
+      const balance = address && await loaders.melonBalance(address);
+      return balance && balance.toString();
     },
     accountAddress: (parent, args, { loaders }) => {
       return loaders.accountAddress();

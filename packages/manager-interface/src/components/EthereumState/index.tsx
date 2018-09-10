@@ -84,7 +84,6 @@ const ethereumQuery = gql`
   query ConnectionStateQuery {
     ethereumNetwork @client
     isSyncing @client
-    isNetworkValid @client
     isDataValid @client
     currentBlock @client
     ethBalance @client
@@ -97,18 +96,19 @@ const ethereumQuery = gql`
 const EthereumState = ({
   children,
 }) => (
-  <Query query={ethereumQuery} pollInterval={5000} ssr={false}>
+  <Query query={ethereumQuery} pollInterval={10000} ssr={false}>
     {(props) => {
       const { data = {}, loading } = props;
 
-      const isNetworkValid = !!data.isNetworkValid;
       const isSyncing = !!data.isSyncing;
+      const isNetworkValid = !!data.ethereumNetwork && data.ethereumNetwork === '42' || data.ethereumNetwork === '1';
       const hasAccount = !!data.accountAddress;
       const hasEth = data.ethBalance && !isZero(data.ethBalance);
       const hasCurrentBlock = data.currentBlock && !isZero(data.currentBlock);
 
       const state = {
         ...data,
+        isNetworkValid,
         isReadyToInteract: !isSyncing && isNetworkValid && hasAccount && hasCurrentBlock && hasEth,
         isReadyToInvest: false,
       };
