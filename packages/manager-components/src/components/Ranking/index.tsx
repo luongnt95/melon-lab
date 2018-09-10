@@ -3,12 +3,11 @@ import Card from '~/blocks/Card';
 import Dropdown from '~/blocks/Dropdown';
 import Input from '~/blocks/Input';
 import Spinner from '~/blocks/Spinner';
+import Link from '~/link';
 
 import styles from './styles.css';
 
 export interface RankingProps {
-  Link: React.ComponentType<any>,
-  LinkProps?: { [key: string]: any },
   loading?: boolean;
   funds?: any;
   ordering?: string;
@@ -19,8 +18,6 @@ export interface RankingProps {
 }
 
 export const Ranking: StatelessComponent<RankingProps> = ({
-  Link,
-  LinkProps = {},
   loading,
   funds,
   ordering,
@@ -96,7 +93,7 @@ export const Ranking: StatelessComponent<RankingProps> = ({
           </div>
           <div className="ranking__funds">
             {funds.length && funds.map(fund => (
-              <Link {...LinkProps} key={fund.address} address={fund.address}>
+              <Link key={fund.address} href={`/manage?address=${fund.address}&base=MLN-T&quote=WETH-T`}>
                 <Card
                   isActive={fund.address === usersFund && true}
                   {...fund}

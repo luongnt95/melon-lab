@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React, { StatelessComponent } from 'react';
 import Icon from '~/blocks/Icon';
+import Link from '~/link';
 
 import styles from './styles.css';
 
@@ -9,8 +10,6 @@ export interface HeaderProps {
   balances: {
     eth: number;
   };
-  goToHome: () => void;
-  goToWallet: () => void;
   network?: string;
   status?: {
     message?: string;
@@ -22,21 +21,9 @@ export interface HeaderProps {
 export const Header: StatelessComponent<HeaderProps> = ({
   accountAddress,
   balances,
-  goToHome,
-  goToWallet,
   network,
   status,
 }) => {
-  const onClickGoToHome = (e: any): void => {
-    e.preventDefault(e);
-    goToHome();
-  };
-
-  const onClickGoToWallet = (e: any): void => {
-    e.preventDefault(e);
-    goToWallet();
-  };
-
   const statusClassName = classNames('header__account-status', {
     'header__account-status--warning': status && status.type === 'WARNING',
     'header__account-status--error': status && status.type === 'ERROR',
@@ -46,22 +33,26 @@ export const Header: StatelessComponent<HeaderProps> = ({
     <div className="header">
       <style jsx>{styles}</style>
       <div className="header__logo">
-        <a href="#" onClick={onClickGoToHome}>
-          <span className="header__logo-default">
-            <Icon width="115px" height="30px" name="logos_with-text" />
-          </span>
-          <span className="header__logo-small">
-            <Icon width="30px" height="30px" name="logos_default" />
-          </span>
-        </a>
+        <Link href="/">
+          <a>
+            <span className="header__logo-default">
+              <Icon width="115px" height="30px" name="logos_with-text" />
+            </span>
+            <span className="header__logo-small">
+              <Icon width="30px" height="30px" name="logos_default" />
+            </span>
+          </a>
+        </Link>
       </div>
       <div className="header__account">
         <div className="header__account-name">{''}</div>
         <div className="header__account-info">
           <span className="header__account-address">
-            <a href="#" onClick={onClickGoToWallet}>
-              {accountAddress}
-            </a>
+            <Link href="/wallet">
+              <a>
+                {accountAddress}
+              </a>
+            </Link>
           </span>
           {balances && balances.eth && (
             <span className="header__account-balances">

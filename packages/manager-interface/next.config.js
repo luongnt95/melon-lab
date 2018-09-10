@@ -45,6 +45,7 @@ module.exports = withComposedConfig({
       '~/templates': path.join(managerComponents, 'src', 'templates'),
       '~/design': path.join(managerComponents, 'src', 'design'),
       '~/static': path.join(managerComponents, 'public', 'static'),
+      '~/link': 'next/link',
 
       // Aliases for paths within the manager interface package.
       '+/components': path.join(managerInterface, 'src', 'components'),

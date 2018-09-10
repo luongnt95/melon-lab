@@ -12,6 +12,7 @@ module.exports = config => {
     '~/containers': path.join(base, 'containers'),
     '~/utils': path.join(base, 'utils'),
     '~/static': path.join(public, 'static'),
+    '~/link': path.join(public, 'utils', 'link'),
   });
 
   config.module.rules.push(

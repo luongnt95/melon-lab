@@ -85,9 +85,6 @@ const withRanking = BaseComponent => baseProps => (
         funds={props.data && props.data.funds}
         network={props.data && props.data.ethereumNetwork}
         loading={props.loading}
-        Link={({ children, address }) => (
-          <Link href={`/manage?address=${address}&base=MLN-T&quote=WETH-T`}>{children}</Link>
-        )}
       />
     )}
   </Query>
