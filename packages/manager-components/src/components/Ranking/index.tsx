@@ -92,7 +92,7 @@ export const Ranking: StatelessComponent<RankingProps> = ({
             </div>
           </div>
           <div className="ranking__funds">
-            {funds.length && funds.map(fund => (
+            {funds && funds.map(fund => (
               <Link key={fund.address} href={`/manage?address=${fund.address}&base=MLN-T&quote=WETH-T`}>
                 <Card
                   isActive={fund.address === usersFund && true}
