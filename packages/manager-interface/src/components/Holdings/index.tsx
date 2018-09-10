@@ -4,12 +4,18 @@ import displayNumber from '~/utils/displayNumber';
 import * as R from 'ramda';
 import Link from 'next/link';
 import StyledLink from '~/blocks/Link';
+import { toBigNumber } from './../../utils/functionalBigNumber';
 
-const mapHoldings = R.curryN(2, (address, holding) => ({
-  ...holding,
-  price: displayNumber(holding.price),
-  fraction: displayNumber(holding.fraction),
-  balance: displayNumber(holding.balance),
+const mapHoldings = R.curryN(3, (address, nav, asset) => ({
+  ...asset,
+  price: displayNumber(asset.price),
+  fraction: displayNumber(
+    toBigNumber(asset.balance)
+      .times(asset.price)
+      .div(nav.toString() || 1)
+      .times(100),
+  ),
+  balance: displayNumber(asset.balance),
   Link: () => {
     // TODO: Add isReadyToTrade
     const isReadyToTrade = false;
@@ -17,7 +23,7 @@ const mapHoldings = R.curryN(2, (address, holding) => ({
       <Link
         href={{
           pathname: '/manage',
-          query: { address: address, base: holding.symbol, quote: 'WETH-T' },
+          query: { address: address, base: asset.symbol, quote: 'WETH-T' },
         }}
         passHref
       >
@@ -34,7 +40,8 @@ const mapHoldings = R.curryN(2, (address, holding) => ({
 }));
 
 const withMappedProps = withPropsOnChange(['holdings', 'address'], props => ({
-  holdings: props.holdings && props.holdings.map(mapHoldings(props.address)),
+  holdings:
+    props.holdings && props.holdings.map(mapHoldings(props.address, props.nav)),
 }));
 
 export default withMappedProps(Holdings);
