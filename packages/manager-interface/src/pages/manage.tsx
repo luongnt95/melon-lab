@@ -3,7 +3,6 @@ import Layout from '+/components/Layout';
 import Manage from '+/components/Manage';
 import { extractAddress, extractBaseSymbol, extractQuoteSymbol } from '~/utils/parseUrl';
 import { withRouter } from 'next/router';
-import {  } from '../utils/parseUrl';
 
 const Page = (props) => (
   <Layout noHeader>
