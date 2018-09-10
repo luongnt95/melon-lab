@@ -14,13 +14,12 @@ import styles from './styles.css';
 
 export interface Holding {
   balance: string;
-  name: string;
-  percentage: string;
+  symbol: string;
+  fraction: string;
   price: string;
 }
 
 export interface HoldingsProps {
-  dataValid?: boolean;
   holdings?: Holding[];
   isReadyToTrade?: boolean;
   quoteAsset?: string;
@@ -28,7 +27,6 @@ export interface HoldingsProps {
 }
 
 export const Holdings: StatelessComponent<HoldingsProps> = ({
-  dataValid,
   holdings,
   isReadyToTrade,
   quoteAsset,
@@ -55,32 +53,18 @@ export const Holdings: StatelessComponent<HoldingsProps> = ({
           <TableBody>
             {holdings &&
               holdings.map(asset => (
-                <Row key={asset.name} size="small">
-                  <CellBody>{asset.name}</CellBody>
+                <Row key={asset.symbol} size="small">
+                  <CellBody>{asset.symbol}</CellBody>
                   <CellBody>{asset.balance}</CellBody>
-                  <CellBody textAlign="right">
-                    {dataValid ? (
-                      <Fragment>{asset.percentage}%</Fragment>
-                    ) : (
-                      <Loading />
-                    )}
-                  </CellBody>
-                  <CellBody textAlign="right">
-                    {dataValid ? (
-                      <Fragment>{asset.price}</Fragment>
-                    ) : (
-                      <Loading />
-                    )}
-                  </CellBody>
+                  <CellBody textAlign="right">{asset.fraction}%</CellBody>
+                  <CellBody textAlign="right">{asset.price}</CellBody>
                   <CellBody textAlign="right" cellClass="holdings__action-cell">
-                    {asset.name === quoteAsset ? (
+                    {asset.symbol === quoteAsset ? (
                       <span className="holdings__quote-asset" />
-                    ) : asset.name !== quoteAsset &&
-                    isReadyToTrade &&
-                    dataValid ? (
+                    ) : asset.symbol !== quoteAsset && isReadyToTrade ? (
                       <Button
                         size="small"
-                        buttonValue={asset.name}
+                        buttonValue={asset.symbol}
                         onClick={onClick}
                         style="secondary"
                       >
@@ -89,7 +73,7 @@ export const Holdings: StatelessComponent<HoldingsProps> = ({
                     ) : (
                       <Button
                         size="small"
-                        buttonValue={asset.name}
+                        buttonValue={asset.symbol}
                         onClick={onClick}
                         style="secondary"
                       >

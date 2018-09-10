@@ -16,6 +16,7 @@ import { compose } from 'recompose';
 import FundTemplate from '~/templates/Fund';
 import FactSheet from '+/components/FactSheet';
 import Orderbook from '+/components/Orderbook';
+import Holdings from '+/components/Holdings';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
@@ -47,7 +48,7 @@ const Fund = ({
           // !isCompetition && canInvest && !pendingRequest && <Participation />,
           // !isCompetition && canInvest && pendingRequest && <ExecuteRequest />,
         ]}
-        // holdings={<Holdings {...fund} />}
+        holdings={<Holdings {...fund} loading={loading} />}
         // orderForm={<OrderForm holdings={(fund && fund.holdings) || []} />}
         orderbook={<Orderbook quoteAsset={quoteAsset} baseAsset={baseAsset} loading={loading} />}
         // openOrders={<OpenOrders />}
