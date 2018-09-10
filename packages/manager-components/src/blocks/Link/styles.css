@@ -2,7 +2,9 @@
   font-style: italic;
 }
 
-.link--button {
+.link--primary,
+.link--secondary {
+  font-style: normal;
   text-align: center;
   display: block;
   border: 1px solid var(--color-black);
@@ -14,11 +16,24 @@
   transition-duration: var(--transition-duration-default);
   min-width: 100%;
   font-size: var(--font-size-s);
+}
+
+.link--primary {
+  color: var(--color-black);
+  border: 1px solid color-mod(var(--color-secondary-dark) a(75%));
+  background-color: color-mod(var(--color-secondary-dark) a(75%));
+}
+
+.link--primary:hover:enabled {
+  background-color: var(--color-secondary-dark);
+}
+
+.link--secondary {
   color: var(--color-black);
   border: 1px solid currentColor;
 }
 
-.link--button:hover:enabled {
+.link--secondary:hover:enabled {
   border: 1px solid var(--color-black);
   color: var(--color-white);
   background-color: var(--color-black);

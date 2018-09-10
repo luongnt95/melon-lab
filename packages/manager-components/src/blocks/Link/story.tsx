@@ -11,9 +11,15 @@ storiesOf('Blocks|Link', module)
   .add('Default', () => {
     return <Link {...data}>Default link</Link>;
   })
-  .add('Button style', () => {
+  .add('Primary style', () => {
     return (
-      <Link {...data} style="button" size="medium">
+      <Link {...data} style="primary" size="medium">
+        Default link
+      </Link>
+    );
+  }).add('Secondary style', () => {
+    return (
+      <Link {...data} style="secondary" size="medium">
         Default link
       </Link>
     );
