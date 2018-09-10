@@ -3,6 +3,9 @@ import { getConfig, getParityProvider } from '@melonproject/melon.js';
 import { ipcMain } from 'electron';
 import { PubSub } from 'graphql-subscriptions';
 import { SubscriptionServer } from '~/ipc/graphql/server';
+import getNextConfig from 'next/config';
+
+const { publicRuntimeConfig: nextConfig } = getNextConfig();
 
 function retrieveNetwork(track: string) {
   switch (track) {
@@ -17,14 +20,13 @@ function retrieveNetwork(track: string) {
 }
 
 export default async () => {
-  const track = (process.env.TRACK as string) || 'kovan-demo';
   const environment = {
-    ...(await getParityProvider(process.env.JSON_RPC_ENDPOINT)),
-    track,
+    ...(await getParityProvider(nextConfig.jsonRpcEndpoint)),
+    track: nextConfig.track,
   };
 
   const config = await getConfig(environment);
-  const network = retrieveNetwork(track);
+  const network = retrieveNetwork(config.track);
 
   return new SubscriptionServer(
     {

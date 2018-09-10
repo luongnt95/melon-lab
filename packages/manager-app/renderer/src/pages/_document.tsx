@@ -1,7 +1,9 @@
 import isDev from 'electron-is-dev';
 import Document, { Head, Main, NextScript } from 'next/document';
 import flush from 'styled-jsx/server';
+import getConfig from 'next/config';
 
+const { publicRuntimeConfig: config } = getConfig();
 const sprites = require('svg-sprite-loader/runtime/sprite.build').stringify();
 
 export default class MyDocument extends Document {
@@ -12,8 +14,8 @@ export default class MyDocument extends Document {
 
   public render() {
     const csp = isDev ?
-      `default-src 'self' 'unsafe-inline'; connect-src http://localhost:3000 ${process.env.JSON_RPC_ENDPOINT}; font-src data: http://localhost:3000;` :
-      `default-src 'self' 'unsafe-inline'; connect-src ${process.env.JSON_RPC_ENDPOINT}; font-src data: file:;`;
+      `default-src 'self' 'unsafe-inline'; connect-src http://localhost:3000 ${config.jsonRpcEndpoint}; font-src data: http://localhost:3000;` :
+      `default-src 'self' 'unsafe-inline'; connect-src ${config.jsonRpcEndpoint}; font-src data: file:;`;
 
     return (
       <html lang="en">
