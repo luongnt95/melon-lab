@@ -1,4 +1,5 @@
 import React, { Fragment, StatelessComponent } from 'react';
+import Button from '~/blocks/Button';
 import Spinner from '~/blocks/Spinner';
 import {
   CellBody,
@@ -23,12 +24,16 @@ export interface HoldingsProps {
   holdings?: Holding[];
   quoteAsset?: string;
   loading;
+  onClick;
+  isReadyToTrade;
 }
 
 export const Holdings: StatelessComponent<HoldingsProps> = ({
   holdings,
   quoteAsset,
   loading,
+  onClick,
+  isReadyToTrade,
 }) => {
   return (
     <div className="holdings" id="holdings">
@@ -64,8 +69,22 @@ export const Holdings: StatelessComponent<HoldingsProps> = ({
                     >
                       {asset.symbol === quoteAsset ? (
                         <span className="holdings__quote-asset" />
+                      ) : asset.symbol !== quoteAsset && isReadyToTrade ? (
+                        <Button
+                          size="small"
+                          onClick={() => onClick(asset)}
+                          style="secondary"
+                        >
+                          Buy/Sell
+                        </Button>
                       ) : (
-                        <asset.Link />
+                        <Button
+                          size="small"
+                          onClick={() => onClick(asset)}
+                          style="secondary"
+                        >
+                          See Orderbook
+                        </Button>
                       )}
                     </CellBody>
                   </Row>
