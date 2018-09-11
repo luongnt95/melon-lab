@@ -41,13 +41,11 @@ import { withRouter } from 'next/router';
 
 const Page = props => (
   <EthereumState>
-    {state =>
-      console.log(state) || (
-        <Layout ethereumState={state}>
-          <Setup ethereumState={state} />
-        </Layout>
-      )
-    }
+    {state => (
+      <Layout ethereumState={state}>
+        <Setup ethereumState={state} />
+      </Layout>
+    )}
   </EthereumState>
 );
 
