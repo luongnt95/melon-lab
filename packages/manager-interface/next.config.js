@@ -5,7 +5,6 @@ require('dotenv').config({
 const path = require('path');
 const R = require('ramda');
 const webpack = require('webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
 const withTypeScript = require('@zeit/next-typescript');
 const withQueryFiles = require('@melonproject/manager-interface/config/withQueryFiles');
 const withLinkedDependencies = require('@melonproject/manager-interface/config/withLinkedDependencies');
@@ -64,6 +63,7 @@ module.exports = withComposedConfig({
     );
 
     if (!options.isServer) {
+      const CopyWebpackPlugin = require('copy-webpack-plugin');
       config.plugins.push(
         new CopyWebpackPlugin([
           {
@@ -74,6 +74,12 @@ module.exports = withComposedConfig({
           },
         ]),
       );
+
+      const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+      config.plugins.push(new BundleAnalyzerPlugin({
+        analyzerPort: 3001,
+        openAnalyzer: false,
+      }));
     }
 
     config.module.rules.push(
