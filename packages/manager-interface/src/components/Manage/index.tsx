@@ -16,6 +16,7 @@ import { compose } from 'recompose';
 import FundTemplate from '~/templates/Fund';
 import FactSheet from '+/components/FactSheet';
 import Orderbook from '+/components/Orderbook';
+import OpenOrders from '+/components/OpenOrders';
 import Holdings from '+/components/Holdings';
 import RecentTrades from '+/components/RecentTrades';
 import gql from 'graphql-tag';
@@ -51,7 +52,7 @@ const Fund = ({
         holdings={<Holdings {...fund} quoteAsset={quoteAsset} loading={loading} />}
         // orderForm={<OrderForm holdings={(fund && fund.holdings) || []} />}
         orderbook={<Orderbook quoteAsset={quoteAsset} baseAsset={baseAsset} loading={loading} />}
-        // openOrders={<OpenOrders />}
+        openOrders={<OpenOrders />}
         recentTrades={<RecentTrades quoteAsset={quoteAsset} baseAsset={baseAsset} />}
       />
     )}

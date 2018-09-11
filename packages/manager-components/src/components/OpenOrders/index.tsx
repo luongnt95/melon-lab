@@ -70,9 +70,6 @@ export const OpenOrders: StatelessComponent<OpenOrdersProps> = ({
             <TableBody>
               {orders &&
                 orders.map(order => {
-                  const onCancel = (): void =>
-                    onClick(order.id, order.buySymbol, order.sellSymbol);
-
                   return (
                     <Row key={order.id} size={isManager && 'small'}>
                       <CellBody>{order.timestamp}</CellBody>
@@ -92,7 +89,7 @@ export const OpenOrders: StatelessComponent<OpenOrdersProps> = ({
                           <Button
                             size="small"
                             style="secondary"
-                            onClick={onCancel}
+                            onClick={() => onClick(order.id, order.buySymbol, order.sellSymbol)}
                             disabled={!isReadyToTrade}
                           >
                             Cancel
