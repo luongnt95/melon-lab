@@ -35,14 +35,51 @@ fit('swapTokens from account', async () => {
   const environment = getEnvironment();
   const config = await getConfig(environment);
 
-  const srcAmount = new BigNumber(1000);
-  const [, slippageRate] = await getConversionRate(environment, {srcTokenSymbol: "MLN-T", destTokenSymbol: "ANT-T", srcAmount});
+  const srcAmount = new BigNumber(10 ** 18);
+  const [, slippageRate] = await getConversionRate(environment, {srcTokenSymbol: "WETH-T", destTokenSymbol: "DAI-T", srcAmount});
   const expectedDestAmount = srcAmount.mul(slippageRate).div(10 ** 18);
 
-  const actualDestAmount = await swapTokensFromAccount(environment, {srcTokenSymbol: "MLN-T", srcAmount: srcAmount, destTokenSymbol: "ANT-T", minConversionRate: slippageRate});
+  const actualDestAmount = await swapTokensFromAccount(environment, {srcTokenSymbol: "WETH-T", srcAmount: srcAmount, destTokenSymbol: "DAI-T", minConversionRate: slippageRate});
 
   expect(Number(actualDestAmount)).toBeGreaterThan(
       Number(expectedDestAmount),
   );
+
+},   10 * 60 * 1000);
+
+fit('Create fund, swapTokens through it', async () => {
+
+  const environment = getEnvironment();
+  const config = await getConfig(environment);
+
+  const signature = await signTermsAndConditions(environment);
+  const shared = {};
+
+  // console.log(await getPrice(environment, 'ANT-T'));
+
+  shared.fundName = randomString();
+  const versionContract = await getVersionContract(environment);
+  let managerToFunds = await versionContract.instance.managerToFunds.call(
+      {},
+      [environment.account.address],
+  );
+
+  if (managerToFunds !== '0x0000000000000000000000000000000000000000') {
+      console.log('Existing fund needs to be shut down: ', managerToFunds);
+      await shutDownFund(environment, { fundAddress: managerToFunds });
+      console.log('Shutting down existing fund');
+  }
+
+  shared.fund = await setupFund(environment, {
+      name: shared.fundName,
+      signature,
+      exchangeNames: ['KyberNetwork'],
+  });
+
+  const transfered = await transferTo(environment, { symbol: "DAI-T", toAddress: shared.fund.address, quantity: 1 })
+  await swapTokens(environment, { fundAddress: shared.fund.address, exchangeAddres: "0xF27dbBeA1856f18142cDD3B575146199f7f3a7eA",  srcTokenSymbol: 'DAI-T',
+      destTokenSymbol: 'ANT-T',
+      srcAmount: 50000000,
+      destAmount: 0 });
 
 },   10 * 60 * 1000);
