@@ -125,6 +125,15 @@ type Query {
   funds(addresses: [String]): [Fund]
 }
 
+type Mutation {
+  cancelOpenOrder(
+    orderId: String!
+    fundAddress: String!
+    makerAssetSymbol: String!
+    takerAssetSymbol: String!
+  ): [Order]
+}
+
 type Subscription {
   orderbook(
     baseTokenSymbol: Symbol!
@@ -136,4 +145,5 @@ type Subscription {
 schema {
   query: Query
   subscription: Subscription
+  mutation: Mutation
 }

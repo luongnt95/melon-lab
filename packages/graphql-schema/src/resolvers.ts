@@ -16,6 +16,9 @@ export default {
     recentTrades: require('./resolvers/Query/recentTrades').default,
     totalFunds: require('./resolvers/Query/totalFunds').default,
   },
+  Mutation: {
+    cancelOpenOrder: require('./resolvers/Mutation/cancelOpenOrder').default,
+  },
   Subscription,
   Symbol,
   Quantity,

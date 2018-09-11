@@ -7,7 +7,7 @@ import { toBigNumber } from './../../utils/functionalBigNumber';
 
 // TODO: Add isReadyToTrade
 
-const withHanndlers = withHandlers({
+const withHoldingHandlers = withHandlers({
   onClick: props => asset => {
     Router.push({
       pathname: '/manage',
@@ -35,5 +35,5 @@ const withMappedProps = withPropsOnChange(['holdings'], props => ({
 
 export default compose(
   withMappedProps,
-  withHanndlers,
+  withHoldingHandlers,
 )(Holdings);

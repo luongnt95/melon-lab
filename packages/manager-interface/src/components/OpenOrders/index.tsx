@@ -1,34 +1,14 @@
 import moment from 'moment';
-// import { connect } from 'react-redux';
 import { compose, withPropsOnChange, withHandlers } from 'recompose';
-// import { actions } from '../actions/openOrders';
 import OpenOrders from '@melonproject/manager-components/components/OpenOrders';
 import displayNumber from '../../utils/displayNumber';
-// import isSameAddress from '../utils/isSameAddress';
 import { extractQueryParam } from '~/legacy/utils/parseUrl';
 import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 import { withRouter } from 'next/router';
 
-// const mapStateToProps = state => ({
-//   isReadyToTrade: state.app.isReadyToTrade,
-//   isManager:
-//     state.app.isReadyToInteract &&
-//     isSameAddress(state.ethereum.account, state.fund.owner),
-// });
-
-// const mapDispatchToProps = dispatch => ({
-//   onClick: (orderId, makerAssetSymbol, takerAssetSymbol) => {
-//     dispatch(actions.cancelOrder(orderId, makerAssetSymbol, takerAssetSymbol));
-//   },
-// });
-
-// const withState = connect(
-//   mapStateToProps,
-//   mapDispatchToProps,
-// );
-
 const withMappedOrders = withPropsOnChange(['orders'], props => ({
+  // TODO: Add isManager and isReadyToTrade
   isManager: true,
   isReadyToTrade: true,
   orders: props.orders.map(order => ({
@@ -42,6 +22,24 @@ const withMappedOrders = withPropsOnChange(['orders'], props => ({
     type: order.type,
   })),
 }));
+
+const mutation = gql`
+  mutation cancelOpenOrder(
+    $orderId: String!
+    $fundAddress: String!
+    $makerAssetSymbol: String!
+    $takerAssetSymbol: String!
+  ) {
+    cancelOpenOrder(
+      orderId: $orderId
+      fundAddress: $fundAddress
+      makerAssetSymbol: $makerAssetSymbol
+      takerAssetSymbol: $takerAssetSymbol
+    ) {
+      type
+    }
+  }
+`;
 
 const query = gql`
   query OpenOrdersQuery($address: String!) {
@@ -78,11 +76,25 @@ const withOpenOrders = BaseComponent => baseProps => (
     ssr={false}
   >
     {props => (
-      <BaseComponent
-        {...baseProps}
-        orders={(props.data && props.data.openOrders) || []}
-        loading={props.loading}
-      />
+      <Mutation mutation={mutation}>
+        {(cancelOrder, { data }) => (
+          <BaseComponent
+            {...baseProps}
+            orders={(props.data && props.data.openOrders) || []}
+            loading={props.loading}
+            onClick={(orderId, makerAssetSymbol, takerAssetSymbol) =>
+              cancelOrder({
+                variables: {
+                  orderId,
+                  fundAddress: getAddress(baseProps.router.asPath),
+                  makerAssetSymbol,
+                  takerAssetSymbol,
+                },
+              })
+            }
+          />
+        )}
+      </Mutation>
     )}
   </Query>
 );
@@ -91,5 +103,4 @@ export default compose(
   withRouter,
   withOpenOrders,
   withMappedOrders,
-  // withState,
 )(OpenOrders);
