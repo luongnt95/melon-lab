@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react';
+import Setup from '@melonproject/manager-components/components/Setup/container';
+import { compose, withPropsOnChange, withHandlers } from 'recompose';
 
-const Setup = ({}) => <Fragment>Hello World</Fragment>;
+const withSetup = BaseComponent => baseProps => (
+  <BaseComponent config={baseProps.ethereumState} />
+);
 
-const withSetup = BaseComponent => baseProps => <BaseComponent />;
-
-export default withSetup(Setup);
+export default compose(withSetup)(Setup);

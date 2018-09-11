@@ -90,18 +90,21 @@ const ethereumQuery = gql`
     wethBalance @client
     mlnBalance @client
     accountAddress @client
+    canonicalPriceFeedAddress @client
+    competitionComplianceAddress @client
+    onlyManagerCompetitionAddress @client
   }
 `;
 
-const EthereumState = ({
-  children,
-}) => (
+const EthereumState = ({ children }) => (
   <Query query={ethereumQuery} pollInterval={10000} ssr={false}>
-    {(props) => {
+    {props => {
       const { data = {}, loading } = props;
 
       const isSyncing = !!data.isSyncing;
-      const isNetworkValid = !!data.ethereumNetwork && data.ethereumNetwork === '42' || data.ethereumNetwork === '1';
+      const isNetworkValid =
+        (!!data.ethereumNetwork && data.ethereumNetwork === '42') ||
+        data.ethereumNetwork === '1';
       const hasAccount = !!data.accountAddress;
       const hasEth = data.ethBalance && !isZero(data.ethBalance);
       const hasCurrentBlock = data.currentBlock && !isZero(data.currentBlock);
@@ -109,7 +112,12 @@ const EthereumState = ({
       const state = {
         ...data,
         isNetworkValid,
-        isReadyToInteract: !isSyncing && isNetworkValid && hasAccount && hasCurrentBlock && hasEth,
+        isReadyToInteract:
+          !isSyncing &&
+          isNetworkValid &&
+          hasAccount &&
+          hasCurrentBlock &&
+          hasEth,
         isReadyToInvest: false,
       };
 

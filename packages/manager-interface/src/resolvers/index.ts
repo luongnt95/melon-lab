@@ -1,4 +1,12 @@
-import { getParityProvider, getParticipation, getBalance, getConfig, getAccountAddress, hasRecentPrice, toReadable } from '@melonproject/melon.js';
+import {
+  getParityProvider,
+  getParticipation,
+  getBalance,
+  getConfig,
+  getAccountAddress,
+  hasRecentPrice,
+  toReadable,
+} from '@melonproject/melon.js';
 import * as R from 'ramda';
 import ethereumNetwork from './etherumNetwork';
 import personalStake from './personalStake';
@@ -13,6 +21,9 @@ export const defaults = {
   walletAddress: null,
   isSyncing: null,
   isDataValid: null,
+  canonicalPriceFeedAddress: null,
+  competitionComplianceAddress: null,
+  onlyManagerCompetitionAddress: null,
 };
 
 export const resolvers = R.reduce(R.mergeDeepLeft, {})([
@@ -46,7 +57,7 @@ export const withContext = cache => async operation => {
       ethereumNetwork: () => network,
       currentBlock: R.memoizeWith(R.identity, () => {
         return Promise.race([
-          new Promise((resolve) => {
+          new Promise(resolve => {
             // If we can't determine the current block within
             // 500ms, assume that we are out of date.
             setTimeout(() => resolve(null), 500);
@@ -54,17 +65,17 @@ export const withContext = cache => async operation => {
           environment.api.eth.blockNumber(),
         ]);
       }),
-      etherBalance: R.memoizeWith(R.identity, async (address) => {
+      etherBalance: R.memoizeWith(R.identity, async address => {
         const balance = await environment.api.eth.getBalance(address);
         return toReadable(config, balance, config.nativeAssetSymbol);
       }),
-      melonBalance: R.memoizeWith(R.identity, async (address) => {
+      melonBalance: R.memoizeWith(R.identity, async address => {
         return getBalance(environment, {
           tokenSymbol: config.melonAssetSymbol,
           ofAddress: address,
         });
       }),
-      nativeBalance: R.memoizeWith(R.identity, async (address) => {
+      nativeBalance: R.memoizeWith(R.identity, async address => {
         return getBalance(environment, {
           tokenSymbol: config.nativeAssetSymbol,
           ofAddress: address,
@@ -80,14 +91,17 @@ export const withContext = cache => async operation => {
       accountAddress: R.memoizeWith(R.identity, () => {
         return getAccountAddress(environment);
       }),
-      getParticipation: R.memoizeWith((fund, investor) => {
-        return `${fund}:${investor}`;
-      }, (fund, investor) => {
-        return getParticipation(environment, {
-          fundAddress: fund,
-          investorAddress: investor,
-        });
-      })
+      getParticipation: R.memoizeWith(
+        (fund, investor) => {
+          return `${fund}:${investor}`;
+        },
+        (fund, investor) => {
+          return getParticipation(environment, {
+            fundAddress: fund,
+            investorAddress: investor,
+          });
+        },
+      ),
     },
   };
 };

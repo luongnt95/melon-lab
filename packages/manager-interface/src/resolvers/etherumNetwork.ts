@@ -30,5 +30,14 @@ export default {
     accountAddress: (parent, args, { loaders }) => {
       return loaders.accountAddress();
     },
+    canonicalPriceFeedAddress: (parent, args, { config }) => {
+      return config.canonicalPriceFeedAddress;
+    },
+    competitionComplianceAddress: (parent, args, { config }) => {
+      return config.competitionComplianceAddress;
+    },
+    onlyManagerCompetitionAddress: (parent, args, { config }) => {
+      return config.onlyManagerCompetitionAddress;
+    },
   },
 };
