@@ -1,7 +1,16 @@
 import GenerateWallet from '~/components/GenerateWallet';
-import { compose } from 'recompose';
+import { compose, withHandlers } from 'recompose';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import Router from 'next/router';
+
+const withGenerateWalletHandlers = withHandlers({
+  restore: props => asset => {
+    Router.push({
+      pathname: '/wallet/restore',
+    });
+  },
+});
 
 const generateWalletQuery = gql`
   query GenerateWalletQuery {
@@ -20,4 +29,7 @@ const withGenerateWallet = BaseComponent => baseProps => (
   </Query>
 );
 
-export default compose(withGenerateWallet)(GenerateWallet);
+export default compose(
+  withGenerateWallet,
+  withGenerateWalletHandlers,
+)(GenerateWallet);

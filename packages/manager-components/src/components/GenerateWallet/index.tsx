@@ -1,17 +1,20 @@
 import React, { StatelessComponent } from 'react';
 import Button from '~/blocks/Button';
 import Notification from '~/blocks/Notification';
+import Spinner from '~/blocks/Spinner';
 
 import styles from './styles.css';
 
 export interface GenerateWalletProps {
   mnemonic: string;
   restore: () => void;
+  loading?: boolean;
 }
 
 export const GenerateWallet: StatelessComponent<GenerateWalletProps> = ({
   mnemonic,
   restore,
+  loading,
 }) => (
   <div className="generate-wallet">
     <style jsx>{styles}</style>
@@ -26,7 +29,13 @@ export const GenerateWallet: StatelessComponent<GenerateWalletProps> = ({
       someone else gets a copy of this, they can take over your wallet & fund
       and steal your price!
     </Notification>
-    <p className="generate-wallet__mnemonic">{mnemonic}</p>
+    {loading ? (
+      <div className="generate-wallet__loading">
+        <Spinner icon size="small" />
+      </div>
+    ) : (
+      <p className="generate-wallet__mnemonic">{mnemonic}</p>
+    )}
     <p>
       <Button style="secondary" onClick={restore}>
         I have written down the mnemonic
