@@ -42,7 +42,7 @@ fit('swapTokens from account', async () => {
   const actualDestAmount = await swapTokensFromAccount(environment, {srcTokenSymbol: "WETH-T", srcAmount: srcAmount, destTokenSymbol: "DAI-T", minConversionRate: slippageRate});
 
   expect(Number(actualDestAmount)).toBeGreaterThan(
-      Number(expectedDestAmount),
+      expectedDestAmount,
   );
 
 },   10 * 60 * 1000);
@@ -55,8 +55,6 @@ fit('Create fund, swapTokens through it', async () => {
   const signature = await signTermsAndConditions(environment);
   const shared = {};
 
-  // console.log(await getPrice(environment, 'ANT-T'));
-
   shared.fundName = randomString();
   const versionContract = await getVersionContract(environment);
   let managerToFunds = await versionContract.instance.managerToFunds.call(
@@ -65,23 +63,27 @@ fit('Create fund, swapTokens through it', async () => {
   );
 
   if (managerToFunds !== '0x0000000000000000000000000000000000000000') {
-      console.log('Existing fund needs to be shut down: ', managerToFunds);
-      await shutDownFund(environment, { fundAddress: managerToFunds });
-      console.log('Shutting down existing fund');
-      // shared.fund = {address: managerToFunds};
+      shared.fund = {address: managerToFunds};
+  }
+  else {
+    shared.fund = await setupFund(environment, {
+        name: shared.fundName,
+        signature,
+        exchangeNames: ['KyberNetwork'],
+    });
   }
 
-  shared.fund = await setupFund(environment, {
-      name: shared.fundName,
-      signature,
-      exchangeNames: ['KyberNetwork'],
-  });
+  const srcAmount = 0.1;
+  const destAmount = 10;
 
-  await transferTo(environment, { symbol: "WETH-T", toAddress: shared.fund.address, quantity: 1 });
-
-  await swapTokens(environment, { fundAddress: shared.fund.address, exchangeAddress: "0x7e6b8b9510D71BF8EF0f893902EbB9C865eEF4Df",  srcTokenSymbol: 'WETH-T',
+  await transferTo(environment, { symbol: "WETH-T", toAddress: shared.fund.address, quantity: srcAmount });
+  const eventLog = await swapTokens(environment, { fundAddress: shared.fund.address, exchangeAddress: "0x7e6b8b9510D71BF8EF0f893902EbB9C865eEF4Df",  srcTokenSymbol: 'WETH-T',
       destTokenSymbol: 'DAI-T',
-      srcAmount: 0.1,
-      destAmount: 0 });
+      srcAmount: srcAmount,
+      destAmount: destAmount });
+
+  expect(Number(eventLog.params.actualDestAmount.value)).toBeGreaterThan(
+      destAmount,
+  );
 
 },   10 * 60 * 1000);

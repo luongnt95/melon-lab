@@ -1,10 +1,12 @@
 // @flow
 import addressBook from '@melonproject/smart-contracts/addressBook';
 
+import findEventInLog from '../../utils/ethereum/findEventInLog';
 import ensure from '../../utils/generic/ensure';
 import callOnExchange from './callOnExchange';
 import getExchangeName from '../../exchange/utils/getExchangeName';
 import getFundContract from '../contracts/getFundContract';
+import getKyberProxyContract from '../../exchange/contracts/getKyberProxyContract';
 import getMethodNameSignature from '../../exchange/utils/getMethodNameSignature';
 import getNetwork from '../../utils/environment/getNetwork';
 import getAddress from '../../assets/utils/getAddress';
@@ -35,7 +37,7 @@ const swapTokens = async (
 
   const method = await getMethodNameSignature(environment, 'swapTokens');
 
-  const log = await callOnExchange(environment, {
+  const orderUdateLog = await callOnExchange(environment, {
     fundContract,
     exchangeAddress,
     method,
@@ -44,8 +46,13 @@ const swapTokens = async (
     identifier,
     signature: {},
   });
-  console.log(log);
-  return log;
+
+  const receipt = await environment.api.eth.getTransactionReceipt(orderUdateLog.transactionHash);
+  const kyberProxyContract = await getKyberProxyContract(environment);
+  const kyberLogs = await kyberProxyContract.parseEventLogs(receipt.logs);
+  const executedEventLog = kyberLogs.find(log => log.event === 'ExecuteTrade' );
+  
+  return executedEventLog;
 };
 
 export default swapTokens;
