@@ -1,9 +1,24 @@
 import React from 'react';
-import GenerateWallet from './index';
+import GenerateWallet from './container';
+
+const onSubmitMnemonic = jest.fn();
+const onSubmitPassword = jest.fn();
 
 const data = {
-  restore: () => null,
-  mnemonic: 'lorem ipsum',
+  generatedMnemonic:
+    'next glass shell collect erupt image drive tumble motor gym glove inside',
+  onSubmitPassword,
+  onSubmitMnemonic,
+  restoreWallet: {
+    initialValues: {
+      mnemonic: '',
+    },
+  },
+  passwordForm: {
+    initialValues: {
+      password: 'abc',
+    },
+  },
 };
 
 describe('GenerateWallet', () => {
