@@ -6,6 +6,7 @@ import {
   getAccountAddress,
   hasRecentPrice,
   toReadable,
+  createWallet,
 } from '@melonproject/melon.js';
 import * as R from 'ramda';
 import ethereumNetwork from './etherumNetwork';
@@ -90,6 +91,9 @@ export const withContext = cache => async operation => {
       }),
       accountAddress: R.memoizeWith(R.identity, () => {
         return getAccountAddress(environment);
+      }),
+      mnemonic: R.memoizeWith(R.identity, () => {
+        return createWallet().mnemonic;
       }),
       getParticipation: R.memoizeWith(
         (fund, investor) => {

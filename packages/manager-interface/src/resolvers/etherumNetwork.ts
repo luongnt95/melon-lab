@@ -39,5 +39,9 @@ export default {
     onlyManagerCompetitionAddress: (parent, args, { config }) => {
       return config.onlyManagerCompetitionAddress;
     },
+    mnemonic: (parent, args, { loaders }) => {
+      return loaders.mnemonic();
+      // return 'abc abc';
+    },
   },
 };

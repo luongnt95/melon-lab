@@ -1,7 +1,17 @@
-import Page from '~/legacy/containers/wallet/Generate';
+import GenerateWallet from '+/components/GenerateWallet';
+import React from 'react';
+import Layout from '+/components/Layout';
+import EthereumState from '+/components/EthereumState';
+import { withRouter } from 'next/router';
 
-const GenerateWallet = (props) => (
-  <Page {...props} />
+const Page = (props) => (
+  <EthereumState>
+    {(state) => (
+      <Layout ethereumState={state}>
+        <GenerateWallet {...props} />
+      </Layout>
+    )}
+  </EthereumState>
 );
 
-export default GenerateWallet;
+export default withRouter(Page);
