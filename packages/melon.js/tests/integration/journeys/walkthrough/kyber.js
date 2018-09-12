@@ -41,7 +41,7 @@ fit('swapTokens from account', async () => {
 
   const actualDestAmount = await swapTokensFromAccount(environment, {srcTokenSymbol: "WETH-T", srcAmount: srcAmount, destTokenSymbol: "DAI-T", minConversionRate: slippageRate});
 
-  expect(Number(actualDestAmount)).toBeGreaterThan(
+  expect(Number(actualDestAmount.params.actualDestAmount.value)).toBeGreaterThan(
       expectedDestAmount,
   );
 

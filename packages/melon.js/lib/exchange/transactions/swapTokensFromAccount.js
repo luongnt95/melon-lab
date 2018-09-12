@@ -43,7 +43,7 @@ const swapTokensFromAccount  = async (environment,
     'Error during swap tokens execution',
   );
 
-  return executedEvent.params.actualDestAmount.value;
+  return executedEvent;
 };
 
 export default swapTokensFromAccount;
