@@ -68,6 +68,7 @@ fit('Create fund, swapTokens through it', async () => {
       console.log('Existing fund needs to be shut down: ', managerToFunds);
       await shutDownFund(environment, { fundAddress: managerToFunds });
       console.log('Shutting down existing fund');
+      // shared.fund = {address: managerToFunds};
   }
 
   shared.fund = await setupFund(environment, {
@@ -76,10 +77,11 @@ fit('Create fund, swapTokens through it', async () => {
       exchangeNames: ['KyberNetwork'],
   });
 
-  const transfered = await transferTo(environment, { symbol: "WETH-T", toAddress: shared.fund.address, quantity: 0.1 })
-  await swapTokens(environment, { fundAddress: shared.fund.address, exchangeAddres: "0xF27dbBeA1856f18142cDD3B575146199f7f3a7eA",  srcTokenSymbol: 'WETH-T',
+  await transferTo(environment, { symbol: "WETH-T", toAddress: shared.fund.address, quantity: 1 });
+
+  await swapTokens(environment, { fundAddress: shared.fund.address, exchangeAddress: "0x7e6b8b9510D71BF8EF0f893902EbB9C865eEF4Df",  srcTokenSymbol: 'WETH-T',
       destTokenSymbol: 'DAI-T',
-      srcAmount: 5,
-      destAmount: 1 });
+      srcAmount: 0.1,
+      destAmount: 0 });
 
 },   10 * 60 * 1000);
