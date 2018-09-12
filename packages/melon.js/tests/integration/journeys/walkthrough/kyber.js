@@ -35,9 +35,9 @@ fit('swapTokens from account', async () => {
   const environment = getEnvironment();
   const config = await getConfig(environment);
 
-  const srcAmount = new BigNumber(10 ** 18);
+  const srcAmount = 0.1;
   const [, slippageRate] = await getConversionRate(environment, {srcTokenSymbol: "WETH-T", destTokenSymbol: "DAI-T", srcAmount});
-  const expectedDestAmount = srcAmount.mul(slippageRate).div(10 ** 18);
+  const expectedDestAmount = srcAmount * slippageRate;
 
   const actualDestAmount = await swapTokensFromAccount(environment, {srcTokenSymbol: "WETH-T", srcAmount: srcAmount, destTokenSymbol: "DAI-T", minConversionRate: slippageRate});
 
@@ -76,10 +76,10 @@ fit('Create fund, swapTokens through it', async () => {
       exchangeNames: ['KyberNetwork'],
   });
 
-  const transfered = await transferTo(environment, { symbol: "DAI-T", toAddress: shared.fund.address, quantity: 1 })
-  await swapTokens(environment, { fundAddress: shared.fund.address, exchangeAddres: "0xF27dbBeA1856f18142cDD3B575146199f7f3a7eA",  srcTokenSymbol: 'DAI-T',
-      destTokenSymbol: 'ANT-T',
-      srcAmount: 50000000,
-      destAmount: 0 });
+  const transfered = await transferTo(environment, { symbol: "WETH-T", toAddress: shared.fund.address, quantity: 0.1 })
+  await swapTokens(environment, { fundAddress: shared.fund.address, exchangeAddres: "0xF27dbBeA1856f18142cDD3B575146199f7f3a7eA",  srcTokenSymbol: 'WETH-T',
+      destTokenSymbol: 'DAI-T',
+      srcAmount: 5,
+      destAmount: 1 });
 
 },   10 * 60 * 1000);

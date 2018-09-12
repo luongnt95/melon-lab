@@ -3,6 +3,7 @@ import getKyberProxyContract from '../contracts/getKyberProxyContract';
 import findEventInLog from '../../utils/ethereum/findEventInLog';
 import sendTransaction from '../../utils/parity/sendTransaction';
 import approve from '../../assets/transactions/approve';
+import toProcessable from '../../assets/utils/toProcessable';
 import getAddress from '../../assets/utils/getAddress';
 import getConfig from '../../version/calls/getConfig';
 
@@ -31,7 +32,7 @@ const swapTokensFromAccount  = async (environment,
   const receipt = await sendTransaction(
     kyberProxyContract,
     'swapTokenToToken',
-    [srcToken, srcAmount, destToken, minConversionRate],
+    [srcToken, toProcessable(config, srcAmount, srcTokenSymbol), destToken, minConversionRate],
     environment,
     {},
   );
