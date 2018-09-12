@@ -3,7 +3,7 @@ import Card from '~/blocks/Card';
 import Dropdown from '~/blocks/Dropdown';
 import Input from '~/blocks/Input';
 import Spinner from '~/blocks/Spinner';
-import Link from '~/link';
+import Link from '~/utils/link';
 
 import styles from './styles.css';
 

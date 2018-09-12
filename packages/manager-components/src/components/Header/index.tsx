@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import React, { StatelessComponent } from 'react';
 import Icon from '~/blocks/Icon';
-import Link from '~/link';
+import Link from '~/utils/link';
 
 import styles from './styles.css';
 
