@@ -19,8 +19,6 @@ export interface PasswordFormProps {
   onChange?: () => void;
   touched?: any;
   values: FormValues;
-  canCancel: boolean;
-  showTitle: boolean;
 }
 
 export const PasswordForm: StatelessComponent<PasswordFormProps> = ({
@@ -32,8 +30,6 @@ export const PasswordForm: StatelessComponent<PasswordFormProps> = ({
   onCancel,
   touched,
   values,
-  canCancel = true,
-  showTitle,
 }) => {
   const handleCancel = () => {
     handleReset();
@@ -43,7 +39,6 @@ export const PasswordForm: StatelessComponent<PasswordFormProps> = ({
   return (
     <div className="password-form">
       <style jsx>{styles}</style>
-      {showTitle && <h3>Enter password</h3>}
       <Form onSubmit={handleSubmit}>
         <div className="password-form__input">
           <Input
@@ -58,13 +53,11 @@ export const PasswordForm: StatelessComponent<PasswordFormProps> = ({
           />
         </div>
         <div className="password-form__buttons">
-          {canCancel && (
-            <div className="password-form__button">
-              <Button type="button" style="secondary" onClick={handleCancel}>
-                Cancel
-              </Button>
-            </div>
-          )}
+          <div className="password-form__button">
+            <Button type="button" style="secondary" onClick={handleCancel}>
+              Cancel
+            </Button>
+          </div>
           <div className="password-form__button">
             <Button type="submit">Confirm</Button>
           </div>

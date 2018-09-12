@@ -8,12 +8,3 @@
 .password-form__button {
   flex: 0 0 40%;
 }
-
-.password-form__button:first-child:nth-last-child(1) {
-  flex: 0 0 100%;
-}
-
-.password-form__button:first-child:nth-last-child(2),
-.password-form__button:first-child:nth-last-child(2) ~ .password-form__button {
-  flex: 0 0 40%;
-}

@@ -1,25 +1,42 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`GenerateWallet should render correctly 1`] = `
-<withHandlers(Component)
-  generatedMnemonic="next glass shell collect erupt image drive tumble motor gym glove inside"
-  onSubmitMnemonic={[MockFunction]}
-  onSubmitPassword={[MockFunction]}
-  page={0}
-  passwordForm={
-    Object {
-      "initialValues": Object {
-        "password": "abc",
-      },
-    }
-  }
-  restoreWallet={
-    Object {
-      "initialValues": Object {
-        "mnemonic": "",
-      },
-    }
-  }
-  setPage={[Function]}
-/>
+<div
+  className="jsx-__scopedHash generate-wallet"
+>
+  <JSXStyle
+    css="__scoped"
+    styleId="__scopedHash"
+  />
+  <h3
+    className="jsx-__scopedHash"
+  >
+    Generate Account
+  </h3>
+  <p
+    className="jsx-__scopedHash"
+  >
+    The standard bip39 is used to generate a mnemonic phrase, from which your wallet will be cryptographically derived.
+  </p>
+  <Notification
+    isWarning={true}
+  >
+    Please write down the following mnemonic and store it in a safe place! If you loose your mnemonic you will not be able to access your fund again. If someone else gets a copy of this, they can take over your wallet & fund and steal your price!
+  </Notification>
+  <p
+    className="jsx-__scopedHash generate-wallet__mnemonic"
+  >
+    lorem ipsum
+  </p>
+  <p
+    className="jsx-__scopedHash"
+  >
+    <Button
+      onClick={[Function]}
+      style="secondary"
+    >
+      I have written down the mnemonic
+    </Button>
+  </p>
+</div>
 `;
