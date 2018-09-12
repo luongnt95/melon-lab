@@ -18,5 +18,10 @@
 
 .generate-wallet__loading {
   margin: var(--space-s) auto;
+  text-align: center;
+}
+
+.generate-wallet__loading-spinner {
   width: 50px;
+  margin: 0 auto;
 }

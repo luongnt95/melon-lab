@@ -31,7 +31,10 @@ export const GenerateWallet: StatelessComponent<GenerateWalletProps> = ({
     </Notification>
     {loading ? (
       <div className="generate-wallet__loading">
-        <Spinner icon size="small" />
+        <div className="generate-wallet__loading-spinner">
+          <Spinner icon size="small" />
+        </div>
+        Generating Wallet...
       </div>
     ) : (
       <p className="generate-wallet__mnemonic">{mnemonic}</p>
