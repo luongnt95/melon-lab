@@ -19,12 +19,13 @@ import getVersionContract from '../../../../lib/version/contracts/getVersionCont
 import transferTo from '../../../../lib/assets/transactions/transferTo'
 import swapTokens from '../../../../lib/fund/transactions/swapTokens';
 import swapTokensFromAccount from '../../../../lib/exchange/transactions/swapTokensFromAccount';
+import trace from '../../../../lib/utils/generic/trace';
 
 
 const randomString = (length = 4) =>
-    Math.random()
-        .toString(36)
-        .substr(2, length);
+  Math.random()
+    .toString(36)
+    .substr(2, length);
 
 fit('swapTokens from account', async () => {
   const { providerType, api } = await getParityProvider();
@@ -36,16 +37,16 @@ fit('swapTokens from account', async () => {
   const config = await getConfig(environment);
 
   const srcAmount = 0.1;
-  const [, slippageRate] = await getConversionRate(environment, {srcTokenSymbol: "WETH-T", destTokenSymbol: "DAI-T", srcAmount});
+  const [, slippageRate] = await getConversionRate(environment, { srcTokenSymbol: "WETH-T", destTokenSymbol: "DAI-T", srcAmount });
   const expectedDestAmount = srcAmount * slippageRate;
 
-  const actualDestAmount = await swapTokensFromAccount(environment, {srcTokenSymbol: "WETH-T", srcAmount: srcAmount, destTokenSymbol: "DAI-T", minConversionRate: slippageRate});
+  const actualDestAmount = await swapTokensFromAccount(environment, { srcTokenSymbol: "WETH-T", srcAmount: srcAmount, destTokenSymbol: "DAI-T", minConversionRate: slippageRate });
 
   expect(Number(actualDestAmount.params.actualDestAmount.value)).toBeGreaterThan(
-      expectedDestAmount,
+    expectedDestAmount,
   );
 
-},   10 * 60 * 1000);
+}, 10 * 60 * 1000);
 
 fit('Create fund, swapTokens through it', async () => {
 
@@ -58,32 +59,38 @@ fit('Create fund, swapTokens through it', async () => {
   shared.fundName = randomString();
   const versionContract = await getVersionContract(environment);
   let managerToFunds = await versionContract.instance.managerToFunds.call(
-      {},
-      [environment.account.address],
+    {},
+    [environment.account.address],
   );
 
   if (managerToFunds !== '0x0000000000000000000000000000000000000000') {
-      shared.fund = {address: managerToFunds};
+    shared.fund = { address: managerToFunds };
   }
   else {
     shared.fund = await setupFund(environment, {
-        name: shared.fundName,
-        signature,
-        exchangeNames: ['KyberNetwork'],
+      name: shared.fundName,
+      signature,
+      exchangeNames: ['KyberNetwork'],
     });
   }
 
   const srcAmount = 0.1;
   const destAmount = 10;
+  const srcToken = "WETH-T";
+  const destToken = "DAI-T"
 
-  await transferTo(environment, { symbol: "WETH-T", toAddress: shared.fund.address, quantity: srcAmount });
-  const eventLog = await swapTokens(environment, { fundAddress: shared.fund.address, exchangeAddress: "0x7e6b8b9510D71BF8EF0f893902EbB9C865eEF4Df",  srcTokenSymbol: 'WETH-T',
-      destTokenSymbol: 'DAI-T',
-      srcAmount: srcAmount,
-      destAmount: destAmount });
+  await transferTo(environment, { symbol: srcToken, toAddress: shared.fund.address, quantity: srcAmount });
+  const eventLog = await swapTokens(environment, {
+    fundAddress: shared.fund.address, exchangeAddress: config.kyberNetworkAddress, srcTokenSymbol: srcToken,
+    destTokenSymbol: destToken,
+    srcAmount: srcAmount,
+    destAmount: destAmount
+  });
 
   expect(Number(eventLog.params.actualDestAmount.value)).toBeGreaterThan(
-      destAmount,
+    destAmount,
   );
+  trace({ message: `Sold  ${srcAmount} ${srcToken} and bought ${destAmount} ${destToken}` });
 
-},   10 * 60 * 1000);
+
+}, 10 * 60 * 1000);
