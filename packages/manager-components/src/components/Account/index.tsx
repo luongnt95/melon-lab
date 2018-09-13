@@ -1,5 +1,7 @@
 import React, { Fragment, StatelessComponent } from 'react';
 import Button from '~/blocks/Button';
+import Link from '~/link';
+import StyledLink from '~/blocks/Link';
 
 import styles from './styles.css';
 
@@ -8,11 +10,8 @@ export interface AccountProps {
   currentAddress?: string;
   deleteWallet: () => void;
   downloadJSON: () => void;
-  gotoAccountGenerate: () => void;
-  gotoAccountRestore: () => void;
   goToFund?: (associatedFund) => void;
   gotoImportJSON: () => void;
-  gotoSetup: () => void;
   isCompetition?: boolean;
   networkId: string;
 }
@@ -22,11 +21,8 @@ export const Account: StatelessComponent<AccountProps> = ({
   currentAddress,
   deleteWallet,
   downloadJSON,
-  gotoAccountGenerate,
-  gotoAccountRestore,
   goToFund,
   gotoImportJSON,
-  gotoSetup,
   isCompetition,
   networkId,
 }) => {
@@ -92,9 +88,11 @@ export const Account: StatelessComponent<AccountProps> = ({
           </p>
           {!associatedFund ? (
             <p>
-              <Button style="success" onClick={gotoSetup}>
-                Setup your fund
-              </Button>
+              <Link href="/setup">
+                <StyledLink style="secondary" size="medium" passHref>
+                  Setup your fund
+                </StyledLink>
+              </Link>
             </p>
           ) : (
             <p>
@@ -138,20 +136,26 @@ export const Account: StatelessComponent<AccountProps> = ({
       <Fragment>
         {!isCompetition && (
           <p>
-            <Button style={isDanger} onClick={gotoAccountGenerate}>
-              Create a new wallet
-            </Button>
+            <Link href="/wallet/generate" passHref>
+              <StyledLink style="secondary" size="medium">
+                Create a new wallet
+              </StyledLink>
+            </Link>
           </p>
         )}
         <p>
-          <Button style={isDanger} onClick={gotoAccountRestore}>
-            Restore from mnemonic
-          </Button>
+          <Link href="/wallet/restore" passHref>
+            <StyledLink style="secondary" size="medium">
+              Restore from mnemonic
+            </StyledLink>
+          </Link>
         </p>
         <p>
-          <Button style={isDanger} onClick={gotoImportJSON}>
-            Import wallet JSON
-          </Button>
+          <Link href="/wallet/import" passHref>
+            <StyledLink style="secondary" size="medium">
+              Import wallet JSON
+            </StyledLink>
+          </Link>
         </p>
         {currentAddress &&
           !isCompetition && (
