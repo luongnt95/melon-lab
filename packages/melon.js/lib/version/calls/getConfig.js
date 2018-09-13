@@ -41,6 +41,8 @@ export type Config = {
   riskManagementAddress: Address,
   versionAddress: Address,
   governanceAddress: Address,
+  kyberNetworkAddress: Address,
+  kyberAdapter: Address,
 };
 
 let config: Config;
@@ -58,7 +60,7 @@ const getConfig = async (environment): Promise<Config> => {
   else if (environment.track === "kovan-competition") mode = "kovanCompetition"
   else if (environment.track === "live") mode = "live"
   else mode = "kovan"
-  
+
   config = {
     onlyManagerCompetitionAddress: addressBook[mode].OnlyManagerCompetition,
     competitionComplianceAddress: addressBook[mode].CompetitionCompliance,
@@ -71,7 +73,9 @@ const getConfig = async (environment): Promise<Config> => {
     riskManagementAddress: addressBook[mode].NoRiskMgmt,
     versionAddress: addressBook[mode].Version,
     governanceAddress: addressBook[mode].Governance,
-    olympiadAddress: addressBook[mode].Competition
+    olympiadAddress: addressBook[mode].Competition,
+    kyberNetworkAddress: addressBook[mode].KyberNetwork,
+    kyberAdapter: addressBook[mode].KyberAdapter,
   }
 
   // HACK: Define config first so that inside these next async functions,
