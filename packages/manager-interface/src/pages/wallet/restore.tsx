@@ -1,12 +1,13 @@
 import React from 'react';
 import Layout from '+/components/Layout';
 import EthereumState from '+/components/EthereumState';
+import RestoreWallet from '+/components/RestoreWallet';
 
 const Page = (props) => (
   <EthereumState>
     {(state) => (
       <Layout ethereumState={state}>
-        <div>Hello world!</div>
+        <RestoreWallet />
       </Layout>
     )}
   </EthereumState>
