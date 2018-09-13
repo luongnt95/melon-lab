@@ -73,21 +73,21 @@ fit('Create fund, swapTokens from WETH to DAI, swap back', async () => {
     });
   }
 
-  const srcAmount = 0.1;
-  const destAmount = 10;
   const srcToken = "WETH-T";
   const destToken = "DAI-T"
-
+  const srcAmount = 0.1;
+  const [, slippageRate] = await getConversionRate(environment, { srcTokenSymbol: srcToken, destTokenSymbol: destToken, srcAmount });
+  const minDestAmount = toReadable(config, slippageRate.mul(srcAmount), destToken);
   await transferTo(environment, { symbol: srcToken, toAddress: shared.fund.address, quantity: srcAmount });
   const eventLog = await swapTokens(environment, {
     fundAddress: shared.fund.address, exchangeAddress: config.kyberNetworkAddress, srcTokenSymbol: srcToken,
     destTokenSymbol: destToken,
     srcAmount: srcAmount,
-    destAmount: destAmount
+    destAmount: minDestAmount
   });
   const actualDestAmount = toReadable(config, eventLog.params.actualDestAmount.value, destToken);
   expect(Number(actualDestAmount)).toBeGreaterThan(
-    destAmount,
+    minDestAmount,
   );
   trace({ message: `Sold  ${srcAmount} ${srcToken} and bought ${actualDestAmount} ${destToken}` });
 
