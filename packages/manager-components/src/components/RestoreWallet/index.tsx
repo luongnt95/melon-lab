@@ -30,7 +30,7 @@ export const RestoreWallet: StatelessComponent<RestoreWalletProps> = ({
 }) => (
   <div className="restore-wallet">
     <style jsx>{styles}</style>
-    <h3>Confirm mnemonic</h3>
+    <h3>Restore Wallet</h3>
     <p>Please type your 12-words mnemonic:</p>
     {touched.mnemonic &&
       error && <p className="restore-wallet__error">{error}</p>}
@@ -48,7 +48,7 @@ export const RestoreWallet: StatelessComponent<RestoreWalletProps> = ({
         />
       </div>
       <Button type="submit" style="secondary">
-        Import
+        Restore
       </Button>
     </Form>
   </div>

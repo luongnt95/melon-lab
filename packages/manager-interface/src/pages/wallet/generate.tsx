@@ -4,9 +4,9 @@ import Layout from '+/components/Layout';
 import EthereumState from '+/components/EthereumState';
 import { withRouter } from 'next/router';
 
-const Page = (props) => (
+const Page = props => (
   <EthereumState>
-    {(state) => (
+    {state => (
       <Layout ethereumState={state}>
         <GenerateWallet {...props} />
       </Layout>

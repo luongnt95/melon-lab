@@ -2,9 +2,9 @@ import React from 'react';
 import Layout from '+/components/Layout';
 import EthereumState from '+/components/EthereumState';
 
-const Page = (props) => (
+const Page = props => (
   <EthereumState>
-    {(state) => (
+    {state => (
       <Layout ethereumState={state}>
         <div>Hello world!</div>
       </Layout>

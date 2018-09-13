@@ -2,7 +2,7 @@ import RestoreWallet from '~/components/RestoreWallet/container';
 import { compose, withProps, withHandlers } from 'recompose';
 
 const withRestoreWalletHandlers = withHandlers({
-  onSubmit: props => asset => {
+  onSubmit: props => mnemonic => {
     console.log('click submit');
   },
 });

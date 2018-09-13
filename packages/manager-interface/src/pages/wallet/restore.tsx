@@ -3,9 +3,9 @@ import Layout from '+/components/Layout';
 import EthereumState from '+/components/EthereumState';
 import RestoreWallet from '+/components/RestoreWallet';
 
-const Page = (props) => (
+const Page = props => (
   <EthereumState>
-    {(state) => (
+    {state => (
       <Layout ethereumState={state}>
         <RestoreWallet />
       </Layout>
