@@ -16,10 +16,10 @@ import getEnvironment from '../../../../lib/utils/environment/getEnvironment';
 import getFundForManager from '../../../../lib/version/calls/getFundForManager';
 import shutDownFund from '../../../../lib/fund/transactions/shutDownFund';
 import getVersionContract from '../../../../lib/version/contracts/getVersionContract';
-import transferTo from '../../../../lib/assets/transactions/transferTo'
+import transferTo from '../../../../lib/assets/transactions/transferTo';
+import toReadable from '../../../../lib/assets/utils/toReadable';
 import swapTokens from '../../../../lib/fund/transactions/swapTokens';
 import swapTokensFromAccount from '../../../../lib/exchange/transactions/swapTokensFromAccount';
-
 
 const randomString = (length = 4) =>
     Math.random()
@@ -44,10 +44,9 @@ fit('swapTokens from account', async () => {
   expect(Number(actualDestAmount.params.actualDestAmount.value)).toBeGreaterThan(
       expectedDestAmount,
   );
+}, 60000);
 
-},   10 * 60 * 1000);
-
-fit('Create fund, swapTokens through it', async () => {
+fit('Create fund, swapTokens from WETH to DAI, swap back', async () => {
 
   const environment = getEnvironment();
   const config = await getConfig(environment);
@@ -74,16 +73,30 @@ fit('Create fund, swapTokens through it', async () => {
   }
 
   const srcAmount = 0.1;
-  const destAmount = 10;
+  const minDestAmount = 10;
 
   await transferTo(environment, { symbol: "WETH-T", toAddress: shared.fund.address, quantity: srcAmount });
   const eventLog = await swapTokens(environment, { fundAddress: shared.fund.address, exchangeAddress: "0x7e6b8b9510D71BF8EF0f893902EbB9C865eEF4Df",  srcTokenSymbol: 'WETH-T',
       destTokenSymbol: 'DAI-T',
       srcAmount: srcAmount,
-      destAmount: destAmount });
+      destAmount: minDestAmount });
+  const actualDestAmount = toReadable(config, eventLog.params.actualDestAmount.value, destTokenSymbol);
 
-  expect(Number(eventLog.params.actualDestAmount.value)).toBeGreaterThan(
-      destAmount,
+  expect(actualDestAmount).toBeGreaterThan(
+      minDestAmount,
   );
 
-},   10 * 60 * 1000);
+  // Swap back the swapped tokens
+  conole.log(actualDestAmount);
+  const swapBackMinDestAmount = srcAmount - (0.2 * srcAmount);
+  const swapBackLog = await swapTokens(environment, { fundAddress: shared.fund.address, exchangeAddress: "0x7e6b8b9510D71BF8EF0f893902EbB9C865eEF4Df",  srcTokenSymbol: 'DAI-T',
+      destTokenSymbol: 'WETH-T',
+      srcAmount: actualDestAmount,
+      destAmount: swapBackMinDestAmount });
+  const swapBackActualDestAmount = Number(swapBackLog.params.actualDestAmount.value.div(10 ** 18));
+
+  expect(swapBackActualDestAmount).toBeGreaterThan(
+      swapBackMinDestAmount,
+  );
+
+}, 60000000);
