@@ -86,20 +86,20 @@ fit('Create fund, swapTokens from WETH to DAI, swap back', async () => {
     destAmount: destAmount
   });
   const actualDestAmount = toReadable(config, eventLog.params.actualDestAmount.value, destToken);
-  expect(actualDestAmount).toBeGreaterThan(
+  expect(Number(actualDestAmount)).toBeGreaterThan(
     destAmount,
   );
   trace({ message: `Sold  ${srcAmount} ${srcToken} and bought ${actualDestAmount} ${destToken}` });
 
   // Swap back the swapped tokens
   const swapBackMinDestAmount = srcAmount - (0.2 * srcAmount);
-  const swapBackLog = await swapTokens(environment, { fundAddress: shared.fund.address, exchangeAddress: "0x7e6b8b9510D71BF8EF0f893902EbB9C865eEF4Df",  srcTokenSymbol: destToken,
+  const swapBackLog = await swapTokens(environment, { fundAddress: shared.fund.address, exchangeAddress: config.kyberNetworkAddress,  srcTokenSymbol: destToken,
       destTokenSymbol: srcToken,
       srcAmount: actualDestAmount,
       destAmount: swapBackMinDestAmount });
-  const swapBackActualDestAmount = Number(swapBackLog.params.actualDestAmount.value.div(10 ** 18));
+  const swapBackActualDestAmount = toReadable(config, swapBackLog.params.actualDestAmount.value, srcToken);
 
-  expect(swapBackActualDestAmount).toBeGreaterThan(
+  expect(Number(swapBackActualDestAmount)).toBeGreaterThan(
       swapBackMinDestAmount,
   );
   trace({ message: `Sold  ${actualDestAmount} ${destToken} and bought ${swapBackActualDestAmount} ${srcToken}` });
