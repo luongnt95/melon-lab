@@ -1,5 +1,5 @@
 import GenerateWallet from '~/components/GenerateWallet/container';
-import { compose, withHandlers, withProps } from 'recompose';
+import { compose, withProps } from 'recompose';
 import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
 import Router from 'next/router';

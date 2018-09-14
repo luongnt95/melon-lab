@@ -13,7 +13,7 @@ const withFormValidation = withFormik({
         .required('Mnemonic is required.')
         .test(
           'is-mnemonic',
-          'Please type in the genearted mnemonic is invalid',
+          'Please type in the genearted mnemonic',
           value => value === props.mnemonic,
         ),
       password: Yup.string()
@@ -21,6 +21,10 @@ const withFormValidation = withFormik({
         .min(
           8,
           'Password needs to be at least 8 chars long. For your security!',
+        )
+        .max(
+          64,
+          'Password is too long. Please reduce your password to max 64 chars!',
         ),
     }),
   enableReinitialize: true,

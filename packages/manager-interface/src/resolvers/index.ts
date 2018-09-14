@@ -106,6 +106,7 @@ export const withContext = cache => async operation => {
           values.password,
         );
         localStorage.setItem('wallet:melon.fund', encryptedWalletString);
+        return true;
       }),
       getParticipation: R.memoizeWith(
         (fund, investor) => {

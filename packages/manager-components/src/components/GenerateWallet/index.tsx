@@ -83,6 +83,7 @@ export const GenerateWallet: StatelessComponent<GenerateWalletProps> = ({
             </div>
             <div className="generate-wallet__input">
               <Input
+                maxlength={64}
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.password}
