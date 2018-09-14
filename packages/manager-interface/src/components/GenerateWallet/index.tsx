@@ -3,11 +3,20 @@ import { compose, withHandlers, withProps } from 'recompose';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import Router from 'next/router';
+import {
+  encryptWallet,
+  importWalletFromMnemonic,
+} from '@melonproject/melon.js';
 
 const withGenerateWalletHandlers = withHandlers({
-  onSubmit: props => values => {
+  onSubmit: props => async values => {
+    const wallet = importWalletFromMnemonic(values.mnemonic);
+    const encryptedWalletString = await encryptWallet(wallet, values.password);
+
+    localStorage.setItem('wallet:melon.fund', encryptedWalletString);
+
     Router.push({
-      pathname: '/wallet/restore',
+      pathname: '/wallet',
     });
   },
 });
