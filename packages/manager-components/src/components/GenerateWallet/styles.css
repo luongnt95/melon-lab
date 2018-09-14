@@ -27,3 +27,7 @@
   width: 50px;
   margin: 0 auto;
 }
+
+.generate-wallet__input {
+  margin-bottom: var(--space-m);
+}

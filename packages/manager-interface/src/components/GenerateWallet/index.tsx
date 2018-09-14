@@ -1,15 +1,24 @@
-import GenerateWallet from '~/components/GenerateWallet';
-import { compose, withHandlers } from 'recompose';
+import GenerateWallet from '~/components/GenerateWallet/container';
+import { compose, withHandlers, withProps } from 'recompose';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import Router from 'next/router';
 
 const withGenerateWalletHandlers = withHandlers({
-  restore: props => asset => {
+  onSubmit: props => values => {
     Router.push({
-      pathname: '/wallet/restore',
+      pathname: '/wallet',
     });
   },
+});
+
+const withGenerateWalletProps = withProps(props => {
+  return {
+    initialValues: {
+      mnemonic: '',
+      password: '',
+    },
+  };
 });
 
 const generateWalletQuery = gql`
@@ -23,6 +32,7 @@ const withGenerateWallet = BaseComponent => baseProps => (
     {props => (
       <BaseComponent
         mnemonic={props.data && props.data.mnemonic}
+        initialValues={baseProps.initialValues}
         loading={props.loading}
       />
     )}
@@ -31,5 +41,6 @@ const withGenerateWallet = BaseComponent => baseProps => (
 
 export default compose(
   withGenerateWallet,
+  withGenerateWalletProps,
   withGenerateWalletHandlers,
 )(GenerateWallet);
