@@ -7,6 +7,8 @@ import {
   hasRecentPrice,
   toReadable,
   createWallet,
+  importWalletFromMnemonic,
+  encryptWallet
 } from '@melonproject/melon.js';
 import * as R from 'ramda';
 import ethereumNetwork from './etherumNetwork';
@@ -96,6 +98,14 @@ export const withContext = cache => async operation => {
       }),
       getMnemonic: R.memoizeWith(R.identity, () => {
         return createWallet().mnemonic;
+      }),
+      storeWallet: R.memoizeWith(R.identity, async values => {
+        const wallet = importWalletFromMnemonic(values.mnemonic);
+        const encryptedWalletString = await encryptWallet(
+          wallet,
+          values.password,
+        );
+        localStorage.setItem('wallet:melon.fund', encryptedWalletString);
       }),
       getParticipation: R.memoizeWith(
         (fund, investor) => {
