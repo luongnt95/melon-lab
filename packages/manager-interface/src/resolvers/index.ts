@@ -11,6 +11,7 @@ import {
 import * as R from 'ramda';
 import ethereumNetwork from './etherumNetwork';
 import personalStake from './personalStake';
+import wallet from './wallet';
 import getNextConfig from 'next/config';
 
 const { publicRuntimeConfig: nextConfig } = getNextConfig();
@@ -30,6 +31,7 @@ export const defaults = {
 export const resolvers = R.reduce(R.mergeDeepLeft, {})([
   ethereumNetwork,
   personalStake,
+  wallet,
 ]);
 
 let environment;
@@ -92,7 +94,7 @@ export const withContext = cache => async operation => {
       accountAddress: R.memoizeWith(R.identity, () => {
         return getAccountAddress(environment);
       }),
-      mnemonic: R.memoizeWith(R.identity, () => {
+      getMnemonic: R.memoizeWith(R.identity, () => {
         return createWallet().mnemonic;
       }),
       getParticipation: R.memoizeWith(

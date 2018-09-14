@@ -7,7 +7,7 @@ import Router from 'next/router';
 const withGenerateWalletHandlers = withHandlers({
   onSubmit: props => values => {
     Router.push({
-      pathname: '/wallet',
+      pathname: '/wallet/restore',
     });
   },
 });
