@@ -35,12 +35,9 @@ const withGenerateWallet = BaseComponent => baseProps => (
             initialValues={baseProps.initialValues}
             onSubmit={values =>
               storeWallet({
-                variables: {
-                  mnemonic: values.mnemonic,
-                  password: values.password,
-                },
+                variables: { ...values },
               }).then(() =>
-                Router.push({
+                Router.replace({
                   pathname: '/wallet',
                 }),
               )

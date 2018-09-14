@@ -43,7 +43,7 @@ export const GenerateWallet: StatelessComponent<GenerateWalletProps> = ({
         <div className="generate-wallet__loading-spinner">
           <Spinner icon size="small" />
         </div>
-        Generating Wallet...
+        {!showForm && <Fragment>Generating Wallet...</Fragment>}
       </div>
     ) : (
       <Fragment>
@@ -88,7 +88,7 @@ export const GenerateWallet: StatelessComponent<GenerateWalletProps> = ({
                 value={values.password}
                 required={true}
                 name="password"
-                type="text"
+                type="password"
                 placeholder="Password"
                 error={touched.password && errors.password}
               />

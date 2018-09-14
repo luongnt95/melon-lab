@@ -8,7 +8,7 @@ import {
   toReadable,
   createWallet,
   importWalletFromMnemonic,
-  encryptWallet
+  encryptWallet,
 } from '@melonproject/melon.js';
 import * as R from 'ramda';
 import ethereumNetwork from './etherumNetwork';
