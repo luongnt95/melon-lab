@@ -8,6 +8,7 @@ import getNativeAssetSymbol from '../../../../lib/version/calls/getNativeAssetSy
 import hasRecentPrice from '../../../../lib/pricefeeds/calls/hasRecentPrice';
 import getParityProvider from '../../../../lib/utils/parity/getParityProvider';
 import getOrderbook from '../../../../lib/exchange/calls/getOrderbook';
+import getKyberOrderBook from '../../../../lib/exchange/calls/getKyberOrderBook';
 import getConversionRate from '../../../../lib/exchange/calls/getConversionRate';
 import getKyberProxyContract from '../../../../lib/exchange/contracts/getKyberProxyContract';
 import importWalletFromMnemonic from '../../../../lib/utils/wallet/importWalletFromMnemonic';
@@ -29,12 +30,13 @@ const randomString = (length = 4) =>
 
 fit('swapTokens from account', async () => {
   const { providerType, api } = await getParityProvider();
-
   const wallet = importWalletFromMnemonic('dinosaur pulse rice lumber machine entry tackle off require draw edge almost');
 
   setEnvironment({ api, account: wallet, providerType });
   const environment = getEnvironment();
   const config = await getConfig(environment);
+
+  console.log(await getKyberOrderBook(environment, { baseTokenSymbol: "WETH-T", quoteTokenSymbol: "DAI-T" }));
 
   const srcAmount = 0.1;
   const [, slippageRate] = await getConversionRate(environment, { srcTokenSymbol: "WETH-T", destTokenSymbol: "DAI-T", srcAmount });
