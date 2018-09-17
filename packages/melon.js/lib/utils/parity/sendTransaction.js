@@ -105,7 +105,8 @@ const sendTransaction = async (
   const rawReceipt = await environment.api.eth.getTransactionReceipt(
     transactionHash,
   );
-  const decodedLogs = contract.parseEventLogs(rawReceipt.logs);
+  const logs = rawReceipt.logs.filter((log) => log.address.toLowerCase() === contract.address.toLowerCase());
+  const decodedLogs = contract.parseEventLogs(logs);
   const transactionReceipt = { ...rawReceipt, logs: decodedLogs };
   return transactionReceipt;
 };
